@@ -98,7 +98,7 @@
         </ul>
         <h2>random extras</h2>
         <p>if you click the button below 50 times something will happen</p>
-        <button id="clickButton">clicks: <a id="clicks">0</a></button>
+        <button id="clickButton" onclick="click()">clicks: <a id="clicks">0</a></button>
         <p class="noSelect" id="clickMsg" style="color: rgb(200, 150, 255);"></p>
         <p>rumor has it that something will happen if the checkboxes are clicked in a certain pattern…</p>
         <div id="checkboxes" onclick="var cb = Array.prototype.slice.call(this.querySelectorAll('*')); if (cb[0].checked && !cb[1].checked && !cb[2].checked && cb[3].checked && cb[4].checked && cb[5].checked && !cb[6].checked && cb[7].checked && cb[8].checked && !cb[9].checked && cb[10].checked && cb[11].checked && cb[12].checked && !cb[13].checked && !cb[14].checked && cb[15].checked) {alert('hi');};">
