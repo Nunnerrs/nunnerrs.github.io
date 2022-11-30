@@ -64,7 +64,7 @@
             var bg = "rgb(200, 245, 255)";
             
             function print(text) {
-                if (text == null) {
+                if (text != null) {
                     console.innerHTML = text;
                 } else {
                     console.innerHTML = plrPos + " " + speed + " " + shoot;
@@ -114,13 +114,14 @@
                     bulletL = bulletH - 50;
                     drawBullet(bulletL, bulletH);
                     bulletPos = bulletH;
+                    print();
                 } else {
                     shoot = false;
                     bulletH = 375;
                     bulletL = bulletH - 50;
                     bulletPos = null;
+                    print((bulletPos - 50) + " < " + canvas.height + " is " + (bulletPos - 50 < canvas.height));
                 };
-                print();
             };
 
             function moveLeft() {
