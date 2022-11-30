@@ -40,6 +40,7 @@
         <script type="text/javascript">
             var canvas = document.getElementById("canvas");
             var draw = canvas.getContext("2d");
+            var shoot = false;
             var speed = 0;
             var bulletSpeed = 0;
             var bulletH = 375;
@@ -50,7 +51,7 @@
 
             function clear() {
                 draw.clearRect(0, 0, canvas.width, canvas.height);
-            }
+            };
 
             // Colors
             var red = "rgb(255, 100, 100)";
@@ -61,6 +62,14 @@
             var white = "rgb(255, 255, 255)";
             var black = "rgb(0, 0, 0)";
             var bg = "rgb(200, 245, 255)";
+            
+            function print(text) {
+                if (text == null) {
+                    console.innerHTML = text;
+                } else {
+                    console.innerHTML = plrPos + " " + speed + " " + shoot;
+                };
+            };
 
             function start() {
                 setInterval(function() {update();}, 0.1);
@@ -75,7 +84,7 @@
                 draw.arc(pos, 400, 50, 0, 200);
                 draw.stroke();
                 draw.fill();
-            }
+            };
             drawPlayer(plrPos);
 
             function drawBullet(pos) {
@@ -100,17 +109,18 @@
                 clear();
                 plrPos += speed;
                 drawPlayer(plrPos);
-                if (bulletPos - 50 < canvas.height) {
+                if (shoot == true && bulletPos - 50 < canvas.height) {
                     bulletH -= bulletSpeed;
                     bulletL = bulletH - 50;
                     drawBullet(bulletL, bulletH);
                     bulletPos = bulletH;
                 } else {
+                    shoot = false;
                     bulletH = 375;
                     bulletL = bulletH - 50;
                     bulletPos = null;
                 };
-                console.innerHTML = plrPos + " " + speed;
+                print();
             };
 
             function moveLeft() {
@@ -118,7 +128,8 @@
             };
 
             function shoot() {
-                bulletSpeed = 2;
+                bulletSpeed = 10;
+                shoot = true;
             };
 
             function moveRight() {
@@ -127,7 +138,7 @@
 
             function stop() {
                 speed = 0;
-                //console.innerHTML = "stopped";
+                //print("stopped");
             };
         </script>
     </body>
