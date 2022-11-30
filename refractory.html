@@ -8,6 +8,9 @@
                 border-width: 0px;
                 border-radius: 10px;
                 color: rgb(125, 180, 205);
+                font-size: 50px;
+                height: 150px;
+                width: 150px;
             }
             canvas {
                 background-color: rgb(200, 245, 255);
@@ -38,6 +41,10 @@
             var canvas = document.getElementById("canvas");
             var draw = canvas.getContext("2d");
             var speed = 0;
+            var bulletSpeed = 0;
+            var bulletH = 375;
+            var bulletL = bulletH - 50;
+            var bulletPos = null;
             var plrPos = canvas.width/2;
             var console = document.getElementById("console");
 
@@ -93,6 +100,16 @@
                 clear();
                 plrPos += speed;
                 drawPlayer(plrPos);
+                if (bulletPos - 50 < canvas.height) {
+                    bulletH -= bulletSpeed;
+                    bulletL = bulletH - 50;
+                    drawBullet(bulletL, bulletH);
+                    bulletPos = bulletH;
+                } else {
+                    bulletH = 375;
+                    bulletL = bulletH - 50;
+                    bulletPos = null;
+                };
                 console.innerHTML = plrPos + " " + speed;
             };
 
@@ -101,12 +118,7 @@
             };
 
             function shoot() {
-                let bulletH = 375;
-                let bulletL = plrPos - 50;
-                setInterval(function() {
-                    bulletH -= 15;
-                    drawBullet(bulletL, bulletH);
-                }, 0.1);
+                bulletSpeed = 2;
             };
 
             function moveRight() {
