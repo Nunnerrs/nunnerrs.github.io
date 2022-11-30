@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <style>
+            button {
+                background-color: rgb(175, 230, 255);
+                border-width: 0px;
+                border-radius: 10px;
+                color: rgb(125, 180, 205);
+            }
+            canvas {
+                background-color: rgb(200, 245, 255);
+                border-radius: 25px;
+                margin-left: 50px;
+            }
+            p {
+                font-size: 20px;
+            }
+            .noSelect {
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+        </style>
+    </head>
+    <body>
+        <p style="margin-left: 925px">Score: <a id="score">--</a></p>
+        <canvas class="noSelect" height="475px" id="canvas" width="1000px"></canvas><br>
+        <button class="noSelect" id="leftButton" onmouseup="stop()" ontouchstart="moveLeft()" style="margin-left: 50px">←</button>
+        <button class="noSelect" id="rightButton" onmouseup="stop()" ontouchstart="moveRight()">→</button>
+        <button class="noSelect" id="shootButton" onclick="shoot()" style="margin-left: 540px">↑</button><br>
+        <p id="console"></p>
+        <script type="text/javascript">
+            var canvas = document.getElementById("canvas");
+            var draw = canvas.getContext("2d");
+            var speed = 0;
+            var plrPos = canvas.width/2;
+            var console = document.getElementById("console");
+
+            function clear() {
+                draw.clearRect(0, 0, canvas.width, canvas.height);
+            }
+
+            // Colors
+            var red = "rgb(255, 100, 100)";
+            var orange = "rgb(255, 200, 100)";
+            var yellow = "rgb(255, 240, 100";
+            var blue = "rgb(130, 205, 255)";
+            var brown = "rgb(200, 125, 50)";
+            var white = "rgb(255, 255, 255)";
+            var black = "rgb(0, 0, 0)";
+            var bg = "rgb(200, 245, 255)";
+
+            function start() {
+                setInterval(function() {update();}, 0.1);
+            };
+
+            document.body.onload = start;
+
+            function drawPlayer(pos) {
+                draw.beginPath();
+                draw.strokeStyle = white;
+                draw.fillStyle = white;
+                draw.arc(pos, 400, 50, 0, 200);
+                draw.stroke();
+                draw.fill();
+            }
+            drawPlayer(plrPos);
+
+            function drawBullet(pos) {
+                draw.beginPath();
+                draw.strokeStyle = blue;
+                draw.lineWidth = 20;
+                draw.lineCap = "round";
+                draw.moveTo(500, pos);
+                draw.lineTo(500, pos - 20);
+                draw.stroke();
+            };
+            //drawBullet(240);
+
+            function update() {
+                // L-Edge: 100 — R-Edge: 900
+                if (plrPos <= -50 && speed < 0) {
+                    plrPos = 1100;
+                };
+                if (plrPos >= 1100 && speed > 0) {
+                    plrPos = -50;
+                };
+                clear();
+                plrPos += speed;
+                drawPlayer(plrPos);
+                console.innerHTML = plrPos + " " + speed;
+            };
+
+            function moveLeft() {
+                speed = -1;
+            };
+
+            function shoot() {
+                let bulletH = 375;
+                let bulletL = plrPos - 50;
+                setInterval(function() {
+                    bulletH -= 15;
+                    drawBullet(bulletL, bulletH);
+                }, 0.1);
+            };
+
+            function moveRight() {
+                speed = 1;
+            };
+
+            function stop() {
+                speed = 0;
+                //console.innerHTML = "stopped";
+            };
+        </script>
+    </body>
+</html>
+
+
+
+
