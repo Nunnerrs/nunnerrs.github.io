@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>clicker gaem</title>
+        <link rel="icon" type="image/png" href="http://clipart-library.com/images/Bpc5BLET9.png">
+        <style>
+        html {
+            background-color: lightblue;
+            font-family: Comic Sans MS, Chalkboard SE;
+            color: rgb(0, 170, 214);
+            text-align: center;
+            font-size: 20px;
+        }
+
+        button {
+            background-color: rgb(150, 235, 255);
+            color: rgb(0, 170, 214);
+            text-align: center;
+            border-radius: 8px;
+            border-color: rgb(0, 170, 214);
+            font-family: Comic Sans MS, Chalkboard SE;
+            width: auto;
+        }
+
+        .normal {
+            height: 35px;
+            font-size: 18px;
+        }
+        </style>
+    </head>
+    <body>
+        <p id="display" style="font-size: 36px">Clicks: <a id="clicks">0</a></p>
+        <p id="incrementDisplay" style="font-size: 24px;">Click Increment (Clicks Per Click/CPC): <a id="increment">1</a></p>
+        <button id="clickButton" style="height: 50px; font-size: 25px" onClick="counter();"><img src=""/>Click Me!</button><br><br>
+        <button id="upgradeButton" class="normal" onClick="upgradeClick();">Upgrade Click (Unlock <a id="cpc">2</a> CPC at <a id="c2u">100</a> clicks)</button><br>
+        <button id="importButton" class="normal" onClick="importClicks();">Import Clicks</button><br>
+        <button id="textButton" class="normal" onClick="toggleText();">Toggle Button Text</button><br>
+        <script src="Scripts/clicker.js">
+        <p>Don't forget to <strong>write down your clicks</strong> somewhere before you leave!</p>
+    </body>
+</html>
