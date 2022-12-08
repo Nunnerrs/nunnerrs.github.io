@@ -1,8 +1,13 @@
 var clicks = 0;
 var clickCounter = document.getElementById("clicks");
 var increment = document.getElementById("increment");
+var clickButton = document.getElementById("clickButton");
+var upgradeButton = document.getElementById("upgradeButton");
+var importButton = document.getElementById("importButton");
+var textButton = document.getElementById("textButton");
 var cpc = document.getElementById("cpc");
 var c2u = document.getElementById("c2u");
+
 function counter() {
     clicks += Number(increment.innerHTML);
     clickCounter.innerHTML = clicks;
@@ -44,3 +49,8 @@ function upgradeClick() {
         alert("You don't have enough clicks to upgrade your click! (Don't worry, you're only " + clicksLeft + " clicks away!)")
     }
 };
+
+clickButton.addEventListener("onclick", counter);
+upgradeButton.addEventListener("onclick", upgradeClick);
+importButton.addEventListener("onclick", importClicks);
+textButton.addEventListener("onclick", toggleText);
