@@ -3,13 +3,10 @@ var button = document.getElementById("clickButton");
 var checkboxes = document.getElementById("checkboxes");
 var cb = Array.prototype.slice.call(checkboxes.querySelectorAll("*"));
 
-function click() {
+button.addEventListener("onclick",
     var clicks = document.getElementById('clicks');
     var newClicks = Number(clicks.innerHTML) + 1;
     clicks.innerHTML = newClicks;
-};
-
-button.addEventListener("onclick",
     var clickMsg = document.getElementById('clickMsg');
     if (Number(newClicks) == 50) {
         clickMsg.innerHTML = 'wow you did it';
