@@ -11,16 +11,21 @@
                 text-align: center;
             }
             h1 {
-                color: rgb(127, 75, 100);
+                color: rgb(145, 35, 80);
             }
             button {
-                background-color: rgb(220, 120, 160);
-                color: rgb(170, 90, 150);
+                background-color: rgb(230, 125, 210);
+                color: rgb(220, 60, 125);
             }
         </style>
     </head>
     <body>
         <h1>lucky pull simulator</h1>
-        <button>1 pull</button><button>10 pull</button>
+        <select id="wishType">
+            <option>open-world RPG (3-5 star pulls)</option>
+            <option>girls band party (2-5 star pulls)</option>
+            <option>bubble gum simulator (common-legendary)</option>
+        </select>
+        <button id="onePull">1 pull</button><button id="tenPull">10 pull</button>
     </body>
 </html>
