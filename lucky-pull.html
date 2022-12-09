@@ -5,44 +5,66 @@
         <link rel="icon" type="image/x-icon" href="">
         <meta charset="UTF-8">
         <style>
-            html {
-                font-family: Comic Sans MS, Chalkboard SE;
-                background-color: rgb(255, 150, 190);
-                text-align: center;
-            }
-            h1 {
-                color: rgb(145, 35, 80);
-            }
             button {
                 background-color: rgb(255, 175, 210);
-                border-radius: 15px;
-                border-width: 0px;
+                border-color: rgb(255, 175, 210);
+                border-radius: 30px;
+                border-width: 5px;
                 color: rgb(220, 60, 125);
+                cursor: pointer;
                 font-family: Comic Sans MS, Chalkboard SE;
                 font-size: 36px;
                 height: 100px;
                 width: 250px;
             }
+            h1 {
+                color: rgb(145, 35, 80);
+            }
+            html {
+                font-family: Comic Sans MS, Chalkboard SE;
+                background-color: rgb(255, 150, 190);
+                text-align: center;
+            }
+            p {
+                color: rgb(225, 75, 125);
+            }
             select {
                 background-color: rgb(255, 200, 225);
-                border-radius: 15px;
+                border-radius: 5px;
                 border-width: 0px;
                 color: rgb(220, 60, 125);
+                cursor: pointer;
                 font-family: Comic Sans MS, Chalkboard SE;
                 font-size: 18px;
                 height: 50px;
                 text-align: center;
                 width: auto;
+            }
+            .continueButton {
+                background: rgb(255, 210, 230);
+                border-color: rgb(255, 210, 230);
+                color: rgb(150, 215, 235);
+                visibility: hidden;
+                width: 100px;
+            }
         </style>
     </head>
     <body>
         <h1>lucky pull simulator</h1>
-        <select id="gachaType">
-            <option>3-5 star (RPG-style)</option>
-            <option>2-4 star (Band-style)</option>
-            <option>Common-Legendary (Adoption-style)</option>
-            <option>Common-Legendary (Rumble-style)</option>
-        </select><br><br>
+        <select id="gachaType" value="1">
+            <option value="1">3-5 star (RPG-style)</option>
+            <option value="2">2-4 star (Band-style)</option>
+            <option value="3">Common-Legendary (Adoption-style)</option>
+            <option value="4">Common-Legendary (Bubble gum-style)</option>
+        </select>
+        <button id="submit" style="background-color: rgb(220, 60, 125); border-color: rgb(220, 60, 125); border-radius: 20px; color: rgb(255, 200, 225); font-size: 24px; height: 50px; width: 100px;">Submit</button>
+        <br><br>
         <button id="onePull">1 pull</button> <button id="tenPull">10 pull</button>
+        <br><br><br>
+        <p id="message"></p>
+        <button class="continueButton" id="continueButton" style="visibility: hidden;"></button>
+        <br><br><br><br>
+        <button id="colorBlindHelp" style="background-color: white; border-color: white; border-radius: 15px; border-width: 3px; color: rgb(0, 0, 0); font-size: 18px; height: 50px; width: auto;">color blind mode: off</button>
+        <script href="/Scripts/lucky-pull.js"></script>
     </body>
 </html>
