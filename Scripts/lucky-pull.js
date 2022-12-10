@@ -2,6 +2,9 @@ var gatchaType = document.getElementById("gachaType");
 var submit = document.getElementById("submit");
 var onePull = document.getElementById("onePull");
 var tenPull = document.getElementById("tenPull");
+var message = document.getElementById("message");
+var continueButton = document.getElementById("continueButton");
+
 var largePull = 10;
 var oneStars = false;
 var twoStars = false;
@@ -13,12 +16,26 @@ var fourStarChance = 13;
 var fiveStarChance = 2;
 var max = 100;
 
-// ★ 🎫 🥚
-
 function pull(pulls) {
     let rewards = {};
+    message.style = "visibility: visible"
+    continueButton.style = "visibility: visible"
     for (let i = 1; i <= pulls; i++) {
         let pull = Math.floor(Math.random() * max) + 1;
+
+        if (gatchaType.value == "1") {
+            message.innerHTML = "";
+            continueButton.innerHTML = "★";
+        }
+        if (gatchaType.value == "2") {
+            message.innerHTML = "Click to cut";
+            continueButton.innerHTML = "🎫";
+        }
+        if (gatchaType.value == "3") {
+            message.innerHTML = "Click to hatch";
+            continueButton.innerHTML = "🥚";
+        }
+
         if (oneStars == true && pull <= oneStarChance) {
             rewards.push("1");
             continue;
@@ -29,6 +46,9 @@ function pull(pulls) {
         };
         if (twoStars == true && pull > twoStarChance && pull <= threeStarChance) {
             rewards.push("3");
+            if (gatchaType.value == "1") {
+                message.innerHTML = "";
+            }
             continue;
         };
         if (pull > threeStarChance && pull <= fourStarChance) {
@@ -41,6 +61,7 @@ function pull(pulls) {
         };
         alert("u pulled a " + rewards[rewards.length - 1] + "-star!!");
     };
+    alert(rewards.toString());
 };
 
 function changeType(type) {
