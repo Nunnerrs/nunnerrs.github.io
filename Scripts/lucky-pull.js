@@ -18,7 +18,8 @@ var max = 100;
 
 var rewards = {};
 
-function changeType(type) {
+function changeType() {
+    let type = gachaType.value;
     if (type == 1) {
         largePull = 10;
         oneStars = false;
@@ -70,12 +71,44 @@ function changeType(type) {
     };
 };
 
-function pull(pulls) {
+function doPull() {
+    onePull.style = "visibility: hidden;";
+    tenPull.style = "visibility: hidden;";
+    message.style = "visibility: visible;";
+    continueButton.style = "visibility: visible;";
+
+    let pull = Math.floor(Math.random() * max) + 1;
+
+    if (oneStars == true && pull <= oneStarChance) {
+        rewards.push("1");
+    };
+    if (oneStars == true && twoStars == true && pull > oneStarChance && pull <= twoStarChance) {
+        rewards.push("2");
+    };
+    if (oneStars == false && twoStars == true && pull <= twoStarChance) {
+        rewards.push("2");
+    };
+    if (twoStars == true && pull > twoStarChance && pull <= threeStarChance) {
+        rewards.push("3");
+    };
+    if (twoStars == false && gatchaType.value == "1" && pull <= threeStarChance) {
+        rewards.push("3");
+    };
+    if (pull > threeStarChance && pull <= fourStarChance) {
+        rewards.push("4");
+    };
+    if (fiveStars == true && pull > fourStarChance && pull <= fiveStarChance) {
+        rewards.push("5");
+    };
+    alert("u pulled a " + rewards[rewards.length - 1] + "-star!!");
+};
+
+function doLargePull() {
     message.style = "visibility: visible;";
     continueButton.style = "visibility: visible;";
     let highest = 3;
 
-    for (let i = 1; i <= pulls; i++) {
+    for (let i = 1; i <= largePull; i++) {
         let pull = Math.floor(Math.random() * max) + 1;
 
         if (oneStars == true && pull <= oneStarChance) {
@@ -141,9 +174,13 @@ function pull(pulls) {
 
 function reward() {
     message.innerHTML = rewards.toString();
+    onePull.style = "visibility: visible;";
+    tenPull.style = "visibility: visible;";
+    message.style = "visibility: hidden;";
+    continueButton.style = "visibility: hidden;";
 };
 
-submit.addEventListener("onclick", changeType(gachaType.value));
-onePull.addEventListener("onclick", pull(1));
-tenPull.addEventListener("onclick", pull(largePull));
-continueButton.addEventListener("onclick", reward());
+submit.addEventListener("onclick", changeType);
+onePull.addEventListener("onclick", doPull);
+tenPull.addEventListener("onclick", doLargePull);
+continueButton.addEventListener("onclick", reward);
