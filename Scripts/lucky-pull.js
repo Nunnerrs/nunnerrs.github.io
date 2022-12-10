@@ -4,6 +4,7 @@ var onePull = document.getElementById("onePull");
 var tenPull = document.getElementById("tenPull");
 var message = document.getElementById("message");
 var continueButton = document.getElementById("continueButton");
+var colorBlindOn = false;
 
 var largePull = 10;
 var oneStars = false;
@@ -178,6 +179,16 @@ function reward() {
     tenPull.style = "visibility: visible;";
     message.style = "visibility: hidden;";
     continueButton.style = "visibility: hidden;";
+};
+
+function colorBlind() {
+    if (colorBlindOn == true) {
+        document.html.class = "colorBlind";
+        colorBlindOn = false;
+    } else {
+        document.html.class = "";
+        colorBlindOn = true;
+    };
 };
 
 submit.addEventListener("onclick", changeType);
