@@ -16,53 +16,7 @@ var fourStarChance = 13;
 var fiveStarChance = 2;
 var max = 100;
 
-function pull(pulls) {
-    let rewards = {};
-    message.style = "visibility: visible"
-    continueButton.style = "visibility: visible"
-    for (let i = 1; i <= pulls; i++) {
-        let pull = Math.floor(Math.random() * max) + 1;
-
-        if (gatchaType.value == "1") {
-            message.innerHTML = "";
-            continueButton.innerHTML = "★";
-        }
-        if (gatchaType.value == "2") {
-            message.innerHTML = "Click to cut";
-            continueButton.innerHTML = "🎫";
-        }
-        if (gatchaType.value == "3") {
-            message.innerHTML = "Click to hatch";
-            continueButton.innerHTML = "🥚";
-        }
-
-        if (oneStars == true && pull <= oneStarChance) {
-            rewards.push("1");
-            continue;
-        };
-        if (oneStars == true && twoStars == true && pull > oneStarChance && pull <= twoStarChance) {
-            rewards.push("2");
-            continue;
-        };
-        if (twoStars == true && pull > twoStarChance && pull <= threeStarChance) {
-            rewards.push("3");
-            if (gatchaType.value == "1") {
-                message.innerHTML = "";
-            }
-            continue;
-        };
-        if (pull > threeStarChance && pull <= fourStarChance) {
-            rewards.push("4");
-            continue;
-        };
-        if (fiveStars == true && pull > fourStarChance && pull <= fiveStarChance) {
-            rewards.push("5");
-            continue;
-        };
-        alert("u pulled a " + rewards[rewards.length - 1] + "-star!!");
-    };
-    alert(rewards.toString());
-};
+var rewards = {};
 
 function changeType(type) {
     if (type == 1) {
@@ -73,52 +27,123 @@ function changeType(type) {
         oneStarChance = 0;
         twoStarChance = 0;
         threeStarChance = 85;
-        fourStarChance = 13;
-        fiveStarChance = 2;
+        fourStarChance = 14;
+        fiveStarChance = 1;
         max = 100;
         alert("set to rpg");
-        else if (type == 2) {
-            largePull = 10;
-            oneStars = false;
-            twoStars = true;
-            fiveStars = false;
-            oneStarChance = 0;
-            twoStarChance = 885;
-            threeStarChance = 85;
-            fourStarChance = 30;
-            fiveStarChance = 0;
-            max = 1000;
-            alert("set to band");
-            else if (type == 3) {
-                largePull = 1;
-                oneStars = true;
-                twoStars = true;
-                fiveStars = true;
-                oneStarChance = 20;
-                twoStarChance = 35;
-                threeStarChance = 27;
-                fourStarChance = 15;
-                fiveStarChance = 3;
-                max = 100;
-                alert("set to adopt");
-                else if (type == 4) {
-                    largePull = 3;
-                    oneStars = true;
-                    twoStars = true;
-                    fiveStars = true;
-                    oneStarChance = 394;
-                    twoStarChance = 265;
-                    threeStarChance = 200;
-                    fourStarChance = 140;
-                    fiveStarChance = 1;
-                    max = 1000;
-                    alert("set to bubblegum");
-                };
-            };
-        };
+    } else if (type == 2) {
+        largePull = 10;
+        oneStars = false;
+        twoStars = true;
+        fiveStars = false;
+        oneStarChance = 0;
+        twoStarChance = 885;
+        threeStarChance = 85;
+        fourStarChance = 30;
+        fiveStarChance = 0;
+        max = 1000;
+        alert("set to band");
+    } else if (type == 3) {
+        largePull = 1;
+        oneStars = true;
+        twoStars = true;
+        fiveStars = true;
+        oneStarChance = 20;
+        twoStarChance = 35;
+        threeStarChance = 27;
+        fourStarChance = 15;
+        fiveStarChance = 3;
+        max = 100;
+        alert("set to adopt");
+    } else if (type == 4) {
+        largePull = 3;
+        oneStars = true;
+        twoStars = true;
+        fiveStars = true;
+        oneStarChance = 394;
+        twoStarChance = 265;
+        threeStarChance = 200;
+        fourStarChance = 140;
+        fiveStarChance = 1;
+        max = 1000;
+        alert("set to bubblegum");
     };
 };
 
+function pull(pulls) {
+    message.style = "visibility: visible;";
+    continueButton.style = "visibility: visible;";
+    let highest = 3;
+
+    for (let i = 1; i <= pulls; i++) {
+        let pull = Math.floor(Math.random() * max) + 1;
+
+        if (oneStars == true && pull <= oneStarChance) {
+            rewards.push("1");
+            continue;
+        };
+        if (oneStars == true && twoStars == true && pull > oneStarChance && pull <= twoStarChance) {
+            rewards.push("2");
+            continue;
+        };
+        if (oneStars == false && twoStars == true && pull <= twoStarChance) {
+            rewards.push("2");
+            continue;
+        };
+        if (twoStars == true && pull > twoStarChance && pull <= threeStarChance) {
+            rewards.push("3");
+            continue;
+        };
+        if (twoStars == false && gatchaType.value == "1" && pull <= threeStarChance) {
+            rewards.push("3");
+            continue;
+        };
+        if (pull > threeStarChance && pull <= fourStarChance) {
+            rewards.push("4");
+            if (gachaType.value == "1") {
+                if (highest < 4) {
+                    highest = 4;
+                };
+            };
+            continue;
+        };
+        if (fiveStars == true && pull > fourStarChance && pull <= fiveStarChance) {
+            rewards.push("5");
+            if (gachaType.value == "1") {
+                if (highest < 5) {
+                    highest = 5;
+                };
+            };
+            continue;
+        };
+        alert("u pulled a " + rewards[rewards.length - 1] + "-star!!");
+    };
+    
+    if (highest == 4) {
+        continueButton.style = "color: rgb(200, 150, 255); visibility: visible;"
+    };
+    if (highest == 5) {
+        continueButton.style = "color: rgb(255, 175, 100); visibility: visible;"
+    };
+    if (gatchaType.value == "1") {
+        message.innerHTML = "Click to continue";
+        continueButton.innerHTML = "★";
+    };
+    if (gatchaType.value == "2") {
+        message.innerHTML = "Click to cut";
+        continueButton.innerHTML = "🎫";
+    };
+    if (gatchaType.value == "3") {
+        message.innerHTML = "Click to hatch";
+        continueButton.innerHTML = "🥚";
+    };
+};
+
+function reward() {
+    message.innerHTML = rewards.toString();
+};
+
+submit.addEventListener("onclick", changeType(gachaType.value));
 onePull.addEventListener("onclick", pull(1));
 tenPull.addEventListener("onclick", pull(largePull));
-submit.addEventListener("onclick", changeType(gachaType.value));
+continueButton.addEventListener("onclick", reward());
