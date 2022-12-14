@@ -6,7 +6,7 @@ var message = document.getElementById("message");
 var continueButton = document.getElementById("continueButton");
 var colorBlindHelp = document.getElementById("colorBlindHelp");
 var colorBlindOn = false;
-
+alert("began script!!!");
 var largePullAmount = 10;
 var oneStars = false;
 var twoStars = false;
@@ -18,7 +18,7 @@ var fourStarChance = 13;
 var fiveStarChance = 2;
 var max = 100;
 
-var rewards = {};
+var rewards = [];
 
 function changeType() {
     let type = gachaType.value;
@@ -74,6 +74,7 @@ function changeType() {
 };
 
 function doPull() {
+    alert("1 pull…");
     onePull.style = "visibility: hidden;";
     tenPull.style = "visibility: hidden;";
     message.style = "visibility: visible;";
@@ -106,11 +107,13 @@ function doPull() {
 };
 
 function doLargePull() {
+    alert(largePullAmount + " pull…");
     message.style = "visibility: visible;";
     continueButton.style = "visibility: visible;";
     let highest = 3;
 
     for (let i = 1; i <= largePullAmount; i++) {
+        alert("1 pull…");
         let pull = Math.floor(Math.random() * max) + 1;
 
         if (oneStars == true && pull <= oneStarChance) {
@@ -172,6 +175,7 @@ function doLargePull() {
         message.innerHTML = "Click to hatch";
         continueButton.innerHTML = "🥚";
     };
+    alert("completed execution");
 };
 
 function reward() {
@@ -180,6 +184,8 @@ function reward() {
     tenPull.style = "visibility: visible;";
     message.style = "visibility: hidden;";
     continueButton.style = "visibility: hidden;";
+    rewards = [];
+    alert("awards are displayed!");
 };
 
 function colorBlind() {
@@ -190,6 +196,7 @@ function colorBlind() {
         document.html.class = "";
         colorBlindOn = true;
     };
+    alert("set color blind mode to " + colorBlindOn);
 };
 
 submit.addEventListener("onclick", changeType);
