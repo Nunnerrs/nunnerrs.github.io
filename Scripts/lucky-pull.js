@@ -18,7 +18,7 @@ var fourStarChance = 13;
 var fiveStarChance = 2;
 var max = 100;
 
-var rewards = [];
+const rewards = [];
 
 function changeType() {
     let type = gachaType.value;
@@ -179,12 +179,12 @@ function doLargePull() {
 };
 
 function reward() {
-    message.innerHTML = rewards.toString();
+    message.innerHTML = "you pulled: " + rewards.toString() + ". good job!!!";
     onePull.style = "visibility: visible;";
     tenPull.style = "visibility: visible;";
     message.style = "visibility: hidden;";
     continueButton.style = "visibility: hidden;";
-    rewards = [];
+    rewards.length = 0;
     alert("awards are displayed!");
 };
 
