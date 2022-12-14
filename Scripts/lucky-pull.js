@@ -192,8 +192,8 @@ function colorBlind() {
     };
 };
 
-submit.addEventListener("onclick", changeType());
-onePull.addEventListener("onclick", doPull());
-tenPull.addEventListener("onclick", doLargePull());
-continueButton.addEventListener("onclick", reward());
-colorBlindHelp.addEventListener("onclick", colorBlind());
+submit.addEventListener("onclick", changeType);
+onePull.addEventListener("onclick", doPull);
+largePull.addEventListener("onclick", doLargePull);
+continueButton.addEventListener("onclick", reward);
+colorBlindHelp.addEventListener("onclick", colorBlind);
