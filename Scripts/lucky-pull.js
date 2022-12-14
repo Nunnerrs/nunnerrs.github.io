@@ -1,13 +1,13 @@
 var gatchaType = document.getElementById("gachaType");
 var submit = document.getElementById("submit");
 var onePull = document.getElementById("onePull");
-var tenPull = document.getElementById("tenPull");
+var largePull = document.getElementById("largePull");
 var message = document.getElementById("message");
 var continueButton = document.getElementById("continueButton");
 var colorBlindHelp = document.getElementById("colorBlindHelp");
 var colorBlindOn = false;
 
-var largePull = 10;
+var largePullAmount = 10;
 var oneStars = false;
 var twoStars = false;
 var fiveStars = true;
@@ -110,7 +110,7 @@ function doLargePull() {
     continueButton.style = "visibility: visible;";
     let highest = 3;
 
-    for (let i = 1; i <= largePull; i++) {
+    for (let i = 1; i <= largePullAmount; i++) {
         let pull = Math.floor(Math.random() * max) + 1;
 
         if (oneStars == true && pull <= oneStarChance) {
