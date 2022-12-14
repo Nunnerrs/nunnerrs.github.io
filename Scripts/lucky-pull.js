@@ -4,6 +4,7 @@ var onePull = document.getElementById("onePull");
 var tenPull = document.getElementById("tenPull");
 var message = document.getElementById("message");
 var continueButton = document.getElementById("continueButton");
+var colorBlindHelp = document.getElementById("colorBlindHelp");
 var colorBlindOn = false;
 
 var largePull = 10;
@@ -191,7 +192,8 @@ function colorBlind() {
     };
 };
 
-submit.addEventListener("onclick", changeType);
-onePull.addEventListener("onclick", doPull);
-tenPull.addEventListener("onclick", doLargePull);
-continueButton.addEventListener("onclick", reward);
+submit.addEventListener("onclick", changeType());
+onePull.addEventListener("onclick", doPull());
+tenPull.addEventListener("onclick", doLargePull());
+continueButton.addEventListener("onclick", reward());
+colorBlindHelp.addEventListener("onclick", colorBlind());

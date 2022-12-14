@@ -1,0 +1,7 @@
+To-Do:
+• Design Lianna's Art Gallery
+• Design Skylar's Art Gallery
+• Get lucky-pull.html to work
+• Fix incorrect transparency on Raise A Rock plant
+• Add a random username generator (based on Kahoot! randomly-generated usernames) in about.html
+• Gather more adjectives & animals for random username generator
