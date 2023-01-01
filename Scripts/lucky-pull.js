@@ -1,10 +1,10 @@
-var gatchaType = document.getElementById("gachaType");
-var submit = document.getElementById("submit");
-var onePull = document.getElementById("onePull");
-var largePull = document.getElementById("largePull");
-var message = document.getElementById("message");
-var continueButton = document.getElementById("continueButton");
-var colorBlindHelp = document.getElementById("colorBlindHelp");
+const gatchaType = document.getElementById("gachaType");
+const submit = document.getElementById("submit");
+const onePull = document.getElementById("onePull");
+const largePull = document.getElementById("largePull");
+const message = document.getElementById("message");
+const continueButton = document.getElementById("continueButton");
+const colorBlindHelp = document.getElementById("colorBlindHelp");
 var colorBlindOn = false;
 alert("began script!!!");
 var largePullAmount = 10;
