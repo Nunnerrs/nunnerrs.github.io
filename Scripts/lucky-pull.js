@@ -199,9 +199,9 @@ function colorBlind() {
     alert("set color blind mode to " + colorBlindOn);
 };
 
-submit.addEventListener("onclick", changeType);
-onePull.addEventListener("onclick", doPull);
-largePull.addEventListener("onclick", doLargePull);
-continueButton.addEventListener("onclick", reward);
-colorBlindHelp.addEventListener("onclick", colorBlind);
+submit.addEventListener("click", changeType);
+onePull.addEventListener("click", doPull);
+largePull.addEventListener("click", doLargePull);
+continueButton.addEventListener("click", reward);
+colorBlindHelp.addEventListener("click", colorBlind);
 alert("hi");
