@@ -204,3 +204,4 @@ onePull.addEventListener("onclick", doPull);
 largePull.addEventListener("onclick", doLargePull);
 continueButton.addEventListener("onclick", reward);
 colorBlindHelp.addEventListener("onclick", colorBlind);
+alert("hi");
