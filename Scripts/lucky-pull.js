@@ -1,13 +1,11 @@
-const gatchaType = document.getElementById("gachaType");
-const submit = document.getElementById("submit");
-const onePull = document.getElementById("onePull");
-const largePull = document.getElementById("largePull");
-const message = document.getElementById("message");
-const continueButton = document.getElementById("continueButton");
-const colorBlindHelp = document.getElementById("colorBlindHelp");
+var gatchaType = document.getElementById("gachaType");
+var submit = document.getElementById("submit");
+var onePull = document.getElementById("onePull");
+var largePull = document.getElementById("largePull");
+var message = document.getElementById("message");
+var continueButton = document.getElementById("continueButton");
+var colorBlindHelp = document.getElementById("colorBlindHelp");
 var colorBlindOn = false;
-alert("began script!!!");
-alert(submit.id);
 var largePullAmount = 10;
 var oneStars = false;
 var twoStars = false;
@@ -77,7 +75,7 @@ const rewards = [];
 /*function doPull() {
     alert("1 pull…");
     onePull.style = "visibility: hidden;";
-    tenPull.style = "visibility: hidden;";
+    largePull.style = "visibility: hidden;";
     message.style = "visibility: visible;";
     continueButton.style = "visibility: visible;";
 
@@ -182,7 +180,7 @@ const rewards = [];
 /*function reward() {
     message.innerHTML = "you pulled: " + rewards.toString() + ". good job!!!";
     onePull.style = "visibility: visible;";
-    tenPull.style = "visibility: visible;";
+    largePull.style = "visibility: visible;";
     message.style = "visibility: hidden;";
     continueButton.style = "visibility: hidden;";
     rewards.length = 0;
@@ -253,9 +251,9 @@ submit.addEventListener("click", function() {
     };
 }); //changeType
 onePull.addEventListener("click", function() {
-    alert("1 pull…");
+    //alert("1 pull…");
     onePull.style = "visibility: hidden;";
-    tenPull.style = "visibility: hidden;";
+    largePull.style = "visibility: hidden;";
     message.style = "visibility: visible;";
     continueButton.style = "visibility: visible;";
 
@@ -282,7 +280,7 @@ onePull.addEventListener("click", function() {
     if (fiveStars == true && pull > fourStarChance && pull <= fiveStarChance) {
         rewards.push("5");
     };
-    alert("u pulled a " + rewards[rewards.length - 1] + "-star!!");
+    //alert("u pulled a " + rewards[rewards.length - 1] + "-star!!");
 }); //doPull
 largePull.addEventListener("click", function() {
     alert(largePullAmount + " pull…");
@@ -291,7 +289,7 @@ largePull.addEventListener("click", function() {
     let highest = 3;
 
     for (let i = 1; i <= largePullAmount; i++) {
-        alert("1 pull…");
+        //alert("1 pull…");
         let pull = Math.floor(Math.random() * max) + 1;
 
         if (oneStars == true && pull <= oneStarChance) {
@@ -332,7 +330,7 @@ largePull.addEventListener("click", function() {
             };
             continue;
         };
-        alert("u pulled a " + rewards[rewards.length - 1] + "-star!!");
+        //alert("u pulled a " + rewards[rewards.length - 1] + "-star!!");
     };
     
     if (highest == 4) {
@@ -353,16 +351,16 @@ largePull.addEventListener("click", function() {
         message.innerHTML = "Click to hatch";
         continueButton.innerHTML = "🥚";
     };
-    alert("completed execution");
+    //alert("completed execution");
 }); //doLargePull
 continueButton.addEventListener("click", function() {
     message.innerHTML = "you pulled: " + rewards.toString() + ". good job!!!";
     onePull.style = "visibility: visible;";
-    tenPull.style = "visibility: visible;";
+    largePull.style = "visibility: visible;";
     message.style = "visibility: hidden;";
     continueButton.style = "visibility: hidden;";
     rewards.length = 0;
-    alert("awards are displayed!");
+    //alert("awards are displayed!");
 }); //reward
 colorBlindHelp.addEventListener("click", function() {
     if (colorBlindOn == true) {
@@ -372,6 +370,5 @@ colorBlindHelp.addEventListener("click", function() {
         document.html.class = "";
         colorBlindOn = true;
     };
-    alert("set color blind mode to " + colorBlindOn);
+    //alert("set color blind mode to " + colorBlindOn);
 }); //colorBlind
-alert("hi");
