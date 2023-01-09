@@ -23,7 +23,7 @@ const rewards = [];
 submit.addEventListener("click", function() {
     let type = gachaType.value;
     if (type == 1) {
-        largePull = 10;
+        largePullAmount = 10;
         //oneStars = false;
         //twoStars = false;
         //fiveStars = true;
@@ -35,7 +35,7 @@ submit.addEventListener("click", function() {
         max = 100;
         alert("set to rpg");
     } else if (type == 2) {
-        largePull = 10;
+        largePullAmount = 10;
         //oneStars = false;
         //twoStars = true;
         //fiveStars = false;
@@ -47,7 +47,7 @@ submit.addEventListener("click", function() {
         max = 1000;
         alert("set to band");
     } else if (type == 3) {
-        largePull = 1;
+        largePullAmount = 0;
         //oneStars = true;
         //twoStars = true;
         //fiveStars = true;
@@ -59,7 +59,7 @@ submit.addEventListener("click", function() {
         max = 100;
         alert("set to adopt");
     } else if (type == 4) {
-        largePull = 3;
+        largePullAmount = 3;
         //oneStars = true;
         //twoStars = true;
         //fiveStars = true;
@@ -166,30 +166,40 @@ largePull.addEventListener("click", function() {
         let pull = Math.floor(Math.random() * max) + 1;
 
         if (type == 1) {
+            let reward = 3;
             if (pull <= threeStarChance) {
-                rewards.push("3");
+                reward = 3;
+            };
+            if (i == largePullAmount) {
+                reward = 4;
             };
             if (pull > threeStarChance && pull <= threeStarChance + fourStarChance) {
-                rewards.push("4");
+                reward = 4;
                 if (highest < 4) {
                     highest = 4;
                 };
             };
             if (pull > threeStarChance + fourStarChance && pull <= threeStarChance + fourStarChance + fiveStarChance) {
-                rewards.push("5");
+                reward = 5;
                 highest = 5;
             };
+            rewards.push(reward.toString());
         };
         if (type == 2) {
+            let reward = 2;
             if (pull <= twoStarChance) {
-                rewards.push("2");
+                reward = 2;
+            };
+            if (i == largePullAmount) {
+                reward = 3;
             };
             if (pull > twoStarChance && pull <= twoStarChance + threeStarChance) {
-                rewards.push("3");
+                reward = 3;
             };
             if (pull > twoStarChance + threeStarChance && pull <= twoStarChance + threeStarChance + fourStarChance) {
-                rewards.push("4");
+                reward = 4;
             };
+            rewards.push(reward.toString())
         };
         if (type == 3 || type == 4) {
             if (pull <= oneStarChance) {
@@ -217,15 +227,15 @@ largePull.addEventListener("click", function() {
     if (highest == 5) {
         continueButton.style = "color: rgb(255, 175, 100); visibility: visible;"
     };
-    if (gatchaType.value == "1") {
+    if (Number(gatchaType.value) == 1) {
         message.innerHTML = "Click to continue";
         continueButton.innerHTML = "★";
     };
-    if (gatchaType.value == "2") {
+    if (Number(gatchaType.value) == 2) {
         message.innerHTML = "Click to cut";
         continueButton.innerHTML = "🎫";
     };
-    if (gatchaType.value == "3") {
+    if (Number(gatchaType.value) == 3 || Number(gatchaType.value) == 4) {
         message.innerHTML = "Click to hatch";
         continueButton.innerHTML = "🥚";
     };
@@ -239,9 +249,9 @@ continueButton.addEventListener("click", function() {
         message.innerHTML = "you pulled: " + rewards.toString() + ". good job!!!";
         message.style = "visibility: visible;";
         continueButton.innerHTML = "OK";
-        continueButton.style = "visibility: visible;";
-        onePull.style = "visibility: visible;";
-        largePull.style = "visibility: visible;";
+        continueButton.style = "rgb(220, 60, 125); visibility: visible;";
+        onePull.style = "visibility: hidden;";
+        largePull.style = "visibility: hidden;";
         rewards.length = 0;
         //alert("awards are displayed!");
     } else if (mode == 2) {
@@ -250,6 +260,10 @@ continueButton.addEventListener("click", function() {
         message.style = "visibility: hidden;";
         continueButton.innerHTML = "";
         continueButton.style = "visibility: hidden;";
+        onePull.style = "visibility: visible;";
+        if (largePullAmount > 1) {
+            largePull.style = "visibility: visible;";
+        };
     };
 });
 
