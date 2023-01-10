@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <link rel="icon" href="">
+        <style>
+            html {
+                color: rgb(0, 0, 0);
+                font-family: Comic Sans MS;
+                text-align: center;
+            }
+            .book {
+                background-color: lightyellow;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 20px;
+                margin-left: 275px;
+                width: 555px;
+            }
+            .page {
+                font-family: monospace;
+                margin: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1> NunnerLibrary </h1>
+        <h2>Click on a book to start reading</h2>
+        <button>book</button><br>
+        <div class="book">
+            <div class="page"></div>
+            <div class="page"></div><br>
+        </div>
+        <button>←</button>
+        <button>→</button>
+    </body>
+</html>
