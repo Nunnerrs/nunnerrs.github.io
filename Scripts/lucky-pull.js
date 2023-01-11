@@ -18,6 +18,34 @@ var fiveStarChance = 2;
 var max = 100;
 var mode = 0;
 
+const rewardTypes = {
+    //3-stars, 4-stars, 5-stars
+    [
+        ["⭐⭐⭐ Debate Club", "⭐⭐⭐ Slingshot", "⭐⭐⭐ Skyrider Sword", "⭐⭐⭐ Emerald Orb"];
+        ["⭐⭐⭐⭐ Amber ", "⭐⭐⭐⭐ Barbara ", "⭐⭐⭐⭐ Bennett ", "⭐⭐⭐⭐ Diona ❄", "⭐⭐⭐⭐ Fiscl ⚡", "⭐⭐⭐⭐ Gorou 直", "⭐⭐⭐⭐ Kaeya ❄", "⭐⭐⭐⭐ Lisa ⚡", "⭐⭐⭐⭐ Noelle 直", "⭐⭐⭐⭐ Razor ⚡", "⭐⭐⭐⭐ Sucrose ", "⭐⭐⭐⭐ Xiangling ", "⭐⭐⭐⭐ Xingqiu ", "⭐⭐⭐⭐ Xinyan ", "⭐⭐⭐⭐ Yanfei "],
+        ["⭐⭐⭐⭐⭐ Albeido 直", "⭐⭐⭐⭐⭐ Diluc", "⭐⭐⭐⭐⭐ Ganyu ❄", "⭐⭐⭐⭐⭐ Hu Tao ", "⭐⭐⭐⭐⭐ Jean ", "⭐⭐⭐⭐⭐ Keqing ⚡", "⭐⭐⭐⭐⭐ Klee ", "⭐⭐⭐⭐⭐ Mona ", "⭐⭐⭐⭐⭐ Nahida ", "⭐⭐⭐⭐⭐ Nilou ", "⭐⭐⭐⭐⭐ Qiqi ❄", "⭐⭐⭐⭐⭐ Yae Miko ⚡", "⭐⭐⭐⭐⭐ Yoimiya ", "⭐⭐⭐⭐⭐ Zhongli 直"]
+    ],
+    
+    //2-stars, 3-stars, 4-stars
+    [
+        ["⭐⭐ Rui Yashio", "⭐⭐ Hina Hikawa"],
+        ["⭐⭐⭐ Ran Mitake", "⭐⭐⭐ LAYER"],
+        ["⭐⭐⭐⭐ Tae Hanazono", "⭐⭐⭐⭐ Sayo Hikawa", "⭐⭐⭐⭐ Misaki Okusawa"]
+    ],
+    
+    //Common, Uncommon, Rare, Ultra-Rare, Legendary
+    [
+        ["Magic Mouse"],
+        [],
+        [],
+        [],
+        []
+    ],
+    
+    //
+    []
+};
+
 const rewards = [];
 
 submit.addEventListener("click", function() {
@@ -71,6 +99,9 @@ submit.addEventListener("click", function() {
         max = 1000;
         alert("set to bubblegum");
     };
+    if (largePullAmount <= 1) {
+        largePull.style = "visibility: hidden;";
+    };
 });
 
 onePull.addEventListener("click", function() {
@@ -89,10 +120,14 @@ onePull.addEventListener("click", function() {
         };
         if (pull > threeStarChance && pull <= threeStarChance + fourStarChance) {
             rewards.push("4");
+            continueButton.style = "color: rgb(200, 150, 255); visibility: visible;";
         };
         if (pull > threeStarChance + fourStarChance && pull <= threeStarChance + fourStarChance + fiveStarChance) {
             rewards.push("5");
+            continueButton.style = "color: rgb(255, 175, 100); visibility: visible;"
         };
+        message.innerHTML = "Click to continue";
+        continueButton.innerHTML = "★";
     };
     if (type == 2) {
         if (pull <= twoStarChance) {
@@ -104,6 +139,8 @@ onePull.addEventListener("click", function() {
         if (pull > twoStarChance + threeStarChance && pull <= twoStarChance + threeStarChance + fourStarChance) {
             rewards.push("4");
         };
+        message.innerHTML = "Click to cut";
+        continueButton.innerHTML = "🎫";
     };
     if (type == 3 || type == 4) {
         if (pull <= oneStarChance) {
@@ -121,6 +158,8 @@ onePull.addEventListener("click", function() {
         if (pull > oneStarChance + twoStarChance + threeStarChance + fourStarChance && pull <= oneStarChance + twoStarChance + threeStarChance + fourStarChance + fiveStarChance) {
             rewards.push("5");
         };
+        message.innerHTML = "Click to hatch";
+        continueButton.innerHTML = "🥚";
     };
 
     /*if (oneStars == true && pull <= oneStarChance) {
@@ -155,7 +194,9 @@ onePull.addEventListener("click", function() {
 });
 
 largePull.addEventListener("click", function() {
-    alert(largePullAmount + " pull…");
+    //alert(largePullAmount + " pull…");
+    onePull.style = "visibility: hidden";
+    largePull.style = "visibility: hidden";
     message.style = "visibility: visible;";
     continueButton.style = "visibility: visible;";
     let highest = 3;
@@ -249,7 +290,7 @@ continueButton.addEventListener("click", function() {
         message.innerHTML = "you pulled: " + rewards.toString() + ". good job!!!";
         message.style = "visibility: visible;";
         continueButton.innerHTML = "OK";
-        continueButton.style = "rgb(220, 60, 125); visibility: visible;";
+        continueButton.style = "color: rgb(220, 60, 125); visibility: visible;";
         onePull.style = "visibility: hidden;";
         largePull.style = "visibility: hidden;";
         rewards.length = 0;
