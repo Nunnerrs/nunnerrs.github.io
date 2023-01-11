@@ -8,6 +8,7 @@ var mobile = document.getElementById("mobile");
 var currentBook = null;
 var pageNumL = -1;
 var pageNumR = 0;
+var mobileOn = false;
 
 const books = {
     book1: [
@@ -21,6 +22,9 @@ function openBook(bookId) {
     alert("opened book #" + bookId);
     currentBook = bookId;
     book.style = "visibility: visible";
+    back.style = "visibility: visible";
+    close.style = "visibility: visible";
+    next.style = "visibility: visible";
     pageL.innerHTML = "";
     pageR.innerHTML = books["book" + currentBook][0];
     pageNumL = -1;
@@ -45,6 +49,9 @@ function backPage() {
 
 function closeBook() {
     book.style = "visibility: hidden";
+    back.style = "visibility: hidden";
+    close.style = "visibility: hidden";
+    next.style = "visibility: hidden";
     pageL.innerHTML = "";
     pageR.innerHTML = "";
     pageNumL = -1;
@@ -63,6 +70,14 @@ function nextPage() {
         if (pageNumR >= books["book" + currentBook].length) {
             pageR.innerHTML = "";
         };
+    };
+};
+
+function setMobile() {
+    if (mobileOn == true) {
+        mobileOn = false;
+    } else {
+        mobileOn = true;
     };
 };
 
