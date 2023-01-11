@@ -18,6 +18,7 @@ const books = {
 };
 
 function openBook(bookId) {
+    alert("opened book #" + bookId);
     currentBook = bookId;
     book.style = "visibility: visible";
     pageL.innerHTML = "";
@@ -28,6 +29,7 @@ function openBook(bookId) {
 
 function backPage() {
     if (pageNumL > -1) {
+        alert("flipped page back");
         pageNumL -= 2;
         pageNumR -= 2;
         pageL.innerHTML = books["book" + currentBook][pageNumL]];
@@ -48,10 +50,12 @@ function closeBook() {
     pageNumL = -1;
     pageNumR = 0;
     currentBook = null;
+    alert("closed book #" + currentBook);
 };
 
 function nextPage() {
     if (books["book" + currentBook][pageNumL + 2]) {
+        alert("flipped page forward");
         pageNumL += 2;
         pageNumR += 2;
         pageL.innerHTML = books["book" + currentBook][pageNumL]];
@@ -65,5 +69,8 @@ function nextPage() {
 book.style = "visibility: hidden";
 pageL.innerHTML = "";
 pageR.innerHTML = "";
+back.style = "visibility: hidden";
+close.style = "visibility: hidden";
+next.style = "visibility: hidden";
 
 //document.getElementById("book1").addEventListener("click", openBook(1));
