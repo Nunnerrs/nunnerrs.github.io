@@ -19,7 +19,6 @@ const books = {
 };
 
 function openBook(bookId) {
-    alert("opened book #" + bookId);
     currentBook = bookId;
     book.style = "visibility: visible";
     back.style = "visibility: visible";
@@ -88,4 +87,8 @@ back.style = "visibility: hidden";
 close.style = "visibility: hidden";
 next.style = "visibility: hidden";
 
-//document.getElementById("book1").addEventListener("click", openBook(1));
+document.getElementById("book1").addEventListener("click", function() {
+    let bookId = 1;
+    alert("opened book #" + bookId);
+    openBook(bookId);
+});
