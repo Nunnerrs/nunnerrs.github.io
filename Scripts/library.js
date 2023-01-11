@@ -30,7 +30,19 @@ function openBook(bookId) {
     pageNumR = 0;
 };
 
-function backPage() {
+book.style = "visibility: hidden";
+pageL.innerHTML = "";
+pageR.innerHTML = "";
+back.style = "visibility: hidden";
+close.style = "visibility: hidden";
+next.style = "visibility: hidden";
+
+document.getElementById("book1").addEventListener("click", function() {
+    let bookId = 1;
+    alert("opened book #" + bookId);
+    openBook(bookId);
+});
+document.getElementById("back").addEventListener("click", function() {
     if (pageNumL > -1) {
         alert("flipped page back");
         pageNumL -= 2;
@@ -44,9 +56,8 @@ function backPage() {
             pageR.innerHTML = "";
         };
     };
-};
-
-function closeBook() {
+});
+document.getElementById("close").addEventListener("click", function() {
     book.style = "visibility: hidden";
     back.style = "visibility: hidden";
     close.style = "visibility: hidden";
@@ -57,10 +68,9 @@ function closeBook() {
     pageNumR = 0;
     currentBook = null;
     alert("closed book #" + currentBook);
-};
-
-function nextPage() {
-    if (books["book" + currentBook][pageNumL + 2]) {
+});
+document.getElementById("next").addEventListener("click", function() {
+    if (books["book" + currentBook][pageNumL + 2] ~= null) {
         alert("flipped page forward");
         pageNumL += 2;
         pageNumR += 2;
@@ -70,25 +80,11 @@ function nextPage() {
             pageR.innerHTML = "";
         };
     };
-};
-
-function setMobile() {
+});
+document.getElementById("mobile").addEventListener(function() {
     if (mobileOn == true) {
         mobileOn = false;
     } else {
         mobileOn = true;
     };
-};
-
-book.style = "visibility: hidden";
-pageL.innerHTML = "";
-pageR.innerHTML = "";
-back.style = "visibility: hidden";
-close.style = "visibility: hidden";
-next.style = "visibility: hidden";
-
-document.getElementById("book1").addEventListener("click", function() {
-    let bookId = 1;
-    alert("opened book #" + bookId);
-    openBook(bookId);
 });
