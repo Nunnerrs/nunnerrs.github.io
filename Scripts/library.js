@@ -14,35 +14,56 @@ const books = {
         "title",
         "a",
         "the end"
-    ];
+    ],
 };
 
 function openBook(bookId) {
     currentBook = bookId;
-    let bookOpen = "book" + bookId;
     book.style = "visibility: visible";
     pageL.innerHTML = "";
-    pageR.innerHTML = books[bookOpen[0]];
+    pageR.innerHTML = books["book" + currentBook][0];
     pageNumL = -1;
     pageNumR = 0;
 };
 
 function backPage() {
-    pageNumL -= 2;
-    pageNumR -= 2;
-    pageL.innerHTML = books[bookOpen[pageNumL]];
-    pageR.innerHTML = books[bookOpen[pageNumR]];
+    if (pageNumL > -1) {
+        pageNumL -= 2;
+        pageNumR -= 2;
+        pageL.innerHTML = books["book" + currentBook][pageNumL]];
+        pageR.innerHTML = books["book" + currentBook][pageNumR]];
+        if (pageNumL <= -1) {
+            pageL.innerHTML = "";
+        };
+        if (pageNumR >= books["book" + currentBook].length) {
+            pageR.innerHTML = "";
+        };
+    };
+};
+
+function closeBook() {
+    book.style = "visibility: hidden";
+    pageL.innerHTML = "";
+    pageR.innerHTML = "";
+    pageNumL = -1;
+    pageNumR = 0;
+    currentBook = null;
 };
 
 function nextPage() {
-    pageNumL += 2;
-    pageNumR += 2;
-    pageL.innerHTML = books[bookOpen[pageNumL]];
-    pageR.innerHTML = books[bookOpen[pageNumR]];
+    if (books["book" + currentBook][pageNumL + 2]) {
+        pageNumL += 2;
+        pageNumR += 2;
+        pageL.innerHTML = books["book" + currentBook][pageNumL]];
+        pageR.innerHTML = books["book" + currentBook][pageNumR]];
+        if (pageNumR >= books["book" + currentBook].length) {
+            pageR.innerHTML = "";
+        };
+    };
 };
 
 book.style = "visibility: hidden";
 pageL.innerHTML = "";
 pageR.innerHTML = "";
 
-document.getElementById("book1").addEventListener("click", openBook(1));
+//document.getElementById("book1").addEventListener("click", openBook(1));
