@@ -28,16 +28,16 @@
     <body>
         <h1>&#128214 NunnerLibrary &#128218</h1>
         <h2>Click on a book to start reading</h2>
-        <button id="book1">placeholder book</button><br>
+        <button id="book1" onclick="openBook(1)">placeholder book</button><br>
         <div class="book" id="book">
             <div class="page" id="pageL"></div>
             <div class="page" id="pageR"></div><br>
         </div>
-        <button id="back">←</button>
-        <button id="close">×</button>
-        <button id="next">→</button>
+        <button id="back" onclick="backPage()">←</button>
+        <button id="close" onclick="closeBook()">×</button>
+        <button id="next" onclick="nextPage()">→</button>
         <br>
-        <button id="mobile">Mobile mode: ON</button>
+        <button id="mobile" onclick="setMobile()">Mobile mode: ON</button>
         <script src="Scripts/library.js"></script>
     </body>
 </html>
