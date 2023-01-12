@@ -15,36 +15,43 @@ var twoStarChance = 0;
 var threeStarChance = 85;
 var fourStarChance = 13;
 var fiveStarChance = 2;
+var pullText = "You pulled: ";
 var max = 100;
 var mode = 0;
 
-const rewardTypes = {
+const rewardTypes = [
     //3-stars, 4-stars, 5-stars
     [
-        ["⭐⭐⭐ Black Tassel", "⭐⭐⭐ Bloodtainted Greatsword", "⭐⭐⭐ Cool Steel", "⭐⭐⭐ Debate Club", "⭐⭐⭐ Emerald Orb", "⭐⭐⭐ Ferrous Shadow", "⭐⭐⭐ Harbinger of Dawn", "⭐⭐⭐ Magic Guide", "⭐⭐⭐ Raven Bow", "⭐⭐⭐ Sharpshooter's Oath", "⭐⭐⭐ Skyrider Sword", "⭐⭐⭐ Slingshot", "⭐⭐⭐ White Tassel"];
+        ["⭐⭐⭐ Black Tassel", "⭐⭐⭐ Bloodtainted Greatsword", "⭐⭐⭐ Cool Steel", "⭐⭐⭐ Debate Club", "⭐⭐⭐ Emerald Orb", "⭐⭐⭐ Ferrous Shadow", "⭐⭐⭐ Harbinger of Dawn", "⭐⭐⭐ Magic Guide", "⭐⭐⭐ Raven Bow", "⭐⭐⭐ Sharpshooter's Oath", "⭐⭐⭐ Skyrider Sword", "⭐⭐⭐ Slingshot", "⭐⭐⭐ Thrilling Tales of Dragon Tales", "⭐⭐⭐ White Tassel"];
         ["⭐⭐⭐⭐ Amber ", "⭐⭐⭐⭐ Barbara ", "⭐⭐⭐⭐ Bennett ", "⭐⭐⭐⭐ Diona ❄", "⭐⭐⭐⭐ Fiscl ⚡", "⭐⭐⭐⭐ Gorou 直", "⭐⭐⭐⭐ Kaeya ❄", "⭐⭐⭐⭐ Lisa ⚡", "⭐⭐⭐⭐ Ningguang 直", "⭐⭐⭐⭐ Noelle 直", "⭐⭐⭐⭐ Razor ⚡", "⭐⭐⭐⭐ Shikanoin Heizou ", "⭐⭐⭐⭐ Sucrose ", "⭐⭐⭐⭐ Xiangling ", "⭐⭐⭐⭐ Xingqiu ", "⭐⭐⭐⭐ Xinyan ", "⭐⭐⭐⭐ Yanfei "],
-        ["⭐⭐⭐⭐⭐ Albeido 直", "⭐⭐⭐⭐⭐ Diluc ", "⭐⭐⭐⭐⭐ Ganyu ❄", "⭐⭐⭐⭐⭐ Hu Tao ", "⭐⭐⭐⭐⭐ Jean ", "⭐⭐⭐⭐⭐ Keqing ⚡", "⭐⭐⭐⭐⭐ Klee ", "⭐⭐⭐⭐⭐ Mona ", "⭐⭐⭐⭐⭐ Nahida ", "⭐⭐⭐⭐⭐ Nilou ", "⭐⭐⭐⭐⭐ Qiqi ❄", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi ", "⭐⭐⭐⭐⭐ Wanderer ", "⭐⭐⭐⭐⭐ Yae Miko ⚡", "⭐⭐⭐⭐⭐ Yoimiya ", "⭐⭐⭐⭐⭐ Zhongli 直"]
+        ["⭐⭐⭐⭐⭐ Albeido 直", "⭐⭐⭐⭐⭐ Arataki Itto ", "⭐⭐⭐⭐⭐ Diluc ", "⭐⭐⭐⭐⭐ Ganyu ❄", "⭐⭐⭐⭐⭐ Hu Tao ", "⭐⭐⭐⭐⭐ Jean ", "⭐⭐⭐⭐⭐ Keqing ⚡", "⭐⭐⭐⭐⭐ Klee ", "⭐⭐⭐⭐⭐ Mona ", "⭐⭐⭐⭐⭐ Nahida ", "⭐⭐⭐⭐⭐ Nilou ", "⭐⭐⭐⭐⭐ Qiqi ❄", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi ", "⭐⭐⭐⭐⭐ Wanderer ", "⭐⭐⭐⭐⭐ Yae Miko ⚡", "⭐⭐⭐⭐⭐ Yoimiya ", "⭐⭐⭐⭐⭐ Zhongli 直"]
     ],
     
     //2-stars, 3-stars, 4-stars
     [
-        ["⭐⭐ Rui Yashio", "⭐⭐ Hina Hikawa"],
-        ["⭐⭐⭐ Ran Mitake", "⭐⭐⭐ LAYER"],
-        ["⭐⭐⭐⭐ Tae Hanazono", "⭐⭐⭐⭐ Sayo Hikawa", "⭐⭐⭐⭐ Misaki Okusawa"]
+        ["⭐⭐ Ako Udagawa", "⭐⭐ Arisa Ichigaya", "⭐⭐ Aya Maruyama", "⭐⭐ CHU²", "⭐⭐ Hina Hikawa", "⭐⭐ Kasumi Toyama", "⭐⭐ LAYER", "⭐⭐ Misaki Okusawa", "⭐⭐ Nanami Hiromachi", "⭐⭐ Ran Mitake", "⭐⭐ Rui Yashio", "⭐⭐ Sayo Hikawa", "⭐⭐ Tae Hanazono", "⭐⭐ Yukina Minato"],
+        ["⭐⭐⭐ Ako Udagawa", "⭐⭐⭐ Arisa Ichigaya", "⭐⭐⭐ Aya Maruyama", "⭐⭐⭐ CHU²", "⭐⭐⭐ Hina Hikawa", "⭐⭐⭐ Kasumi Toyama", "⭐⭐⭐ LAYER", "⭐⭐⭐ Misaki Okusawa", "⭐⭐⭐ Nanami Hiromachi", "⭐⭐⭐ Ran Mitake", "⭐⭐⭐ Rui Yashio", "⭐⭐⭐ Sayo Hikawa", "⭐⭐⭐ Tae Hanazono", "⭐⭐⭐ Yukina Minato"],
+        ["⭐⭐⭐⭐ Ako Udagawa", "⭐⭐⭐⭐ Arisa Ichigaya", "⭐⭐⭐⭐ Aya Maruyama", "⭐⭐⭐⭐ CHU²", "⭐⭐⭐⭐ Hina Hikawa", "⭐⭐⭐⭐ Kasumi Toyama", "⭐⭐⭐⭐ LAYER", "⭐⭐⭐⭐ Misaki Okusawa", "⭐⭐⭐⭐ Nanami Hiromachi", "⭐⭐⭐⭐ Ran Mitake", "⭐⭐⭐⭐ Rui Yashio", "⭐⭐⭐⭐ Sayo Hikawa", "⭐⭐⭐⭐ Tae Hanazono", "⭐⭐⭐⭐ Yukina Minato"]
     ],
     
-    //Common, Uncommon, Rare, Ultra-Rare, Legendary
+    //Common, Uncommon, Rare, Ultra Rare, Legendary
+    [
+        [""],
+        ["Magic Panda"],
+        ["Dice"],
+        ["Red Dice", "Circus Stack"],
+        ["Golden Lion"]
+    ],
+    
+    //Common, Unique, Rare, Epic, Legendary
     [
         ["Magic Mouse"],
-        [],
-        [],
-        [],
-        []
-    ],
-    
-    //
-    []
-};
+        ["Magic Panda"],
+        ["Dice"],
+        ["Red Dice", "Circus Stack"],
+        ["Golden Lion"]
+    ]
+];
 
 const rewards = [];
 
@@ -60,6 +67,7 @@ submit.addEventListener("click", function() {
         threeStarChance = 85;
         fourStarChance = 14;
         fiveStarChance = 1;
+        pullText = "You pulled: ";
         max = 100;
         alert("set to rpg");
     } else if (type == 2) {
@@ -72,6 +80,7 @@ submit.addEventListener("click", function() {
         threeStarChance = 85;
         fourStarChance = 30;
         fiveStarChance = 0;
+        pullText = "You pulled: ";
         max = 1000;
         alert("set to band");
     } else if (type == 3) {
@@ -79,11 +88,12 @@ submit.addEventListener("click", function() {
         //oneStars = true;
         //twoStars = true;
         //fiveStars = true;
-        oneStarChance = 20;
-        twoStarChance = 35;
-        threeStarChance = 27;
-        fourStarChance = 15;
-        fiveStarChance = 3;
+        oneStarChance = 22;
+        twoStarChance = 19;
+        threeStarChance = 34;
+        fourStarChance = 20;
+        fiveStarChance = 5;
+        pullText = "You hatched: ";
         max = 100;
         alert("set to adopt");
     } else if (type == 4) {
@@ -96,6 +106,7 @@ submit.addEventListener("click", function() {
         threeStarChance = 200;
         fourStarChance = 140;
         fiveStarChance = 1;
+        pullText = "You hatched: ";
         max = 1000;
         alert("set to bubblegum");
     };
@@ -113,53 +124,56 @@ onePull.addEventListener("click", function() {
 
     let type = gachaType.value;
     let pull = Math.floor(Math.random() * max) + 1;
+    let rewardNames = rewardTypes[type];
+    let reward = null;
 
     if (type == 1) {
         if (pull <= threeStarChance) {
-            //let threeStarNames = rewardTypes[gachaType.value][0];
-            //rewards.push(threeStarNames[Math.floor(Math.random() * )]);
-            rewards.push("3");
+            reward = 3;
         };
         if (pull > threeStarChance && pull <= threeStarChance + fourStarChance) {
-            rewards.push("4");
+            reward = 4;
             continueButton.style = "color: rgb(200, 150, 255); visibility: visible;";
         };
         if (pull > threeStarChance + fourStarChance && pull <= threeStarChance + fourStarChance + fiveStarChance) {
-            rewards.push("5");
+            reward = 5;
             continueButton.style = "color: rgb(255, 175, 100); visibility: visible;"
         };
+        rewards.push(rewardNames[reward - 3][Math.floor(Math.random() * (rewardNames[reward - 3].length - 1))]);
         message.innerHTML = "Click to continue";
         continueButton.innerHTML = "★";
     };
     if (type == 2) {
         if (pull <= twoStarChance) {
-            rewards.push("2");
+            reward = 2;
         };
         if (pull > twoStarChance && pull <= twoStarChance + threeStarChance) {
-            rewards.push("3");
+            reward = 3;
         };
         if (pull > twoStarChance + threeStarChance && pull <= twoStarChance + threeStarChance + fourStarChance) {
-            rewards.push("4");
+            reward = 4;
         };
+        rewards.push(rewardNames[reward - 2][Math.floor(Math.random() * (rewardNames[reward - 2].length - 1))]);
         message.innerHTML = "Click to cut";
         continueButton.innerHTML = "🎫";
     };
     if (type == 3 || type == 4) {
         if (pull <= oneStarChance) {
-            rewards.push("1");
+            reward = 1;
         };
         if (pull > oneStarChance && pull <= oneStarChance + twoStarChance) {
-            rewards.push("2");
+            reward = 2;
         };
         if (pull > oneStarChance + twoStarChance && pull <= oneStarChance + twoStarChance + threeStarChance) {
-            rewards.push("3");
+            reward = 3;
         };
         if (pull > oneStarChance + twoStarChance + threeStarChance && pull <= oneStarChance + twoStarChance + threeStarChance + fourStarChance) {
-            rewards.push("4");
+            reward = 4;
         };
         if (pull > oneStarChance + twoStarChance + threeStarChance + fourStarChance && pull <= oneStarChance + twoStarChance + threeStarChance + fourStarChance + fiveStarChance) {
-            rewards.push("5");
+            reward = 5;
         };
+        rewards.push(rewardNames[reward - 1][Math.floor(Math.random() * (rewardNames[reward - 1].length - 1))]);
         message.innerHTML = "Click to hatch";
         continueButton.innerHTML = "🥚";
     };
@@ -207,9 +221,10 @@ largePull.addEventListener("click", function() {
         //alert("1 pull…");
         let type = gachaType.value;
         let pull = Math.floor(Math.random() * max) + 1;
+        let rewardNames = rewardTypes[type];
+        let reward = null;
 
         if (type == 1) {
-            let reward = 3;
             if (pull <= threeStarChance) {
                 reward = 3;
             };
@@ -226,10 +241,9 @@ largePull.addEventListener("click", function() {
                 reward = 5;
                 highest = 5;
             };
-            rewards.push(reward.toString());
+            rewards.push(rewardNames[reward - 3][Math.floor(Math.random() * (rewardNames[reward - 3].length - 1))]);
         };
         if (type == 2) {
-            let reward = 2;
             if (pull <= twoStarChance) {
                 reward = 2;
             };
@@ -242,24 +256,25 @@ largePull.addEventListener("click", function() {
             if (pull > twoStarChance + threeStarChance && pull <= twoStarChance + threeStarChance + fourStarChance) {
                 reward = 4;
             };
-            rewards.push(reward.toString())
+            rewards.push(rewardNames[reward - 2][Math.floor(Math.random() * (rewardNames[reward - 2].length - 1))])
         };
         if (type == 3 || type == 4) {
             if (pull <= oneStarChance) {
-                rewards.push("1");
+                reward = 1;
             };
             if (pull > oneStarChance && pull <= oneStarChance + twoStarChance) {
-                rewards.push("2");
+                reward = 2;
             };
             if (pull > oneStarChance + twoStarChance && pull <= oneStarChance + twoStarChance + threeStarChance) {
-                rewards.push("3");
+                reward = 3;
             };
             if (pull > oneStarChance + twoStarChance + threeStarChance && pull <= oneStarChance + twoStarChance + threeStarChance + fourStarChance) {
-                rewards.push("4");
+                reward = 4;
             };
             if (pull > oneStarChance + twoStarChance + threeStarChance + fourStarChance && pull <= oneStarChance + twoStarChance + threeStarChance + fourStarChance + fiveStarChance) {
-                rewards.push("5");
+                reward = 5;
             };
+            rewards.push(rewardNames[reward - 1][Math.floor(Math.random() * (rewardNames[reward - 1].length - 1))]);
         };
         //alert("u pulled a " + rewards[rewards.length - 1] + "-star!!");
     };
@@ -283,13 +298,20 @@ largePull.addEventListener("click", function() {
         continueButton.innerHTML = "🥚";
     };
     mode = 1;
-    //alert("completed execution");
+    alert(typeof gachaType.value);
 });
 
 continueButton.addEventListener("click", function() {
     if (mode == 1) {
         mode = 2;
-        message.innerHTML = "you pulled: " + rewards.toString() + ". good job!!!";
+        message.innerHTML = pullText;
+        if (rewards[1]) {
+            for (let i = 0; i < rewards.length; i++) {
+                message.innerHTML = message.innerHTML + rewards[i] + ", ";
+            };
+        } else {
+            message.innerHTML = pullText + rewards[0];
+        };
         message.style = "visibility: visible;";
         continueButton.innerHTML = "OK";
         continueButton.style = "color: rgb(220, 60, 125); visibility: visible;";
