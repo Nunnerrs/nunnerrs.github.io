@@ -30,9 +30,9 @@ const rewardTypes = [
     
     //2-stars, 3-stars, 4-stars
     [
-        ["⭐⭐ Ako Udagawa", "⭐⭐ Arisa Ichigaya", "⭐⭐ Aya Maruyama", "⭐⭐ CHU²", "⭐⭐ Hina Hikawa", "⭐⭐ Kasumi Toyama", "⭐⭐ LAYER", "⭐⭐ Misaki Okusawa", "⭐⭐ Nanami Hiromachi", "⭐⭐ Ran Mitake", "⭐⭐ Rui Yashio", "⭐⭐ Sayo Hikawa", "⭐⭐ Tae Hanazono", "⭐⭐ Yukina Minato"],
-        ["⭐⭐⭐ Ako Udagawa", "⭐⭐⭐ Arisa Ichigaya", "⭐⭐⭐ Aya Maruyama", "⭐⭐⭐ CHU²", "⭐⭐⭐ Hina Hikawa", "⭐⭐⭐ Kasumi Toyama", "⭐⭐⭐ LAYER", "⭐⭐⭐ Misaki Okusawa", "⭐⭐⭐ Nanami Hiromachi", "⭐⭐⭐ Ran Mitake", "⭐⭐⭐ Rui Yashio", "⭐⭐⭐ Sayo Hikawa", "⭐⭐⭐ Tae Hanazono", "⭐⭐⭐ Yukina Minato"],
-        ["⭐⭐⭐⭐ Ako Udagawa", "⭐⭐⭐⭐ Arisa Ichigaya", "⭐⭐⭐⭐ Aya Maruyama", "⭐⭐⭐⭐ CHU²", "⭐⭐⭐⭐ Hina Hikawa", "⭐⭐⭐⭐ Kasumi Toyama", "⭐⭐⭐⭐ LAYER", "⭐⭐⭐⭐ Misaki Okusawa", "⭐⭐⭐⭐ Nanami Hiromachi", "⭐⭐⭐⭐ Ran Mitake", "⭐⭐⭐⭐ Rui Yashio", "⭐⭐⭐⭐ Sayo Hikawa", "⭐⭐⭐⭐ Tae Hanazono", "⭐⭐⭐⭐ Yukina Minato"]
+        ["⭐⭐ Ako Udagawa", "⭐⭐ Arisa Ichigaya", "⭐⭐ Aya Maruyama", "⭐⭐ Chisato Shirasagi", "⭐⭐ CHU²", "⭐⭐ Eve Wakamiya", "⭐⭐ Hagumi Kitazawa", "⭐⭐ Himari Uehara", "⭐⭐ Hina Hikawa", "⭐⭐ Kanon Matsubara", "⭐⭐ Kaoru Seta", "⭐⭐ Kasumi Toyama", "⭐⭐ Kokoro Tsurumaki", "⭐⭐ LAYER", "⭐⭐ Lisa Imai", "⭐⭐ LOCKE", "⭐⭐ Mashiro Kurata", "⭐⭐ MASKING", "⭐⭐ Maya Yamato", "⭐⭐ Misaki Okusawa", "⭐⭐ Moca Aoba", "⭐⭐ Nanami Hiromachi", "⭐⭐ PAREO", "⭐⭐ Ran Mitake", "⭐⭐ Rimi Ushigome", "⭐⭐ Rinko Shirokane", "⭐⭐ Rui Yashio", "⭐⭐ Saaya Yamabuki", "⭐⭐ Sayo Hikawa", "⭐⭐ Tae Hanazono", "⭐⭐ Tomoe Udagawa", "⭐⭐ Touko Kirigaya", "⭐⭐ Tsugumi Hazawa", "⭐⭐ Tsukushi Futara", "⭐⭐ Yukina Minato"],
+        ["⭐⭐⭐ Ako Udagawa", "⭐⭐⭐ Arisa Ichigaya", "⭐⭐⭐ Aya Maruyama", "⭐⭐⭐ Chisato Shirasagi", "⭐⭐⭐ CHU²", "⭐⭐⭐ Eve Wakamiya", "⭐⭐⭐ Hagumi Kitazawa", "⭐⭐⭐ Himari Uehara", "⭐⭐⭐ Hina Hikawa", "⭐⭐⭐ Kanon Matsubara", "⭐⭐⭐ Kaoru Seta", "⭐⭐⭐ Kasumi Toyama", "⭐⭐⭐ Kokoro Tsurumaki", "⭐⭐⭐ LAYER", "⭐⭐⭐ Lisa Imai", "⭐⭐⭐ LOCKE", "⭐⭐⭐ Mashiro Kurata", "⭐⭐⭐ MASKING", "⭐⭐⭐ Maya Yamato", "⭐⭐⭐ Misaki Okusawa", "⭐⭐⭐ Moca Aoba", "⭐⭐⭐ Nanami Hiromachi", "⭐⭐⭐ PAREO", "⭐⭐⭐ Ran Mitake", "⭐⭐⭐ Rimi Ushigome", "⭐⭐⭐ Rinko Shirokane", "⭐⭐⭐ Rui Yashio", "⭐⭐⭐ Saaya Yamabuki", "⭐⭐⭐ Sayo Hikawa", "⭐⭐⭐ Tae Hanazono", "⭐⭐⭐ Tomoe Udagawa", "⭐⭐⭐ Touko Kirigaya", "⭐⭐⭐ Tsugumi Hazawa", "⭐⭐⭐ Tsukushi Futara", "⭐⭐⭐ Yukina Minato"],
+        ["⭐⭐⭐⭐ Ako Udagawa", "⭐⭐⭐⭐ Arisa Ichigaya", "⭐⭐⭐⭐ Aya Maruyama", "⭐⭐⭐⭐ Chisato Shirasagi", "⭐⭐⭐⭐ CHU²", "⭐⭐⭐⭐ Eve Wakamiya", "⭐⭐⭐⭐ Hagumi Kitazawa", "⭐⭐⭐⭐ Himari Uehara", "⭐⭐⭐⭐ Hina Hikawa", "⭐⭐⭐⭐ Kanon Matsubara", "⭐⭐⭐⭐ Kaoru Seta", "⭐⭐⭐⭐ Kasumi Toyama", "⭐⭐⭐⭐ Kokoro Tsurumaki", "⭐⭐⭐⭐ LAYER", "⭐⭐⭐⭐ Lisa Imai", "⭐⭐⭐⭐ LOCKE", "⭐⭐⭐⭐ Mashiro Kurata", "⭐⭐⭐⭐ MASKING", "⭐⭐⭐⭐ Maya Yamato", "⭐⭐⭐⭐ Misaki Okusawa", "⭐⭐⭐⭐ Moca Aoba", "⭐⭐⭐⭐ Nanami Hiromachi", "⭐⭐⭐⭐ PAREO", "⭐⭐⭐⭐ Ran Mitake", "⭐⭐⭐⭐ Rimi Ushigome", "⭐⭐⭐⭐ Rinko Shirokane", "⭐⭐⭐⭐ Rui Yashio", "⭐⭐⭐⭐ Saaya Yamabuki", "⭐⭐⭐⭐ Sayo Hikawa", "⭐⭐⭐⭐ Tae Hanazono", "⭐⭐⭐⭐ Tomoe Udagawa", "⭐⭐⭐⭐ Touko Kirigaya", "⭐⭐⭐⭐ Tsugumi Hazawa", "⭐⭐⭐⭐ Tsukushi Futara", "⭐⭐⭐⭐ Yukina Minato"]
     ],
     
     //Common, Uncommon, Rare, Ultra Rare, Legendary
@@ -49,7 +49,8 @@ const rewardTypes = [
         ["Magic Mouse"],
         ["Magic Panda"],
         ["Dice"],
-        ["Circus Stack", "Red Dice"],
+        ["Red Dice"],
+        ["Circus Stack"],
         ["Golden Lion"]
     ]
 ];
@@ -130,7 +131,7 @@ onePull.addEventListener("click", function() {
 
     let type = gachaType.value;
     let pull = Math.floor(Math.random() * max) + 1;
-    let rewardNames = rewardTypes[type];
+    let rewardNames = rewardTypes[type - 1];
     let reward = null;
 
     if (type == 1) {
@@ -177,9 +178,22 @@ onePull.addEventListener("click", function() {
             reward = 4;
         };
         if (pull > oneStarChance + twoStarChance + threeStarChance + fourStarChance && pull <= oneStarChance + twoStarChance + threeStarChance + fourStarChance + fiveStarChance) {
-            reward = 5;
+            if (type == 4) {
+                reward = 6;
+            } else {
+                reward = 5;
+            };
         };
-        rewards.push(rewardNames[reward - 1][Math.floor(Math.random() * (rewardNames[reward - 1].length - 1))]);
+        if (type == 4 && reward == 4) {
+            let rng = Math.floor(Math.random() * 10) + 1
+            if (rng >= 1 && rng <= 4) {
+                rewards.push(rewardNames[4][Math.floor(Math.random() * (rewardNames[4].length - 1))]);
+            } else {
+                rewards.push(rewardNames[3][Math.floor(Math.random() * (rewardNames[3].length - 1))]);
+            };
+        } else {
+            rewards.push(rewardNames[reward][Math.floor(Math.random() * (rewardNames[reward].length - 1))]);
+        };
         message.innerHTML = "Click to hatch";
         continueButton.innerHTML = "🥚";
     };
@@ -227,7 +241,7 @@ largePull.addEventListener("click", function() {
         //alert("1 pull…");
         let type = gachaType.value;
         let pull = Math.floor(Math.random() * max) + 1;
-        let rewardNames = rewardTypes[type];
+        let rewardNames = rewardTypes[type - 1];
         let reward = null;
 
         if (type == 1) {
