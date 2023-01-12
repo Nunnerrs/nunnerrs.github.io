@@ -21,9 +21,9 @@ var mode = 0;
 const rewardTypes = {
     //3-stars, 4-stars, 5-stars
     [
-        ["⭐⭐⭐ Debate Club", "⭐⭐⭐ Slingshot", "⭐⭐⭐ Skyrider Sword", "⭐⭐⭐ Emerald Orb"];
-        ["⭐⭐⭐⭐ Amber ", "⭐⭐⭐⭐ Barbara ", "⭐⭐⭐⭐ Bennett ", "⭐⭐⭐⭐ Diona ❄", "⭐⭐⭐⭐ Fiscl ⚡", "⭐⭐⭐⭐ Gorou 直", "⭐⭐⭐⭐ Kaeya ❄", "⭐⭐⭐⭐ Lisa ⚡", "⭐⭐⭐⭐ Noelle 直", "⭐⭐⭐⭐ Razor ⚡", "⭐⭐⭐⭐ Sucrose ", "⭐⭐⭐⭐ Xiangling ", "⭐⭐⭐⭐ Xingqiu ", "⭐⭐⭐⭐ Xinyan ", "⭐⭐⭐⭐ Yanfei "],
-        ["⭐⭐⭐⭐⭐ Albeido 直", "⭐⭐⭐⭐⭐ Diluc", "⭐⭐⭐⭐⭐ Ganyu ❄", "⭐⭐⭐⭐⭐ Hu Tao ", "⭐⭐⭐⭐⭐ Jean ", "⭐⭐⭐⭐⭐ Keqing ⚡", "⭐⭐⭐⭐⭐ Klee ", "⭐⭐⭐⭐⭐ Mona ", "⭐⭐⭐⭐⭐ Nahida ", "⭐⭐⭐⭐⭐ Nilou ", "⭐⭐⭐⭐⭐ Qiqi ❄", "⭐⭐⭐⭐⭐ Yae Miko ⚡", "⭐⭐⭐⭐⭐ Yoimiya ", "⭐⭐⭐⭐⭐ Zhongli 直"]
+        ["⭐⭐⭐ Black Tassel", "⭐⭐⭐ Bloodtainted Greatsword", "⭐⭐⭐ Cool Steel", "⭐⭐⭐ Debate Club", "⭐⭐⭐ Emerald Orb", "⭐⭐⭐ Ferrous Shadow", "⭐⭐⭐ Harbinger of Dawn", "⭐⭐⭐ Magic Guide", "⭐⭐⭐ Raven Bow", "⭐⭐⭐ Sharpshooter's Oath", "⭐⭐⭐ Skyrider Sword", "⭐⭐⭐ Slingshot", "⭐⭐⭐ White Tassel"];
+        ["⭐⭐⭐⭐ Amber ", "⭐⭐⭐⭐ Barbara ", "⭐⭐⭐⭐ Bennett ", "⭐⭐⭐⭐ Diona ❄", "⭐⭐⭐⭐ Fiscl ⚡", "⭐⭐⭐⭐ Gorou 直", "⭐⭐⭐⭐ Kaeya ❄", "⭐⭐⭐⭐ Lisa ⚡", "⭐⭐⭐⭐ Ningguang 直", "⭐⭐⭐⭐ Noelle 直", "⭐⭐⭐⭐ Razor ⚡", "⭐⭐⭐⭐ Shikanoin Heizou ", "⭐⭐⭐⭐ Sucrose ", "⭐⭐⭐⭐ Xiangling ", "⭐⭐⭐⭐ Xingqiu ", "⭐⭐⭐⭐ Xinyan ", "⭐⭐⭐⭐ Yanfei "],
+        ["⭐⭐⭐⭐⭐ Albeido 直", "⭐⭐⭐⭐⭐ Diluc ", "⭐⭐⭐⭐⭐ Ganyu ❄", "⭐⭐⭐⭐⭐ Hu Tao ", "⭐⭐⭐⭐⭐ Jean ", "⭐⭐⭐⭐⭐ Keqing ⚡", "⭐⭐⭐⭐⭐ Klee ", "⭐⭐⭐⭐⭐ Mona ", "⭐⭐⭐⭐⭐ Nahida ", "⭐⭐⭐⭐⭐ Nilou ", "⭐⭐⭐⭐⭐ Qiqi ❄", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi ", "⭐⭐⭐⭐⭐ Wanderer ", "⭐⭐⭐⭐⭐ Yae Miko ⚡", "⭐⭐⭐⭐⭐ Yoimiya ", "⭐⭐⭐⭐⭐ Zhongli 直"]
     ],
     
     //2-stars, 3-stars, 4-stars
@@ -116,6 +116,8 @@ onePull.addEventListener("click", function() {
 
     if (type == 1) {
         if (pull <= threeStarChance) {
+            //let threeStarNames = rewardTypes[gachaType.value][0];
+            //rewards.push(threeStarNames[Math.floor(Math.random() * )]);
             rewards.push("3");
         };
         if (pull > threeStarChance && pull <= threeStarChance + fourStarChance) {
