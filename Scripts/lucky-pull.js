@@ -15,6 +15,7 @@ var twoStarChance = 0;
 var threeStarChance = 85;
 var fourStarChance = 13;
 var fiveStarChance = 2;
+var gachaText = "Based on the character wish in Genshin Impact";
 var pullText = "You pulled: ";
 var max = 100;
 var mode = 0;
@@ -22,7 +23,7 @@ var mode = 0;
 const rewardTypes = [
     //3-stars, 4-stars, 5-stars
     [
-        ["⭐⭐⭐ Black Tassel", "⭐⭐⭐ Bloodtainted Greatsword", "⭐⭐⭐ Cool Steel", "⭐⭐⭐ Debate Club", "⭐⭐⭐ Emerald Orb", "⭐⭐⭐ Ferrous Shadow", "⭐⭐⭐ Harbinger of Dawn", "⭐⭐⭐ Magic Guide", "⭐⭐⭐ Raven Bow", "⭐⭐⭐ Sharpshooter's Oath", "⭐⭐⭐ Skyrider Sword", "⭐⭐⭐ Slingshot", "⭐⭐⭐ Thrilling Tales of Dragon Tales", "⭐⭐⭐ White Tassel"];
+        ["⭐⭐⭐ Black Tassel", "⭐⭐⭐ Bloodtainted Greatsword", "⭐⭐⭐ Cool Steel", "⭐⭐⭐ Debate Club", "⭐⭐⭐ Emerald Orb", "⭐⭐⭐ Ferrous Shadow", "⭐⭐⭐ Harbinger of Dawn", "⭐⭐⭐ Magic Guide", "⭐⭐⭐ Raven Bow", "⭐⭐⭐ Sharpshooter's Oath", "⭐⭐⭐ Skyrider Sword", "⭐⭐⭐ Slingshot", "⭐⭐⭐ Thrilling Tales of Dragon Tales", "⭐⭐⭐ White Tassel"],
         ["⭐⭐⭐⭐ Amber ", "⭐⭐⭐⭐ Barbara ", "⭐⭐⭐⭐ Bennett ", "⭐⭐⭐⭐ Diona ❄", "⭐⭐⭐⭐ Fiscl ⚡", "⭐⭐⭐⭐ Gorou 直", "⭐⭐⭐⭐ Kaeya ❄", "⭐⭐⭐⭐ Lisa ⚡", "⭐⭐⭐⭐ Ningguang 直", "⭐⭐⭐⭐ Noelle 直", "⭐⭐⭐⭐ Razor ⚡", "⭐⭐⭐⭐ Shikanoin Heizou ", "⭐⭐⭐⭐ Sucrose ", "⭐⭐⭐⭐ Xiangling ", "⭐⭐⭐⭐ Xingqiu ", "⭐⭐⭐⭐ Xinyan ", "⭐⭐⭐⭐ Yanfei "],
         ["⭐⭐⭐⭐⭐ Albeido 直", "⭐⭐⭐⭐⭐ Arataki Itto ", "⭐⭐⭐⭐⭐ Diluc ", "⭐⭐⭐⭐⭐ Ganyu ❄", "⭐⭐⭐⭐⭐ Hu Tao ", "⭐⭐⭐⭐⭐ Jean ", "⭐⭐⭐⭐⭐ Keqing ⚡", "⭐⭐⭐⭐⭐ Klee ", "⭐⭐⭐⭐⭐ Mona ", "⭐⭐⭐⭐⭐ Nahida ", "⭐⭐⭐⭐⭐ Nilou ", "⭐⭐⭐⭐⭐ Qiqi ❄", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi ", "⭐⭐⭐⭐⭐ Wanderer ", "⭐⭐⭐⭐⭐ Yae Miko ⚡", "⭐⭐⭐⭐⭐ Yoimiya ", "⭐⭐⭐⭐⭐ Zhongli 直"]
     ],
@@ -36,11 +37,11 @@ const rewardTypes = [
     
     //Common, Uncommon, Rare, Ultra Rare, Legendary
     [
-        [""],
-        ["Magic Panda"],
-        ["Dice"],
-        ["Red Dice", "Circus Stack"],
-        ["Golden Lion"]
+        ["Dugong", "Sado Mole"],
+        ["Rhino Beetle", "Tanuki"],
+        ["Ibis", "Koi Carp", "Leopard Cat"],
+        ["Red Crowned Crane", "Spider Crab", "Trapdoor Snail"],
+        ["Baku", "Maneki-Neko"]
     ],
     
     //Common, Unique, Rare, Epic, Legendary
@@ -48,7 +49,7 @@ const rewardTypes = [
         ["Magic Mouse"],
         ["Magic Panda"],
         ["Dice"],
-        ["Red Dice", "Circus Stack"],
+        ["Circus Stack", "Red Dice"],
         ["Golden Lion"]
     ]
 ];
@@ -67,9 +68,10 @@ submit.addEventListener("click", function() {
         threeStarChance = 85;
         fourStarChance = 14;
         fiveStarChance = 1;
+        gachaText = "Based on the character wish in Genshin Impact";
         pullText = "You pulled: ";
         max = 100;
-        alert("set to rpg");
+        //alert("Set type to Genshin");
     } else if (type == 2) {
         largePullAmount = 10;
         //oneStars = false;
@@ -80,9 +82,10 @@ submit.addEventListener("click", function() {
         threeStarChance = 85;
         fourStarChance = 30;
         fiveStarChance = 0;
+        gachaText = "Based on a general banner in Bandori";
         pullText = "You pulled: ";
         max = 1000;
-        alert("set to band");
+        //alert("Set to Bandori");
     } else if (type == 3) {
         largePullAmount = 0;
         //oneStars = true;
@@ -93,9 +96,10 @@ submit.addEventListener("click", function() {
         threeStarChance = 34;
         fourStarChance = 20;
         fiveStarChance = 5;
+        gachaText = "Based on the current Gumball Machine egg in Adopt Me! (Currently Japan Egg)";
         pullText = "You hatched: ";
         max = 100;
-        alert("set to adopt");
+        //alert("Set to Adopt Me!");
     } else if (type == 4) {
         largePullAmount = 3;
         //oneStars = true;
@@ -106,13 +110,15 @@ submit.addEventListener("click", function() {
         threeStarChance = 200;
         fourStarChance = 140;
         fiveStarChance = 1;
+        gachaText = "Based on the retired Magic Egg in Bubble Gum Simulator";
         pullText = "You hatched: ";
         max = 1000;
-        alert("set to bubblegum");
+        //alert("Set to Bubble gum");
     };
     if (largePullAmount <= 1) {
         largePull.style = "visibility: hidden;";
     };
+    message.innerHTML = gachaText;
 });
 
 onePull.addEventListener("click", function() {
@@ -321,7 +327,7 @@ continueButton.addEventListener("click", function() {
         //alert("awards are displayed!");
     } else if (mode == 2) {
         mode = 0;
-        message.innerHTML = "";
+        message.innerHTML = gachaText;
         message.style = "visibility: hidden;";
         continueButton.innerHTML = "";
         continueButton.style = "visibility: hidden;";
