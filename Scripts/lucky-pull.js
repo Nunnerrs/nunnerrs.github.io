@@ -16,6 +16,8 @@ var threeStarChance = 85;
 var fourStarChance = 13;
 var fiveStarChance = 2;
 var gachaText = "Based on the character wish in Genshin Impact";
+var onePullText = "1 pull";
+var largePullText = "10 pull";
 var pullText = "You pulled: ";
 var max = 100;
 var mode = 0;
@@ -24,8 +26,8 @@ const rewardTypes = [
     //3-stars, 4-stars, 5-stars
     [
         ["⭐⭐⭐ Black Tassel", "⭐⭐⭐ Bloodtainted Greatsword", "⭐⭐⭐ Cool Steel", "⭐⭐⭐ Debate Club", "⭐⭐⭐ Emerald Orb", "⭐⭐⭐ Ferrous Shadow", "⭐⭐⭐ Harbinger of Dawn", "⭐⭐⭐ Magic Guide", "⭐⭐⭐ Raven Bow", "⭐⭐⭐ Sharpshooter's Oath", "⭐⭐⭐ Skyrider Sword", "⭐⭐⭐ Slingshot", "⭐⭐⭐ Thrilling Tales of Dragon Tales", "⭐⭐⭐ White Tassel"],
-        ["⭐⭐⭐⭐ Amber ", "⭐⭐⭐⭐ Barbara ", "⭐⭐⭐⭐ Bennett ", "⭐⭐⭐⭐ Diona ❄", "⭐⭐⭐⭐ Fiscl ⚡", "⭐⭐⭐⭐ Gorou 直", "⭐⭐⭐⭐ Kaeya ❄", "⭐⭐⭐⭐ Lisa ⚡", "⭐⭐⭐⭐ Ningguang 直", "⭐⭐⭐⭐ Noelle 直", "⭐⭐⭐⭐ Razor ⚡", "⭐⭐⭐⭐ Shikanoin Heizou ", "⭐⭐⭐⭐ Sucrose ", "⭐⭐⭐⭐ Xiangling ", "⭐⭐⭐⭐ Xingqiu ", "⭐⭐⭐⭐ Xinyan ", "⭐⭐⭐⭐ Yanfei "],
-        ["⭐⭐⭐⭐⭐ Albeido 直", "⭐⭐⭐⭐⭐ Arataki Itto ", "⭐⭐⭐⭐⭐ Diluc ", "⭐⭐⭐⭐⭐ Ganyu ❄", "⭐⭐⭐⭐⭐ Hu Tao ", "⭐⭐⭐⭐⭐ Jean ", "⭐⭐⭐⭐⭐ Keqing ⚡", "⭐⭐⭐⭐⭐ Klee ", "⭐⭐⭐⭐⭐ Mona ", "⭐⭐⭐⭐⭐ Nahida ", "⭐⭐⭐⭐⭐ Nilou ", "⭐⭐⭐⭐⭐ Qiqi ❄", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi ", "⭐⭐⭐⭐⭐ Wanderer ", "⭐⭐⭐⭐⭐ Yae Miko ⚡", "⭐⭐⭐⭐⭐ Yoimiya ", "⭐⭐⭐⭐⭐ Zhongli 直"]
+        ["⭐⭐⭐⭐ Amber 🔥", "⭐⭐⭐⭐ Barbara ", "⭐⭐⭐⭐ Bennett 🔥", "⭐⭐⭐⭐ Diona ❄", "⭐⭐⭐⭐ Fiscl ⚡", "⭐⭐⭐⭐ Gorou 直", "⭐⭐⭐⭐ Kaeya ❄", "⭐⭐⭐⭐ Lisa ⚡", "⭐⭐⭐⭐ Ningguang 直", "⭐⭐⭐⭐ Noelle 直", "⭐⭐⭐⭐ Razor ⚡", "⭐⭐⭐⭐ Shikanoin Heizou ", "⭐⭐⭐⭐ Sucrose ", "⭐⭐⭐⭐ Xiangling 🔥", "⭐⭐⭐⭐ Xingqiu ", "⭐⭐⭐⭐ Xinyan 🔥", "⭐⭐⭐⭐ Yanfei 🔥"],
+        ["⭐⭐⭐⭐⭐ Albeido 直", "⭐⭐⭐⭐⭐ Arataki Itto 🔥", "⭐⭐⭐⭐⭐ Diluc 🔥", "⭐⭐⭐⭐⭐ Ganyu ❄", "⭐⭐⭐⭐⭐ Hu Tao 🔥", "⭐⭐⭐⭐⭐ Jean ", "⭐⭐⭐⭐⭐ Keqing ⚡", "⭐⭐⭐⭐⭐ Klee 🔥", "⭐⭐⭐⭐⭐ Mona ", "⭐⭐⭐⭐⭐ Nahida ", "⭐⭐⭐⭐⭐ Nilou ", "⭐⭐⭐⭐⭐ Qiqi ❄", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi ", "⭐⭐⭐⭐⭐ Wanderer ", "⭐⭐⭐⭐⭐ Yae Miko ⚡", "⭐⭐⭐⭐⭐ Yoimiya 🔥", "⭐⭐⭐⭐⭐ Zhongli 直"]
     ],
     
     //2-stars, 3-stars, 4-stars
@@ -57,7 +59,7 @@ const rewardTypes = [
 
 const rewards = [];
 
-submit.addEventListener("click", function() {
+function changeType() {
     let type = gachaType.value;
     if (type == 1) {
         largePullAmount = 10;
@@ -70,6 +72,8 @@ submit.addEventListener("click", function() {
         fourStarChance = 14;
         fiveStarChance = 1;
         gachaText = "Based on the character wish in Genshin Impact";
+        onePullText = "1 pull";
+        largePullText = "10 pull";
         pullText = "You pulled: ";
         max = 100;
         //alert("Set type to Genshin");
@@ -84,6 +88,8 @@ submit.addEventListener("click", function() {
         fourStarChance = 30;
         fiveStarChance = 0;
         gachaText = "Based on a general banner in Bandori";
+        onePullText = "1 pull";
+        largePullText = "10 pull";
         pullText = "You pulled: ";
         max = 1000;
         //alert("Set to Bandori");
@@ -98,6 +104,8 @@ submit.addEventListener("click", function() {
         fourStarChance = 20;
         fiveStarChance = 5;
         gachaText = "Based on the current Gumball Machine egg in Adopt Me! (Currently Japan Egg)";
+        onePullText = "Hatch 1";
+        largePullText = "--";
         pullText = "You hatched: ";
         max = 100;
         //alert("Set to Adopt Me!");
@@ -112,6 +120,8 @@ submit.addEventListener("click", function() {
         fourStarChance = 140;
         fiveStarChance = 1;
         gachaText = "Based on the retired Magic Egg in Bubble Gum Simulator";
+        onePullText = "Hatch 1";
+        largePullText = "Hatch 3";
         pullText = "You hatched: ";
         max = 1000;
         //alert("Set to Bubble gum");
@@ -120,7 +130,81 @@ submit.addEventListener("click", function() {
         largePull.style = "visibility: hidden;";
     };
     message.innerHTML = gachaText;
-});
+};
+
+gachaType.addEventListener("touchend", changeType);
+gatchaType.addEventListener("mouseout", changeType);/*function() {
+    let type = gachaType.value;
+    if (type == 1) {
+        largePullAmount = 10;
+        //oneStars = false;
+        //twoStars = false;
+        //fiveStars = true;
+        oneStarChance = 0;
+        twoStarChance = 0;
+        threeStarChance = 85;
+        fourStarChance = 14;
+        fiveStarChance = 1;
+        gachaText = "Based on the character wish in Genshin Impact";
+        onePullText = "1 pull";
+        largePullText = "10 pull";
+        pullText = "You pulled: ";
+        max = 100;
+        //alert("Set type to Genshin");
+    } else if (type == 2) {
+        largePullAmount = 10;
+        //oneStars = false;
+        //twoStars = true;
+        //fiveStars = false;
+        oneStarChance = 0;
+        twoStarChance = 885;
+        threeStarChance = 85;
+        fourStarChance = 30;
+        fiveStarChance = 0;
+        gachaText = "Based on a general banner in Bandori";
+        onePullText = "1 pull";
+        largePullText = "10 pull";
+        pullText = "You pulled: ";
+        max = 1000;
+        //alert("Set to Bandori");
+    } else if (type == 3) {
+        largePullAmount = 0;
+        //oneStars = true;
+        //twoStars = true;
+        //fiveStars = true;
+        oneStarChance = 22;
+        twoStarChance = 19;
+        threeStarChance = 34;
+        fourStarChance = 20;
+        fiveStarChance = 5;
+        gachaText = "Based on the current Gumball Machine egg in Adopt Me! (Currently Japan Egg)";
+        onePullText = "Hatch 1";
+        largePullText = "--";
+        pullText = "You hatched: ";
+        max = 100;
+        //alert("Set to Adopt Me!");
+    } else if (type == 4) {
+        largePullAmount = 3;
+        //oneStars = true;
+        //twoStars = true;
+        //fiveStars = true;
+        oneStarChance = 394;
+        twoStarChance = 265;
+        threeStarChance = 200;
+        fourStarChance = 140;
+        fiveStarChance = 1;
+        gachaText = "Based on the retired Magic Egg in Bubble Gum Simulator";
+        onePullText = "Hatch 1";
+        largePullText = "Hatch 3";
+        pullText = "You hatched: ";
+        max = 1000;
+        //alert("Set to Bubble gum");
+    };
+    if (largePullAmount <= 1) {
+        largePull.style = "visibility: hidden;";
+    };
+    message.innerHTML = gachaText;
+});*/
 
 onePull.addEventListener("click", function() {
     //alert("1 pull…");
@@ -250,6 +334,9 @@ largePull.addEventListener("click", function() {
             };
             if (i == largePullAmount) {
                 reward = 4;
+                if (highest < 4) {
+                    highest = 4;
+                };
             };
             if (pull > threeStarChance && pull <= threeStarChance + fourStarChance) {
                 reward = 4;
@@ -318,7 +405,6 @@ largePull.addEventListener("click", function() {
         continueButton.innerHTML = "🥚";
     };
     mode = 1;
-    alert(typeof gachaType.value);
 });
 
 continueButton.addEventListener("click", function() {
