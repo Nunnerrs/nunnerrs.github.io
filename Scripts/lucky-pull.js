@@ -12,21 +12,21 @@ var largePullAmount = 10;
 //var fiveStars = true;
 var oneStarChance = 0;
 var twoStarChance = 0;
-var threeStarChance = 85;
-var fourStarChance = 13;
-var fiveStarChance = 2;
+var threeStarChance = 943;
+var fourStarChance = 51;
+var fiveStarChance = 6;
 var gachaText = "Based on the character wish in Genshin Impact";
 var onePullText = "1 pull";
 var largePullText = "10 pull";
 var pullText = "You pulled: ";
-var max = 100;
+var max = 1000;
 var mode = 0;
 
 const rewardTypes = [
     //3-stars, 4-stars, 5-stars
     [
         ["⭐⭐⭐ Black Tassel", "⭐⭐⭐ Bloodtainted Greatsword", "⭐⭐⭐ Cool Steel", "⭐⭐⭐ Debate Club", "⭐⭐⭐ Emerald Orb", "⭐⭐⭐ Ferrous Shadow", "⭐⭐⭐ Harbinger of Dawn", "⭐⭐⭐ Magic Guide", "⭐⭐⭐ Raven Bow", "⭐⭐⭐ Sharpshooter's Oath", "⭐⭐⭐ Skyrider Sword", "⭐⭐⭐ Slingshot", "⭐⭐⭐ Thrilling Tales of Dragon Tales", "⭐⭐⭐ White Tassel"],
-        ["⭐⭐⭐⭐ Amber 🔥", "⭐⭐⭐⭐ Barbara 💧", "⭐⭐⭐⭐ Beidou ⚡️️", "⭐⭐⭐⭐ Bennett 🔥", "⭐⭐⭐⭐ Candace 💧", "⭐⭐⭐⭐ Chongyun ❄️", "⭐⭐⭐⭐ Collei 🌱", "⭐⭐⭐⭐ Diona ❄️", "⭐⭐⭐⭐ Dori ⚡️", "⭐⭐⭐⭐ Faruzan 💨", "⭐⭐⭐⭐ Fiscl ⚡️", "⭐⭐⭐⭐ Gorou 🪨", "⭐⭐⭐⭐ Kaeya ❄️", "⭐⭐⭐⭐ Kujou Sara ⚡️", "⭐⭐⭐⭐ Kuki Shinobu ⚡️", "⭐⭐⭐⭐ Layla ❄️", "⭐⭐⭐⭐ Lisa ⚡️", "⭐⭐⭐⭐ Ningguang 🪨", "⭐⭐⭐⭐ Noelle 🪨", "⭐⭐⭐⭐ Razor ⚡️", "⭐⭐⭐⭐ Sayu 💨", "⭐⭐⭐⭐ Shikanoin Heizou 💨", "⭐⭐⭐⭐ Sucrose 💨", "⭐⭐⭐⭐ Thoma 🔥", "⭐⭐⭐⭐ Xiangling 🔥", "⭐⭐⭐⭐ Xingqiu 💧", "⭐⭐⭐⭐ Xinyan 🔥", "⭐⭐⭐⭐ Yanfei 🔥"],
+        ["⭐⭐⭐⭐ Amber 🔥", "⭐⭐⭐⭐ Barbara 💧", "⭐⭐⭐⭐ Beidou ⚡️️", "⭐⭐⭐⭐ Bennett 🔥", "⭐⭐⭐⭐ Candace 💧", "⭐⭐⭐⭐ Chongyun ❄️", "⭐⭐⭐⭐ Collei 🌱", "⭐⭐⭐⭐ Diona ❄️", "⭐⭐⭐⭐ Dori ⚡️", "⭐⭐⭐⭐ Dragon's Bane", "⭐⭐⭐⭐ Faruzan 💨", "⭐⭐⭐⭐ Favonius Codex", "⭐⭐⭐⭐ Favonius Bow", "⭐⭐⭐⭐ Favonius Greatsword", "⭐⭐⭐⭐ Favonius Lance", "⭐⭐⭐⭐ Favonius Sword", "⭐⭐⭐⭐ Fiscl ⚡️", "⭐⭐⭐⭐ Gorou 🪨", "⭐⭐⭐⭐ Kaeya ❄️", "⭐⭐⭐⭐ Kujou Sara ⚡️", "⭐⭐⭐⭐ Kuki Shinobu ⚡️", "⭐⭐⭐⭐ Layla ❄️", "⭐⭐⭐⭐ Lisa ⚡️", "⭐⭐⭐⭐ Ningguang 🪨", "⭐⭐⭐⭐ Noelle 🪨", "⭐⭐⭐⭐ Rainslasher", "⭐⭐⭐⭐ Razor ⚡️", "⭐⭐⭐⭐ Rust", "⭐⭐⭐⭐ Sacrificial Bow", "⭐⭐⭐⭐ Sacrificial Fragments", "⭐⭐⭐⭐ Sacrificial Greatsword", "⭐⭐⭐⭐ Sacrificial Sword", "⭐⭐⭐⭐ Sayu 💨", "⭐⭐⭐⭐ Shikanoin Heizou 💨", "⭐⭐⭐⭐ Sucrose 💨", "⭐⭐⭐⭐ The Bell", "⭐⭐⭐⭐ The Flute", "⭐⭐⭐⭐ The Stringless", "⭐⭐⭐⭐ The Widsith", "⭐⭐⭐⭐ Thoma 🔥", "⭐⭐⭐⭐ Xiangling 🔥", "⭐⭐⭐⭐ Xingqiu 💧", "⭐⭐⭐⭐ Xinyan 🔥", "⭐⭐⭐⭐ Yanfei 🔥"],
         ["⭐⭐⭐⭐⭐ Albeido 🪨", "⭐⭐⭐⭐⭐ Arataki Itto 🪨", "⭐⭐⭐⭐⭐ Cyno ⚡️", "⭐⭐⭐⭐⭐ Diluc 🔥", "⭐⭐⭐⭐⭐ Eula ❄️", "⭐⭐⭐⭐⭐ Ganyu ❄️", "⭐⭐⭐⭐⭐ Hu Tao 🔥", "⭐⭐⭐⭐⭐ Jean 💨", "⭐⭐⭐⭐⭐ Kaedehara Kazuha 💨", "⭐⭐⭐⭐⭐ Kamisato Ayaka ❄️", "⭐⭐⭐⭐⭐ Kamisato Ayato 💧", "⭐⭐⭐⭐⭐ Keqing ⚡️", "⭐⭐⭐⭐⭐ Klee 🔥", "⭐⭐⭐⭐⭐ Mona 💧", "⭐⭐⭐⭐⭐ Nahida 🌱", "⭐⭐⭐⭐⭐ Nilou 💧", "⭐⭐⭐⭐⭐ Qiqi ❄️", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡️", "⭐⭐⭐⭐⭐ Rosaria ❄️", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi 💧", "⭐⭐⭐⭐⭐ Shenhe ❄️", "⭐⭐⭐⭐⭐ Tartaglia 💧", "⭐⭐⭐⭐⭐ Tighnari 🌱", "⭐⭐⭐⭐⭐ Venti 💨", "⭐⭐⭐⭐⭐ Wanderer 💨", "⭐⭐⭐⭐⭐ Xiao 💨", "⭐⭐⭐⭐⭐ Yae Miko ⚡️", "⭐⭐⭐⭐⭐ Yelan 💧", "⭐⭐⭐⭐⭐ Yoimiya 🔥", "⭐⭐⭐⭐⭐ Yun Jin 🪨", "⭐⭐⭐⭐⭐ Zhongli 🪨"]
     ],
     
@@ -68,14 +68,14 @@ function changeType() {
         //fiveStars = true;
         oneStarChance = 0;
         twoStarChance = 0;
-        threeStarChance = 85;
-        fourStarChance = 14;
-        fiveStarChance = 1;
+        threeStarChance = 943;
+        fourStarChance = 51;
+        fiveStarChance = 6;
         gachaText = "Based on the character wish in Genshin Impact";
         onePullText = "1 pull";
         largePullText = "10 pull";
         pullText = "You pulled: ";
-        max = 100;
+        max = 1000;
         //alert("Set type to Genshin");
     } else if (type == 2) {
         largePullAmount = 10;
