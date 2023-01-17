@@ -88,4 +88,4 @@ function click() {
         };
 };
 
-button.addEventListener("onclick", click());
+button.addEventListener("click", click);
