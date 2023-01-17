@@ -1,13 +1,13 @@
 var title = document.getElementById("title");
 var button = document.getElementById("clickButton");
 var checkboxes = document.getElementById("checkboxes");
-var visitCount = localStorage.getItem("visits");
+var visitCount = Number(localStorage.getItem("visits"));
 
-if (visitCount == null) {
-    visitCount = localStorage.setItem("visits", 0);
+if (visitCount == null || visitCount == NaN) {
+    visitCount = Number(localStorage.setItem("visits", 0));
 };
 localStorage.setItem("visits", visitCount + 1);
-visitCount = localStorage.getItem("visits");
+visitCount = Number(localStorage.getItem("visits"));
 if (visitCount == 1) {
     document.getElementById("visits").innerHTML = visitCount + " time"
 } else {
