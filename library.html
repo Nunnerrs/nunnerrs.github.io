@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>&#128214 NunnerLibrary &#128218</title>
+        <title>NunnerLibrary</title>
         <meta charset="UTF-8">
         <link rel="icon" href="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
         <style>
+            a {
+                color: rgb(50, 150, 235);
+            }
             body {
                 color: rgb(0, 0, 0);
                 font-family: Comic Sans MS, Chalkboard SE;
                 text-align: center;
             }
-            .darkBg {
-                background-color: rgb(100, 100, 100);
+            button {
+                background-color: rgb(255, 255, 255);
+                border-color: rgb(200, 200, 200);
+                border-radius: 15px;
+                color: rgb(0, 0, 0);
+                font-family: Comic Sans MS, Chalkboard SE;
             }
             .book {
                 display: grid;
@@ -22,30 +30,56 @@
                 text-align: left;
                 width: 555px;
             }
-            .cover {
-                border-color: rgb(200, 200, 200);
+            .darkBg {
+                background-color: rgb(100, 100, 100);
+            }
+            .heading {
+                font-size: 18px;
+                text-align: center;
             }
             .page {
                 font-family: monospace;
                 margin: 5px;
             }
+            .title {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 100px;
+                text-align: center;
+            }
             .white {
-                color: rgb(255, 255, 255)
+                color: rgb(255, 255, 255);
+            }
+            #book1 {
+                background-color: rgb(150, 255, 220);
+                border-color: rgb(113, 191, 165);
+            }
+            #book2 {
+                background-color: rgb(255, 240, 150);
+                border-color: rgb(191, 180, 113);
+            }
+            #close {
+                font-family: Varela Round;
             }
         </style>
     </head>
     <body>
         <h1>&#128214 NunnerLibrary &#128218</h1>
-        <h2>Click on a book to start reading</h2>
-        <button class="cover" id="book1" onclick="openBook(1)">Book</button><br>
+        <h2>Scroll down & click on a book to start reading</h2>
         <div class="book" id="book" style="background-color: lightyellow; visibility: hidden;">
             <div class="page" id="pageL"></div>
             <div class="page" id="pageR"></div><br>
         </div>
-        <button id="back" onclick="backPage()">←</button>
-        <button id="close" onclick="closeBook()">&#215;</button>
-        <button id="next" onclick="nextPage()">→</button>
-        <br><br>
+        <button id="back" onclick="backPage()" style="visibility: hidden">←</button>
+        <button id="close" onclick="closeBook()" style="visibility: hidden">&#215;</button>
+        <button id="next" onclick="nextPage()" style="visibility: hidden">→</button>
+        <!---->
+        <h3>Fiction</h3>
+        <button id="book2" onclick="openBook(2)">Feet Quest</button>
+        <h3>Non-Fiction</h3>
+        <button id="book1" onclick="openBook(1)">About Nunners</button>
+        <!---->
+        <br><br><br>
         <button id="mobile" onclick="setMobile()">Mobile mode: ON</button>
         <button id="darkMode" onclick="toggleDarkMode()">Dark mode: OFF</button>
         <h3><a href="https://nunnerrs.github.io" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
@@ -66,16 +100,35 @@
             var darkModeOn = false;
 
             const books = {
+                /*
+                book: [
+                    "<page class='title'>TITLE</page><br><br><page class='heading'>By AUTHOR</page>",
+                    "",
+                    "",
+                ],
+                */
                 book1: [
-                    "title",
-                    "a",
-                    "the end"
+                    "<page class='title'>About Nunners</page><br><br><page class='heading'>By Nunners</page>",
+                    "Welcome to the NunnerLibrary! This is an autobiography (maybe?) that I wrote. For a more brief version, visit my <a href='https://nunnerrs.github.io/about.html'>about me page</a>",
+                    "Hi there, I'm Nunners. I build and code Roblox games for fun. I also enjoy making this website, coded through HTML, JavaScript, and CSS. The coding languages I've learned are HTML, JavaScript, CSS, Luau (used for Roblox), and PHP.",
+                    "My real name is Julianna. I have an older brother and a younger sister. In my free time, I play Roblox or code (this website or Roblox games)(in case you're wondering, my username is Nunnerrs. But I'd probably only friend you if I know you in real life). My friends are Lianna and Skylar (I have a lot more but they don't want to be publically mentioned).",
+                    "Here's a list of some of my favorites:<br>• Animals — Hedgehogs, frogs, and ducks<br>• Chips — Cheddar & Sour Cream Ruffles and Cheetos Puffs<br>• Color — Aquamarine (hex #00ffae)<br>• Foods — Yoshinoya beef bowls and SPAM<br>• Manga/Anime — Toilet-Bound Hanako-kun<br>• Music Artists — Snail's House, Kirara Magic, and Tobu<br>• Music Genre — JPop, future bass, and electro house<br>• Video Games — Roblox, Genshin Impact, and BanG Dream!",
+                    "And that's all I can think of adding for now! I'll update this more as things change.",
+                ],
+                book2: [
+                    "<page class='title'>Feet Quest</page><br><br><page class='heading'>By Lianna</page>",
+                    "",
+                    "Coming Soon!",
                 ],
             };
 
             function openBook(bookId) {
                 currentBook = bookId;
-                book.style = "background-color: lightyellow; visibility: visible";
+                if (darkModeOn == true) {
+                    book.style = "visibility: visible";
+                } else {
+                    book.style = "background-color: lightyellow; visibility: visible";
+                };
                 back.style = "visibility: visible";
                 close.style = "visibility: visible";
                 next.style = "visibility: visible";
@@ -102,7 +155,11 @@
             };
             
             function closeBook() {
-                book.style = "background-color: lightyellow; visibility: hidden";
+                if (darkModeOn == true) {
+                    book.style = "visibility: hidden";
+                } else {
+                    book.style = "background-color: lightyellow; visibility: hidden";
+                };
                 back.style = "visibility: hidden";
                 close.style = "visibility: hidden";
                 next.style = "visibility: hidden";
@@ -152,7 +209,11 @@
                     };
                     document.getElementById("book1").classList.remove("white");
                     document.getElementById("book1").classList.remove("darkBg");
-                    book.style = "background-color: lightyellow;";
+                    if (book.style = "visibility: visible;") {
+                        book.style = "background-color: lightyellow; visibility: visible";
+                    } else {
+                        book.style = "background-color: lightyellow; visibility: hidden";
+                    };
                     book.classList.remove("white");
                     book.classList.remove("darkBg");
                     back.classList.remove("white");
@@ -183,7 +244,11 @@
                     };
                     document.getElementById("book1").classList.add("white");
                     document.getElementById("book1").classList.add("darkBg");
-                    book.style = "";
+                    if (book.style = "background-color: lightyellow; visibility: visible;") {
+                        book.style = "visibility: visible";
+                    } else {
+                        book.style = "visibility: hidden";
+                    };
                     book.classList.add("white");
                     book.classList.add("darkBg");
                     back.classList.add("white");
@@ -201,12 +266,8 @@
                 };
             }
 
-            book.style = "visibility: hidden";
             pageL.innerHTML = "";
             pageR.innerHTML = "";
-            back.style = "visibility: hidden";
-            close.style = "visibility: hidden";
-            next.style = "visibility: hidden";
 
             /*document.getElementById("book1").addEventListener("click", function() {
                 let bookId = 1;
