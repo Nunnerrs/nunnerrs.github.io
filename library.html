@@ -5,39 +5,50 @@
         <meta charset="UTF-8">
         <link rel="icon" href="">
         <style>
-            html {
+            body {
                 color: rgb(0, 0, 0);
                 font-family: Comic Sans MS, Chalkboard SE;
                 text-align: center;
             }
+            .darkBg {
+                background-color: rgb(100, 100, 100);
+            }
             .book {
-                background-color: lightyellow;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-gap: 20px;
+                height: 355px;
                 margin-left: 275px;
                 text-align: left;
                 width: 555px;
             }
+            .cover {
+                border-color: rgb(200, 200, 200);
+            }
             .page {
                 font-family: monospace;
                 margin: 5px;
+            }
+            .white {
+                color: rgb(255, 255, 255)
             }
         </style>
     </head>
     <body>
         <h1>&#128214 NunnerLibrary &#128218</h1>
         <h2>Click on a book to start reading</h2>
-        <button id="book1" onclick="openBook(1)">placeholder book</button><br>
-        <div class="book" id="book">
+        <button class="cover" id="book1" onclick="openBook(1)">Book</button><br>
+        <div class="book" id="book" style="background-color: lightyellow; visibility: hidden;">
             <div class="page" id="pageL"></div>
             <div class="page" id="pageR"></div><br>
         </div>
         <button id="back" onclick="backPage()">←</button>
-        <button id="close" onclick="closeBook()">×</button>
+        <button id="close" onclick="closeBook()">&#215;</button>
         <button id="next" onclick="nextPage()">→</button>
-        <br>
+        <br><br>
         <button id="mobile" onclick="setMobile()">Mobile mode: ON</button>
+        <button id="darkMode" onclick="toggleDarkMode()">Dark mode: OFF</button>
+        <h3><a href="https://nunnerrs.github.io" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
         <!--script src="Scripts/library.js"></script-->
         <script>
             var book = document.getElementById("book");
@@ -47,10 +58,12 @@
             var close = document.getElementById("close");
             var next = document.getElementById("next");
             var mobile = document.getElementById("mobile");
+            var darkMode = document.getElementById("darkMode");
             var currentBook = null;
             var pageNumL = -1;
             var pageNumR = 0;
             var mobileOn = false;
+            var darkModeOn = false;
 
             const books = {
                 book1: [
@@ -62,7 +75,7 @@
 
             function openBook(bookId) {
                 currentBook = bookId;
-                book.style = "visibility: visible";
+                book.style = "background-color: lightyellow; visibility: visible";
                 back.style = "visibility: visible";
                 close.style = "visibility: visible";
                 next.style = "visibility: visible";
@@ -74,11 +87,11 @@
             
             function backPage() {
                 if (pageNumL > -1) {
-                    alert("flipped page back");
+                    //alert("flipped page back");
                     pageNumL -= 2;
                     pageNumR -= 2;
-                    pageL.innerHTML = books["book" + currentBook][pageNumL]];
-                    pageR.innerHTML = books["book" + currentBook][pageNumR]];
+                    pageL.innerHTML = books["book" + currentBook][pageNumL];
+                    pageR.innerHTML = books["book" + currentBook][pageNumR];
                     if (pageNumL <= -1) {
                         pageL.innerHTML = "";
                     };
@@ -89,7 +102,7 @@
             };
             
             function closeBook() {
-                book.style = "visibility: hidden";
+                book.style = "background-color: lightyellow; visibility: hidden";
                 back.style = "visibility: hidden";
                 close.style = "visibility: hidden";
                 next.style = "visibility: hidden";
@@ -98,16 +111,16 @@
                 pageNumL = -1;
                 pageNumR = 0;
                 currentBook = null;
-                alert("closed book #" + currentBook);
+                //alert("closed book #" + currentBook);
             };
             
             function nextPage() {
-                if (books["book" + currentBook][pageNumL + 2] ~= null) {
-                    alert("flipped page forward");
+                if (books["book" + currentBook][pageNumL + 2] != null) {
+                    //alert("flipped page forward");
                     pageNumL += 2;
                     pageNumR += 2;
-                    pageL.innerHTML = books["book" + currentBook][pageNumL]];
-                    pageR.innerHTML = books["book" + currentBook][pageNumR]];
+                    pageL.innerHTML = books["book" + currentBook][pageNumL];
+                    pageR.innerHTML = books["book" + currentBook][pageNumR];
                     if (pageNumR >= books["book" + currentBook].length) {
                         pageR.innerHTML = "";
                     };
@@ -122,6 +135,72 @@
                 };
             };
 
+            function toggleDarkMode() {
+                if (darkModeOn == true) {
+                    document.body.style = "background-color: rgb(255, 255, 255)";
+                    let h = document.body.getElementsByTagName("h1")
+                    for (let i = 0; i < h.length; i++) {
+                        h[i].classList.remove("white");
+                    };
+                    h = document.body.getElementsByTagName("h2")
+                    for (let i = 0; i < h.length; i++) {
+                        h[i].classList.remove("white");
+                    };
+                    h = document.body.getElementsByTagName("h3")
+                    for (let i = 0; i < h.length; i++) {
+                        h[i].classList.remove("white");
+                    };
+                    document.getElementById("book1").classList.remove("white");
+                    document.getElementById("book1").classList.remove("darkBg");
+                    book.style = "background-color: lightyellow;";
+                    book.classList.remove("white");
+                    book.classList.remove("darkBg");
+                    back.classList.remove("white");
+                    back.classList.remove("darkBg");
+                    close.classList.remove("white");
+                    close.classList.remove("darkBg");
+                    next.classList.remove("white");
+                    next.classList.remove("darkBg");
+                    mobile.classList.remove("white");
+                    mobile.classList.remove("darkBg");
+                    darkMode.classList.remove("white");
+                    darkMode.classList.remove("darkBg");
+                    darkMode.innerHTML = "Dark Mode: OFF";
+                    darkModeOn = false;
+                } else {
+                    document.body.style = "background-color: rgb(0, 0, 0)";
+                    let h = document.body.getElementsByTagName("h1")
+                    for (let i = 0; i < h.length; i++) {
+                        h[i].classList.add("white");
+                    };
+                    h = document.body.getElementsByTagName("h2")
+                    for (let i = 0; i < h.length; i++) {
+                        h[i].classList.add("white");
+                    };
+                    h = document.body.getElementsByTagName("h3")
+                    for (let i = 0; i < h.length; i++) {
+                        h[i].classList.add("white");
+                    };
+                    document.getElementById("book1").classList.add("white");
+                    document.getElementById("book1").classList.add("darkBg");
+                    book.style = "";
+                    book.classList.add("white");
+                    book.classList.add("darkBg");
+                    back.classList.add("white");
+                    back.classList.add("darkBg");
+                    close.classList.add("white");
+                    close.classList.add("darkBg");
+                    next.classList.add("white");
+                    next.classList.add("darkBg");
+                    mobile.classList.add("white");
+                    mobile.classList.add("darkBg");
+                    darkMode.classList.add("white");
+                    darkMode.classList.add("darkBg");
+                    darkMode.innerHTML = "Dark Mode: ON";
+                    darkModeOn = true;
+                };
+            }
+
             book.style = "visibility: hidden";
             pageL.innerHTML = "";
             pageR.innerHTML = "";
@@ -134,10 +213,10 @@
                 alert("opened book #" + bookId);
                 openBook(bookId);
             });*/
-            document.getElementById("back").addEventListener("click", backPage);
-            document.getElementById("close").addEventListener("click", closeBook);
-            document.getElementById("next").addEventListener("click", nextPage);
-            document.getElementById("mobile").addEventListener("click", setMobile);
+            //document.getElementById("back").addEventListener("click", backPage);
+            //document.getElementById("close").addEventListener("click", closeBook);
+            //document.getElementById("next").addEventListener("click", nextPage);
+            //document.getElementById("mobile").addEventListener("click", setMobile);
         </script>
     </body>
 </html>

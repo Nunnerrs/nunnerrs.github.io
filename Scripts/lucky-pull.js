@@ -276,7 +276,7 @@ onePull.addEventListener("click", function() {
                 rewards.push(rewardNames[3][Math.floor(Math.random() * (rewardNames[3].length - 1))]);
             };
         } else {
-            rewards.push(rewardNames[reward][Math.floor(Math.random() * (rewardNames[reward].length - 1))]);
+            rewards.push(rewardNames[reward - 1][Math.floor(Math.random() * (rewardNames[reward - 1].length - 1))]);
         };
         message.innerHTML = "Click to hatch";
         continueButton.innerHTML = "🥚";
