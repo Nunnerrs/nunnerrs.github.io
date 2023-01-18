@@ -3,15 +3,16 @@ var button = document.getElementById("clickButton");
 var checkboxes = document.getElementById("checkboxes");
 var visitCount = Number(localStorage.getItem("visits"));
 
-if (visitCount == null || visitCount == NaN) {
-    visitCount = Number(localStorage.setItem("visits", 0));
+if (visitCount == null || visitCount == NaN || typeof visitCount != "number") {
+    localStorage.setItem("visits", 0);
+    visitCount = 0;
 };
 localStorage.setItem("visits", visitCount + 1);
 visitCount = Number(localStorage.getItem("visits"));
-if (visitCount == 1) {
-    document.getElementById("visits").innerHTML = visitCount + " time"
+if (visitCount == 1 || visitCount == "1") {
+    document.getElementById("visits").innerHTML = visitCount + " time";
 } else {
-    document.getElementById("visits").innerHTML = visitCount + " times"
+    document.getElementById("visits").innerHTML = visitCount + " times";
 };
 
 function click() {
