@@ -20,6 +20,8 @@
                 border-radius: 15px;
                 color: rgb(0, 0, 0);
                 font-family: Comic Sans MS, Chalkboard SE;
+                height: 75px;
+                width: 185px;
             }
             .book {
                 display: grid;
@@ -30,12 +32,16 @@
                 text-align: left;
                 width: 555px;
             }
+            .cover {
+                border-radius: 5px;
+                height: 50px;
+                width: auto;
+            }
             .darkBg {
                 background-color: rgb(100, 100, 100);
             }
             .heading {
                 font-size: 18px;
-                text-align: center;
             }
             .page {
                 font-family: monospace;
@@ -44,8 +50,6 @@
             .title {
                 font-size: 24px;
                 font-weight: bold;
-                margin-top: 100px;
-                text-align: center;
             }
             .white {
                 color: rgb(255, 255, 255);
@@ -70,18 +74,18 @@
             <div class="page" id="pageL"></div>
             <div class="page" id="pageR"></div><br>
         </div>
-        <button id="back" onclick="backPage()" style="visibility: hidden">←</button>
-        <button id="close" onclick="closeBook()" style="visibility: hidden">&#215;</button>
-        <button id="next" onclick="nextPage()" style="visibility: hidden">→</button>
+        <button id="back" onclick="backPage()" style="visibility: hidden"><b>←</b></button>
+        <button id="close" onclick="closeBook()" style="visibility: hidden"><b>&#215;</b></button>
+        <button id="next" onclick="nextPage()" style="visibility: hidden"><b>→</b></button>
         <!---->
         <h3>Fiction</h3>
-        <button id="book2" onclick="openBook(2)">Feet Quest</button>
+        <button class="cover" id="book2" onclick="openBook(2)">Feet Quest</button>
         <h3>Non-Fiction</h3>
-        <button id="book1" onclick="openBook(1)">About Nunners</button>
+        <button class="cover" id="book1" onclick="openBook(1)">About Nunners</button>
         <!---->
         <br><br><br>
-        <button id="mobile" onclick="setMobile()">Mobile mode: ON</button>
-        <button id="darkMode" onclick="toggleDarkMode()">Dark mode: OFF</button>
+        <button id="mobile" height="50px" onclick="setMobile()" width="auto">Mobile mode: ON</button>
+        <button id="darkMode" height="50px" onclick="toggleDarkMode()" width="auto">Dark mode: OFF</button>
         <h3><a href="https://nunnerrs.github.io" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
         <!--script src="Scripts/library.js"></script-->
         <script>
@@ -98,17 +102,27 @@
             var pageNumR = 0;
             var mobileOn = false;
             var darkModeOn = false;
+            var dm = localStorage.getItem("darkMode");
+            
+            if (dm == null) {
+                localStorage.setItem("darkMode", false);
+                dm = false;
+            };
+            
+            if (dm == true) {
+                toggleDarkMode();
+            };
 
             const books = {
                 /*
                 book: [
-                    "<page class='title'>TITLE</page><br><br><page class='heading'>By AUTHOR</page>",
+                    "<br><br><br><br><br><br><br><br><page class='title'>TITLE</page><br><br><page class='heading'>By AUTHOR</page>",
                     "",
                     "",
                 ],
                 */
                 book1: [
-                    "<page class='title'>About Nunners</page><br><br><page class='heading'>By Nunners</page>",
+                    "<br><br><br><br><br><br><br><br><page class='title'>About Nunners</page><br><br><page class='heading'>By Nunners</page>",
                     "Welcome to the NunnerLibrary! This is an autobiography (maybe?) that I wrote. For a more brief version, visit my <a href='https://nunnerrs.github.io/about.html'>about me page</a>",
                     "Hi there, I'm Nunners. I build and code Roblox games for fun. I also enjoy making this website, coded through HTML, JavaScript, and CSS. The coding languages I've learned are HTML, JavaScript, CSS, Luau (used for Roblox), and PHP.",
                     "My real name is Julianna. I have an older brother and a younger sister. In my free time, I play Roblox or code (this website or Roblox games)(in case you're wondering, my username is Nunnerrs. But I'd probably only friend you if I know you in real life). My friends are Lianna and Skylar (I have a lot more but they don't want to be publically mentioned).",
@@ -116,7 +130,7 @@
                     "And that's all I can think of adding for now! I'll update this more as things change.",
                 ],
                 book2: [
-                    "<page class='title'>Feet Quest</page><br><br><page class='heading'>By Lianna</page>",
+                    "<br><br><br><br><br><br><br><br><page class='title'>Feet Quest</page><br><br><page class='heading'>By Lianna</page>",
                     "",
                     "Coming Soon!",
                 ],
@@ -207,10 +221,8 @@
                     for (let i = 0; i < h.length; i++) {
                         h[i].classList.remove("white");
                     };
-                    document.getElementById("book1").classList.remove("white");
-                    document.getElementById("book1").classList.remove("darkBg");
                     if (book.style = "visibility: visible;") {
-                        book.style = "background-color: lightyellow; visibility: visible";
+                        book.style = "background-color: lightyellow; visibility: hidden";
                     } else {
                         book.style = "background-color: lightyellow; visibility: hidden";
                     };
@@ -224,9 +236,10 @@
                     next.classList.remove("darkBg");
                     mobile.classList.remove("white");
                     mobile.classList.remove("darkBg");
-                    darkMode.classList.remove("white");
-                    darkMode.classList.remove("darkBg");
+                    darkMode.classList.add("white");
+                    darkMode.classList.add("darkBg");
                     darkMode.innerHTML = "Dark Mode: OFF";
+                    localStorage.setItem("darkMode", false);
                     darkModeOn = false;
                 } else {
                     document.body.style = "background-color: rgb(0, 0, 0)";
@@ -242,12 +255,10 @@
                     for (let i = 0; i < h.length; i++) {
                         h[i].classList.add("white");
                     };
-                    document.getElementById("book1").classList.add("white");
-                    document.getElementById("book1").classList.add("darkBg");
-                    if (book.style = "background-color: lightyellow; visibility: visible;") {
+                    if (book.style = "background-color: lightyellow; visibility: hidden;") {
                         book.style = "visibility: visible";
                     } else {
-                        book.style = "visibility: hidden";
+                        book.style = "visibility: visible";
                     };
                     book.classList.add("white");
                     book.classList.add("darkBg");
@@ -259,9 +270,10 @@
                     next.classList.add("darkBg");
                     mobile.classList.add("white");
                     mobile.classList.add("darkBg");
-                    darkMode.classList.add("white");
-                    darkMode.classList.add("darkBg");
+                    darkMode.classList.remove("white");
+                    darkMode.classList.remove("darkBg");
                     darkMode.innerHTML = "Dark Mode: ON";
+                    localStorage.setItem("darkMode", true);
                     darkModeOn = true;
                 };
             }
@@ -273,11 +285,11 @@
                 let bookId = 1;
                 alert("opened book #" + bookId);
                 openBook(bookId);
-            });*/
-            //document.getElementById("back").addEventListener("click", backPage);
-            //document.getElementById("close").addEventListener("click", closeBook);
-            //document.getElementById("next").addEventListener("click", nextPage);
-            //document.getElementById("mobile").addEventListener("click", setMobile);
+            });
+            document.getElementById("back").addEventListener("click", backPage);
+            document.getElementById("close").addEventListener("click", closeBook);
+            document.getElementById("next").addEventListener("click", nextPage);
+            document.getElementById("mobile").addEventListener("click", setMobile);*/
         </script>
     </body>
 </html>
