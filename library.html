@@ -39,15 +39,16 @@
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-gap: 20px;
-                height: 355px;
+                height: 1px;
                 margin: auto;
+                overflow: hidden;
                 text-align: left;
                 width: 555px;
             }
             .cover {
                 border-radius: 5px;
                 font-size: 14px;
-                height: 50px;
+                height: 30px;
                 width: auto;
             }
             .darkBg {
@@ -56,6 +57,12 @@
             .lightBg {
                 background-color: lightyellow;
             }
+            .nav {
+                font-family: 'M PLUS ROUNDED 1C';
+            }
+            .nh {
+                height: 355px;
+            }
             .page {
                 font-family: monospace;
                 margin: 5px;
@@ -63,19 +70,17 @@
             .white {
                 color: rgb(255, 255, 255);
             }
-            #back {
-                font-family: 'M PLUS ROUNDED 1C';
-            }
             #book1 {
                 background-color: rgb(150, 255, 220);
                 border-color: rgb(113, 191, 165);
             }
             #book2 {
+                background-color: rgb(155, 225, 100);
+                border-color: rgb(116, 191, 75);
+            }
+            #book3 {
                 background-color: rgb(255, 240, 150);
                 border-color: rgb(191, 180, 113);
-            }
-            #close {
-                font-family: 'M PLUS ROUNDED 1C';
             }
             #darkMode {
                 border-radius: 10px;
@@ -84,29 +89,30 @@
                 height: 25px;
                 width: auto;
             }
-            #next {
-                font-family: 'M PLUS ROUNDED 1C';
-            }
         </style>
     </head>
     <body>
         <h1>&#128214 NunnerLibrary &#128218</h1>
-        <h2>Scroll down & click on a book to start reading</h2>
+        <h2>Click on a book to start reading</h2>
+        <p>For a tutorial, click on the book titled "How To NunnerLibrary"</p>
         <div class="book lightBg" id="book" style="visibility: hidden;">
             <div class="page" id="pageL"></div>
             <div class="page" id="pageR"></div><br>
         </div>
-        <button id="back" onclick="backPage()" style="visibility: hidden;"><b>←</b></button>
-        <button id="close" onclick="closeBook()" style="visibility: hidden;"><b>&#215;</b></button>
-        <button id="next" onclick="nextPage()" style="visibility: hidden;"><b>→</b></button>
-        <!---->
+        <button class="nav" id="back" onclick="backPage()" style="visibility: hidden;"><b>←</b></button>
+        <button class="nav" id="close" onclick="closeBook()" style="visibility: hidden;"><b>&#215;</b></button>
+        <button class="nav" id="next" onclick="nextPage()" style="visibility: hidden;"><b>→</b></button>
+        <!--
+        <button class="cover" id="book#" onclick="openBook(#)">BOOKTITLE</button>
+        -->
         <h3>Fiction</h3>
-        <button class="cover" id="book2" onclick="openBook(2)">Feet Quest</button>
+        <button class="cover" id="book3" onclick="openBook(3)">Feet Quest</button>
         <h3>Non-Fiction</h3>
         <button class="cover" id="book1" onclick="openBook(1)">Nunnerology</button>
+        <button class="cover" id="book2" onclick="openBook(2)">How To NunnerLibrary</button>
         <!---->
         <br><br><br>
-        <button id="darkMode" onclick="toggleDarkMode()">Turn on dark mode</button>
+        <button class="darkBg white" id="darkMode" onclick="toggleDarkMode()">Turn on dark mode</button>
         <h3><a href="https://nunnerrs.github.io" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
         <!--script src="Scripts/library.js"></script-->
         <script>
@@ -123,27 +129,26 @@
             var mobileOn = false;
             var darkModeOn = false;
             var dm = localStorage.getItem("darkMode");
+            var total = 3;
             
             if (dm == null) {
                 localStorage.setItem("darkMode", false);
                 dm = false;
             };
-            console.log(dm);
-            if (dm == true) { 
-                toggleDarkMode();
-                console.log("dark mode!!");
-            };
 
             const books = {
                 /*
+                // Line capacity: 33 characters
+                // Page capacity: 781 characters
+                // MAKE SURE TO UPDATE THE BOOK TOTAL VARIABLE
                 book: [
-                    "<br><br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Difficulty: <star>★★★★★☆☆☆☆</star>",
+                    "<br><br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star>",
                     "",
                     "",
                 ],
                 */
                 book1: [
-                    "<br><br><br><br><br><br><br><br><bt>Nunnerology</bt><br><br><heading>By Nunners</heading><br><br>Difficulty: <star>★★★☆☆</star>",
+                    "<br><br><br><br><br><br><br><br><bt>Nunnerology</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star>",
                     "This is an autobiography (maybe?) that I wrote so you guys can learn more about me. For a more brief version (mainly relating to code), visit my <a href='https://nunnerrs.github.io/about.html'>about me page</a>.",
                     "Hi there, I'm Julianna, but I'm known as Nunners on this website. I build and code Roblox games for fun. I also enjoy making this website, coded through HTML, JavaScript, and CSS. The coding languages I've learned are HTML, JavaScript, CSS, Luau (used for Roblox), and PHP.",
                     "Three words describing my personality are funny, smart, and creative. I'm a perfectionist (which I never realized actually). I have an older brother and a younger sister. In my free time, I play Roblox or code (this website or Roblox games)(in case you're wondering, my username is Nunnerrs, but I'd probably only friend you if I know you in real life). My friends are Kayleigh, Lianna, and Skylar (I have a lot more but they don't want to be publically mentioned). I'm a big fan of Pokémon and Toilet-Bound Hanako-kun.",
@@ -152,7 +157,14 @@
                     "And that's all I can think of adding for now! I'll update this more as things change.",
                 ],
                 book2: [
-                    "<br><br><br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Difficulty: <star>★★★☆☆</star>",
+                    "<br><br><br><br><br><br><br><bt>How To NunnerLibrary</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆☆</star><br>Press the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below to flip the page",
+                    "Welcome to the NunnerLibrary! This book is a tutorial for the NunnerLibrary. You'll learn what everything does and the meaning of things such as the Reading Level. Books should be read from left to right, top to bottom.",
+                    "To open a book, click on any button under a book genre (<span style='font-family: M PLUS ROUNDED 1C'>&#9888</span> clicking on a book while one is already open will \"override\" your currently open book <span style='font-family: M PLUS ROUNDED 1C'>&#9888</span>). Each book is sorted into a category (e.g. click on Nunnerology under Non-Fiction). The book will open up above all the book buttons along will three different buttons. The <span style='font-family: M PLUS ROUNDED 1C'>←</span> button flips the book one page backward. Since books are displayed two pages at a time, the <span style='font-family: M PLUS ROUNDED 1C'>←</span> button makes the left side of the book display the text two pages backward and vice versa. The <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> button closes the book. The <span style='font-family: M PLUS ROUNDED 1C'>→</span> button flips the book one page forward. (The book continues on the next page, so click on the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below!)",
+                    "The \"Turn on dark mode\" button at the bottom makes the background black and many buttons dark gray. Many people like using dark mode (pretty much everywhere they can), and the darkness can be easier on eyes (especially at night). The \"To The NunnerVerse²\" at the bottom is a link to go back to my homepage.",
+                    "In the NunnerLibrary, you'll find all sorts of books. Most will be original stories, but some could feature characters from existing books or could be based on real books. There's currently a total of " + total + " books in the NunnerLibrary database. If you know me in real life or have my Discord username, you can always let me know any book suggestions you have (either the story outline or the entire story). I hope there's at least one book here you'll enjoy reading :D! (Click the <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> to close the book)",
+                ],
+                book3: [
+                    "<br><br><br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Reading Level: <star>★★★☆☆</star>",
                     "",
                     "Coming Soon!",
                 ],
@@ -160,11 +172,8 @@
 
             function openBook(bookId) {
                 currentBook = bookId;
-                if (darkModeOn == true) {
-                    book.style = "visibility: visible;";
-                } else {
-                    book.style = "visibility: visible;";
-                };
+                book.classList.add("nh");
+                book.style = "visibility: visible;";
                 back.style = "visibility: visible;";
                 close.style = "visibility: visible;";
                 next.style = "visibility: visible;";
@@ -191,11 +200,9 @@
             };
             
             function closeBook() {
-                if (darkModeOn == true) {
-                    book.style = "visibility: hidden;";
-                } else {
-                    book.style = "visibility: hidden;";
-                };
+                currentBook = null;
+                book.classList.remove("nh");
+                book.style = "visibility: hidden;";
                 back.style = "visibility: hidden;";
                 close.style = "visibility: hidden;";
                 next.style = "visibility: hidden;";
@@ -203,7 +210,6 @@
                 pageR.innerHTML = "";
                 pageNumL = -1;
                 pageNumR = 0;
-                currentBook = null;
                 //alert("closed book #" + currentBook);
             };
             
@@ -229,6 +235,12 @@
             };
 
             function toggleDarkMode() {
+                for (let i = 1; i < total; i++) {
+                    let e = document.getElementById("book" + i);
+                    let bg = e.style.backgroundColor;
+                    e.style.backgroundColor = e.style.borderColor;
+                    e.style.borderColor = bg;
+                };
                 if (darkModeOn == true) {
                     document.body.style = "background-color: rgb(255, 255, 255)";
                     let h = document.body.getElementsByTagName("h1")
@@ -240,6 +252,10 @@
                         h[i].classList.remove("white");
                     };
                     h = document.body.getElementsByTagName("h3")
+                    for (let i = 0; i < h.length; i++) {
+                        h[i].classList.remove("white");
+                    };
+                    let p = document.body.getElementsByTagName("p")
                     for (let i = 0; i < h.length; i++) {
                         h[i].classList.remove("white");
                     };
@@ -271,6 +287,10 @@
                     for (let i = 0; i < h.length; i++) {
                         h[i].classList.add("white");
                     };
+                    let p = document.body.getElementsByTagName("p")
+                    for (let i = 0; i < h.length; i++) {
+                        h[i].classList.add("white");
+                    };
                     book.classList.remove("lightBg");
                     book.classList.add("darkBg");
                     book.classList.add("white");
@@ -287,6 +307,11 @@
                     darkModeOn = true;
                 };
             }
+
+            if (dm == true) { 
+                toggleDarkMode();
+                console.log("dark mode!!");
+            };
 
             pageL.innerHTML = "";
             pageR.innerHTML = "";
