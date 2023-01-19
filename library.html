@@ -20,6 +20,7 @@
                 border-radius: 15px;
                 color: rgb(0, 0, 0);
                 font-family: Comic Sans MS, Chalkboard SE;
+                font-size: 35px;
                 height: 75px;
                 width: 185px;
             }
@@ -34,6 +35,7 @@
             }
             .cover {
                 border-radius: 5px;
+                font-size: 14px;
                 height: 50px;
                 width: auto;
             }
@@ -53,6 +55,13 @@
             }
             .white {
                 color: rgb(255, 255, 255);
+            }
+            #darkMode {
+                border-radius: 10px;
+                border-width: 1px;
+                font-size: 12px;
+                height: 25px;
+                width: auto;
             }
             #book1 {
                 background-color: rgb(150, 255, 220);
@@ -74,9 +83,9 @@
             <div class="page" id="pageL"></div>
             <div class="page" id="pageR"></div><br>
         </div>
-        <button id="back" onclick="backPage()" style="visibility: hidden"><b>←</b></button>
-        <button id="close" onclick="closeBook()" style="visibility: hidden"><b>&#215;</b></button>
-        <button id="next" onclick="nextPage()" style="visibility: hidden"><b>→</b></button>
+        <button id="back" onclick="backPage()" style="visibility: hidden;"><b>←</b></button>
+        <button id="close" onclick="closeBook()" style="visibility: hidden;"><b>&#215;</b></button>
+        <button id="next" onclick="nextPage()" style="visibility: hidden;"><b>→</b></button>
         <!---->
         <h3>Fiction</h3>
         <button class="cover" id="book2" onclick="openBook(2)">Feet Quest</button>
@@ -84,8 +93,8 @@
         <button class="cover" id="book1" onclick="openBook(1)">About Nunners</button>
         <!---->
         <br><br><br>
-        <button id="mobile" height="50px" onclick="setMobile()" width="auto">Mobile mode: ON</button>
-        <button id="darkMode" height="50px" onclick="toggleDarkMode()" width="auto">Dark mode: OFF</button>
+        <!--button id="mobile" height="50px" onclick="setMobile()" width="auto">Mobile mode: ON</button-->
+        <button id="darkMode" onclick="toggleDarkMode()">Dark mode: OFF</button>
         <h3><a href="https://nunnerrs.github.io" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
         <!--script src="Scripts/library.js"></script-->
         <script>
@@ -116,21 +125,22 @@
             const books = {
                 /*
                 book: [
-                    "<br><br><br><br><br><br><br><br><page class='title'>TITLE</page><br><br><page class='heading'>By AUTHOR</page>",
+                    "<br><br><br><br><br><br><br><br><br><page class='title'>TITLE</page><br><br><page class='heading'>By AUTHOR</page>",
                     "",
                     "",
                 ],
                 */
                 book1: [
-                    "<br><br><br><br><br><br><br><br><page class='title'>About Nunners</page><br><br><page class='heading'>By Nunners</page>",
-                    "Welcome to the NunnerLibrary! This is an autobiography (maybe?) that I wrote. For a more brief version, visit my <a href='https://nunnerrs.github.io/about.html'>about me page</a>",
-                    "Hi there, I'm Nunners. I build and code Roblox games for fun. I also enjoy making this website, coded through HTML, JavaScript, and CSS. The coding languages I've learned are HTML, JavaScript, CSS, Luau (used for Roblox), and PHP.",
-                    "My real name is Julianna. I have an older brother and a younger sister. In my free time, I play Roblox or code (this website or Roblox games)(in case you're wondering, my username is Nunnerrs. But I'd probably only friend you if I know you in real life). My friends are Lianna and Skylar (I have a lot more but they don't want to be publically mentioned).",
-                    "Here's a list of some of my favorites:<br>• Animals — Hedgehogs, frogs, and ducks<br>• Chips — Cheddar & Sour Cream Ruffles and Cheetos Puffs<br>• Color — Aquamarine (hex #00ffae)<br>• Foods — Yoshinoya beef bowls and SPAM<br>• Manga/Anime — Toilet-Bound Hanako-kun<br>• Music Artists — Snail's House, Kirara Magic, and Tobu<br>• Music Genre — JPop, future bass, and electro house<br>• Video Games — Roblox, Genshin Impact, and BanG Dream!",
+                    "<br><br><br><br><br><br><br><br><br><page class='title'>About Nunners</page><br><br><page class='heading'>By Nunners</page>",
+                    "Welcome to the NunnerLibrary! This is an autobiography (maybe?) that I wrote. For a more brief version, visit my <a href='https://nunnerrs.github.io/about.html'>about me page</a>.",
+                    "Hi there, I'm Julianna, but I'm known as Nunners on this website. I build and code Roblox games for fun. I also enjoy making this website, coded through HTML, JavaScript, and CSS. The coding languages I've learned are HTML, JavaScript, CSS, Luau (used for Roblox), and PHP.",
+                    "Three words describing my personality are funny, smart, and creative. I'm a perfectionist (which i never realized actually). I have an older brother and a younger sister. In my free time, I play Roblox or code (this website or Roblox games)(in case you're wondering, my username is Nunnerrs. But I'd probably only friend you if I know you in real life). My friends are Kayleigh, Lianna, and Skylar (I have a lot more but they don't want to be publically mentioned). I'm a big fan of Pokémon and TBHK.",
+                    "Here's a list of some of my favorites:<br>• Animals — Hedgehogs, frogs, and ducks<br>• Chips — Cheddar & Sour Cream Ruffles and Cheetos Puffs<br>• Color — Aquamarine (hex #00ffae)<br>• Foods — Yoshinoya beef bowls and SPAM<br>• Manga/Anime — Toilet-Bound Hanako-kun<br>• Music Artists — Snail's House, Kirara Magic, and Tobu<br>• Music Genre — JPop, future bass, and electro house<br>• Pokémon — Shaymin and Shuckle<br>• Sport — None<br>• Video Games — Roblox, Genshin Impact, and BanG Dream!",
+                    "Fun facts:<br>• I was born on a couch (i came out too fast lol)<br>• My memory is really good, especially my long-term memory (but sometimes my short-term memory fails me so it balances out :l )<br>• I memorized every single Pokémon in exsistence (before Gen. 9, but I'm memorizing more!) + (a lot of) types of each of them + facts about many + Gen. 6 & 7 cries<br>• My personal website (nunnerrs.github.io) used to be on W3Spaces (i switched cuz they started limiting the free plan :[ )",
                     "And that's all I can think of adding for now! I'll update this more as things change.",
                 ],
                 book2: [
-                    "<br><br><br><br><br><br><br><br><page class='title'>Feet Quest</page><br><br><page class='heading'>By Lianna</page>",
+                    "<br><br><br><br><br><br><br><br><br><page class='title'>Feet Quest</page><br><br><page class='heading'>By Lianna</page>",
                     "",
                     "Coming Soon!",
                 ],
@@ -139,13 +149,13 @@
             function openBook(bookId) {
                 currentBook = bookId;
                 if (darkModeOn == true) {
-                    book.style = "visibility: visible";
+                    book.style = "visibility: visible;";
                 } else {
-                    book.style = "background-color: lightyellow; visibility: visible";
+                    book.style = "background-color: lightyellow; visibility: visible;";
                 };
-                back.style = "visibility: visible";
-                close.style = "visibility: visible";
-                next.style = "visibility: visible";
+                back.style = "visibility: visible;";
+                close.style = "visibility: visible;";
+                next.style = "visibility: visible;";
                 pageL.innerHTML = "";
                 pageR.innerHTML = books["book" + currentBook][0];
                 pageNumL = -1;
@@ -170,13 +180,13 @@
             
             function closeBook() {
                 if (darkModeOn == true) {
-                    book.style = "visibility: hidden";
+                    book.style = "visibility: hidden;";
                 } else {
-                    book.style = "background-color: lightyellow; visibility: hidden";
+                    book.style = "background-color: lightyellow; visibility: hidden;";
                 };
-                back.style = "visibility: hidden";
-                close.style = "visibility: hidden";
-                next.style = "visibility: hidden";
+                back.style = "visibility: hidden;";
+                close.style = "visibility: hidden;";
+                next.style = "visibility: hidden;";
                 pageL.innerHTML = "";
                 pageR.innerHTML = "";
                 pageNumL = -1;
@@ -222,9 +232,9 @@
                         h[i].classList.remove("white");
                     };
                     if (book.style = "visibility: visible;") {
-                        book.style = "background-color: lightyellow; visibility: hidden";
+                        book.style = "background-color: lightyellow; visibility: hidden;";
                     } else {
-                        book.style = "background-color: lightyellow; visibility: hidden";
+                        book.style = "background-color: lightyellow; visibility: visible;";
                     };
                     book.classList.remove("white");
                     book.classList.remove("darkBg");
@@ -256,9 +266,9 @@
                         h[i].classList.add("white");
                     };
                     if (book.style = "background-color: lightyellow; visibility: hidden;") {
-                        book.style = "visibility: visible";
+                        book.style = "visibility: visible;";
                     } else {
-                        book.style = "visibility: visible";
+                        book.style = "visibility: hidden;";
                     };
                     book.classList.add("white");
                     book.classList.add("darkBg");
