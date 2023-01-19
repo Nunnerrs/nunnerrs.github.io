@@ -4,7 +4,7 @@
         <title>NunnerLibrary</title>
         <meta charset="UTF-8">
         <link rel="icon" href="">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c">
         <style>
             a {
                 color: rgb(50, 150, 235);
@@ -13,6 +13,10 @@
                 color: rgb(0, 0, 0);
                 font-family: Comic Sans MS, Chalkboard SE;
                 text-align: center;
+            }
+            bt {
+                font-size: 24px;
+                font-weight: bold;
             }
             button {
                 background-color: rgb(255, 255, 255);
@@ -24,12 +28,19 @@
                 height: 75px;
                 width: 185px;
             }
+            heading {
+                font-size: 18px;
+            }
+            star {
+                color: rgb(255, 225, 0);
+                font-family: 'M PLUS ROUNDED 1C';
+            }
             .book {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-gap: 20px;
                 height: 355px;
-                margin-left: 275px;
+                margin: auto;
                 text-align: left;
                 width: 555px;
             }
@@ -42,26 +53,18 @@
             .darkBg {
                 background-color: rgb(100, 100, 100);
             }
-            .heading {
-                font-size: 18px;
+            .lightBg {
+                background-color: lightyellow;
             }
             .page {
                 font-family: monospace;
                 margin: 5px;
             }
-            .title {
-                font-size: 24px;
-                font-weight: bold;
-            }
             .white {
                 color: rgb(255, 255, 255);
             }
-            #darkMode {
-                border-radius: 10px;
-                border-width: 1px;
-                font-size: 12px;
-                height: 25px;
-                width: auto;
+            #back {
+                font-family: 'M PLUS ROUNDED 1C';
             }
             #book1 {
                 background-color: rgb(150, 255, 220);
@@ -72,14 +75,24 @@
                 border-color: rgb(191, 180, 113);
             }
             #close {
-                font-family: Varela Round;
+                font-family: 'M PLUS ROUNDED 1C';
+            }
+            #darkMode {
+                border-radius: 10px;
+                border-width: 1px;
+                font-size: 12px;
+                height: 25px;
+                width: auto;
+            }
+            #next {
+                font-family: 'M PLUS ROUNDED 1C';
             }
         </style>
     </head>
     <body>
         <h1>&#128214 NunnerLibrary &#128218</h1>
         <h2>Scroll down & click on a book to start reading</h2>
-        <div class="book" id="book" style="background-color: lightyellow; visibility: hidden;">
+        <div class="book lightBg" id="book" style="visibility: hidden;">
             <div class="page" id="pageL"></div>
             <div class="page" id="pageR"></div><br>
         </div>
@@ -90,11 +103,10 @@
         <h3>Fiction</h3>
         <button class="cover" id="book2" onclick="openBook(2)">Feet Quest</button>
         <h3>Non-Fiction</h3>
-        <button class="cover" id="book1" onclick="openBook(1)">About Nunners</button>
+        <button class="cover" id="book1" onclick="openBook(1)">Nunnerology</button>
         <!---->
         <br><br><br>
-        <!--button id="mobile" height="50px" onclick="setMobile()" width="auto">Mobile mode: ON</button-->
-        <button id="darkMode" onclick="toggleDarkMode()">Dark mode: OFF</button>
+        <button id="darkMode" onclick="toggleDarkMode()">Turn on dark mode</button>
         <h3><a href="https://nunnerrs.github.io" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
         <!--script src="Scripts/library.js"></script-->
         <script>
@@ -104,7 +116,6 @@
             var back = document.getElementById("back");
             var close = document.getElementById("close");
             var next = document.getElementById("next");
-            var mobile = document.getElementById("mobile");
             var darkMode = document.getElementById("darkMode");
             var currentBook = null;
             var pageNumL = -1;
@@ -117,30 +128,31 @@
                 localStorage.setItem("darkMode", false);
                 dm = false;
             };
-            
-            if (dm == true) {
+            console.log(dm);
+            if (dm == true) { 
                 toggleDarkMode();
+                console.log("dark mode!!");
             };
 
             const books = {
                 /*
                 book: [
-                    "<br><br><br><br><br><br><br><br><br><page class='title'>TITLE</page><br><br><page class='heading'>By AUTHOR</page>",
+                    "<br><br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Difficulty: <star>★★★★★☆☆☆☆</star>",
                     "",
                     "",
                 ],
                 */
                 book1: [
-                    "<br><br><br><br><br><br><br><br><br><page class='title'>About Nunners</page><br><br><page class='heading'>By Nunners</page>",
-                    "Welcome to the NunnerLibrary! This is an autobiography (maybe?) that I wrote. For a more brief version, visit my <a href='https://nunnerrs.github.io/about.html'>about me page</a>.",
+                    "<br><br><br><br><br><br><br><br><bt>Nunnerology</bt><br><br><heading>By Nunners</heading><br><br>Difficulty: <star>★★★☆☆</star>",
+                    "This is an autobiography (maybe?) that I wrote so you guys can learn more about me. For a more brief version (mainly relating to code), visit my <a href='https://nunnerrs.github.io/about.html'>about me page</a>.",
                     "Hi there, I'm Julianna, but I'm known as Nunners on this website. I build and code Roblox games for fun. I also enjoy making this website, coded through HTML, JavaScript, and CSS. The coding languages I've learned are HTML, JavaScript, CSS, Luau (used for Roblox), and PHP.",
-                    "Three words describing my personality are funny, smart, and creative. I'm a perfectionist (which i never realized actually). I have an older brother and a younger sister. In my free time, I play Roblox or code (this website or Roblox games)(in case you're wondering, my username is Nunnerrs. But I'd probably only friend you if I know you in real life). My friends are Kayleigh, Lianna, and Skylar (I have a lot more but they don't want to be publically mentioned). I'm a big fan of Pokémon and TBHK.",
+                    "Three words describing my personality are funny, smart, and creative. I'm a perfectionist (which I never realized actually). I have an older brother and a younger sister. In my free time, I play Roblox or code (this website or Roblox games)(in case you're wondering, my username is Nunnerrs, but I'd probably only friend you if I know you in real life). My friends are Kayleigh, Lianna, and Skylar (I have a lot more but they don't want to be publically mentioned). I'm a big fan of Pokémon and Toilet-Bound Hanako-kun.",
                     "Here's a list of some of my favorites:<br>• Animals — Hedgehogs, frogs, and ducks<br>• Chips — Cheddar & Sour Cream Ruffles and Cheetos Puffs<br>• Color — Aquamarine (hex #00ffae)<br>• Foods — Yoshinoya beef bowls and SPAM<br>• Manga/Anime — Toilet-Bound Hanako-kun<br>• Music Artists — Snail's House, Kirara Magic, and Tobu<br>• Music Genre — JPop, future bass, and electro house<br>• Pokémon — Shaymin and Shuckle<br>• Sport — None<br>• Video Games — Roblox, Genshin Impact, and BanG Dream!",
-                    "Fun facts:<br>• I was born on a couch (i came out too fast lol)<br>• My memory is really good, especially my long-term memory (but sometimes my short-term memory fails me so it balances out :l )<br>• I memorized every single Pokémon in exsistence (before Gen. 9, but I'm memorizing more!) + (a lot of) types of each of them + facts about many + Gen. 6 & 7 cries<br>• My personal website (nunnerrs.github.io) used to be on W3Spaces (i switched cuz they started limiting the free plan :[ )",
+                    "Fun facts:<br>• I was born on a couch (not in a hospital &#128561)<br>• My memory is really good, especially my long-term memory (but sometimes my short-term memory fails me so it balances out)<br>• I memorized every single Pokémon in exsistence (before Gen. 9, but I'm memorizing more!) + (a lot of) types of each of them + facts about many + Gen. 6 & 7 cries<br>• My personal website (nunnerrs.github.io) used to be on W3Spaces (I switched because they started limiting the free plan)",
                     "And that's all I can think of adding for now! I'll update this more as things change.",
                 ],
                 book2: [
-                    "<br><br><br><br><br><br><br><br><br><page class='title'>Feet Quest</page><br><br><page class='heading'>By Lianna</page>",
+                    "<br><br><br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Difficulty: <star>★★★☆☆</star>",
                     "",
                     "Coming Soon!",
                 ],
@@ -151,7 +163,7 @@
                 if (darkModeOn == true) {
                     book.style = "visibility: visible;";
                 } else {
-                    book.style = "background-color: lightyellow; visibility: visible;";
+                    book.style = "visibility: visible;";
                 };
                 back.style = "visibility: visible;";
                 close.style = "visibility: visible;";
@@ -182,7 +194,7 @@
                 if (darkModeOn == true) {
                     book.style = "visibility: hidden;";
                 } else {
-                    book.style = "background-color: lightyellow; visibility: hidden;";
+                    book.style = "visibility: hidden;";
                 };
                 back.style = "visibility: hidden;";
                 close.style = "visibility: hidden;";
@@ -231,24 +243,18 @@
                     for (let i = 0; i < h.length; i++) {
                         h[i].classList.remove("white");
                     };
-                    if (book.style = "visibility: visible;") {
-                        book.style = "background-color: lightyellow; visibility: hidden;";
-                    } else {
-                        book.style = "background-color: lightyellow; visibility: visible;";
-                    };
-                    book.classList.remove("white");
+                    book.classList.add("lightBg");
                     book.classList.remove("darkBg");
-                    back.classList.remove("white");
+                    book.classList.remove("white");
                     back.classList.remove("darkBg");
-                    close.classList.remove("white");
+                    back.classList.remove("white");
                     close.classList.remove("darkBg");
-                    next.classList.remove("white");
+                    close.classList.remove("white");
                     next.classList.remove("darkBg");
-                    mobile.classList.remove("white");
-                    mobile.classList.remove("darkBg");
-                    darkMode.classList.add("white");
+                    next.classList.remove("white");
                     darkMode.classList.add("darkBg");
-                    darkMode.innerHTML = "Dark Mode: OFF";
+                    darkMode.classList.add("white");
+                    darkMode.innerHTML = "Turn on dark mode";
                     localStorage.setItem("darkMode", false);
                     darkModeOn = false;
                 } else {
@@ -265,24 +271,18 @@
                     for (let i = 0; i < h.length; i++) {
                         h[i].classList.add("white");
                     };
-                    if (book.style = "background-color: lightyellow; visibility: hidden;") {
-                        book.style = "visibility: visible;";
-                    } else {
-                        book.style = "visibility: hidden;";
-                    };
-                    book.classList.add("white");
+                    book.classList.remove("lightBg");
                     book.classList.add("darkBg");
-                    back.classList.add("white");
+                    book.classList.add("white");
                     back.classList.add("darkBg");
-                    close.classList.add("white");
+                    back.classList.add("white");
                     close.classList.add("darkBg");
-                    next.classList.add("white");
+                    close.classList.add("white");
                     next.classList.add("darkBg");
-                    mobile.classList.add("white");
-                    mobile.classList.add("darkBg");
-                    darkMode.classList.remove("white");
+                    next.classList.add("white");
                     darkMode.classList.remove("darkBg");
-                    darkMode.innerHTML = "Dark Mode: ON";
+                    darkMode.classList.remove("white");
+                    darkMode.innerHTML = "Turn off dark mode";
                     localStorage.setItem("darkMode", true);
                     darkModeOn = true;
                 };
