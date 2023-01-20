@@ -97,6 +97,11 @@
                 background-color: rgb(255, 135, 195);
                 border-color: rgb(191, 101, 146);
             }
+            #book6 {
+                background-color: rgb(255, 0, 95);
+                border-color: rgb(191, 0, 71);
+                color: rgb(255, 255, 255);
+            }
             #darkMode {
                 border-radius: 10px;
                 border-width: 1px;
@@ -122,16 +127,17 @@
         <button class="cover" id="book#" onclick="openBook(#)">BOOKTITLE</button>
         -->
         <h3>Fiction</h3>
+        <button class="cover" id="book6" onclick="openBook(6)">Hope</button>
         <button class="cover" id="book3" onclick="openBook(3)">Feet Quest</button>
-        <button class="cover" id="book4" onclick="openBook(4)">I Got Reincarnated As A Cow</button>
         <button class="cover" id="book5" onclick="openBook(5)">Pinky & Mint: Coral</button>
+        <button class="cover" id="book4" onclick="openBook(4)">I Got Reincarnated As A Cow</button>
         <h3>Non-Fiction</h3>
         <button class="cover" id="book2" onclick="openBook(2)">How To NunnerLibrary</button>
         <button class="cover" id="book1" onclick="openBook(1)">Nunnerology</button>
         <!---->
         <br><br><br>
         <button class="darkBg white" id="darkMode" onclick="toggleDarkMode()">Turn on dark mode</button>
-        <h3><a href="https://forms.gle/y4moNrAf4cEXB3jz8" style="color: rgb(210, 180, 0); text-decoration: none;">Write a book for the NunnerLibrary</a>
+        <h3><a href="https://forms.gle/2iZtLzF322Scb9Fc9" style="color: rgb(210, 180, 0); text-decoration: none;">Write a book for the NunnerLibrary</a>
         <h3><a href="https://nunnerrs.github.io" style="color: rgb(0, 125, 100); text-decoration: none;">To the NunnerVerse²</a></h3>
         <!--script src="Scripts/library.js"></script-->
         <script>
@@ -148,7 +154,7 @@
             var mobileOn = false;
             var darkModeOn = false;
             var dm = localStorage.getItem("darkMode");
-            var total = 5;
+            var total = 6;
             
             if (dm == null) {
                 localStorage.setItem("darkMode", false);
@@ -201,6 +207,11 @@
                     "\"I've wanted another Staghorn in my for a while since they've got many branches.\"<br>\"What's this one then?\" Pinky asks, floating beside the purple tube-like coral.<br>\"Those are tube coral,\" she explains.<br>\"I'm hungry. We should really go now…\" Mint says.<br>\"See you again someday! Bye-byeee!!\" Pinky waves a tentacle at the fish.<br>\"Oh, and my name's Liva! Bye!\"<br>Mint and Pinky swim away from the corals, only to see hundreds of more coral below a small cliff in all different colors.<br>\"Wanna go exploring first?\" Mint smiled at Pinky.<br>\"Race ya to that big rock!\" she called, rushing ahead.",
                     "\"W-wait for me! Pinkyyyyy!!!!\" Mint exclaimed, swimming after her.<br><br>The adventures of the two octopi continues!<br>Read the next book, <i>Pinky & Mint: Hermit Crabs</i>, coming out soon! (most likely sometime in February 2023)",
                 ],
+                book6: [
+                    "<br><br><br><br><br><br><br><bt>Hope (Vol. 1)</bt><br><br><heading>Based on the <a href='https://www.youtube.com/watch?v=e0wVNJ-fAeI'>story</a> by JamieThatBloxer</heading><br><br>Written by Nunners<br>Reading Level: <star>★★★☆☆</star>",
+                    "Coming Soon!",
+                    "Coming Soon!",
+                ],
             };
 
             function openBook(bookId) {
@@ -214,6 +225,11 @@
                 pageR.innerHTML = books["book" + currentBook][0];
                 pageNumL = -1;
                 pageNumR = 0;
+            };
+            
+            let bookId = window.location.href.split("=")[1];
+            if (bookId != null) {
+                openBook(bookId);
             };
             
             function backPage() {
