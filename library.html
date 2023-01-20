@@ -70,6 +70,12 @@
             .white {
                 color: rgb(255, 255, 255);
             }
+            /*  Border color is calculated by bgColorValue × 0.75
+            #book# {
+                background-color: rgb(255, 255, 255);
+                border-color: rgb(191, 191, 191);
+            }
+            */
             #book1 {
                 background-color: rgb(150, 255, 220);
                 border-color: rgb(113, 191, 165);
@@ -81,6 +87,10 @@
             #book3 {
                 background-color: rgb(255, 240, 150);
                 border-color: rgb(191, 180, 113);
+            }
+            #book4 {
+                background-color: rgb(255, 135, 195);
+                border-color: rgb(191, 101, 146);
             }
             #darkMode {
                 border-radius: 10px;
@@ -103,17 +113,20 @@
         <button class="nav" id="close" onclick="closeBook()" style="visibility: hidden;"><b>&#215;</b></button>
         <button class="nav" id="next" onclick="nextPage()" style="visibility: hidden;"><b>→</b></button>
         <!--
+        Sorted by alphabetical author | alphabetical title
         <button class="cover" id="book#" onclick="openBook(#)">BOOKTITLE</button>
         -->
         <h3>Fiction</h3>
         <button class="cover" id="book3" onclick="openBook(3)">Feet Quest</button>
+        <button class="cover" id="book4" onclick="openBook(4)">Pinky & Mint: Coral</button>
         <h3>Non-Fiction</h3>
-        <button class="cover" id="book1" onclick="openBook(1)">Nunnerology</button>
         <button class="cover" id="book2" onclick="openBook(2)">How To NunnerLibrary</button>
+        <button class="cover" id="book1" onclick="openBook(1)">Nunnerology</button>
         <!---->
         <br><br><br>
         <button class="darkBg white" id="darkMode" onclick="toggleDarkMode()">Turn on dark mode</button>
-        <h3><a href="https://nunnerrs.github.io" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
+        <h3><a href="https://forms.gle/y4moNrAf4cEXB3jz8" style="color: rgb(210, 180, 0); text-decoration: none;">Write a book for the NunnerLibrary</a>
+        <h3><a href="https://nunnerrs.github.io" style="color: rgb(0, 125, 100); text-decoration: none;">To the NunnerVerse²</a></h3>
         <!--script src="Scripts/library.js"></script-->
         <script>
             var book = document.getElementById("book");
@@ -129,7 +142,7 @@
             var mobileOn = false;
             var darkModeOn = false;
             var dm = localStorage.getItem("darkMode");
-            var total = 3;
+            var total = 4;
             
             if (dm == null) {
                 localStorage.setItem("darkMode", false);
@@ -143,8 +156,8 @@
                 // MAKE SURE TO UPDATE THE BOOK TOTAL VARIABLE
                 book: [
                     "<br><br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star>",
-                    "",
-                    "",
+                    "Coming Soon!",
+                    "Coming Soon!",
                 ],
                 */
                 book1: [
@@ -158,13 +171,18 @@
                 ],
                 book2: [
                     "<br><br><br><br><br><br><br><bt>How To NunnerLibrary</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆☆</star><br>Press the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below to flip the page",
-                    "Welcome to the NunnerLibrary! This book is a tutorial for the NunnerLibrary. You'll learn what everything does and the meaning of things such as the Reading Level. Books should be read from left to right, top to bottom.",
-                    "To open a book, click on any button under a book genre (<span style='font-family: M PLUS ROUNDED 1C'>&#9888</span> clicking on a book while one is already open will \"override\" your currently open book <span style='font-family: M PLUS ROUNDED 1C'>&#9888</span>). Each book is sorted into a category (e.g. click on Nunnerology under Non-Fiction). The book will open up above all the book buttons along will three different buttons. The <span style='font-family: M PLUS ROUNDED 1C'>←</span> button flips the book one page backward. Since books are displayed two pages at a time, the <span style='font-family: M PLUS ROUNDED 1C'>←</span> button makes the left side of the book display the text two pages backward and vice versa. The <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> button closes the book. The <span style='font-family: M PLUS ROUNDED 1C'>→</span> button flips the book one page forward. (The book continues on the next page, so click on the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below!)",
+                    "Welcome to the NunnerLibrary! This book is a tutorial for the NunnerLibrary. You'll learn what everything does and the meaning of things such as the Reading Level. Books should be read from left to right, top to bottom. To open a book, click on any button under a book genre (<span style='font-family: M PLUS ROUNDED 1C'>&#9888</span> clicking on a book while one is already open will \"override\" your currently open book <span style='font-family: M PLUS ROUNDED 1C'>&#9888</span>). Each book is sorted into a category/genre (e.g. click on Nunnerology under Non-Fiction).",
+                    "The Reading Level on the cover shows the \"difficulty\" of the currently open book. It's out of 5 stars, <star>★☆☆☆☆</star> means the book is very easy to read while <star>★★★★★</star> means the book may be pretty difficult to read (because of the vocabulary). Don't worry if you like reading books 2-stars or less, everyone has their likes and dislikes. Most books have a reading level of <star>★★★☆☆</star> (moderate level). The book will open up above all the book buttons along will three different buttons. The <span style='font-family: M PLUS ROUNDED 1C'>←</span> button flips the book one page backward. Since books are displayed two pages at a time, the <span style='font-family: M PLUS ROUNDED 1C'>←</span> button makes the left side of the book display the text two pages backward and vice versa. The <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> button closes the book. The <span style='font-family: M PLUS ROUNDED 1C'>→</span> button flips the book one page forward. (The book continues on the next page, so click on the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below!)",
                     "The \"Turn on dark mode\" button at the bottom makes the background black and many buttons dark gray. Many people like using dark mode (pretty much everywhere they can), and the darkness can be easier on eyes (especially at night). The \"To The NunnerVerse²\" at the bottom is a link to go back to my homepage.",
                     "In the NunnerLibrary, you'll find all sorts of books. Most will be original stories, but some could feature characters from existing books or could be based on real books. There's currently a total of " + total + " books in the NunnerLibrary database. If you know me in real life or have my Discord username, you can always let me know any book suggestions you have (either the story outline or the entire story). I hope there's at least one book here you'll enjoy reading :D! (Click the <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> to close the book)",
                 ],
                 book3: [
                     "<br><br><br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Reading Level: <star>★★★☆☆</star>",
+                    "Coming Soon!",
+                    "Coming Soon!",
+                ],
+                book4: [
+                    "<br><br><br><br><br><br><br><br><bt>Pinky & Mint: Coral</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star>",
                     "",
                     "Coming Soon!",
                 ],
