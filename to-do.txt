@@ -1,6 +1,5 @@
 To-Do:
-• Add ifs to check visibility for dark mode function in library.html
-• Find margin to fit mobile screen sizes for mobile mode function
+• Add page numbers on new row below pages (library.html)
 • Fix incorrect transparency on Raise A Rock plant
 • Add a random username generator (based on Kahoot! randomly-generated usernames) in about.html
 • Gather more adjectives & animals for random username generator
