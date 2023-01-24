@@ -1,25 +1,48 @@
 <!DOCTYPE html>
 <html>
+    <meta charset="UTF-8">
     <head>
         <title>NunnerVerse²</title>
         <style>
+            a {
+                color: rgb(0, 144, 113);
+            }
+            a:hover {
+                color: rgb(23, 212, 155);
+            }
             body {
                 font-family: Comic Sans MS, Chalkboard SE;
-                background-color: #ccffdf;
-                color: #00aa88;
+                background-color: rgb(204, 255, 223);
+                color: rgb(0, 50, 35);
                 text-align: center;
             }
             h1 {
-                color: #006662;
+                color: rgb(0, 102, 99);
             }
             h2 {
-                color: #009070;
+                color: rgb(0, 135, 105);
             }
-            a:link {
-                color: #00ccba;
+            h3, h5, .special {
+                color: rgb(0, 150, 120);
             }
-            a:visited {
-                color: #00ccba;
+            .project {
+                height: auto;
+                margin: 5px;
+            }
+            /*.special {
+                color: rgb(0, 135, 105);
+            }*/
+            #projects {
+                background-color: rgb(150, 240, 200);
+                border-radius: 10px;
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                grid-gap: 15px;
+                height: auto;
+                margin: auto;
+                overflow: hidden;
+                text-align: center;
+                width: 600px;
             }
         </style>
     </head>
@@ -28,22 +51,92 @@
         <p><b>PROJECTNAME:</b> <a href="https://nunnerrs.github.io/PROJECT.html">https://nunnerrs.github.io/PROJECT.html</a></p>
         -->
         <h1>welcome to the NunnerVerse² (aka homepage)!</h1>
-        <h2>cool web projects i made or something:</h2>
-        <p><b>about me (+ updates on current project & extras!):</b> <a href="https://nunnerrs.github.io/about.html">https://nunnerrs.github.io/about.html</a></p>
-        <p><b>collection of online fun stuffs (unblocked games):</b> <a href="https://nunnerrs.github.io/games.html">https://nunnerrs.github.io/games.html</a></p>
-        <p><b>lucky pull simulator (gacha simulator):</b> <a href="https://nunnerrs.github.io/lucky-pull.html">https://nunnerrs.github.io/lucky-pull.html</a></p>
-        <p><b>(spotlight project) NunnerLibrary (read "books" by me and others online):</b> <a href="https://nunnerrs.github.io/library.html">https://nunnerrs.github.io/library.html</a></p>
-        <p><b>skylar's art gallery:</b> <a href="https://nunnerrs.github.io/skylar-art.html">https://nunnerrs.github.io/skylar-art.html</a></p>
-        <p><b>lianna's art gallery:</b> <a href="https://nunnerrs.github.io/lianna-art.html">https://nunnerrs.github.io/lianna-art.html</a></p>
-        <p><b>(very WIP) refractory (gonna be a cool game):</b> <a href="https://nunnerrs.github.io/refractory.html">https://nunnerrs.github.io/refractory.html</a></p>
-        <p><b>clicker gaem:</b> <a href="https://nunnerrs.github.io/clicker.html">https://nunnerrs.github.io/clicker.html</a></p>
-        <p><b>(big revamp soon) raise a pet rock:</b> <a href="https://nunnerrs.github.io/raise-a-rock.html">https://nunnerrs.github.io/raise-a-rock.html</a></p>
-        <p><b>(unfinished) checkboxes:</b> <a href="https://checkboxes.w3spaces.com/">https://checkboxes.w3spaces.com/</a></p>
-        <p><b>winston (from khan academy):</b> <a href="https://nunnerrs.w3spaces.com/winston.html">https://nunnerrs.w3spaces.com/winston.html</a></p>
+        <h2>cool web projects i made or something</h2>
+        <h3>click on title to view project :]</h3>
+        <div id="projects">
+            <!--
+            <div class="project">
+                <h3><a href="../PROJECT.html">PROJECTNAME</a></h3>
+                <p>PROJECTINFO</p>
+                <p class="special"></p>
+            </div>
+            -->
+            <div class="project">
+                <h3><a href="../about.html">about me</a></h3>
+                <p>some info about me. also features the project i'm currently working on along with some random extras.</p>
+                <p class="special">spotlight project: <a href="../library.html">NunnerLibrary</a></p>
+            </div>
+            <div class="project">
+                <h3><a href="../games.html">collection of online fun stuffs</a></h3>
+                <p>a list of unblocked games & game websites.</p>
+                <p class="special"></p>
+            </div>
+            <div class="project">
+                <h3><a href="../lucky-pull.html">lucky pull simulator</a></h3>
+                <p>a gachapon simulator where you can test your luck. includes genshin impact wish, bandori banner, & more!</p>
+                <p class="special">i play genshin impact 🤓</p>
+            </div>
+            <div class="project">
+                <h3><a href="../library.html">NunnerLibrary</a></h3>
+                <p>online library with e-books written by me, my friends, and my family. you can suggest your own story ideas too!</p>
+                <p class="special">newest book: <a href="../library.html?bookId=6"><i>Hope Vol. 1</i></a></p>
+            </div>
+            <div class="project">
+                <h3><a href="../skylar-art.html">Skylar's Art Gallery</a></h3>
+                <p>an art gallery featuring drawings by my friend Skylar.</p>
+                <p class="special">new sheep art! 7 new drawings</p>
+            </div>
+            <div class="project">
+                <h3><a href="../lianna-art.html">Lianna's Art Gallery</a></h3>
+                <p>an art gallery displaying drawings by my friend Lianna.</p>
+                <p class="special"><i>she doesn't have any art yet tho—</i></p>
+            </div>
+        </div>
+        <br>
         <h2>epic Roblox games i made*</h2>
-        <p><b>(currently working on)(AFK to unlock gears) Custom Gear Testing (everything by me except for meshes and decals):</b> <a href="https://www.roblox.com/games/11257556108/Custom-Gear-Testing-AFK-Game">https://www.roblox.com/games/11257556108/Custom-Gear-Testing-AFK-Game</a></p>
-        <p><b>(grow plants, catch bunnies)(practically everything is made by me) plant growing simulator:</b> <a href="https://www.roblox.com/games/7121390111/plant-growing-simulator">https://www.roblox.com/games/7121390111/plant-growing-simulator</a></p>
-        <p><b>(talk to npcs, explore)(everything made by me except some assets) random models:</b> <a href="https://www.roblox.com/games/6905424287/random-models">https://www.roblox.com/games/6905424287/random-models</a></p>
-        <h5><i>*you need to make a Roblox account first to play them</i> (go <a href="https://www.roblox.com/signup">here</a> to make an account)</h5>
+        <h3>i wrote all the scripts for these and built all the models</h3>
+        <tiny style="color: rgb(144, 232, 198); font-size: 1px">(except for 2 models in RM but thats only cuz i was transitioning into my developer phase ok so live with it)</tiny>
+        <div id="projects">
+            <div class="project">
+                <h3><a href="https://www.roblox.com/games/11257556108/Custom-Gear-Testing-AFK-Game">Custom Gear Testing</a></h3>
+                <p>AFK while holding out a gear to earn Testing Time (TT). Unlock over 30+ custom-made gears with enough TT! </p>
+                <p class="special">newest updates are viewable in game description</p>
+            </div>
+            <div class="project">
+                <h3><a href="https://www.roblox.com/games/7121390111/plant-growing-simulator">plant growing simulator</a></h3>
+                <p>grow plants and sell them for money. you can catch bunnies, search through bushes, and more!</p>
+                <p class="special">Jin is back with his limited-time Ice Pot! Buy it before winter's over</p>
+            </div>
+            <div class="project">
+                <h3><a href="">random models</a></h3>
+                <p>a game featuring random models i made. this is my first roblox game where i applied my epic Luau knowledge</p>
+                <p class="special"></p>
+            </div>
+        </div>
+        <h5 style="font-weight: normal"><i>*you need to make a Roblox account first to play them</i> (go <a href="https://www.roblox.com/signup">here</a> to make an account)</h5>
+        <br>
+        <h2>unfinished stuff you can check out</h2>
+        <div id="projects">
+            <div class="project">
+                <h3><a href="../raise-a-rock.html">raise a pet rock</a></h3>
+                <p>a game where you grow and raise your very own pet rock!</p>
+                <p class="special">HUGE REVAMP SOON!</p>
+            </div>
+            <div class="project">
+                <h3><a href="../clicker.html">clicker gaem</a></h3>
+                <p>press a button to click. upgrade your click at certain milestones.</p>
+                <p class="special">data saving soon</p>
+            </div>
+            <div class="project">
+                <h3><a href="https://checkboxes.w3spaces.com">☑️ Checkboxes ☑️</a></h3>
+                <p>a billion checkboxes lol. i guess you can make cool pixel art with it or something.</p>
+                <p class="special"></p>
+            </div>
+            <div class="project">
+                <h3><a href="../refractory.html">Refractory</a></h3>
+                <p>(future concept) catch the good objects, shoot the bad ones, and don't run out of lives!</p>
+                <p class="special">very very work in progress</p>
+            </div>
+        </div>
     </body>
 </html>
