@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>raise a rock</title>
-        <link id="favicon" rel="icon" type="image/x-icon" href="Assets/baby-rock.png">
+        <title>raise a pet rock</title>
+        <link id="favicon" rel="icon" type="image/x-icon" href="Assets/Raise-A-Rock/baby-rock.png">
         <style>
-            html {
-                font-family: Comic Sans MS, Chalkboard SE;
-            }
-
             button {
                 background-color: rgb(150, 150, 150);
                 border-radius: 5px;
                 border-width: 0px;
-                color: white;
+                color: rgb(255, 255, 255);
                 cursor: click;
                 font-family: Comic Sans MS, Chalkboard SE;
             }
-
+            body {
+                background: rgb(255, 255, 255);
+                font-family: Comic Sans MS, Chalkboard SE;
+                text-align: center;
+            }
             select {
                 background-color: rgb(200, 200, 200);
                 border-radius: 5px;
@@ -25,27 +25,25 @@
                 font-family: Chalkboard SE;
                 text-align: center;
             }
-
             .submit {
                 background-color: rgb(125, 215, 125);
                 border-radius: 5px;
                 border-width: 0px;
-                color: white;
+                color: rgb(255, 255, 255);
                 font-family: Chalkboard SE;
             }
         </style>
     </head>
-    <body style="background-color:White;">
-        <h1>"<a id="name1">Rocky</a>"</h1>
+    <body>
+        <h1>"<name>Rocky</name>"</h1>
         <h2>Age: <a id="age">1</a></h2>
         <h3 id="notif1"></h3>
         <h3 id="notif2"></h3>
         <h3 id="notif3"></h3>
-        <img id="rock" src="Assets/baby-rock.png" height="125px" width="auto" draggable="false" ondragover="override(event);" ondrop="feed(event);"><br>
-        <img id="equip" src="Assets/plant.png" width="325px" height="75px" style="transform: scaleX(0.1); visibility: hidden;" draggable="true" ondragstart="saveFood(event);"><br>
-        <button id="sleepButton" onclick="lights();">Toggle Lights (Rest <a id="name2">Rocky</a>)</button><br>
+        <img id="rock" src="../Assets/Raise-A-Rock/baby-rock.png" height="125px" width="auto" draggable="false" ondragover="override(event);" ondrop="feed(event);"><br>
+        <img id="tool" src="../Assets/Raise-A-Rock/plant.png" width="auto" height="75px" style="visibility: hidden;" draggable="true" ondragstart="saveFood(event);">
         <p id="fullDisplay"><a id="fullPercent">100</a>% full</p>
-        <button id="feedButton" onclick="toggleFood();">Feed <a id="name3">Rocky</a></button><br>
+        <button id="feedButton" onclick="toggleFood();">Feed <name>Rocky</name></button><br>
         <label id="foodLabel" for="changeFood" style="visibility: hidden;">Selected food: </label>
         <select id="changeFood" style="visibility: hidden;">
             <option value="plant">Plant</option>
@@ -54,16 +52,16 @@
         </select>
         <button id="setFood" style="visibility: hidden;" onClick="changeFood();" class="submit">Save Changes</button>
         <p id="cleanDisplay"><a id="cleanPercent">100</a>% clean</p>
-        <button id="bathButton" onclick="toggleBath();">Bathe <a id="name4">Rocky</a></button><br>
+        <button id="bathButton">Bathe <name>Rocky</name></button><br>
         <label id="bathLabel" for="changeTool" style="visibility: hidden;">Selected tool: </label>
         <select id="changeTool" style="visibility: hidden;">
             <option value="shower">Shower Head</option>
             <option value="sponge">Sponge</option>
         </select>
-        <button id="setTool" style="visibility: hidden;" onClick="changeTool();" class="submit">Save Changes</button>        <p id="happyDisplay"><a id="happyPercent">100</a>% happy</p>
+        <button id="setTool" style="visibility: hidden;" onclick="changeTool();" class="submit">Save Changes</button>        <p id="happyDisplay"><a id="happyPercent">100</a>% happy</p>
         <p id="happyDisplay"><a id="happyPercent">100</a>% happy</p>
-        <button id="playButton" onclick="play();">Play with <a id="name5">Rocky</a></button><br><br>
-        <button id="renameButton" onclick="rename();">Rename <a id="name6">Rocky</a></button>
+        <button id="playButton" onclick="play();">Play with <name>Rocky</name></button><br><br>
+        <button id="renameButton" onclick="rename();">Rename <name>Rocky</name></button>
         <script src="Scripts/raise-a-rock.js"></script>
     </body>
 </html>
