@@ -1,23 +1,27 @@
-/*
-To Do:
-• delete change food button & food img on death
-*/ 
 var age = 1;
-const defaultNames = ["Rocky", "Rocko", "Pebbles", "The Rock", "BaRock Obama"];
-var name = defaultNames[Math.floor(Math.random() * 5)];
-for (let i = 1; i <= 6; i++) {
-    document.getElementById("name" + i).innerHTML = name;
+const rocks {
+    good: {},
+    neutral: {},
+    bad: {}
 };
-var food = "plant";
-var bathTool = "shower";
+
+const bools = [true, false, false];
+
+const defaultNames = ["Rocky", "Rocko", "Pebbles", "The Rock", "BaRock Obama"];
+var name = defaultNames[Math.floor(Math.random() * (defaultNames.length - 1))];
+
+let names = document.getElementsByTagName("name");
+for (let i = 0; i < names.length; i++) {
+    names[i].innerHTML = name;
+};
+
 const faves = [Math.floor(Math.random() * 2), Math.floor(Math.random() * 2), Math.floor(Math.random() * 2)];
 var full = document.getElementById("fullPercent");
 var clean = document.getElementById("cleanPercent");
 var happy = document.getElementById("happyPercent");
-var lightsOn = true;
 var visibleF = false;
 var visibleC = false;
-var mode = "";
+var ticking = false;
 
 var favicon = document.getElementById("favicon");
 var ageDisplay = document.getElementById("age");
@@ -25,7 +29,7 @@ var rock = document.getElementById("rock");
 var notif1 = document.getElementById("notif1");
 var notif2 = document.getElementById("notif2");
 var notif3 = document.getElementById("notif3");
-var equip = document.getElementById("equip");
+var tool = document.getElementById("tool");
 var sleepButton = document.getElementById("sleepButton");
 var feedButton = document.getElementById("feedButton");
 var foodLabel = document.getElementById("foodLabel");
@@ -37,194 +41,43 @@ var changeTool = document.getElementById("changeTool");
 var setTool = document.getElementById("setTool");
 var playButton = document.getElementById("playButton");
 var renameButton = document.getElementById("renameButton");
-function lights() {
-    if (lightsOn == false) {
-        notif1.innerHTML = "";
-        notif2.innerHTML = "";
-        notif3.innerHTML = "";
-        document.getElementsByTagName("body")[0].style = "background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);";
-        age += 0.0625;
-        full.innerHTML = full.innerHTML - 5;
-        clean.innerHTML = clean.innerHTML - 5;
-        happy.innerHTML = happy.innerHTML - 5;
-        lightsOn = true;
-    } else {
-        const sleepNoises = ["*sleeps*", "*zzZZ*", "(( _ _ ))..zzzZZ", "(_ _).oO"];
-        notif1.innerHTML = name + " is currently asleep. Toggle the lights again to start a new day (this will increase " + name + "'s age but will lower their stats)";
-        notif2.innerHTML = sleepNoises[Math.floor(Math.random() * 4)];
-        document.getElementsByTagName("body")[0].style = "background-color: rgb(25, 25, 25); color: rgb(255, 255, 255);";
-        lightsOn = false;
-    };
-    ageDisplay.innerHTML = age;
-    full = document.getElementById("fullPercent");
-    clean = document.getElementById("cleanPercent");
-    happy = document.getElementById("happyPercent");
-        if (full.innerHTML <= 30 && lightsOn == true) {
-            notif1.innerHTML = name + "'s hunger is low!";
-        } else if (lightsOn == true) {
-            notif1.innerHTML = "";
+
+function tick() {
+    if (ticking == true) {
+        age += 0.01;
+        ageDisplay.innerHTML = age;
+        
+        let hungry = bools[Math.floor(Math.random() * (bools.length - 1))];
+        if (hungry == true) {
+            full.innerHTML = Number(full.innerHTML) - 2;
         };
-        if (full.innerHTML < 1) {
-            sleepButton.remove();
-            feedButton.remove();
-            bathButton.remove();
-            playButton.remove();
-            renameButton.remove();
-            notif1.innerHTML = "Oh no! Your pet rock, " + name + ", has died of starvation. Reload the page to raise a new rock";
+        
+        let dirty = bools[Math.floor(Math.random() * (bools.length - 1))];
+        if (dirty == true) {
+            clean.innerHTML = Number(clean.innerHTML) - 2;
         };
-        if (clean.innerHTML <= 30 && lightsOn == true) {
-            notif2.innerHTML = name + "'s cleanliness is low!";
-        } else if (lightsOn == true) {
-            notif2.innerHTML = "";
+        
+        let bored = bools[Math.floor(Math.random() * (bools.length - 1))];
+        if (bored == true) {
+            bored.innerHTML = Number(bored.innerHTML) - 2;
         };
-        if (clean.innerHTML < 1) {
-            if (sleepButton) {
-                sleepButton.remove();
-            };
-            if (feedButton) {
-                feedButton.remove();
-            };
-            if (bathButton) {
-                bathButton.remove();
-            };
-            if (playButton) {
-                playButton.remove();
-            };
-            if (renameButton) {
-                renameButton.remove();
-            };
-            notif2.innerHTML = "Uh oh! Your pet rock, " + name + ", got sick from the germs on them and died. Reload the page to raise a new rock";
-        };
-        if (happy.innerHTML <= 30 && lightsOn == true) {
-            notif3.innerHTML = name + "'s happiness is low!";
-        } else {
-            notif3.innerHTML = "";
-        };
-        if (happy.innerHTML < 1) {
-            if (sleepButton) {
-                sleepButton.remove();
-            };
-            if (feedButton) {
-                feedButton.remove();
-            };
-            if (bathButton) {
-                bathButton.remove();
-            };
-            if (playButton) {
-                playButton.remove();
-            };
-            if (renameButton) {
-                renameButton.remove();
-            };
-            notif3.innerHTML = "D: Your pet rock, " + name + ", died from sadness. Reload the page to raise a new rock";
-        };
-        if (age >= 1.5 && age <= 1.75) {
-            notif1.innerHTML = name + " grew older!";
-            if (full > 70 && clean > 70 && happy > 70) {
-                rock.src = "https://nunners.w3spaces.com/kid-rock-happy.png";
-                rock.height = "200px";
-                favicon.href = "https://nunners.w3spaces.com/kid-rock-happy.png";
+        
+        if (age >= 2.5 && age < 7.5) {
+            if (full >= 75 && clean >= 75 && happy >= 75) {
+                rock.src = "../Assets/Raise-A-Rock/kid-rock-happy.png";
             } else {
-                rock.src = "https://nunners.w3spaces.com/kid-rock-sad.png";
-                rock.height = "200px";
-                favicon.href = "https://nunners.w3spaces.com/kid-rock-sad.png";
+                rock.src = "../Assets/Raise-A-Rock/kid-rock-sad.png";
             };
-        };
-    };
-    function toggleFood() {
-        if (visibleF == true) {
-            equip.style = "transform: scaleX(0.25); visibility: hidden;";
-            foodLabel.style = "visibility: hidden;";
-            changeFood.style = "visibility: hidden;";
-            setFood.style = "visibility: hidden;";
-            visibleF = false;
-            mode = "";
-        } else {
-            switch(food) {
-                case "plant":
-                    equip.src = "https://nunners.w3spaces.com/plant.png";
-                case "white":
-                    equip.src = "https://nunners.w3spaces.com/white-pebbles.png";
-                case "variety":
-                    equip.src = "https://nunners.w3spaces.com/variety-pebbles.png";
-            }
-            equip.style = "transform: scaleX(0.25); visibility: visible;";
-            foodLabel.style = "visibility: visible;";
-            changeFood.style = "visibility: visible;";
-            setFood.style = "visibility: visible;";
-            bathLabel.style = "visibility: hidden;";
-            changeTool.style = "visibility: hidden;";
-            setTool.style = "visibility: hidden;";
-            visibleF = true;
-            visibleC = false;
-            mode = "f";
-        };
-    };
-    function override(event) {
-        event.preventDefault();
-    };
-    function feed(event) {
-        event.preventDefault();
-        const eatingNoises = ["Yum!", "Mmmm...", "Nom nom", "*eats*", "*bites*", "*chomp*", "*enjoyz food*"]
-        notif1.innerHTML = eatingNoises[Math.floor(Math.random() * 7)];
-        if (Number(full.innerHTML) + 5 >= 100) {
-            full.innerHTML = 100;
-        } else {
-            full.innerHTML = Number(full.innerHTML) + 5;
-        };
-    };
-    function changeFood() {
-        alert(changeFood.name);
-        if (changeFood.name == "plant") {
-            food = "plant";
-            equip.src = "../plant.png";
-        } else if (changeFood.name == "white") {
-            food = "white";
-            equip.src = "../white-pebbles.png";
-        } else {
-            food = "variety"
-            equip.src = "../variety-pebbles.png";
-        };
-    };
-    function toggleBath() {
-        if (visibleC == true) {
-            equip.style = "transform: scaleX(0.25); visibility: hidden;";
-            bathLabel.style = "visibility: hidden;";
-            changeTool.style = "visibility: hidden;";
-            setTool.style = "visibility: hidden;";
-            visibleC = false;
-        } else {
-            equip.style = "transform: scaleX(0.25); visibility: visible;";
-            bathLabel.style = "visibility: visible;";
-            changeTool.style = "visibility: visible;";
-            setTool.style = "visibility: visible;";
-            foodLabel.style = "visibility: hidden;";
-            changeFood.style = "visibility: hidden;";
-            setFood.style = "visibility: hidden;";
-            visibleC = true;
-            visibleF = false;
-        };
-    };
-    function bathe() {
-        if (Number(clean.innerHTML) + 5 < 100) {
-            clean.innerHTML = Number(clean.innerHTML) + 5;
-        } else {
-            clean.innerHTML = 100;
-        };
-    };
-    function play() {
-        if (Number(happy.innerHTML) + 5 < 100) {
-            happy.innerHTML = Number(happy.innerHTML) + 5;
-        } else {
-            happy.innerHTML = 100;
-        };
-    };
-    function rename() {
-        let newName = prompt("What would you like to rename " + name + " to?");
-        if (newName !== "" && newName !== null && newName !== " ") {
-            for (let i = 1; i <= 6; i++) {
-                document.getElementById("name" + i).innerHTML = newName;
+        } else if (age <= 7.5) {
+            if (full >= 90 && clean >= 90 && happy >= 90) {
+                rock.src = rocks[good][Math.floor(Math.random() * (rocks[good].length - 1));
+            } else if (full >= 70 && full < 90 && clean >= 70 && clean < 90 && happy >= 70 && happy < 90) {
+                rock.src = rocks[neutral][Math.floor(Math.random() * (rocks[neutral].length - 1));
+            } else if (full < 70 && clean < 70 && happy < 70) {
+                rock.src = rocks[bad][Math.floor(Math.random() * (rocks[bad].length - 1));
             };
         };
     };
 };
+
+window.onload = setInterval(tick, 1000);
