@@ -40,29 +40,213 @@
         <h3 id="notif1"></h3>
         <h3 id="notif2"></h3>
         <h3 id="notif3"></h3>
-        <img id="rock" src="../Assets/Raise-A-Rock/baby-rock.png" height="125px" width="auto" draggable="false" ondragover="override(event);" ondrop="feed(event);"><br>
-        <img id="tool" src="../Assets/Raise-A-Rock/plant.png" width="auto" height="75px" style="visibility: hidden;" draggable="true" ondragstart="saveFood(event);">
+        <img id="rock" src="../Assets/Raise-A-Rock/baby-rock.png" height="125px" width="auto" draggable="false" ondragover="override(event);" ondrop="use(event);"><br>
+        <img id="tool" src="../Assets/Raise-A-Rock/plant.png" width="auto" height="75px" style="visibility: hidden;" draggable="true" ondragstart="saveTool(event);">
         <p id="fullDisplay"><a id="fullPercent">100</a>% full</p>
         <button id="feedButton" onclick="toggleFood();">Feed <name>Rocky</name></button><br>
-        <label id="foodLabel" for="changeFood" style="visibility: hidden;">Selected food: </label>
-        <select id="changeFood" style="visibility: hidden;">
+        <label id="foodLabel" for="foodList" style="visibility: hidden;">Selected food: </label>
+        <select id="foodList" style="visibility: hidden;">
             <option value="plant">Plant</option>
             <option value="variety">Variety Pebbles</option>
             <option value="white">White Pebbles</option>
         </select>
-        <button id="setFood" style="visibility: hidden;" onClick="changeFood();" class="submit">Save Changes</button>
+        <button id="setFood" style="visibility: hidden;" onclick="applyFood();" class="submit">Save Changes</button>
         <p id="cleanDisplay"><a id="cleanPercent">100</a>% clean</p>
         <button id="bathButton">Bathe <name>Rocky</name></button><br>
-        <label id="bathLabel" for="changeTool" style="visibility: hidden;">Selected tool: </label>
-        <select id="changeTool" style="visibility: hidden;">
+        <label id="bathLabel" for="toolList" style="visibility: hidden;">Selected tool: </label>
+        <select id="toolList" style="visibility: hidden;">
             <option value="shower">Shower Head</option>
             <option value="sponge">Sponge</option>
         </select>
-        <button id="setTool" style="visibility: hidden;" onclick="changeTool();" class="submit">Save Changes</button>        <p id="happyDisplay"><a id="happyPercent">100</a>% happy</p>
+        <button id="setTool" style="visibility: hidden;" onclick="applyTool();" class="submit">Save Changes</button>
         <p id="happyDisplay"><a id="happyPercent">100</a>% happy</p>
         <button id="playButton" onclick="play();">Play with <name>Rocky</name></button><br><br>
         <button id="renameButton" onclick="rename();">Rename <name>Rocky</name></button>
-        <script src="Scripts/raise-a-rock.js"></script>
+        <!--script src="Scripts/raise-a-rock.js"></script-->
+        <script>
+            var age = 1;
+            const rocks {
+                good: {
+                    good: [""],
+                    neutral: ["Assets/Raise-A-Rock/", "", ""],
+                    bad: [""],
+                },
+                bad: {
+                    good: ["Assets/Raise-A-Rock/bricks.png", "Assets/Raise-A-Rock/man-rock.png", "Assets/Raise-A-Rock/expressionless.png"],
+                    neutral: ["Assets/Raise-A-Rock/potato-rock.png", "", ""],
+                    bad: [""],
+                };
+            };
+
+            const bools = [true, false, false];
+
+            const defaultNames = ["Rocky", "Rocko", "Pebbles", "The Rock", "BaRock Obama"];
+            var name = defaultNames[Math.floor(Math.random() * (defaultNames.length - 1))];
+
+            let names = document.getElementsByTagName("name");
+            for (let i = 0; i < names.length; i++) {
+                names[i].innerHTML = name;
+            };
+
+            const faves = [Math.floor(Math.random() * 2), Math.floor(Math.random() * 2), Math.floor(Math.random() * 2)];
+            var full = document.getElementById("fullPercent");
+            var clean = document.getElementById("cleanPercent");
+            var happy = document.getElementById("happyPercent");
+            var visibleF = false;
+            var visibleC = false;
+            var ticking = false;
+
+            var favicon = document.getElementById("favicon");
+            var ageDisplay = document.getElementById("age");
+            var rock = document.getElementById("rock");
+            var notif1 = document.getElementById("notif1");
+            var notif2 = document.getElementById("notif2");
+            var notif3 = document.getElementById("notif3");
+            var tool = document.getElementById("tool");
+            var sleepButton = document.getElementById("sleepButton");
+            var feedButton = document.getElementById("feedButton");
+            var foodLabel = document.getElementById("foodLabel");
+            var foodList = document.getElementById("foodList");
+            var setFood = document.getElementById("setFood");
+            var bathButton = document.getElementById("bathButton");
+            var bathLabel = document.getElementById("bathLabel");
+            var toolList = document.getElementById("toolList");
+            var setTool = document.getElementById("setTool");
+            var playButton = document.getElementById("playButton");
+            var renameButton = document.getElementById("renameButton");
+
+            function tick() {
+                setInterval(function() {
+                    if (ticking == true) {
+                        age += 0.01;
+                        ageDisplay.innerHTML = age;
+                        
+                        let hungry = bools[Math.floor(Math.random() * (bools.length - 1))];
+                        if (hungry == true) {
+                            full.innerHTML = Number(full.innerHTML) - 2;
+                        };
+            
+                        let dirty = bools[Math.floor(Math.random() * (bools.length - 1))];
+                        if (dirty == true) {
+                            clean.innerHTML = Number(clean.innerHTML) - 2;
+                        };
+                        
+                        let bored = bools[Math.floor(Math.random() * (bools.length - 1))];
+                        if (bored == true) {
+                            bored.innerHTML = Number(bored.innerHTML) - 2;
+                        };
+                        
+                        if (age >= 2.5 && age < 7.5) {
+                            if (full >= 75 && clean >= 75 && happy >= 75) {
+                                rock.src = "Assets/Raise-A-Rock/kid-rock-happy.png";
+                            } else {
+                                rock.src = "Assets/Raise-A-Rock/kid-rock-sad.png";
+                            };
+                        } else if (age <= 7.5) {
+                            if (full >= 90 && clean >= 90 && happy >= 90) {
+                                if (rock.src == "Assets/Raise-A-Rock/kid-rock-happy.png") {
+                                    rock.src = rocks["good"]["good"][Math.floor(Math.random() * (rocks["good"]["good"].length - 1));
+                                } else {
+                                    rock.src = rocks["bad"]["good"][Math.floor(Math.random() * (rocks["bad"]["good"].length - 1));
+                                };
+                            } else if (full >= 70 && full < 90 && clean >= 70 && clean < 90 && happy >= 70 && happy < 90) {
+                                if (rock.src == "Assets/Raise-A-Rock/kid-rock-happy.png") {
+                                    rock.src = rocks["good"]["neutral"][Math.floor(Math.random() * (rocks["good"]["neutral"].length - 1));
+                                } else {
+                                    rock.src = rocks["bad"]["neutral"][Math.floor(Math.random() * (rocks["bad"]["neutral"].length - 1));
+                                };
+                            } else if (full < 70 && clean < 70 && happy < 70) {
+                                if (rock.src == "Assets/Raise-A-Rock/kid-rock-happy.png") {
+                                    rock.src = rocks["good"]["bad"][Math.floor(Math.random() * (rocks["good"]["bad"].length - 1));
+                                } else {
+                                    rock.src = rocks["bad"]["bad"][Math.floor(Math.random() * (rocks["bad"]["bad"].length - 1));
+                                };
+                            };
+                        };
+                    };
+                }), 1000);
+            };
+
+            function override(event) {
+                event.preventDefault();
+            };
+
+            function saveTool(event) {
+                event.dataTransfer.setData("tool", event.target.id);
+            };
+
+            function use(event) {
+                event.preventDefault();
+                let data = event.dataTransfer.getData("tool");
+                if (data == "plant" || data == "variety" || data == "white") {
+                   full.innerHTML = Number(full.innerHTML) + 1;
+                };
+                if (data == "shower" || data == "sponge") {
+                    clean.innerHTML = Number(clean.innerHTML) + 1;
+                };
+            };
+            
+            function toggleFood() {
+                if (visibleF == true) {
+                    visibleF = false;
+                    foodLabel.style = "visibility: hidden;";
+                    changeFood.style = "visibility: hidden;";
+                    setFood.style = "visibility: hidden;";
+                } else {
+                    visibleF = true;
+                    foodLabel.style = "visibility: visible;";
+                    changeFood.style = "visibility: visible;";
+                    setFood.style = "visibility: visible;";
+                };
+                if (visibleC == true) {
+                    visibleC = false;
+                    bathLabel.style = "visibility: hidden;";
+                    changeTool.style = "visibility: hidden;";
+                    setTool.style = "visibility: hidden;";
+                };
+            };
+            
+            function applyFood() {
+                let food = foodList.value;
+                switch(food) {
+                    case "plant":
+                        tool.src = "Assets/Raise-A-Rock/plant.png";
+                        break;
+                    case "variety":
+                        tool.src = "Assets/Raise-A-Rock/variety.png";
+                        break;
+                    case "white":
+                        tool.src = "Assets/Raise-A-Rock/white.png";
+                        break;
+                };
+            };
+            
+            function applyTool() {
+                let tool = toolList.value;
+                switch(tool) {
+                    case "shower":
+                        tool.src = "Assets/Raise-A-Rock/shower.png";
+                        break;
+                    case "sponge":
+                        tool.src = "Assets/Raise-A-Rock/sponge.png";
+                        break;
+                };
+            };
+            
+            function play() {
+                happy.innerHTML = Number(happy.innerHTML) + 1;
+            };
+            
+            function rename() {
+                let newName = prompt("Enter a new name for " + name);
+                if (newName.trim() != "" && newName != null) {
+                    name = newName.trim();
+                    alert("Set new name to " + newName.trim());
+                };
+            };
+            
+            window.onload = tick;
+        </script>
     </body>
 </html>
 
