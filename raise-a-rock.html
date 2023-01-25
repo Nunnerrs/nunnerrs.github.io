@@ -65,14 +65,21 @@
         <!--script src="Scripts/raise-a-rock.js"></script-->
         <script>
             var age = 1;
+            if (localStorage.getItem("age") != null) {
+                age = Number(localStorage.getItem("age"));
+            };
+            
             const rocks = {
                 good: {
-                    good: ["Assets/Raise-A-Rock/kawaii-rock.png", "Assets/Raise-A-Rock/bird-rock.png"],
+                    super: ["Assets/Raise-A-Rock/mr-rockhead.png"],
+                    clean: ["Assets/Raise-A-Rock/pearl-rock.png"],
+                    happy: ["Assets/Raise-A-Rock/playful-rock.png"],
+                    good: ["Assets/Raise-A-Rock/kawaii-rock.png", "Assets/Raise-A-Rock/bird-rock.png", "Assets/Raise-A-Rock/mount-rushmore.png"],
                     neutral: ["Assets/Raise-A-Rock/ponytail-rock.png", "Assets/Raise-A-Rock/headband-rock.png", "Assets/Raise-A-Rock/bush-rock.png", "Assets/Raise-A-Rock/roblox-rock.png", "Assets/Raise-A-Rock/slamo-rock.png"],
                     bad: ["Assets/Raise-A-Rock/adopt-me-rock.png", "Assets/Raise-A-Rock/cheeky-rock.png", "Assets/Raise-A-Rock/moai.png"],
                 },
                 bad: {
-                    good: ["Assets/Raise-A-Rock/bricks.png", "Assets/Raise-A-Rock/man-rock.png", "Assets/Raise-A-Rock/expressionless.png"],
+                    good: ["Assets/Raise-A-Rock/bricks.png", "Assets/Raise-A-Rock/man-rock.png", "Assets/Raise-A-Rock/expressionless-rock.png"],
                     neutral: ["Assets/Raise-A-Rock/potato-rock.png", "Assets/Raise-A-Rock/egg-rock.png", "Assets/Raise-A-Rock/house-rock.png", "Assets/Raise-A-Rock/goggly-eyed-rock.png"],
                     bad: ["Assets/Raise-A-Rock/moldy-rock.png", "Assets/Raise-A-Rock/magma.png", "Assets/Raise-A-Rock/eroded-rock.png", "Assets/Raise-A-Rock/obese-rock.png"],
                 }
@@ -82,16 +89,45 @@
 
             const defaultNames = ["Rocky", "Rocko", "Pebbles", "The Rock", "BaRock Obama"];
             var name = defaultNames[Math.floor(Math.random() * (defaultNames.length - 1))];
+            if (localStorage.getItem("name")) {
+                name = localStorage.getItem("name");
+            };
 
             let names = document.getElementsByTagName("name");
             for (let i = 0; i < names.length; i++) {
                 names[i].innerHTML = name;
             };
 
-            const faves = [Math.floor(Math.random() * 2), Math.floor(Math.random() * 2), Math.floor(Math.random() * 2)];
+            if (localStorage.getItem("faves")) {
+                const faves = localStorage.getItem("faves");
+            } else {
+                const faves = [Math.floor(Math.random() * 2), Math.floor(Math.random() * 2), Math.floor(Math.random() * 2)];
+            };
+            
             var full = document.getElementById("fullPercent");
+            if (localStorage.getItem("full")) {
+                full = localStorage.getItem("full");
+            };
             var clean = document.getElementById("cleanPercent");
+            if (localStorage.getItem("clean")) {
+                clean = localStorage.getItem("clean");
+            };
             var happy = document.getElementById("happyPercent");
+            if (localStorage.getItem("happy")) {
+                happy = localStorage.getItem("happy");
+            };
+            var timesHungry = 0;
+            if (localStorage.getItem("timesHungry")) {
+                timesHungry = localStorage.getItem("timesHungry");
+            };
+            var timesDirty = 0;
+            if (localStorage.getItem("timesDirty")) {
+                timesDirty = localStorage.getItem("timesDirty");
+            };
+            var timesBored = 0;
+            if (localStorage.getItem("timesBored")) {
+                timesBored = localStorage.getItem("timesBored");
+            };
             var visibleF = false;
             var visibleC = false;
             var ticking = true;
@@ -137,25 +173,33 @@
                         };
                         
                         if (age >= 2.5 && age < 7.5) {
-                            if (full >= 75 && clean >= 75 && happy >= 75) {
+                            if (timesHungry < 4 && timesDirty < 4 && timesBored < 4) {
                                 rock.src = "Assets/Raise-A-Rock/kid-rock-happy.png";
                             } else {
                                 rock.src = "Assets/Raise-A-Rock/kid-rock-sad.png";
                             };
                         } else if (age <= 7.5) {
-                            if (full >= 90 && clean >= 90 && happy >= 90) {
+                            if (timesHungry < 3 && timesDirty < 3 && timesBored < 3) {
+                                if (rock.src == "Assets/Raise-A-Rock/kid-rock-happy.png") {
+                                    rock.src = rocks["good"]["super"][Math.floor(Math.random() * (rocks["good"]["super"].length - 1))];
+                                };
+                            } else if (timesDirty <= 1) {
+                                rock.src = rocks["good"]["clean"][Math.floor(Math.random() * (rocks["good"]["clean"].length - 1))];
+                            } else if (timesBored <= 1) {
+                                rock.src = rocks["good"]["happy"][Math.floor(Math.random() * (rocks["good"]["happy"].length - 1))];
+                            } else if (timesHungry <= 4 && timesDirty <= 4 && timesBored <= 4) {
                                 if (rock.src == "Assets/Raise-A-Rock/kid-rock-happy.png") {
                                     rock.src = rocks["good"]["good"][Math.floor(Math.random() * (rocks["good"]["good"].length - 1))];
                                 } else {
                                     rock.src = rocks["bad"]["good"][Math.floor(Math.random() * (rocks["bad"]["good"].length - 1))];
                                 };
-                            } else if (full >= 70 && full < 90 && clean >= 70 && clean < 90 && happy >= 70 && happy < 90) {
+                            } else if (timesHungry <= 7 && timesDirty <= 7 && timesBored <= 7) {
                                 if (rock.src == "Assets/Raise-A-Rock/kid-rock-happy.png") {
                                     rock.src = rocks["good"]["neutral"][Math.floor(Math.random() * (rocks["good"]["neutral"].length - 1))];
                                 } else {
                                     rock.src = rocks["bad"]["neutral"][Math.floor(Math.random() * (rocks["bad"]["neutral"].length - 1))];
                                 };
-                            } else if (full < 70 && clean < 70 && happy < 70) {
+                            } else if (timesHungry >= 8 && timesDirty >= 8 && timesBored >= 8) {
                                 if (rock.src == "Assets/Raise-A-Rock/kid-rock-happy.png") {
                                     rock.src = rocks["good"]["bad"][Math.floor(Math.random() * (rocks["good"]["bad"].length - 1))];
                                 } else {
@@ -164,6 +208,16 @@
                             };
                         };
                     };
+                    localStorage.setItem("age", age);
+                    localStorage.setItem("name", name);
+                    localStorage.setItem("faves", faves);
+                    localStorage.setItem("full", full);
+                    localStorage.setItem("clean", clean);
+                    localStorage.setItem("happy", happy);
+                    localStorage.setItem("timesHungry", timesHungry);
+                    localStorage.setItem("timesDirty", timesDirty);
+                    localStorage.setItem("timesBored", timesBored);
+                    //localStorage.setItem("", );
                 }, 1000);
             };
 
@@ -190,18 +244,18 @@
                 if (visibleF == true) {
                     visibleF = false;
                     foodLabel.style = "visibility: hidden;";
-                    changeFood.style = "visibility: hidden;";
+                    foodList.style = "visibility: hidden;";
                     setFood.style = "visibility: hidden;";
                 } else {
                     visibleF = true;
                     foodLabel.style = "visibility: visible;";
-                    changeFood.style = "visibility: visible;";
+                    foodList.style = "visibility: visible;";
                     setFood.style = "visibility: visible;";
                 };
                 if (visibleC == true) {
                     visibleC = false;
                     bathLabel.style = "visibility: hidden;";
-                    changeTool.style = "visibility: hidden;";
+                    toolList.style = "visibility: hidden;";
                     setTool.style = "visibility: hidden;";
                 };
             };
@@ -243,6 +297,10 @@
                     name = newName.trim();
                     alert("Set new name to " + newName.trim());
                 };
+            };
+            
+            function importData() {
+                //
             };
             
             window.onload = tick;
