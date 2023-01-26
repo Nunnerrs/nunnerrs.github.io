@@ -37,12 +37,10 @@
     <body>
         <h1>"<name>Rocky</name>"</h1>
         <h2>Age: <a id="age">1</a></h2>
-        <h3 id="notif1"></h3>
-        <h3 id="notif2"></h3>
-        <h3 id="notif3"></h3>
+        <div id="alerts"></div>
         <img id="rock" src="../Assets/Raise-A-Rock/baby-rock.png" height="125px" width="auto" draggable="false" ondragover="override(event);" ondrop="use(event);"><br>
         <img id="tool" src="../Assets/Raise-A-Rock/plant.png" width="auto" height="75px" style="visibility: hidden;" draggable="true" ondragstart="saveTool(event);">
-        <p id="fullDisplay"><a id="fullPercent">100</a>% full</p>
+        <p id="fullDisplay"><a id="full">100</a>% full</p>
         <button id="feedButton" onclick="toggleFood();">Feed <name>Rocky</name></button><br>
         <label id="foodLabel" for="foodList" style="visibility: hidden;">Selected food: </label>
         <select id="foodList" style="visibility: hidden;">
@@ -51,7 +49,7 @@
             <option value="white">White Pebbles</option>
         </select>
         <button id="setFood" style="visibility: hidden;" onclick="applyFood();" class="submit">Save Changes</button>
-        <p id="cleanDisplay"><a id="cleanPercent">100</a>% clean</p>
+        <p id="cleanDisplay"><a id="clean">100</a>% clean</p>
         <button id="bathButton">Bathe <name>Rocky</name></button><br>
         <label id="bathLabel" for="toolList" style="visibility: hidden;">Selected tool: </label>
         <select id="toolList" style="visibility: hidden;">
@@ -59,7 +57,7 @@
             <option value="sponge">Sponge</option>
         </select>
         <button id="setTool" style="visibility: hidden;" onclick="applyTool();" class="submit">Save Changes</button>
-        <p id="happyDisplay"><a id="happyPercent">100</a>% happy</p>
+        <p id="happyDisplay"><a id="happy">100</a>% happy</p>
         <button id="playButton" onclick="play();">Play with <name>Rocky</name></button><br><br>
         <button id="renameButton" onclick="rename();">Rename <name>Rocky</name></button>
         <!--script src="Scripts/raise-a-rock.js"></script-->
@@ -104,15 +102,15 @@
                 const faves = [Math.floor(Math.random() * 2), Math.floor(Math.random() * 2), Math.floor(Math.random() * 2)];
             };
             
-            var full = document.getElementById("fullPercent");
+            var full = document.getElementById("full");
             if (localStorage.getItem("full")) {
                 full = localStorage.getItem("full");
             };
-            var clean = document.getElementById("cleanPercent");
+            var clean = document.getElementById("clean");
             if (localStorage.getItem("clean")) {
                 clean = localStorage.getItem("clean");
             };
-            var happy = document.getElementById("happyPercent");
+            var happy = document.getElementById("happy");
             if (localStorage.getItem("happy")) {
                 happy = localStorage.getItem("happy");
             };
@@ -150,6 +148,10 @@
             var setTool = document.getElementById("setTool");
             var playButton = document.getElementById("playButton");
             var renameButton = document.getElementById("renameButton");
+
+            function death() {
+                
+            };
 
             function tick() {
                 setInterval(function() {
