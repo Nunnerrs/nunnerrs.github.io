@@ -6,8 +6,9 @@
         <style>
             button {
                 background-color: rgb(150, 150, 150);
+                border-color: rgb(150, 150, 150);
                 border-radius: 5px;
-                border-width: 0px;
+                border-width: 2px;
                 color: rgb(255, 255, 255);
                 cursor: click;
                 font-family: Comic Sans MS, Chalkboard SE;
@@ -45,8 +46,9 @@
         <label id="foodLabel" for="foodList" style="visibility: hidden;">Selected food: </label>
         <select id="foodList" style="visibility: hidden;">
             <option value="plant">Plant</option>
-            <option value="variety">Variety Pebbles</option>
-            <option value="white">White Pebbles</option>
+            <option value="rock kibbles">Rock Kibbles</option>
+            <option value="cheese">Cheese</option>
+            <option value="gigagrowth gummies">GigaGrowth Gummies</option>
         </select>
         <button id="setFood" style="visibility: hidden;" onclick="applyFood();" class="submit">Save Changes</button>
         <p id="cleanDisplay"><a id="clean">100</a>% clean</p>
@@ -59,7 +61,10 @@
         <button id="setTool" style="visibility: hidden;" onclick="applyTool();" class="submit">Save Changes</button>
         <p id="happyDisplay"><a id="happy">100</a>% happy</p>
         <button id="playButton" onclick="play();">Play with <name>Rocky</name></button><br><br>
-        <button id="renameButton" onclick="rename();">Rename <name>Rocky</name></button>
+        <button id="renameButton" onclick="rename();">Rename <name>Rocky</name></button><br>
+        <button id="pauseButton" onclick="toggleTicking();">Pause game</button><br>
+        <button id="importButton" onclick="importData();">Import game data</button>
+        <button id="exportButton" onclick="exportData();">Export game data</button>
         <!--script src="Scripts/raise-a-rock.js"></script-->
         <script>
             var age = 1;
@@ -87,7 +92,7 @@
 
             const defaultNames = ["Rocky", "Rocko", "Pebbles", "The Rock", "BaRock Obama"];
             var name = defaultNames[Math.floor(Math.random() * (defaultNames.length - 1))];
-            if (localStorage.getItem("name")) {
+            if (localStorage.getItem("name") && age > 0) {
                 name = localStorage.getItem("name");
             };
 
@@ -96,35 +101,43 @@
                 names[i].innerHTML = name;
             };
 
-            if (localStorage.getItem("faves")) {
+            if (localStorage.getItem("faves") && age > 0) {
                 const faves = localStorage.getItem("faves");
             } else {
                 const faves = [Math.floor(Math.random() * 2), Math.floor(Math.random() * 2), Math.floor(Math.random() * 2)];
             };
             
+            const sadEmojis = ["😢", "😭", "😿", "T-T", "ToT", "TnT", "T^T", ":(", ":[", "i^i"];
+            
+            const deathMessages = {
+                hunger: ["Your rock died from hunger.", "You didn't feed your rock and it starved to death."],
+                filth: ["Your rock died from filth.", "You didn't bathe your rock and it died from bacteria buildup."],
+                depression: ["Your rock died from depression.", "You didn't play with your rock and it got depressed."],
+            };
+            
             var full = document.getElementById("full");
-            if (localStorage.getItem("full")) {
+            if (localStorage.getItem("full") && age > 0) {
                 full = localStorage.getItem("full");
             };
             var clean = document.getElementById("clean");
-            if (localStorage.getItem("clean")) {
+            if (localStorage.getItem("clean") && age > 0) {
                 clean = localStorage.getItem("clean");
             };
             var happy = document.getElementById("happy");
-            if (localStorage.getItem("happy")) {
+            if (localStorage.getItem("happy") && age > 0) {
                 happy = localStorage.getItem("happy");
             };
             var timesHungry = 0;
-            if (localStorage.getItem("timesHungry")) {
+            if (localStorage.getItem("timesHungry") && age > 0) {
                 timesHungry = localStorage.getItem("timesHungry");
             };
             var timesDirty = 0;
-            if (localStorage.getItem("timesDirty")) {
+            if (localStorage.getItem("timesDirty") && age > 0) {
                 timesDirty = localStorage.getItem("timesDirty");
             };
-            var timesBored = 0;
-            if (localStorage.getItem("timesBored")) {
-                timesBored = localStorage.getItem("timesBored");
+            var timesSad = 0;
+            if (localStorage.getItem("timesSad") && age > 0) {
+                timesBored = localStorage.getItem("timesSad");
             };
             var visibleF = false;
             var visibleC = false;
@@ -133,11 +146,8 @@
             var favicon = document.getElementById("favicon");
             var ageDisplay = document.getElementById("age");
             var rock = document.getElementById("rock");
-            var notif1 = document.getElementById("notif1");
-            var notif2 = document.getElementById("notif2");
-            var notif3 = document.getElementById("notif3");
+            var alerts = document.getElementById("alerts");
             var tool = document.getElementById("tool");
-            var sleepButton = document.getElementById("sleepButton");
             var feedButton = document.getElementById("feedButton");
             var foodLabel = document.getElementById("foodLabel");
             var foodList = document.getElementById("foodList");
@@ -148,9 +158,40 @@
             var setTool = document.getElementById("setTool");
             var playButton = document.getElementById("playButton");
             var renameButton = document.getElementById("renameButton");
+            var pauseButton = document.getElementById("pauseButton");
+            var importButton = document.getElementById("importButton");
+            var exportButton = document.getElementById("exportButton");
 
-            function death() {
+            function death(type) {
+                ticking = false;
+                tool.style.visibility = "hidden";
+                feedButton.style.visibility = "hidden";
+                foodList.style.visibility = "hidden";
+                setFood.style.visibility = "hidden";
+                bathButton.style.visibility = "hidden";
+                toolList.style.visibility = "hidden";
+                setTool.style.visibility = "hidden";
+                playButton.style.visibility = "hidden";
+                renameButton.style.visibility = "hidden";
+                pauseButton.style.visibility = "hidden";
+                importButton.style.visibility = "hidden";
+                exportButton.style.visibility = "hidden";
                 
+                let deathType = "hunger";
+                if (type == 2) {
+                    deathType = "filth";
+                } else if (type == 3) {
+                    deathType = "depression";
+                };
+                let deathAlert = document.createElement("h3");
+                let sadEmoji = sadEmojis[Math.floor(Math.random() * (sadEmojis.length - 1))];
+                let deathMessage = deathMessages[deathType][Math.floor(Math.random() * (deathMessages[deathType].length - 1))];
+                deathAlert.innerHTML = sadEmoji + " " + deathMessage + " " + sadEmoji;
+                alerts.appendChild(deathAlert);
+                let reload = document.createElement("button");
+                reload.innerHTML = "Restart game";
+                reload.addEventListener("onclick", function() {location.reload()});
+                alerts.appendChild(reload);
             };
 
             function tick() {
@@ -162,46 +203,73 @@
                         let hungry = bools[Math.floor(Math.random() * (bools.length - 1))];
                         if (hungry == true) {
                             full.innerHTML = Number(full.innerHTML) - 2;
+                            if (Number(full.innerHTML) < 1) {
+                                death(1);
+                            } else if (Number(full.innerHTML) < 50) {
+                                timesHungry++;
+                                let notif = document.createElement("h3");
+                                notif.innerHTML = name + " is getting hungry!";
+                                notif.id = "warning";
+                                alerts.appendChild(notif);
+                            };
                         };
             
                         let dirty = bools[Math.floor(Math.random() * (bools.length - 1))];
                         if (dirty == true) {
                             clean.innerHTML = Number(clean.innerHTML) - 2;
+                            if (Number(clean.innerHTML) < 1) {
+                                death(2);
+                            } else if (Number(clean.innerHTML) < 50) {
+                                timesDirty++;
+                                let notif = document.createElement("h3");
+                                notif.innerHTML = name + " is getting dirty!";
+                                notif.id = "warning";
+                                alerts.appendChild(notif);
+                            };
                         };
                         
                         let bored = bools[Math.floor(Math.random() * (bools.length - 1))];
                         if (bored == true) {
                             happy.innerHTML = Number(happy.innerHTML) - 2;
+                            if (Number(happy.innerHTML) < 1) {
+                                death(3);
+                            } else if (Number(happy.innerHTML) < 50) {
+                                timesSad++;
+                                let notif = document.createElement("h3");
+                                notif.innerHTML = name + " is becoming depressed!";
+                                notif.id = "warning";
+                                alerts.appendChild(notif);
+                            };
                         };
                         
                         if (age >= 2.5 && age < 7.5) {
-                            if (timesHungry < 4 && timesDirty < 4 && timesBored < 4) {
+                            if (timesHungry < 4 && timesDirty < 4 && timesSad < 4) {
                                 rock.src = "Assets/Raise-A-Rock/kid-rock-happy.png";
                             } else {
                                 rock.src = "Assets/Raise-A-Rock/kid-rock-sad.png";
                             };
                         } else if (age <= 7.5) {
-                            if (timesHungry < 3 && timesDirty < 3 && timesBored < 3) {
+                            if (timesHungry < 3 && timesDirty < 3 && timesSad < 3) {
                                 if (rock.src == "Assets/Raise-A-Rock/kid-rock-happy.png") {
                                     rock.src = rocks["good"]["super"][Math.floor(Math.random() * (rocks["good"]["super"].length - 1))];
                                 };
                             } else if (timesDirty <= 1) {
                                 rock.src = rocks["good"]["clean"][Math.floor(Math.random() * (rocks["good"]["clean"].length - 1))];
-                            } else if (timesBored <= 1) {
+                            } else if (timesSad <= 1) {
                                 rock.src = rocks["good"]["happy"][Math.floor(Math.random() * (rocks["good"]["happy"].length - 1))];
-                            } else if (timesHungry <= 4 && timesDirty <= 4 && timesBored <= 4) {
+                            } else if (timesHungry <= 4 && timesDirty <= 4 && timesSad <= 4) {
                                 if (rock.src == "Assets/Raise-A-Rock/kid-rock-happy.png") {
                                     rock.src = rocks["good"]["good"][Math.floor(Math.random() * (rocks["good"]["good"].length - 1))];
                                 } else {
                                     rock.src = rocks["bad"]["good"][Math.floor(Math.random() * (rocks["bad"]["good"].length - 1))];
                                 };
-                            } else if (timesHungry <= 7 && timesDirty <= 7 && timesBored <= 7) {
+                            } else if (timesHungry <= 7 && timesDirty <= 7 && timesSad <= 7) {
                                 if (rock.src == "Assets/Raise-A-Rock/kid-rock-happy.png") {
                                     rock.src = rocks["good"]["neutral"][Math.floor(Math.random() * (rocks["good"]["neutral"].length - 1))];
                                 } else {
                                     rock.src = rocks["bad"]["neutral"][Math.floor(Math.random() * (rocks["bad"]["neutral"].length - 1))];
                                 };
-                            } else if (timesHungry >= 8 && timesDirty >= 8 && timesBored >= 8) {
+                            } else if (timesHungry >= 8 && timesDirty >= 8 && timesSad >= 8) {
                                 if (rock.src == "Assets/Raise-A-Rock/kid-rock-happy.png") {
                                     rock.src = rocks["good"]["bad"][Math.floor(Math.random() * (rocks["good"]["bad"].length - 1))];
                                 } else {
@@ -218,7 +286,7 @@
                     localStorage.setItem("happy", happy);
                     localStorage.setItem("timesHungry", timesHungry);
                     localStorage.setItem("timesDirty", timesDirty);
-                    localStorage.setItem("timesBored", timesBored);
+                    localStorage.setItem("timesSad", timesSad);
                     //localStorage.setItem("", );
                 }, 1000);
             };
@@ -234,11 +302,31 @@
             function use(event) {
                 event.preventDefault();
                 let data = event.dataTransfer.getData("tool");
-                if (data == "plant" || data == "variety" || data == "white") {
-                   full.innerHTML = Number(full.innerHTML) + 1;
+                if (data == "plant" || data == "rock kibbles" || data == "cheese" || data == "gigagrowth gummies") {
+                    let fullness = Number(full.innerHTML);
+                    let inc = 5;
+                    if (fullness < 100 && fullness + inc <= 100) {
+                        full.innerHTML = fullness + inc;
+                        if (data == "gigagrowth gummies") {
+                            rock.height = rock.height * 1.05;
+                            rock.width = rock.width * 1.05;
+                        };
+                    } else if (fullness < 100 && fullness + inc > 100) {
+                        full.innerHTML = 100;
+                        if (data == "gigagrowth gummies") {
+                            rock.height = rock.height * 1.05;
+                            rock.width = rock.width * 1.05;
+                        };
+                    };
                 };
                 if (data == "shower" || data == "sponge") {
-                    clean.innerHTML = Number(clean.innerHTML) + 1;
+                    let cleanliness = Number(clean.innerHTML);
+                    let inc = 5;
+                    if (cleanliness < 100 && cleanliness + inc <= 100) {
+                        clean.innerHTML = cleanliness + inc;
+                    } else if (cleanliness < 100 && cleanliness + inc > 100) {
+                        clean.innerHTML = 100;
+                    };
                 };
             };
             
@@ -290,7 +378,13 @@
             };
             
             function play() {
-                happy.innerHTML = Number(happy.innerHTML) + 1;
+                let happiness = Number(happy.innerHTML);
+                let inc = 1; // Increment
+                if (happiness < 100 && happiness + inc <= 100) {
+                    happy.innerHTML = happiness + inc;
+                } else if (happiness < 100 && happiness + inc > 100) {
+                    happy.innerHTML = 100;
+                };
             };
             
             function rename() {
@@ -301,7 +395,21 @@
                 };
             };
             
+            function toggleTicking() {
+                if (ticking == false) {
+                    ticking = true;
+                    pauseButton.innerHTML = "Pause game";
+                } else {
+                    ticking = false;
+                    pauseButton.innerHTML = "Unpause game";
+                };
+            };
+            
             function importData() {
+                //
+            };
+            
+            function exportData() {
                 //
             };
             
