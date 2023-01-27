@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Google tag (gtag.js)(For analytics) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1L4RBL935"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-X1L4RBL935');
+        </script>
         <title>raise a pet rock</title>
         <link id="favicon" rel="icon" type="image/x-icon" href="Assets/Raise-A-Rock/baby-rock.png">
         <style>
@@ -38,7 +46,7 @@
     <body>
         <h1>"<name>Rocky</name>"</h1>
         <h2>Age: <a id="age">1</a></h2>
-        <div id="alerts"></div>
+        <div id="alerts"></div><br>
         <img id="rock" src="../Assets/Raise-A-Rock/baby-rock.png" height="125px" width="auto" draggable="false" ondragover="override(event);" ondrop="use(event);"><br>
         <img id="tool" src="../Assets/Raise-A-Rock/plant.png" width="auto" height="75px" style="visibility: hidden;" draggable="true" ondragstart="saveTool(event);">
         <p id="fullDisplay"><a id="full">100</a>% full</p>
@@ -52,7 +60,7 @@
         </select>
         <button id="setFood" style="visibility: hidden;" onclick="applyFood();" class="submit">Save Changes</button>
         <p id="cleanDisplay"><a id="clean">100</a>% clean</p>
-        <button id="bathButton">Bathe <name>Rocky</name></button><br>
+        <button id="bathButton" onclick="toggleTool();">Bathe <name>Rocky</name></button><br>
         <label id="bathLabel" for="toolList" style="visibility: hidden;">Selected tool: </label>
         <select id="toolList" style="visibility: hidden;">
             <option value="shower">Shower Head</option>
@@ -177,12 +185,23 @@
                 importButton.style.visibility = "hidden";
                 exportButton.style.visibility = "hidden";
                 
+                if (document.getElementById("hunger")) {
+                    document.getElementById("hunger").remove();
+                };
+                if (document.getElementById("filth")) {
+                    document.getElementById("filth").remove();
+                };
+                if (document.getElementById("depression")) {
+                    document.getElementById("depression").remove();
+                };
+                
                 let deathType = "hunger";
                 if (type == 2) {
                     deathType = "filth";
                 } else if (type == 3) {
                     deathType = "depression";
                 };
+                
                 let deathAlert = document.createElement("h3");
                 let sadEmoji = sadEmojis[Math.floor(Math.random() * (sadEmojis.length - 1))];
                 let deathMessage = deathMessages[deathType][Math.floor(Math.random() * (deathMessages[deathType].length - 1))];
@@ -205,11 +224,11 @@
                             full.innerHTML = Number(full.innerHTML) - 2;
                             if (Number(full.innerHTML) < 1) {
                                 death(1);
-                            } else if (Number(full.innerHTML) < 50) {
+                            } else if (Number(full.innerHTML) < 50 && !document.getElementById("hunger")) {
                                 timesHungry++;
                                 let notif = document.createElement("h3");
                                 notif.innerHTML = name + " is getting hungry!";
-                                notif.id = "warning";
+                                notif.id = "hunger";
                                 alerts.appendChild(notif);
                             };
                         };
@@ -219,11 +238,11 @@
                             clean.innerHTML = Number(clean.innerHTML) - 2;
                             if (Number(clean.innerHTML) < 1) {
                                 death(2);
-                            } else if (Number(clean.innerHTML) < 50) {
+                            } else if (Number(clean.innerHTML) < 50 && !document.getElementById("filth")) {
                                 timesDirty++;
                                 let notif = document.createElement("h3");
                                 notif.innerHTML = name + " is getting dirty!";
-                                notif.id = "warning";
+                                notif.id = "filth";
                                 alerts.appendChild(notif);
                             };
                         };
@@ -233,11 +252,11 @@
                             happy.innerHTML = Number(happy.innerHTML) - 2;
                             if (Number(happy.innerHTML) < 1) {
                                 death(3);
-                            } else if (Number(happy.innerHTML) < 50) {
+                            } else if (Number(happy.innerHTML) < 50 && !document.getElementById("depression")) {
                                 timesSad++;
                                 let notif = document.createElement("h3");
                                 notif.innerHTML = name + " is becoming depressed!";
-                                notif.id = "warning";
+                                notif.id = "depression";
                                 alerts.appendChild(notif);
                             };
                         };
@@ -330,38 +349,44 @@
                 };
             };
             
-            function toggleFood() {
-                if (visibleF == true) {
-                    visibleF = false;
-                    foodLabel.style = "visibility: hidden;";
-                    foodList.style = "visibility: hidden;";
-                    setFood.style = "visibility: hidden;";
-                } else {
-                    visibleF = true;
-                    foodLabel.style = "visibility: visible;";
-                    foodList.style = "visibility: visible;";
-                    setFood.style = "visibility: visible;";
-                };
-                if (visibleC == true) {
-                    visibleC = false;
-                    bathLabel.style = "visibility: hidden;";
-                    toolList.style = "visibility: hidden;";
-                    setTool.style = "visibility: hidden;";
-                };
-            };
-            
             function applyFood() {
                 let food = foodList.value;
                 switch(food) {
                     case "plant":
                         tool.src = "Assets/Raise-A-Rock/plant.png";
                         break;
-                    case "variety":
-                        tool.src = "Assets/Raise-A-Rock/variety.png";
+                    case "rock kibbles":
+                        tool.src = "Assets/Raise-A-Rock/rock-kibbles.png";
                         break;
-                    case "white":
-                        tool.src = "Assets/Raise-A-Rock/white.png";
+                    case "cheese":
+                        tool.src = "Assets/Raise-A-Rock/cheese.png";
                         break;
+                    case "gigagrowth gummies":
+                        tool.src = "Assets/Raise-A-Rock/gigagrowth-gummies.png";
+                        break;
+                };
+            };
+            
+            function toggleFood() {
+                if (visibleF == true) {
+                    visibleF = false;
+                    applyFood();
+                    tool.style.visibility = "visible";
+                    foodLabel.style.visibility = "hidden";
+                    foodList.style.visibility = "hidden";
+                    setFood.style.visibility = "hidden";
+                } else {
+                    visibleF = true;
+                    tool.style.visibility = "hidden";
+                    foodLabel.style.visibility = "visible";
+                    foodList.style.visibility = "visible";
+                    setFood.style.visibility = "visible";
+                };
+                if (visibleC == true) {
+                    visibleC = false;
+                    bathLabel.style.visibility = "hidden";
+                    toolList.style.visibility = "hidden";
+                    setTool.style.visibility = "hidden";
                 };
             };
             
@@ -374,6 +399,29 @@
                     case "sponge":
                         tool.src = "Assets/Raise-A-Rock/sponge.png";
                         break;
+                };
+            };
+            
+            function toggleTool() {
+                if (visibleC == true) {
+                    visibleC = false;
+                    applyTool();
+                    tool.style.visibility = "visible";
+                    bathLabel.style.visibility = "hidden";
+                    toolList.style.visibility = "hidden";
+                    setTool.style.visibility = "hidden";
+                } else {
+                    visibleC = true;
+                    tool.style.visibility = "hidden";
+                    bathLabel.style.visibility = "visible";
+                    toolList.style.visibility = "visible";
+                    setTool.style.visibility = "visible";
+                };
+                if (visibleF == true) {
+                    visibleF = false;
+                    foodLabel.style.visibility = "hidden";
+                    foodList.style.visibility = "hidden";
+                    setFood.style.visibility = "hidden";
                 };
             };
             
@@ -406,11 +454,23 @@
             };
             
             function importData() {
-                //
+                //let data = prompt("Paste your game data here");
             };
             
             function exportData() {
-                //
+                /*localStorage.setItem("age", age);
+                    localStorage.setItem("name", name);
+                    localStorage.setItem("faves", faves);
+                    localStorage.setItem("full", full);
+                    localStorage.setItem("clean", clean);
+                    localStorage.setItem("happy", happy);
+                    localStorage.setItem("timesHungry", timesHungry);
+                    localStorage.setItem("timesDirty", timesDirty);
+                    localStorage.setItem("timesSad", timesSad);*/
+                let data = 1;
+                let encodedData = window.btoa(unescape(encodeURIComponent(data)));
+                //navigator.clipboard.writeText(encodedData);
+                //alert("Copied game data to clipboard! Save this somewhere (e.g. in online notepad)");
             };
             
             window.onload = tick;
