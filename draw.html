@@ -5,17 +5,18 @@
         <script>
             var color = "#000000";
             var size = 24;
-            function setUp() {
+            function setup() {
                 createCanvas(1500, 750);
                 background(235, 235, 235);
+                //alert("Canvas loaded!");
             };
             
-            function draw() {
-                if (mouseIsPressed) {
-                    noStroke();
-                    fill(color);
-                    ellipse(mouseX, mouseY, size);
-                };
+            function touchMoved() {
+                strokeColor(color);
+                line(mouseX, mouseY, pmouseX, pmouseY);
+                //noStroke();
+                //fill(color);
+                //ellipse(mouseX, mouseY, size);
             };
         </script>
         <style>
@@ -29,7 +30,7 @@
             }
         </style>
     </head>
-    <body>
+    <body onclick="setMode();">
         <h1>Drawing Tool</h1>
         <select id="mode" value="draw" mouseleave="setMode();" mouseout="setMode();" touchend="setMode();">
             <option value="draw">Draw</option>
@@ -67,10 +68,12 @@
             
             function setColor() {
                 color = document.getElementById("color").value;
+                alert("Set color to " + color);
             };
             
             function setSize() {
                 size = document.getElementById("size").value;
+                alert("Set size to " + size);
             };
         </script>
     </body>
