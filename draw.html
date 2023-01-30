@@ -6,8 +6,8 @@
             var color = "#000000";
             var size = 24;
             function setup() {
-                createCanvas(1500, 750);
-                background(235, 235, 235);
+                createCanvas(1450, 725);
+                background(255, 255, 255);
                 //alert("Canvas loaded!");
             };
             
@@ -21,12 +21,20 @@
         </script>
         <style>
             body {
-                color: rgb(0, 0, 0);
+                background-color: rgb(200, 230, 255);
+                color: rgb(25, 120, 150);
                 font-family: Comic Sans MS, Chalkboard SE;
+                margin: auto;
+                overflow: hidden;
                 text-align: center;
             }
+            button, label, select {
+                size: 18px;
             gap {
                 visibility: hidden;
+            }
+            h1 {
+                color: rgb(0, 25, 75);
             }
         </style>
     </head>
@@ -59,9 +67,9 @@
                     colorS = selectedColor.value;
                     color = "#FFFFFF";
                 } else {
-                    colorLabel.style.visibility = "hidden";
-                    selectedColor.style.visibility = "hidden";
-                    applyColor.style.visibility = "hidden";
+                    colorLabel.style.visibility = "visible";
+                    selectedColor.style.visibility = "visible";
+                    applyColor.style.visibility = "visible";
                     color = colorS;
                 };
             };
