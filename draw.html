@@ -3,29 +3,70 @@
     <head>
         <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
         <script>
+            var color = "#000000";
+            var size = 24;
             function setUp() {
-                createCanvas(800, 800);
+                createCanvas(1500, 750);
             };
             
             function draw() {
                 if (mouseIsPressed) {
                     noStroke();
-                    fill(0, 0, 0);
-                    ellipse(mouseX, mouseY, 24);
+                    fill(color);
+                    ellipse(mouseX, mouseY, size);
                 };
             };
         </script>
         <style>
-            space {
+            body {
+                color: rgb(0, 0, 0);
+                font-family: Comic Sans MS, Chalkboard SE;
+                text-align: center;
+            }
+            gap {
                 visibility: hidden;
             }
         </style>
     </head>
     <body>
-        <label for"color">Color: </label>
-        <input id="color" type="color">
-        <space>AAAAA</space>
+        <h1>Drawing Tool</h1>
+        <select id="mode" value="draw" mouseleave="setMode();" mouseout="setMode();" touchend="setMode();">
+            <option value="draw">Draw</option>
+            <option value="erase">Erase</option>
+        </select>
+        <gap>AA</gap>
+        <color style="visibility: visible">
+            <label for"color">Color: </label>
+            <input id="color" type="color">
+            <button id="setColor" onclick="setColor();">Apply</button>
+        </color>
+        <gap>AAAAA</gap>
         <label for="size">Size: </label>
         <input id="size" type="number" value="24">
+        <button id="setSize" onclick="setSize();">Apply</button>
+        <script>
+            var mode = document.getElementById("mode");
+            var colorG = document.getElementsByTagName("color")[0];
+            var colorS = document.getElementById("color").value;
+            
+            function setMode() {
+                if (mode.value == "erase") {
+                    colorG.style.visibility = "hidden";
+                    colorS = document.getElementById("color").value;
+                    color = "#FFFFFF";
+                } else {
+                    colorG.style.visibility = "visible";
+                    color = colorS;
+                };
+            };
+            
+            function setColor() {
+                color = document.getElementById("color").value;
+            };
+            
+            function setSize() {
+                size = document.getElementById("size").value;
+            };
+        </script>
     </body>
 </html>
