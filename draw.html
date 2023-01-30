@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+        <script>
+            function setUp() {
+                createCanvas(800, 800);
+            };
+            
+            function draw() {
+                if (mouseIsPressed) {
+                    noStroke();
+                    fill(0, 0, 0);
+                    ellipse(mouseX, mouseY, 24);
+                };
+            };
+        </script>
+        <style>
+            space {
+                visibility: hidden;
+            }
+        </style>
+    </head>
+    <body>
+        <label for"color">Color: </label>
+        <input id="color" type="color">
+        <space>AAAAA</space>
+        <label for="size">Size: </label>
+        <input id="size" type="number" value="24">
+    </body>
+</html>
