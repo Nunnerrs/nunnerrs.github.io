@@ -7,6 +7,7 @@
             var size = 24;
             function setUp() {
                 createCanvas(1500, 750);
+                background(235, 235, 235);
             };
             
             function draw() {
@@ -35,27 +36,31 @@
             <option value="erase">Erase</option>
         </select>
         <gap>AA</gap>
-        <color style="visibility: visible">
-            <label for"color">Color: </label>
-            <input id="color" type="color">
-            <button id="setColor" onclick="setColor();">Apply</button>
-        </color>
+        <label id="colorLabel" for"color">Color: </label>
+        <input id="color" type="color">
+        <button id="applyColor" onclick="setColor();">Apply</button>
         <gap>AAAAA</gap>
         <label for="size">Size: </label>
         <input id="size" type="number" value="24">
         <button id="setSize" onclick="setSize();">Apply</button>
         <script>
             var mode = document.getElementById("mode");
-            var colorG = document.getElementsByTagName("color")[0];
-            var colorS = document.getElementById("color").value;
+            var colorLabel = document.getElementById("colorLabel");
+            var selectedColor = document.getElementById("color");
+            var applyColor = document.getElementById("applyColor");
+            var colorS = selectedColor.value;
             
             function setMode() {
                 if (mode.value == "erase") {
-                    colorG.style.visibility = "hidden";
-                    colorS = document.getElementById("color").value;
+                    colorLabel.style.visibility = "hidden";
+                    selectedColor.style.visibility = "hidden";
+                    applyColor.style.visibility = "hidden";
+                    colorS = selectedColor.value;
                     color = "#FFFFFF";
                 } else {
-                    colorG.style.visibility = "visible";
+                    colorLabel.style.visibility = "hidden";
+                    selectedColor.style.visibility = "hidden";
+                    applyColor.style.visibility = "hidden";
                     color = colorS;
                 };
             };
