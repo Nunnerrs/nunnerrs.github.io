@@ -6,13 +6,13 @@
             var color = "#000000";
             var size = 24;
             function setup() {
-                createCanvas(1450, 725);
+                createCanvas(1450, 675);
                 background(255, 255, 255);
                 //alert("Canvas loaded!");
             };
             
             function touchMoved() {
-                strokeColor(color);
+                stroke(color);
                 line(mouseX, mouseY, pmouseX, pmouseY);
                 //noStroke();
                 //fill(color);
@@ -29,7 +29,7 @@
                 text-align: center;
             }
             button, label, select {
-                size: 18px;
+                font-size: 18px;
             gap {
                 visibility: hidden;
             }
@@ -51,7 +51,7 @@
         <gap>AAAAA</gap>
         <label for="size">Size: </label>
         <input id="size" type="number" value="24">
-        <button id="setSize" onclick="setSize();">Apply</button>
+        <button id="setSize" onclick="setSize();">Apply</button><br>
         <script>
             var mode = document.getElementById("mode");
             var colorLabel = document.getElementById("colorLabel");
