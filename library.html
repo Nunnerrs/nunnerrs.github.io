@@ -135,6 +135,7 @@
         <h3>Non-Fiction</h3>
         <button class="cover" id="book2" onclick="openBook(2)">How To NunnerLibrary</button>
         <button class="cover" id="book1" onclick="openBook(1)">Nunnerology</button>
+        <!--button class="cover" id="book7" onclick="openBook(7)">Nunners' Guide To Dreams & Nightmares</button-->
         <!---->
         <br><br><br>
         <button class="darkBg white" id="darkMode" onclick="toggleDarkMode()">Turn on dark mode</button>
@@ -155,7 +156,6 @@
             var mobileOn = false;
             var darkModeOn = false;
             var dm = localStorage.getItem("darkMode");
-            var total = 6;
             
             if (dm == null) {
                 localStorage.setItem("darkMode", false);
@@ -166,8 +166,7 @@
                 /*
                 // Line capacity: 33 characters
                 // Page capacity: 781 characters
-                // MAKE SURE TO UPDATE THE BOOK TOTAL VARIABLE
-                book: [
+                book#: [
                     "<br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Published on M/D/2023<br><br><button class='book#' onclick='copyLink();'>Copy book share link</button>",
                     "Coming Soon!",
                     "Coming Soon!",
@@ -226,7 +225,17 @@
                     "No response. The smile on her dad's face faded away.<br>\"No…\" Hope muttered. The sound from the monitor beeped without pausing. She collapsed in her chair, streams of tears falling non-stop.<br>&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160✿ ✿ ✿<br>The pain in her chest never left. Hope stared at her dad's casket with the priest. She placed a white flower on top of it.<br>\"I picked out this flower, especially for you, Dad.\" Hope said, trying to choke back her tears.<br><br>Hope rolled her luggage behind her as she followed the woman giving her a ride. She cried as she watched her childhood home fade off in the distance.",
                     "The woman opened the car door and led Hope to Sarah's Orphanage. When they walked inside, Hope spotted a blond-haired boy sitting in a corner. His face was buried in his knees, and when he looked up Hope saw tears running down his face.<br>Her eyes grew wide and tons of questions raced across her mind. \"Noah…?\"<br><br><i>Hope Vol. 2</i> coming in February 2023!",
                 ],
+                book7: [
+                    "<br><br><br><br><br><br><br><bt>Nunners' Guide To Dreams & Nightmares</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on M/D/2023<br><br><button class='book7' onclick='copyLink();'>Copy book share link</button>",
+                    "<bt>Introduction</bt><br><i>Nunners' Guide To Dreams & Nightmares</i> is a stupid book that shouldn't be taken seriously. If you're shocked or mad about what your dreams tell about you, just know it's probably not true. Don't think I'm diagnosing you or anything. Anyways, the <i>things-you-see-in-your-dreams</i> are sorted in alphabetical order. Meanings created by me. And uh if you dreamt or had a nightmare last night don't forget to look for its meaning here.<br><br>Well, I hope you enjoy it! — Nunners",
+                    "<bt>A</bt><br><b>Ants</b><br>If you dreamt you were being killed/trampled by a ton of ants, it shows that you're too weak/scared to even step on an ant lol. If you were dreaming about watching ants, you probably really like ants 'cause I don't know who dreams of ants…<br><br><b>Animal</b><br><i>See Ants</i>",
+                    "<bt>D</bt><br><b>Death</b><br>If you dreamt that you died, then you probably woke up right after (omg you did 😱). If you dreamt that someone you care about died, then uh oh",
+                    "<bt>F</bt><br><b>Falling</b><br>If you dreamt that you were falling off a high height or into oblivion, there's probably some really big problems bugging you right now. But if you dreamt off falling off a high height on <i>purpose</i>, then…that's a different story…(<i>see Suicide</i>)",
+                    "<bt>T</bt><br><b>Teeth</b><br>If you dreamt that a tooth fell out, then one of your teeth will most likely come out soon (if you still got baby teeth). If one/all of your teeth came out in your dream and you have all permanent teeth, then you're probably gonna lose something soon.",
+                ],
             };
+            
+            var total = books.length;
 
             function openBook(bookId) {
                 currentBook = bookId;
