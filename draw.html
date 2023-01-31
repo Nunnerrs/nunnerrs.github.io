@@ -4,15 +4,16 @@
         <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
         <script>
             var color = "#000000";
-            var size = 24;
+            var size = 5;
             function setup() {
-                createCanvas(1450, 675);
+                createCanvas(1450, 650);
                 background(255, 255, 255);
                 //alert("Canvas loaded!");
             };
             
             function touchMoved() {
                 stroke(color);
+                strokeWeight(size);
                 line(mouseX, mouseY, pmouseX, pmouseY);
                 //noStroke();
                 //fill(color);
@@ -50,7 +51,7 @@
         <button id="applyColor" onclick="setColor();">Apply</button>
         <gap>AAAAA</gap>
         <label for="size">Size: </label>
-        <input id="size" type="number" value="24">
+        <input id="size" type="number" value="5">
         <button id="setSize" onclick="setSize();">Apply</button><br>
         <script>
             var mode = document.getElementById("mode");
@@ -75,7 +76,8 @@
             };
             
             function setColor() {
-                color = document.getElementById("color").value;
+                color = selectedColor.value;
+                colorS = color;
                 alert("Set color to " + color);
             };
             
