@@ -6,7 +6,7 @@
             var color = "#000000";
             var size = 5;
             function setup() {
-                createCanvas(1450, 650);
+                createCanvas(1350, 650);
                 background(255, 255, 255);
                 //alert("Canvas loaded!");
             };
@@ -20,6 +20,7 @@
                 //ellipse(mouseX, mouseY, size);
             };
         </script>
+        <title>Drawing Tool</title>
         <style>
             body {
                 background-color: rgb(200, 230, 255);
@@ -29,9 +30,13 @@
                 overflow: hidden;
                 text-align: center;
             }
-            button, label, select {
+            button, input, label, select {
                 font-size: 18px;
             gap {
+                -ms-user-select: none;
+                -webkit-user-select: none;
+                color: rgb(200, 230, 255);
+                user-select: none;
                 visibility: hidden;
             }
             h1 {
@@ -42,8 +47,8 @@
     <body onclick="setMode();">
         <h1>Drawing Tool</h1>
         <select id="mode" value="draw" mouseleave="setMode();" mouseout="setMode();" touchend="setMode();">
-            <option value="draw">Draw</option>
-            <option value="erase">Erase</option>
+            <option onclick="setTimeout(setMode, 100);" value="draw">Draw</option>
+            <option onclick="setTimeout(setMode, 100);" value="erase">Erase</option>
         </select>
         <gap>AA</gap>
         <label id="colorLabel" for"color">Color: </label>
@@ -53,6 +58,7 @@
         <label for="size">Size: </label>
         <input id="size" type="number" value="5">
         <button id="setSize" onclick="setSize();">Apply</button><br>
+        <gap>A</gap>
         <script>
             var mode = document.getElementById("mode");
             var colorLabel = document.getElementById("colorLabel");
