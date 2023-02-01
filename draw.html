@@ -6,7 +6,7 @@
             var hexColor = "#000000";
             var lineSize = 10;
             function setup() {
-                createCanvas(1275, 635);
+                createCanvas(1250, 600);
                 background(255, 255, 255);
                 //alert("Canvas loaded!");
             };
@@ -56,17 +56,17 @@
         <gap>AA</gap>
         <label id="colorLabel" for="color">Color: </label>
         <input id="color" type="color">
-        <button id="applyColor" onclick="setColor();">Apply</button>
+        <button id="applyColor" onclick="setColor();">Save</button>
         <gap>AAAAA</gap>
         <label for="size">Size: </label>
         <input id="size" type="number" value="10">
-        <button id="setSize" onclick="setSize();">Apply</button>
+        <button id="applySize" onclick="setSize();">Save</button>
         <gap>AAA</gap>
-        <button onclick="setSizeFromButton(2);">Tiny</button>
-        <button onclick="setSizeFromButton(5);">Small</button>
-        <button onclick="setSizeFromButton(10);">Medium</button>
-        <button onclick="setSizeFromButton(25);">Large</button>
-        <button onclick="setSizeFromButton(50);">Really Big</button><br>
+        <button onclick="setSizeFromButton(2, this);">▪</button>
+        <button onclick="setSizeFromButton(5, this);">◾</button>
+        <button onclick="setSizeFromButton(10, this);">◼</button>
+        <button onclick="setSizeFromButton(25, this);">▇</button>
+        <button onclick="setSizeFromButton(50, this);">⬛</button><br>
         <gap>A</gap>
         <script>
             var mode = document.getElementById("mode");
@@ -76,6 +76,7 @@
             var colorS = selectedColor.value;
             var clear = document.getElementById("clear");
             var sizeBox = document.getElementById("size");
+            var applySize = document.getElementById("applySize");
             var drawSize = sizeBox.value;
             
             function setMode() {
@@ -101,7 +102,9 @@
             function setColor() {
                 hexColor = selectedColor.value;
                 colorS = hexColor;
+                applyColor.innerHTML = "✓✓✓";
                 //alert("Set color to " + hexColor);
+                setTimeout(function() {applyColor.innerHTML = "Save"}, 1500);
             };
             
             function setSize() {
@@ -111,12 +114,15 @@
                         if (selectedColor.style.visibility == "visible") {
                             drawSize = lineSize;
                         };
+                        let square = applySize.innerHTML;
+                        applySize.innerHTML = "✓✓✓";
                         //alert("Set size to " + lineSize);
+                        setTimeout(function() {applySize.innerHTML = square}, 1500);
                     };
                 };
             };
             
-            function setSizeFromButton(customSize) {
+            function setSizeFromButton(customSize, button) {
                 if (customSize != null) {
                     if (Number(customSize) != null) {
                         //alert(Number(customSize));
@@ -125,6 +131,9 @@
                             drawSize = lineSize;
                         };
                         sizeBox.value = lineSize;
+                        let square = applySize.innerHTML;
+                        applySize.innerHTML = "✓";
+                        setTimeout(function() {applySize.innerHTML = square}, 1500);
                     };
                 };
             };
