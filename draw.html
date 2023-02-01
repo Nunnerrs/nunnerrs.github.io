@@ -26,8 +26,10 @@
                 background-color: rgb(200, 230, 255);
                 color: rgb(25, 120, 150);
                 font-family: Comic Sans MS, Chalkboard SE;
+                height: 100%;
                 margin: auto;
                 overflow: hidden;
+                position: fixed;
                 text-align: center;
             }
             button, input, label, select {
@@ -84,7 +86,7 @@
                     applyColor.style.visibility = "hidden";
                     colorS = selectedColor.value;
                     hexColor = "#FFFFFF";
-                    drawSize = sizeBox.value;
+                    //drawSize = sizeBox.value;
                     lineSize = drawSize * 2.5;
                     sizeBox.value = lineSize;
                 } else {
@@ -105,7 +107,7 @@
             function setSize(customSize) {
                 if (customSize) {
                     if (Number(customSize)) {
-                    	alert(Number(customSize))
+                    	//alert(Number(customSize));
                         lineSize = Number(customSize);
                         sizeBox.value = lineSize;
                     };
