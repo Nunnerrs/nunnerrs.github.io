@@ -4,9 +4,9 @@
         <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
         <script>
             var color = "#000000";
-            var size = 5;
+            var size = 10;
             function setup() {
-                createCanvas(1350, 650);
+                createCanvas(1300, 650);
                 background(255, 255, 255);
                 //alert("Canvas loaded!");
             };
@@ -56,8 +56,15 @@
         <button id="applyColor" onclick="setColor();">Apply</button>
         <gap>AAAAA</gap>
         <label for="size">Size: </label>
-        <input id="size" type="number" value="5">
-        <button id="setSize" onclick="setSize();">Apply</button><br>
+        <input id="size" type="number" value="10">
+        <button id="setSize" onclick="setSize();">Apply</button>
+        <gap>AAA</gap>
+        <button onclick="setSize(2);">Tiny</button>
+        <button onclick="setSize(5);">Small</button>
+        <button onclick="setSize(10);">Medium</button>
+        <button onclick="setSize(20);">Large</button>
+        <button onclick="setSize(30);">Really Big</button>
+        <button onclick="setSize(75);">Giant</button><br>
         <gap>A</gap>
         <script>
             var mode = document.getElementById("mode");
@@ -65,6 +72,9 @@
             var selectedColor = document.getElementById("color");
             var applyColor = document.getElementById("applyColor");
             var colorS = selectedColor.value;
+            var clear = document.getElementById("clear");
+            var sizeBox = document.getElementById("size");
+            var drawSize = sizeBox.value;
             
             function setMode() {
                 if (mode.value == "erase") {
@@ -73,23 +83,34 @@
                     applyColor.style.visibility = "hidden";
                     colorS = selectedColor.value;
                     color = "#FFFFFF";
+                    drawSize = sizeBox.value;
+                    size = drawSize * 2.5;
+                    sizeBox.value = size;
                 } else {
                     colorLabel.style.visibility = "visible";
                     selectedColor.style.visibility = "visible";
                     applyColor.style.visibility = "visible";
                     color = colorS;
+                    size = drawSize;
                 };
             };
             
             function setColor() {
                 color = selectedColor.value;
                 colorS = color;
-                alert("Set color to " + color);
+                //alert("Set color to " + color);
             };
             
-            function setSize() {
-                size = document.getElementById("size").value;
-                alert("Set size to " + size);
+            function setSize(customSize) {
+                if (customSize) {
+                    if (Number(customSize) {
+                        size = Number(customSize);
+                        sizeBox.value = size;
+                    };
+                } else if (Number(sizeBox.value)) {
+                    size = sizeBox.value;
+                    //alert("Set size to " + size);
+                };
             };
         </script>
     </body>
