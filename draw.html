@@ -6,7 +6,7 @@
             var hexColor = "#000000";
             var lineSize = 10;
             function setup() {
-                createCanvas(1250, 600);
+                createCanvas(1250, 525);
                 background(255, 255, 255);
                 //alert("Canvas loaded!");
             };
@@ -33,6 +33,9 @@
                 text-align: center;
             }
             button, input, label, select {
+                background-color: rgb(220, 245, 255);
+                border-width: 0px;
+                color: rgb(0, 0, 0);
                 font-size: 18px;
             }
             gap {
@@ -43,31 +46,38 @@
                 visibility: hidden;
             }
             h1 {
-                color: rgb(0, 25, 75);
+                color: rgb(0, 45, 75);
             }
+            .o {
+                border-radius: 50px;
+            };
         </style>
     </head>
-    <body onclick="setMode(); setColor(); setSize();">
+    <body onclick="setMode(); setColor(false); setSize(false);">
         <h1>Drawing Tool</h1>
         <select id="mode" value="draw" mouseleave="setMode();" mouseout="setMode();" touchend="setMode();">
             <option onclick="setTimeout(setMode, 100);" value="draw">Draw</option>
             <option onclick="setTimeout(setMode, 100);" value="erase">Erase</option>
-        </select>
-        <gap>AA</gap>
-        <label id="colorLabel" for="color">Color: </label>
+        </select><br>
+        <label id="colorLabel" for="color"><b>Color: </b></label>
         <input id="color" type="color">
-        <button id="applyColor" onclick="setColor();">Save</button>
-        <gap>AAAAA</gap>
-        <label for="size">Size: </label>
+        <button class="o" onclick="selectedColor.value = '#000000'; setColor();" style="color: black;">⬤</button>
+        <button class="o" onclick="selectedColor.value = '#FF0000'; setColor();" style="color: red;">⬤</button>
+        <button class="o" onclick="selectedColor.value = '#FFFF00'; setColor();" style="color: '#FFFF00';">⬤</button>
+        <button class="o" onclick="selectedColor.value = '#00FF00'; setColor();" style="color: '#00FF00';">⬤</button>
+        <button class="o" onclick="selectedColor.value = '#00BAFF'; setColor();" style="color: '#00BAFF';">⬤</button>
+        <button id="applyColor" onclick="setColor(true);">Save</button>
+        <br>
+        <label for="size"><b>Size: </b></label>
+        <button class="o" onclick="setSizeFromButton(2, this);">▪</button>
+        <button class="o" onclick="setSizeFromButton(5, this);">◾</button>
+        <button class="o" onclick="setSizeFromButton(10, this);">▇</button>
+        <button class="o" onclick="setSizeFromButton(25, this);">◼</button>
+        <button class="o" onclick="setSizeFromButton(50, this);">⬛</button>
+        <gap>AA</gap>
+        <label for="size" style="border-width: 1px">Custom Size:</label>
         <input id="size" type="number" value="10">
-        <button id="applySize" onclick="setSize();">Save</button>
-        <gap>AAA</gap>
-        <button onclick="setSizeFromButton(2, this);">▪</button>
-        <button onclick="setSizeFromButton(5, this);">◾</button>
-        <button onclick="setSizeFromButton(10, this);">◼</button>
-        <button onclick="setSizeFromButton(25, this);">▇</button>
-        <button onclick="setSizeFromButton(50, this);">⬛</button><br>
-        <gap>A</gap>
+        <button id="applySize" onclick="setSize(true);">Save</button><br><br>
         <script>
             var mode = document.getElementById("mode");
             var colorLabel = document.getElementById("colorLabel");
@@ -99,25 +109,30 @@
                 };
             };
             
-            function setColor() {
-                hexColor = selectedColor.value;
-                colorS = hexColor;
-                applyColor.innerHTML = "✓✓✓";
-                //alert("Set color to " + hexColor);
-                setTimeout(function() {applyColor.innerHTML = "Save"}, 1500);
+            function setColor(showChecks) {
+                if (selectedColor.style.visibility = "visible") {
+                    hexColor = selectedColor.value;
+                    colorS = hexColor;
+                    if (showChecks == true) {
+                        applyColor.innerHTML = "✓✓✓";
+                    };
+                    //alert("Set color to " + hexColor);
+                    setTimeout(function() {applyColor.innerHTML = "Save"}, 1500);
+                };
             };
             
-            function setSize() {
+            function setSize(showChecks) {
                 if (sizeBox.value != null) {
                     if (Number(sizeBox.value) != null) {
                         lineSize = sizeBox.value;
                         if (selectedColor.style.visibility == "visible") {
                             drawSize = lineSize;
                         };
-                        let square = applySize.innerHTML;
-                        applySize.innerHTML = "✓✓✓";
+                        if (showChecks == true) {
+                            applySize.innerHTML = "✓✓✓";
+                        };
                         //alert("Set size to " + lineSize);
-                        setTimeout(function() {applySize.innerHTML = square}, 1500);
+                        setTimeout(function() {applySize.innerHTML = "Save"}, 1500);
                     };
                 };
             };
@@ -131,9 +146,9 @@
                             drawSize = lineSize;
                         };
                         sizeBox.value = lineSize;
-                        let square = applySize.innerHTML;
-                        applySize.innerHTML = "✓";
-                        setTimeout(function() {applySize.innerHTML = square}, 1500);
+                        let square = button.innerHTML;
+                        button.innerHTML = "✓";
+                        setTimeout(function() {button.innerHTML = square}, 1500);
                     };
                 };
             };
