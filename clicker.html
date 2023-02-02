@@ -11,7 +11,6 @@
             text-align: center;
             font-size: 20px;
         }
-
         button {
             background-color: rgb(150, 235, 255);
             color: rgb(0, 170, 214);
@@ -21,7 +20,6 @@
             font-family: Comic Sans MS, Chalkboard SE;
             width: auto;
         }
-
         .normal {
             height: 35px;
             font-size: 18px;
@@ -31,11 +29,10 @@
     <body>
         <p id="display" style="font-size: 36px">Clicks: <a id="clicks">0</a></p>
         <p id="incrementDisplay" style="font-size: 24px;">Click Increment (Clicks Per Click/CPC): <a id="increment">1</a></p>
-        <button id="clickButton" style="height: 50px; font-size: 25px" onclick="counter();"><img src=""/>Click Me!</button><br><br>
-        <button id="upgradeButton" class="normal" onclick="upgradeClick();">Upgrade Click (Unlock <a id="cpc">2</a> CPC at <a id="c2u">100</a> clicks)</button><br>
-        <button id="importButton" class="normal" onclick="importClicks();">Import Clicks</button><br>
-        <button id="textButton" class="normal" onclick="toggleText();">Toggle Button Text</button><br>
+        <button id="clickButton" onclick="click();" style="font-size: 25px; height: 100px; width: 500px;">Click Me!</button><br><br>
+        <button class="normal" id="upgradeButton" onclick="upgradeClick();">Upgrade Click (Unlock <a id="cpc">2</a> CPC at <a id="c2u">100</a> clicks)</button><br>
+        <button class="normal" id="importButton" onclick="importClicks();">Import Clicks</button><br>
+        <button class="normal" id="textButton" onclick="toggleText();">Toggle Button Text</button><br>
         <script src="Scripts/clicker.js"></script>
-        <p>Don't forget to <strong>write down your clicks</strong> somewhere before you leave!</p>
     </body>
 </html>
