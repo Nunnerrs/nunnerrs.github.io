@@ -13,7 +13,7 @@ var c2u = document.getElementById("c2u");
 
 setInterval(function() {
     localStorage.setItem("clicks", clicks);
-}, 100)
+}, 100);
 
 function click() {
     clicks += Number(increment.innerHTML);
