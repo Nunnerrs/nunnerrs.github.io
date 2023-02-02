@@ -55,9 +55,22 @@
                 color: rgb(0, 0, 0);
                 font-size: 18px;
             }
+            .blackBg {
+                background-color: black;
+            }
+            .c {
+                height: 15px;
+                width: 15px;
+            }
+            .inv {
+                color: rgba(0, 0, 0, 0);
+            }
+            .invBg {
+                background-color: rgba(255, 255, 255, 0);
+            }
             .o {
                 border-radius: 999px;
-            };
+            }
         </style>
     </head>
     <body onclick="setMode(); setColor(false); setSize(false);">
@@ -68,26 +81,32 @@
         </select><br>
         <label id="colorLabel" for="color"><b>Color: </b></label>
         <input id="color" type="color">
-        <button class="o" onclick="selectedColor.value = '#000000'; setColor();" style="color: black;">⬤</button>
-        <button class="o" onclick="selectedColor.value = '#FF0000'; setColor();" style="color: red;">⬤</button>
-        <button class="o" onclick="selectedColor.value = '#FFFF00'; setColor();" style="color: #FFFF00;">⬤</button>
-        <button class="o" onclick="selectedColor.value = '#00FF00'; setColor();" style="color: #00FF00;">⬤</button>
-        <button class="o" onclick="selectedColor.value = '#00BAFF'; setColor();" style="color: #00BAFF;">⬤</button>
+        <button id="colorBlack" class="c inv o" onclick="selectedColor.value = '#000000'; setColor();" style="background-color: black;">•</button>
+        <button id="colorRed" class="c inv o" onclick="selectedColor.value = '#FF0000'; setColor();" style="background-color: red;">•</button>
+        <button id="colorYellow" class="c inv o" onclick="selectedColor.value = '#FFFF00'; setColor();" style="background-color: yellow;">•</button>
+        <button id="colorGreen" class="c inv o" onclick="selectedColor.value = '#00FF00'; setColor();" style="background-color: #00FF00;">•</button>
+        <button id="colorBlue" class="c inv o" onclick="selectedColor.value = '#00BAFF'; setColor();" style="background-color: #00BAFF;">•</button>
         <button id="applyColor" onclick="setColor(true);">Save</button>
         <br>
         <label for="size"><b>Size: </b></label>
-        <button class="o" onclick="setSizeFromButton(2, this);" style="font-size: 1.5px;">■</button>
-        <button class="o" onclick="setSizeFromButton(5, this);" style="font-size: 3px;">■</button>
-        <button class="o" onclick="setSizeFromButton(10, this);" style="font-size: 7px;">■</button>
-        <button class="o" onclick="setSizeFromButton(25, this);" style="font-size: 17px;">■</button>
-        <button class="o" onclick="setSizeFromButton(50, this);" style="font-size: 30px;">■</button>
+        <button class="invBg o" onclick="setSizeFromButton(2, this);" style="font-size: 10px; height: 20px; width: 20px;">•</button>
+        <button class="invBg o" onclick="setSizeFromButton(5, this);" style="font-size: 16px; height: 16px; width: 20px;">•</button>
+        <button class="blackBg inv o" onclick="setSizeFromButton(10, this);" style="height: 12px; width: 11px;">•</button>
+        <button class="blackBg inv o" onclick="setSizeFromButton(25, this);" style="height: 25px; width: 25px;">•</button>
+        <button class="blackBg inv o" onclick="setSizeFromButton(50, this);" style="height: 50px; width: 50px;">•</button>
         <gap>AA</gap>
         <label for="size" style="border-width: 1px">Custom Size:</label>
         <input id="size" type="number" value="10">
         <button id="applySize" onclick="setSize(true);">Save</button><br><br>
         <script>
+            alert("Welcome to the drawing tool! In case the window scrolls and gives you a hard time to draw on mobile, zoom out (Safari: Aa button; Chrome: … button). Anyways, hope you enjoy!")
             var mode = document.getElementById("mode");
             var colorLabel = document.getElementById("colorLabel");
+            var colorBlack = document.getElementById("colorBlack");
+            var colorRed = document.getElementById("colorRed");
+            var colorYellow = document.getElementById("colorYellow");
+            var colorGreen = document.getElementById("colorGreen");
+            var colorBlue = document.getElementById("colorBlue");
             var selectedColor = document.getElementById("color");
             var applyColor = document.getElementById("applyColor");
             var colorS = selectedColor.value;
@@ -99,6 +118,11 @@
             function setMode() {
                 if (mode.value == "erase") {
                     colorLabel.style.visibility = "hidden";
+                    colorBlack.style.visibility = "hidden";
+                    colorRed.style.visibility = "hidden";
+                    colorYellow.style.visibility = "hidden";
+                    colorGreen.style.visibility = "hidden";
+                    colorBlue.style.visibility = "hidden";
                     selectedColor.style.visibility = "hidden";
                     applyColor.style.visibility = "hidden";
                     colorS = selectedColor.value;
@@ -108,6 +132,11 @@
                     //sizeBox.value = lineSize;
                 } else {
                     colorLabel.style.visibility = "visible";
+                    colorBlack.style.visibility = "visible";
+                    colorRed.style.visibility = "visible";
+                    colorYellow.style.visibility = "visible";
+                    colorGreen.style.visibility = "visible";
+                    colorBlue.style.visibility = "visible";
                     selectedColor.style.visibility = "visible";
                     applyColor.style.visibility = "visible";
                     hexColor = colorS;
@@ -117,7 +146,7 @@
             };
             
             function setColor(showChecks) {
-                if (selectedColor.style.visibility = "visible") {
+                if (selectedColor.style.visibility == "visible") {
                     hexColor = selectedColor.value;
                     colorS = hexColor;
                     if (showChecks == true) {
@@ -153,9 +182,6 @@
                             drawSize = lineSize;
                         };
                         sizeBox.value = lineSize;
-                        let square = button.innerHTML;
-                        button.innerHTML = "✓";
-                        setTimeout(function() {button.innerHTML = square}, 1500);
                     };
                 };
             };
