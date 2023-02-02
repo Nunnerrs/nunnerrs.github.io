@@ -6,7 +6,7 @@
             var hexColor = "#000000";
             var lineSize = 10;
             function setup() {
-                createCanvas(1250, 525);
+                createCanvas(1250, 500);
                 background(255, 255, 255);
                 //alert("Canvas loaded!");
             };
@@ -32,11 +32,10 @@
                 /*position: fixed;*/
                 text-align: center;
             }
-            button, input, label, select {
+            button, select {
                 background-color: rgb(220, 245, 255);
+                border-radius: 10px;
                 border-width: 0px;
-                color: rgb(0, 0, 0);
-                font-size: 18px;
             }
             gap {
                 -ms-user-select: none;
@@ -48,8 +47,16 @@
             h1 {
                 color: rgb(0, 45, 75);
             }
+            input {
+                border-color: rgb(180, 230, 255);
+                border-radius: 5px;
+            }
+            label {
+                color: rgb(0, 0, 0);
+                font-size: 18px;
+            }
             .o {
-                border-radius: 50px;
+                border-radius: 999px;
             };
         </style>
     </head>
@@ -63,17 +70,17 @@
         <input id="color" type="color">
         <button class="o" onclick="selectedColor.value = '#000000'; setColor();" style="color: black;">⬤</button>
         <button class="o" onclick="selectedColor.value = '#FF0000'; setColor();" style="color: red;">⬤</button>
-        <button class="o" onclick="selectedColor.value = '#FFFF00'; setColor();" style="color: '#FFFF00';">⬤</button>
-        <button class="o" onclick="selectedColor.value = '#00FF00'; setColor();" style="color: '#00FF00';">⬤</button>
-        <button class="o" onclick="selectedColor.value = '#00BAFF'; setColor();" style="color: '#00BAFF';">⬤</button>
+        <button class="o" onclick="selectedColor.value = '#FFFF00'; setColor();" style="color: #FFFF00;">⬤</button>
+        <button class="o" onclick="selectedColor.value = '#00FF00'; setColor();" style="color: #00FF00;">⬤</button>
+        <button class="o" onclick="selectedColor.value = '#00BAFF'; setColor();" style="color: #00BAFF;">⬤</button>
         <button id="applyColor" onclick="setColor(true);">Save</button>
         <br>
         <label for="size"><b>Size: </b></label>
-        <button class="o" onclick="setSizeFromButton(2, this);">▪</button>
-        <button class="o" onclick="setSizeFromButton(5, this);">◾</button>
-        <button class="o" onclick="setSizeFromButton(10, this);">▇</button>
-        <button class="o" onclick="setSizeFromButton(25, this);">◼</button>
-        <button class="o" onclick="setSizeFromButton(50, this);">⬛</button>
+        <button class="o" onclick="setSizeFromButton(2, this);" style="font-size: 1.5px;">■</button>
+        <button class="o" onclick="setSizeFromButton(5, this);" style="font-size: 3px;">■</button>
+        <button class="o" onclick="setSizeFromButton(10, this);" style="font-size: 7px;">■</button>
+        <button class="o" onclick="setSizeFromButton(25, this);" style="font-size: 17px;">■</button>
+        <button class="o" onclick="setSizeFromButton(50, this);" style="font-size: 30px;">■</button>
         <gap>AA</gap>
         <label for="size" style="border-width: 1px">Custom Size:</label>
         <input id="size" type="number" value="10">
@@ -97,8 +104,8 @@
                     colorS = selectedColor.value;
                     hexColor = "#FFFFFF";
                     //drawSize = sizeBox.value;
-                    lineSize = drawSize * 2.5;
-                    sizeBox.value = lineSize;
+                    //lineSize = drawSize * 2.5;
+                    //sizeBox.value = lineSize;
                 } else {
                     colorLabel.style.visibility = "visible";
                     selectedColor.style.visibility = "visible";
