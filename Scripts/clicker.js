@@ -1,6 +1,8 @@
 var clicks = 0;
 if (localStorage.getItem("clicks") != null) {
-    clicks = Number(localStorage.getItem("clicks"));
+    if (Number(localStorage.getItem("clicks")) != null) {
+        clicks = Number(localStorage.getItem("clicks"));
+    };
 };
 var clickCounter = document.getElementById("clicks");
 var increment = document.getElementById("increment");
@@ -10,10 +12,6 @@ var importButton = document.getElementById("importButton");
 var textButton = document.getElementById("textButton");
 var cpc = document.getElementById("cpc");
 var c2u = document.getElementById("c2u");
-
-setInterval(function() {
-    localStorage.setItem("clicks", clicks);
-}, 100);
 
 function click() {
     clicks += Number(increment.innerHTML);
@@ -48,7 +46,11 @@ function upgradeClick() {
     }
 };
 
-clickButton.addEventListener("onclick", click);
+setInterval(function() {
+    localStorage.setItem("clicks", clicks);
+}, 100);
+
+clickButton.onclick = function(){click()};
 upgradeButton.addEventListener("onclick", upgradeClick);
 importButton.addEventListener("onclick", importClicks);
 textButton.addEventListener("onclick", toggleText);
