@@ -5,6 +5,7 @@ if (localStorage.getItem("clicks") != null) {
     };
 };
 var clickCounter = document.getElementById("clicks");
+clickCounter.innerHTML = clicks;
 var increment = document.getElementById("increment");
 var clickButton = document.getElementById("clickButton");
 var upgradeButton = document.getElementById("upgradeButton");
@@ -16,7 +17,7 @@ var c2u = document.getElementById("c2u");
 function click() {
     clicks += Number(increment.innerHTML);
     clickCounter.innerHTML = clicks;
-}
+};
 function importClicks() {
     var cc = prompt("Enter the number of clicks to import");
     if (Math.floor(Number(cc)) > 0) {
@@ -33,7 +34,7 @@ function toggleText() {
         button.innerHTML = "";
     } else {
         button.innerHTML = "Click Me!";
-    }
+    };
 };
 function upgradeClick() {
     if (clicks >= c2u.innerHTML) {
@@ -43,7 +44,7 @@ function upgradeClick() {
     } else {
         let clicksLeft = Number(c2u.innerHTML) - clicks;
         alert("You don't have enough clicks to upgrade your click! (You're only " + clicksLeft + " clicks away!)");
-    }
+    };
 };
 
 setInterval(function() {

@@ -1,5 +1,45 @@
 To-Do:
 • Add page numbers on new row below pages (library.html)
-• Fix incorrect transparency on Raise A Rock plant
 • Add a random username generator (based on Kahoot! randomly-generated usernames) in about.html
 • Gather more adjectives & animals for random username generator
+
+Animals (for ↑):
+    Fox
+    Otter
+    Rhino
+    Ant
+    Leopard
+    Sloth
+    Ibex
+    Swan
+    Yeti
+    Dog
+    Crab
+    Zebra
+    Cheetah
+    Tiger
+    Snail
+    Newt
+    Wolf
+    Cat
+    Giraffe
+    Lion
+
+Adjectives (for ↑):
+    Eager
+    Zany
+    Blue
+    Amazing
+    Champion
+    Legend
+    Fuzzy
+    Flying
+    Amiable
+    Classy
+    Wonder
+    Speedy
+    Super
+    Crazy
+    Cute
+    Wonder
+    Majestic
