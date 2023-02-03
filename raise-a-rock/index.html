@@ -10,7 +10,7 @@
             gtag('config', 'G-X1L4RBL935');
         </script>
         <title>raise a pet rock</title>
-        <link id="favicon" rel="icon" type="image/x-icon" href="raise-a-rock/assets/baby-rock.png">
+        <link id="favicon" rel="icon" type="image/x-icon" href="assets/baby-rock.png">
         <style>
             button {
                 background-color: rgb(150, 150, 150);
@@ -47,8 +47,8 @@
         <h1>"<name>Rocky</name>"</h1>
         <h2>Age: <a id="age">1</a></h2>
         <div id="alerts"></div><br>
-        <img id="rock" src="raise-a-rock/assets/baby-rock.png" height="125px" width="auto" draggable="false" ondragover="override(event);" ondrop="use(event);"><br>
-        <img id="tool" src="raise-a-rock/assets/plant.png" width="auto" height="75px" style="visibility: hidden;" draggable="true" ondragstart="saveTool(event);">
+        <img id="rock" src="assets/baby-rock.png" height="125px" width="auto" draggable="false" ondragover="override(event);" ondrop="use(event);"><br>
+        <img id="tool" src="assets/plant.png" width="auto" height="75px" style="visibility: hidden;" draggable="true" ondragstart="saveTool(event);">
         <p id="fullDisplay"><a id="full">100</a>% full</p>
         <button id="feedButton" onclick="toggleFood();">Feed <name>Rocky</name></button><br>
         <label id="foodLabel" for="foodList" style="visibility: hidden;">Selected food: </label>
@@ -73,6 +73,8 @@
         <button id="pauseButton" onclick="toggleTicking();">Pause game</button><br>
         <button id="importButton" onclick="importData();">Import game data</button>
         <button id="exportButton" onclick="exportData();">Export game data</button>
+        <br><br>
+        <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
         <script>
             var age = 1;
             if (localStorage.getItem("age") != null) {
@@ -81,17 +83,17 @@
             
             const rocks = {
                 good: {
-                    super: ["raise-a-rock/assets/mr-rockhead.png"],
-                    clean: ["raise-a-rock/assets/pearl-rock.png"],
-                    happy: ["raise-a-rock/assets/playful-rock.png"],
-                    good: ["raise-a-rock/assets/kawaii-rock.png", "raise-a-rock/assets/bird-rock.png", "raise-a-rock/assets/mount-rushmore.png"],
-                    neutral: ["raise-a-rock/assets/ponytail-rock.png", "raise-a-rock/assets/headband-rock.png", "raise-a-rock/assets/bush-rock.png", "raise-a-rock/assets/roblox-rock.png", "raise-a-rock/assets/slamo-rock.png"],
-                    bad: ["raise-a-rock/assets/adopt-me-rock.png", "raise-a-rock/assets/cheeky-rock.png", "raise-a-rock/assets/moai.png"],
+                    super: ["assets/mr-rockhead.png"],
+                    clean: ["assets/pearl-rock.png"],
+                    happy: ["assets/playful-rock.png"],
+                    good: ["assets/kawaii-rock.png", "assets/bird-rock.png", "assets/mount-rushmore.png"],
+                    neutral: ["assets/ponytail-rock.png", "assets/headband-rock.png", "assets/bush-rock.png", "assets/roblox-rock.png", "assets/slamo-rock.png"],
+                    bad: ["assets/adopt-me-rock.png", "assets/cheeky-rock.png", "assets/moai.png"],
                 },
                 bad: {
-                    good: ["raise-a-rock/assets/bricks.png", "raise-a-rock/assets/man-rock.png", "raise-a-rock/assets/expressionless-rock.png"],
-                    neutral: ["raise-a-rock/assets/potato-rock.png", "raise-a-rock/assets/egg-rock.png", "raise-a-rock/assets/house-rock.png", "raise-a-rock/assets/goggly-eyed-rock.png"],
-                    bad: ["raise-a-rock/assets/moldy-rock.png", "raise-a-rock/assets/magma.png", "raise-a-rock/assets/eroded-rock.png", "raise-a-rock/assets/obese-rock.png"],
+                    good: ["assets/bricks.png", "assets/man-rock.png", "assets/expressionless-rock.png"],
+                    neutral: ["assets/potato-rock.png", "assets/egg-rock.png", "assets/house-rock.png", "assets/goggly-eyed-rock.png"],
+                    bad: ["assets/moldy-rock.png", "assets/magma.png", "assets/eroded-rock.png", "assets/obese-rock.png"],
                 }
             };
 
@@ -262,13 +264,13 @@
                         
                         if (age >= 2.5 && age < 7.5) {
                             if (timesHungry < 4 && timesDirty < 4 && timesSad < 4) {
-                                rock.src = "raise-a-rock/assets/kid-rock-happy.png";
+                                rock.src = "assets/kid-rock-happy.png";
                             } else {
-                                rock.src = "raise-a-rock/assets/kid-rock-sad.png";
+                                rock.src = "assets/kid-rock-sad.png";
                             };
                         } else if (age <= 7.5) {
                             if (timesHungry < 3 && timesDirty < 3 && timesSad < 3) {
-                                if (rock.src == "raise-a-rock/assets/kid-rock-happy.png") {
+                                if (rock.src == "assets/kid-rock-happy.png") {
                                     rock.src = rocks["good"]["super"][Math.floor(Math.random() * (rocks["good"]["super"].length - 1))];
                                 };
                             } else if (timesDirty <= 1) {
@@ -276,19 +278,19 @@
                             } else if (timesSad <= 1) {
                                 rock.src = rocks["good"]["happy"][Math.floor(Math.random() * (rocks["good"]["happy"].length - 1))];
                             } else if (timesHungry <= 4 && timesDirty <= 4 && timesSad <= 4) {
-                                if (rock.src == "raise-a-rock/assets/kid-rock-happy.png") {
+                                if (rock.src == "assets/kid-rock-happy.png") {
                                     rock.src = rocks["good"]["good"][Math.floor(Math.random() * (rocks["good"]["good"].length - 1))];
                                 } else {
                                     rock.src = rocks["bad"]["good"][Math.floor(Math.random() * (rocks["bad"]["good"].length - 1))];
                                 };
                             } else if (timesHungry <= 7 && timesDirty <= 7 && timesSad <= 7) {
-                                if (rock.src == "raise-a-rock/assets/kid-rock-happy.png") {
+                                if (rock.src == "assets/kid-rock-happy.png") {
                                     rock.src = rocks["good"]["neutral"][Math.floor(Math.random() * (rocks["good"]["neutral"].length - 1))];
                                 } else {
                                     rock.src = rocks["bad"]["neutral"][Math.floor(Math.random() * (rocks["bad"]["neutral"].length - 1))];
                                 };
                             } else if (timesHungry >= 8 && timesDirty >= 8 && timesSad >= 8) {
-                                if (rock.src == "raise-a-rock/assets/kid-rock-happy.png") {
+                                if (rock.src == "assets/kid-rock-happy.png") {
                                     rock.src = rocks["good"]["bad"][Math.floor(Math.random() * (rocks["good"]["bad"].length - 1))];
                                 } else {
                                     rock.src = rocks["bad"]["bad"][Math.floor(Math.random() * (rocks["bad"]["bad"].length - 1))];
@@ -352,16 +354,16 @@
                 let food = foodList.value;
                 switch(food) {
                     case "plant":
-                        tool.src = "raise-a-rock/assets/plant.png";
+                        tool.src = "assets/plant.png";
                         break;
                     case "rock kibbles":
-                        tool.src = "raise-a-rock/assets/rock-kibbles.png";
+                        tool.src = "assets/rock-kibbles.png";
                         break;
                     case "cheese":
-                        tool.src = "raise-a-rock/assets/cheese.png";
+                        tool.src = "assets/cheese.png";
                         break;
                     case "gigagrowth gummies":
-                        tool.src = "raise-a-rock/assets/gigagrowth-gummies.png";
+                        tool.src = "assets/gigagrowth-gummies.png";
                         break;
                 };
             };
@@ -393,10 +395,10 @@
                 let tool = toolList.value;
                 switch(tool) {
                     case "shower":
-                        tool.src = "raise-a-rock/assets/shower.png";
+                        tool.src = "assets/shower.png";
                         break;
                     case "sponge":
-                        tool.src = "raise-a-rock/assets/sponge.png";
+                        tool.src = "assets/sponge.png";
                         break;
                 };
             };
