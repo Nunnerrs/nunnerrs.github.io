@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Button Chef</title>
+        <meta charset="UTF-8">
+        <link rel="icon" href="">
+        <style>
+            a {
+                color: rgb(225, 240, 255);
+            }
+            body {
+                background-color: rgb(50, 90, 125);
+                color: rgb(210, 230, 255);
+                font-family: monospace;
+                margin: auto;
+                text-align: center;
+            }
+            button {
+                background-color: rgb(225, 240, 255);
+                border-color: rgb(225, 240, 255);
+                border-radius: 5px;
+                border-width: 1px;
+                font-family: monospace;
+            }
+            gap {
+                color: rgba(255, 255, 255, 0);
+                visibility: hidden;
+            }
+            input {
+                background-color: rgb(225, 240, 255);
+                border-radius: 5px;
+                border-width: 0px;
+                font-family: monospace;
+            }
+            main {
+                clear: both;
+                display: table;
+                margin: auto;
+            }
+            ol {
+                text-align: left;
+            }
+            .column {
+                float: left;
+            }
+            .pageButton {
+                background-color: rgb(150, 190, 235);
+                font-size: 24px;
+                height: 40px;
+                margin-bottom: 15px;
+                width: 50px;
+            }
+            #ingredients {
+                color: rgb(20, 65, 100);
+                font-size: 24px;
+            }
+            #orders {
+                background-color: rgb(225, 240, 255);
+                border-radius: 5px;
+                color: rgb(104, 145, 212);
+                height: 500px;
+                overflow-y: auto;
+                width: 250px;
+            }
+            #recipes {
+                background-color: rgb(225, 240, 255);
+                border-radius: 5px;
+                color: rgb(104, 145, 212);
+                width: 150px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Button Chef</h1>
+        <main>
+            <div class="column" id="orders">
+                <h2 style="color: rgb(65, 124, 176);">Orders</h2>
+                <div style="margin-bottom: 15px;"><ul id="orders-list"></ul></div>
+            </div>
+            <div class="column"><gap>SPACE</gap></div>
+            <div class="column">
+                <h2>Table</h2>
+                <p id="ingredients">Empty</p>
+                <button disabled>Turn table ingredients into food!</button><br><br>
+                <label for="food-search">Enter ingredient name to add to table: </label>
+                <input enterkeyhint="go" id="food-search" type="text">
+            </div>
+            <div class="column"><gap>SPACE</gap></div>
+            <div class="column" id="recipes">
+                <h2 style="color: rgb(65, 124, 176);">Recipes</h2>
+                <div>
+                    <h3 id="recipe">Rice Ball</h3>
+                    <ul id="recipe">
+                        <li>Rice</li>
+                    </ul>
+                </div>
+                <button class="pageButton">←</button><button class="pageButton">→</button>
+            </div>
+            <div class="column"><gap>SPACE</gap></div>
+            <div class="column">
+                <h2>Shop</h2>
+                <p>Your food item stock: <v id="stock">25</v>/<v id="max-storage">25</v></p>
+                <ul>
+                    <li><label for="buy-stock-5">5 food items ($5) <gap>..</gap></label><button id="buy-stock-5">Purchase</button></li>
+                    <li><label for="buy-stock-10">10 food items ($10) </label><button id="buy-stock-10">Purchase</button></li>
+                    <li><label for="buy-stock-20">20 food items ($20) </label><button id="buy-stock-20">Purchase</button></li>
+                    <li><label for="buy-stock-50">50 food items ($50) </label><button id="buy-stock-50">Purchase</button></li>
+                </ul>
+            </div>
+        </main>
+        <br>
+        <h4 style="font-weight: normal">Based on Reykr's <a href="https://replit.com/@Reykr/Console-Chef">Console Chef</a> game on Replit</h4>
+        <h3><a href="index.html" style="text-decoration: none; color: rgb(0, 200, 175);">To the NunnerVerse²</a></h3>
+        <script src="script.js"></script>
+    </body>
+</html>
