@@ -20,6 +20,7 @@
                 border-color: rgb(225, 240, 255);
                 border-radius: 5px;
                 border-width: 1px;
+                color: rgb(0, 0, 0);
                 font-family: monospace;
             }
             gap {
@@ -49,6 +50,9 @@
                 height: 40px;
                 margin-bottom: 15px;
                 width: 50px;
+            }
+            #ing-search-error {
+                color: rgb(175, 210, 245);
             }
             #ingredients {
                 color: rgb(20, 65, 100);
@@ -81,9 +85,10 @@
             <div class="column">
                 <h2>Table</h2>
                 <p id="ingredients">Empty</p>
-                <button disabled>Turn table ingredients into food!</button><br><br>
-                <label for="food-search">Enter ingredient name to add to table: </label>
-                <input enterkeyhint="go" id="food-search" type="text">
+                <button id="make-food" disabled>Turn table ingredients into food!</button><br><br>
+                <label for="ing-search">Enter ingredient name to add to table: </label>
+                <input enterkeyhint="go" id="ing-search" type="text">
+                <p id="ing-search-error" style="visibility: hidden;">Could not find ingredient ""!</p>
             </div>
             <div class="column"><gap>SPACE</gap></div>
             <div class="column" id="recipes">
@@ -99,12 +104,12 @@
             <div class="column"><gap>SPACE</gap></div>
             <div class="column">
                 <h2>Shop</h2>
-                <p>Your food item stock: <v id="stock">25</v>/<v id="max-storage">25</v></p>
+                <p>Your ingredient stock: <v id="stock">25</v>/<v id="max-storage">25</v></p>
                 <ul>
-                    <li><label for="buy-stock-5">5 food items ($5) <gap>..</gap></label><button id="buy-stock-5">Purchase</button></li>
-                    <li><label for="buy-stock-10">10 food items ($10) </label><button id="buy-stock-10">Purchase</button></li>
-                    <li><label for="buy-stock-20">20 food items ($20) </label><button id="buy-stock-20">Purchase</button></li>
-                    <li><label for="buy-stock-50">50 food items ($50) </label><button id="buy-stock-50">Purchase</button></li>
+                    <li><label for="buy-stock-5">5 ingredients ($5) <gap>..</gap></label><button id="buy-stock-5">Purchase</button></li>
+                    <li><label for="buy-stock-10">10 ingredients ($10) </label><button id="buy-stock-10">Purchase</button></li>
+                    <li><label for="buy-stock-20">20 ingredients ($20) </label><button id="buy-stock-20">Purchase</button></li>
+                    <li><label for="buy-stock-50">50 ingredients ($50) </label><button id="buy-stock-50">Purchase</button></li>
                 </ul>
             </div>
         </main>
