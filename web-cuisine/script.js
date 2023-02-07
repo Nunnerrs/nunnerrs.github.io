@@ -431,7 +431,7 @@ eraseDataButton.onclick = eraseData;
 setTimeout(customer, 1000);
 setInterval(customer, customerRate);
 setInterval(function(){
-    if (stock == 0 && money < 5;) {
+    if (stock == 0 && money < 5) {
         money += 5;
         moneyDisplay.innerHTML = money;
         let notif = document.createElement("p");
