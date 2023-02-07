@@ -41,11 +41,14 @@
             ol {
                 text-align: left;
             }
+            .blue {
+                background-color: rgb(150, 190, 235);
+                border-color: rgb(150, 190, 235);
+            }
             .column {
                 float: left;
             }
             .page-button {
-                background-color: rgb(150, 190, 235);
                 font-size: 24px;
                 height: 40px;
                 margin-bottom: 15px;
@@ -57,6 +60,7 @@
             #ingredients {
                 color: rgb(20, 65, 100);
                 font-size: 24px;
+                width: 500px;
             }
             #orders {
                 background-color: rgb(225, 240, 255);
@@ -75,8 +79,9 @@
         </style>
     </head>
     <body>
-        <h1>Button Chef</h1>
-        <p>Money: $<v id="money">25</v></p>
+        <h1>Web Cuisine</h1>
+        <p style="font-size: 18px;">Money: $<v id="money">10</v></p>
+        <div id="notif-container"></div>
         <main>
             <div class="column" id="orders">
                 <h2 style="color: rgb(65, 124, 176);">Orders</h2>
@@ -86,7 +91,8 @@
             <div class="column">
                 <h2>Table</h2>
                 <p id="ingredients">Empty</p>
-                <button id="make-food" disabled>Turn table ingredients into food!</button><br><br>
+                <button disabled id="make-food" style="color: rgb(150, 150, 150);">Turn table ingredients into food!</button>
+                <button disabled id="clear-ing" style="color: rgb(150, 150, 150);">Store all ingredients</button><br><br>
                 <label for="ing-search">Enter ingredient name to add to table: </label>
                 <input enterkeyhint="go" id="ing-search" type="text">
                 <p id="ing-search-error" style="visibility: hidden;"></p>
@@ -100,7 +106,7 @@
                         <li>Rice</li>
                     </ul>
                 </div>
-                <button class="page-button" id="pageL">←</button><button class="page-button" id="pageR">→</button>
+                <button class="blue page-button" id="pageL">←</button><button class="blue page-button" id="pageR">→</button>
             </div>
             <div class="column"><gap>SPACE</gap></div>
             <div class="column">
@@ -113,9 +119,13 @@
                     <li><label for="buy-stock-50">50 ingredients ($50) <gap>.</gap></label><button id="buy-stock-50">Purchase</button></li>
                     <li><label for="buy-recipe">Random recipe ($25) <gap>..</gap></label><button id="buy-recipe">Purchase</button></li>
                     <li><label for="buy-storage">5 extra storage ($15) </label><button id="buy-storage">Purchase</button></li>
+                    <li><label for="buy-seating">Seating ($30) <gap>........</gap></label><button id="buy-seating">Purchase</button></li>
+                    <li><label for="buy-ad">Advertisment ($45) <gap>...</gap></label><button id="buy-ad">Purchase</button></li>
                 </ul>
             </div>
         </main>
+        <button id="save-button">Save data</button>
+        <button id="erase-data-button">Erase data</button>
         <br>
         <h4 style="font-weight: normal">Based on Reykr's <a href="https://replit.com/@Reykr/Console-Chef">Console Chef</a> game on Replit</h4>
         <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 200, 175);">To the NunnerVerse²</a></h3>
