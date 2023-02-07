@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Button Chef</title>
+        <title>Web Cuisine</title>
         <meta charset="UTF-8">
         <link rel="icon" href="">
         <style>
@@ -44,7 +44,7 @@
             .column {
                 float: left;
             }
-            .pageButton {
+            .page-button {
                 background-color: rgb(150, 190, 235);
                 font-size: 24px;
                 height: 40px;
@@ -76,6 +76,7 @@
     </head>
     <body>
         <h1>Button Chef</h1>
+        <p>Money: $<v id="money">25</v></p>
         <main>
             <div class="column" id="orders">
                 <h2 style="color: rgb(65, 124, 176);">Orders</h2>
@@ -88,34 +89,36 @@
                 <button id="make-food" disabled>Turn table ingredients into food!</button><br><br>
                 <label for="ing-search">Enter ingredient name to add to table: </label>
                 <input enterkeyhint="go" id="ing-search" type="text">
-                <p id="ing-search-error" style="visibility: hidden;">Could not find ingredient ""!</p>
+                <p id="ing-search-error" style="visibility: hidden;"></p>
             </div>
             <div class="column"><gap>SPACE</gap></div>
             <div class="column" id="recipes">
                 <h2 style="color: rgb(65, 124, 176);">Recipes</h2>
                 <div>
-                    <h3 id="recipe">Rice Ball</h3>
-                    <ul id="recipe">
+                    <h3 id="recipe-name">Rice Ball</h3>
+                    <ul id="recipe-ing">
                         <li>Rice</li>
                     </ul>
                 </div>
-                <button class="pageButton">←</button><button class="pageButton">→</button>
+                <button class="page-button" id="pageL">←</button><button class="page-button" id="pageR">→</button>
             </div>
             <div class="column"><gap>SPACE</gap></div>
             <div class="column">
                 <h2>Shop</h2>
                 <p>Your ingredient stock: <v id="stock">25</v>/<v id="max-storage">25</v></p>
                 <ul>
-                    <li><label for="buy-stock-5">5 ingredients ($5) <gap>..</gap></label><button id="buy-stock-5">Purchase</button></li>
-                    <li><label for="buy-stock-10">10 ingredients ($10) </label><button id="buy-stock-10">Purchase</button></li>
-                    <li><label for="buy-stock-20">20 ingredients ($20) </label><button id="buy-stock-20">Purchase</button></li>
-                    <li><label for="buy-stock-50">50 ingredients ($50) </label><button id="buy-stock-50">Purchase</button></li>
+                    <li><label for="buy-stock-5">5 ingredients ($5) <gap>...</gap></label><button id="buy-stock-5">Purchase</button></li>
+                    <li><label for="buy-stock-10">10 ingredients ($10) <gap>.</gap></label><button id="buy-stock-10">Purchase</button></li>
+                    <li><label for="buy-stock-20">20 ingredients ($20) <gap>.</gap></label><button id="buy-stock-20">Purchase</button></li>
+                    <li><label for="buy-stock-50">50 ingredients ($50) <gap>.</gap></label><button id="buy-stock-50">Purchase</button></li>
+                    <li><label for="buy-recipe">Random recipe ($25) <gap>..</gap></label><button id="buy-recipe">Purchase</button></li>
+                    <li><label for="buy-storage">5 extra storage ($15) </label><button id="buy-storage">Purchase</button></li>
                 </ul>
             </div>
         </main>
         <br>
         <h4 style="font-weight: normal">Based on Reykr's <a href="https://replit.com/@Reykr/Console-Chef">Console Chef</a> game on Replit</h4>
-        <h3><a href="index.html" style="text-decoration: none; color: rgb(0, 200, 175);">To the NunnerVerse²</a></h3>
+        <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 200, 175);">To the NunnerVerse²</a></h3>
         <script src="script.js"></script>
     </body>
 </html>
