@@ -13,7 +13,7 @@ if (localStorage.getItem("maxCustomers") != null) {
 };
 var customerRate = 15000; // milliseconds
 if (localStorage.getItem("customerRate") != null) {
-    maxCustomers = Number(localStorage.getItem("customerRate"));
+    customerRate = Number(localStorage.getItem("customerRate"));
 };
 var ingredients = document.getElementById("ingredients");
 var ingSearch = document.getElementById("ing-search");
@@ -73,6 +73,8 @@ const ingredientsList = {
     "🐟": "🐟",
     flour: "🌾",
     "🌾": "🌾",
+    ice: "🧊",
+    "🧊": "🧊",
     lettuce: "🥬",
     "🥬": "🥬",
     meat: "🥩",
@@ -94,11 +96,16 @@ const ingredientsList = {
 // Profits are calculated by (# ing × 1.5)
 const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit: 1.5, unlocked: false},
     {emoji: "🍔", ing: "🍞🥬🧀🥩🍞", ingList: "Bread,Lettuce,Cheese,Meat,Bread", name: "Burger", profit: 7.5, unlocked: false},
+    {emoji: "🌯", ing: "🌾🫘🍚🥩🧅", ingList: "Flour,Beans,Rice,Meat,Onion", name: "Burrito", profit: 7.5, unlocked: false},
+    {emoji: "🥪", ing: "🍞🧀🍅🥬🍞", ingList: "Bread,Cheese,Tomato,Lettuce,Bread", name: "Sandwich", profit: 7.5, unlocked: false},
     {emoji: "🍕", ing: "🍞🍅🧀🥩", ingList: "Bread,Tomato,Cheese,Meat", name: "Pizza", profit: 6, unlocked: false},
     {emoji: "🥗", ing: "🥬🍅🥒🧅", ingList: "Lettuce,Tomato,Cucumber,Onion", name: "Salad", profit: 6, unlocked: false},
+    {emoji: "🌮", ing: "🌾🥩🥬🧅", ingList: "Flour,Meat,Lettuce,Onion", name: "Taco", profit: 6, unlocked: false},
+    {emoji: "🍨", ing: "🧊🥛", ingList: "Ice,Milk", name: "Ice Cream", profit: 3, unlocked: false},
     {emoji: "🌭", ing: "🍞🥩", ingList: "Bread,Meat", name: "Hot Dog", profit: 3, unlocked: false},
     {emoji: "🥞", ing: "🌾🥚", ingList: "Flour,Egg", name: "Pancakes", profit: 3, unlocked: false},
     {emoji: "🍣", ing: "🍚🐟", ingList: "Rice,Fish", name: "Sushi", profit: 3, unlocked: false},
+    {emoji: "🍳", ing: "🥚", ingList: "Egg", name: "Fried Egg", profit: 1.5, unlocked: false},
     {emoji: "🍤", ing: "🦐", ingList: "Shrimp", name: "Fried Shrimp", profit: 1.5, unlocked: false},
     {emoji: "🍟", ing: "🥔", ingList: "Potato", name: "French Fries", profit: 1.5, unlocked: true},
     {emoji: "🍙", ing: "🍚", ingList: "Rice", name: "Rice Ball", profit: 1.5, unlocked: true},
