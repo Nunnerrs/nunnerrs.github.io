@@ -150,12 +150,13 @@ function customer() {
 };
 
 function randomFood() {
-    let randomItem = Math.floor(Math.random() * foodList.length)
-    if (randomItem["unlocked"] == true) {
-        return foodList[randomItem];
-    } else {
-        return foodList[foodList.length - (Math.floor(Math.random() * 2) + 1)];
+    let unlockedFoods = 0;
+    for (let i = 0; i < foodList.length - 1; i++) {
+        if (foodList[i]["unlocked"] == true) {
+            unlockedFoods++;
+        };
     };
+    return foodList[foodList.length - (Math.floor(Math.random() * unlockedFoods) + 1)];
 };
 
 function serveCustomer(order, customer) {
@@ -422,4 +423,14 @@ saveButton.onclick = saveData;
 eraseDataButton.onclick = eraseData;
 setTimeout(customer, 1000);
 setInterval(customer, customerRate);
+setInterval(function(){
+    if (stock == 0 && money < 5;) {
+        money += 5;
+        moneyDisplay.innerHTML = money;
+        let notif = document.createElement("p");
+        notif.innerHTML = "You found $5 on the floor!";
+        notifContainer.appendChild(notif);
+        setTimeout(function(){notif.remove()}, 6250);
+    };
+}, 5000);
 setInterval(saveData, 60000);
