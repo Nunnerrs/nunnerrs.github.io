@@ -54,15 +54,19 @@ var eraseDataButton = document.getElementById("erase-data-button");
 
 const customerNames = [
     "Nunners", "Kayleigh", "Lianna", "Skylar", "Yeen Yeen", "Jin", "Jaelle", "Chelsey", "Ethan", "Anton", "Jeanne", "Aya", "Samantha",
-    "Mr. Wedgehead", "Wide Racoon", "Albert", "War Noodle", "The Sun", "Princess Sherk", "Patricia", "Dummy", "Jules", "Zack",
+    "Mr. Wedgehead", "Wide Racoon", "Albert", "Amongus", "War Noodle", "The Sun", "Princess Sherk", "Patricia", "Dummy", "Jules", "Zack",
     "Azalea", "Malo", "Billy Bob Joe",
     "Jack", "Holly",
-    "Tae Hanazono", "Michelle",
+    "Tae Hanazono", "Michelle", "Moca Aoba",
     "Nene Yashiro", "Hanako", "Kou Minamoto", "Aoi Akane", "Akane Aoi", "Teru Minamoto", "Lemon Yamabuki", "Sousuke Mitsuba", "Tsukasa", "Sakura Nanamine", "Natsuhiko Hyuuga", "Yako", "Tsuchigomori",
 ];
 const ingredientsList = {
     bread: "🍞",
     "🍞": "🍞",
+    cheese: "🧀",
+    "🧀": "🧀",
+    cucumber: "🥒",
+    "🥒": "🥒",
     egg: "🥚",
     "🥚": "🥚",
     fish: "🐟",
@@ -75,18 +79,27 @@ const ingredientsList = {
     "🥩": "🥩",
     milk: "🥛",
     "🥛": "🥛",
+    onion: "🧅",
+    "🧅": "🧅",
     potato: "🥔",
     "🥔": "🥔",
     rice: "🍚",
     "🍚": "🍚",
+    shrimp: "🦐",
+    "🦐": "🦐",
+    tomato: "🍅",
+    "🍅": "🍅",
 };
 
 // Profits are calculated by (# ing × 1.5)
 const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit: 1.5, unlocked: false},
-    {emoji: "🍔", ing: "🍞🥬🧀🥩🍞", ingList: "Bread (×2),Lettuce,Cheese,Meat", name: "Burger", profit: 7.5, unlocked: false},
+    {emoji: "🍔", ing: "🍞🥬🧀🥩🍞", ingList: "Bread,Lettuce,Cheese,Meat,Bread", name: "Burger", profit: 7.5, unlocked: false},
+    {emoji: "🍕", ing: "🍞🍅🧀🥩", ingList: "Bread,Tomato,Cheese,Meat", name: "Pizza", profit: 6, unlocked: false},
+    {emoji: "🥗", ing: "🥬🍅🥒🧅", ingList: "Lettuce,Tomato,Cucumber,Onion", name: "Salad", profit: 6, unlocked: false},
     {emoji: "🌭", ing: "🍞🥩", ingList: "Bread,Meat", name: "Hot Dog", profit: 3, unlocked: false},
     {emoji: "🥞", ing: "🌾🥚", ingList: "Flour,Egg", name: "Pancakes", profit: 3, unlocked: false},
     {emoji: "🍣", ing: "🍚🐟", ingList: "Rice,Fish", name: "Sushi", profit: 3, unlocked: false},
+    {emoji: "🍤", ing: "🦐", ingList: "Shrimp", name: "Fried Shrimp", profit: 1.5, unlocked: false},
     {emoji: "🍟", ing: "🥔", ingList: "Potato", name: "French Fries", profit: 1.5, unlocked: true},
     {emoji: "🍙", ing: "🍚", ingList: "Rice", name: "Rice Ball", profit: 1.5, unlocked: true},
 ];
@@ -110,6 +123,17 @@ function customer() {
         customers++;
         let customer = document.createElement("li");
         let customerName = customerNames[Math.floor(Math.random() * customerNames.length)];
+        let maxNames = customerNames.length;
+        let names = 0;
+        if (ordersList.innerHTML.match(customerName)) {
+            while (ordersList.innerHTML.match(customerName) && names < maxNames) {
+                customerName = customerNames[Math.floor(Math.random() * customerNames.length)];
+                names++;
+            };
+            if (names >= maxNames) {
+                customerName = customerNames[Math.floor(Math.random() * customerNames.length)];
+            };
+        };
         let order = randomFood();
         customer.innerHTML = order["emoji"] + " ~ " + customerName;
         customer.dataset.order = order;
@@ -124,12 +148,13 @@ function customer() {
         ordersList.appendChild(customer);
     };
 };
+
 function randomFood() {
     let randomItem = Math.floor(Math.random() * foodList.length)
     if (randomItem["unlocked"] == true) {
         return foodList[randomItem];
     } else {
-        return foodList[foodList.length - 1];
+        return foodList[foodList.length - (Math.floor(Math.random() * 2) + 1)];
     };
 };
 
@@ -287,7 +312,7 @@ function unlockRecipe() {
                 if (f != null) {
                     money -= recipePrice;
                     moneyDisplay.innerHTML = money;
-                    foodList[f]["unlocked"] = true;
+                    f["unlocked"] = true;
                     unlocked = true;
                     let notif = document.createElement("p");
                     notif.innerHTML = "You unlocked the recipe for " + recipes[i]["name"] + "!";
@@ -396,5 +421,5 @@ buyAd.onclick = addAd;
 saveButton.onclick = saveData;
 eraseDataButton.onclick = eraseData;
 setTimeout(customer, 1000);
-setInterval(customer, 15000);
+setInterval(customer, customerRate);
 setInterval(saveData, 60000);
