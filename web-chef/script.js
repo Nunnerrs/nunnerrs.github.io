@@ -1,4 +1,4 @@
-// v1.1.4.2
+// v1.1.4.3
 var money = 10;
 var moneyDisplay = document.getElementById("money");
 if (localStorage.getItem("money") != null) {
@@ -186,7 +186,7 @@ function randomFood() {
     if (Math.floor(Math.random() * unlockedFoods) == 0) {
         return recipes[0];
     } else {
-        return recipes[Math.floor(Math.random() * unlockedFoods + 1)];
+        return recipes[Math.floor(Math.random() * unlockedFoods) + 1];
     };
 };
 
