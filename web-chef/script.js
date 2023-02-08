@@ -1,4 +1,4 @@
-// v1.1.4.3
+// v1.1.5.4
 var money = 10;
 var moneyDisplay = document.getElementById("money");
 if (localStorage.getItem("money") != null) {
@@ -122,8 +122,8 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "🍝", ing: "🍜🍅", ingList: "Noodles,Tomato", name: "Spaghetti", profit: 4.5, unlocked: false},
     {emoji: "🥐", ing: "🍞🧈", ingList: "Bread,Butter", name: "Croissant", profit: 4, unlocked: false},
     {emoji: "🥞", ing: "🌾🥚", ingList: "Flour,Egg", name: "Pancakes", profit: 4, unlocked: false},
-    {emoji: "🍗", ing: "🥩", ingList: "Meat", name: "Chicken Leg", profit: 3.5, unlocked: false},
     {emoji: "🍣", ing: "🍚🐟", ingList: "Rice,Fish", name: "Sushi", profit: 3.5, unlocked: false},
+    {emoji: "🍗", ing: "🥩", ingList: "Meat", name: "Chicken Leg", profit: 3.5, unlocked: false},
     {emoji: "🍳", ing: "🥚", ingList: "Egg", name: "Fried Egg", profit: 3, unlocked: false},
     {emoji: "🥨", ing: "🍞", ingList: "Bread", name: "Pretzel", profit: 2.5, unlocked: false},
     {emoji: "🍤", ing: "🦐", ingList: "Shrimp", name: "Fried Shrimp", profit: 2.5, unlocked: false},
@@ -144,6 +144,7 @@ for (let i = 0; i < foodList.length; i++) {
 };
 //const currentIng = [];
 const recipes = [...foodList].reverse();
+const unlocked = [];
 
 function customer() {
     if (customers < maxCustomers) {
@@ -162,6 +163,7 @@ function customer() {
             };
         };
         let order = randomFood();
+        unlocked.length = 0;
         customer.innerHTML = order["emoji"] + " ~ $" + order["profit"] + " ~ " + customerName;
         customer.dataset.order = order;
         let button = document.createElement("button");
@@ -177,17 +179,12 @@ function customer() {
 };
 
 function randomFood() {
-    let unlockedFoods = 0;
     for (let i = 0; i < foodList.length - 1; i++) {
         if (foodList[i]["unlocked"] == true) {
-            unlockedFoods++;
+            unlocked.push(foodList[i]);
         };
     };
-    if (Math.floor(Math.random() * unlockedFoods) == 0) {
-        return recipes[0];
-    } else {
-        return recipes[Math.floor(Math.random() * unlockedFoods) + 1];
-    };
+    return unlocked[Math.floor(Math.random() * (unlocked.length - 1))];
 };
 
 function serveCustomer(order, customer) {
