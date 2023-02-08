@@ -158,13 +158,13 @@ function customer() {
 };
 
 function randomFood() {
-    let unlockedFoods = 0;
+    let unlockedFoods = -1;
     for (let i = 0; i < foodList.length - 1; i++) {
         if (foodList[i]["unlocked"] == true) {
             unlockedFoods++;
         };
     };
-    return foodList[foodList.length - (Math.floor(Math.random() * unlockedFoods) + 1)];
+    return recipes[Math.floor(Math.random() * unlockedFoods)];
 };
 
 function serveCustomer(order, customer) {
