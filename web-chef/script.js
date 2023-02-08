@@ -184,7 +184,8 @@ function randomFood() {
             unlocked.push(foodList[i]);
         };
     };
-    return unlocked[Math.floor(Math.random() * (unlocked.length - 1))];
+    unlocked.push(foodList[foodList.length - 1]);
+    return unlocked[Math.floor(Math.random() * unlocked.length)];
 };
 
 function serveCustomer(order, customer) {
