@@ -129,13 +129,13 @@ for (let i = 0; i < foodList.length; i++) {
     for (let i2 = 0; i2 < splitName.length; i2++) {
         name = name + splitName[i2];
     };
-    if (localStorage.getItem(foodList[i]["unlocked"]) != null) {
-        if (localStorage.getItem(foodList[i]["unlocked"]) == true) {
+    if (localStorage.getItem(name) != null) {
+        if (localStorage.getItem(name) == true) {
             foodList[i]["unlocked"] = true;
         };
     };
 };
-const currentIng = [];
+//const currentIng = [];
 const recipes = [...foodList].reverse();
 
 function customer() {
