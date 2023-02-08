@@ -1,4 +1,4 @@
-// v1.1.2.0
+// v1.1.3.0
 var money = 10;
 var moneyDisplay = document.getElementById("money");
 if (localStorage.getItem("money") != null) {
@@ -85,6 +85,9 @@ const ingredientsList = {
     "🥩": "🥩",
     milk: "🥛",
     "🥛": "🥛",
+    noodle: "🍜",
+    noodles: "🍜",
+    "🍜": "🍜",
     onion: "🧅",
     "🧅": "🧅",
     potato: "🥔",
@@ -110,6 +113,7 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "🍨", ing: "🧊🥛", ingList: "Ice,Milk", name: "Ice Cream", profit: 4.5, unlocked: false},
     {emoji: "🌭", ing: "🍞🥩", ingList: "Bread,Meat", name: "Hot Dog", profit: 4.5, unlocked: false},
     {emoji: "🥯", ing: "🍞🧀", ingList: "Bread,Cheese", name: "Bagel", profit: 4, unlocked: false},
+    {emoji: "🍝", ing: "🍜🍅", ingList: "Noodles,Tomato", name: "Spaghetti", profit: 4.5, unlocked: false},
     {emoji: "🥐", ing: "🍞🧈", ingList: "Bread,Butter", name: "Croissant", profit: 4, unlocked: false},
     {emoji: "🥞", ing: "🌾🥚", ingList: "Flour,Egg", name: "Pancakes", profit: 4, unlocked: false},
     {emoji: "🍗", ing: "🥩", ingList: "Meat", name: "Chicken Leg", profit: 3.5, unlocked: false},
@@ -125,8 +129,8 @@ for (let i = 0; i < foodList.length; i++) {
     for (let i2 = 0; i2 < splitName.length; i2++) {
         name = name + splitName[i2];
     };
-    if (localStorage.getItem(foodList[i]["name"]) != null) {
-        if (localStorage.getItem(foodList[i]["name"]) == true) {
+    if (localStorage.getItem(foodList[i]["unlocked"]) != null) {
+        if (localStorage.getItem(foodList[i]["unlocked"]) == true) {
             foodList[i]["unlocked"] = true;
         };
     };
@@ -151,7 +155,7 @@ function customer() {
             };
         };
         let order = randomFood();
-        customer.innerHTML = order["emoji"] + " ~ " + customerName;
+        customer.innerHTML = order["emoji"] + " ~ " + order["profit"] + " ~ " + customerName;
         customer.dataset.order = order;
         let button = document.createElement("button");
         let gap = document.createElement("gap");
@@ -172,7 +176,11 @@ function randomFood() {
             unlockedFoods++;
         };
     };
-    return recipes[Math.floor(Math.random() * unlockedFoods + 1)];
+    if (Math.floor(Math.random() * unlockedFoods) == 0) {
+        return recipes[0];
+    } else {
+        return recipes[Math.floor(Math.random() * unlockedFoods + 1)];
+    };
 };
 
 function serveCustomer(order, customer) {
@@ -186,7 +194,7 @@ function serveCustomer(order, customer) {
         money += order["profit"];
         moneyDisplay.innerHTML = money;
         customer.remove();
-    };nmmmmmm,rq 
+    };
 };
 
 function findIng() {
@@ -297,7 +305,7 @@ function nextPage() {
 
 function addStock(ing) {
     let confirmation = confirm("Buy " + ing + " ingredients for $" + ing/2 + "?");
-    if (confirmation == true && money >= ing/2 && stock < storage) {
+    if (confirmation == true && money >= ing/2 && stock + ing < storage) {
         money -= ing/2;
         moneyDisplay.innerHTML = money;
         stock += ing;
