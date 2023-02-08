@@ -288,8 +288,9 @@ function nextPage() {
 };
 
 function addStock(ing) {
-    if (money >= ing && stock < storage) {
-        money -= ing;
+    let confirmation = confirm("Buy " + ing + " ingredients for $" + ing/2 + "?");
+    if (confirmation == true && money >= ing/2 && stock < storage) {
+        money -= ing/2;
         moneyDisplay.innerHTML = money;
         stock += ing;
         stockDisplay.innerHTML = stock;
@@ -297,7 +298,8 @@ function addStock(ing) {
 };
 
 function addStorage() {
-    if (money >= storagePrice) {
+    let confirmation = confirm("Buy 5 extra storage for $" + storagePrice + "?");
+    if (confirmation == true && money >= storagePrice) {
         money -= storagePrice;
         moneyDisplay.innerHTML = money;
         storage += 5;
@@ -306,7 +308,8 @@ function addStorage() {
 };
 
 function unlockRecipe() {
-    if (money >= recipePrice) {
+    let confirmation = confirm("Buy a random recipe for $" + recipePrice + "?");
+    if (confirmation == true && money >= recipePrice) {
         let unlocked = false;
         for (let i = 0; i < recipes.length - 1; i++) {
             console.log(i);
@@ -341,7 +344,8 @@ function unlockRecipe() {
 };
 
 function addSeating() {
-    if (money >= seatingPrice) {
+    let confirmation = confirm("Buy seating (+ 1 max customers) for $" + seatingPrice + "?");
+    if (confirmation == true && money >= seatingPrice) {
         money -= seatingPrice;
         moneyDisplay.innerHTML = money;
         maxCustomers++;
@@ -349,7 +353,8 @@ function addSeating() {
 };
 
 function addAd() {
-    if (money >= adPrice) {
+    let confirmation = confirm("Buy ad (customers arrive faster) for $" + adPrice + "?");
+    if (confirmation == true && money >= adPrice) {
         if (customerRate > 3000) {
             money -= adPrice;
             moneyDisplay.innerHTML = money;
