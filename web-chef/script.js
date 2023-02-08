@@ -1,3 +1,4 @@
+// v1.1.2.0
 var money = 10;
 var moneyDisplay = document.getElementById("money");
 if (localStorage.getItem("money") != null) {
@@ -301,6 +302,16 @@ function addStock(ing) {
         moneyDisplay.innerHTML = money;
         stock += ing;
         stockDisplay.innerHTML = stock;
+    } else if (confirmation == true && money >= ing/2 && stock == storage) {
+        alert("You're already at max stock! (no money was lost)");
+    } else if (confirmation == true && money >= ing/2 && stock + ing > storage) {
+        let confirmation = confirm("Are you sure? Buying this will set your stock to " + storage + ", not " + (stock + ing) + "!");
+        if (confirmation == true) {
+            money -= ing/2;
+            moneyDisplay.innerHTML = money;
+            stock = storage;
+            stockDisplay.innerHTML = stock;
+        };
     };
 };
 
@@ -343,7 +354,7 @@ function unlockRecipe() {
         };
         if (unlocked == false) {
             let notif = document.createElement("p");
-            notif.innerHTML = "You have already unlocked every recipe!";
+            notif.innerHTML = "You have already unlocked all " + foodList.length + " recipes!";
             notifContainer.appendChild(notif);
             setTimeout(function(){notif.remove()}, 5000);
         };
@@ -388,14 +399,16 @@ function saveData() {
         };
         localStorage.setItem(name, foodList[i]["unlocked"]);
     };
+    saveButton.disabled = true;
+    saveButton.style.color = "rgb(150, 150, 150)";
     let notif = document.createElement("p");
     notif.innerHTML = "Data saved!";
     notifContainer.appendChild(notif);
-    setTimeout(function(){notif.remove()}, 2500);
+    setTimeout(function(){notif.remove(); saveButton.disabled = false; saveButton.style.color = "rgb(0, 0, 0)";}, 2500);
 };
 
 function eraseData() {
-    let confirmation = confirm("Are you sure you want to erase all your data?");
+    let confirmation = confirm("Are you sure you want to erase all your data? (THIS ACTION CANNOT BE UNDONE IF YOU CLICK OK)");
     if (confirmation == true) {
         money = 10;
         moneyDisplay.innerHTML = money;
