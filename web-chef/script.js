@@ -64,6 +64,8 @@ const customerNames = [
 const ingredientsList = {
     bread: "🍞",
     "🍞": "🍞",
+    butter: "🧈",
+    "🧈": "🧈",
     cheese: "🧀",
     "🧀": "🧀",
     cucumber: "🥒",
@@ -94,21 +96,26 @@ const ingredientsList = {
     "🍅": "🍅",
 };
 
-// Profits are calculated by (# ing × 1.5)
+// Profits are calculated by (# ing × 2)
 const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit: 1.5, unlocked: false},
-    {emoji: "🍔", ing: "🍞🥬🧀🥩🍞", ingList: "Bread,Lettuce,Cheese,Meat,Bread", name: "Burger", profit: 7.5, unlocked: false},
-    {emoji: "🌯", ing: "🌾🫘🍚🥩🧅", ingList: "Flour,Beans,Rice,Meat,Onion", name: "Burrito", profit: 7.5, unlocked: false},
-    {emoji: "🥪", ing: "🍞🧀🍅🥬🍞", ingList: "Bread,Cheese,Tomato,Lettuce,Bread", name: "Sandwich", profit: 7.5, unlocked: false},
-    {emoji: "🍕", ing: "🍞🍅🧀🥩", ingList: "Bread,Tomato,Cheese,Meat", name: "Pizza", profit: 6, unlocked: false},
-    {emoji: "🥗", ing: "🥬🍅🥒🧅", ingList: "Lettuce,Tomato,Cucumber,Onion", name: "Salad", profit: 6, unlocked: false},
-    {emoji: "🌮", ing: "🌾🥩🥬🧅", ingList: "Flour,Meat,Lettuce,Onion", name: "Taco", profit: 6, unlocked: false},
-    {emoji: "🍨", ing: "🧊🥛", ingList: "Ice,Milk", name: "Ice Cream", profit: 3, unlocked: false},
-    {emoji: "🌭", ing: "🍞🥩", ingList: "Bread,Meat", name: "Hot Dog", profit: 3, unlocked: false},
-    {emoji: "🥞", ing: "🌾🥚", ingList: "Flour,Egg", name: "Pancakes", profit: 3, unlocked: false},
-    {emoji: "🍣", ing: "🍚🐟", ingList: "Rice,Fish", name: "Sushi", profit: 3, unlocked: false},
-    {emoji: "🍳", ing: "🥚", ingList: "Egg", name: "Fried Egg", profit: 1.5, unlocked: false},
-    {emoji: "🍤", ing: "🦐", ingList: "Shrimp", name: "Fried Shrimp", profit: 1.5, unlocked: false},
-    {emoji: "🍟", ing: "🥔", ingList: "Potato", name: "French Fries", profit: 1.5, unlocked: true},
+    {emoji: "🍰", ing: "🌾🥚🧈🥛🧀", ingList: "Flour,Egg,Butter,Milk,Cheese", name: "Cheesecake", profit: 10, unlocked: false},
+    {emoji: "🍔", ing: "🍞🥬🧀🥩🍞", ingList: "Bread,Lettuce,Cheese,Meat,Bread", name: "Burger", profit: 9.5, unlocked: false},
+    {emoji: "🌯", ing: "🌾🫘🍚🥩🧅", ingList: "Flour,Beans,Rice,Meat,Onion", name: "Burrito", profit: 9.5, unlocked: false},
+    {emoji: "🥪", ing: "🍞🧀🍅🥬🍞", ingList: "Bread,Cheese,Tomato,Lettuce,Bread", name: "Sandwich", profit: 9, unlocked: false},
+    {emoji: "🍕", ing: "🍞🍅🧀🥩", ingList: "Bread,Tomato,Cheese,Meat", name: "Pizza", profit: 8.5, unlocked: false},
+    {emoji: "🥗", ing: "🥬🍅🥒🧅", ingList: "Lettuce,Tomato,Cucumber,Onion", name: "Salad", profit: 8, unlocked: false},
+    {emoji: "🌮", ing: "🌾🥩🥬🧅", ingList: "Flour,Meat,Lettuce,Onion", name: "Taco", profit: 7.5, unlocked: false},
+    {emoji: "🧇", ing: "🌾🥚🧈", ingList: "Flour,Egg,Butter", name: "Waffles", profit: 6, unlocked: false},
+    {emoji: "🍨", ing: "🧊🥛", ingList: "Ice,Milk", name: "Ice Cream", profit: 4.5, unlocked: false},
+    {emoji: "🌭", ing: "🍞🥩", ingList: "Bread,Meat", name: "Hot Dog", profit: 4.5, unlocked: false},
+    {emoji: "🥯", ing: "🍞🧀", ingList: "Bread,Cheese", name: "Bagel", profit: 4, unlocked: false},
+    {emoji: "🥐", ing: "🍞🧈", ingList: "Bread,Butter", name: "Croissant", profit: 4, unlocked: false},
+    {emoji: "🥞", ing: "🌾🥚", ingList: "Flour,Egg", name: "Pancakes", profit: 4, unlocked: false},
+    {emoji: "🍗", ing: "🥩", ingList: "Meat", name: "Chicken Leg", profit: 3.5, unlocked: false},
+    {emoji: "🍣", ing: "🍚🐟", ingList: "Rice,Fish", name: "Sushi", profit: 3.5, unlocked: false},
+    {emoji: "🍳", ing: "🥚", ingList: "Egg", name: "Fried Egg", profit: 3, unlocked: false},
+    {emoji: "🍤", ing: "🦐", ingList: "Shrimp", name: "Fried Shrimp", profit: 2.5, unlocked: false},
+    {emoji: "🍟", ing: "🥔", ingList: "Potato", name: "French Fries", profit: 2, unlocked: true},
     {emoji: "🍙", ing: "🍚", ingList: "Rice", name: "Rice Ball", profit: 1.5, unlocked: true},
 ];
 for (let i = 0; i < foodList.length; i++) {
@@ -158,13 +165,13 @@ function customer() {
 };
 
 function randomFood() {
-    let unlockedFoods = -1;
+    let unlockedFoods = 0;
     for (let i = 0; i < foodList.length - 1; i++) {
         if (foodList[i]["unlocked"] == true) {
             unlockedFoods++;
         };
     };
-    return recipes[Math.floor(Math.random() * unlockedFoods)];
+    return recipes[Math.floor(Math.random() * unlockedFoods + 1)];
 };
 
 function serveCustomer(order, customer) {
@@ -178,7 +185,7 @@ function serveCustomer(order, customer) {
         money += order["profit"];
         moneyDisplay.innerHTML = money;
         customer.remove();
-    };
+    };nmmmmmm,rq 
 };
 
 function findIng() {
