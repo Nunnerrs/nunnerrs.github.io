@@ -4,8 +4,10 @@
 
 ## projects
 - **collection of online fun stuffs** (unblocked games): [https://nunnerrs.github.io/games](https://nunnerrs.github.io/games)
-- **Drawing Tool**: [https://nunnerrs.github.io/draw](https://nunnerrs.github.io/draw)
+- **Web Chef** (restaurant game): [https://nunnerrs.github.io/web-chef](https://nunnerrs.github.io/web-chef)
 - **lucky pull simulator** (gacha test): [https://nunnerrs.github.io/lucky-pull](https://nunnerrs.github.io/lucky-pull)
+- **NunnerLibrary**: [https://nunnerrs.github.io/library](https://nunnerrs.github.io/library)
+- **Drawing Tool**: [https://nunnerrs.github.io/draw](https://nunnerrs.github.io/draw)
 - **skylar's art gallery**: [https://nunnerrs.github.io/skylar-art](https://nunnerrs.github.io/skylar-art)
 - **lianna's art gallery**: [https://nunnerrs.github.io/lianna-art](https://nunnerrs.github.io/lianna-art)
 - **clicker gaem**: [https://nunnerrs.github.io/clicker](https://nunnerrs.github.io/clicker)
