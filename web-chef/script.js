@@ -124,6 +124,7 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "🥞", ing: "🌾🥚", ingList: "Flour,Egg", name: "Pancakes", profit: 4, unlocked: false},
     {emoji: "🍣", ing: "🍚🐟", ingList: "Rice,Fish", name: "Sushi", profit: 3.5, unlocked: false},
     {emoji: "🍗", ing: "🥩", ingList: "Meat", name: "Chicken Leg", profit: 3.5, unlocked: false},
+    {emoji: "🍧", ing: "🧊", ingList: "Ice", name: "Shaved Ice", profit: 3, unlocked: false},
     {emoji: "🍳", ing: "🥚", ingList: "Egg", name: "Fried Egg", profit: 3, unlocked: false},
     {emoji: "🥨", ing: "🍞", ingList: "Bread", name: "Pretzel", profit: 2.5, unlocked: false},
     {emoji: "🍤", ing: "🦐", ingList: "Shrimp", name: "Fried Shrimp", profit: 2.5, unlocked: false},
@@ -184,7 +185,7 @@ function randomFood() {
             unlocked.push(foodList[i]);
         };
     };
-    unlocked.push(foodList[foodList.length - 1]);
+    unlocked.unshift(foodList[foodList.length - 1]);
     return unlocked[Math.floor(Math.random() * unlocked.length)];
 };
 
