@@ -1,4 +1,4 @@
-var v = "v" + "1.2.5.5";
+var v = "v" + "1.3.5.5";
 var version = document.getElementById("version");
 version.innerHTML = v;
 var money = 10;
@@ -44,7 +44,7 @@ var buyStock5 = document.getElementById("buy-stock-5");
 var buyStock10 = document.getElementById("buy-stock-10");
 var buyStock20 = document.getElementById("buy-stock-20");
 var buyStock50 = document.getElementById("buy-stock-50");
-var buyRecipe = document.getElementById("buy-recipe");
+var buyRecipeButton = document.getElementById("buy-recipe");
 var recipePrice = 25;
 var buyStorage = document.getElementById("buy-storage");
 var storagePrice = 15;
@@ -75,6 +75,8 @@ const ingredientsList = {
     "🧈": "🧈",
     cheese: "🧀",
     "🧀": "🧀",
+    chocolate: "🍫",
+    "🍫": "🍫",
     cucumber: "🥒",
     "🥒": "🥒",
     egg: "🥚",
@@ -127,6 +129,7 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "🥐", ing: "🍞🧈", ingList: "Bread,Butter", name: "Croissant", profit: 4, unlocked: false},
     {emoji: "🥞", ing: "🌾🥚", ingList: "Flour,Egg", name: "Pancakes", profit: 4, unlocked: false},
     {emoji: "🍣", ing: "🍚🐟", ingList: "Rice,Fish", name: "Sushi", profit: 3.5, unlocked: false},
+    {emoji: "🍪", ing: "🌾🍫", ingList: "Flour,Chocolate", name: "Cookie", profit: 2, unlocked: false},
     {emoji: "🍗", ing: "🥩", ingList: "Meat", name: "Chicken Leg", profit: 3.5, unlocked: false},
     {emoji: "🍧", ing: "🧊", ingList: "Ice", name: "Shaved Ice", profit: 3, unlocked: false},
     {emoji: "🍳", ing: "🥚", ingList: "Egg", name: "Fried Egg", profit: 3, unlocked: false},
@@ -177,6 +180,7 @@ function customer() {
         unlocked.length = 0;
         customer.innerHTML = order["emoji"] + " ~ $" + order["profit"] + " ~ " + customerName;
         customer.dataset.order = order;
+        customer.dataset.name = customerName;
         let button = document.createElement("button");
         let gap = document.createElement("gap");
         gap.innerHTML = ".";
@@ -209,6 +213,28 @@ function serveCustomer(order, customer) {
         clearIng.style.color = "rgb(150, 150, 150)";
         money += order["profit"];
         moneyDisplay.innerHTML = money;
+        let unlockedAll = true;
+        for (let i = 0; i < foodList.length - 1; i++) {
+            if (foodList[i]["unlocked"] == false) {
+                unlockedAll = false;
+                break;
+            };
+        };
+        let rng = Math.floor(Math.random() * 25);
+        if (rng == 0 && unlockedAll == false) {
+            unlockRecipe(false);
+        } else if (rng >= 0 && rng < 10 && unlockedAll == true) {
+            let tip = Math.round(order["profit"] / 2)
+            if (customer.order["name"] != "Rice Ball" && rng >= 0 && rng <= 2) {
+                tip += 0.5;
+            };
+            money += tip;
+            moneyDisplay.innerHTML = money;
+            let notif = document.createElement("p");
+            notif.innerHTML = customer.dataset.name + " tipped you $" + tip + "!";
+            notifContainer.appendChild(notif);
+            setTimeout(function(){notif.remove()}, 5000);
+        };
         customer.remove();
     };
 };
@@ -216,6 +242,8 @@ function serveCustomer(order, customer) {
 function findIng() {
     if (ingredientsList[ingSearch.value.toLowerCase()]) {
         return ingredientsList[ingSearch.value.toLowerCase()];
+    } else if (ingSeach.value == "⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️") {
+        return ingSeach.value;
     } else {
         return null;
     };
@@ -225,20 +253,35 @@ function addIng(e) {
     if (e.key == "Enter") {
         let ing = findIng();
         if (ing != null && stock > 0) {
-            if (ingredients.innerHTML == "Empty") {
-                ingredients.innerHTML = "";
-                makeFoodButton.disabled = false;
-                makeFoodButton.style.color = "rgb(0, 0, 0)";
-                clearIng.disabled = false;
-                clearIng.style.color = "rgb(0, 0, 0)";
+            if (ing == "⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️") {
+                moneyDisplay.innerHTML = "∞";
+                stockDisplay.innerHTML = "∞";
+                let notif = document.createElement("p");
+                notif.innerHTML = "HOW?!? YOU HACKER!!";
+                notifContainer.appendChild(notif);
+                setTimeout(function(){notif.remove()}, 7500);
+                moneyDisplay.innerHTML = money;
+                stockDisplay.innerHTML = stock;
+                notif = document.createElement("p");
+                notif.innerHTML = "jk you ain't getting that XD";
+                notifContainer.appendChild(notif);
+                setTimeout(function(){notif.remove()}, 5000);
+            } else {
+                if (ingredients.innerHTML == "Empty") {
+                    ingredients.innerHTML = "";
+                    makeFoodButton.disabled = false;
+                    makeFoodButton.style.color = "rgb(0, 0, 0)";
+                    clearIng.disabled = false;
+                    clearIng.style.color = "rgb(0, 0, 0)";
+                };
+                ingSearch.value = "";
+                if (window.orientation > 1) {
+                    //ingSearch.blur();
+                };
+                ingredients.innerHTML = ingredients.innerHTML + ing;
+                stock -= 1;
+                stockDisplay.innerHTML = stock;
             };
-            ingSearch.value = "";
-            if (window.orientation > 1) {
-                //ingSearch.blur();
-            };
-            ingredients.innerHTML = ingredients.innerHTML + ing;
-            stock -= 1;
-            stockDisplay.innerHTML = stock;
         } else if (ing != null && stock < 1) {
             ingSearchError.innerHTML = "You don't have enough ingredients!";
             ingSearchError.style.visibility = "visible";
@@ -277,6 +320,18 @@ function makeFood() {
                 //console.log(currentIng.toString());
             };*/
         };
+    };
+    if (ingredients.innerHTML == "🍫") {
+        ingredients.innerHTML = "💝";
+        let notif = document.createElement("p");
+        notif.innerHTML = "Happy Valentines Day!";
+        notifContainer.appendChild(notif);
+        setTimeout(function(){notif.remove()}, 10000);
+    };
+    if (ingredients.innerHTML.match("🐶")) {
+        ingredients.innerHTML = "🍖";
+        ingSearchError.innerHTML = "ｗｈａｔ　ｈａｖｅ　ｙｏｕ　ｄｏｎｅ　ｙｏｕ　ｍｏｎｓｔｅｒ";
+        setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
     };
 };
 
@@ -336,6 +391,8 @@ function addStock(ing) {
             stock = storage;
             stockDisplay.innerHTML = stock;
         };
+    } else if (confirmation == true && money < ing/2) {
+        alert("You don't have enough money to buy this! (Price: " + ing/2 + ")");
     };
 };
 
@@ -346,18 +403,25 @@ function addStorage() {
         moneyDisplay.innerHTML = money;
         storage += 5;
         storageDisplay.innerHTML = storage;
+    } else if (confirmation == true && money < storagePrice) {
+        alert("You don't have enough money to buy this! (Price: " + storagePrice + ")");
     };
 };
 
-function unlockRecipe() {
-    let confirmation = confirm("Buy a random recipe for $" + recipePrice + "?");
-    if (confirmation == true && money >= recipePrice) {
+function unlockRecipe(loseMoney) {
+    let paid = false
+    if (loseMoney == true && money >= recipePrice) {
+        money -= recipePrice;
+        moneyDisplay.innerHTML = money;
+        paid = true
+    } else {
+        paid = true;
+    };
+    if (paid == true) {
         let unlocked = false;
         for (let i = 0; i < foodList.length - 1; i++) {
             let f = Math.floor(Math.random() * foodList.length);
             if (foodList[f]["unlocked"] == false) {
-                money -= recipePrice;
-                moneyDisplay.innerHTML = money;
                 foodList[f]["unlocked"] = true;
                 unlocked = true;
                 saveData();
@@ -369,11 +433,17 @@ function unlockRecipe() {
             };
         };
         if (unlocked == false) {
-            let notif = document.createElement("p");
-            notif.innerHTML = "You have already unlocked all " + foodList.length + " recipes!";
-            notifContainer.appendChild(notif);
-            setTimeout(function(){notif.remove()}, 5000);
+            alert("You have already unlocked all " + foodList.length + " recipes!");
         };
+    } else {
+        alert("You don't have enough money to buy this! (Price: " + recipePrice + ")");
+    };
+};
+
+function buyRecipe() {
+    let confirmation = confirm("Buy a random recipe for $" + recipePrice + "?");
+    if (confirmation == true) {
+        unlockRecipe(true);
     };
 };
 
@@ -383,6 +453,8 @@ function addSeating() {
         money -= seatingPrice;
         moneyDisplay.innerHTML = money;
         maxCustomers++;
+    } else if (confirmation == true && money < seatingPrice) {
+        alert("You don't have enough money to buy this! (Price: " + seatingPrice + ")");
     };
 };
 
@@ -399,6 +471,8 @@ function addAd() {
             notifContainer.appendChild(notif);
             setTimeout(function(){notif.remove()}, 5000);
         };
+    } else if (confirmation == true && money < adPrice) {
+        alert("You don't have enough money to buy this! (Price: " + adPrice + ")");
     };
 };
 
@@ -464,7 +538,7 @@ buyStock5.onclick = function(){addStock(5)};
 buyStock10.onclick = function(){addStock(10)};
 buyStock20.onclick = function(){addStock(20)};
 buyStock50.onclick = function(){addStock(50)};
-buyRecipe.onclick = unlockRecipe;
+buyRecipeButton.onclick = buyRecipe;
 buyStorage.onclick = addStorage;
 buySeating.onclick = addSeating;
 buyAd.onclick = addAd;
