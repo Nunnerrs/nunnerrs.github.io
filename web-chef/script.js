@@ -1,4 +1,4 @@
-// v1.1.5.4
+// v1.2.5.4
 var money = 10;
 var moneyDisplay = document.getElementById("money");
 if (localStorage.getItem("money") != null) {
@@ -65,6 +65,8 @@ const customerNames = [
 const ingredientsList = {
     apple: "🍎",
     "🍎": "🍎",
+    beans: "🫘",
+    "🫘": "🫘",
     bread: "🍞",
     "🍞": "🍞",
     butter: "🧈",
@@ -138,7 +140,7 @@ for (let i = 0; i < foodList.length; i++) {
         name = name + splitName[i2];
     };
     if (localStorage.getItem(name) != null) {
-        if (localStorage.getItem(name) == true) {
+        if (localStorage.getItem(name) == "true") {
             foodList[i]["unlocked"] = true;
         };
     };
@@ -146,6 +148,12 @@ for (let i = 0; i < foodList.length; i++) {
 //const currentIng = [];
 const recipes = [...foodList].reverse();
 const unlocked = [];
+recipeName.innerHTML = recipes[page]["name"] + " " + (recipes[page]["unlocked"] == true ? "✅" : "❎") + "<br> Profit: $" + recipes[page]["profit"];
+recipeIng.innerHTML = "";
+let ing = recipes[page]["ingList"].split(",");
+for (let i = 0; i < ing.length; i++) {
+    recipeIng.innerHTML = recipeIng.innerHTML + "<li>" + ing[i] + "</li>";
+};
 
 function customer() {
     if (customers < maxCustomers) {
@@ -224,7 +232,7 @@ function addIng(e) {
             };
             ingSearch.value = "";
             if (window.orientation > 1) {
-                ingSearch.blur();
+                //ingSearch.blur();
             };
             ingredients.innerHTML = ingredients.innerHTML + ing;
             stock -= 1;
@@ -288,7 +296,7 @@ function clear() {
 function backPage() {
     if (page > 0) {
         page -= 1;
-        recipeName.innerHTML = recipes[page]["name"];
+        recipeName.innerHTML = recipes[page]["name"] + " " + (recipes[page]["unlocked"] == true ? "✅" : "❎") + "<br> Profit: $" + recipes[page]["profit"];
         recipeIng.innerHTML = "";
         let ing = recipes[page]["ingList"].split(",");
         for (let i = 0; i < ing.length; i++) {
@@ -300,7 +308,7 @@ function backPage() {
 function nextPage() {
     if (page < recipes.length - 1) {
         page++;
-        recipeName.innerHTML = recipes[page]["name"];
+        recipeName.innerHTML = recipes[page]["name"] + " " + (recipes[page]["unlocked"] == true ? "✅" : "❎") + "<br> Profit: $" + recipes[page]["profit"];
         recipeIng.innerHTML = "";
         let ing = recipes[page]["ingList"].split(",");
         for (let i = 0; i < ing.length; i++) {
@@ -343,27 +351,19 @@ function unlockRecipe() {
     let confirmation = confirm("Buy a random recipe for $" + recipePrice + "?");
     if (confirmation == true && money >= recipePrice) {
         let unlocked = false;
-        for (let i = 0; i < recipes.length - 1; i++) {
-            console.log(i);
-            if (recipes[i]["unlocked"] == false) {
-                let f = null;
-                for (let i2 = 0; i2 < foodList.length - 1; i2++) {
-                    console.log(foodList[i2]["name"] + " " + recipes[i]["name"])
-                    if (foodList[i2]["name"] == recipes[i]["name"]) {
-                        f = foodList[i2];
-                    };
-                };
-                if (f != null) {
-                    money -= recipePrice;
-                    moneyDisplay.innerHTML = money;
-                    f["unlocked"] = true;
-                    unlocked = true;
-                    let notif = document.createElement("p");
-                    notif.innerHTML = "You unlocked the recipe for " + recipes[i]["name"] + "!";
-                    notifContainer.appendChild(notif);
-                    setTimeout(function(){notif.remove()}, 5000);
-                    break;
-                };
+        for (let i = 0; i < foodList.length - 1; i++) {
+            let f = Math.floor(Math.random() * foodList.length);
+            if (foodList[f]["unlocked"] == false) {
+                money -= recipePrice;
+                moneyDisplay.innerHTML = money;
+                foodList[f]["unlocked"] = true;
+                unlocked = true;
+                saveData();
+                let notif = document.createElement("p");
+                notif.innerHTML = "You unlocked the recipe for " + foodList[f]["name"] + "!";
+                notifContainer.appendChild(notif);
+                setTimeout(function(){notif.remove()}, 5000);
+                break;
             };
         };
         if (unlocked == false) {
@@ -411,7 +411,7 @@ function saveData() {
         for (let i2 = 0; i2 < splitName.length - 1; i2++) {
             name = name + splitName[i2];
         };
-        localStorage.setItem(name, foodList[i]["unlocked"]);
+        localStorage.setItem(name, foodList[i]["unlocked"].toString());
     };
     saveButton.disabled = true;
     saveButton.style.color = "rgb(150, 150, 150)";
