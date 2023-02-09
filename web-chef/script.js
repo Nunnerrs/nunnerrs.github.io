@@ -1,4 +1,6 @@
-// v1.2.5.4
+var v = "v" + "1.2.5.5";
+var version = document.getElementById("version");
+version.innerHTML = v;
 var money = 10;
 var moneyDisplay = document.getElementById("money");
 if (localStorage.getItem("money") != null) {
@@ -60,7 +62,7 @@ const customerNames = [
     "Jack", "Holly",
     "Tae Hanazono", "Michelle", "Moca Aoba", "Nanami Hiromachi", "Kasumi Toyama", "Arisa Ichigaya", "Rimi Ushigome", "Kaoru Seta", "Sayo Hikawa", "Hina Hikawa", "Ran Mitake", "Himari Uehara", "Kokoro Tsurumaki", "Yukina Minato", "Lisa Imai", "Mashiro Kurata", "Rui Yashio", "CHU²", "LAYER", "LOCKE", "MASKING", "PAREO",
     "Nene Yashiro", "Hanako", "Kou Minamoto", "Aoi Akane", "Akane Aoi", "Teru Minamoto", "Lemon Yamabuki", "Sousuke Mitsuba", "Tsukasa", "Sakura Nanamine", "Natsuhiko Hyuuga", "Yako", "Tsuchigomori",
-    "Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah",
+    "Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah", "Colette",
 ];
 const ingredientsList = {
     apple: "🍎",
@@ -133,7 +135,7 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "🍟", ing: "🥔", ingList: "Potato", name: "French Fries", profit: 2, unlocked: true},
     {emoji: "🍙", ing: "🍚", ingList: "Rice", name: "Rice Ball", profit: 1.5, unlocked: true},
 ];
-for (let i = 0; i < foodList.length; i++) {
+for (let i = 0; i < foodList.length - 2; i++) {
     let splitName = foodList[i]["name"].toLowerCase().split(" ");
     let name = "";
     for (let i2 = 0; i2 < splitName.length; i2++) {
@@ -188,12 +190,12 @@ function customer() {
 };
 
 function randomFood() {
-    for (let i = 0; i < foodList.length - 1; i++) {
+    for (let i = 0; i < foodList.length; i++) {
         if (foodList[i]["unlocked"] == true) {
             unlocked.push(foodList[i]);
         };
     };
-    unlocked.unshift(foodList[foodList.length - 1]);
+    //unlocked.unshift(foodList[foodList.length - 1]);
     return unlocked[Math.floor(Math.random() * unlocked.length)];
 };
 
@@ -405,10 +407,10 @@ function saveData() {
     localStorage.setItem("maxCustomers", maxCustomers);
     localStorage.setItem("stock", stock);
     localStorage.setItem("storage", storage);
-    for (let i = 0; i < foodList.length - 1; i++) {
+    for (let i = 0; i < foodList.length - 2; i++) {
         let splitName = foodList[i]["name"].toLowerCase().split(" ");
         let name = "";
-        for (let i2 = 0; i2 < splitName.length - 1; i2++) {
+        for (let i2 = 0; i2 < splitName.length; i2++) {
             name = name + splitName[i2];
         };
         localStorage.setItem(name, foodList[i]["unlocked"].toString());
