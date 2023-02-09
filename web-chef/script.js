@@ -142,7 +142,7 @@ for (let i = 0; i < foodList.length - 2; i++) {
         name = name + splitName[i2];
     };
     if (localStorage.getItem(name) != null) {
-        if (localStorage.getItem(name) == "true") {
+        if (localStorage.getItem(name) == "true" || localStorage.getItem(name) == true) {
             foodList[i]["unlocked"] = true;
         };
     };
