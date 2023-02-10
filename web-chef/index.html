@@ -81,6 +81,17 @@
                 color: rgb(104, 145, 212);
                 width: 150px;
             }
+            #tutorial-button {
+                bottom: 10px;
+                border-radius: 999px;
+                border-width: 0px;
+                color: rgb(255, 255, 255);
+                font-size: 32px;
+                height: 45px;
+                position: fixed;
+                right: 10px;
+                width: 45px;
+            }
         </style>
     </head>
     <body>
@@ -99,8 +110,8 @@
                 <button disabled id="make-food" style="color: rgb(150, 150, 150);">Turn table ingredients into food!</button>
                 <button disabled id="clear-ing" style="color: rgb(150, 150, 150);">Store all ingredients</button><br><br>
                 <label for="ing-search">Enter ingredient name to add to table: </label>
-                <input enterkeyhint="go" id="ing-search" type="text">
-                <p id="ing-search-error" style="visibility: hidden;"></p>
+                <input autocomplete="off" enterkeyhint="go" id="ing-search" placeholder="e.g. rice, potato" type="text">
+                <p id="ing-search-error"></p>
             </div>
             <div class="column"><gap>SPACE</gap></div>
             <div class="column" id="recipes">
@@ -135,6 +146,7 @@
         <h4 style="font-weight: normal">Based on Reykr's <a href="https://replit.com/@Reykr/Console-Chef">Console Chef</a> game on Replit</h4>
         <h4 style="font-weight: normal">Version <v id="version">----</v></h4>
         <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 200, 175);">To the NunnerVerse²</a></h3>
+        <div><button class="blue" id="tutorial-button">ℹ︎</button></div>
         <script src="script.js"></script>
     </body>
 </html>

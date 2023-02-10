@@ -1,6 +1,10 @@
 var v = "v" + "1.3.5.5";
 var version = document.getElementById("version");
 version.innerHTML = v;
+var tutorialCompleted = false;
+if (localStorage.getItem("tutorialCompleted") != null) {
+    tutorialCompleted = true;
+};
 var money = 10;
 var moneyDisplay = document.getElementById("money");
 if (localStorage.getItem("money") != null) {
@@ -54,6 +58,7 @@ var buyAd = document.getElementById("buy-ad");
 var adPrice = 45;
 var saveButton = document.getElementById("save-button");
 var eraseDataButton = document.getElementById("erase-data-button");
+var tutorialButton = document.getElementById("tutorial-button");
 
 const customerNames = [
     "Nunners", "Kayleigh", "Lianna", "Skylar", "Yeen Yeen", "Jin", "Jaelle", "Chelsey", "Ethan", "Anton", "Jeanne", "Aya", "Samantha",
@@ -63,18 +68,21 @@ const customerNames = [
     "Tae Hanazono", "Michelle", "Moca Aoba", "Nanami Hiromachi", "Kasumi Toyama", "Arisa Ichigaya", "Rimi Ushigome", "Kaoru Seta", "Sayo Hikawa", "Hina Hikawa", "Ran Mitake", "Himari Uehara", "Kokoro Tsurumaki", "Yukina Minato", "Lisa Imai", "Mashiro Kurata", "Rui Yashio", "CHU²", "LAYER", "LOCKE", "MASKING", "PAREO",
     "Nene Yashiro", "Hanako", "Kou Minamoto", "Aoi Akane", "Akane Aoi", "Teru Minamoto", "Lemon Yamabuki", "Sousuke Mitsuba", "Tsukasa", "Sakura Nanamine", "Natsuhiko Hyuuga", "Yako", "Tsuchigomori",
     "Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah", "Colette",
+    "Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus"
 ];
 const ingredientsList = {
     apple: "🍎",
     "🍎": "🍎",
     beans: "🫘",
     "🫘": "🫘",
+    beef: "🥩",
     bread: "🍞",
     "🍞": "🍞",
     butter: "🧈",
     "🧈": "🧈",
     cheese: "🧀",
     "🧀": "🧀",
+    chicken: "🥩",
     chocolate: "🍫",
     "🍫": "🍫",
     cucumber: "🥒",
@@ -98,10 +106,13 @@ const ingredientsList = {
     "🍜": "🍜",
     onion: "🧅",
     "🧅": "🧅",
+    pork: "🥩",
     potato: "🥔",
     "🥔": "🥔",
     rice: "🍚",
     "🍚": "🍚",
+    salt: "🧂",
+    "🧂": "🧂",
     shrimp: "🦐",
     "🦐": "🦐",
     tomato: "🍅",
@@ -110,31 +121,33 @@ const ingredientsList = {
     "💧": "💧",
 };
 
-// Profits are calculated by (# ing × 2)
+// Initial profits are calculated by (# ing × 2)
 const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit: 1.5, unlocked: false},
     {emoji: "🍰", ing: "🌾🥚🧈🥛🧀", ingList: "Flour,Egg,Butter,Milk,Cheese", name: "Cheesecake", profit: 10, unlocked: false},
-    {emoji: "🍔", ing: "🍞🥬🧀🥩🍞", ingList: "Bread,Lettuce,Cheese,Meat,Bread", name: "Burger", profit: 9.5, unlocked: false},
     {emoji: "🌯", ing: "🌾🫘🍚🥩🧅", ingList: "Flour,Beans,Rice,Meat,Onion", name: "Burrito", profit: 9.5, unlocked: false},
-    {emoji: "🥪", ing: "🍞🧀🍅🥬🍞", ingList: "Bread,Cheese,Tomato,Lettuce,Bread", name: "Sandwich", profit: 9, unlocked: false},
-    {emoji: "🍕", ing: "🍞🍅🧀🥩", ingList: "Bread,Tomato,Cheese,Meat", name: "Pizza", profit: 8.5, unlocked: false},
+    {emoji: "🍔", ing: "🍞🥬🧀🥩🍞", ingList: "Bread,Lettuce,Cheese,Meat,Bread", name: "Burger", profit: 9, unlocked: false},
     {emoji: "🍲", ing: "💧🍜🥩🧅", ingList: "Water,Noodles,Meat,Onion", name: "Pho", profit: 8.5, unlocked: false},
-    {emoji: "🥗", ing: "🥬🍅🥒🧅", ingList: "Lettuce,Tomato,Cucumber,Onion", name: "Salad", profit: 8, unlocked: false},
+    {emoji: "🥪", ing: "🍞🧀🍅🥬🍞", ingList: "Bread,Cheese,Tomato,Lettuce,Bread", name: "Sandwich", profit: 8, unlocked: false},
     {emoji: "🥧", ing: "🍎🌾🥚🧈", ingList: "Apple,Flour,Egg,Butter", name: "Apple Pie", profit: 8, unlocked: false},
-    {emoji: "🌮", ing: "🌾🥩🥬🧅", ingList: "Flour,Meat,Lettuce,Onion", name: "Taco", profit: 7.5, unlocked: false},
-    {emoji: "🧇", ing: "🌾🥚🧈", ingList: "Flour,Egg,Butter", name: "Waffles", profit: 6, unlocked: false},
-    {emoji: "🍨", ing: "🧊🥛", ingList: "Ice,Milk", name: "Ice Cream", profit: 4.5, unlocked: false},
+    {emoji: "🍕", ing: "🍞🍅🧀🥩", ingList: "Bread,Tomato,Cheese,Meat", name: "Pizza", profit: 7, unlocked: false},
+    {emoji: "🌮", ing: "🌾🥩🥬🧅", ingList: "Flour,Meat,Lettuce,Onion", name: "Taco", profit: 6.5, unlocked: false},
+    {emoji: "🥗", ing: "🥬🍅🥒🧅", ingList: "Lettuce,Tomato,Cucumber,Onion", name: "Salad", profit: 6, unlocked: false},
+    {emoji: "🧇", ing: "🌾🥚🧈", ingList: "Flour,Egg,Butter", name: "Waffles", profit: 5, unlocked: false},
+    {emoji: "🍝", ing: "🍜🍅", ingList: "Noodles,Tomato", name: "Spaghetti", profit: 5, unlocked: false},
     {emoji: "🌭", ing: "🍞🥩", ingList: "Bread,Meat", name: "Hot Dog", profit: 4.5, unlocked: false},
-    {emoji: "🥯", ing: "🍞🧀", ingList: "Bread,Cheese", name: "Bagel", profit: 4, unlocked: false},
-    {emoji: "🍝", ing: "🍜🍅", ingList: "Noodles,Tomato", name: "Spaghetti", profit: 4.5, unlocked: false},
-    {emoji: "🥐", ing: "🍞🧈", ingList: "Bread,Butter", name: "Croissant", profit: 4, unlocked: false},
     {emoji: "🥞", ing: "🌾🥚", ingList: "Flour,Egg", name: "Pancakes", profit: 4, unlocked: false},
+    {emoji: "🍨", ing: "🧊🥛", ingList: "Ice,Milk", name: "Ice Cream", profit: 4, unlocked: false},
+    {emoji: "🥐", ing: "🍞🧈", ingList: "Bread,Butter", name: "Croissant", profit: 4, unlocked: false},
+    {emoji: "🥯", ing: "🍞🧀", ingList: "Bread,Cheese", name: "Bagel", profit: 4, unlocked: false},
     {emoji: "🍣", ing: "🍚🐟", ingList: "Rice,Fish", name: "Sushi", profit: 3.5, unlocked: false},
-    {emoji: "🍪", ing: "🌾🍫", ingList: "Flour,Chocolate", name: "Cookie", profit: 2, unlocked: false},
-    {emoji: "🍗", ing: "🥩", ingList: "Meat", name: "Chicken Leg", profit: 3.5, unlocked: false},
     {emoji: "🍧", ing: "🧊", ingList: "Ice", name: "Shaved Ice", profit: 3, unlocked: false},
+    {emoji: "🥨", ing: "🍞🧂", ingList: "Bread,Salt", name: "Pretzel", profit: 3, unlocked: false},
     {emoji: "🍳", ing: "🥚", ingList: "Egg", name: "Fried Egg", profit: 3, unlocked: false},
-    {emoji: "🥨", ing: "🍞", ingList: "Bread", name: "Pretzel", profit: 2.5, unlocked: false},
+    {emoji: "🍗", ing: "🥩", ingList: "Meat", name: "Chicken Leg", profit: 3, unlocked: false},
+    {emoji: "🥖", ing: "🍞", ingList: "Bread", name: "Baguette", profit: 3, unlocked: false},
     {emoji: "🍤", ing: "🦐", ingList: "Shrimp", name: "Fried Shrimp", profit: 2.5, unlocked: false},
+    {emoji: "🍪", ing: "🌾🍫", ingList: "Flour,Chocolate", name: "Cookie", profit: 2.5, unlocked: false},
+    {emoji: "🧃", ing: "💧🍎", ingList: "Water,Apple", name: "Apple Juice", profit: 2.5, unlocked: false},
     {emoji: "🍟", ing: "🥔", ingList: "Potato", name: "French Fries", profit: 2, unlocked: true},
     {emoji: "🍙", ing: "🍚", ingList: "Rice", name: "Rice Ball", profit: 1.5, unlocked: true},
 ];
@@ -240,10 +253,11 @@ function serveCustomer(order, customer) {
 };
 
 function findIng() {
-    if (ingredientsList[ingSearch.value.toLowerCase()]) {
-        return ingredientsList[ingSearch.value.toLowerCase()];
-    } else if (ingSeach.value == "⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️") {
-        return ingSeach.value;
+    let i = ingSearch.value.toLowerCase().trim();
+    if (ingredientsList[i]) {
+        return ingredientsList[i];
+    } else if (i == "⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️" || i == "dog" || i == "🐶" || i == "🐕" || i == "baby" || i == "babies" || i == "👶" || i == "girl" || i == "👧" || i == "child" || i == "children" || i == "🧒" || i == "boy" || i == "👦") {
+        return i;
     } else {
         return null;
     };
@@ -254,18 +268,25 @@ function addIng(e) {
         let ing = findIng();
         if (ing != null && stock > 0) {
             if (ing == "⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️") {
+                ingSearch.value = "";
                 moneyDisplay.innerHTML = "∞";
                 stockDisplay.innerHTML = "∞";
                 let notif = document.createElement("p");
                 notif.innerHTML = "HOW?!? YOU HACKER!!";
                 notifContainer.appendChild(notif);
-                setTimeout(function(){notif.remove()}, 7500);
-                moneyDisplay.innerHTML = money;
-                stockDisplay.innerHTML = stock;
-                notif = document.createElement("p");
-                notif.innerHTML = "jk you ain't getting that XD";
-                notifContainer.appendChild(notif);
-                setTimeout(function(){notif.remove()}, 5000);
+                setTimeout(function(){
+                    notif.remove();
+                    moneyDisplay.innerHTML = money;
+                    stockDisplay.innerHTML = stock;
+                    notif = document.createElement("p");
+                    notif.innerHTML = "jk it ain't real XD";
+                    notifContainer.appendChild(notif);
+                    setTimeout(function(){notif.remove()}, 5000);
+                }, 7500);
+            } else if (ing == "dog" || ing == "🐶" || ing == "🐕" || ing == "baby" || ing == "babies" || ing == "👶" || ing == "girl" || ing == "👧" || ing == "child" || ing == "children" || ing == "🧒" || ing == "boy" || ing == "👦") {
+                ingSearch.value = "";
+                ingSearchError.innerHTML = "NO. JUST NO.";
+                setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
             } else {
                 if (ingredients.innerHTML == "Empty") {
                     ingredients.innerHTML = "";
@@ -284,12 +305,10 @@ function addIng(e) {
             };
         } else if (ing != null && stock < 1) {
             ingSearchError.innerHTML = "You don't have enough ingredients!";
-            ingSearchError.style.visibility = "visible";
-            setTimeout(function() {ingSearchError.style.visibility = "hidden"; ingSearchError.innerHTML = "";}, 2500);
+            setTimeout(function() {ingSearchError.innerHTML = "";}, 2500);
         } else {
-            ingSearchError.innerHTML = "Could not find ingredient \"" + ingSearch.value + "\"!";
-            ingSearchError.style.visibility = "visible";
-            setTimeout(function() {ingSearchError.style.visibility = "hidden"; ingSearchError.innerHTML = "";}, 2500);
+            ingSearchError.innerHTML = "Invalid ingredient \"" + ingSearch.value + "\"! Check your spelling";
+            setTimeout(function() {ingSearchError.innerHTML = "";}, 2500);
         };
     };
 };
@@ -328,16 +347,11 @@ function makeFood() {
         notifContainer.appendChild(notif);
         setTimeout(function(){notif.remove()}, 10000);
     };
-    if (ingredients.innerHTML.match("🐶")) {
-        ingredients.innerHTML = "🍖";
-        ingSearchError.innerHTML = "ｗｈａｔ　ｈａｖｅ　ｙｏｕ　ｄｏｎｅ　ｙｏｕ　ｍｏｎｓｔｅｒ";
-        setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
-    };
 };
 
 function clear() {
     if (stock + ingredients.innerHTML.length < storage) {
-        stock += ingredients.innerHTML.length;
+        stock += ingredients.innerHTML.length / 2;
         stockDisplay.innerHTML = stock;
     } else {
         stock = storage;
@@ -529,6 +543,19 @@ function eraseData() {
     };
 };
 
+function tutorial() {
+    let confirmation = confirm("Would you like to begin the tutorial? (Recommended for those new to Web Chef since you may not understand how things work)");
+    if (confirmation == true) {
+        alert("Welcome to Web Chef! This is a simple restaurant game where you prepare food for customers. Best played on a PC or tablet. [Click OK to continue]");
+        setTimeout(alert("Looks like there's a customer! To prepare their order, enter the names of the ingredients required to make the food."), 5500);
+        setTimeout(alert("For example, if their order is \"🍙\" you would type \"rice\" into the textbox & hit \"go\"/\"enter\". If you want to view the ingredients for a certain food, click through the pages of the Recipes book."), 11500);
+        setTimeout(alert("Once you add all the required ingredients to the Table, click the \"" + makeFoodButton.innerHTML + "\" button to fuse! Then, click the Serve button to give the food."), 22500);
+        setTimeout(alert("You earn money from serving food to customers! Use it to buy upgrades like seating or stock, since you don't have unlimited ingredients."), 35000);
+        setTimeout(alert("Click on the \"" + clearIng.innerHTML + "\" button if you ever need to restart making food (stock is refunded). Click on the button in the bottom right corner to go through the tutorial again anytime. Enjoy!"), 4500);
+    };
+    localStorage.setItem("tutorialCompleted", "true");
+};
+
 ingSearch.onkeydown = addIng;
 makeFoodButton.onclick = makeFood;
 clearIng.onclick = clear;
@@ -544,7 +571,13 @@ buySeating.onclick = addSeating;
 buyAd.onclick = addAd;
 saveButton.onclick = saveData;
 eraseDataButton.onclick = eraseData;
+tutorialButton.onclick = tutorial;
 setTimeout(customer, 1000);
+setTimeout(function(){
+    if (localStorage.getItem("tutorialCompleted") == "false" || localStorage.getItem("tutorialCompleted") == null) {
+        tutorial();
+    };
+}, 1500);
 setInterval(customer, customerRate);
 setInterval(function(){
     if (stock == 0 && money < 5) {
