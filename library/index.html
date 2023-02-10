@@ -162,8 +162,10 @@
             var dm = localStorage.getItem("darkMode");
             
             if (dm == null) {
-                localStorage.setItem("darkMode", false);
+                localStorage.setItem("darkMode", "false");
                 dm = false;
+            } else if (dm == "true" || dm == true) {
+                toggleDarkMode();
             };
 
             const books = {
@@ -238,9 +240,13 @@
                     "<bt>B</bt><br><b>Bees (cont.)</b><br>Same goes for dreaming about being stung by one/many. If you had a nice dream about petting cute bees, then good for you since 12.5% of all people are terrified by them.<br><br><b>Burger</b><br>If you dreamed about burgers then you're probably really obsessed with burgers. If you dream of burgers or any other junk food several more times this week, then you may develop obesity (joking). If you dreamt that someone stole your burger then oh no someone's gonna steal your burger today :C",
                     "<bt>C</bt><br><b>Cheeseburger</b><br><i>See Burger</i><br><br><b>Cows</b><br>If you dreamt about cows, then that's cool. It could be because you ate some Chick-fil-a yesterday. If you didn't, then it probably means you really like cows for some reason. In many cultures, cows are considered sacred, so something really epic may happen to you soon. If you were dreaming that you got reincarnated as a cow, then maybe you like/read <i>I Got Reincarnated As A Cos</i> a bit too much. If you dreamt about male cows (called bulls get it right), then <i>see Bulls</i>.",
                     "<bt>D</bt><br><b>Death</b><br>If you dreamt that you died, then you probably woke up right after (omg you did 😱). If you dreamt that someone you care about died, then uh oh <i>something similar might just happen</i> 👀",
-                    "<bt>E</bt><br><b>TITLE</b><br>If you dreamt …",
+                    "<bt>E</bt><br><b>Egg</b><br>If you dreamt about cooked eggs, then you probably really want eggs for breakfast. Chances are, if you already ate breakfast, there weren't any eggs in it.",
                     "<bt>F</bt><br><b>Falling</b><br>If you dreamt that you were falling off a high height or into oblivion, there's probably some really big problems bugging you right now. But if you dreamt off falling off a high height on <i>purpose</i>, then…that's a different story…(<i>see Suicide</i>)",
+                    "<bt>G</bt><br><b>Giraffes</b><br>If you dreamt about giraffes, your neck will grow 5% longer than normal every month starting tomorrow 🦒.",
                     "<bt>H</bt><br><b>Hamburger</b><br><i>See Burger</i>",
+                    "<bt>I</bt><br><b>Ice Cream</b><br>If you dreamt about ice cream, it shows that you look for all the sweetest things in life. I hope you didn't just eat ice cream for breakfast right now.",
+                    "<bt>J</bt><br><b>Jellyfish</b><br>If you dreamt about jellyfish, it shows you may look all cute on the outside, but you're actually really stingy on the inside.",
+                    "<bt>K</bt><br><b>Koala</b><br>If you dreamt about koalas, you probably really want to go back to sleep right now. Maybe you're jealous they get to sleep so much and you're just here trying to make up for your lack of sleep.",
                     "<bt>S</bt><br><b>Suicide</b><br>If you dreamt that you commit suicide, then you should attend some suicide counseling, I don't really know what to tell you—But if you were dreaming that someone you know/love did, then uhhhh maybe tell them that you're there for them…? You may be forseeing the future somehow.",
                     "<bt>T</bt><br><b>Teeth</b><br>If you dreamt that a tooth fell out, then one of your teeth will most likely come out soon (if you still got baby teeth). If one/all of your teeth came out in your dream and you have all permanent teeth, then you're probably gonna lose something soon (and not just teeth).",
                     "<bt>Credits</bt><br>• <a href='https://www.dreamdictionary.org'>Dream Dictionary</a> — meanings for Cows & Falling<br>• <a href='https://bestbees.com/Culture'>BestBees.com — melissophobia statistics",
@@ -353,7 +359,7 @@
                     darkMode.classList.add("darkBg");
                     darkMode.classList.add("white");
                     darkMode.innerHTML = "Turn on dark mode";
-                    localStorage.setItem("darkMode", false);
+                    localStorage.setItem("darkMode", "false");
                     darkModeOn = false;
                 } else {
                     document.body.style = "background-color: rgb(0, 0, 0)";
@@ -385,15 +391,8 @@
                     darkMode.classList.remove("darkBg");
                     darkMode.classList.remove("white");
                     darkMode.innerHTML = "Turn off dark mode";
-                    localStorage.setItem("darkMode", true);
+                    localStorage.setItem("darkMode", "true");
                     darkModeOn = true;
-                };
-            }
-            
-            function turnOnDarkMode() {
-                if (dm == true) { 
-                    toggleDarkMode();
-                    console.log("dark mode!!");
                 };
             };
 
