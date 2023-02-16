@@ -70,7 +70,7 @@
                 margin: 5px;
             }
             .white {
-                color: rgb(255, 255, 255);
+                color: rgb(245, 245, 245);
             }
             /*  Border color is calculated by backgroundColor × 0.75
             #book# {
@@ -101,12 +101,20 @@
             #book6 {
                 background-color: rgb(255, 0, 95);
                 border-color: rgb(191, 0, 71);
-                color: rgb(255, 255, 255);
+                color: rgb(245, 245, 245);
             }
             #book7 {
                 background-color: rgb(85, 45, 200);
                 border-color: rgb(64, 34, 150);
-                color: rgb(255, 255, 255);
+                color: rgb(245, 245, 245);
+            }
+            #book8 {
+                background-color: rgb(245, 245, 245);
+                border-color: rgb(184, 184, 184);
+            }
+            #book9 {
+                background-color: rgb(150, 245, 150);
+                border-color: rgb(113, 184, 113);
             }
             #darkMode {
                 border-radius: 10px;
@@ -134,17 +142,18 @@
         -->
         <h3>Fiction</h3>
         <button class="cover" id="book6" onclick="openBook(6)">Hope Vol. 1</button>
-        <!--button class="cover" id="book" onclick="openBook()">Hope Vol. 2</button-->
+        <!--button class="cover" id="book10" onclick="openBook(10)">Hope Vol. 2</button-->
         <button class="cover" id="book3" onclick="openBook(3)">Feet Quest</button>
         <button class="cover" id="book5" onclick="openBook(5)">Pinky & Mint: Coral</button>
-        <!--button class="cover" id="book" onclick="openBook()">Pinky & Mint: Hermit Crabs</button-->
+        <!--button class="cover" id="book9" onclick="openBook(9)">Pinky & Mint: Hermit Crabs</button-->
         <button class="cover" id="book4" onclick="openBook(4)">I Got Reincarnated As A Cow</button>
         <h3>Non-Fiction</h3>
         <button class="cover" id="book2" onclick="openBook(2)">How To NunnerLibrary</button>
         <button class="cover" id="book1" onclick="openBook(1)">Nunnerology</button>
-        <!--button class="cover" id="book7" onclick="openBook(7)">Nunners' Guide To Dreams & Nightmares</button-->
+        <button class="cover" id="book7" onclick="openBook(7)">Nunners' Guide To Dreams & Nightmares</button>
         <!---->
         <br><br><br>
+        <button class="cover" id="book8" onclick="openBook(8)">NunnerVerse Weekly</button><br><br>
         <button class="darkBg white" id="darkMode" onclick="toggleDarkMode()">Turn on dark mode</button>
         <h3><a href="https://forms.gle/2iZtLzF322Scb9Fc9" style="color: rgb(210, 180, 0); text-decoration: none;">Write a book for the NunnerLibrary</a>
         <h3><a href="https://nunnerrs.github.io/index.html" style="color: rgb(0, 125, 100); text-decoration: none;">To the NunnerVerse²</a></h3>
@@ -170,55 +179,59 @@
                 toggleDarkMode();
             };
 
+            var total = 8;
+
             const books = {
                 /*
                 // Line capacity: 33 characters
                 // Page capacity: 781 characters
+                // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE
                 book#: [
-                    "<br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Published on M/D/2023<br><br><button class='book#' onclick='copyLink();'>Copy book share link</button>",
+                    "<br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Published on M/D/2023<br><br><button id='book#' onclick='copyLink();'>Copy book share link</button>",
                     "Coming Soon!",
                     "Coming Soon!",
+                    // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE
                 ],
                 */
                 book1: [
-                    "<br><br><br><br><br><br><bt>Nunnerology</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 1/17/2023<br><br><button class='book1' onclick='copyLink();'>Copy book share link</button>",
+                    "<br><br><br><br><br><br><br><bt>Nunnerology</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 1/17/2023<br><br><button id='book1' onclick='copyLink();'>Copy book share link</button>",
                     "This is an autobiography (maybe?) that I wrote so you guys can learn more about me. For a more brief version (mainly relating to code), visit my <a href='about'>about me page</a>.",
-                    "Hi there, I'm Julianna, but I'm known as Nunners on this website. I build and code Roblox games for fun. I also enjoy making this website, coded through HTML, JavaScript, and CSS. The coding languages I've learned are HTML, JavaScript, CSS, Luau (used for Roblox), and PHP.",
+                    "Hi there, I'm Julianna, but I'm known as Nunners on this website. I build and code Roblox games for fun. I also enjoy making this website, coded through HTML, JavaScript, and CSS. The coding languages I've learned are HTML, JavaScript, CSS, Luau (language based on Lua used for Roblox game making), and PHP.",
                     "Three words describing my personality are funny, smart, and creative. I'm a perfectionist (which I never realized actually). I have an older brother and a younger sister. In my free time, I play Roblox or code (this website or Roblox games)(in case you're wondering, my username is Nunnerrs, but I'd probably only friend you if I know you in real life). My friends are Kayleigh, Lianna, and Skylar (I have a lot more but they don't want to be publically mentioned). I'm a big fan of Pokémon and Toilet-Bound Hanako-kun.",
-                    "Here's a list of some of my <b>favorites:<b><br>• Animals — Hedgehogs, frogs, and ducks<br>• Anime — Toilet-Bound Hanako-kun<br>• Chips — Cheddar & Sour Cream Ruffles and Cheetos Puffs<br>• Color — Aquamarine (hex #00ffae)<br>• Foods — Bistek, gyudon (from Yoshinoya), and SPAM<br>• Manga — Jibaku Shounen Hanako-kun<br>• Music Artists — Snail's House, Kirara Magic, and Tobu<br>• Music Genre — kawaii future bass and electro house<br>• Pokémon — Shaymin and Shuckle<br>• Sport — None<br>• Video Games — Roblox, Genshin Impact, and BanG Dream!",
+                    "Here's a list of some of my <b>favorites:</b><br>• Animals — Hedgehogs, frogs, and ducks<br>• Anime — Toilet-Bound Hanako-kun<br>• Chips — Cheddar & Sour Cream Ruffles and Cheetos Puffs<br>• Color — Aquamarine (hex #00ffae)<br>• Foods — Bistek, fried bangus, gyudon (from Yoshinoya), and SPAM<br>• Holiday — Christmas 🎄<br>• Manga — Jibaku Shounen Hanako-kun<br>• Music Artists — Snail's House, Kirara Magic, and Tobu<br>• Music Genre — kawaii future bass and electro house<br>• Pokémon — Shaymin and Shuckle<br>• Sport — None<br>• Video Games — Roblox, Genshin Impact, and BanG Dream!",
                     "<b>Fun facts about me:</b><br>• I was born on a couch (not in a hospital &#128561)<br>• My memory is really good, especially my long-term memory (but sometimes my short-term memory fails me so it balances out)<br>• I memorized every single Pokémon in exsistence (before Gen. 9, but I'm memorizing more!) + (a lot of) types of each of them + facts about many + Gen. 6 & 7 cries",
                     "<b>Fun facts about my website:</b><br>• My personal website (nunnerrs.github.io) used to be on W3Spaces (I switched because they started limiting the free plan grrr)<br>• Web Chef was renamed three times. Its original name was JS Chef, but was changed to Button Chef, Web Cuisine, and now it's Web Chef! Heheh I just wasn't satified—",
                     "And that's all I can think of adding for now! I'll update this more as things change.",
                 ],
                 book2: [
-                    "<br><br><br><br><br><bt>How To NunnerLibrary</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 1/17/2023<br>Press the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below to flip the page<br><br><button class='book2' onclick='copyLink();'>Copy book share link</button>",
+                    "<br><br><br><br><br><bt>How To NunnerLibrary</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 1/17/2023<br><b>Press the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below</b> to flip the page<br><br><button id='book2' onclick='copyLink();'>Copy book share link</button>",
                     "Welcome to the NunnerLibrary! This book is a tutorial for the NunnerLibrary. You'll learn what everything does and the meaning of things such as the Reading Level. Books should be read from left to right, top to bottom. To open a book, click on any button under a book genre (<span style='font-family: M PLUS ROUNDED 1C'>&#9888</span> clicking on a book while one is already open will \"override\" your currently open book <span style='font-family: M PLUS ROUNDED 1C'>&#9888</span>). Each book is sorted into a category/genre (e.g. click on Nunnerology under Non-Fiction). Books with \"Vol. 1\", \"Vol. 2\", etc under the title means that book is part of a series. If you're going to start a book series, you should always read each book in order (start with Volume 1, then read Volume 2…) so you understand the storyline.",
-                    "The Reading Level on the cover shows the \"difficulty\" of the currently open book. It's out of 5 stars, <star>★☆☆☆☆</star> means the book is very easy to read while <star>★★★★★</star> means the book may be pretty difficult to read (because of the vocabulary). Don't worry if you like reading books 2-stars or less, everyone has their likes and dislikes. Most books have a reading level of <star>★★★☆☆</star> (moderate level). The book will open up above all the book buttons along will three different buttons. The <span style='font-family: M PLUS ROUNDED 1C'>←</span> button flips the book one page backward. The <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> button closes the book. The <span style='font-family: M PLUS ROUNDED 1C'>→</span> button flips the book one page forward. (The book continues on the next page, so click on the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below!)",
-                    "The \"Turn on dark mode\" button at the bottom makes the background black and many buttons dark gray. Many people like using dark mode (pretty much everywhere they can), and the darkness can be easier on eyes (especially at night). The \"To The NunnerVerse²\" at the bottom is a link to go back to my homepage.",
+                    "The Reading Level on the cover shows the \"difficulty\" of the currently open book. It's out of 5 stars, <star>★☆☆☆☆</star> means the book is very easy to read while <star>★★★★★</star> means the book may be pretty difficult to read (because of the vocabulary). Don't worry if you like reading books 2-stars or less or 4-stars or more, everyone has their likes and dislikes. Most books have a reading level of <star>★★★☆☆</star> (moderate level). The book will open up above all the book buttons along will three different buttons. The <span style='font-family: M PLUS ROUNDED 1C'>←</span> button flips the book one page backward. The <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> button closes the book. The <span style='font-family: M PLUS ROUNDED 1C'>→</span> button flips the book one page forward. (The book continues on the next page, so click on the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below!)",
+                    "The \"Copy book share link\" can be used to bookmark a NunnerLibrary book or to share a specific book to someone else. Clicking on it copies a link to your keyboard's clipboard. If you visit the link, it will open the exact book you copied the link from. The \"Turn on dark mode\" button at the bottom makes the background black and system buttons dark gray. Many people like using dark mode (pretty much everywhere they can), and the darkness can be easier on eyes (especially at night). The \"To The NunnerVerse²\" at the bottom is a link to go back to my homepage.",
                     "In the NunnerLibrary, you'll find all sorts of books. Most will be original stories, but some could feature characters from existing books or could be based on real books. There's currently a total of " + total + " books in the NunnerLibrary database. If you know me in real life or have my Discord username, you can always let me know any book suggestions you have (either the story outline or the entire story). I hope there's at least one book here you'll enjoy reading :D! (Click the <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> to close the book).",
                 ],
                 book3: [
-                    "<br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on -/--/2023<br><br><button class='book3' onclick='copyLink();' disabled>Copy book share link</button>",
+                    "<br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on -/--/2023<br><br><button id='book3' onclick='copyLink();' disabled>Copy book share link</button>",
                     "Coming Soon!",
                     "Coming Soon!",
                 ],
                 book4: [
-                    "<br><br><br><br><br><bt>I Got Reincarnated<br>As A Cow</bt><br><br><heading>By Skylar</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on -/--/2023<br><br><button class='book4' onclick='copyLink();' disabled>Copy book share link</button>",
+                    "<br><br><br><br><br><bt>I Got Reincarnated<br>As A Cow</bt><br><br><heading>By Skylar</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on -/--/2023<br><br><button id='book4' onclick='copyLink();' disabled>Copy book share link</button>",
                     "Coming Soon!",
                     "Coming Soon!",
                 ],
                 book5: [
-                    "<br><br><br><br><br><br><bt>Pinky & Mint: Coral</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star><br>Published on 1/18/2023<br><br><button class='book5' onclick='copyLink();'>Copy book share link</button>",
+                    "<br><br><br><br><br><br><bt>Pinky & Mint: Coral</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star><br>Published on 1/18/2023<br><br><button id='book5' onclick='copyLink();'>Copy book share link</button>",
                     "Pinky and Mint are swimming in the ocean. They are octopi. Mint turns around and sees a strange thing on the ocean floor.<br>\"Ooh, what's that?\" he says, swimming towards it. Pinky floats next to him.<br>\"Wow, that looks cool!\" she exclaims. \"Wait, what is it?\"<br>The strange object is shaped like long, purple tubes.<br>\"Maybe…it's an animal?\" Mint guesses. Using one tentacle, he touches the bumpy outside, but nothing happens. Pinky looks at the thing upside down.<br>\"It didn't move, so it's not an animal…\" Mint says.<br>\"Maybe it's a plant,\" Pinky says. \"Can I eat it?\"<br>\"Umm, I don't think you should,\" Mint warns.",
                     "He looks inside the tubes from the top. All them are empty. They both circle it many times while thinking.<br>\"It looks like it's stuck to the ground,\" Pinky says. \"Wait, what's <i>this</i>?\"<br>She stops and looks at another strange thing nearby. It's yellow and has branches. Bumps cover the entire thing.<br>\"These look so cool,\" Mint thinks out loud. \"Are they similar?\"<br>\"Where do the roots of the plant go…?\" Pinky says. She tries to pull the yellow thing out. A branch came off easily when Pinky did, and they watched as it fell onto the ground. \"Uh oh…I broke it…\"<br>\"AAH! What if that was a living thing?!\" Mint says in a panic. \"You broke off it's arm!!\"",
                     "A small teal fish swims by and looks at the octopi.<br>\"NOO!!\" she cries in a shrilly voice. \"Look what you've done to my pwecious home…\"<br>The fish races to the yellow thing and sighs.<br>\"I-I'm so sowwy, i-it was an accident,\" Pinky stammers.<br>\"Huh? You don't need to be sorry,\" she smiles. Pinky and Mint look completely confused.<br>\"I should thank you. I've always wanted more of it. Anyway, who <i>are</i> you two?\"<br>\"I'm Mint, and she's Pinky,\" Mint says. He tilts his head a little. \"What do you mean by <i>it</i>?\"<br>\"You know, the <i>coral</i>,\" the fish says, swimming into a purple tube. She sticks her head out of it. \"This is my home, in the <i>coral</i> reef.\"",
                     "\"Ohhhh,\" Pinky realizes. \"So <i>coral</i> is the name of these things.\"<br>\"So you live in the coral,\" Mint says. \"They really are plants.\"<br>\"No, they aren't,\" the fish says. Pinky's eyes widen. She turned to the yellow branch-like coral<br>\"I'm sowwy, little guy…\" she says. \"Uhh, where's their eyes?\"<br>\"Well, coral aren't fish either,\" says the little fish. \"But they are alive. Oh, did you see the piece that broke off?\"<br>She swims to the broken coral piece on the ground. It stands upright like a tiny cone, while earlier it didn't. \"These yellow ones are called staghorn coral. Look, it's already growing.\"<br>\"Woah…do they multiply that way?\" Mint asks.<br>\"Pretty much!\" the fish says.",
                     "\"I've wanted another Staghorn by my home for a while since they've got many branches.\"<br>\"What's this one then?\" Pinky asks, floating beside the purple tube-like coral.<br>\"Those are tube coral,\" she explains.<br>\"I'm hungry. We should really go now…\" Mint says.<br>\"See you again someday! Bye-byeee!!\" Pinky waves a tentacle at the fish.<br>\"Oh, and my name's Liva! Bye!\"<br>Mint and Pinky swim away from the corals, only to see hundreds of more coral below a small cliff in all different colors.<br>\"Wanna go exploring first?\" Mint smiles at Pinky.<br>\"Race ya to that big rock!\" she called, rushing ahead.",
                     "\"W-wait for me! Pinkyyyyy!!!!\" Mint exclaimed, swimming after her.<br><br>The adventures of the two octopi continues!<br><br><b>Coral Facts:</b><br>• Corals are not plants! They are animals just like Pinky and Mint<br>• Corals are made up of hundreds of thousands of polyps, which are tiny, soft creatures that are grouped together<br>• 25% of all ocean species (creatures) live in coral reefs, just like Liva!<br>• Coral comes in all different colors, shapes, and sizes! Besides staghorn and tube, there's over 6,000 species of coral",
-                    "Read the next book, <i>Pinky & Mint:<br>Hermit Crabs</i>, coming out in February 2023<br><br><br><b>Sources [if you want to learn more about coral, click <a href='https://www.fisheries.noaa.gov/corals'>here</a> (has higher vocabulary)]</b><br>• Seven surprising facts about coral — <a href='https://www.sheddaquarium.org/stories/seven-surprising-facts-about-coral'>https://www.sheddaquarium.org/stories/seven-surprising-facts-about-coral</a>• Are corals animals or plants? — <a href='https://oceanservice.noaa.gov/facts/coral.html'>https://oceanservice.noaa.gov/facts/coral.html</a><br>• Staghorn coral — <a href='https://www.fisheries.noaa.gov/species/staghorn-coral'>https://www.fisheries.noaa.gov/species/staghorn-coral</a><br>• Google search (on questions about coral)",
+                    "Read the next book, <i>Pinky & Mint:<br>Hermit Crabs</i>, coming out in February 2023<br><br><br><b>Sources <i>[if you want to learn more about coral, click <a href='https://www.fisheries.noaa.gov/corals'>here</a> (has higher vocabulary)]</i></b><br>• Seven surprising facts about coral — <a href='https://www.sheddaquarium.org/stories/seven-surprising-facts-about-coral'>https://www.sheddaquarium.org/<br>stories/seven-surprising-facts-about-coral</a><br>• Are corals animals or plants? — <a href='https://oceanservice.noaa.gov/facts/coral.html'>https://oceanservice.noaa.gov/<br>facts/coral.html</a><br>• Staghorn coral — <a href='https://www.fisheries.noaa.gov/species/staghorn-coral'>https://www.fisheries.noaa.gov/<br>species/staghorn-coral</a><br>• Google search (on questions about coral)",
                 ],
                 book6: [
-                    "<br><br><br><bt>Hope (Vol. 1)</bt><br><br><heading>Based on a <a href='https://www.youtube.com/watch?v=e0wVNJ-fAeI'>story</a> by Jamie ThatBloxer</heading><br><br>Written by Nunners<br>Reading Level: <star>★★★☆☆</star><br>Published on 1/22/2023<br><br><b>WARNING:</b> This book features gun violence. This book is also very emotional.<br><br><button class='book6' onclick='copyLink();'>Copy book share link</button>",
+                    "<br><br><br><bt>Hope (Vol. 1)</bt><br><br><heading>Based on a <a href='https://www.youtube.com/watch?v=e0wVNJ-fAeI'>story</a> by Jamie ThatBloxer</heading><br><br>Written by Nunners<br>Reading Level: <star>★★★☆☆</star><br>Published on 1/22/2023<br><br><b>WARNING:</b> This book features gun violence. This book is also very emotional.<br><br><button id='book6' onclick='copyLink();'>Copy book share link</button>",
                     "All around the room, girls in pink tutus were having last-minute ballet practice. Hope stood against the handrail, amazed at how skilled all the other girls were. From across the room, three girls pointed at Hope, who was wearing a white and brown tutu.<br>\"What is she even wearing?\" a black-haired girl smirked.<br>\"You're asking me?\" a girl beside her with green & blue hair sniggered. \"It looks like she got that from the dollar store!\"<br>\"Come on, that's mean,\" a blond-haired girl by them said. \"She at least spent two dollars on that thing she calls an outfit.\"<br>All three girls laughed to themselves.<br>The ballet instructor walked up to Hope. \"Hope, what's the",
                     "matter?\"<br>\"Nothing,\" she replied. \"I'm just waiting for my dad to come.\"<br>\"He will, don't worry.\"<br>\"Maybe.\"<br>\"Just work on your pointe, you need to be prepared.\"<br>\"Yes, Miss.\" Hope nodded. She began to practice and tried not to worry. A man quickly made his way towards her. \"Hey sweetie, sorry I'm late,\" he said. \"Just got caught up in something.\"<br>\"It's okay,\" Hope reassured. \"At least you're here now.\"<br>\"Here, I picked out this flower, especially for you.\" Her dad held out a white flower and tucked it under her headband. \"Here you go.\"<br>She smiled, her face blushing red like her hair. \"Aww, thank you Dad. I love you.\"",
                     "\"Well, I better go back to my seat,\" her dad said. He hugged Hope tightly. \"You'll do amazing, remember I believe in you.\"<br>&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160✿ ✿ ✿<br>The music started playing, and all the ballerinas began dancing. Every seat in the audience was full. The ballerinas danced gracefully along with the music. Hope ran across the stage and leaped. She led the others in pointe at the center. Hope's dad sat in the front row, tears of joy in his eyes. Hope twirled in the center as the ballet performance came to a close. Her dad stood up and bursted into applause.<br>&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160✿ ✿ ✿<br>In a diner open late at night, Hope's dad was busy at work.",
@@ -236,9 +249,9 @@
                     "The woman opened the car door and led Hope to Sarah's Orphanage. When they walked inside, Hope spotted a blond-haired boy sitting in a corner. His face was buried in his knees, and when he looked up Hope saw tears running down his face.<br>Her eyes grew wide and tons of questions raced across her mind. \"Noah…?\"<br><br><i>Hope Vol. 2</i> coming in February 2023!",
                 ],
                 book7: [ // "<bt>LETTER</bt><br><b>TITLE</b><br>If you dreamt …",
-                    "<br><br><br><br><br><bt>Nunners' Guide To Dreams & Nightmares</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on M/D/2023<br><br><button class='book7' onclick='copyLink();'>Copy book share link</button>",
-                    "<bt>Introduction</bt><br><i>Nunners' Guide To Dreams & Nightmares</i> is a stupid book that shouldn't be taken seriously. If you're shocked or mad about what your dreams tell about you, just know it's probably not true. Don't think I'm diagnosing you or anything. Anyways, the <i>things-you-see-in-your-dreams</i> are sorted in alphabetical order. Meanings created by me except a few (see credits at the last page). And uh if you dreamt or had a nightmare last night don't forget to look for its meaning here.<br><br>Well, I hope you enjoy it! — Nunners",
-                    "<bt>A</bt><br><b>Ants</b><br>If you dreamt you were being killed/trampled by a ton of ants, it shows that you're too weak/scared to even step on an ant lol. If you were dreaming about watching ants, you probably really like ants 'cause I don't know who dreams of ants…<br><br><b>Animal</b><br><i>See Ants/Bears/Bees/Cows/Giraffes/Jellyfish/Koalas/Lizards</i>",
+                    "<br><br><br><br><br><bt>Nunners' Guide To Dreams & Nightmares</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 2/15/2023<br><br><button id='book7' onclick='copyLink();'>Copy book share link</button>",
+                    "<bt>Introduction</bt><br><b><i>Nunners' Guide To Dreams & Nightmares</i> is a stupid book that shouldn't be taken seriously</b>. If you're shocked or mad about what your dreams tell about you, just know it's probably not true. Don't think I'm diagnosing you or anything. Anyways, the <i>things-you-see-in-your-dreams</i> are sorted in alphabetical order. Meanings created by me except a few (see credits at the last page). And uh if you dreamt or had a nightmare last night don't forget to look for its meaning here.<br><br>Well, I hope you enjoy it!<br>— Nunners",
+                    "<bt>A</bt><br><b>Ants</b><br>If you dreamt you were being killed/trampled by a ton of ants, it shows that you're too weak/scared to even step on an ant lol. If you were dreaming about watching ants, you probably really like ants 'cause I don't know who dreams of ants…<br><br><b>Animal</b><br><i>See Ants/Bears/Bees/Cows/<br>Giraffes/Jellyfish/Koalas/Lizards</i>",
                     "<bt>B</bt><br><b>Bears</b><br>If you dreamt that a bear attacked/killed you, you probably <i>won't</i> be attacked by a bear in the future. Ah, scratch that. Everyone's gonna be mauled to death by a bear in the near future (according to <i>Bears Want To Kill You</i> by Ethan Nicole). If you've been attacked by a bear in the past, your nightmare was probably just a cute little memory of the past, don't worry about it. Yeah…<br><br><b>Bees</b><br>If you dreamt that you were being swarmed by bees, it may be a result from a bad memory from the past relating to bees.",
                     "<bt>B</bt><br><b>Bees (cont.)</b><br>Same goes for dreaming about being stung by one/many. If you had a nice dream about petting cute bees, then good for you since 12.5% of all people are terrified by them.<br><br><b>Burgers</b><br>If you dreamed about burgers then you're probably really obsessed with burgers. If you dream of burgers or any other junk food several more times this week, then you may develop obesity (joking). If you dreamt that someone stole your burger then oh no someone's gonna steal your burger today :C",
                     "<bt>B</bt><br><b>Bulls</b><br>Bro what in the world you doin' dreaming about bulls????",
@@ -253,30 +266,60 @@
                     "<bt>K</bt><br><b>Koalas</b><br>If you dreamt about koalas, you probably really want to go back to sleep right now. Maybe you're jealous they get to sleep so much and you're just here trying to stay awake.",
                     "<bt>L</bt><br><b>Lizards</b><br>If you dreamt lizards, then there's probably lizards in your backyard right now. If you don't have a backyard, then you probably enjoy watching lizards skitter across sidewalks or something. If none of these apply to you, then you're probably just dying to see a lizard in-person (but since you've never seen a real-life one, the lizard in your dream most likely didn't look like a lizard 'cause that's just how it works).",
                     "<bt>M</bt><br><b>Mad</b><br>If you dreamt about being mad at someone/some people you know (a friend, someone who lives with you), then you probably had an argument or fight recently (bro no way 😱). From the looks of it, the argument didn't end well because one person may have just stormed off or hurt someone (could be you). The best thing you and the people involved should do is ✨✨make up✨✨ and ✨✨apologise✨✨.",
-                    "<bt>S</bt><br><b>Suicide</b><br>If you dreamt that you commit suicide, then you should attend some suicide counseling, I don't really know what to tell you—But if you were dreaming that someone you know/love did, then uhhhh maybe tell them that you're there for them…? You may be forseeing the future somehow.",
+                    "<bt>S</bt><br><b>Suicide</b><br>If you dreamt that you commit suicide, then you should attend some suicide counseling, I don't really know what to tell you—But if you were dreaming that someone you know/love did, then uhhhh maybe tell them that you're there for them…? You may be forseeing the future somehow. 👀",
                     "<bt>T</bt><br><b>Teeth</b><br>If you dreamt that a tooth fell out, then one of your teeth will most likely come out soon (if you still got baby teeth). If one/all of your teeth came out in your dream and you have all permanent teeth, then you're probably gonna lose something soon (and not just teeth).",
                     "<bt>Credits</bt><br>• <a href='https://www.dreamdictionary.org'>Dream Dictionary</a> — meanings for Cows & Falling<br>• <a href='https://bestbees.com/Culture'>BestBees.com — melissophobia statistics",
                 ],
+                book8: [
+                    "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 2/15/2023<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
+                    "<bt>Feb. 15, 2023</bt><br><br>• I made a new \"book\" called <i>NunnerVerse Weekly</i> (the one you're reading right now). It's basically where I'll put all my update logs for every project from now on. The newest logs will be on the first few pages. I'm not sure if I should delete the old logs after a long time though. [DISCLAIMER: I'm probably gonna add new \"articles\" every few days, but there's <i>still a chance</i> for me to forget to post new logs. So pls don't get mad if you've been waiting for \"new update\" but there isn't yet—]",
+                    "<bt>Feb. 15, 2023</bt><br><br>• I've published a pre-release of <i>Nunners' Guide To Dreams & Nightmares</i>! It's unfinished but be sure to check it out. I'll add some more dream meanings and some chunky paragraphs talking about dreams in the future.<br>• I'm currently writing <i>Pinky & Mint: Hermit Crabs</i>! The Pinky & Mint series are designed so that you can read the books in any order.",
+                ],
+                book9: [
+                    "<br><br><br><br><br><br><bt>Pinky & Mint: Hermit Crabs</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star><br>Published on M/D/2023<br><br><button id='book9' onclick='copyLink();'>Copy book share link</button>",
+                    "Pinky and Mint swim along the ocean floor. They are octopi. Mint quickly picks up a sea shell on the floor but doesn't find anything inside.<br>\"Haahhhh…\" he sighs. \"All I see are empty shells and rocks. Didn't you say there's snails in these shells?\"<br>\"Hold on, we'll find one somewhere around here…\" Pinky says hopefully. \"We just gotta look harder!\"<br>As they continued their search, Pinky finds a shell and sees something in it that catches her eye.<br>\"Mint! I found it!!\" she calls.<br>Mint drops the rock he held and swims towards Pinky with excitement.<br>\"Wow…what is it?\"",
+                    "The red little creature inside the shell doesn't move.<br>\"See? I told you we'd find one!\" Pinky says happily.<br>\"But…what <i>is</i> that?\"<br>\"Uh, it's <i>obviously</i> a <i>snail</i>!\"<br>\"How am I supposed to know?\"<br>The creature twitches as Pinky scoops it into her arms. As they look more closely, it's body looks scaly and dotted with hairs.<br>\"Pfff!\" Mint laughs. \"That's not a snail! That thing's not slimy <i>or</i> squishy!\"<br>\"O-Of course it's a snail!\" Pinky says. She looks down at the shelled creature in her arms. \"Hey there little guy…\"<br>The living thing wiggles as Pinky touches it gently. Both octopi gasp as they realize its \"body\" is actually the creature's legs!",
+                    "",
+                    "",
+                    // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE
+                ],
+                book10: [
+                    "<br><br><br><bt>Hope Vol. 2</bt><br><br><heading>Based on a <a href='https://www.youtube.com/watch?v=e0wVNJ-fAeI'>story</a> by Jamie ThatBloxer</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Published on M/D/2023<br><br><button id='book#' onclick='copyLink();'>Copy book share link</button>",
+                    "Coming Soon!",
+                    "Coming Soon!",
+                    // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE
+                ],
             };
             
-            var total = books.length;
+            const hidden = [];
 
             function openBook(bookId) {
-                currentBook = bookId;
-                book.classList.add("nh");
-                book.style = "visibility: visible;";
-                back.style = "visibility: visible;";
-                close.style = "visibility: visible;";
-                next.style = "visibility: visible;";
-                pageL.innerHTML = "";
-                pageR.innerHTML = books["book" + currentBook][0];
-                pageNumL = -1;
-                pageNumR = 0;
+                let open = true;
+                if (hidden.length > 0) {
+                    for (let i = 0; hidden.length - 1; i++) {
+                        if (bookId == hidden[i]) {
+                            open = false;
+                        };
+                    };
+                };
+                if (open == true) {
+                    currentBook = bookId;
+                    book.classList.add("nh");
+                    book.style = "visibility: visible;";
+                    back.style = "visibility: visible;";
+                    close.style = "visibility: visible;";
+                    next.style = "visibility: visible;";
+                    pageL.innerHTML = "";
+                    pageR.innerHTML = books["book" + currentBook][0];
+                    pageNumL = -1;
+                    pageNumR = 0;
+                };
             };
             
-            let bookId = window.location.href.split("=")[1];
-            if (bookId != null) {
-                openBook(bookId);
+            var params = window.location.href.split("?")[1];
+            var param1 = params.split("&");
+            if (param1.split("=")[0].match("book") && Number(param1.split("=")[1])) {
+                openBook(Number(param1.split("=")[1]));
                 //pageR.innerHTML = books["book" + bookId][0];
             };
             
@@ -324,8 +367,9 @@
             };
             
             function copyLink() {
-                navigator.clipboard.writeText("https://nunnerrs.github.io/library.html?book=" + currentBook.toString());
-                alert("Copied share link! You can bookmark the link or share with others (paste with CMD/CTRL + V)");
+                //navigator.clipboard.writeText("https://nunnerrs.github.io/library.html?book=" + currentBook.toString());
+                //alert("Copied share link! You can bookmark the link or share with others (paste with CMD/CTRL + V)");
+                alert("Sorry, copying & loading book share links are currently disabled due to a bug where it doesn't copy anything. I'm working to fix the error, sorry for any trouble this may have caused you.");
             };
 
             function toggleDarkMode() {

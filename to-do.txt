@@ -24,6 +24,7 @@ Animals (for ↑):
     Cat
     Giraffe
     Lion
+    Seal
 
 Adjectives (for ↑):
     Eager
@@ -41,5 +42,5 @@ Adjectives (for ↑):
     Super
     Crazy
     Cute
-    Wonder
     Majestic
+    Arctic
