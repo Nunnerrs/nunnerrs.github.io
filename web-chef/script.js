@@ -28,6 +28,8 @@ var ingSearchError = document.getElementById("ing-search-error");
 var makeFoodButton = document.getElementById("make-food");
 var clearIng = document.getElementById("clear-ing");
 var page = 0;
+var recipeNum = document.getElementById("recipe-number");
+var recipeTotal = document.getElementById("recipe-total");
 var recipeName = document.getElementById("recipe-name");
 var recipeIng = document.getElementById("recipe-ing");
 var pageL = document.getElementById("pageL");
@@ -152,6 +154,8 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "🍟", ing: "🥔", ingList: "Potato", name: "French Fries", profit: 2, unlocked: true},
     {emoji: "🍙", ing: "🍚", ingList: "Rice", name: "Rice Ball", profit: 1.5, unlocked: true},
 ];
+
+recipeTotal.innerHTML = foodList.length;
 for (let i = 0; i < foodList.length - 2; i++) {
     let splitName = foodList[i]["name"].toLowerCase().split(" ");
     let name = "";
@@ -341,13 +345,15 @@ function makeFood() {
             };*/
         };
     };
-    if (ingredients.innerHTML == "🍫") {
+    
+    // Valentine's Day secret
+    /*if (ingredients.innerHTML == "🍫") {
         ingredients.innerHTML = "💝";
         let notif = document.createElement("p");
         notif.innerHTML = "Happy Valentines Day!";
         notifContainer.appendChild(notif);
         setTimeout(function(){notif.remove()}, 10000);
-    };
+    };*/
 };
 
 function clear() {
@@ -368,6 +374,7 @@ function clear() {
 function backPage() {
     if (page > 0) {
         page -= 1;
+        recipeNum.innerHTML = page + 1;
         recipeName.innerHTML = recipes[page]["name"] + " " + (recipes[page]["unlocked"] == true ? "✅" : "❎") + "<br> Profit: $" + recipes[page]["profit"];
         recipeIng.innerHTML = "";
         let ing = recipes[page]["ingList"].split(",");
@@ -380,6 +387,7 @@ function backPage() {
 function nextPage() {
     if (page < recipes.length - 1) {
         page++;
+        recipeNum.innerHTML = page + 1;
         recipeName.innerHTML = recipes[page]["name"] + " " + (recipes[page]["unlocked"] == true ? "✅" : "❎") + "<br> Profit: $" + recipes[page]["profit"];
         recipeIng.innerHTML = "";
         let ing = recipes[page]["ingList"].split(",");
