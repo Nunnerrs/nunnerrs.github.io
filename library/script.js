@@ -27,10 +27,11 @@ const books = {
     Page capacity: 781 characters
     DON'T FORGET TO UPDATE BOOK TOTAL ABOVE
     book#: [
-        "<br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Published on M/D/2023<br><br><button id='book#' onclick='copyLink();'>Copy book share link</button>
+        // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID, 
+        "<br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Coming soon in MONTH 2023<br><br><button id='book#' onclick='copyLink();'>Copy book share link</button>
         "Coming Soon!",
         "Coming Soon!",
-        // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE
+        // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
     ],
     */
     book1: [
@@ -51,12 +52,12 @@ const books = {
         "In the NunnerLibrary, you'll find all sorts of books. Most will be original stories, but some could feature characters from existing books or could be based on real books. There's currently a total of " + total + " books in the NunnerLibrary database. If you know me in real life or have my Discord username, you can always let me know any book suggestions you have (either the story outline or the entire story). I hope there's at least one book here you'll enjoy reading :D! (Click the <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> to close the book).",
     ],
     book3: [
-        "<br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on -/--/2023<br><br><button id='book3' onclick='copyLink();' disabled>Copy book share link</button>",
+        "<br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon sometime in 2023<br><br><button id='book3' onclick='copyLink();' disabled>Copy book share link</button>",
         "Coming Soon!",
         "Coming Soon!",
     ],
     book4: [
-        "<br><br><br><br><br><bt>I Got Reincarnated<br>As A Cow</bt><br><br><heading>By Skylar</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on -/--/2023<br><br><button id='book4' onclick='copyLink();' disabled>Copy book share link</button>",
+        "<br><br><br><br><br><bt>I Got Reincarnated<br>As A Cow</bt><br><br><heading>By Skylar</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon sometime in 2023<br><br><button id='book4' onclick='copyLink();' disabled>Copy book share link</button>",
         "Coming Soon!",
         "Coming Soon!",
     ],
@@ -113,13 +114,14 @@ const books = {
     book8: [ // "<heading><b>Mon. DD, 2023</b></heading><br><br>• ", 
         "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 2/27/2023<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
         // UPDATE NEWEST NEWS ABOVE
-        "<heading><b>Feb. 27, 2023</b></heading><br><br>• <i>Pinky & Mint: Hermit Crab</i> & <i>Hope Vol. 2</i> release delay — Sorry guys, the two books I promised would release in February are going to be postponed to March. I've been busy with schoolwork, and I can't really write two books in two days so :P. But don't worry, I'll try to write them very soon (<b>P&M:HC is 85% done!</b>)<br>• Added a day-night cycle to CGT and a Lantern & Tip Book gear! Light up the night with the Lantern and discover useful tips with the Tip Book. BTW, I'm working on a Toy Ball gear so you can play fetch with your pets •u•<br>• News articles that are spread across multiple pages should be read from right to left (e.g. read right page before left)",
+        "<heading><b>Feb. 28, 2023</b></heading><br><br>• Publishing <i>Pinky & Mint: Hermit Crabs</i> sometime today (or in a few days)! I just need to cite the sources used. I also made the upcoming books' covers visible, but they can't be viewed yet.", 
+        "<heading><b>Feb. 27, 2023</b></heading><br><br>• <i>Pinky & Mint: Hermit Crabs</i> & <i>Hope Vol. 2</i> release delay — Sorry guys, the two books I promised would release in February are going to be postponed to March. I've been busy with schoolwork, and I can't really write two books in two days so :P. But don't worry, I'll try to write them very soon (<b>P&M:HC is 95% done!</b>)<br>• Added a day-night cycle to CGT and a Lantern & Tip Book gear! Light up the night with the Lantern and discover useful tips with the Tip Book. BTW, I'm working on a Toy Ball gear so you can play fetch with your pets •u•<br>• News articles that are spread across multiple pages should be read from right to left (e.g. read right page before left)",
         "<heading><b>Feb. 22, 2023</b></heading><br><br>• New Custom Gear Testing updates! Join the game to earn the 100 Visits achievement (cool notification too!) and a free sparkler gear. There's also a new Meet Nunnerrs! badge; touch the NunnerOrb gear (item only I can have) if I'm holding it out and you'll unlock the Nunnerrs Suit. You can also ask me to join you if you're playing CGT (if I'm available) on Discord (NunnerDev server/DM) for the badge.",
         "<heading><b>Feb. 15, 2023</b></heading><br><br>• I've published a pre-release of <i>Nunners' Guide To Dreams & Nightmares</i>! It's unfinished but be sure to check it out. I'll add some more dream meanings and some chunky paragraphs talking about dreams in the future.<br>• I'm currently writing <i>Pinky & Mint: Hermit Crabs</i>! The Pinky & Mint series are designed so that you can read the books in any order.",
         "<heading><b>Feb. 15, 2023</b></heading><br><br>• I made a new \"book\" called <i>NunnerVerse Weekly</i> (the one you're reading right now). It's basically where I'll put all my update logs for every project from now on. The newest logs will be on the first few pages. I'm not sure if I should delete the old logs after a long time though. [DISCLAIMER: I'm probably gonna add new \"articles\" every few days, but there's <i>still a chance</i> for me to forget to post new logs. So pls don't get mad if you've been waiting for \"new update\" but there isn't yet—]",
     ],
     book9: [
-        "<br><br><br><br><br><br><bt>Pinky & Mint: Hermit Crabs</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star><br>Published on M/D/2023<br><br><button id='book9' onclick='copyLink();'>Copy book share link</button>",
+        "<br><br><br><br><br><br><bt>Pinky & Mint: Hermit Crabs</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star><br>Coming soon on 3/1/2023<br><br><button id='book9' onclick='copyLink();'>Copy book share link</button>",
         "Pinky and Mint swim along the ocean floor. They are octopi. Mint quickly picks up a sea shell on the floor but doesn't find anything inside.<br>\"Haahhhh…\" he sighs. \"All I see are empty shells and rocks. Didn't you say there's snails in these shells?\"<br>\"Hold on, we'll find one somewhere around here…\" Pinky says hopefully. \"We just gotta look harder!\"<br>As they continued their search, Pinky finds a round shell and sees something in it that catches her eye.<br>\"Mint! I found it!!\" she calls.<br>Mint drops the rock he held and swims towards Pinky with excitement.<br>\"Wow…what is it?\"",
         "The red little creature inside the shell doesn't move.<br>\"See? I told you we'd find one!\" Pinky says happily.<br>\"But…what <i>is</i> that?\"<br>\"Uh, it's <i>obviously</i> a <i>snail</i>!\"<br>\"How am I supposed to know?\"<br>The creature twitches as Pinky scoops it into her arms. As they look more closely, it's body looks scaly and dotted with hairs.<br>\"Pfff!\" Mint laughs. \"That's not a snail! That thing's not slimy <i>or</i> squishy!\"<br>\"O-Of course it's a snail!\" Pinky says. She looks down at the shelled creature in her arms. \"Hey there little guy…\"<br>The living thing wiggles as Pinky touches it gently. Both octopi gasp as they realize its \"body\" is actually the creature's legs!",
         "\"WAAUGHH!\" Pinky screams. \"Th-that's NOT a snail—\"<br>She lets go of the shell and the creature sinks down from her arms onto the floor. Little eyes slowly poke out from the shell and extends its legs.<br>\"Whew…\" the red creature says, shaking sand off of it's body. It looks at the octopi and jumps. \"Yikes!\"<br>The creature quickly digs into the sand to hide, but its shell is still visible.<br>\"Hey, wait!\" Mint cries. He moves a little closer to the frightened creature. \"Umm…lil' crab, we're not here to harm you…\"<br>\"Eek!\" the crab curls up even more into its shell. \"G-Go away…\"<br>\"Hmmm…how do we get them to <i>not</i> be scared…?\" Pinky wonders.",
@@ -130,17 +132,17 @@ const books = {
         "\"Huh? I thought you guys made your own shells…\" Mint says. \"So you use shells made by snails. Right?\"<br>He gently picks up Cory with two tentacles. The crab's limbs don't move at all and little bubbles sprout from Cory's mouth.<br>\"Oh, he fell asleep…\" Mint sighs. He places him down next to other shells that seem to be sleeping hermit crabs.<br>\"I didn't know there were more crabs.\" Mint says, turning to Pinky. \"So, what now?\"<br>\"Hmmmm…maybe we can go look for the <i>actual</i>snail,\" Pinky says. \"The one I found was <i>really</i> big and had a green shell\"<br>\"Whaaaat!! I think you're making stuff up now…\"<br>\"I'm not! It was so pretty, you should see it!\"",
         "\"How am I supposed to see it if we don't start looking?\"<br>\"…Oh yeah.\" Pinky says. She waves at Cory. \"Good niiight…\"<br>Mint and Pinky swim away, lifting up rocks and shells.<br><br>The adventure of the two octopi continues!<br><br><b>Hermit Crab Facts</b><br>• Hermit crabs molt, which is when they shed their exoskeleton (outer shell-like body). They do this because their exoskeleton doesn't grow.<br>• Hermit crabs change shells every year or so, and it usually molts when it does.<br>• Hermit crabs live in all kinds of sea shells. They use shells made by other creatues like snails. Sadly, hundreds of thousands die because they mistake plastic for shells.",
         "<b>Hermit Crab Facts:</b><br>• Hermit crabs are very social, meaning they like to interact with other hermit crabs as well as other sea creatures.<br><br>Read the next book, <i>Pinky & Mint: Whales</i>, coming out in April 2023!<br><br><br><b>Sources</b><br>• ",
-        // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE
+        // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
     ],
     book10: [
-        "<br><br><br><bt>Hope Vol. 2</bt><br><br><heading>Based on a <a href='https://www.youtube.com/watch?v=e0wVNJ-fAeI'>story</a> by Jamie ThatBloxer</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Published on M/D/2023<br><br><button id='book#' onclick='copyLink();'>Copy book share link</button>",
+        "<br><br><br><bt>Hope Vol. 2</bt><br><br><heading>Based on a <a href='https://www.youtube.com/watch?v=e0wVNJ-fAeI'>story</a> by Jamie ThatBloxer</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon in March 2023<br><br><button id='book10' onclick='copyLink();'>Copy book share link</button>",
         "Hope looked at the blond-haired boy, who was sitting in a corner and had recently been crying.<br>\"Noah?\" Hope said. After everything that happened, her only friend turned out to be an orphan? \"What are you doing here?\"",
         "Coming Soon!",
-        // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE
+        // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
     ],
 };
 
-const hidden = [];
+const hidden = [3, 4, 9, 10];
 
 function openBook(bookId) {
     let open = true;
@@ -162,6 +164,8 @@ function openBook(bookId) {
         pageR.innerHTML = books["book" + currentBook][0];
         pageNumL = -1;
         pageNumR = 0;
+    } else if (open == false && currentBook == null) {
+        
     };
 };
 
@@ -173,7 +177,15 @@ if (param1.split("=")[0].match("book") && Number(param1.split("=")[1])) {
 };
 
 function backPage() {
-    if (pageNumL > -1) {
+    let comingSoon = false;
+    if (hidden.length > 0) {
+        for (let i = 0; hidden.length - 1; i++) {
+            if (currentBook == hidden[i]) {
+                comingSoon = true;
+            };
+         };
+    };
+    if (pageNumL > -1 && comingSoon == false) {
         //alert("flipped page back");
         pageNumL -= 2;
         pageNumR -= 2;
@@ -203,7 +215,15 @@ function closeBook() {
 };
 
 function nextPage() {
-    if (books["book" + currentBook][pageNumL + 2] != null) {
+    let comingSoon = false;
+    if (hidden.length > 0) {
+        for (let i = 0; hidden.length - 1; i++) {
+            if (currentBook == hidden[i]) {
+                comingSoon = true;
+            };
+         };
+    };
+    if (books["book" + currentBook][pageNumL + 2] != null && comingSoon == false) {
         //alert("flipped page forward");
         pageNumL += 2;
         pageNumR += 2;
