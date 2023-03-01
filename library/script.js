@@ -150,6 +150,7 @@ function openBook(bookId) {
         for (let i = 0; hidden.length - 1; i++) {
             if (bookId == hidden[i]) {
                 open = false;
+                break;
             };
          };
     };
@@ -164,15 +165,13 @@ function openBook(bookId) {
         pageR.innerHTML = books["book" + currentBook][0];
         pageNumL = -1;
         pageNumR = 0;
-    } else if (open == false && currentBook == null) {
-        
     };
 };
 
 var params = window.location.href.split("?")[1];
 var param1 = params.split("&");
-if (param1.split("=")[0].match("book") && Number(param1.split("=")[1])) {
-    openBook(Number(param1.split("=")[1]));
+if (param1[0].split("=")[0].match("book") && Number(param1[0].split("=")[1])) {
+    openBook(Number(param1[0].split("=")[1]));
     //pageR.innerHTML = books["book" + bookId][0];
 };
 
@@ -236,9 +235,9 @@ function nextPage() {
 };
 
 function copyLink() {
-    //navigator.clipboard.writeText("https://nunnerrs.github.io/library.html?book=" + currentBook.toString());
-    //alert("Copied share link! You can bookmark the link or share with others (paste with CMD/CTRL + V)");
-    alert("Sorry, copying & loading book share links are currently disabled due to a bug where it doesn't copy anything. I'm working to fix the error, sorry for any trouble this may have caused you.");
+    navigator.clipboard.writeText("https://nunnerrs.github.io/library.html?book=" + currentBook.toString());
+    alert("Copied share link! You can bookmark the link or share with others (paste with CMD/CTRL + V)");
+    //alert("Sorry, copying & loading book share links are currently disabled due to a bug where it doesn't copy anything. I'm working to fix the error, sorry for any trouble this may have caused you.");
 };
 
 function toggleDarkMode() {
@@ -316,9 +315,7 @@ function toggleDarkMode() {
 };
 
 for (let i = 1; i < total; i++) {
-    document.querySelector("#book" + i.toString()).addEventListener("click", function() {
-        openBook(i);
-    });
+    document.getElementById("book" + i).onclick = function() {openBook(i)});
 };
 
 //pageL.innerHTML = "";
