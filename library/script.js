@@ -19,7 +19,7 @@ if (dm == null) {
     toggleDarkMode();
 };
 
-var total = 8;
+var total = 9;
 
 const books = {
     /*
@@ -69,7 +69,7 @@ const books = {
         "\"Ohhhh,\" Pinky realizes. \"So <i>coral</i> is the name of these things.\"<br>\"So you live in the coral,\" Mint says. \"They really are plants.\"<br>\"No, they aren't,\" the fish says. Pinky's eyes widen. She turned to the yellow branch-like coral<br>\"I'm sowwy, little guy…\" she says. \"Uhh, where's their eyes?\"<br>\"Well, coral aren't fish either,\" says the little fish. \"But they are alive. Oh, did you see the piece that broke off?\"<br>She swims to the broken coral piece on the ground. It stands upright like a tiny cone, while earlier it didn't. \"These yellow ones are called staghorn coral. Look, it's already growing.\"<br>\"Woah…do they multiply that way?\" Mint asks.<br>\"Pretty much!\" the fish says.",
         "\"I've wanted another Staghorn by my home for a while since they've got many branches.\"<br>\"What's this one then?\" Pinky asks, floating beside the purple tube-like coral.<br>\"Those are tube coral,\" she explains.<br>\"I'm hungry. We should really go now…\" Mint says.<br>\"See you again someday! Bye-byeee!!\" Pinky waves a tentacle at the fish.<br>\"Oh, and my name's Liva! Bye!\"<br>Mint and Pinky swim away from the corals, only to see hundreds of more coral below a small cliff in all different colors.<br>\"Wanna go exploring first?\" Mint smiles at Pinky.<br>\"Race ya to that big rock!\" she called, rushing ahead.",
         "\"W-wait for me! Pinkyyyyy!!!!\" Mint exclaimed, swimming after her.<br><br>The adventures of the two octopi continues!<br><br><b>Coral Facts:</b><br>• Corals are not plants! They are animals just like Pinky and Mint.<br>• Corals are made up of hundreds of thousands of polyps, which are tiny, soft creatures that are grouped together.<br>• 25% of all ocean species (creatures) live in coral reefs, just like Liva!<br>• Coral comes in all different colors, shapes, and sizes! Besides staghorn and tube, there's over 6,000 species of coral.",
-        "Read the next book, <i>Pinky & Mint:<br>Hermit Crabs</i>, coming out in February 2023<br><br><br><b>Sources <i>[if you want to learn more about coral, click <a href='https://www.fisheries.noaa.gov/corals'>here</a> (has higher vocabulary)]</i></b><br>• Seven surprising facts about coral — <a href='https://www.sheddaquarium.org/stories/seven-surprising-facts-about-coral'>https://www.sheddaquarium.org/<br>stories/seven-surprising-facts-about-coral</a><br>• Are corals animals or plants? — <a href='https://oceanservice.noaa.gov/facts/coral.html'>https://oceanservice.noaa.gov/<br>facts/coral.html</a><br>• Staghorn coral — <a href='https://www.fisheries.noaa.gov/species/staghorn-coral'>https://www.fisheries.noaa.gov/<br>species/staghorn-coral</a><br>• Google search (on questions about coral)",
+        "Read the next book, <i>Pinky & Mint:<br>Hermit Crabs</i>, coming out in March 2023<br><br><br><b>Sources <i>[if you want to learn more about coral, click <a href='https://www.fisheries.noaa.gov/corals'>here</a> (has higher vocabulary)]</i></b><br>• Seven surprising facts about coral — <a href='https://www.sheddaquarium.org/stories/seven-surprising-facts-about-coral'>https://www.sheddaquarium.org/<br>stories/seven-surprising-facts-about-coral</a><br>• Are corals animals or plants? — <a href='https://oceanservice.noaa.gov/facts/coral.html'>https://oceanservice.noaa.gov/<br>facts/coral.html</a><br>• Staghorn coral — <a href='https://www.fisheries.noaa.gov/species/staghorn-coral'>https://www.fisheries.noaa.gov/<br>species/staghorn-coral</a><br>• Google search (on questions about coral)",
     ],
     book6: [
         "<br><br><br><bt>Hope (Vol. 1)</bt><br><br><heading>Based on a <a href='https://www.youtube.com/watch?v=e0wVNJ-fAeI'>story</a> by Jamie ThatBloxer</heading><br><br>Written by Nunners<br>Reading Level: <star>★★★☆☆</star><br>Published on 1/22/2023<br><br><b>WARNING:</b> This book features gun violence. This book is also very emotional.<br><br><button id='book6' onclick='copyLink();'>Copy book share link</button>",
@@ -87,7 +87,7 @@ const books = {
         "&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160✿ ✿ ✿<br>Hope held her dad's hand as tears streaked down her cheeks. Her dad had a black eye and his arm was connected to a container of blood. A monitor beeped in the background, keeping track of his heart rate. He opened his eyes slightly.<br>\"Hope…\" her dad said. He was hit with an old memory of them.<br><br>Hope was doing homework while he washed the dishes.<br>\"Hey, Dad? Why did you name me Hope?\" she had asked.<br>\"Well,\" he responded. \"Your mom left us really early.\"<br>It had hurt him to recall the pain Hope's mom had gone through. He had fallen to his knees when he heard the doctor's unforgettable words.",
         "\"You never got to meet her, but she was the prettiest woman you'd ever see.\" Hope's dad had told her. \"I was heartbroken, but when I looked at you, I knew.\"<br>His eyes filled with tears as he washed the dishes. \"Your name is Hope, because hope is what you give me.\"<br>Hope blushed as she looked at her dad from across the room, her eyes brimming with tears.<br><br>\"Dad…?\" Hope glanced at her dad with a worried look. The monitor's beeps began to slow down. He smiled at Hope, and closed his eyes. Hope's heart dropped in her chest.<br>\"Dad…\" Tears spilled from her eyes as she gently shook his arm. \"Please…don't go…\"",
         "No response. The smile on her dad's face faded away.<br>\"No…\" Hope muttered. The sound from the monitor beeped without pausing. She collapsed in her chair, streams of tears falling non-stop.<br>&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160✿ ✿ ✿<br>The pain in her chest never left. Hope stared at her dad's casket with the priest. She placed a white flower on top of it.<br>\"I picked out this flower, especially for you, Dad.\" Hope said, trying to choke back her tears.<br><br>Hope rolled her luggage behind her as she followed the woman giving her a ride. She cried as she watched her childhood home fade off in the distance.",
-        "The woman opened the car door and led Hope to Sarah's Orphanage. When they walked inside, Hope spotted a blond-haired boy sitting in a corner. His face was buried in his knees, and when he looked up Hope saw tears running down his face.<br>Her eyes grew wide and tons of questions raced across her mind. \"Noah…?\"<br><br><i>Hope Vol. 2</i> coming in February 2023!",
+        "The woman opened the car door and led Hope to Sarah's Orphanage. When they walked inside, Hope spotted a blond-haired boy sitting in a corner. His face was buried in his knees, and when he looked up Hope saw tears running down his face.<br>Her eyes grew wide and tons of questions raced across her mind. \"Noah…?\"<br><br><i>Hope Vol. 2</i> coming in March 2023!",
     ],
     book7: [ // "<bt>LETTER</bt><br><b>TITLE</b><br>If you dreamt …",
         "<br><br><br><br><br><bt>Nunners' Guide To Dreams & Nightmares</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 2/15/2023<br><br><button id='book7' onclick='copyLink();'>Copy book share link</button>",
@@ -114,14 +114,15 @@ const books = {
     book8: [ // "<heading><b>Mon. DD, 2023</b></heading><br><br>• ", 
         "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 2/27/2023<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
         // UPDATE NEWEST NEWS ABOVE
+        "<heading><b>Mar. 1, 2023</b></heading><br><br>• <i>Pinky & Mint: Hermit Crabs</i> is now published!!! It's longer than the <i>Coral</i> one and I hope you'll enjoy it! Note that you don't need to read <i>Pinky & Mint: Coral</i> before the new book (it's styled so that you can read any of them in any order).<br>• Check out the small new updates to Web Chef & collection of online fun stuffs.", 
         "<heading><b>Feb. 28, 2023</b></heading><br><br>• Publishing <i>Pinky & Mint: Hermit Crabs</i> sometime today (or in a few days)! I just need to cite the sources used. I also made the upcoming books' covers visible, but they can't be viewed yet.", 
-        "<heading><b>Feb. 27, 2023</b></heading><br><br>• <i>Pinky & Mint: Hermit Crabs</i> & <i>Hope Vol. 2</i> release delay — Sorry guys, the two books I promised would release in February are going to be postponed to March. I've been busy with schoolwork, and I can't really write two books in two days so :P. But don't worry, I'll try to write them very soon (<b>P&M:HC is 95% done!</b>)<br>• Added a day-night cycle to CGT and a Lantern & Tip Book gear! Light up the night with the Lantern and discover useful tips with the Tip Book. BTW, I'm working on a Toy Ball gear so you can play fetch with your pets •u•<br>• News articles that are spread across multiple pages should be read from right to left (e.g. read right page before left)",
+        "<heading><b>Feb. 27, 2023</b></heading><br><br>• <i>Pinky & Mint: Hermit Crabs</i> & <i>Hope Vol. 2</i> release delay — Sorry guys, the two books I promised would release in February are going to be postponed to March. I've been busy with schoolwork, and I can't really write two books in two days so :P. But don't worry, I'll try to write them very soon<br>• Added a day-night cycle to CGT and a Lantern & Tip Book gear! Light up the night with the Lantern and discover useful tips with the Tip Book. BTW, I'm working on a Toy Ball gear so you can play fetch with your pets •u•<br>• News articles that are spread across multiple pages should be read from right to left (e.g. read right page before left)",
         "<heading><b>Feb. 22, 2023</b></heading><br><br>• New Custom Gear Testing updates! Join the game to earn the 100 Visits achievement (cool notification too!) and a free sparkler gear. There's also a new Meet Nunnerrs! badge; touch the NunnerOrb gear (item only I can have) if I'm holding it out and you'll unlock the Nunnerrs Suit. You can also ask me to join you if you're playing CGT (if I'm available) on Discord (NunnerDev server/DM) for the badge.",
         "<heading><b>Feb. 15, 2023</b></heading><br><br>• I've published a pre-release of <i>Nunners' Guide To Dreams & Nightmares</i>! It's unfinished but be sure to check it out. I'll add some more dream meanings and some chunky paragraphs talking about dreams in the future.<br>• I'm currently writing <i>Pinky & Mint: Hermit Crabs</i>! The Pinky & Mint series are designed so that you can read the books in any order.",
         "<heading><b>Feb. 15, 2023</b></heading><br><br>• I made a new \"book\" called <i>NunnerVerse Weekly</i> (the one you're reading right now). It's basically where I'll put all my update logs for every project from now on. The newest logs will be on the first few pages. I'm not sure if I should delete the old logs after a long time though. [DISCLAIMER: I'm probably gonna add new \"articles\" every few days, but there's <i>still a chance</i> for me to forget to post new logs. So pls don't get mad if you've been waiting for \"new update\" but there isn't yet—]",
     ],
     book9: [
-        "<br><br><br><br><br><br><bt>Pinky & Mint: Hermit Crabs</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star><br>Coming soon on 3/1/2023<br><br><button id='book9' onclick='copyLink();'>Copy book share link</button>",
+        "<br><br><br><br><br><br><bt>Pinky & Mint: Hermit Crabs</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star><br>Published on 3/1/2023<br><br><button id='book9' onclick='copyLink();'>Copy book share link</button>",
         "Pinky and Mint swim along the ocean floor. They are octopi. Mint quickly picks up a sea shell on the floor but doesn't find anything inside.<br>\"Haahhhh…\" he sighs. \"All I see are empty shells and rocks. Didn't you say there's snails in these shells?\"<br>\"Hold on, we'll find one somewhere around here…\" Pinky says hopefully. \"We just gotta look harder!\"<br>As they continued their search, Pinky finds a round shell and sees something in it that catches her eye.<br>\"Mint! I found it!!\" she calls.<br>Mint drops the rock he held and swims towards Pinky with excitement.<br>\"Wow…what is it?\"",
         "The red little creature inside the shell doesn't move.<br>\"See? I told you we'd find one!\" Pinky says happily.<br>\"But…what <i>is</i> that?\"<br>\"Uh, it's <i>obviously</i> a <i>snail</i>!\"<br>\"How am I supposed to know?\"<br>The creature twitches as Pinky scoops it into her arms. As they look more closely, it's body looks scaly and dotted with hairs.<br>\"Pfff!\" Mint laughs. \"That's not a snail! That thing's not slimy <i>or</i> squishy!\"<br>\"O-Of course it's a snail!\" Pinky says. She looks down at the shelled creature in her arms. \"Hey there little guy…\"<br>The living thing wiggles as Pinky touches it gently. Both octopi gasp as they realize its \"body\" is actually the creature's legs!",
         "\"WAAUGHH!\" Pinky screams. \"Th-that's NOT a snail—\"<br>She lets go of the shell and the creature sinks down from her arms onto the floor. Little eyes slowly poke out from the shell and extends its legs.<br>\"Whew…\" the red creature says, shaking sand off of it's body. It looks at the octopi and jumps. \"Yikes!\"<br>The creature quickly digs into the sand to hide, but its shell is still visible.<br>\"Hey, wait!\" Mint cries. He moves a little closer to the frightened creature. \"Umm…lil' crab, we're not here to harm you…\"<br>\"Eek!\" the crab curls up even more into its shell. \"G-Go away…\"<br>\"Hmmm…how do we get them to <i>not</i> be scared…?\" Pinky wonders.",
@@ -129,10 +130,10 @@ const books = {
         "Mint and Pinky watch the little guy eat quietly. After a while, it takes its last bite and swallows. \"Yummy…\" the creature smiles happily. It glances at the two octopi looming over it. \"Oh yeah.\"<br>The crab stands up and stretches, shaking off the sand on its shell. It looks at them with bright eyes. \"My name's Cory. I thought you guys were gonna hurt me or something at first,\" the crab says in a soft voice. It holds out a claw in handshake. \"You guys look friendly though.\"<br>\"Nice to meet ya, Cory!\" Mint says, shaking his small claw. \"OWWIE!!\"<br>Mint grabs his own tentacle and rubs it. \"You pinched me…\"",
         "\"Ah! S-Sowwy…\" Cory apologises. He sighs at his tiny but sharp claws. \"I-I do that a lot, I'm sowwy…\"<br>\"It-it's fine.\" Mint turns to Pinky. \"I know he isn't the snail you were looking for, but…I thought crabs <i>didn't</i> have shells…\"<br>\"It's 'cause I'm a <i>hermit crab</i>, duhh!\" Cory says, crawling towards them. \"I like small homes that I can bring wherever I go!\"<br>\"Wait, that's your <i>home</i>?!\" Pinky gasps.<br>She looked at him with sad eyes. \"I'm sowwy I picked it up earlier…I didn't know—\"<br>\"It's okay, really,\" Cory responds.<br>His eyes widen and he crawls away from the octopi.",
         "Both octopi glance at one another in confusion.<br>\"It's perfect!\" Cory exclaims, gently touching an empty shell. It's slightly larger than his current shell. He wiggles in his shell and suddenly pops off of it. The rest of his body is exposed, which is in the shape of a spiral like his original shell.<br>\"Ahh! Are you okay?!\" Pinky panics.<br>\"Huh? What do you mean?\" Cory tilts his head in confusion.<br>\"I'm just getting myself a new shell.\"<br>He backs his tail into the new shell, which is shaped like a wide cone. The rest of Cory's body is now hidden inside, and he tucks into the shell even more.<br>\"If I fits, I sits,\" he says calmly.",
-        "\"Huh? I thought you guys made your own shells…\" Mint says. \"So you use shells made by snails. Right?\"<br>He gently picks up Cory with two tentacles. The crab's limbs don't move at all and little bubbles sprout from Cory's mouth.<br>\"Oh, he fell asleep…\" Mint sighs. He places him down next to other shells that seem to be sleeping hermit crabs.<br>\"I didn't know there were more crabs.\" Mint says, turning to Pinky. \"So, what now?\"<br>\"Hmmmm…maybe we can go look for the <i>actual</i>snail,\" Pinky says. \"The one I found was <i>really</i> big and had a green shell\"<br>\"Whaaaat!! I think you're making stuff up now…\"<br>\"I'm not! It was so pretty, you should see it!\"",
-        "\"How am I supposed to see it if we don't start looking?\"<br>\"…Oh yeah.\" Pinky says. She waves at Cory. \"Good niiight…\"<br>Mint and Pinky swim away, lifting up rocks and shells.<br><br>The adventure of the two octopi continues!<br><br><b>Hermit Crab Facts</b><br>• Hermit crabs molt, which is when they shed their exoskeleton (outer shell-like body). They do this because their exoskeleton doesn't grow.<br>• Hermit crabs change shells every year or so, and it usually molts when it does.<br>• Hermit crabs live in all kinds of sea shells. They use shells made by other creatues like snails. Sadly, hundreds of thousands die because they mistake plastic for shells.",
-        "<b>Hermit Crab Facts:</b><br>• Hermit crabs are very social, meaning they like to interact with other hermit crabs as well as other sea creatures.<br><br>Read the next book, <i>Pinky & Mint: Whales</i>, coming out in April 2023!<br><br><br><b>Sources</b><br>• ",
-        // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
+        "\"Huh? I thought you guys made your own shells…\" Mint says. \"So you use shells made by snails. Right?\"<br>He gently picks up Cory with two tentacles. The crab's limbs don't move at all and little bubbles sprout from Cory's mouth.<br>\"Oh, he fell asleep…\" Mint sighs. He places him down next to other shells that seem to be sleeping hermit crabs.<br>\"I didn't know there were more crabs.\" Mint says, turning to Pinky. \"So, what now?\"<br>\"Hmmmm…maybe we can go look for an <i>actual</i> snail,\" Pinky says. \"Oh yeah, the one I found was <i>really</i> big and had a green shell\"<br>\"Whaaaat!! I think you're making stuff up now…\"<br>\"I'm not! It was so pretty, you should see it!\"",
+        "\"How am I supposed to see it if we don't start looking?\"<br>\"…Oh yeah.\" Pinky says. She waves at Cory. \"Good niiight…\"<br>Mint and Pinky swim away, lifting up rocks and shells.<br><br>The adventure of the two octopi continues!<br><br>Read the upcoming book, <i>Pinky & Mint: Whales</i>, coming out in April 2023!<br><br><b>Read them all!</b><br><i>Pinky & Mint: Coral</i><br><i>Pinky & Mint: Hermit Crabs</i>",
+        "<b>Hermit Crab Facts</b><br>• Hermit crabs molt, which is when they shed their exoskeleton (outer shell-like body). They do this because their exoskeleton doesn't grow.<br>• Hermit crabs change shells every year or so, and it usually molts when it does.<br>• Hermit crabs live in all kinds of sea shells. They use shells made by other creatues like snails. Sadly, hundreds of thousands die because they mistake plastic for shells.<br>• Hermit crabs are very social, meaning they like to interact with other hermit crabs as well as other sea creatures.",
+        "<b>Sources</b><br>• <a href='https://www.facebook.com/PBSNature/videos/hermit-crab-shells/414959254038523'>Hermit Crab Shells (facebook.com)</a><br>• <a href='https://environment.bm/land-hermit-crab'>Land Hermit Crab (environment.bm)</a><br>• <a href='https://cdnsciencepub.com/doi/10.1139/cjz-2014-0312'>Hiding time of the hermit crab (cdnsciencepub.com)</a><br>• <a href='https://www.hermitcrabpatch.com/Hermit-Crab-Successful-Molting-a/138.htm'>Hermit Crab Successful Molting (hermitcrabpatch.com)</a><br>• <a href='https://a-z-animals.com/blog/10-incredible-hermit-crab-facts/'>10 Incredible Hermit Crab Facts (a-z-animals.com)</a>",
     ],
     book10: [
         "<br><br><br><bt>Hope Vol. 2</bt><br><br><heading>Based on a <a href='https://www.youtube.com/watch?v=e0wVNJ-fAeI'>story</a> by Jamie ThatBloxer</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon in March 2023<br><br><button id='book10' onclick='copyLink();'>Copy book share link</button>",
@@ -142,19 +143,8 @@ const books = {
     ],
 };
 
-const hidden = [3, 4, 9, 10];
-
 function openBook(bookId) {
-    let open = true;
-    if (hidden.length > 0) {
-        for (let i = 0; hidden.length - 1; i++) {
-            if (bookId == hidden[i]) {
-                open = false;
-                break;
-            };
-         };
-    };
-    if (open == true && currentBook == null) {
+    if (currentBook == null) {
         currentBook = bookId;
         book.classList.add("nh");
         book.style = "visibility: visible;";
@@ -176,15 +166,7 @@ if (param1[0].split("=")[0].match("book") && Number(param1[0].split("=")[1])) {
 };
 
 function backPage() {
-    let comingSoon = false;
-    if (hidden.length > 0) {
-        for (let i = 0; hidden.length - 1; i++) {
-            if (currentBook == hidden[i]) {
-                comingSoon = true;
-            };
-         };
-    };
-    if (pageNumL > -1 && comingSoon == false) {
+    if (pageNumL > -1) {
         //alert("flipped page back");
         pageNumL -= 2;
         pageNumR -= 2;
@@ -214,15 +196,7 @@ function closeBook() {
 };
 
 function nextPage() {
-    let comingSoon = false;
-    if (hidden.length > 0) {
-        for (let i = 0; hidden.length - 1; i++) {
-            if (currentBook == hidden[i]) {
-                comingSoon = true;
-            };
-         };
-    };
-    if (books["book" + currentBook][pageNumL + 2] != null && comingSoon == false) {
+    if (books["book" + currentBook][pageNumL + 2] != null) {
         //alert("flipped page forward");
         pageNumL += 2;
         pageNumR += 2;
@@ -231,6 +205,7 @@ function nextPage() {
         if (pageNumR >= books["book" + currentBook].length) {
             pageR.innerHTML = "";
         };
+        console.log(pageNumL + " " + pageNumR);
     };
 };
 
@@ -315,13 +290,13 @@ function toggleDarkMode() {
 };
 
 for (let i = 1; i < total; i++) {
-    document.getElementById("book" + i).onclick = function() {openBook(i)});
+    document.getElementById("book" + i).onclick = function(){openBook(i)};
 };
 
 //pageL.innerHTML = "";
 //pageR.innerHTML = "";
 
-back.addEventListener("click", backPage);
-close.addEventListener("click", closeBook);
-next.addEventListener("click", nextPage);
-darkMode.addEventListener("click", toggleDarkMode);
+back.onclick = backPage;
+close.onclick = closeBook;
+next.onclick = nextPage;
+darkMode.onclick = toggleDarkMode;
