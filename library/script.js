@@ -22,12 +22,14 @@ if (dm == null) {
 var total = 9;
 
 const books = {
+    // fitting image sample: https://i.ibb.co/xLsBh3W/img.png (add class rp to fix margin on right pages)
     /*
     Line capacity: 33 characters
     Page capacity: 781 characters
     DON'T FORGET TO UPDATE BOOK TOTAL ABOVE
     book#: [
-        // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID, 
+        // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
+        "", // <img src="covers/placeholder.png">
         "<br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Coming soon in MONTH 2023<br><br><button id='book#' onclick='copyLink();'>Copy book share link</button>
         "Coming Soon!",
         "Coming Soon!",
@@ -35,6 +37,7 @@ const books = {
     ],
     */
     book1: [
+        "", // <img src="covers/placeholder.png">
         "<br><br><br><br><br><br><br><bt>Nunnerology</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 1/17/2023<br><br><button id='book1' onclick='copyLink();'>Copy book share link</button>",
         "This is an autobiography (maybe?) that I wrote so you guys can learn more about me. For a more brief version (mainly relating to code), visit my <a href='about'>about me page</a>.",
         "Hi there, I'm Julianna, but I'm known as Nunners on this website. I build and code Roblox games for fun. I also enjoy making this website, coded through HTML, JavaScript, and CSS. The coding languages I've learned are HTML, JavaScript, CSS, Luau (language based on Lua used for Roblox game making), and PHP.",
@@ -45,31 +48,35 @@ const books = {
         "And that's all I can think of adding for now! I'll update this more as things change.",
     ],
     book2: [
+        "", // <img src="covers/placeholder.png">
         "<br><br><br><br><br><bt>How To NunnerLibrary</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 1/17/2023<br><b>Press the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below</b> to flip the page<br><br><button id='book2' onclick='copyLink();'>Copy book share link</button>",
         "Welcome to the NunnerLibrary! This book is a tutorial for the NunnerLibrary. You'll learn what everything does and the meaning of things such as the Reading Level. Books should be read from left to right, top to bottom. To open a book, click on any button under a book genre (<span style='font-family: M PLUS ROUNDED 1C'>&#9888</span> clicking on a book while one is already open will \"override\" your currently open book <span style='font-family: M PLUS ROUNDED 1C'>&#9888</span>). Each book is sorted into a category/genre (e.g. click on Nunnerology under Non-Fiction). Books with \"Vol. 1\", \"Vol. 2\", etc under the title means that book is part of a series. If you're going to start a book series, you should always read each book in order (start with Volume 1, then read Volume 2…) so you understand the storyline.",
         "The Reading Level on the cover shows the \"difficulty\" of the currently open book. It's out of 5 stars, <star>★☆☆☆☆</star> means the book is very easy to read while <star>★★★★★</star> means the book may be pretty difficult to read (because of the vocabulary). Don't worry if you like reading books 2-stars or less or 4-stars or more, everyone has their likes and dislikes. Most books have a reading level of <star>★★★☆☆</star> (moderate level). The book will open up above all the book buttons along will three different buttons. The <span style='font-family: M PLUS ROUNDED 1C'>←</span> button flips the book one page backward. The <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> button closes the book. The <span style='font-family: M PLUS ROUNDED 1C'>→</span> button flips the book one page forward. (The book continues on the next page, so click on the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below!)",
-        "The \"Copy book share link\" can be used to bookmark a NunnerLibrary book or to share a specific book to someone else. Clicking on it copies a link to your keyboard's clipboard. If you visit the link, it will open the exact book you copied the link from. The \"Turn on dark mode\" button at the bottom makes the background black and system buttons dark gray. Many people like using dark mode (pretty much everywhere they can), and the darkness can be easier on eyes (especially at night). The \"To The NunnerVerse²\" at the bottom is a link to go back to my homepage.",
+        "The \"Copy book share link\" can be used to bookmark a NunnerLibrary book or to share a specific book to someone else. Clicking on it copies a link to your keyboard's clipboard. If you visit the link, it will open the exact book you copied the link from. The \"Turn on dark mode\" button at the bottom makes the background black and system buttons dark gray. Many people like using dark mode (pretty much everywhere they can), and the darkness can be easier on eyes (especially at night). The \"Write a book for the NunnerLibrary\" at the bottom is a link to a Google Form where you can write your own book or story idea for the NunnerLibrary. The \"To The NunnerVerse²\" below it is a link to go back to my homepage.",
         "In the NunnerLibrary, you'll find all sorts of books. Most will be original stories, but some could feature characters from existing books or could be based on real books. There's currently a total of " + total + " books in the NunnerLibrary database. If you know me in real life or have my Discord username, you can always let me know any book suggestions you have (either the story outline or the entire story). I hope there's at least one book here you'll enjoy reading :D! (Click the <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> to close the book).",
     ],
     book3: [
+        "", // <img src="covers/placeholder.png">
         "<br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon sometime in 2023<br><br><button id='book3' onclick='copyLink();' disabled>Copy book share link</button>",
         "Coming Soon!",
         "Coming Soon!",
     ],
     book4: book4, // I Got Reincarnated As A Cow
     book5: [
+        "", // <img src="covers/placeholder.png">
         "<br><br><br><br><br><br><bt>Pinky & Mint: Coral</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star><br>Published on 1/18/2023<br><br><button id='book5' onclick='copyLink();'>Copy book share link</button>",
         "Pinky and Mint are swimming in the ocean. They are octopi. Mint turns around and sees a strange thing on the ocean floor.<br>\"Ooh, what's that?\" he says, swimming towards it. Pinky floats next to him.<br>\"Wow, that looks cool!\" she exclaims. \"Wait, what is it?\"<br>The strange object is shaped like long, purple tubes.<br>\"Maybe…it's an animal?\" Mint guesses. Using one tentacle, he touches the bumpy outside, but nothing happens. Pinky looks at the thing upside down.<br>\"It didn't move, so it's not an animal…\" Mint says.<br>\"Maybe it's a plant,\" Pinky says. \"Can I eat it?\"<br>\"Umm, I don't think you should,\" Mint warns.",
         "He looks inside the tubes from the top. All them are empty. They both circle it many times while thinking.<br>\"It looks like it's stuck to the ground,\" Pinky says. \"Wait, what's <i>this</i>?\"<br>She stops and looks at another strange thing nearby. It's yellow and has branches. Bumps cover the entire thing.<br>\"These look so cool,\" Mint thinks out loud. \"Are they similar?\"<br>\"Where do the roots of the plant go…?\" Pinky says. She tries to pull the yellow thing out. A branch came off easily when Pinky did, and they watched as it fell onto the ground. \"Uh oh…I broke it…\"<br>\"AAH! What if that was a living thing?!\" Mint says in a panic. \"You broke off it's arm!!\"",
         "A small teal fish swims by and looks at the octopi.<br>\"NOO!!\" she cries in a shrilly voice. \"Look what you've done to my pwecious home…\"<br>The fish races to the yellow thing and sighs.<br>\"I-I'm so sowwy, i-it was an accident,\" Pinky stammers.<br>\"Huh? You don't need to be sorry,\" she smiles. Pinky and Mint look completely confused.<br>\"I should thank you. I've always wanted more of it. Anyway, who <i>are</i> you two?\"<br>\"I'm Mint, and she's Pinky,\" Mint says. He tilts his head a little. \"What do you mean by <i>it</i>?\"<br>\"You know, the <i>coral</i>,\" the fish says, swimming into a purple tube. She sticks her head out of it. \"This is my home, in the <i>coral</i> reef.\"",
         "\"Ohhhh,\" Pinky realizes. \"So <i>coral</i> is the name of these things.\"<br>\"So you live in the coral,\" Mint says. \"They really are plants.\"<br>\"No, they aren't,\" the fish says. Pinky's eyes widen. She turned to the yellow branch-like coral<br>\"I'm sowwy, little guy…\" she says. \"Uhh, where's their eyes?\"<br>\"Well, coral aren't fish either,\" says the little fish. \"But they are alive. Oh, did you see the piece that broke off?\"<br>She swims to the broken coral piece on the ground. It stands upright like a tiny cone, while earlier it didn't. \"These yellow ones are called staghorn coral. Look, it's already growing.\"<br>\"Woah…do they multiply that way?\" Mint asks.<br>\"Pretty much!\" the fish says.",
-        "\"I've wanted another Staghorn by my home for a while since they've got many branches.\"<br>\"What's this one then?\" Pinky asks, floating beside the purple tube-like coral.<br>\"Those are tube coral,\" she explains.<br>\"I'm hungry. We should really go now…\" Mint says.<br>\"See you again someday! Bye-byeee!!\" Pinky waves a tentacle at the fish.<br>\"Oh, and my name's Liva! Bye!\"<br>Mint and Pinky swim away from the corals, only to see hundreds of more coral below a small cliff in all different colors.<br>\"Wanna go exploring first?\" Mint smiles at Pinky.<br>\"Race ya to that big rock!\" she called, rushing ahead.",
+        "\"I've wanted another Staghorn by my home for a while since they've got many branches.\"<br>\"What's this one then?\" Pinky asks, floating beside the purple tube-like coral.<br>\"Those are tube coral,\" she explains.<br>\"I'm hungry. We should really go now…\" Mint says.<br>\"See you again someday! Bye-byeee!!\" Pinky waves a tentacle at the fish.<br>\"Oh, and my name's Liva! Bye!\"<br>Mint and Pinky swim away from the corals, only to see hundreds of more coral below a small cliff in all different colors.<br>\"Wanna go exploring first?\" Mint smiles at Pinky.<br>\"Race ya to that big rock!\" she calls, rushing ahead.",
         "\"W-wait for me! Pinkyyyyy!!!!\" Mint exclaimed, swimming after her.<br><br>The adventures of the two octopi continues!<br><br><b>Coral Facts:</b><br>• Corals are not plants! They are animals just like Pinky and Mint.<br>• Corals are made up of hundreds of thousands of polyps, which are tiny, soft creatures that are grouped together.<br>• 25% of all ocean species (creatures) live in coral reefs, just like Liva!<br>• Coral comes in all different colors, shapes, and sizes! Besides staghorn and tube, there's over 6,000 species of coral.",
         "Read the next book, <i>Pinky & Mint:<br>Hermit Crabs</i>, coming out in March 2023<br><br><br><b>Sources <i>[if you want to learn more about coral, click <a href='https://www.fisheries.noaa.gov/corals'>here</a> (has higher vocabulary)]</i></b><br>• Seven surprising facts about coral — <a href='https://www.sheddaquarium.org/stories/seven-surprising-facts-about-coral'>https://www.sheddaquarium.org/<br>stories/seven-surprising-facts-about-coral</a><br>• Are corals animals or plants? — <a href='https://oceanservice.noaa.gov/facts/coral.html'>https://oceanservice.noaa.gov/<br>facts/coral.html</a><br>• Staghorn coral — <a href='https://www.fisheries.noaa.gov/species/staghorn-coral'>https://www.fisheries.noaa.gov/<br>species/staghorn-coral</a><br>• Google search (on questions about coral)",
     ],
     book6: book6, // Hope Vol. 1
     book7: book7, // Nunners' Guide To Dreams & Nightmares
-    book8: [ // "<heading><b>Mon. DD, 2023</b></heading><br><br>• ", 
+    book8: [ // "<heading><b>Mon. DD, 2023</b></heading><br><br>• ",
+        "", // <img src="covers/placeholder.png">
         "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 2/27/2023<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
         // UPDATE NEWEST NEWS ABOVE
         "<heading><b>Mar. 1, 2023</b></heading><br><br>• <i>Pinky & Mint: Hermit Crabs</i> is now published!!! It's longer than the <i>Coral</i> one and I hope you'll enjoy it! Note that you don't need to read <i>Pinky & Mint: Coral</i> before the new book (it's styled so that you can read any of them in any order).<br>• Check out the small new updates to Web Chef & collection of online fun stuffs.", 
@@ -80,6 +87,7 @@ const books = {
         "<heading><b>Feb. 15, 2023</b></heading><br><br>• I made a new \"book\" called <i>NunnerVerse Weekly</i> (the one you're reading right now). It's basically where I'll put all my update logs for every project from now on. The newest logs will be on the first few pages. I'm not sure if I should delete the old logs after a long time though. [DISCLAIMER: I'm probably gonna add new \"articles\" every few days, but there's <i>still a chance</i> for me to forget to post new logs. So pls don't get mad if you've been waiting for \"new update\" but there isn't yet—]",
     ],
     book9: [
+        "", // <img src="covers/placeholder.png">
         "<br><br><br><br><br><br><bt>Pinky & Mint: Hermit Crabs</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star><br>Published on 3/1/2023<br><br><button id='book9' onclick='copyLink();'>Copy book share link</button>",
         "Pinky and Mint swim along the ocean floor. They are octopi. Mint quickly picks up a sea shell on the floor but doesn't find anything inside.<br>\"Haahhhh…\" he sighs. \"All I see are empty shells and rocks. Didn't you say there's snails in these shells?\"<br>\"Hold on, we'll find one somewhere around here…\" Pinky says hopefully. \"We just gotta look harder!\"<br>As they continued their search, Pinky finds a round shell and sees something in it that catches her eye.<br>\"Mint! I found it!!\" she calls.<br>Mint drops the rock he held and swims towards Pinky with excitement.<br>\"Wow…what is it?\"",
         "The red little creature inside the shell doesn't move.<br>\"See? I told you we'd find one!\" Pinky says happily.<br>\"But…what <i>is</i> that?\"<br>\"Uh, it's <i>obviously</i> a <i>snail</i>!\"<br>\"How am I supposed to know?\"<br>The creature twitches as Pinky scoops it into her arms. As they look more closely, it's body looks scaly and dotted with hairs.<br>\"Pfff!\" Mint laughs. \"That's not a snail! That thing's not slimy <i>or</i> squishy!\"<br>\"O-Of course it's a snail!\" Pinky says. She looks down at the shelled creature in her arms. \"Hey there little guy…\"<br>The living thing wiggles as Pinky touches it gently. Both octopi gasp as they realize its \"body\" is actually the creature's legs!",
@@ -94,7 +102,9 @@ const books = {
         "<b>Sources</b><br>• <a href='https://www.facebook.com/PBSNature/videos/hermit-crab-shells/414959254038523'>Hermit Crab Shells (facebook.com)</a><br>• <a href='https://environment.bm/land-hermit-crab'>Land Hermit Crab (environment.bm)</a><br>• <a href='https://cdnsciencepub.com/doi/10.1139/cjz-2014-0312'>Hiding time of the hermit crab (cdnsciencepub.com)</a><br>• <a href='https://www.hermitcrabpatch.com/Hermit-Crab-Successful-Molting-a/138.htm'>Hermit Crab Successful Molting (hermitcrabpatch.com)</a><br>• <a href='https://a-z-animals.com/blog/10-incredible-hermit-crab-facts/'>10 Incredible Hermit Crab Facts (a-z-animals.com)</a>",
     ],
     book10: [
-        "<br><br><br><bt>Hope Vol. 2</bt><br><br><heading>Based on a <a href='https://www.youtube.com/watch?v=e0wVNJ-fAeI'>story</a> by Jamie ThatBloxer</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon in March 2023<br><br><button id='book10' onclick='copyLink();'>Copy book share link</button>",
+        "", // <img src="covers/placeholder.png">
+        // watch here: https://mobilemoxie.com/tools/get-remote-content_device_emulator?urlload=true&frameid=div_iframe_phone_1&type=site&search=https://www.youtube.com/watch?v=vZMjJ0RFDyk&engine=us-google&phoneid=63&lang=en&locid=&country_code=US&width=2048&lat=32.09024&long=-95.712891
+        "<br><br><br><bt>Hope Vol. 2</bt><br><br><heading>Based on a <a href='https://www.youtube.com/watch?v=vZMjJ0RFDyk'>story</a> by Jamie ThatBloxer</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon in March 2023<br><br><button id='book10' onclick='copyLink();'>Copy book share link</button>",
         "Hope looked at the blond-haired boy, who was sitting in a corner and had recently been crying.<br>\"Noah?\" Hope said. After everything that happened, her only friend turned out to be an orphan? \"What are you doing here?\"",
         "Coming Soon!",
         // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
@@ -109,10 +119,10 @@ function openBook(bookId) {
         back.style = "visibility: visible;";
         close.style = "visibility: visible;";
         next.style = "visibility: visible;";
-        pageL.innerHTML = "";
-        pageR.innerHTML = books["book" + currentBook][0];
-        pageNumL = -1;
-        pageNumR = 0;
+        pageL.innerHTML = books["book" + currentBook][0];
+        pageR.innerHTML = books["book" + currentBook][1];
+        pageNumL = 0;
+        pageNumR = 1;
     };
 };
 
@@ -124,13 +134,13 @@ if (param1[0].split("=")[0].match("book") && Number(param1[0].split("=")[1])) {
 };
 
 function backPage() {
-    if (pageNumL > -1) {
+    if (pageNumL > 0) {
         //alert("flipped page back");
         pageNumL -= 2;
         pageNumR -= 2;
         pageL.innerHTML = books["book" + currentBook][pageNumL];
         pageR.innerHTML = books["book" + currentBook][pageNumR];
-        if (pageNumL <= -1) {
+        if (pageNumL <= 0) {
             pageL.innerHTML = "";
         };
         if (pageNumR >= books["book" + currentBook].length) {
@@ -148,8 +158,8 @@ function closeBook() {
     next.style = "visibility: hidden;";
     pageL.innerHTML = "";
     pageR.innerHTML = "";
-    pageNumL = -1;
-    pageNumR = 0;
+    pageNumL = 0;
+    pageNumR = 1;
     //alert("closed book #" + currentBook);
 };
 

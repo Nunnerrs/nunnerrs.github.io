@@ -1,5 +1,6 @@
 // I Got Reincarnated As A Cow
 const book4 = [
+    "", // <img src="covers/placeholder.png">
     "<br><br><br><br><bt>I Got Reincarnated<br>As A Cow</bt><br><br><heading>Story by Skylar<br>Written by Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon sometime in 2023<br><br><button id='book4' onclick='copyLink();' disabled>Copy book share link</button>",
     // "<heading>Prologue</heading><br>Marcus walked out of the grocery store. He carried one bag, which held just one carton of milk. He felt awkward to go to the grocery store, only to buy some milk. He strolled across the street and onto the crosswalk.<br>It just happened. There wasn't any reason for the truck to go forward. The walk light was lit and the traffic light was red for a while.",
     "Coming Soon!",
@@ -8,6 +9,7 @@ const book4 = [
 
 // Hope Vol. 1
 const book6 = [
+    "", // <img src="covers/placeholder.png">
     "<br><br><br><bt>Hope (Vol. 1)</bt><br><br><heading>Based on a <a href='https://www.youtube.com/watch?v=e0wVNJ-fAeI'>story</a> by Jamie ThatBloxer</heading><br><br>Written by Nunners<br>Reading Level: <star>★★★☆☆</star><br>Published on 1/22/2023<br><br><b>WARNING:</b> This book features gun violence. This book is also very emotional.<br><br><button id='book6' onclick='copyLink();'>Copy book share link</button>",
     "All around the room, girls in pink tutus were having last-minute ballet practice. Hope stood against the handrail, amazed at how skilled all the other girls were. From across the room, three girls pointed at Hope, who was wearing a white and brown tutu.<br>\"What is she even wearing?\" a black-haired girl smirked.<br>\"You're asking me?\" a girl beside her with green & blue hair sniggered. \"It looks like she got that from the dollar store!\"<br>\"Come on, that's mean,\" a blonde-haired girl by them said. \"She at least spent two dollars on that thing she calls an outfit.\"<br>All three girls laughed to themselves.<br>The ballet instructor walked up to Hope. \"Hope, what's the",
     "matter?\"<br>\"Nothing,\" she replied. \"I'm just waiting for my dad to come.\"<br>\"He will, don't worry.\"<br>\"Maybe.\"<br>\"Just work on your pointe, you need to be prepared.\"<br>\"Yes, Miss.\" Hope nodded. She began to practice and tried not to worry. A man quickly made his way towards her. \"Hey sweetie, sorry I'm late,\" he said. \"Just got caught up in something.\"<br>\"It's okay,\" Hope reassured. \"At least you're here now.\"<br>\"Here, I picked out this flower, especially for you.\" Her dad held out a white flower and tucked it under her headband. \"Here you go.\"<br>She smiled, her face blushing red like her hair. \"Aww, thank you Dad. I love you.\"",
@@ -29,6 +31,7 @@ const book6 = [
 // Nunners' Guide To Dreams & Nightmares
 const book7 = [
     // "<bt>LETTER</bt><br><b>TITLE</b><br>If you dreamt …",
+    "", // <img src="covers/placeholder.png">
     "<br><br><br><br><br><bt>Nunners' Guide To Dreams & Nightmares</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 2/15/2023<br><br><button id='book7' onclick='copyLink();'>Copy book share link</button>",
     "<heading><b>Introduction</b></heading><br><b><i>Nunners' Guide To Dreams & Nightmares</i> is a stupid book that shouldn't be taken seriously</b>. If you're shocked or mad about what your dreams tell about you, just know it's probably not true. Don't think I'm diagnosing you or anything. Anyways, the <i>things-you-see-in-your-dreams</i> are sorted in alphabetical order. Meanings created by me except a few (see credits at the last page). And uh if you dreamt or had a nightmare last night don't forget to look for its meaning here.<br><br>Well, I hope you enjoy it!<br>— Nunners",
     "<heading><b>A</b></heading><br><b>Ants</b><br>If you dreamt you were being killed/trampled by a ton of ants, it shows that you're too weak/scared to even step on an ant lol. If you were dreaming about watching ants, you probably really like ants 'cause I don't know who dreams of ants…<br><br><b>Animal</b><br><i>See Ants/Bears/Bees/Cows/<br>Giraffes/Jellyfish/Koalas/Lizards</i>",
