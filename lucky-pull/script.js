@@ -26,8 +26,8 @@ const rewardTypes = [
     //3-stars, 4-stars, 5-stars
     [
         ["⭐⭐⭐ Black Tassel", "⭐⭐⭐ Bloodtainted Greatsword", "⭐⭐⭐ Cool Steel", "⭐⭐⭐ Debate Club", "⭐⭐⭐ Emerald Orb", "⭐⭐⭐ Ferrous Shadow", "⭐⭐⭐ Harbinger of Dawn", "⭐⭐⭐ Magic Guide", "⭐⭐⭐ Raven Bow", "⭐⭐⭐ Sharpshooter's Oath", "⭐⭐⭐ Skyrider Sword", "⭐⭐⭐ Slingshot", "⭐⭐⭐ Thrilling Tales of Dragon Tales", "⭐⭐⭐ White Tassel"],
-        ["⭐⭐⭐⭐ Amber 🔥", "⭐⭐⭐⭐ Barbara 💧", "⭐⭐⭐⭐ Beidou ⚡️️", "⭐⭐⭐⭐ Bennett 🔥", "⭐⭐⭐⭐ Candace 💧", "⭐⭐⭐⭐ Chongyun ❄️", "⭐⭐⭐⭐ Collei 🌱", "⭐⭐⭐⭐ Diona ❄️", "⭐⭐⭐⭐ Dori ⚡️", "⭐⭐⭐⭐ Dragon's Bane", "⭐⭐⭐⭐ Faruzan 💨", "⭐⭐⭐⭐ Favonius Codex", "⭐⭐⭐⭐ Favonius Bow", "⭐⭐⭐⭐ Favonius Greatsword", "⭐⭐⭐⭐ Favonius Lance", "⭐⭐⭐⭐ Favonius Sword", "⭐⭐⭐⭐ Fiscl ⚡️", "⭐⭐⭐⭐ Gorou 🪨", "⭐⭐⭐⭐ Kaeya ❄️", "⭐⭐⭐⭐ Kujou Sara ⚡️", "⭐⭐⭐⭐ Kuki Shinobu ⚡️", "⭐⭐⭐⭐ Layla ❄️", "⭐⭐⭐⭐ Lisa ⚡️", "⭐⭐⭐⭐ Ningguang 🪨", "⭐⭐⭐⭐ Noelle 🪨", "⭐⭐⭐⭐ Rainslasher", "⭐⭐⭐⭐ Razor ⚡️", "⭐⭐⭐⭐ Rust", "⭐⭐⭐⭐ Sacrificial Bow", "⭐⭐⭐⭐ Sacrificial Fragments", "⭐⭐⭐⭐ Sacrificial Greatsword", "⭐⭐⭐⭐ Sacrificial Sword", "⭐⭐⭐⭐ Sayu 💨", "⭐⭐⭐⭐ Shikanoin Heizou 💨", "⭐⭐⭐⭐ Sucrose 💨", "⭐⭐⭐⭐ The Bell", "⭐⭐⭐⭐ The Flute", "⭐⭐⭐⭐ The Stringless", "⭐⭐⭐⭐ The Widsith", "⭐⭐⭐⭐ Thoma 🔥", "⭐⭐⭐⭐ Xiangling 🔥", "⭐⭐⭐⭐ Xingqiu 💧", "⭐⭐⭐⭐ Xinyan 🔥", "⭐⭐⭐⭐ Yanfei 🔥"],
-        ["⭐⭐⭐⭐⭐ Albeido 🪨", "⭐⭐⭐⭐⭐ Arataki Itto 🪨", "⭐⭐⭐⭐⭐ Cyno ⚡️", "⭐⭐⭐⭐⭐ Diluc 🔥", "⭐⭐⭐⭐⭐ Eula ❄️", "⭐⭐⭐⭐⭐ Ganyu ❄️", "⭐⭐⭐⭐⭐ Hu Tao 🔥", "⭐⭐⭐⭐⭐ Jean 💨", "⭐⭐⭐⭐⭐ Kaedehara Kazuha 💨", "⭐⭐⭐⭐⭐ Kamisato Ayaka ❄️", "⭐⭐⭐⭐⭐ Kamisato Ayato 💧", "⭐⭐⭐⭐⭐ Keqing ⚡️", "⭐⭐⭐⭐⭐ Klee 🔥", "⭐⭐⭐⭐⭐ Mona 💧", "⭐⭐⭐⭐⭐ Nahida 🌱", "⭐⭐⭐⭐⭐ Nilou 💧", "⭐⭐⭐⭐⭐ Qiqi ❄️", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡️", "⭐⭐⭐⭐⭐ Rosaria ❄️", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi 💧", "⭐⭐⭐⭐⭐ Shenhe ❄️", "⭐⭐⭐⭐⭐ Tartaglia 💧", "⭐⭐⭐⭐⭐ Tighnari 🌱", "⭐⭐⭐⭐⭐ Venti 💨", "⭐⭐⭐⭐⭐ Wanderer 💨", "⭐⭐⭐⭐⭐ Xiao 💨", "⭐⭐⭐⭐⭐ Yae Miko ⚡️", "⭐⭐⭐⭐⭐ Yelan 💧", "⭐⭐⭐⭐⭐ Yoimiya 🔥", "⭐⭐⭐⭐⭐ Yun Jin 🪨", "⭐⭐⭐⭐⭐ Zhongli 🪨"]
+        ["⭐⭐⭐⭐ Amber 🔥", "⭐⭐⭐⭐ Barbara 💧", "⭐⭐⭐⭐ Beidou ⚡️️", "⭐⭐⭐⭐ Bennett 🔥", "⭐⭐⭐⭐ Candace 💧", "⭐⭐⭐⭐ Chongyun ❄️", "⭐⭐⭐⭐ Collei 🌱", "⭐⭐⭐⭐ Diona ❄️", "⭐⭐⭐⭐ Dori ⚡️", "⭐⭐⭐⭐ Dragon's Bane", "⭐⭐⭐⭐ Faruzan 💨", "⭐⭐⭐⭐ Favonius Codex", "⭐⭐⭐⭐ Favonius Bow", "⭐⭐⭐⭐ Favonius Greatsword", "⭐⭐⭐⭐ Favonius Lance", "⭐⭐⭐⭐ Favonius Sword", "⭐⭐⭐⭐ Fiscl ⚡️", "⭐⭐⭐⭐ Gorou 🪨", "⭐⭐⭐⭐ Kaeya ❄️", "⭐⭐⭐⭐ Kujou Sara ⚡️", "⭐⭐⭐⭐ Kuki Shinobu ⚡️", "⭐⭐⭐⭐ Layla ❄️", "⭐⭐⭐⭐ Lisa ⚡️", "⭐⭐⭐⭐ Mika ❄️", "⭐⭐⭐⭐ Ningguang 🪨", "⭐⭐⭐⭐ Noelle 🪨", "⭐⭐⭐⭐ Rainslasher", "⭐⭐⭐⭐ Razor ⚡️", "⭐⭐⭐⭐ Rust", "⭐⭐⭐⭐ Sacrificial Bow", "⭐⭐⭐⭐ Sacrificial Fragments", "⭐⭐⭐⭐ Sacrificial Greatsword", "⭐⭐⭐⭐ Sacrificial Sword", "⭐⭐⭐⭐ Sayu 💨", "⭐⭐⭐⭐ Shikanoin Heizou 💨", "⭐⭐⭐⭐ Sucrose 💨", "⭐⭐⭐⭐ The Bell", "⭐⭐⭐⭐ The Flute", "⭐⭐⭐⭐ The Stringless", "⭐⭐⭐⭐ The Widsith", "⭐⭐⭐⭐ Thoma 🔥", "⭐⭐⭐⭐ Xiangling 🔥", "⭐⭐⭐⭐ Xingqiu 💧", "⭐⭐⭐⭐ Xinyan 🔥", "⭐⭐⭐⭐ Yanfei 🔥"],
+        ["⭐⭐⭐⭐⭐ Albeido 🪨", "⭐⭐⭐⭐⭐ Arataki Itto 🪨", "⭐⭐⭐⭐⭐ Cyno ⚡️", "⭐⭐⭐⭐⭐ Dehya 🔥", "⭐⭐⭐⭐⭐ Diluc 🔥", "⭐⭐⭐⭐⭐ Eula ❄️", "⭐⭐⭐⭐⭐ Ganyu ❄️", "⭐⭐⭐⭐⭐ Hu Tao 🔥", "⭐⭐⭐⭐⭐ Jean 💨", "⭐⭐⭐⭐⭐ Kaedehara Kazuha 💨", "⭐⭐⭐⭐⭐ Kamisato Ayaka ❄️", "⭐⭐⭐⭐⭐ Kamisato Ayato 💧", "⭐⭐⭐⭐⭐ Keqing ⚡️", "⭐⭐⭐⭐⭐ Klee 🔥", "⭐⭐⭐⭐⭐ Mona 💧", "⭐⭐⭐⭐⭐ Nahida 🌱", "⭐⭐⭐⭐⭐ Nilou 💧", "⭐⭐⭐⭐⭐ Qiqi ❄️", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡️", "⭐⭐⭐⭐⭐ Rosaria ❄️", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi 💧", "⭐⭐⭐⭐⭐ Shenhe ❄️", "⭐⭐⭐⭐⭐ Tartaglia 💧", "⭐⭐⭐⭐⭐ Tighnari 🌱", "⭐⭐⭐⭐⭐ Venti 💨", "⭐⭐⭐⭐⭐ Wanderer 💨", "⭐⭐⭐⭐⭐ Xiao 💨", "⭐⭐⭐⭐⭐ Yae Miko ⚡️", "⭐⭐⭐⭐⭐ Yelan 💧", "⭐⭐⭐⭐⭐ Yoimiya 🔥", "⭐⭐⭐⭐⭐ Yun Jin 🪨", "⭐⭐⭐⭐⭐ Zhongli 🪨"]
     ],
     
     //2-stars, 3-stars, 4-stars
@@ -39,11 +39,11 @@ const rewardTypes = [
     
     //Common, Uncommon, Rare, Ultra Rare, Legendary
     [
-        ["Dugong", "Sado Mole"],
-        ["Rhino Beetle", "Tanuki"],
-        ["Ibis", "Koi Carp", "Leopard Cat"],
-        ["Red Crowned Crane", "Spider Crab", "Trapdoor Snail"],
-        ["Baku", "Maneki-Neko"]
+        ["Bali Starling", "Malaysian Tapir", "Maleo Bird"],
+        ["Yellow-lipped Sea Krait", "Banded Palm Civet"],
+        ["Gecko", "Tarsier",],
+        ["Binturong", "Black Macaque", "Komodo Dragon"],
+        ["Naga Dragon", "Tree Kangaroo"]
     ],
     
     //Common, Unique, Rare, Epic, Legendary
@@ -98,12 +98,12 @@ function changeType() {
         //oneStars = true;
         //twoStars = true;
         //fiveStars = true;
-        oneStarChance = 22;
-        twoStarChance = 19;
-        threeStarChance = 34;
-        fourStarChance = 20;
-        fiveStarChance = 5;
-        gachaText = "Based on the current Gumball Machine egg in Adopt Me! (Currently Japan Egg)";
+        oneStarChance = 35;
+        twoStarChance = 25;
+        threeStarChance = 20;
+        fourStarChance = 16;
+        fiveStarChance = 4;
+        gachaText = "Based on the current Gumball Machine egg in Adopt Me! (Currently Southeast Asia Egg)";
         onePullText = "Hatch 1";
         largePullText = "--";
         pullText = "You hatched: ";
