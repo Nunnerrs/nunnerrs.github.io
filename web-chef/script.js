@@ -1,4 +1,4 @@
-var v = "v" + "1.4.7.5";
+var v = "v" + "1.4.8.5";
 var version = document.getElementById("version");
 version.innerHTML = v;
 var tutorialCompleted = false;
@@ -70,8 +70,8 @@ const customerNames = [
     "Tae Hanazono", "Michelle", "Moca Aoba", "Nanami Hiromachi", "Kasumi Toyama", "Arisa Ichigaya", "Rimi Ushigome", "Kaoru Seta", "Sayo Hikawa", "Hina Hikawa", "Ran Mitake", "Himari Uehara", "Kokoro Tsurumaki", "Yukina Minato", "Lisa Imai", "Mashiro Kurata", "Rui Yashio", "CHU²", "LAYER", "LOCKE", "MASKING", "PAREO", "Misaki Okusawa",
     "Nene Yashiro", "Hanako", "Kou Minamoto", "Aoi Akane", "Akane Aoi", "Teru Minamoto", "Lemon Yamabuki", "Sousuke Mitsuba", "Tsukasa", "Sakura Nanamine", "Natsuhiko Hyuuga", "Yako", "Tsuchigomori",
     "Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah", "Colette", "Makayla",
-    "Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus",
-    "Shuckle", "Ash Ketchum", "Misty", "Brock", "May", "Dawn", "Iris", "Cilan", "Serena", "Clement", "Bonnie", "Lana", "Mao", "Kako", "Lillie", "Sophocles", "Goh", "Chloe"
+    "Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus", "Sasha", "Billy", "Bob", "Joe",
+    "Shuckle", "Ash Ketchum", "Satoshi", "Misty", "Brock", "May", "Dawn", "Iris", "Cilan", "Serena", "Clement", "Bonnie", "Lana", "Mao", "Kaki", "Lilie", "Sophocles", "Goh", "Chloe",
 ];
 const ingredientsList = {
     apple: "🍎",
@@ -99,6 +99,9 @@ const ingredientsList = {
     "🌾": "🌾",
     ice: "🧊",
     "🧊": "🧊",
+    lemon: "🍋",
+    lemons: "🍋",
+    "🍋": "🍋",
     lettuce: "🥬",
     "🥬": "🥬",
     meat: "🥩",
@@ -129,7 +132,8 @@ const ingredientsList = {
 const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit: 1.5, unlocked: false},
     {emoji: "🍰", ing: "🌾🥚🧈🥛🧀", ingList: "Flour,Egg,Butter,Milk,Cheese", name: "Cheesecake", profit: 10, unlocked: false},
     {emoji: "🌯", ing: "🌾🫘🍚🥩🧅", ingList: "Flour,Beans,Rice,Meat,Onion", name: "Burrito", profit: 9.5, unlocked: false},
-    {emoji: "🍔", ing: "🍞🥬🧀🥩🍞", ingList: "Bread,Lettuce,Cheese,Meat,Bread", name: "Burger", profit: 9, unlocked: false},
+    {emoji: "🥘", ing: "💧🥩🥬🫘🍋", ingList: "Water,Meat,Lettuce,Beans,Lemon", name: "Stew", profit: 9, unlocked: false},
+    {emoji: "🍔", ing: "🍞🧀🥩🥬🍞", ingList: "Bread,Cheese,Meat,Lettuce,Bread", name: "Burger", profit: 9, unlocked: false},
     {emoji: "🍲", ing: "💧🍜🥩🧅", ingList: "Water,Noodles,Meat,Onion", name: "Pho", profit: 8.5, unlocked: false},
     {emoji: "🥪", ing: "🍞🧀🍅🥬🍞", ingList: "Bread,Cheese,Tomato,Lettuce,Bread", name: "Sandwich", profit: 8, unlocked: false},
     {emoji: "🥧", ing: "🍎🌾🥚🧈", ingList: "Apple,Flour,Egg,Butter", name: "Apple Pie", profit: 8, unlocked: false},
@@ -263,7 +267,9 @@ function findIng() {
     let i = ingSearch.value.toLowerCase().trim();
     if (ingredientsList[i]) {
         return ingredientsList[i];
-    } else if (i == "⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️" || i == "dog" || i == "🐶" || i == "🐕" || i == "baby" || i == "babies" || i == "👶" || i == "girl" || i == "👧" || i == "child" || i == "children" || i == "🧒" || i == "boy" || i == "👦") {
+    } else if (i == "⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️" || i == "dog" || i == "🐶" || i == "🐕" || i == "baby" || i == "babies" || i == "👶" || i == "girl" || i == "👧" || i == "child" || i == "children" || i == "🧒" || i == "boy" || i == "👦"
+              || i == "https://nunnerrs.github.io" || i == "https://nunnerrs.github.io/" || i == "nunnerrs.github.io"
+              || i == "secret" || i == "sus" || i == "sussy" || i == "sussy baka") {
         return i;
     } else {
         return null;
@@ -279,7 +285,7 @@ function addIng(e) {
                 moneyDisplay.innerHTML = "∞";
                 stockDisplay.innerHTML = "∞";
                 let notif = document.createElement("p");
-                notif.innerHTML = "HOW?!? YOU HACKER!!";
+                notif.innerHTML = "HOW?!? YOU HACKER!! (Secret #2)";
                 notifContainer.appendChild(notif);
                 setTimeout(function(){
                     notif.remove();
@@ -292,7 +298,15 @@ function addIng(e) {
                 }, 7500);
             } else if (ing == "dog" || ing == "🐶" || ing == "🐕" || ing == "baby" || ing == "babies" || ing == "👶" || ing == "girl" || ing == "👧" || ing == "child" || ing == "children" || ing == "🧒" || ing == "boy" || ing == "👦") {
                 ingSearch.value = "";
-                ingSearchError.innerHTML = "NO. JUST NO.";
+                ingSearchError.innerHTML = "NO. JUST NO. (Secret #3)";
+                setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
+            } else if (ing == "https://nunnerrs.github.io" || ing == "https://nunnerrs.github.io/" || ing == "nunnerrs.github.io") {
+                ingSearch.value = "";
+                ingSearchError.innerHTML = "umm are you trying to cook my website?? (Secret #4)";
+                setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
+            } else if (ing == "secret" || ing == "sus" || ing == "sussy" || ing == "sussy baka") {
+                ingSearch.value = "";
+                ingSearchError.innerHTML = "omg you uncovered the stupidest secret ever!! (Secret #5)";
                 setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
             } else {
                 if (ingredients.innerHTML == "Empty") {
@@ -352,7 +366,7 @@ function makeFood() {
     /*if (ingredients.innerHTML == "🍫") {
         ingredients.innerHTML = "💝";
         let notif = document.createElement("p");
-        notif.innerHTML = "Happy Valentines Day!";
+        notif.innerHTML = "Happy Valentines Day! (Secret #1)";
         notifContainer.appendChild(notif);
         setTimeout(function(){notif.remove()}, 10000);
     };*/
