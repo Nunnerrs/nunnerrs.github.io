@@ -24,6 +24,7 @@ var total = 9;
 const books = {
     // fitting image sample: https://i.ibb.co/xLsBh3W/img.png (add class rp to fix margin on right pages)
     /*
+    Total lines: 23
     Line capacity: 33 characters
     Page capacity: 781 characters
     DON'T FORGET TO UPDATE BOOK TOTAL ABOVE
@@ -104,9 +105,9 @@ const books = {
     book10: [
         "", // <img src="covers/placeholder.png">
         // watch here: https://mobilemoxie.com/tools/get-remote-content_device_emulator?urlload=true&frameid=div_iframe_phone_1&type=site&search=https://www.youtube.com/watch?v=vZMjJ0RFDyk&engine=us-google&phoneid=63&lang=en&locid=&country_code=US&width=2048&lat=32.09024&long=-95.712891
-        "<br><br><br><bt>Hope Vol. 2</bt><br><br><heading>Based on a <a href='https://www.youtube.com/watch?v=vZMjJ0RFDyk'>story</a> by Jamie ThatBloxer</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon in March 2023<br><br><button id='book10' onclick='copyLink();'>Copy book share link</button>",
-        "Hope looked at the blond-haired boy, who was sitting in a corner and had recently been crying.<br>\"Noah?\" Hope said. After everything that happened, her only friend turned out to be an orphan? \"What are you doing here?\"",
-        "Coming Soon!",
+        "<br><br><br><bt>Hope Vol. 2</bt><br><br><heading>Based on a <a href='https://www.youtube.com/watch?v=vZMjJ0RFDyk'>story</a> by Jamie ThatBloxer</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon in March 2023<br><br><b>WARNING:</b> This book features gun violence. This book is also very emotional.<br><br><button id='book10' onclick='copyLink();'>Copy book share link</button>",
+        "Year before, Hope stood with her dad at her mother's gravestone. Her grave was next to a beautiful water fountain. She placed a fresh bouquet of white roses in front of it. After some time of mourning, they walked down the path towards the exit of the graveyard.<br>Hope held her dad's hand. \"What color was her hair?\"<br>\"Red, just like yours,\" he responded.<br>\"I wish I could have met her…\"<br>\"I wish you could have too,\" her dad sighed. \"She was just like you, you know. She wanted to be a ballerina too, professionally.\"<br>\"But why didn't she?\"",
+        "\"Well, she gave that all up for you,\" he smiled. \"She had plans to go back to college and so did I.\"<br>\"Daddy,\" Hope looked down at the ground.<br>\"What's wrong?\"<br>\"Did I kill her, Daddy?\" Hope looked at her dad, eyes full of tears.<br>\"Oh my gosh, of course not.\" He hugged her as she sobbed into his arms.<br>filler<br><br>In a bathroom stall, Hope was panicking, breathing heavily. Noah walked in.<br>\"Hope? Are you in there?\"",
         // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
     ],
 };
@@ -129,8 +130,11 @@ function openBook(bookId) {
 var params = window.location.href.split("?")[1];
 var param1 = params.split("&");
 if (param1[0].split("=")[0].match("book") && Number(param1[0].split("=")[1])) {
-    openBook(Number(param1[0].split("=")[1]));
-    //pageR.innerHTML = books["book" + bookId][0];
+    let bookNumber = Number(param1[0].split("=")[1]);
+    if (bookNumber <= total) {
+        openBook(bookNumber);
+        //pageR.innerHTML = books["book" + bookNumber][0];
+    };
 };
 
 function backPage() {
