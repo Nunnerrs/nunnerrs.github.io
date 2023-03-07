@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+        <style>
+            body {
+                font-family: Comic Sans MS, Chalkboard SE;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Fish For Fish</h1>
+        <p>coming soon!</p>
+        <p>extremely WIP so uhh you can leave now byebye</p>
+        <main></main>
+        <script>
+            var fish = null;
+            var fishing = false;
+            var fished = false;
+            var fish0 = null;
+            var fish1 = null;
+            
+            function setup() {
+                createCanvas(800, 500);
+                fish0 = loadImage("https://nunnerrs.github.io/skylar-art/assets/sheep-halved.png");
+                fish1 = loadImage("https://nunnerrs.github.io/skylar-art/assets/sheep.png");
+            };
+            
+            const species = {
+                fish0: fish0,
+                fish1: fish1,
+            };
+            
+            function draw() {
+                background(220);
+                strokeWeight(10);
+                stroke("rgb(100, 60, 0)");
+                line(50, 300, 200, 50);
+                if (fished == true) {
+                    let rng = Math.floor(Math.random() * 2);
+                    fish = species["fish" + rng];
+                    image(fish, 250, 220, 100, 100);
+                    setTimeout(function(){fished = false;}, 5000);
+                };
+            };
+            
+            function mousePressed() {
+                fishing = true;
+                setTimeout(function(){fishing = false; fished = true;}, 5000);
+            };
+        </script>
+        <h3><a href="index.html" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
+    </body>
+</html>
