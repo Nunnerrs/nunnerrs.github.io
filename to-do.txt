@@ -24,6 +24,17 @@ Adjectives (for ↑):
     Majestic
     Arctic
     Stellar
+    Agent
+    Golden
+    Silly
+    Diplomat
+    Radiant
+    Dynamic
+    Magic
+    Lovely
+    Doctor
+    Rational
+    Awesome
 
 Animals (for ↑):
     Fox
@@ -47,3 +58,12 @@ Animals (for ↑):
     Giraffe
     Lion
     Seal
+    Condor
+    Octopus
+    Quail
+    Alpaca
+    Pigeon
+    SeaLion
+    Raven
+    Goose
+    Sphinx
