@@ -1,4 +1,4 @@
-var v = "v" + "1.5.8.5";
+var v = "v" + "1.6.8.5";
 var version = document.getElementById("version");
 version.innerHTML = v;
 var tutorialCompleted = false;
@@ -76,12 +76,14 @@ const customerNames = [
     /*Mochi Squishies*/	"Marshmallow", "Ginger", "Vered", "Snowy", "Blossom", "Melody", "Peep", "Piper", "Sunny", "Honey", "Gummy", "Snoopy", "Mrs. Polar", "Sharpie",
 ];
 const ingredientsList = {
+    alcohol: "🍷",
     apple: "🍎",
     "🍎": "🍎",
     bean: "🫘",
     beans: "🫘",
     "🫘": "🫘",
     beef: "🥩",
+    brandy: "🍷",
     bread: "🍞",
     "🍞": "🍞",
     butter: "🧈",
@@ -91,6 +93,7 @@ const ingredientsList = {
     chicken: "🥩",
     chocolate: "🍫",
     "🍫": "🍫",
+    cognac: "🍷",
     cucumber: "🥒",
     "🥒": "🥒",
     egg: "🥚",
@@ -107,6 +110,7 @@ const ingredientsList = {
     "🍋": "🍋",
     lettuce: "🥬",
     "🥬": "🥬",
+    "maple syrup": "🍯",
     meat: "🥩",
     "🥩": "🥩",
     milk: "🥛",
@@ -116,11 +120,18 @@ const ingredientsList = {
     "🍜": "🍜",
     onion: "🧅",
     "🧅": "🧅",
+    pinap: "🍍",
+    pinapple: "🍍",
+    pineapple: "🍍",
+    "🍍": "🍍",
     pork: "🥩",
     potato: "🥔",
     "🥔": "🥔",
+    ppap: "🍍",
+    "red wine": "🍷",
     rice: "🍚",
     "🍚": "🍚",
+    rum: "🍷",
     salt: "🧂",
     "🧂": "🧂",
     shrimp: "🦐",
@@ -131,10 +142,13 @@ const ingredientsList = {
     "🍅": "🍅",
     water: "💧",
     "💧": "💧",
+    wine: "🍷",
+    "🍷": "🍷",
 };
 
 // Initial profits are calculated by (# ing × 2)
 const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit: 1.5, unlocked: false},
+    {emoji: "🍹", ing: "🍷🍍🍋💧🍯🧊", ingList: "Wine,Pineapple,Lemon,Water,Syrup,Ice", name: "Tropical Cocktail", profit: 14, unlocked: false},
     {emoji: "🍰", ing: "🌾🥚🧈🥛🧀", ingList: "Flour,Egg,Butter,Milk,Cheese", name: "Cheesecake", profit: 10, unlocked: false},
     {emoji: "🌯", ing: "🌾🫘🍚🥩🧅", ingList: "Flour,Beans,Rice,Meat,Onion", name: "Burrito", profit: 9.5, unlocked: false},
     {emoji: "🥘", ing: "💧🥩🥬🫘🍋", ingList: "Water,Meat,Lettuce,Beans,Lemon", name: "Stew", profit: 9, unlocked: false},
@@ -156,6 +170,8 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "🥯", ing: "🍞🧀", ingList: "Bread,Cheese", name: "Bagel", profit: 4, unlocked: false},
     {emoji: "🍣", ing: "🍚🐟", ingList: "Rice,Fish", name: "Sushi", profit: 3.5, unlocked: false},
     {emoji: "🍧", ing: "🧊🍯", ingList: "Ice,Syrup", name: "Shaved Ice", profit: 3.5, unlocked: false},
+    {emoji: "🍸", ing: "🍷", ingList: "Wine", name: "Cocktail", profit: 3.5, unlocked: false},
+    {emoji: "🫕", ing: "🧀🍷", ingList: "Cheese,Wine", name: "Fondue", profit: 3.5, unlocked: false},
     {emoji: "🥨", ing: "🍞🧂", ingList: "Bread,Salt", name: "Pretzel", profit: 3, unlocked: false},
     {emoji: "🍳", ing: "🥚", ingList: "Egg", name: "Fried Egg", profit: 3, unlocked: false},
     {emoji: "🍗", ing: "🥩", ingList: "Meat", name: "Chicken Leg", profit: 3, unlocked: false},
@@ -188,6 +204,33 @@ recipeIng.innerHTML = "";
 let ing = recipes[page]["ingList"].split(",");
 for (let i = 0; i < ing.length; i++) {
     recipeIng.innerHTML = recipeIng.innerHTML + "<li>" + ing[i] + "</li>";
+};
+
+const achievements = [ // {name: "ACHIEVEMENT", desc: "BRIEFDESCRIPTION", unlocked: false},
+    {id: 1, name: "Master Chef", desc: "Unlock all " + foodList.length + " recipes", unlocked: false},
+    {id: 2, name: "Bread For Life", desc: "Serve a baguette to Moca Aoba", unlocked: false},
+    {id: 3, name: "Plants Only", desc: "Serve a salad to Holly or Malo", unlocked: false},
+    {id: 4, name: "Caprisun!!", desc: "Serve apple juice to Skylar", unlocked: false},
+    {id: 5, name: "Mmm…fries", desc: "Serve French fries to Hina or Sayo Hikawa", unlocked: false},
+    {id: 6, name: "Jelly-filled Donuts", desc: "Serve a rice ball to Brock", unlocked: false},
+    {id: 7, name: "Cake…", desc: "Serve cheesecake to Rebecca", unlocked: false},
+    {id: 8, name: "Hollup—", desc: "Serve a fried egg to either Peep, Piper, or Sunny", unlocked: false},
+    {id: 9, name: "Broke", desc: "Have 0 stock and not enough money to buy ingredients (less than $5)", unlocked: false},
+    {id: 10, name: "I ❤️ Web Chef", desc: "Cook a certain food for Valentine's Day (secret #1)(unobtainable)", unlocked: false},
+    {id: 11, name: "U HAXOR!1!!", desc: "\"Hack\" the game (discover secret #2)", unlocked: false},
+    {id: 12, name: "NO. JUST NO.", desc: "Attempt to cook something terrible (discover secret #3)", unlocked: false},
+    {id: 13, name: "Free Advertisment", desc: "Try to cook a certain \"phrase\" (discover secret #4)", unlocked: false},
+    {id: 14, name: "Top Secret", desc: "Discover the easiest secret of all time (#5)", unlocked: false},
+    {id: 15, name: "Overachiever", desc: "Achieve all above achievements", unlocked: false},
+];
+achievements[achievements.length - 1]["desc"] = "Achieve all above achievements (total of " + achievements.length + ")";
+for (let i = 0; i < achievements.length; i++) {
+    let a = achievements[i]["id"].toString();
+    if (localStorage.getItem("achievement" + a) != null) {
+        if (localStorage.getItem("achievement" + a) == "true" || localStorage.getItem("achievement" + a) == true) {
+            achievements[i]["unlocked"] = true;
+        };
+    };
 };
 
 function customer() {
@@ -265,6 +308,27 @@ function serveCustomer(order, customer) {
             notifContainer.appendChild(notif);
             setTimeout(function(){notif.remove()}, 5000);
         };
+        if (customer.dataset.name.match("Moca") != null && order["emoji"] == "🥖") {
+            award(2);
+        };
+        if ((customer.dataset.name.match("Holly") != null || customer.dataset.name.match("Malo") != null) && order["emoji"] == "🥗") {
+            award(3);
+        };
+        if (customer.dataset.name.match("Skylar") != null && order["emoji"] == "🧃") {
+            award(4);
+        };
+        if ((customer.dataset.name.match("Hina") != null || customer.dataset.name.match("Sayo") != null) && order["emoji"] == "🍟") {
+            award(5);
+        };
+        if (customer.dataset.name.match("Brock") != null && order["emoji"] == "🍙") {
+            award(6);
+        };
+        if (customer.dataset.name.match("Rebecca") != null && order["emoji"] == "🍰") {
+            award(7);
+        };
+        if ((customer.dataset.name.match("Peep") != null || customer.dataset.name.match("Piper") != null || customer.dataset.name.match("Sunny") != null) && order["emoji"] == "🍳") {
+            award(8);
+        };
         customer.remove();
     };
 };
@@ -293,6 +357,7 @@ function addIng(e) {
                 let notif = document.createElement("p");
                 notif.innerHTML = "HOW?!? YOU HACKER!! (Secret #2)";
                 notifContainer.appendChild(notif);
+                award(11);
                 setTimeout(function(){
                     notif.remove();
                     moneyDisplay.innerHTML = money;
@@ -306,14 +371,17 @@ function addIng(e) {
                 ingSearch.value = "";
                 ingSearchError.innerHTML = "NO. JUST NO. (Secret #3)";
                 setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
+                award(12);
             } else if (ing == "https://nunnerrs.github.io" || ing == "https://nunnerrs.github.io/" || ing == "nunnerrs.github.io") {
                 ingSearch.value = "";
                 ingSearchError.innerHTML = "umm are you trying to cook my website?? (Secret #4)";
                 setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
+                award(13);
             } else if (ing == "secret" || ing == "sus" || ing == "sussy" || ing == "sussy baka") {
                 ingSearch.value = "";
-                ingSearchError.innerHTML = "omg you uncovered the stupidest secret ever!! (Secret #5)";
+                ingSearchError.innerHTML = "omg you uncovered the easiest secret ever!! (Secret #5)";
                 setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
+                award(14);
             } else {
                 if (ingredients.innerHTML == "Empty") {
                     ingredients.innerHTML = "";
@@ -375,6 +443,7 @@ function makeFood() {
         notif.innerHTML = "Happy Valentines Day! (Secret #1)";
         notifContainer.appendChild(notif);
         setTimeout(function(){notif.remove()}, 10000);
+        award(10);
     };*/
 };
 
@@ -397,7 +466,7 @@ function backPage() {
     if (page > 0) {
         page -= 1;
         recipeNum.innerHTML = page + 1;
-        recipeName.innerHTML = recipes[page]["name"] + " " + (recipes[page]["unlocked"] == true ? "✅" : "❎") + "<br> Profit: $" + recipes[page]["profit"];
+        recipeName.innerHTML = recipes[page]["emoji"] + " " + recipes[page]["name"] + "<br>Unlocked: " + (recipes[page]["unlocked"] == true ? "✅" : "❎") + "<br> Profit: $" + recipes[page]["profit"];
         recipeIng.innerHTML = "";
         let ing = recipes[page]["ingList"].split(",");
         for (let i = 0; i < ing.length; i++) {
@@ -473,6 +542,16 @@ function unlockRecipe(loseMoney) {
             if (foodList[f]["unlocked"] == false) {
                 foodList[f]["unlocked"] = true;
                 unlocked = true;
+                let unlockedAll = true;
+                for (let i = 0; i < foodList.length - 1; i++) {
+                    if (foodList[i]["unlocked"] == false) {
+                        unlockedAll = false;
+                        break;
+                    };
+                };
+                if (unlockedAll == true) {
+                    award(1);
+                };
                 saveData();
                 let notif = document.createElement("p");
                 notif.innerHTML = "You unlocked the recipe for " + foodList[f]["name"] + "!";
@@ -542,6 +621,10 @@ function saveData() {
         };
         localStorage.setItem(name, foodList[i]["unlocked"].toString());
     };
+    for (let i = 0; i < achievements.length - 1; i++) {
+        let a = achievements[i];
+        localStorage.setItem("achievement" + a["id"].toString(), a["unlocked"].toString());
+    };
     saveButton.disabled = true;
     saveButton.style.color = "rgb(150, 150, 150)";
     let notif = document.createElement("p");
@@ -575,6 +658,11 @@ function eraseData() {
                 localStorage.setItem(name, false);
             };
         };
+        for (let i = 0; i < achievements.length - 1; i++) {
+            let a = achievements[i];
+            achievements[i]["unlocked"] = false;
+            localStorage.setItem("achievement" + a["id"].toString(), false);
+        };
         let notif = document.createElement("p");
         notif.innerHTML = "Data erased!";
         notifContainer.appendChild(notif);
@@ -593,6 +681,33 @@ function tutorial() {
         setTimeout(alert("Click on the \"" + clearIng.innerHTML + "\" button if you ever need to restart making food (stock is refunded). Click on the button in the bottom right corner to go through the tutorial again anytime. Enjoy!"), 4500);
     };
     localStorage.setItem("tutorialCompleted", "true");
+};
+
+function award(a) {
+    let ach = null;
+    for (let i = 0; i < achievements.length - 1; i++) {
+        if (achievements[i]["id"] == a) {
+            ach = achievements[i];
+        };
+    };
+    if (ach != null) {
+        if (ach["unlocked"] == false) {
+            ach["unlocked"] = true;
+            let notif = document.createElement("p");
+            notif.innerHTML = "You unlocked the achievement \"" + ach["name"] + "\"!";
+            notifContainer.appendChild(notif);
+            setTimeout(function(){notif.remove()}, 5000);
+        };
+    };
+};
+
+function showAchievements() {
+    let achievementsList = "Achievements:";
+    for (let i = 0; i < achievements.length - 1; i++) {
+        let a = achievements[i];
+        achievementsList = achievementsList + "\n" + (a["unlocked"] == true ? "✅" : "❎") + " " + a["name"] + " ~ " + a["desc"];
+    };
+    alert(achievementsList);
 };
 
 ingSearch.onkeydown = addIng;
