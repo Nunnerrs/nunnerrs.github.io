@@ -1,6 +1,9 @@
-var v = "v" + "1.6.8.5";
+var v = "v" + "1.6.9.5";
 var version = document.getElementById("version");
 version.innerHTML = v;
+var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
+var commitId = "b16d0fd3b4f68405a5fe73516a79b270c335ac54";
+updateLink = updateLink + commitId;
 var tutorialCompleted = false;
 if (localStorage.getItem("tutorialCompleted") != null) {
     tutorialCompleted = true;
@@ -60,6 +63,7 @@ var buyAd = document.getElementById("buy-ad");
 var adPrice = 45;
 var saveButton = document.getElementById("save-button");
 var eraseDataButton = document.getElementById("erase-data-button");
+var achievementsButton = document.getElementById("achievements-button");
 var tutorialButton = document.getElementById("tutorial-button");
 
 const customerNames = [
@@ -72,7 +76,7 @@ const customerNames = [
     /*Yeen's friends*/	"Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah", "Colette", "Makayla",
     /*NunnerLibrary*/	"Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus", "Sasha", "Billy", "Bob", "Joe", "Liva", "Cory",
     /*Pokémon*/			"Shuckle", "Ash Ketchum", "Satoshi", "Misty", "Brock", "May", "Dawn", "Iris", "Cilan", "Serena", "Clement", "Bonnie", "Lana", "Mao", "Kaki", "Lilie", "Sophocles", "Goh", "Chloe",
-    /*Comic book*/		"Bill", "Roski", "Ginny", "Emily", "Rebecca", "Joey", "Charlyy", "Pippi", "Althea", "Derek", "Collin",
+    /*Comic book*/		"Bill", "Roski", "Ginny", "Emily", "Rebecca", "Bobby", "Sally", "Joey", "Charlyy", "Pippi", "Althea", "Derek", "Steven", "Collin",
     /*Mochi Squishies*/	"Marshmallow", "Ginger", "Vered", "Snowy", "Blossom", "Melody", "Peep", "Piper", "Sunny", "Honey", "Gummy", "Snoopy", "Mrs. Polar", "Sharpie",
 ];
 const ingredientsList = {
@@ -120,6 +124,7 @@ const ingredientsList = {
     "🍜": "🍜",
     onion: "🧅",
     "🧅": "🧅",
+    pepperoni: "🥩",
     pinap: "🍍",
     pinapple: "🍍",
     pineapple: "🍍",
@@ -479,7 +484,7 @@ function nextPage() {
     if (page < recipes.length - 1) {
         page++;
         recipeNum.innerHTML = page + 1;
-        recipeName.innerHTML = recipes[page]["name"] + " " + (recipes[page]["unlocked"] == true ? "✅" : "❎") + "<br> Profit: $" + recipes[page]["profit"];
+        recipeName.innerHTML = recipes[page]["emoji"] + " " + recipes[page]["name"] + "<br>Unlocked: " + (recipes[page]["unlocked"] == true ? "✅" : "❎") + "<br> Profit: $" + recipes[page]["profit"];
         recipeIng.innerHTML = "";
         let ing = recipes[page]["ingList"].split(",");
         for (let i = 0; i < ing.length; i++) {
@@ -490,7 +495,7 @@ function nextPage() {
 
 function addStock(ing) {
     let confirmation = confirm("Buy " + ing + " ingredients for $" + ing/2 + "?");
-    if (confirmation == true && money >= ing/2 && stock + ing < storage) {
+    if (confirmation == true && money >= ing/2 && stock + ing <= storage) {
         money -= ing/2;
         moneyDisplay.innerHTML = money;
         stock += ing;
@@ -674,11 +679,13 @@ function tutorial() {
     let confirmation = confirm("Would you like to begin the tutorial? (Recommended for those new to Web Chef since you may not understand how things work)");
     if (confirmation == true) {
         alert("Welcome to Web Chef! This is a simple restaurant game where you prepare food for customers. Best played on a PC or tablet. [Click OK to continue]");
-        setTimeout(alert("Looks like there's a customer! To prepare their order, enter the names of the ingredients required to make the food."), 5500);
-        setTimeout(alert("For example, if their order is \"🍙\" you would type \"rice\" into the textbox & hit \"go\"/\"enter\". If you want to view the ingredients for a certain food, click through the pages of the Recipes book."), 11500);
-        setTimeout(alert("Once you add all the required ingredients to the Table, click the \"" + makeFoodButton.innerHTML + "\" button to fuse! Then, click the Serve button to give the food."), 22500);
-        setTimeout(alert("You earn money from serving food to customers! Use it to buy upgrades like seating or stock, since you don't have unlimited ingredients."), 35000);
-        setTimeout(alert("Click on the \"" + clearIng.innerHTML + "\" button if you ever need to restart making food (stock is refunded). Click on the button in the bottom right corner to go through the tutorial again anytime. Enjoy!"), 4500);
+        alert("Looks like there's a customer! To prepare their order, enter the names of the ingredients required to make the food.");
+        alert("For example, if their order is \"🍙\" you would type \"rice\" into the textbox & hit \"go\"/\"enter\". If you want to view the ingredients for a certain food, click through the pages of the Recipes book.");
+        alert("Once you add all the required ingredients to the Table, click the \"" + makeFoodButton.innerHTML + "\" button to fuse! Then, click the Serve button to give the food.");
+        alert("Click on the \"" + clearIng.innerHTML + "\" button if you ever mess up with the order of ingredients. Doing so refunds your stock, so don't worry about wasting money.");
+        alert("Serve food to customers and earn money! Use it to buy upgrades like recipes, seating, and advertisements. Don't forget to buy ingredients stock since you don't have unlimited ingredients.");
+        alert("You can unlock achievements by serving specific food to certain customers, discovering secrets, and more! View them by clicking on the \"" + achievementsButton.innerHTML + "\" button at the bottom-left corner and show them off to your friends and family :D");
+        alert("That's it! Click on the \"" + tutorialButton.innerHTML + "\" button in the bottom right corner to go through the tutorial again anytime. Happy cooking!");
     };
     localStorage.setItem("tutorialCompleted", "true");
 };
@@ -732,6 +739,12 @@ setTimeout(function(){
         tutorial();
     };
 }, 1500);
+setTimeout(function(){
+    let notif = document.createElement("p");
+    notif.innerHTML = v + " is out now! Read about the new update <a href='" + updateLink + "'>here</a>";
+    notifContainer.appendChild(notif);
+    setTimeout(function(){notif.remove()}, 10000);
+}, 1550);
 setInterval(customer, customerRate);
 setInterval(function(){
     if (stock == 0 && money < 5) {
