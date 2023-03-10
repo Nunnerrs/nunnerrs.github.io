@@ -3,7 +3,8 @@
     <head>
         <title>Web Chef</title>
         <meta charset="UTF-8">
-        <link rel="icon" href="">
+        <link rel="icon" href="https://nunnerrs.github.io/assets/web-chef.ico">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Emoji">
         <style>
             a {
                 color: rgb(225, 240, 255);
@@ -50,6 +51,13 @@
             .column {
                 float: left;
             }
+            .emoji {
+                font-family: monospace;
+            }
+            .noto {
+                color: rgb(0, 0, 0);
+                font-family: monospace, Noto Emoji;
+            }
             .page-button {
                 font-size: 24px;
                 height: 40px;
@@ -82,16 +90,29 @@
                 width: 150px;
             }
             #achievements-button {
-                background-color: rgb(255, 245, 150);
-                bottom: -5px;
+                background-color: rgb(255, 230, 135);
+                bottom: 145px;
                 border-radius: 999px;
                 border-width: 0px;
-                color: rgb(255, 255, 255);
+                color: rgb(255, 200, 75);
                 font-family: default;
                 font-size: 28px;
                 height: 75px;
                 position: fixed;
-                left: -5px;
+                right: -5px;
+                width: 75px;
+            }
+            #emoji-button {
+                background-color: rgb(255, 255, 255);
+                bottom: 70px;
+                border-radius: 999px;
+                border-width: 0px;
+                color: rgb(245, 215, 50);
+                font-family: default;
+                font-size: 28px;
+                height: 75px;
+                position: fixed;
+                right: -5px;
                 width: 75px;
             }
             #tutorial-button {
@@ -130,7 +151,7 @@
             <div class="column" id="recipes">
                 <h2 style="color: rgb(65, 124, 176);">Recipes (<v id="recipe-number">1</v>/<v id="recipe-total"></v>)</h2>
                 <div>
-                    <h3 id="recipe-name">Rice Ball</h3>
+                    <h3 id="recipe-name">Rice Ball<br>Unlocked: ✅</h3>
                     <ul id="recipe-ing">
                         <li>Rice</li>
                     </ul>
@@ -160,7 +181,8 @@
         <h4 style="font-weight: normal">Version <v id="version">----</v></h4>
         <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 200, 175);">To the NunnerVerse²</a></h3>
         <div><button id="achievements-button">★</button></div>
-        <div><button class="blue" id="tutorial-button">ℹ︎</button></div>
+        <div><button id="emoji-button">😃</button></div>
+        <div><button class="blue" id="tutorial-button">ℹ</button></div>
         <script src="script.js"></script>
     </body>
 </html>

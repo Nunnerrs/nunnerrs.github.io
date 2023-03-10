@@ -64,6 +64,8 @@ var adPrice = 45;
 var saveButton = document.getElementById("save-button");
 var eraseDataButton = document.getElementById("erase-data-button");
 var achievementsButton = document.getElementById("achievements-button");
+var emojiButton = document.getElementById("emoji-button");
+var notoEmoji = false;
 var tutorialButton = document.getElementById("tutorial-button");
 
 const customerNames = [
@@ -73,11 +75,13 @@ const customerNames = [
     /*CGT NPCs*/		"Jack", "Holly",
     /*Bandori*/			"Tae Hanazono", "Michelle", "Moca Aoba", "Nanami Hiromachi", "Kasumi Toyama", "Arisa Ichigaya", "Rimi Ushigome", "Kaoru Seta", "Sayo Hikawa", "Hina Hikawa", "Ran Mitake", "Himari Uehara", "Kokoro Tsurumaki", "Yukina Minato", "Lisa Imai", "Mashiro Kurata", "Rui Yashio", "CHU²", "LAYER", "LOCKE", "MASKING", "PAREO", "Misaki Okusawa",
     /*TBHK*/			"Nene Yashiro", "Hanako", "Kou Minamoto", "Aoi Akane", "Akane Aoi", "Teru Minamoto", "Lemon Yamabuki", "Sousuke Mitsuba", "Tsukasa", "Sakura Nanamine", "Natsuhiko Hyuuga", "Yako", "Tsuchigomori",
-    /*Yeen's friends*/	"Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah", "Colette", "Makayla",
+    /*Yeen's friends*/	"Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah", "Colette", "Makayla", "Kimora",
     /*NunnerLibrary*/	"Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus", "Sasha", "Billy", "Bob", "Joe", "Liva", "Cory",
     /*Pokémon*/			"Shuckle", "Ash Ketchum", "Satoshi", "Misty", "Brock", "May", "Dawn", "Iris", "Cilan", "Serena", "Clement", "Bonnie", "Lana", "Mao", "Kaki", "Lilie", "Sophocles", "Goh", "Chloe",
-    /*Comic book*/		"Bill", "Roski", "Ginny", "Emily", "Rebecca", "Bobby", "Sally", "Joey", "Charlyy", "Pippi", "Althea", "Derek", "Steven", "Collin",
+    /*Comic book*/		"Bill", "Roski", "Ginny", "Emily", "Rebecca", "Joey", "Charlyy", "Bobby", "Sally", "Pippi", "Althea", "Derek", "Steven", "Collin",
     /*Mochi Squishies*/	"Marshmallow", "Ginger", "Vered", "Snowy", "Blossom", "Melody", "Peep", "Piper", "Sunny", "Honey", "Gummy", "Snoopy", "Mrs. Polar", "Sharpie",
+    /*Roblox Youtubers*/"Flamingo", "Denis", "Leah Ashe", "Kreek", "Kevin", "Sketch", "ItsFunneh", "LandyBox", "Laughability",
+    /*Roblox*/          "You", "Carl", "Builderman", "David Baszucki", "Barry",
 ];
 const ingredientsList = {
     alcohol: "🍷",
@@ -204,7 +208,7 @@ for (let i = 0; i < foodList.length - 2; i++) {
 //const currentIng = [];
 const recipes = [...foodList].reverse();
 const unlocked = [];
-recipeName.innerHTML = recipes[page]["name"] + " " + (recipes[page]["unlocked"] == true ? "✅" : "❎") + "<br> Profit: $" + recipes[page]["profit"];
+recipeName.innerHTML = recipes[page]["emoji"] + " " + recipes[page]["name"] + "<br>Unlocked: " + (recipes[page]["unlocked"] == true ? "✅" : "❎") + "<br> Profit: $" + recipes[page]["profit"];
 recipeIng.innerHTML = "";
 let ing = recipes[page]["ingList"].split(",");
 for (let i = 0; i < ing.length; i++) {
@@ -303,7 +307,7 @@ function serveCustomer(order, customer) {
             unlockRecipe(false);
         } else if (rng >= 0 && rng < 10 && unlockedAll == true) {
             let tip = Math.round(order["profit"] / 2)
-            if (customer.order["name"] != "Rice Ball" && rng >= 0 && rng <= 2) {
+            if (order["emoji"] != "🍙" && rng >= 0 && rng <= 2) {
                 tip += 0.5;
             };
             money += tip;
@@ -513,7 +517,7 @@ function addStock(ing) {
     } else if (confirmation == true && money < ing/2) {
         alert("You don't have enough money to buy this! (Price: " + ing/2 + ")");
     } else {
-        alert("Error #1: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", ing is " + ing + ", stock is " + stock + ", storage is " + storage + ", confirmation is " + confirmation + ", money >= ing/2 is " + money >= ing/2 + ", stock + ing < storage is " + (stock + ing < storage));
+        //alert("Error #1: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", ing is " + ing + ", stock is " + stock + ", storage is " + storage + ", confirmation is " + confirmation + ", money >= ing/2 is " + money >= ing/2 + ", stock + ing < storage is " + (stock + ing < storage));
     };
 };
 
@@ -527,7 +531,7 @@ function addStorage() {
     } else if (confirmation == true && money < storagePrice) {
         alert("You don't have enough money to buy this! (Price: " + storagePrice + ")");
     } else {
-        alert("Error #2: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", storagePrice is " + storagePrice + ", confirmation is " + confirmation + ", money >= storagePrice is " + money >= storagePrice);
+        //alert("Error #2: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", storagePrice is " + storagePrice + ", confirmation is " + confirmation + ", money >= storagePrice is " + money >= storagePrice);
     };
 };
 
@@ -589,7 +593,7 @@ function addSeating() {
     } else if (confirmation == true && money < seatingPrice) {
         alert("You don't have enough money to buy this! (Price: " + seatingPrice + ")");
     } else {
-        alert("Error #3: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", seatingPrice is " + seatingPrice + ", confirmation is " + confirmation + ", money >= seatingPrice is " + money >= seatingPrice);
+        //alert("Error #3: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", seatingPrice is " + seatingPrice + ", confirmation is " + confirmation + ", money >= seatingPrice is " + money >= seatingPrice);
     };
 };
 
@@ -609,7 +613,7 @@ function addAd() {
     } else if (confirmation == true && money < adPrice) {
         alert("You don't have enough money to buy this! (Price: " + adPrice + ")");
     } else {
-        alert("Error #4: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", adPrice is " + adPrice + ", confirmation is " + confirmation + ", money >= adPrice is " + money >= adPrice);
+        //alert("Error #4: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", adPrice is " + adPrice + ", confirmation is " + confirmation + ", money >= adPrice is " + money >= adPrice);
     };
 };
 
@@ -684,8 +688,8 @@ function tutorial() {
         alert("Once you add all the required ingredients to the Table, click the \"" + makeFoodButton.innerHTML + "\" button to fuse! Then, click the Serve button to give the food.");
         alert("Click on the \"" + clearIng.innerHTML + "\" button if you ever mess up with the order of ingredients. Doing so refunds your stock, so don't worry about wasting money.");
         alert("Serve food to customers and earn money! Use it to buy upgrades like recipes, seating, and advertisements. Don't forget to buy ingredients stock since you don't have unlimited ingredients.");
-        alert("You can unlock achievements by serving specific food to certain customers, discovering secrets, and more! View them by clicking on the \"" + achievementsButton.innerHTML + "\" button at the bottom-left corner and show them off to your friends and family :D");
-        alert("That's it! Click on the \"" + tutorialButton.innerHTML + "\" button in the bottom right corner to go through the tutorial again anytime. Happy cooking!");
+        alert("You can unlock achievements by serving specific food to certain customers, discovering secrets, and more! View them by clicking on the yellow \"" + achievementsButton.innerHTML + "\" button at the bottom-right corner and show them off to your friends and family :D");
+        alert("That's it! Click on the blue \"" + tutorialButton.innerHTML + "\" button in the bottom right corner to go through the tutorial again anytime. Happy cooking!");
     };
     localStorage.setItem("tutorialCompleted", "true");
 };
@@ -710,11 +714,23 @@ function award(a) {
 
 function showAchievements() {
     let achievementsList = "Achievements:";
-    for (let i = 0; i < achievements.length - 1; i++) {
+    for (let i = 0; i < achievements.length; i++) {
         let a = achievements[i];
         achievementsList = achievementsList + "\n" + (a["unlocked"] == true ? "✅" : "❎") + " " + a["name"] + " ~ " + a["desc"];
     };
     alert(achievementsList);
+};
+
+function toggleNotoEmoji() {
+    if (notoEmoji == true) {
+        emojiButton.classList.remove("noto");
+    } else {
+        emojiButton.classList.add("noto");
+        let notif = document.createElement("p");
+        notif.innerHTML = "coming soon :>";
+        notifContainer.appendChild(notif);
+        setTimeout(function(){notif.remove()}, 3000);
+    }
 };
 
 ingSearch.onkeydown = addIng;
@@ -732,6 +748,8 @@ buySeating.onclick = addSeating;
 buyAd.onclick = addAd;
 saveButton.onclick = saveData;
 eraseDataButton.onclick = eraseData;
+achievementsButton.onclick = showAchievements;
+emojiButton.onclick = toggleNotoEmoji;
 tutorialButton.onclick = tutorial;
 setTimeout(customer, 1000);
 setTimeout(function(){
@@ -741,7 +759,7 @@ setTimeout(function(){
 }, 1500);
 setTimeout(function(){
     let notif = document.createElement("p");
-    notif.innerHTML = v + " is out now! Read about the new update <a href='" + updateLink + "'>here</a>";
+    notif.innerHTML = "Version " + v + " is out now! Read about the new update <a href='" + updateLink + "'>here</a>";
     notifContainer.appendChild(notif);
     setTimeout(function(){notif.remove()}, 10000);
 }, 1550);
