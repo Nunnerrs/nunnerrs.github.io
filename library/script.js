@@ -78,8 +78,9 @@ const books = {
     book7: book7, // Nunners' Guide To Dreams & Nightmares
     book8: [ // "<heading><b>Mon. DD, 2023</b></heading><br><br>• ",
         "", // <img src="covers/placeholder.png">
-        "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 2/27/2023<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
-        // UPDATE NEWEST NEWS ABOVE
+        "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 3/9/2023<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
+        // UPDATE NEWEST NEWS ABOVE & IN INDEX.HTML FILE
+        "<heading><b>Mar. 9, 2023</b></heading><br><br>• Web Chef updates! New ingredients Syrup, Wine and Pineapple plus recipes to go with them like Flan, Fondue, and Tropical Cocktail. I also added a new achievements system where you can earn badges for doing certain things, discovering secrets, and more! And of course lots of bug fixes :P",
         "<heading><b>Mar. 7, 2023</b></heading><br><br>• <i>Hope Vol. 2</i> coming soon! There's still a lot I have to do, but I'll try my hardest to finish it before April.<br>• Custom Gear Testing updates! I added a Toy Ball gear you can use to play with your pets. There's also a new only-owner gear called the NunnerOrb—touching it awards you with the Meet Nunnerrs! badge. If you have the badge, you can wear the Nunnerrs suit. I also fixed some broken stuff.",
         "<heading><b>Mar. 1, 2023</b></heading><br><br>• <i>Pinky & Mint: Hermit Crabs</i> is now published!!! It's longer than the <i>Coral</i> one and I hope you'll enjoy it! Note that you don't need to read <i>Pinky & Mint: Coral</i> before the new book (it's styled so that you can read any of them in any order).<br>• Check out the small new updates to Web Chef & collection of online fun stuffs.", 
         "<heading><b>Feb. 28, 2023</b></heading><br><br>• Publishing <i>Pinky & Mint: Hermit Crabs</i> sometime today (or in a few days)! I just need to cite the sources used. I also made the upcoming books' covers visible, but they can't be viewed yet.", 
