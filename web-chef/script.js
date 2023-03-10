@@ -1,4 +1,4 @@
-var v = "v" + "1.6.9.5";
+var v = "v" + "1.6.10.5";
 var version = document.getElementById("version");
 version.innerHTML = v;
 var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
@@ -24,6 +24,10 @@ if (localStorage.getItem("maxCustomers") != null) {
 var customerRate = 15000; // milliseconds
 if (localStorage.getItem("customerRate") != null) {
     customerRate = Number(localStorage.getItem("customerRate"));
+};
+var totalCustomers = 0;
+if (localStorage.getItem("totalCustomers") != null) {
+    customerRate = Number(localStorage.getItem("totalCustomers"));
 };
 var ingredients = document.getElementById("ingredients");
 var ingSearch = document.getElementById("ing-search");
@@ -205,7 +209,6 @@ for (let i = 0; i < foodList.length - 2; i++) {
         };
     };
 };
-//const currentIng = [];
 const recipes = [...foodList].reverse();
 const unlocked = [];
 recipeName.innerHTML = recipes[page]["emoji"] + " " + recipes[page]["name"] + "<br>Unlocked: " + (recipes[page]["unlocked"] == true ? "✅" : "❎") + "<br> Profit: $" + recipes[page]["profit"];
@@ -215,8 +218,12 @@ for (let i = 0; i < ing.length; i++) {
     recipeIng.innerHTML = recipeIng.innerHTML + "<li>" + ing[i] + "</li>";
 };
 
-const achievements = [ // {name: "ACHIEVEMENT", desc: "BRIEFDESCRIPTION", unlocked: false},
+const achievements = [ // {id: NUMBER, name: "ACHIEVEMENT", desc: "BRIEFDESCRIPTION", unlocked: false},
     {id: 1, name: "Master Chef", desc: "Unlock all " + foodList.length + " recipes", unlocked: false},
+    {id: 16, name: "Publicized", desc: "Buy 4 advertisements", unlocked: false},
+    {id: 17, name: "Popular", desc: "Serve 100 customers all-time", unlocked: false},
+    {id: 18, name: "Culinary Feat", desc: "Serve 500 customers all-time", unlocked: false},
+    {id: 19, name: "Nationwide Cuisine", desc: "Serve 1,000 customers all-time", unlocked: false},
     {id: 2, name: "Bread For Life", desc: "Serve a baguette to Moca Aoba", unlocked: false},
     {id: 3, name: "Plants Only", desc: "Serve a salad to Holly or Malo", unlocked: false},
     {id: 4, name: "Caprisun!!", desc: "Serve apple juice to Skylar", unlocked: false},
@@ -224,7 +231,7 @@ const achievements = [ // {name: "ACHIEVEMENT", desc: "BRIEFDESCRIPTION", unlock
     {id: 6, name: "Jelly-filled Donuts", desc: "Serve a rice ball to Brock", unlocked: false},
     {id: 7, name: "Cake…", desc: "Serve cheesecake to Rebecca", unlocked: false},
     {id: 8, name: "Hollup—", desc: "Serve a fried egg to either Peep, Piper, or Sunny", unlocked: false},
-    {id: 9, name: "Broke", desc: "Have 0 stock and not enough money to buy ingredients (less than $5)", unlocked: false},
+    {id: 9, name: "Spare Change…", desc: "Find money the floor (run out of money & stock first)", unlocked: false},
     {id: 10, name: "I ❤️ Web Chef", desc: "Cook a certain food for Valentine's Day (secret #1)(unobtainable)", unlocked: false},
     {id: 11, name: "U HAXOR!1!!", desc: "\"Hack\" the game (discover secret #2)", unlocked: false},
     {id: 12, name: "NO. JUST NO.", desc: "Attempt to cook something terrible (discover secret #3)", unlocked: false},
@@ -288,6 +295,14 @@ function randomFood() {
 function serveCustomer(order, customer) {
     if (ingredients.innerHTML == order["emoji"]) {
         customers -= 1;
+        totalCustomers++;
+        if (totalCustomers == 100) {
+            award(17);
+        } else if (totalCustomers == 500) {
+            award(18);
+        } else if (totalCustomers == 1000) {
+            award(19);
+        };
         ingredients.innerHTML = "Empty";
         makeFoodButton.disabled = true;
         makeFoodButton.style.color = "rgb(150, 150, 150)";
@@ -411,8 +426,10 @@ function addIng(e) {
             ingSearchError.innerHTML = "You don't have enough ingredients!";
             setTimeout(function() {ingSearchError.innerHTML = "";}, 2500);
         } else {
-            ingSearchError.innerHTML = "Invalid ingredient \"" + ingSearch.value + "\"! Check your spelling";
-            setTimeout(function() {ingSearchError.innerHTML = "";}, 2500);
+            if (ingSearch.value != "" && ingSearch.value != null) {
+                ingSearchError.innerHTML = "Invalid ingredient \"" + ingSearch.value + "\"! Check your spelling";
+                setTimeout(function() {ingSearchError.innerHTML = "";}, 2500);
+            };
         };
     };
 };
@@ -424,24 +441,24 @@ function makeFood() {
             ingredients.innerHTML = foodList[i]["emoji"];
             //console.log("found food: " + foodList[i]["emoji"]);
             break;
-        /*} else {
+        } else {
+            let exists = true;
             for (let i2 = 0; i2 < ingredients.innerHTML.length - 1; i2++) {
-                for (let i3 = 0; i3 < foodList[i]["ing"].length - 1; i3++) {
-                    if (ingredients.innerHTML.charAt(i2) == foodList[i]["ing"].charAt(i3)) {
-                        currentIng.push("yes");
-                        console.log(ingredients.innerHTML.charAt(i2) + " matches " + foodList[i]["ing"].charAt(i3));
-                    } else {
-                        console.log(ingredients.innerHTML.charAt(i2) + " doesn't match " + foodList[i]["ing"].charAt(i3));
+                let char = foodList[i]["ing"].charAt(i2);
+                if (ingredients.innerHTML.match(/char/g) != null) {
+                    if (foodList[i]["ing"].match(/char/g).length > 1) {
+                        if (ingredients.innerHTML.match(/char/g).length != foodList[i]["ing"].match(/char/g).length) {
+                            exists = false;
+                        };
                     };
+                } else {
+                    exists = false;
                 };
             };
-            if (currentIng.length == foodList[i]["ing"].length) {
+            if (exists == true) {
                 ingredients.innerHTML = foodList[i]["emoji"];
-                currentIng.length = 0;
                 break;
-            } else {
-                //console.log(currentIng.toString());
-            };*/
+            };
         };
     };
     
@@ -454,6 +471,20 @@ function makeFood() {
         setTimeout(function(){notif.remove()}, 10000);
         award(10);
     };*/
+    
+    if (ingredients.innerHTML == "🌾🥚") {
+        let notif = document.createElement("p");
+        notif.innerHTML = "The Pancakes recipe has been updated; See updated recipe in Recipes book";
+        notifContainer.appendChild(notif);
+        setTimeout(function(){notif.remove()}, 8000);
+    };
+    
+    if (ingredients.innerHTML == "🧊") {
+        let notif = document.createElement("p");
+        notif.innerHTML = "The Shaved Ice recipe has been updated; See updated recipe in Recipes book";
+        notifContainer.appendChild(notif);
+        setTimeout(function(){notif.remove()}, 8000);
+    };
 };
 
 function clear() {
@@ -604,9 +635,12 @@ function addAd() {
             money -= adPrice;
             moneyDisplay.innerHTML = money;
             customerRate -= 3000;
+            if (customerRate == 3000) {
+                award(16);
+            };
         } else {
             let notif = document.createElement("p");
-            notif.innerHTML = "You can't buy any more ads!";
+            notif.innerHTML = "You can't buy any more ads! (Max of 4)";
             notifContainer.appendChild(notif);
             setTimeout(function(){notif.remove()}, 5000);
         };
@@ -620,6 +654,7 @@ function addAd() {
 function saveData() {
     localStorage.setItem("money", money);
     localStorage.setItem("maxCustomers", maxCustomers);
+    localStorage.setItem("totalCustomers", totalCustomers);
     localStorage.setItem("stock", stock);
     localStorage.setItem("storage", storage);
     for (let i = 0; i < foodList.length - 2; i++) {
@@ -650,6 +685,8 @@ function eraseData() {
         localStorage.setItem("money", money);
         maxCustomers = 3;
         localStorage.setItem("maxCustomers", maxCustomers);
+        totalCustomers = 0;
+        localStorage.setItem("totalCustomers", totalCustomers);
         stock = 25;
         stockDisplay.innerHTML = stock;
         localStorage.setItem("stock", stock);
@@ -687,7 +724,7 @@ function tutorial() {
         alert("For example, if their order is \"🍙\" you would type \"rice\" into the textbox & hit \"go\"/\"enter\". If you want to view the ingredients for a certain food, click through the pages of the Recipes book.");
         alert("Once you add all the required ingredients to the Table, click the \"" + makeFoodButton.innerHTML + "\" button to fuse! Then, click the Serve button to give the food.");
         alert("Click on the \"" + clearIng.innerHTML + "\" button if you ever mess up with the order of ingredients. Doing so refunds your stock, so don't worry about wasting money.");
-        alert("Serve food to customers and earn money! Use it to buy upgrades like recipes, seating, and advertisements. Don't forget to buy ingredients stock since you don't have unlimited ingredients.");
+        alert("Serve food to customers and earn money! Use it to buy upgrades like recipes, seating, and advertisements (click each \"Purchase\" button to learn more about what they do). Don't forget to buy ingredients stock since you don't have unlimited ingredients.");
         alert("You can unlock achievements by serving specific food to certain customers, discovering secrets, and more! View them by clicking on the yellow \"" + achievementsButton.innerHTML + "\" button at the bottom-right corner and show them off to your friends and family :D");
         alert("That's it! Click on the blue \"" + tutorialButton.innerHTML + "\" button in the bottom right corner to go through the tutorial again anytime. Happy cooking!");
     };
@@ -712,6 +749,24 @@ function award(a) {
     };
 };
 
+function hasAchievement(a) {
+    let ach = null;
+    for (let i = 0; i < achievements.length; i++) {
+        if (achievements[i]["id"] == a) {
+            ach = achievements[i];
+        };
+    };
+    if (ach != null) {
+        if (ach["unlocked"] == true) {
+            return true;
+        } else {
+            return false;
+        };
+    } else {
+        return null;
+    };
+};
+
 function showAchievements() {
     let achievementsList = "Achievements:";
     for (let i = 0; i < achievements.length; i++) {
@@ -724,15 +779,18 @@ function showAchievements() {
 function toggleNotoEmoji() {
     if (notoEmoji == true) {
         emojiButton.classList.remove("noto");
+        notoEmoji = false;
     } else {
         emojiButton.classList.add("noto");
         let notif = document.createElement("p");
         notif.innerHTML = "coming soon :>";
         notifContainer.appendChild(notif);
         setTimeout(function(){notif.remove()}, 3000);
+        notoEmoji = true;
     }
 };
 
+document.getElementById("favicon").href = "https://nunnerrs.github.io/assets/web-chef.ico";
 ingSearch.onkeydown = addIng;
 makeFoodButton.onclick = makeFood;
 clearIng.onclick = clear;
@@ -765,13 +823,17 @@ setTimeout(function(){
 }, 1550);
 setInterval(customer, customerRate);
 setInterval(function(){
-    if (stock == 0 && money < 5) {
-        money += 5;
+    if (stock == 0 && money < 2.5) {
+        let rng = Math.floor(Math.random() * 3) + 5;
+        money += rng;
         moneyDisplay.innerHTML = money;
         let notif = document.createElement("p");
-        notif.innerHTML = "You found $5 on the floor!";
+        notif.innerHTML = "You found $" + rng + " on the floor!";
         notifContainer.appendChild(notif);
         setTimeout(function(){notif.remove()}, 6250);
+        if (hasAchievement(9) == false) {
+            award(9);
+        };
     };
 }, 5000);
 setInterval(saveData, 60000);
