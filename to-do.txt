@@ -19,29 +19,41 @@ Adjectives (for ↑):
     Bright
     Champion
     Classy
+    Clever
     Crazy
     Creative
     Cute
+    Daring
     Diplomat
     Doctor
     Dynamic
     Eager
+    Elated
+    Excited
     Fabulous
     Flying
     Fuzzy
     Golden
+    Happy
     Honest
+    Inspired
+    Jolly
+    Joyful
     Legend
+    Lively
     Lovely
     Magic
     Majestic
     Mountain
+    Purple
     Radiant
     Rational
+    Rocky
     Silly
     Speedy
     Stellar
     Super
+    Wise
     Wonder
     Zany
 
@@ -53,19 +65,27 @@ Animals (for ↑):
     Cheetah
     Condor
     Crab
+    Dingo
     Dog
     Dragon
+    Duck
     Fox
+    Frog
+    Gator
     Giraffe
     Glider
     Goose
+    Hamster
     Hen
+    Horse
     Ibex
+    Lemur
     Leopard
     Lion
     Newt
     Octopus
     Otter
+    Penguin
     Pigeon
     Quail
     Raven
@@ -74,10 +94,13 @@ Animals (for ↑):
     SeaLion
     Sloth
     Snail
+    Snowy
     Sphinx
     Squid
     Swan
     Tiger
+    Wallaby
     Wolf
+    Yak
     Yeti
     Zebra
