@@ -1,4 +1,4 @@
-var v = "v" + "1.6.11.6";
+var v = "v" + "1.6.12.6";
 var version = document.getElementById("version");
 version.innerHTML = v;
 var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
@@ -244,19 +244,22 @@ const achievements = [ // {id: NUMBER, name: "ACHIEVEMENT", desc: "BRIEFDESCRIPT
     {id: 18, name: "Culinary Feat", desc: "Serve 500 customers all-time", unlocked: false},
     {id: 19, name: "Nationwide Cuisine", desc: "Serve 1,000 customers all-time", unlocked: false},
     {id: 20, name: "How Do Ya Like Them Donuts?!", desc: "Serve a doughnut to Hanako or Tsukasa", unlocked: false},
-    {id: 2, name: "Bread For Life", desc: "Serve a baguette to Moca Aoba", unlocked: false},
+    {id: 2, name: "Bread 4 Life", desc: "Serve a baguette to Moca Aoba", unlocked: false},
     {id: 3, name: "Plants Only", desc: "Serve a salad to Holly or Malo", unlocked: false},
     {id: 4, name: "Caprisun!!", desc: "Serve apple juice to Skylar", unlocked: false},
     {id: 5, name: "Mmm…fries", desc: "Serve French fries to Hina or Sayo Hikawa", unlocked: false},
     {id: 6, name: "Jelly-filled Donuts", desc: "Serve a rice ball to Brock", unlocked: false},
     {id: 7, name: "Cake…", desc: "Serve cheesecake to Rebecca", unlocked: false},
     {id: 8, name: "Hollup—", desc: "Serve a fried egg to either Peep, Piper, or Sunny", unlocked: false},
+    {id: 21, name: "Cannabalism?!", desc: "Serve pizza to Pippi", unlocked: false},
     {id: 9, name: "Spare Change…", desc: "Find money the floor (run out of money & stock first)", unlocked: false},
     {id: 10, name: "I ❤️ Web Chef", desc: "Cook a certain food for Valentine's Day (secret #1)(unobtainable)", unlocked: false},
     {id: 11, name: "U HAXOR!1!!", desc: "\"Hack\" the game (discover secret #2)", unlocked: false},
     {id: 12, name: "NO. JUST NO.", desc: "Attempt to cook something terrible (discover secret #3)", unlocked: false},
     {id: 13, name: "Free Advertisment", desc: "Try to cook a certain \"phrase\" (discover secret #4)", unlocked: false},
     {id: 14, name: "Top Secret", desc: "Discover the easiest secret of all time (#5)", unlocked: false},
+    {id: 22, name: "Surprise!", desc: "Enter a certain word into the ingredient input box (secret #6)", unlocked: false},
+    {id: 23, name: "WORM", desc: "Get lucky (0.005% chance)(secret #7)", unlocked: false},
     {id: 15, name: "Overachiever", desc: "Achieve all above achievements (click on star button to claim)", unlocked: false},
 ];
 achievements[achievements.length - 1]["desc"] = "Achieve all above achievements (total of " + achievements.length + ")";
@@ -378,6 +381,9 @@ function serveCustomer(order, customer) {
         if ((customer.dataset.name.match("Hanako") != null || customer.dataset.name.match("Tsukasa") != null) && order["emoji"] == "🍩") {
             award(20);
         };
+        if (customer.dataset.name.match("Pippi") != null && order["emoji"] == "🍕") {
+            award(21);
+        };
         customer.remove();
     };
 };
@@ -388,7 +394,8 @@ function findIng() {
         return ingredientsList[i];
     } else if (i == "⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️" || i == "dog" || i == "🐶" || i == "🐕" || i == "baby" || i == "babies" || i == "👶" || i == "girl" || i == "👧" || i == "child" || i == "children" || i == "🧒" || i == "boy" || i == "👦"
               || i == "https://nunnerrs.github.io" || i == "https://nunnerrs.github.io/" || i == "nunnerrs.github.io"
-              || i == "secret" || i == "sus" || i == "sussy" || i == "sussy baka") {
+              || i == "secret" || i == "sus" || i == "sussy" || i == "sussy baka"
+              || i.match("random") || i.match("ingredient") || i.match("mystery")) {
         return i;
     } else {
         return null;
@@ -431,6 +438,12 @@ function addIng(e) {
                 ingSearchError.innerHTML = "omg you uncovered the easiest secret ever!! (Secret #5)";
                 setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
                 award(14);
+            } else if (ing.match("random") || ing.match("ingredient") || ing.match("mystery")) {
+                ingSearch.value = "";
+                ingredients.innerHTML = ingredients.innerHTML + "🥔";
+                ingSearchError.innerHTML = "ok heres a potato or whatever (Secret #6)";
+                setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
+                award(22);
             } else {
                 if (ingredients.innerHTML == "Empty") {
                     ingredients.innerHTML = "";
@@ -446,6 +459,16 @@ function addIng(e) {
                 ingredients.innerHTML = ingredients.innerHTML + ing;
                 stock -= 1;
                 stockDisplay.innerHTML = stock;
+                if (ing == "🍎" && Math.floor(Math.random() * 200) == 0) {
+                    ingSearchError.innerHTML = "🪱";
+                    setTimeout(function(){
+                        let notif = document.createElement("p");
+                        notif.innerHTML = "oh looks like you found a worm in the apple… (Secret #7)";
+                        notifContainer.appendChild(notif)
+                        setTimeout(function(){award(23)}, 1000);
+                        setTimeout(function(){notif.remove()}, 15000);
+                    }, 1000);
+                };
             };
         } else if (ing != null && stock < 1) {
             ingSearchError.innerHTML = "You don't have enough ingredients!";
