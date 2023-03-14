@@ -1,18 +1,18 @@
-var v = "v" + "1.6.10.5";
+var v = "v" + "1.6.10.6";
 var version = document.getElementById("version");
 version.innerHTML = v;
 var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
 var commitId = "3d7f6304b782ff6a1c949ab5c3fbc40efc01d14b";
 updateLink = updateLink + commitId;
 // make a new line to display as new line
-// any apostrophes or quotes ('/") NEEDS A BACKSLASH (\) before it
+// NO " OR '
 var updateSummary = `• view game stats with the new stats button (📊)!
 • counter to keep track of total customers served & total money all-time (viewable by clicking stats button)
 • bento box and doughnut recipes & updated cookie recipe for more realism
 • 4 new achievements for max ads & total customer milestones
 • all achievements can now actually be obtained
-• now there\'s an actual icon for Web Chef hooray
-• version summary can be viewed by clicking on notif (like what you did :>)`;
+• now theres an actual icon for Web Chef hooray
+• version summary can be viewed by clicking on notif (like what you did c:)`;
 // the `; SHOULD NOT be on its own line
 
 var tutorialCompleted = false;
@@ -197,7 +197,7 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "☕️", ing: "🫘💧🥛", ingList: "Beans,Water,Milk", name: "Coffee", profit: 4.5, unlocked: false},
     {emoji: "🍨", ing: "🧊🥛", ingList: "Ice,Milk", name: "Ice Cream", profit: 4, unlocked: false},
     {emoji: "🥐", ing: "🍞🧈", ingList: "Bread,Butter", name: "Croissant", profit: 4, unlocked: false},
-    {emoji: "🍪", ing: "🌾🥚🍫", ingList: "Flour,Chocolate", name: "Cookie", profit: 4, unlocked: false},
+    {emoji: "🍪", ing: "🌾🥚🍫", ingList: "Flour,Egg,Chocolate", name: "Cookie", profit: 4, unlocked: false},
     {emoji: "🥯", ing: "🍞🧀", ingList: "Bread,Cheese", name: "Bagel", profit: 4, unlocked: false},
     {emoji: "🍣", ing: "🍚🐟", ingList: "Rice,Fish", name: "Sushi", profit: 3.5, unlocked: false},
     {emoji: "🍧", ing: "🧊🍯", ingList: "Ice,Syrup", name: "Shaved Ice", profit: 3.5, unlocked: false},
