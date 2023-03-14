@@ -2,8 +2,19 @@ var v = "v" + "1.6.10.5";
 var version = document.getElementById("version");
 version.innerHTML = v;
 var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
-var commitId = "ddf9ea2d104030a476b804a65901b1607281e843";
+var commitId = "3d7f6304b782ff6a1c949ab5c3fbc40efc01d14b";
 updateLink = updateLink + commitId;
+// make a new line to display as new line
+// any apostrophes or quotes ('/") NEEDS A BACKSLASH (\) before it
+var updateSummary = `• view game stats with the new stats button (📊)!
+• counter to keep track of total customers served & total money all-time (viewable by clicking stats button)
+• bento box and doughnut recipes & updated cookie recipe for more realism
+• 4 new achievements for max ads & total customer milestones
+• all achievements can now actually be obtained
+• now there\'s an actual icon for Web Chef hooray
+• version summary can be viewed by clicking on notif (like what you did :>)`;
+// the `; SHOULD NOT be on its own line
+
 var tutorialCompleted = false;
 if (localStorage.getItem("tutorialCompleted") != null) {
     tutorialCompleted = true;
@@ -14,6 +25,10 @@ if (localStorage.getItem("money") != null) {
     money = Number(localStorage.getItem("money"));
 };
 moneyDisplay.innerHTML = money;
+var totalMoney = 10;
+if (localStorage.getItem("totalMoney") != null) {
+    totalMoney = Number(localStorage.getItem("totalMoney"));
+};
 var notifContainer = document.getElementById("notif-container");
 var ordersList = document.getElementById("orders-list");
 var customers = 0;
@@ -27,7 +42,7 @@ if (localStorage.getItem("customerRate") != null) {
 };
 var totalCustomers = 0;
 if (localStorage.getItem("totalCustomers") != null) {
-    customerRate = Number(localStorage.getItem("totalCustomers"));
+    totalCustomers = Number(localStorage.getItem("totalCustomers"));
 };
 var ingredients = document.getElementById("ingredients");
 var ingSearch = document.getElementById("ing-search");
@@ -67,6 +82,7 @@ var buyAd = document.getElementById("buy-ad");
 var adPrice = 45;
 var saveButton = document.getElementById("save-button");
 var eraseDataButton = document.getElementById("erase-data-button");
+var statsButton = document.getElementById("stats-button");
 var achievementsButton = document.getElementById("achievements-button");
 var emojiButton = document.getElementById("emoji-button");
 var notoEmoji = false;
@@ -169,6 +185,7 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "🍲", ing: "💧🍜🥩🧅", ingList: "Water,Noodles,Meat,Onion", name: "Pho", profit: 8.5, unlocked: false},
     {emoji: "🥪", ing: "🍞🧀🍅🥬🍞", ingList: "Bread,Cheese,Tomato,Lettuce,Bread", name: "Sandwich", profit: 8, unlocked: false},
     {emoji: "🥧", ing: "🍎🌾🥚🧈", ingList: "Apple,Flour,Egg,Butter", name: "Apple Pie", profit: 8, unlocked: false},
+    {emoji: "🍱", ing: "🍚🐟🦐🥒", ingList: "Rice,Fish,Shrimp,Cucumber", name: "Bento Box", profit: 7.5, unlocked: false},
     {emoji: "🍕", ing: "🍞🍅🧀🥩", ingList: "Bread,Tomato,Cheese,Meat", name: "Pizza", profit: 7, unlocked: false},
     {emoji: "🌮", ing: "🌾🥩🥬🧅", ingList: "Flour,Meat,Lettuce,Onion", name: "Taco", profit: 6.5, unlocked: false},
     {emoji: "🥗", ing: "🥬🍅🥒🧅", ingList: "Lettuce,Tomato,Cucumber,Onion", name: "Salad", profit: 6, unlocked: false},
@@ -180,6 +197,7 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "☕️", ing: "🫘💧🥛", ingList: "Beans,Water,Milk", name: "Coffee", profit: 4.5, unlocked: false},
     {emoji: "🍨", ing: "🧊🥛", ingList: "Ice,Milk", name: "Ice Cream", profit: 4, unlocked: false},
     {emoji: "🥐", ing: "🍞🧈", ingList: "Bread,Butter", name: "Croissant", profit: 4, unlocked: false},
+    {emoji: "🍪", ing: "🌾🥚🍫", ingList: "Flour,Chocolate", name: "Cookie", profit: 4, unlocked: false},
     {emoji: "🥯", ing: "🍞🧀", ingList: "Bread,Cheese", name: "Bagel", profit: 4, unlocked: false},
     {emoji: "🍣", ing: "🍚🐟", ingList: "Rice,Fish", name: "Sushi", profit: 3.5, unlocked: false},
     {emoji: "🍧", ing: "🧊🍯", ingList: "Ice,Syrup", name: "Shaved Ice", profit: 3.5, unlocked: false},
@@ -187,10 +205,10 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "🫕", ing: "🧀🍷", ingList: "Cheese,Wine", name: "Fondue", profit: 3.5, unlocked: false},
     {emoji: "🥨", ing: "🍞🧂", ingList: "Bread,Salt", name: "Pretzel", profit: 3, unlocked: false},
     {emoji: "🍳", ing: "🥚", ingList: "Egg", name: "Fried Egg", profit: 3, unlocked: false},
+    {emoji: "🍩", ing: "🍞🍫", ingList: "Bread,Chocolate", name: "Doughnut", profit: 3, unlocked: false},
     {emoji: "🍗", ing: "🥩", ingList: "Meat", name: "Chicken Leg", profit: 3, unlocked: false},
     {emoji: "🥖", ing: "🍞", ingList: "Bread", name: "Baguette", profit: 3, unlocked: false},
     {emoji: "🍤", ing: "🦐", ingList: "Shrimp", name: "Fried Shrimp", profit: 2.5, unlocked: false},
-    {emoji: "🍪", ing: "🌾🍫", ingList: "Flour,Chocolate", name: "Cookie", profit: 2.5, unlocked: false},
     {emoji: "🧃", ing: "💧🍎", ingList: "Water,Apple", name: "Apple Juice", profit: 2.5, unlocked: false},
     {emoji: "🍟", ing: "🥔", ingList: "Potato", name: "French Fries", profit: 2, unlocked: true},
     {emoji: "🍙", ing: "🍚", ingList: "Rice", name: "Rice Ball", profit: 1.5, unlocked: true},
@@ -309,6 +327,7 @@ function serveCustomer(order, customer) {
         clearIng.disabled = true;
         clearIng.style.color = "rgb(150, 150, 150)";
         money += order["profit"];
+        totalMoney += order["profit"];
         moneyDisplay.innerHTML = money;
         let unlockedAll = true;
         for (let i = 0; i < foodList.length - 1; i++) {
@@ -326,6 +345,7 @@ function serveCustomer(order, customer) {
                 tip += 0.5;
             };
             money += tip;
+            totalMoney += tip;
             moneyDisplay.innerHTML = money;
             let notif = document.createElement("p");
             notif.innerHTML = customer.dataset.name + " tipped you $" + tip + "!";
@@ -653,8 +673,10 @@ function addAd() {
 
 function saveData() {
     localStorage.setItem("money", money);
+    localStorage.setItem("totalMoney", totalMoney);
     localStorage.setItem("maxCustomers", maxCustomers);
     localStorage.setItem("totalCustomers", totalCustomers);
+    localStorage.setItem("customerRate", customerRate);
     localStorage.setItem("stock", stock);
     localStorage.setItem("storage", storage);
     for (let i = 0; i < foodList.length - 2; i++) {
@@ -683,10 +705,16 @@ function eraseData() {
         money = 10;
         moneyDisplay.innerHTML = money;
         localStorage.setItem("money", money);
+        totalMoney = 10;
+        localStorage.setItem("totalMoney", totalMoney);
+        customers = 0;
+        ordersList.innerHTML = "";
         maxCustomers = 3;
         localStorage.setItem("maxCustomers", maxCustomers);
         totalCustomers = 0;
         localStorage.setItem("totalCustomers", totalCustomers);
+        customerRate = 15000;
+        localStorage.setItem("customerRate", customerRate);
         stock = 25;
         stockDisplay.innerHTML = stock;
         localStorage.setItem("stock", stock);
@@ -709,6 +737,7 @@ function eraseData() {
             achievements[i]["unlocked"] = false;
             localStorage.setItem("achievement" + a["id"].toString(), false);
         };
+        setTimeout(customer, 1000);
         let notif = document.createElement("p");
         notif.innerHTML = "Data erased!";
         notifContainer.appendChild(notif);
@@ -720,11 +749,12 @@ function tutorial() {
     let confirmation = confirm("Would you like to begin the tutorial? (Recommended for those new to Web Chef since you may not understand how things work)");
     if (confirmation == true) {
         alert("Welcome to Web Chef! This is a simple restaurant game where you prepare food for customers. Best played on a PC or tablet. [Click OK to continue]");
-        alert("Looks like there's a customer! To prepare their order, enter the names of the ingredients required to make the food.");
+        alert("Looks like there's a customer! To prepare their order, enter the names of the ingredients required to make the food. (Don't worry, they'll stay there until you serve them or leave/reload the page)");
         alert("For example, if their order is \"🍙\" you would type \"rice\" into the textbox & hit \"go\"/\"enter\". If you want to view the ingredients for a certain food, click through the pages of the Recipes book.");
         alert("Once you add all the required ingredients to the Table, click the \"" + makeFoodButton.innerHTML + "\" button to fuse! Then, click the Serve button to give the food.");
         alert("Click on the \"" + clearIng.innerHTML + "\" button if you ever mess up with the order of ingredients. Doing so refunds your stock, so don't worry about wasting money.");
         alert("Serve food to customers and earn money! Use it to buy upgrades like recipes, seating, and advertisements (click each \"Purchase\" button to learn more about what they do). Don't forget to buy ingredients stock since you don't have unlimited ingredients.");
+        alert("Click on the \"" + statsButton.innerHTML + "\" button to view a list of your game stats like total money, the number of recipes unlocked, and total customers served!")
         alert("You can unlock achievements by serving specific food to certain customers, discovering secrets, and more! View them by clicking on the yellow \"" + achievementsButton.innerHTML + "\" button at the bottom-right corner and show them off to your friends and family :D");
         alert("That's it! Click on the blue \"" + tutorialButton.innerHTML + "\" button in the bottom right corner to go through the tutorial again anytime. Happy cooking!");
     };
@@ -790,6 +820,48 @@ function toggleNotoEmoji() {
     }
 };
 
+function stats() {
+    let s = "Your Stats:";
+    s = s + "\nMoney ~ " + money;
+    s = s + "\nTotal Money All-Time ~ " + totalMoney;
+    let recipesUnlocked = 0;
+    for (let i = 0; i < foodList.length; i++) {
+        if (foodList[i]["unlocked"] == true) {
+            recipesUnlocked++;
+        };
+    };
+    s = s + "\nRecipes Unlocked ~ " + recipesUnlocked;
+    s = s + "\nIngredients Stock ~ " + stock;
+    s = s + "\nMax Ingredients Storage ~ " + storage;
+    s = s + "\nSeating ~ " + maxCustomers;
+    let ads = 0;
+    let raw = (customerRate / 3000);
+    switch (raw) {
+        case 4:
+            ads = 1;
+        break;
+        case 3:
+            ads = 2;
+        break;
+        case 2:
+            ads = 3;
+        break;
+        case 1:
+            ads = 4;
+        break
+    }
+    s = s + "\nAdvertisments ~ " + ads;
+    let achUnlocked = 0;
+    for (let i = 0; i < achievements.length; i++) {
+        if (achievements[i]["unlocked"] == true) {
+            achUnlocked++;
+        };
+    };
+    s = s + "\nAchievements Unlocked ~ " + achUnlocked;
+    s = s + "\nTotal Customers Served ~ " + totalCustomers;
+    alert(s);
+};
+
 document.getElementById("favicon").href = "https://nunnerrs.github.io/assets/web-chef.ico";
 ingSearch.onkeydown = addIng;
 makeFoodButton.onclick = makeFood;
@@ -806,10 +878,19 @@ buySeating.onclick = addSeating;
 buyAd.onclick = addAd;
 saveButton.onclick = saveData;
 eraseDataButton.onclick = eraseData;
+statsButton.onclick = stats;
 achievementsButton.onclick = showAchievements;
 emojiButton.onclick = toggleNotoEmoji;
 tutorialButton.onclick = tutorial;
-setTimeout(customer, 1000);
+// code to run 1 second after loading
+setTimeout(function(){
+    customer();
+    if (customerRate < 3000) {
+        customerRate = 3000;
+        localStorage.setItem("customerRate", 3000);
+    };
+}, 1000);
+
 setTimeout(function(){
     if (localStorage.getItem("tutorialCompleted") == "false" || localStorage.getItem("tutorialCompleted") == null) {
         tutorial();
@@ -817,7 +898,7 @@ setTimeout(function(){
 }, 1500);
 setTimeout(function(){
     let notif = document.createElement("p");
-    notif.innerHTML = "Version " + v + " is out now! Read about the new update <a href='" + updateLink + "'>here</a>";
+    notif.innerHTML = "Version " + v + " is out now! <a href='" + updateLink + "'>Click here</a> to see changes or <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>click here</span> for a summary of the new update";
     notifContainer.appendChild(notif);
     setTimeout(function(){notif.remove()}, 10000);
 }, 1550);
@@ -826,6 +907,7 @@ setInterval(function(){
     if (stock == 0 && money < 2.5) {
         let rng = Math.floor(Math.random() * 3) + 5;
         money += rng;
+        totalMoney += rng;
         moneyDisplay.innerHTML = money;
         let notif = document.createElement("p");
         notif.innerHTML = "You found $" + rng + " on the floor!";

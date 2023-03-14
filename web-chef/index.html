@@ -6,8 +6,10 @@
         <link id="favicon" rel="icon" href="https://nunnerrs.github.io/assets/web-chef.ico">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Emoji">
         <style>
-            a {
+            a, .link {
                 color: rgb(225, 240, 255);
+                cursor: pointer;
+                text-decoration: underline;
             }
             body {
                 background-color: rgb(50, 90, 125);
@@ -115,7 +117,20 @@
                 right: -5px;
                 width: 75px;
             }
+            #stats-button {
+                background-color: rgb(150, 255, 150);
+                bottom: 220px;
+                border-radius: 999px;
+                border-width: 0px;
+                color: rgb(255, 255, 255);
+                font-size: 28px;
+                height: 75px;
+                position: fixed;
+                right: -5px;
+                width: 75px;
+            }
             #tutorial-button {
+                background-color: rgb(150, 190, 235);
                 bottom: -5px;
                 border-radius: 999px;
                 border-width: 0px;
@@ -144,7 +159,7 @@
                 <button disabled id="make-food" style="color: rgb(150, 150, 150);">Turn table ingredients into food!</button>
                 <button disabled id="clear-ing" style="color: rgb(150, 150, 150);">Store all ingredients</button><br><br>
                 <label for="ing-search">Enter ingredient name to add to table: </label>
-                <input autocomplete="off" enterkeyhint="go" id="ing-search" placeholder="e.g. rice, potato" type="text">
+                <input autocomplete="off" enterkeyhint="go" id="ing-search" maxlength="50" placeholder="e.g. rice, potato" type="text">
                 <p id="ing-search-error"></p>
             </div>
             <div class="column"><gap>SPACE</gap></div>
@@ -180,9 +195,10 @@
         <h4 style="font-weight: normal">Based on Reykr's <a href="https://replit.com/@Reykr/Console-Chef">Console Chef</a> game on Replit</h4>
         <h4 style="font-weight: normal">Version <v id="version">----</v></h4>
         <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 200, 175);">To the NunnerVerse²</a></h3>
+        <div><button id="stats-button">📊</button></div>
         <div><button id="achievements-button">★</button></div>
         <div><button id="emoji-button">😃</button></div>
-        <div><button class="blue" id="tutorial-button">ℹ</button></div>
+        <div><button id="tutorial-button">ℹ</button></div>
         <script src="script.js"></script>
     </body>
 </html>
