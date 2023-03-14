@@ -1,5 +1,6 @@
 var title = document.getElementById("title");
-var button = document.getElementById("clickButton");
+var button = document.getElementById("click-button");
+var clickMsg = document.getElementById('click-msg');
 var checkboxes = document.getElementById("checkboxes");
 var visitCount = Number(localStorage.getItem("visits"));
 
@@ -19,7 +20,6 @@ function click() {
     let clicks = document.getElementById('clicks');
     let newClicks = Number(clicks.innerHTML) + 0.5;
     clicks.innerHTML = newClicks;
-    var clickMsg = document.getElementById('clickMsg');
     if (Number(newClicks) == 50) {
         clickMsg.innerHTML = 'wow you did it';
     };
@@ -134,5 +134,5 @@ function checkCode() {
     };
 };
 
-button.addEventListener("click", click);
-checkboxes.addEventListener("click", checkCode);
+button.onclick = click;
+checkboxes.onclick = checkCode;
