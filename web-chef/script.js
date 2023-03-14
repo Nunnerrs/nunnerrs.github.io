@@ -1,4 +1,4 @@
-var v = "v" + "1.6.10.6";
+var v = "v" + "1.6.11.6";
 var version = document.getElementById("version");
 version.innerHTML = v;
 var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
@@ -7,11 +7,9 @@ updateLink = updateLink + commitId;
 // make a new line to display as new line
 // NO " OR '
 var updateSummary = `• view game stats with the new stats button (📊)!
-• counter to keep track of total customers served & total money all-time (viewable by clicking stats button)
-• bento box and doughnut recipes & updated cookie recipe for more realism
-• 4 new achievements for max ads & total customer milestones
-• all achievements can now actually be obtained
-• now theres an actual icon for Web Chef hooray
+• new bento box and doughnut recipes & updated stew (now paella) and cookie recipe
+• 5 new achievements for donuts, max ads, total customer milestones, and getting all achievements
+• web chef icon
 • version summary can be viewed by clicking on notif (like what you did c:)`;
 // the `; SHOULD NOT be on its own line
 
@@ -119,9 +117,12 @@ const ingredientsList = {
     cheese: "🧀",
     "🧀": "🧀",
     chicken: "🥩",
+    choco: "🍫",
     chocolate: "🍫",
     "🍫": "🍫",
     cognac: "🍷",
+    cream: "🥛",
+    creme: "🥛",
     cucumber: "🥒",
     "🥒": "🥒",
     egg: "🥚",
@@ -180,7 +181,7 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "🍹", ing: "🍷🍍🍋💧🍯🧊", ingList: "Wine,Pineapple,Lemon,Water,Syrup,Ice", name: "Tropical Cocktail", profit: 14, unlocked: false},
     {emoji: "🍰", ing: "🌾🥚🧈🥛🧀", ingList: "Flour,Egg,Butter,Milk,Cheese", name: "Cheesecake", profit: 10, unlocked: false},
     {emoji: "🌯", ing: "🌾🫘🍚🥩🧅", ingList: "Flour,Beans,Rice,Meat,Onion", name: "Burrito", profit: 9.5, unlocked: false},
-    {emoji: "🥘", ing: "💧🥩🥬🫘🍋", ingList: "Water,Meat,Lettuce,Beans,Lemon", name: "Stew", profit: 9, unlocked: false},
+    {emoji: "🥘", ing: "🍚🥩🦐🍅🍋", ingList: "Rice,Meat,Shrimp,Tomato,Lemon", name: "Paella", profit: 9, unlocked: false},
     {emoji: "🍔", ing: "🍞🧀🥩🥬🍞", ingList: "Bread,Cheese,Meat,Lettuce,Bread", name: "Burger", profit: 9, unlocked: false},
     {emoji: "🍲", ing: "💧🍜🥩🧅", ingList: "Water,Noodles,Meat,Onion", name: "Pho", profit: 8.5, unlocked: false},
     {emoji: "🥪", ing: "🍞🧀🍅🥬🍞", ingList: "Bread,Cheese,Tomato,Lettuce,Bread", name: "Sandwich", profit: 8, unlocked: false},
@@ -242,6 +243,7 @@ const achievements = [ // {id: NUMBER, name: "ACHIEVEMENT", desc: "BRIEFDESCRIPT
     {id: 17, name: "Popular", desc: "Serve 100 customers all-time", unlocked: false},
     {id: 18, name: "Culinary Feat", desc: "Serve 500 customers all-time", unlocked: false},
     {id: 19, name: "Nationwide Cuisine", desc: "Serve 1,000 customers all-time", unlocked: false},
+    {id: 20, name: "How Do Ya Like Them Donuts?!", desc: "Serve a doughnut to Hanako or Tsukasa", unlocked: false},
     {id: 2, name: "Bread For Life", desc: "Serve a baguette to Moca Aoba", unlocked: false},
     {id: 3, name: "Plants Only", desc: "Serve a salad to Holly or Malo", unlocked: false},
     {id: 4, name: "Caprisun!!", desc: "Serve apple juice to Skylar", unlocked: false},
@@ -255,7 +257,7 @@ const achievements = [ // {id: NUMBER, name: "ACHIEVEMENT", desc: "BRIEFDESCRIPT
     {id: 12, name: "NO. JUST NO.", desc: "Attempt to cook something terrible (discover secret #3)", unlocked: false},
     {id: 13, name: "Free Advertisment", desc: "Try to cook a certain \"phrase\" (discover secret #4)", unlocked: false},
     {id: 14, name: "Top Secret", desc: "Discover the easiest secret of all time (#5)", unlocked: false},
-    {id: 15, name: "Overachiever", desc: "Achieve all above achievements", unlocked: false},
+    {id: 15, name: "Overachiever", desc: "Achieve all above achievements (click on star button to claim)", unlocked: false},
 ];
 achievements[achievements.length - 1]["desc"] = "Achieve all above achievements (total of " + achievements.length + ")";
 for (let i = 0; i < achievements.length; i++) {
@@ -372,6 +374,9 @@ function serveCustomer(order, customer) {
         };
         if ((customer.dataset.name.match("Peep") != null || customer.dataset.name.match("Piper") != null || customer.dataset.name.match("Sunny") != null) && order["emoji"] == "🍳") {
             award(8);
+        };
+        if ((customer.dataset.name.match("Hanako") != null || customer.dataset.name.match("Tsukasa") != null) && order["emoji"] == "🍩") {
+            award(20);
         };
         customer.remove();
     };
@@ -498,10 +503,21 @@ function makeFood() {
         notifContainer.appendChild(notif);
         setTimeout(function(){notif.remove()}, 8000);
     };
-    
     if (ingredients.innerHTML == "🧊") {
         let notif = document.createElement("p");
         notif.innerHTML = "The Shaved Ice recipe has been updated; See updated recipe in Recipes book";
+        notifContainer.appendChild(notif);
+        setTimeout(function(){notif.remove()}, 8000);
+    };
+    if (ingredients.innerHTML == "🌾🍫") {
+        let notif = document.createElement("p");
+        notif.innerHTML = "The Cookie recipe has been updated; See updated recipe in Recipes book";
+        notifContainer.appendChild(notif);
+        setTimeout(function(){notif.remove()}, 8000);
+    };
+    if (ingredients.innerHTML == "💧🥩🥬🫘🍋") {
+        let notif = document.createElement("p");
+        notif.innerHTML = "The Stew recipe has been changed to Paella; See updated recipe in Recipes book";
         notifContainer.appendChild(notif);
         setTimeout(function(){notif.remove()}, 8000);
     };
@@ -592,19 +608,19 @@ function unlockRecipe(loseMoney) {
         money -= recipePrice;
         moneyDisplay.innerHTML = money;
         paid = true
-    } else {
+    } else if (loseMoney == false) {
         paid = true;
     };
     if (paid == true) {
         let unlocked = false;
-        for (let i = 0; i < foodList.length - 1; i++) {
+        for (let i = 0; i < foodList.length; i++) {
             let f = Math.floor(Math.random() * foodList.length);
             if (foodList[f]["unlocked"] == false) {
                 foodList[f]["unlocked"] = true;
                 unlocked = true;
                 let unlockedAll = true;
-                for (let i = 0; i < foodList.length - 1; i++) {
-                    if (foodList[i]["unlocked"] == false) {
+                for (let i2 = 0; i2 < foodList.length; i2++) {
+                    if (foodList[i2]["unlocked"] == false) {
                         unlockedAll = false;
                         break;
                     };
@@ -799,8 +815,20 @@ function hasAchievement(a) {
 
 function showAchievements() {
     let achievementsList = "Achievements:";
-    for (let i = 0; i < achievements.length; i++) {
+    let unlockedAll = true;
+    for (let i = 0; i < achievements.length - 1; i++) {
         let a = achievements[i];
+        achievementsList = achievementsList + "\n" + (a["unlocked"] == true ? "✅" : "❎") + " " + a["name"] + " ~ " + a["desc"];
+        if (a["id"] != 15 && a["unlocked"] == false) {
+            unlockedAll = false;
+        };
+    };
+    if (unlockedAll == true) {
+        award(15);
+        let a = achievements[achievements.length]
+        achievementsList = achievementsList + "\n" + (a["unlocked"] == true ? "✅" : "❎") + " " + a["name"] + " ~ " + a["desc"];
+    } else {
+        let a = achievements[achievements.length]
         achievementsList = achievementsList + "\n" + (a["unlocked"] == true ? "✅" : "❎") + " " + a["name"] + " ~ " + a["desc"];
     };
     alert(achievementsList);
