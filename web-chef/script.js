@@ -78,6 +78,12 @@ var buySeating = document.getElementById("buy-seating");
 var seatingPrice = 30;
 var buyAd = document.getElementById("buy-ad");
 var adPrice = 45;
+//var hireRestocker = document.getElementById("hire-restocker");
+var restockerPrice = 60;
+var restockers = 0;
+if (localStorage.getItem("restockers") != null) {
+    restockers = Number(localStorage.getItem("restockers"));
+};
 var saveButton = document.getElementById("save-button");
 var eraseDataButton = document.getElementById("erase-data-button");
 var statsButton = document.getElementById("stats-button");
@@ -98,7 +104,7 @@ const customerNames = [
     /*Pokémon*/			"Shuckle", "Ash Ketchum", "Satoshi", "Misty", "Brock", "May", "Dawn", "Iris", "Cilan", "Serena", "Clement", "Bonnie", "Lana", "Mao", "Kaki", "Lilie", "Sophocles", "Goh", "Chloe",
     /*Comic book*/		"Bill", "Roski", "Ginny", "Emily", "Rebecca", "Joey", "Charlyy", "Bobby", "Sally", "Pippi", "Althea", "Derek", "Steven", "Collin",
     /*Mochi Squishies*/	"Marshmallow", "Ginger", "Vered", "Snowy", "Blossom", "Melody", "Peep", "Piper", "Sunny", "Honey", "Gummy", "Snoopy", "Mrs. Polar", "Sharpie",
-    /*Roblox Youtubers*/"Flamingo", "Denis", "Leah Ashe", "Kreek", "Kevin", "Sketch", "ItsFunneh", "LandyBox", "Laughability",
+    /*Roblox Youtubers*/"Flamingo", "Denis", "Leah Ashe", "Kreek", "Kevin", "Sketch", "ItsFunneh", "LankyBox", "Laughability",
     /*Roblox*/          "You", "Carl", "Builderman", "David Baszucki", "Barry",
 ];
 const ingredientsList = {
@@ -210,7 +216,7 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "🍗", ing: "🥩", ingList: "Meat", name: "Chicken Leg", profit: 3, unlocked: false},
     {emoji: "🥖", ing: "🍞", ingList: "Bread", name: "Baguette", profit: 3, unlocked: false},
     {emoji: "🍤", ing: "🦐", ingList: "Shrimp", name: "Fried Shrimp", profit: 2.5, unlocked: false},
-    {emoji: "🧃", ing: "💧🍎", ingList: "Water,Apple", name: "Apple Juice", profit: 2.5, unlocked: false},
+    {emoji: "🧃", ing: "🍎", ingList: "Apple", name: "Apple Juice", profit: 2.5, unlocked: false},
     {emoji: "🍟", ing: "🥔", ingList: "Potato", name: "French Fries", profit: 2, unlocked: true},
     {emoji: "🍙", ing: "🍚", ingList: "Rice", name: "Rice Ball", profit: 1.5, unlocked: true},
 ];
@@ -710,6 +716,24 @@ function addAd() {
     };
 };
 
+function addRestocker() {
+    let confirmation = confirm("Hire a restocker (automatically restocks) for $" + restockerPrice + "?");
+    if (confirmation == true && money >= restockerPrice) {
+        if (restockers == 0) {
+            money -= restockerPrice;
+            moneyDisplay.innerHTML = money;
+            restockers++;
+        } else {
+            let notif = document.createElement("p");
+            notif.innerHTML = "You can't hire any more restockers! (Max of 1)";
+            notifContainer.appendChild(notif);
+            setTimeout(function(){notif.remove()}, 5000);
+        };
+    } else if (confirmation == true && money < restockerPrice) {
+        alert("You don't have enough money to buy this! (Price: " + restockerPrice + ")");
+    };
+};
+
 function saveData() {
     localStorage.setItem("money", money);
     localStorage.setItem("totalMoney", totalMoney);
@@ -718,6 +742,7 @@ function saveData() {
     localStorage.setItem("customerRate", customerRate);
     localStorage.setItem("stock", stock);
     localStorage.setItem("storage", storage);
+    localStorage.setItem("restockers", restockers);
     for (let i = 0; i < foodList.length - 2; i++) {
         let splitName = foodList[i]["name"].toLowerCase().split(" ");
         let name = "";
@@ -760,6 +785,8 @@ function eraseData() {
         storage = 25;
         storageDisplay.innerHTML = storage;
         localStorage.setItem("storage", storage);
+        restockers = 0;
+        localStorage.setItem("storage", restockers);
         for (let i = 0; i < foodList.length - 1; i++) {
             let splitName = foodList[i]["name"].toLowerCase().split(" ");
             let name = "";
@@ -927,6 +954,7 @@ buyRecipeButton.onclick = buyRecipe;
 buyStorage.onclick = addStorage;
 buySeating.onclick = addSeating;
 buyAd.onclick = addAd;
+//hireRestocker.onclick = addRestocker;
 saveButton.onclick = saveData;
 eraseDataButton.onclick = eraseData;
 statsButton.onclick = stats;
@@ -953,6 +981,12 @@ setTimeout(function(){
     notifContainer.appendChild(notif);
     setTimeout(function(){notif.remove()}, 10000);
 }, 1550);
+setInterval(function(){
+    if (stock <= Math.round(storage / 2) && restockers > 0) {
+        let stockToAdd = storage - Math.floor(storage / 2);
+        
+    };
+}, 1000);
 setInterval(customer, customerRate);
 setInterval(function(){
     if (stock == 0 && money < 2.5) {
