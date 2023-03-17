@@ -1,8 +1,8 @@
-var v = "v" + "1.6.12.6";
+var v = "v" + "1.6.12.7";
 var version = document.getElementById("version");
 version.innerHTML = v;
 var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
-var commitId = "3d7f6304b782ff6a1c949ab5c3fbc40efc01d14b";
+var commitId = "cc38037163afa5339cf1d327a2287b8f840ae811";
 updateLink = updateLink + commitId;
 // make a new line to display as new line
 // NO " OR '
@@ -875,10 +875,10 @@ function showAchievements() {
     };
     if (unlockedAll == true) {
         award(15);
-        let a = achievements[achievements.length]
+        let a = achievements[achievements.length - 1]
         achievementsList = achievementsList + "\n" + (a["unlocked"] == true ? "✅" : "❎") + " " + a["name"] + " ~ " + a["desc"];
     } else {
-        let a = achievements[achievements.length]
+        let a = achievements[achievements.length - 1]
         achievementsList = achievementsList + "\n" + (a["unlocked"] == true ? "✅" : "❎") + " " + a["name"] + " ~ " + a["desc"];
     };
     alert(achievementsList);
