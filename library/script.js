@@ -19,7 +19,7 @@ if (dm == null) {
     toggleDarkMode();
 };
 
-var total = 9;
+var total = 10;
 
 const books = {
     // fitting image sample: https://i.ibb.co/xLsBh3W/img.png (add class rp to fix margin on right pages)
@@ -31,7 +31,7 @@ const books = {
     book#: [
         // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
         "", // <img src="covers/placeholder.png">
-        "<br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Coming soon in MONTH 2023<br><br><button id='book#' onclick='copyLink();'>Copy book share link</button>
+        "<br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Coming soon in MONTH 2023<br><br><button id='book#' onclick='copyLink();'>Copy book share link</button>",
         "Coming Soon!",
         "Coming Soon!",
         // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
@@ -42,10 +42,11 @@ const books = {
         "<br><br><br><br><br><br><br><bt>Nunnerology</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 1/17/2023<br><br><button id='book1' onclick='copyLink();'>Copy book share link</button>",
         "This is an autobiography (maybe?) that I wrote so you guys can learn more about me. For a more brief version (mainly relating to code), visit my <a href='about'>about me page</a>.",
         "Hi there, I'm Julianna, but I'm known as Nunners on this website. I build and code Roblox games for fun. I also enjoy making this website, coded through HTML, JavaScript, and CSS. The coding languages I've learned are HTML, JavaScript, CSS, Luau (language based on Lua used for Roblox game making), and PHP.",
-        "Three words describing my personality are funny, smart, and creative. I'm a perfectionist (which I never realized actually). I have an older brother and a younger sister. In my free time, I play Roblox or code (this website or Roblox games)(in case you're wondering, my username is Nunnerrs, but I'd probably only friend you if I know you in real life). My friends are Kayleigh, Lianna, and Skylar (I have a lot more but they don't want to be publically mentioned). I'm a big fan of Pokémon and Toilet-Bound Hanako-kun.",
-        "Here's a list of some of my <b>favorites:</b><br>• Animals — Hedgehogs, frogs, and ducks<br>• Anime — Toilet-Bound Hanako-kun<br>• Chips — Cheddar & Sour Cream Ruffles and Cheetos Puffs<br>• Color — Aquamarine (hex #00ffae)<br>• Foods — Bistek, fried bangus, gyudon (from Yoshinoya), and SPAM<br>• Holiday — Christmas 🎄<br>• Manga — Jibaku Shounen Hanako-kun<br>• Music Artists — Snail's House, Kirara Magic, and Tobu<br>• Music Genre — kawaii future bass and electro house<br>• Pokémon — Shaymin and Shuckle<br>• Sport — None<br>• Video Games — Roblox, Genshin Impact, and BanG Dream!",
-        "<b>Fun facts about me:</b><br>• I was born on a couch (not in a hospital &#128561)<br>• My memory is really good, especially my long-term memory (but sometimes my short-term memory fails me so it balances out)<br>• I memorized every single Pokémon in exsistence (before Gen. 9, but I'm memorizing more!) + (a lot of) types of each of them + facts about many + Gen. 6 & 7 cries",
+        "Three words describing my personality are funny, smart, and creative. I'm a perfectionist (which I never realized actually). I have an older brother and a younger sister. In my free time, I play Roblox or code (this website or Roblox games). I like to draw, read, and listen to music. My friends are Kayleigh, Lianna, and Skylar (I have a lot more but they don't want to be publically mentioned). I'm a big fan of Pokémon and Toilet-Bound Hanako-kun.",
+        "Here's a list of some of my <b>favorites:</b><br>• Animals — Hedgehogs, frogs, and ducks<br>• Anime — Toilet-Bound Hanako-kun<br>• Chips — Cheddar & Sour Cream Ruffles and Cheetos Puffs<br>• Color — Aquamarine (hex #00ffae)<br>• Foods — Bistek, fried bangus, gyudon (from Yoshinoya), and SPAM<br>• Holiday — Christmas 🎄<br>• Manga — Toilet-Bound Hanako-kun<br>• Music Artists — Snail's House, Kirara Magic, and Tobu<br>• Music Genre — kawaii future bass and electro house<br>• Pokémon — Shaymin and Shuckle<br>• Sport — None<br>• Video Games — Roblox, Genshin Impact, and BanG Dream!",
+        "<b>Fun facts about me:</b><br>• I was born on a couch (not in a hospital &#128561)<br>• My memory is really good, especially my long-term memory (but sometimes my short-term memory fails me so it balances out)<br>• I memorized every single Pokémon in exsistence (including Gen. 9!) + (a lot of) types of each of them + facts about many + Gen. 6 & 7 cries<br>• I own <i>every</i> Toilet-Bound Hanako-kun manga (even Vol. 0 and After-School Hanako-kun)(except Vol. 18+, those haven't released yet in English)",
         "<b>Fun facts about my website:</b><br>• My personal website (nunnerrs.github.io) used to be on W3Spaces (I switched because they started limiting the free plan grrr)<br>• Web Chef was renamed three times. Its original name was JS Chef, but was changed to Button Chef, Web Cuisine, and now it's Web Chef! Heheh I just wasn't satified—",
+        "<b>Contacts</b> (idk what you'd use them for tho)<br>Discord server (NunnerDev): <a href='https://discord.gg/zbVsHA4tSu'>discord.gg</a><br>Roblox username: Nunnerrs<br>Website: <a href='https://nunnerrs.github.io'>nunnerrs.github.io</a>",
         "And that's all I can think of adding for now! I'll update this more as things change.",
     ],
     book2: [
@@ -78,8 +79,9 @@ const books = {
     book7: book7, // Nunners' Guide To Dreams & Nightmares
     book8: [ // "<heading><b>Mon. DD, 2023</b></heading><br><br>• ",
         "", // <img src="covers/placeholder.png">
-        "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 4/6/2023<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
+        "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 4/10/2023<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
         // UPDATE NEWEST NEWS ABOVE & IN INDEX.HTML FILE
+        "<heading><b>Apr. 10, 2023</b></heading><br><br>• <i>Hope Vol. 2</i> is OUT NOW! SORRY FOR THE DELAY :/ I'll try to get <i>Hope Vol. 3</i> out much faster than Volume 2.<br>• New CGT gears! Handgun, Name Tag, NunnerSword, and more.<br>• I added more stuff to <i>Nunnerology</i>; Go check it out :D",
         "<heading><b>Apr. 6, 2023</b></heading><br><br>• I took a break from updating my website for a while, hope you guys aren't mad 😃! Anyways, sorry for the delay on Hope Vol. 2. I actually haven't been working on it (I barely even started it) to be honest with you. But don't worry I can finally end the month-long postponing :DDD",
         "<heading><b>Mar. 9, 2023</b></heading><br><br>• Web Chef updates! New ingredients Syrup, Wine and Pineapple plus recipes to go with them like Flan, Fondue, and Tropical Cocktail. I also added a new achievements system where you can earn badges for doing certain things, discovering secrets, and more! And of course lots of bug fixes :P",
         "<heading><b>Mar. 7, 2023</b></heading><br><br>• <i>Hope Vol. 2</i> coming soon! There's still a lot I have to do, but I'll try my hardest to finish it before April.<br>• Custom Gear Testing updates! I added a Toy Ball gear you can use to play with your pets. There's also a new only-owner gear called the NunnerOrb—touching it awards you with the Meet Nunnerrs! badge. If you have the badge, you can wear the Nunnerrs suit. I also fixed some broken stuff.",
@@ -106,6 +108,7 @@ const books = {
         "<b>Sources</b><br>• <a href='https://www.facebook.com/PBSNature/videos/hermit-crab-shells/414959254038523'>Hermit Crab Shells (facebook.com)</a><br>• <a href='https://environment.bm/land-hermit-crab'>Land Hermit Crab (environment.bm)</a><br>• <a href='https://cdnsciencepub.com/doi/10.1139/cjz-2014-0312'>Hiding time of the hermit crab (cdnsciencepub.com)</a><br>• <a href='https://www.hermitcrabpatch.com/Hermit-Crab-Successful-Molting-a/138.htm'>Hermit Crab Successful Molting (hermitcrabpatch.com)</a><br>• <a href='https://a-z-animals.com/blog/10-incredible-hermit-crab-facts/'>10 Incredible Hermit Crab Facts (a-z-animals.com)</a>",
     ],
     book10: book10, // Hope Vol. 2
+    book11: book11, // Hope Vol. 3
 };
 
 function openBook(bookId) {
