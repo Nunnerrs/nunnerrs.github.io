@@ -53,6 +53,9 @@ function click() {
     if (Number(newClicks) == 150) {
         clickMsg.innerHTML = "um you know you can stop now";
     };
+    if (Number(newClicks) == 200) {
+        clickMsg.innerHTML = "bye bye";
+    };
     if (Number(newClicks) == 250) {
         clickMsg.innerHTML = "…";
     };
@@ -90,7 +93,7 @@ function click() {
         clickMsg.innerHTML = "do you REALLY expect me to tell you…?";
     };
     if (Number(newClicks) == 850) {
-        clickMsg.innerHTML = "well…you've been clicking for a while now…";
+        clickMsg.innerHTML = "well…i bet your wrists hurt…";
     };
     if (Number(newClicks) == 900) {
         clickMsg.innerHTML = "YOU BETTER NOT BE USING AN AUTO-CLICKER THOUGH or else SHAME ON U";
@@ -103,6 +106,9 @@ function click() {
     };
     if (Number(newClicks) == 1050) {
         clickMsg.innerHTML = "the next time you'll get a message from me is gonna be at 1,250 clicks!! so get clickin'!";
+    };
+    if (Number(newClicks) == 1150) {
+        clickMsg.innerHTML = "";
     };
     if (Number(newClicks) == 1250) {
         clickMsg.innerHTML = "…you really wanna know what it is, huh…";
@@ -142,6 +148,30 @@ function click() {
     };
     if (Number(newClicks) == 1850) {
         clickMsg.innerHTML = "…yet";
+    };
+    if (Number(newClicks) == 1900) {
+        clickMsg.innerHTML = "i think you should massage your hand now i bet it aches";
+    };
+    if (Number(newClicks) == 1950) {
+        clickMsg.innerHTML = "btw reload the page if you want to start over with the dialog";
+    };
+    if (Number(newClicks) == 2000) {
+        clickMsg.innerHTML = "dang you hit 2,000";
+    };
+    if (Number(newClicks) == 2050) {
+        clickMsg.innerHTML = "well, there aren't anymore secrets…";
+    };
+    if (Number(newClicks) == 2100) {
+        clickMsg.innerHTML = "so what now?";
+    };
+    if (Number(newClicks) == 2150) {
+        clickMsg.innerHTML = "maybe we could have a conversation…";
+    };
+    if (Number(newClicks) == 2200) {
+        clickMsg.innerHTML = "but i'm too lazy right now, and i'd have to delete it once i add a new secret";
+    };
+    if (Number(newClicks) == 2250) {
+        clickMsg.innerHTML = "so bye bye, for real this time!";
     };
     /*setTimeout(function() {
         clicks.innerHTML = Math.floor(Number(clicks.innerHTML))
