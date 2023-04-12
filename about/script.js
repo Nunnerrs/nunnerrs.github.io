@@ -1,8 +1,32 @@
 var title = document.getElementById("title");
 var button = document.getElementById("click-button");
-var clickMsg = document.getElementById('click-msg');
+var clickMsg = document.getElementById("click-msg");
 var checkboxes = document.getElementById("checkboxes");
 var visitCount = Number(localStorage.getItem("visits"));
+var kahootUsername = document.getElementById("kahoot-username");
+var kahootGenerator = document.getElementById("kahoot-generator");
+
+const adjectives = ["Agent", "Agile", "Amazing", "Amiable", "Aquatic", "Arctic", "Awesome",
+                   "Blue", "Bold", "Bright",
+                   "Champion", "Classy", "Clever", "Crazy", "Creative", "Cute",
+                   "Daring", "Diplomat", "Doctor", "Dynamic",
+                   "Eager", "Elated", "Epic", "Excited",
+                   "Fabulous", "Flying", "Fuzzy",
+                   "Golden", "Happy", "Honest",
+                   "Inspired", "Jolly", "Joyful", "Kind",
+                   "Legend", "Lively", "Lovely", "Magic", "Majestic", "Mountain",
+                   "Purple", "Radiant", "Rational", "Red", "Rocky",
+                   "Silly", "Snowy", "Speedy", "Stellar", "Super",
+                   "Wise", "Wonder", "Zany"];
+const animals = ["Alpaca", "Ant", "Bear", "Cat", "Cheetah", "Condor", "Crab",
+                "Dingo", "Dog", "Dove", "Dragon", "Duck",
+                "Fox", "Frog", "Gator", "Giraffe", "Glider", "Goose",
+                "Hamster", "Hen", "Horse", "Ibex", "Kitten",
+                "Lemur", "Leopard", "Lion", "Newt", "Octopus", "Otter",
+                "Penguin", "Pigeon", "Quail", "Raven", "Rhino",
+                "Sable", "Seal", "SeaLion", "Sloth", "Snail", "Sphinx", "Squid", "Swan",
+                "Tiger", "Wallaby", "Wildcat", "Wolf",
+                "Yak", "Yeti", "Zebra"];
 
 if (visitCount == null || visitCount == NaN || typeof visitCount != "number") {
     localStorage.setItem("visits", 0);
@@ -132,6 +156,14 @@ function checkCode() {
     if (cb[0].checked && !cb[1].checked && !cb[2].checked && cb[3].checked && cb[4].checked && cb[5].checked && !cb[6].checked && cb[7].checked && cb[8].checked && !cb[9].checked && cb[10].checked && cb[11].checked && cb[12].checked && !cb[13].checked && !cb[14].checked && cb[15].checked) {
         alert('you got the code right! the secret\'s still coming soon tho so check back some other time');
     };
+};
+
+function generateUsername() {
+    let adj = Math.floor(Math.random() * adjectives.length);
+    let animal = Math.floor(Math.random() * animals.length);
+    let username = adjectives[adj] + animals[animal];
+    kahootUsername.innerHTML = "Your username is …";
+    setTimeout(function(){kahootUsername.innerHTML = "Your username is " + username}, 1000);
 };
 
 button.onclick = click;
