@@ -52,7 +52,7 @@ const books = {
     book2: [
         "", // <img src="covers/placeholder.png">
         "<br><br><br><br><br><bt>How To NunnerLibrary</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 1/17/2023<br><b>Press the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below</b> to flip the page<br><br><button id='book2' onclick='copyLink();'>Copy book share link</button>",
-        "Welcome to the NunnerLibrary! This book is a tutorial for the NunnerLibrary. You'll learn what everything does and the meaning of things such as the Reading Level. Books should be read from left to right, top to bottom. To open a book, click on any button under a book genre (<span style='font-family: M PLUS ROUNDED 1C'>&#9888</span> clicking on a book while one is already open will \"override\" your currently open book <span style='font-family: M PLUS ROUNDED 1C'>&#9888</span>). Each book is sorted into a category/genre (e.g. click on Nunnerology under Non-Fiction). Books with \"Vol. 1\", \"Vol. 2\", etc under the title means that book is part of a series. If you're going to start a book series, you should always read each book in order (start with Volume 1, then read Volume 2…) so you understand the storyline.",
+        "Welcome to the NunnerLibrary! This book is a tutorial for the NunnerLibrary. You'll learn what everything does and the meaning of things such as the Reading Level. Books should be read from left to right, top to bottom. To open a book, click on any button (book cover) under a book genre (close any open books first). Each book is sorted into a category/genre (e.g. click on Nunnerology under Non-Fiction). Books with \"Vol. 1\", \"Vol. 2\", etc under the title means that book is part of a series. If you're going to start a book series, you should always read each book in order (start with Volume 1, then read Volume 2…) so you understand the storyline.",
         "The Reading Level on the cover shows the \"difficulty\" of the currently open book. It's out of 5 stars, <star>★☆☆☆☆</star> means the book is very easy to read while <star>★★★★★</star> means the book may be pretty difficult to read (because of the vocabulary). Don't worry if you like reading books 2-stars or less or 4-stars or more, everyone has their likes and dislikes. Most books have a reading level of <star>★★★☆☆</star> (moderate level). The book will open up above all the book buttons along will three different buttons. The <span style='font-family: M PLUS ROUNDED 1C'>←</span> button flips the book one page backward. The <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> button closes the book. The <span style='font-family: M PLUS ROUNDED 1C'>→</span> button flips the book one page forward. (The book continues on the next page, so click on the <span style='font-family: M PLUS ROUNDED 1C'>→</span> button below!)",
         "The \"Copy book share link\" can be used to bookmark a NunnerLibrary book or to share a specific book to someone else. Clicking on it copies a link to your keyboard's clipboard. If you visit the link, it will open the exact book you copied the link from. The \"Turn on dark mode\" button at the bottom makes the background black and system buttons dark gray. Many people like using dark mode (pretty much everywhere they can), and the darkness can be easier on eyes (especially at night). The \"Write a book for the NunnerLibrary\" at the bottom is a link to a Google Form where you can write your own book or story idea for the NunnerLibrary. The \"To The NunnerVerse²\" below it is a link to go back to my homepage.",
         "In the NunnerLibrary, you'll find all sorts of books. Most will be original stories, but some could feature characters from existing books or could be based on real books. There's currently a total of " + total + " books in the NunnerLibrary database. If you know me in real life or have my Discord username, you can always let me know any book suggestions you have (either the story outline or the entire story). I hope there's at least one book here you'll enjoy reading :D! (Click the <span style='font-family: M PLUS ROUNDED 1C'>&#215</span> to close the book).",
@@ -79,8 +79,9 @@ const books = {
     book7: book7, // Nunners' Guide To Dreams & Nightmares
     book8: [ // "<heading><b>Mon. DD, 2023</b></heading><br><br>• ",
         "", // <img src="covers/placeholder.png">
-        "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 4/10/2023<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
+        "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 4/13/2023<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
         // UPDATE NEWEST NEWS ABOVE & IN INDEX.HTML FILE
+        "<heading><b>Apr. 13, 2023</b></heading><br><br>• New Kahoot! Username Generator on my <a href='https://nunnerrs.github.io/about'>about me page</a>. You can screenshot any cool nicknames you got or something.<br>• More <i>Nunners' Guide To Dreams & Nightmares</i> dream meanings! I'll try to have one for every letter of the alphabet and more.",
         "<heading><b>Apr. 10, 2023</b></heading><br><br>• <i>Hope Vol. 2</i> is OUT NOW! SORRY FOR THE DELAY :/ I'll try to get <i>Hope Vol. 3</i> out much faster than Volume 2.<br>• New CGT gears! Handgun, Name Tag, NunnerSword, and more.<br>• I added more stuff to <i>Nunnerology</i>; Go check it out :D",
         "<heading><b>Apr. 6, 2023</b></heading><br><br>• I took a break from updating my website for a while, hope you guys aren't mad 😃! Anyways, sorry for the delay on Hope Vol. 2. I actually haven't been working on it (I barely even started it) to be honest with you. But don't worry I can finally end the month-long postponing :DDD",
         "<heading><b>Mar. 9, 2023</b></heading><br><br>• Web Chef updates! New ingredients Syrup, Wine and Pineapple plus recipes to go with them like Flan, Fondue, and Tropical Cocktail. I also added a new achievements system where you can earn badges for doing certain things, discovering secrets, and more! And of course lots of bug fixes :P",
@@ -109,6 +110,15 @@ const books = {
     ],
     book10: book10, // Hope Vol. 2
     book11: book11, // Hope Vol. 3
+    book12: [
+        // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
+        "", // <img src="covers/placeholder.png">
+        "<br><br><br><br><br><br><br><bt>Pinky & Mint: Whales</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star><br>Coming soon in April 2023<br><br><button id='book12' onclick='copyLink();'>Copy book share link</button>",
+        "Coming Soon!",
+        "Coming Soon!",
+        // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
+    ],
+    //book: book, // How To Lua
 };
 
 function openBook(bookId) {
