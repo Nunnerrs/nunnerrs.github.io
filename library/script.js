@@ -114,7 +114,7 @@ const books = {
         // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
         "", // <img src="covers/placeholder.png">
         "<br><br><br><br><br><br><br><bt>Pinky & Mint: Whales</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star><br>Coming soon in April 2023<br><br><button id='book12' onclick='copyLink();'>Copy book share link</button>",
-        "Coming Soon!",
+        "",
         "Coming Soon!",
         // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
     ],
