@@ -104,3 +104,21 @@ const book11 = [
     "Coming Soon!",
     // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
 ];
+
+// Guardian Of The Phoenix Vol. 1
+const book13 = [
+    "", // <img src="covers/placeholder.png">
+    "<br><br><br><br><br><br><br><bt>Guardian Of The Phoenix Vol. 1</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★★☆</star><br>Published on 5/9/2023<br><br><button id='book13' onclick='copyLink();'>Copy book share link</button>",
+    "Coming Soon!",
+    "Coming Soon!",
+];
+
+// Guardian Of The Phoenix Vol. 2
+const book14 = [
+    // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
+    "", // <img src="covers/placeholder.png">
+    "<br><br><br><br><br><br><br><bt>Guardian Of The Phoenix Vol. 2</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★★☆</star><br>Coming soon in May 2023<br><br><button id='book14' onclick='copyLink();'>Copy book share link</button>",
+    "Coming Soon!",
+    "Coming Soon!",
+    // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
+];

@@ -19,7 +19,7 @@ if (dm == null) {
     toggleDarkMode();
 };
 
-var total = 10;
+var total = 11;
 
 const books = {
     // fitting image sample: https://i.ibb.co/xLsBh3W/img.png (add class rp to fix margin on right pages)
@@ -114,11 +114,14 @@ const books = {
         // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
         "", // <img src="covers/placeholder.png">
         "<br><br><br><br><br><br><br><bt>Pinky & Mint: Whales</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★☆☆☆</star><br>Coming soon in April 2023<br><br><button id='book12' onclick='copyLink();'>Copy book share link</button>",
-        "",
-        "Coming Soon!",
+        "Pinky and Mint are swimming near the deep parts of the ocean. They are octopi. Pinky becomes very interested in a tiny shrimp.<br>\"Wow it's a shrimp…\" she stares. It quickly swims away from fear.<br>\"Huh? Where?\" Mint looks around and his eyes widen.<br>\"It left already—\" Pinky says.<br>A huge red cloud rushes towards them!<br>\"WAAAAAAAAAHH!!!\" they scream, whirling under water as the cloud hit them. They closed their eyes and could feel little things tickling them. Mint opens his eyes a little and sees millions of the tiny shrimps!<br>\"Wait, Pinky!\" he taps her tentacle and points. \"Those are all wittle shrimps!!\"<br>Pinky slowly opens her eyes and gasps. \"Whoaaa!\"",
+        "The huge group of shrimps move like a red tornado. Each of them look scared. One slows down in front of Mint.<br>\"Wun while you stiw can!!\" it says and quickly swims off.<br>\"Run? But why?\" Mint shakes his head in confusion. After a moment the big cloud of shrimps move past them.<br>\"Phew,\" Pinky scratches her head. \"What was that all about?\"<br>Mint and Pinky hear a loud humming noise. It's a little high pitched but sounds sad.<br>\"Is someone singing?\" Mint swims a little bit upwards. He stops when he notices a small dark shape coming towards them.<br>Pinky moves towards it. \"Hiiii!!\" She waves a tentacle.<br>The shape grew bigger as it came closer.",
+        "\"Hey, why won't you wave back?\" Pinky frowns.<br>The song coming from the shadow only gets louder. They stare at it and they see it has huge fins. The shape begins to look more like a fish as it comes nearer, only a hundred times bigger than them!<br>\"AAAAAAAH!! SHARKK!!!\" Pinky hides behind Mint in panic. The giant creature's huge mouth opens and reveals hundreds of long teeth.<br>\"WAAAAAAA!!\" Both octopi rush to the side and dodge the hundred-foot long animal. It swims quickly towards the big shrimp cloud, but the shrimps separate and the creature slows down.<br>The octopi hide behind a rock.<br>\"W-W-W-What was <i>that</i>?!\" Pinky stutters.<br>\"Dunno. But we gotta stay quiet!\"",
+        "\"W-W-What if it f-finds us…?\"<br>\"I'm sure that's not gonna—\"<br>A giant head appears above the rock. Pinky and Mint stare at the creature unable to move. It grins.<br>\"Haii theree~!\" the giant says in a slow voice.<br>Pinky doesn't move. Mint blinks. \"H-Hi…\"",
         // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
     ],
-    //book: book, // How To Lua
+    book13: book13, // Guardian Of The Phoenix Vol. 1
+    book14: book14, // Guardian Of The Phoenix Vol. 2
 };
 
 function openBook(bookId) {
@@ -217,6 +220,10 @@ function toggleDarkMode() {
           for (let i = 0; i < h.length; i++) {
               h[i].classList.remove("white");
           };
+          h = document.body.getElementsByTagName("h4")
+          for (let i = 0; i < h.length; i++) {
+              h[i].classList.remove("white");
+          };
           let p = document.body.getElementsByTagName("p")
           for (let i = 0; i < p.length; i++) {
               p[i].classList.remove("white");
@@ -246,6 +253,10 @@ function toggleDarkMode() {
               h[i].classList.add("white");
           };
           h = document.body.getElementsByTagName("h3")
+          for (let i = 0; i < h.length; i++) {
+              h[i].classList.add("white");
+          };
+          h = document.body.getElementsByTagName("h4")
           for (let i = 0; i < h.length; i++) {
               h[i].classList.add("white");
           };
