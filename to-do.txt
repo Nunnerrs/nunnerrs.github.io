@@ -1,4 +1,5 @@
 To-Do:
+• Make buttons work in Lending A Hand
 • Add project images to homepage
 • Surround emojis in Web Chef with <e>
 • Make the Noto Emoji font button work & save whether or not it's enabled
