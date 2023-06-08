@@ -1,6 +1,8 @@
 var b = document.body;
 var t = document.querySelector("#title");
 var canvas = document.querySelector("#canvas");
+var controls = document.querySelector("#controls");
+var interactBtn = document.querySelector("#interact");
 var c = canvas.getContext("2d");
 var pc = Math.floor(Math.random() * 360);
 var playerColor = "";
@@ -132,6 +134,7 @@ var dialogLine = 0;
 // room 1 sprites (index of 1): sibling, paper
 var sprite = 0;
 var interactable = false;
+var interactText = "Interact";
 var proceed = false;
 
 const colors = [
@@ -267,6 +270,7 @@ function update() {
         if (x < walls[1]) {
             if (xg == false) {
                 x += vx;
+                setTimeout(function(){if (x >= walls[1]) {x -= 5}}, 50);
             };
         } else {
             x = walls[1] - 1;
@@ -296,13 +300,16 @@ function update() {
         	// sibling dialog
         	if (x > 150 && x <= 225 && y <= 200) {
             	sprite = 1;
+                interactText = "Talk";
                 interactable = true;
             // paper dialog
             } else if (x <= 125 && y <= 150) {
             	sprite = 2;
+                interactText = "Read";
                 interactable = true;
             } else {
             	sprite = 0;
+                interactText = "Interact";
             	interactable = false;
     			dialogText = "";
                 //console.log("not in range!");
@@ -335,7 +342,40 @@ function update() {
     if (p.hat > 0) {
         draw[hats[p.hat]]();
     };
+    if (interactable == true && dialog == false) {
+        draw.player(true);
+        if (p.hat > 0) {
+            draw[hats[p.hat]]();
+        };
+        let offset = canvas.height * 0.8;
+        let l = interactText.length;
+    	// interact box
+    	let color = p["color"].split("100%");
+        c.fillStyle = color[0] + "100%, 25%)";
+        c.strokeStyle = "#FFFFFF";
+        c.lineWidth = 2;
+    	c.roundRect(25, offset, 25 * l + 35, 50, 5);
+        //c.stroke();
+        c.fill();
+        // interact text
+        c.font = "bold 30px Courier New";
+        c.textAlign = "left";
+        c.fillStyle = "#FFFFFF";
+        c.fillText(interactText, 75, offset + 35);
+        // e
+        c.fillStyle = "#FFFFFF";
+        c.clearRect(36, offset + 10, 28, 29, 5);
+        c.roundRect(35, offset + 10, 30, 30, 5);
+        c.lineWidth = 2;
+        c.stroke();
+        c.fillStyle = "#000000";
+        c.fillText("E", 41, offset + 34);
+    };
     if (dialog == true) {
+    	draw.player(true);
+        if (p.hat > 0) {
+            draw[hats[p.hat]]();
+        };
     	let offset = canvas.height * 0.8;
     	// dialog box
     	let color = p["color"].split("100%");
@@ -381,10 +421,6 @@ function update() {
         c.closePath();
         c.fill();
     };
-    draw.player(true);
-    if (p.hat > 0) {
-        draw[hats[p.hat]]();
-    };
     if (title == true) {
     	let color = p["color"].split(")");
         c.fillStyle = color[0] + ", 75%)";
@@ -397,35 +433,13 @@ function update() {
         c.fillStyle = "#FFFFFF";
         c.fillText(titleText, canvas.width/2, 50);
     };
+    draw.player(true);
+    if (p.hat > 0) {
+        draw[hats[p.hat]]();
+    };
 };
 
-function detectKey(e) {
-	e.preventDefault();
-	let key = e.key.toLowerCase();
-	if (interactable == true && key == "e") {
-    	if (dialog == true) {
-            if (dialogLine >= dialogText.length) {
-                dialog = false;
-                dialogLine = 0;
-                dialogText = "";
-            } else {
-                proceed = true;
-            };
-        } else {
-          	interact();
-        };
-    };
-    if (interactable == true && key == " ") {
-    	if (dialog == true) {
-            if (dialogLine >= dialogText.length) {
-                dialog = false;
-                dialogLine = 0;
-                dialogText = "";
-            } else {
-                proceed = true;
-            };
-        };
-    };
+function move(key) {
 	if (dialog == false) {
       switch (key) {
           case "w":
@@ -442,6 +456,40 @@ function detectKey(e) {
           break;
       };
    };
+};
+
+function detectKey(e) {
+	let key = e.key.toLowerCase();
+    if (key == " ") {
+        e.preventDefault();
+    };
+	if (interactable == true) {
+    	if (key == "e") {
+            if (dialog == true) {
+                if (dialogLine >= dialogText.length) {
+                    dialog = false;
+                    dialogLine = 0;
+                    dialogText = "";
+                } else {
+                    proceed = true;
+                };
+            } else {
+                interact();
+            };
+        };
+        if (key == " ") {
+            if (dialog == true) {
+                if (dialogLine >= dialogText.length) {
+                    dialog = false;
+                    dialogLine = 0;
+                    dialogText = "";
+                } else {
+                    proceed = true;
+                };
+            };
+        };
+    };
+	move(key);
 };
 
 function stop(e) {
@@ -489,10 +537,8 @@ function click(e) {
         	};
         };
     } else if (dialog == false && interactable == true) {
-        if (room == 1) {
-            if (px > 100 && px < 175 && py > 50 && py < 200) {
-                interact();
-            };
+        if (py > 500) {
+            interact();
         };
     };
 };
@@ -502,3 +548,27 @@ setInterval(update, 25);
 b.onkeydown = detectKey;
 b.onkeyup = stop;
 canvas.onclick = click;
+
+let btns = controls.childNodes;
+for (let i = 0; i < btns.length; i++) {
+	console.log(btns[i].tagName);
+	if (btns[i].tagName == "BUTTON") {
+		btns[i].onmousedown = function(){move(btns[i].dataset.key)};
+    	btns[i].onmouseup = function(){stop({key: btns[i].dataset.key})};
+        btns[i].ontouchstart = function(){move(btns[i].dataset.key)};
+    	btns[i].ontouchend = function(){stop({key: btns[i].dataset.key})};
+    };
+};
+interactBtn.onclick = function(){
+	if (dialog == true && typeof dialogText == "object") {
+        if (dialogLine >= dialogText.length) {
+          dialog = false;
+          dialogLine = 0;
+          dialogText = "";
+        } else {
+          proceed = true;
+        };
+    } else if (dialog == false && interactable == true) {
+        interact();
+    };
+}
