@@ -76,26 +76,26 @@ const rooms = {
         3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3|
         `,
         `
-        3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
-        3,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        1,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        1,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7|
+        1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7|
+        1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7|
+        1,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7|
+        1,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        1,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
         `,
     ],
     walls: [
@@ -121,7 +121,7 @@ const dialogs = [
 	// Room 1
 	[
     	"Hey...I'm not really feeling so good.\n\nI'm pretty sick right now— *COUGH\nCOUGH*  :C\nCould you do me a favor? There's a\nfew things I want, but I can't get up\n'cause...you know. Anyways, I listed\nthem on the paper next to me.\n...You'll help? Aww, thanks buddy.",
-        "Things to do: go outside",
+        "Things to do: nothing in particular\n\nYou: I should get them some flowers\ntoo.",
     ],
     // Room 2
     [
@@ -132,10 +132,34 @@ var dialog = false;
 var dialogText = "";
 var dialogLine = 0;
 // room 1 sprites (index of 1): sibling, paper
+// room 2 sprites: flower
 var sprite = 0;
 var interactable = false;
 var interactText = "Interact";
+var pickup = 0;
 var proceed = false;
+
+const pickups = [
+// /* PICKUP */		false,
+	[],
+	// Room 1
+    [
+    false,
+    /* Placeholder */	false,
+    ],
+    // Room 2
+    [
+    false,
+    /* Flower */	false,
+    /* Flower */	false,
+    /* Flower */	false,
+    /* Flower */	false,
+    /* Flower */	false,
+    /* Flower */	false,
+    /* Flower */	false,
+    /* Flower */	false,
+    ],
+];
 
 const colors = [
 // /* COLOR */			"",
@@ -147,6 +171,7 @@ const colors = [
 /* Blue */			"rgb(200, 235, 255)",
 /* Brown */			"rgb(125, 75, 25)",
 /* Light Gray */	"#EEEEEE",
+/* Gray */			"#CDCDCD",
 
 ]
 const draw = {
@@ -225,6 +250,28 @@ const draw = {
         c.fillStyle = "#EEEEEE";
         c.fillRect(x - 20, y - 35, 40, 10);
     },
+    flower: function(x2, y2) {
+    	// petals
+        //c.fillStyle = "hsl(" + Math.floor(Math.random() * 360) + ", 100%, 50%)";
+        c.fillStyle = "#FF77AA"
+        c.beginPath();
+        c.arc(x2, y2 - 5, 6, 0, 2 * Math.PI);
+        c.fill();
+        c.beginPath();
+        c.arc(x2, y2 + 5, 6, 0, 2 * Math.PI);
+        c.fill();
+        c.beginPath();
+        c.arc(x2 - 5, y2, 6, 0, 2 * Math.PI);
+        c.fill();
+        c.beginPath();
+        c.arc(x2 + 5, y2, 6, 0, 2 * Math.PI);
+        c.fill();
+        // center
+        c.fillStyle = "#FFDF77"
+        c.beginPath();
+        c.arc(x2, y2, 5, 0, 2 * Math.PI);
+        c.fill();
+    },
 };
 
 function clear() {
@@ -245,6 +292,34 @@ function bg() {
             case 1:
             	draw.paper(62.5, 55);
                 draw.sibling(137.5, 75);
+            break;
+            case 2:
+            	// top flowers
+                if (pickups[2][1] == false) {
+            		draw.flower(140, 140);
+                };
+                if (pickups[2][2] == false) {
+                	draw.flower(370, 65);
+                };
+                if (pickups[2][3] == false) {
+                	draw.flower(575, 20);
+                };
+                if (pickups[2][4] == false) {
+                	draw.flower(650, 180);
+                };
+                // bottom flowers
+                if (pickups[2][5] == false) {
+            		draw.flower(200, 350);
+                };
+                if (pickups[2][6] == false) {
+                	draw.flower(690, 390);
+                };
+                if (pickups[2][7] == false) {
+                	draw.flower(520, 320);
+                };
+                if (pickups[2][8] == false) {
+                	draw.flower(340, 455);
+                };
             break;
         }
     };
@@ -330,6 +405,47 @@ function update() {
         	if (x <= 75 && (y < 160 || y > 345)) {
                 x = 75;
             };
+            interactText = "Pick Up Flower"
+            if (pickups[2][1] == false && x >= 115 && x <= 165 && y >= 115 && y <= 165) {
+            	sprite = 1;
+                pickup = 1;
+                interactable = true;
+            } else if (pickups[2][2] == false && x >= 345 && x <= 395 && y >= 40 && y <= 90) {
+            	sprite = 1;
+                pickup = 2;
+                interactable = true;
+            } else if (pickups[2][3] == false && x >= 550 && x <= 600 && y >= -5 && y <= 45) {
+            	sprite = 1;
+                pickup = 3;
+                interactable = true;
+            } else if (pickups[2][4] == false && x >= 625 && x <= 675 && y >= 155 && y <= 205) {
+            	sprite = 1;
+                pickup = 4;
+                interactable = true;
+            } else if (pickups[2][5] == false && x >= 175 && x <= 225 && y >= 325 && y <= 375) {
+            	sprite = 1;
+                pickup = 5;
+                interactable = true;
+            } else if (pickups[2][6] == false && x >= 665 && x <= 715 && y >= 365 && y <= 415) {
+            	sprite = 1;
+                pickup = 6;
+                interactable = true;
+            } else if (pickups[2][7] == false && x >= 495 && x <= 545 && y >= 295 && y <= 345) {
+            	sprite = 1;
+                pickup = 7;
+                interactable = true;
+            } else if (pickups[2][8] == false && x >= 315 && x <= 365 && y >= 430 && y <= 480) {
+            	sprite = 1;
+                pickup = 8;
+                interactable = true;
+            } else {
+            	sprite = 0;
+                pickup = 0;
+                interactText = "Interact";
+            	interactable = false;
+    			dialogText = "";
+                //console.log("not in range!");
+            }
             // exit
             if (x <= 55 && y >= 160 && y <= 345) {
                 room = 1;
@@ -337,6 +453,17 @@ function update() {
                 notif(rooms["titles"][1]);
             };
         break;
+        /*
+        // top flowers
+           draw.flower(300, 100);
+           draw.flower(435, 140);
+           draw.flower(575, 20);
+           // bottom flowers
+           draw.flower(200, 350);
+           draw.flower(690, 390);
+           draw.flower(520, 320);
+           draw.flower(340, 454);
+        */
     };
     draw.player(false);
     if (p.hat > 0) {
@@ -354,7 +481,7 @@ function update() {
         c.fillStyle = color[0] + "100%, 25%)";
         c.strokeStyle = "#FFFFFF";
         c.lineWidth = 2;
-    	c.roundRect(25, offset, 25 * l + 35, 50, 5);
+    	c.roundRect(25, offset, 18 * l + 60, 50, 5);
         //c.stroke();
         c.fill();
         // interact text
@@ -518,7 +645,14 @@ function interact() {
 	vx = 0;
     vy = 0;
     dialogText = dialogs[room - 1][sprite - 1].split("\n");
-    dialog = true;
+    if (dialogText[0] != "") {
+    	dialog = true;
+    } else {
+    	if (interactText == "Pick Up Flower") {
+        	console.log(pickup);
+        	pickups[room][pickup] = true;
+        };
+    };
 };
 
 function click(e) {
@@ -549,7 +683,7 @@ b.onkeydown = detectKey;
 b.onkeyup = stop;
 canvas.onclick = click;
 
-let btns = controls.childNodes;
+let btns = controls.children;
 for (let i = 0; i < btns.length; i++) {
 	console.log(btns[i].tagName);
 	if (btns[i].tagName == "BUTTON") {
@@ -571,4 +705,4 @@ interactBtn.onclick = function(){
     } else if (dialog == false && interactable == true) {
         interact();
     };
-}
+};
