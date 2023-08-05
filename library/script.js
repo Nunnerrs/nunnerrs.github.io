@@ -19,7 +19,7 @@ if (dm == null) {
     toggleDarkMode();
 };
 
-var total = 11;
+var total = 10;
 
 const books = {
     // fitting image sample: https://i.ibb.co/xLsBh3W/img.png (add class rp to fix margin on right pages)
@@ -40,13 +40,13 @@ const books = {
     book1: [
         "", // <img src="covers/placeholder.png">
         "<br><br><br><br><br><br><br><bt>Nunnerology</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 1/17/2023<br><br><button id='book1' onclick='copyLink();'>Copy book share link</button>",
-        "This is an autobiography (maybe?) that I wrote so you guys can learn more about me. For a more brief version (mainly relating to code), visit my <a href='about'>about me page</a>.",
+        "This is an autobiography (maybe?) that I wrote so you guys can learn more about me. I'll edit this every now and then (especially the favorites list) because my interests change occassionally. For a more brief version (mainly relating to code), visit my <a href='about'>about me page</a>. I hope you enjoy it ^u^",
         "Hi there, I'm Julianna, but I'm known as Nunners on this website. I build and code Roblox games for fun. I also enjoy making this website, coded through HTML, JavaScript, and CSS. The coding languages I've learned are HTML, JavaScript, CSS, Luau (language based on Lua used for Roblox game making), and PHP.",
-        "Three words describing my personality are funny, smart, and creative. I'm a perfectionist (which I never realized actually). I have an older brother and a younger sister. In my free time, I play Roblox or code (this website or Roblox games). I like to draw, read, and listen to music. My friends are Kayleigh, Lianna, and Skylar (I have a lot more but they don't want to be publically mentioned). I'm a big fan of Pokémon and Toilet-Bound Hanako-kun.",
+        "I'm a funny, smart, and creative person (also a perfectionist so my projects are always top-tier)(but i'm also a lazy procrastinator hahaha). I have an older brother and a younger sister. In my free time, I play Roblox or code (to work on this website or my Roblox games). Besides that, I like to draw, read, and listen to music. My friends are Kayleigh, Lianna, and Skylar (I have a lot more but they don't want to be publically mentioned). I'm a big fan of Pokémon and Toilet-Bound Hanako-kun.",
         "Here's a list of some of my <b>favorites:</b><br>• Animals — Hedgehogs, frogs, and ducks<br>• Anime — Toilet-Bound Hanako-kun<br>• Chips — Cheddar & Sour Cream Ruffles and Cheetos Puffs<br>• Color — Aquamarine (hex #00ffae)<br>• Foods — Bistek, fried bangus, gyudon (from Yoshinoya), and SPAM<br>• Holiday — Christmas 🎄<br>• Manga — Toilet-Bound Hanako-kun<br>• Music Artists — Snail's House, Kirara Magic, and Tobu<br>• Music Genre — kawaii future bass and electro house<br>• Pokémon — Shaymin and Shuckle<br>• Sport — None<br>• Video Games — Roblox, Genshin Impact, and BanG Dream!",
-        "<b>Fun facts about me:</b><br>• I was born on a couch (not in a hospital &#128561)<br>• My memory is really good, especially my long-term memory (but sometimes my short-term memory fails me so it balances out)<br>• I memorized every single Pokémon in exsistence (including Gen. 9!) + (a lot of) types of each of them + facts about many + Gen. 6 & 7 cries<br>• I own <i>every</i> Toilet-Bound Hanako-kun manga (even Vol. 0 and After-School Hanako-kun)(except Vol. 18+, those haven't released yet in English)",
-        "<b>Fun facts about my website:</b><br>• My personal website (nunnerrs.github.io) used to be on W3Spaces (I switched because they started limiting the free plan grrr)<br>• Web Chef was renamed three times. Its original name was JS Chef, but was changed to Button Chef, Web Cuisine, and now it's Web Chef! Heheh I just wasn't satified—",
-        "<b>Contacts</b> (idk what you'd use them for tho)<br>Discord (if you're Jayden then temporarily make your profile banner color #00ffca and put something like \"https://nunnerrs.github.io\" in your About Me): Nunners#8663<br>Discord server (NunnerDev): <a href='https://discord.gg/zbVsHA4tSu'>discord.gg</a><br>Roblox username: Nunnerrs<br>Website: <a href='https://nunnerrs.github.io'>nunnerrs.github.io</a>",
+        "<b>Fun facts about me:</b><br>• I was born on a couch (not in a hospital &#128561)<br>• My memory is really good, especially my long-term memory (but sometimes my short-term memory fails me so it balances out)<br>• I memorized every single Pokémon in exsistence (including Gen. 9!) + (a lot of) types of each of them + facts about many + Gen. 6 & 7 cries<br>• I own <i>every</i> Toilet-Bound Hanako-kun manga (even Vol. 0 and After-School Hanako-kun)(except Vol. 18+)(sorry I can't get enough)",
+        "<b>Fun facts about my website:</b><br>• I made 14 total projects on this website (since 7/19/23)!!! Though most of them are unfinished because I lose the motivation to work on them (but I come back so don't worry)<br>• My personal website (nunnerrs.github.io) used to be on W3Spaces (I switched because they started limiting the free plan grrr)<br>• Web Chef was renamed three times. Its original name was JS Chef, but was changed to Button Chef, Web Cuisine, and now it's Web Chef! Heheh I just wasn't satified—<br>• This isn't my only personal website! Check out <a href='https://feet.w3spaces.com'>the FeetVerse</a> (don't worry, there's no weird feet pics yet)(I MADE IT FOR MY FRIENDS so don't get the wrong idea—they're the ones obsessed with feet); Featuring random ideas that came to life!",
+        "<b>Contacts</b> (idk what you'd use them for tho)<br>Discord: nunnerrs<br>Discord server (NunnerDev): <a href='https://discord.gg/zbVsHA4tSu'>discord.gg</a><br>Roblox username: Nunnerrs<br>Website: <a href='https://nunnerrs.github.io'>nunnerrs.github.io</a>",
         "And that's all I can think of adding for now! I'll update this more as things change.",
     ],
     book2: [
@@ -123,6 +123,7 @@ const books = {
     ],
     book13: book13, // Guardian Of The Phoenix Vol. 1
     book14: book14, // Guardian Of The Phoenix Vol. 2
+    book15: book15, // The Black Watch Handbook
 };
 
 function openBook(bookId) {

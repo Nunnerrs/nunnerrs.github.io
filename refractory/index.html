@@ -1,150 +1,438 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <style>
-            button {
-                background-color: rgb(175, 230, 255);
-                border-width: 0px;
+	<head>
+		<title>Refractory</title>
+		<meta charset="UTF-8">
+		<link href="https://fonts.googleapis.com/css2?family=Nunito&family=IBM+Plex+Sans+KR:wght@400;700" rel="stylesheet">
+		<style>
+			body {
+				font-family: Nunito;
+				margin: auto;
+			}
+			button {
+				background-color: rgb(175, 230, 255);
+				border-width: 0px;
+				border-radius: 8px;
+				color: rgb(125, 180, 205);
+                font-family: 'IBM Plex Sans KR';
+				font-size: 24px;
+				height: 50px;
+				width: 50px;
+			}
+			canvas {
+				background-color: rgb(200, 245, 255);
+				border-radius: 25px;
+                display: block;
+				margin: auto;
+			}
+			p {
+				font-size: 20px;
+			}
+            text {
+            	font-size: 20px;
+                margin-top: 15px;
+            }
+            .gb {
+            	background-color: rgb(175, 230, 255);
                 border-radius: 10px;
-                color: rgb(125, 180, 205);
+            	color: rgb(125, 180, 205);
                 font-size: 50px;
-                height: 150px;
-                width: 150px;
+            	height: 150px;
+				width: 150px;
             }
-            canvas {
-                background-color: rgb(200, 245, 255);
-                border-radius: 25px;
-                margin-left: 50px;
+            .h {
+            	visibility: hidden;
             }
-            p {
-                font-size: 20px;
+			.ns {
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+            #controls {
+            	display: block;
+				margin: auto;
+                text-align: center;
             }
-            .noSelect {
-                -webkit-touch-callout: none;
-                -webkit-user-select: none;
-                -khtml-user-select: none;
-                -moz-user-select: none;
-                -ms-user-select: none;
-                user-select: none;
+			#game {
+				margin-top: 15px;
+			}
+            #hs {
+            	margin-left: 160px;
             }
-        </style>
-    </head>
-    <body>
-        <p style="margin-left: 925px">Score: <a id="score">--</a></p>
-        <canvas class="noSelect" height="475px" id="canvas" width="1000px"></canvas><br>
-        <button class="noSelect" id="leftButton" onmouseup="stop()" ontouchstart="moveLeft()" style="margin-left: 50px">←</button>
-        <button class="noSelect" id="rightButton" onmouseup="stop()" ontouchstart="moveRight()">→</button>
-        <button class="noSelect" id="shootButton" onclick="shoot()" style="margin-left: 540px">↑</button><br>
-        <p id="console"></p>
-        <script type="text/javascript">
-            var canvas = document.getElementById("canvas");
-            var draw = canvas.getContext("2d");
-            var shoot = false;
-            var speed = 0;
-            var bulletSpeed = 0;
-            var bulletH = 375;
-            var bulletL = bulletH - 50;
-            var bulletPos = null;
-            var plrPos = canvas.width/2;
-            var console = document.getElementById("console");
-
-            function clear() {
-                draw.clearRect(0, 0, canvas.width, canvas.height);
-            };
-
-            // Colors
-            var red = "rgb(255, 100, 100)";
-            var orange = "rgb(255, 200, 100)";
-            var yellow = "rgb(255, 240, 100";
-            var blue = "rgb(130, 205, 255)";
-            var brown = "rgb(200, 125, 50)";
-            var white = "rgb(255, 255, 255)";
-            var black = "rgb(0, 0, 0)";
-            var bg = "rgb(200, 245, 255)";
+            #pauseBtn {
+            	font-weight: 700;
+            	position: fixed;
+                right: 50px;
+                top: 10px;
+            }
+			#s {
+				margin-left: 50px;
+			}
+            #shs {
+            	margin-left: 150px;
+            }
+		</style>
+	</head>
+	<body>
+		<div id="game">
+			<text id="s">Score: <a id="score">--</a></text>
+            <text id="shs">Session High Score: <a id="sessionHighScore">--</a></text>
+            <text id="hs">All-Time High Score: <a id="highScore">--</a></text>
+            <br><br>
+            <button id="pauseBtn" onclick="if (this.innerHTML != '⟳') {pause(); this.blur()} else {restart()}">▶</button>
+			<canvas class="ns" height="475px" id="canvas" width="1000px" onclick="click()"></canvas><br>
+            <div id="controls">
+				<button class="gb ns" id="leftBtn" onmouseup="stop()" onmousedown="moveLeft()">←</button>
+				<button class="gb ns" id="rightBtn" onmouseup="stop()" onmousedown="moveRight()">→</button>
+                <span class="h ns">Oh no! The web page didn't fully load. Hey, you shouldn't be reading this!</span>
+				<button class="gb ns" id="shootBtn" onclick="shoot()">✦</button>
+            </div><br>
+            <p id="start" style="text-align: center">Press the ▶ button (top-right) to start</p>
+		</div>
+		<script type="text/javascript">
+        	var b = document.body;
+            var score = document.getElementById("score");
+            var pauseBtn = document.getElementById("pauseBtn");
+			var canvas = document.getElementById("canvas");
+            var start = document.getElementById("start");
+			var c = canvas.getContext("2d");
+			var cooldown = false;
+            var points = 0;
             
-            function print(text) {
-                if (text != null) {
-                    console.innerHTML = text;
-                } else {
-                    console.innerHTML = plrPos + " " + speed + " " + shoot;
-                };
+			var vel = 0;
+            var maxVel = 5;
+			var plr = canvas.width/2;
+            var lives = 5;
+			const bullets = [];
+            var bulletVel = 5;
+			const orbs = [];
+            var orbVel = 1;
+            var orbInt = 750;
+            var paused = true;
+
+			function clear() {
+				c.clearRect(0, 0, canvas.width, canvas.height);
+			};
+
+			const colors = {
+            	red: "rgb(255, 100, 100)",
+                blue: "rgb(130, 205, 255)",
+                white: "rgb(255, 255, 255)",
+                gray: "rgb(125, 135, 150)",
+                black: "rgb(0, 0, 0)",
+                bg: "rgb(200, 245, 255)",
             };
 
-            function start() {
-                setInterval(function() {update();}, 0.1);
-            };
+			const orbColors = {
+				red: "rgb(255, 100, 100)",
+                orange: "rgb(255, 200, 100)",
+                yellow: "rgb(255, 240, 100)",
+                green: "rgb(100, 255, 100)",
+                blue: "rgb(100, 150, 255)",
+				purple: "rgb(175, 100, 255)",
+			};
 
-            document.body.onload = start;
+			const draw = {
+				bullet: function(y){
+					c.beginPath();
+					c.strokeStyle = colors.blue;
+					c.lineWidth = 20;
+					c.lineCap = "round";
+					c.moveTo(plr, y);
+					c.lineTo(plr, y - 20);
+					c.stroke();
+				},
+				heart: function(x, y, color){
+					/*c.beginPath();
+					c.strokeStyle = colors.red;
+					c.fillStyle = colors.red;
+					c.arc(x - 7.5, y + 5, 8, 0, 10);
+					c.fill();
+					c.beginPath();
+					c.arc(x + 7.5, y + 5, 8, 0, 10);
+					c.fill();
+					c.beginPath();
+					c.moveTo(x, y + 15);
+					c.lineTo(x + 14, y + 10);
+					c.lineTo(x, y + 40);
+					c.lineTo(x - 14, y + 10);
+					c.fill();*/
+					c.fillStyle = color;
+					c.font = "36px IBM Plex Sans KR";
+					c.fillText("♥", x - 18, y - 4);
+					/* // Mid point
+					c.beginPath();
+					c.moveTo(canvas.width/2, canvas.height/2);
+					c.lineTo(canvas.width/2, canvas.height/2-15);
+					c.stroke();*/
+				},
+				orb: function(x, y, color){
+					c.beginPath();
+					c.strokeStyle = color;
+					c.fillStyle = color;
+					c.arc(x, y, 35, 0, 10);
+					c.fill();
+				},
+				player: function(){
+					c.beginPath();
+					c.strokeStyle = colors.white;
+					c.fillStyle = colors.white;
+					c.arc(plr, 400, 50, 0, 10);
+					c.fill();
+				},
+			};
 
-            function drawPlayer(pos) {
-                draw.beginPath();
-                draw.strokeStyle = white;
-                draw.fillStyle = white;
-                draw.arc(pos, 400, 50, 0, 200);
-                draw.stroke();
-                draw.fill();
-            };
-            drawPlayer(plrPos);
-
-            function drawBullet(pos) {
-                draw.beginPath();
-                draw.strokeStyle = blue;
-                draw.lineWidth = 20;
-                draw.lineCap = "round";
-                draw.moveTo(500, pos);
-                draw.lineTo(500, pos - 20);
-                draw.stroke();
-            };
-            //drawBullet(240);
-
-            function update() {
+			function update() {
                 // L-Edge: 100 — R-Edge: 900
-                if (plrPos <= -50 && speed < 0) {
-                    plrPos = 1100;
+                if (plr <= -50 && vel < 0) {
+                    plr = 1100;
                 };
-                if (plrPos >= 1100 && speed > 0) {
-                    plrPos = -50;
+                if (plr >= 1100 && vel > 0) {
+                    plr = -50;
                 };
                 clear();
-                plrPos += speed;
-                drawPlayer(plrPos);
-                if (shoot == true && bulletPos - 50 < canvas.height) {
-                    bulletH -= bulletSpeed;
-                    bulletL = bulletH - 50;
-                    drawBullet(bulletL, bulletH);
-                    bulletPos = bulletH;
-                    print();
+                if (paused == false) {
+                    plr += vel;
                 } else {
-                    shoot = false;
-                    bulletH = 375;
-                    bulletL = bulletH - 50;
-                    bulletPos = null;
-                    print((bulletPos - 50) + " < " + canvas.height + " is " + (bulletPos - 50 < canvas.height));
+                	if (start.style.visibility == "hidden") {
+                    	if (pauseBtn.innerHTML != "⟳") {
+                            c.fillStyle = colors.black;
+                            c.font = "32px Nunito";
+                            c.fillText("Paused", 25, 45);
+                        };
+                    };
+                };
+                if (bullets.length > 0) {
+                    for (let i = 0; i < bullets.length; i++) {
+                        let b = bullets[i];
+                        if (b.y > -15) {
+							if (paused == false) {
+                            	b.y -= bulletVel;
+                            }
+                            if (orbs.length > 0) {
+                            	for (let i2 = 0; i2 < orbs.length; i2++) {
+                                	let o = orbs[i2];
+                                	if (b.x < o.x + 35 && b.x > o.x - 35) {
+										draw.bullet(b.y);
+										if (o.color != orbColors.blue) {
+                                    		bullets.splice(i, 1);
+                                            orbs.splice(i2, 1);
+										};
+                                        if (o.color == orbColors.red || o.color == orbColors.orange) {
+                                        	addPoints(10);
+                                        } else if (o.color == orbColors.green) {
+                                        	lives -= 1;
+										} else if (o.color == orbColors.blue) {
+											addPoints(0.05);
+                                        };
+									} else {
+										draw.bullet(b.y);
+                                    };
+                               	};
+                            } else {
+                            	draw.bullet(b.y);
+                            };
+                        } else {
+                            bullets.splice(i, 1);
+                        };
+                    };
+                };
+                if (orbs.length > 0) {
+                    for (let i = 0; i < orbs.length; i++) {
+                        let o = orbs[i];
+                        if (o.y < 450) {
+                        	if (paused == false) {
+                        		o.y += o.v;
+                            };
+							if (o.x < plr + 50 && o.x > plr - 50 && o.y < 450 && o.y > 350) {
+								orbs.splice(i, 1);
+								if (o.color == orbColors.green) {
+									addPoints(10);
+								} else if (o.color == orbColors.blue) {
+									addPoints(5);
+								} else if (o.color == orbColors.purple) {
+									if (lives < 5) {
+										lives += 1
+									} else {
+										addPoints(10);
+									};
+								} else if (o.color == orbColors.red || o.color == orbColors.orange) {
+									lives -= 1;
+								};
+							} else {
+								draw.orb(o.x, o.y, o.color);
+							};
+                        } else {
+                        	if (o.color == orbColors.green || o.color == orbColors.orange) {
+                            	lives -= 1;
+                            };
+                            orbs.splice(i, 1);
+                        };
+                    };
+                };
+                if (pauseBtn.innerHTML == "⟳") {
+                  c.fillStyle = colors.black;
+                  c.font = "32px Nunito";
+                  c.fillText("Game Over", 25, 45);
+                };
+                draw.player();
+                let l = 5;
+                for (let i = 180; i >= 40; i -= 35) {
+                    if (lives >= l) {
+                        draw.heart(canvas.width - i, 50, colors.red);
+                    } else {
+                        draw.heart(canvas.width - i, 50, colors.gray);
+                    };
+                    l -= 1;
+                };
+			};
+            
+            function orb() {
+            	let x = Math.floor(Math.random() * 925) + 40;
+                let y = -40;
+                let v = orbVel;
+                var chances = [
+                	"red", "red", "red", "red", "red",
+                    "orange", "orange", "orange",
+                    "yellow", "yellow",
+                    "green", "green", "green", "green", "green",
+                    "blue",
+                    "purple",
+                ];
+                /*let keys = Object.keys(orbColors);
+                let color = orbColors[keys[Math.floor(Math.random() * keys.length)]];*/
+                let color = orbColors[chances[Math.floor(Math.random() * chances.length)]];
+            	orbs.push({x: x, y: y, v: v, color: color});
+                //console.log(keys);
+            };
+            
+            function addPoints(p) {
+            	points += p;
+                score.innerHTML = Math.floor(points);
+            };
+
+			function moveLeft() {
+				vel = -maxVel;
+			};
+
+			function moveRight() {
+				vel = maxVel;
+			};
+			
+			function shoot() {
+				if (cooldown == false && paused == false) {
+					cooldown = true;
+					bullets.push({x: plr, y: 350});
+					setTimeout(function(){cooldown = false}, 500);
+				};
+			};
+
+			function stop() {
+				vel = 0;
+			};
+            
+            function keyDown(e) {
+            	if (e.key == "a" || e.key == "ArrowLeft") {
+                	moveLeft();
+                };
+                if (e.key == "d" || e.key == "ArrowRight") {
+                	moveRight();
+                };
+                if (e.key == " " || e.key == "Enter" || e.key == "ArrowUp") {
+                	shoot();
+                };
+                if (e.key == "p") {
+                	pause();
+                };
+                if (e.key == "r") {
+                	restart();
                 };
             };
-
-            function moveLeft() {
-                speed = -1;
+            
+            function keyUp(e) {
+            	if (e.key == "a" || e.key == "ArrowLeft" || e.key == "d" || e.key == "ArrowRight") {
+                	stop();
+                };
             };
-
-            function shoot() {
-                bulletSpeed = 10;
-                shoot = true;
+            
+            function pause(mode, death) {
+            	if (mode != null && death == null) {
+                	paused = mode;
+                    pauseBtn.innerHTML = mode == true ? "▶" : "||";
+                } else {
+                    if (paused == true && pauseBtn.innerHTML != "⟳") {
+                        paused = false;
+                        pauseBtn.innerHTML = "||";
+                        if (start.innerHTML != null || start.innerHTML.trim() != "") {
+                        	start.innerHTML = null;
+                        	start.style.visibility = "hidden";
+                        	start.classList.add("ns");
+                            score.innerHTML = "0";
+                        };
+                    } else {
+                        paused = true;
+                        pauseBtn.innerHTML = "▶";
+                    };
+                };
+                if (death == true) {
+                	pauseBtn.innerHTML = "⟳";
+                	//console.log("YOU DIED");
+                };
             };
-
-            function moveRight() {
-                speed = 1;
+            
+            function restart() {
+            	pause(true);
+            	pauseBtn.innerHTML = "▶";
+            	plr = canvas.width/2;
+                lives = 5;
+                points = 0;
+                score.innerHTML = "0";
+                cooldown = false;
+                orbInt = 750;
+                orbVel = 1;
+                bullets.splice(0, bullets.length);
+                orbs.splice(0, orbs.length);
+                start.innerHTML = "Press the ▶ button (top-right) to start";
+                start.style.visibility = "visible";
+                start.classList.remove("ns");
             };
-
-            function stop() {
-                speed = 0;
-                //print("stopped");
+            
+            function click(e) {
+            	let p = canvas.getBoundingClientRect();
+                let x = e.clientX - p.left;
+                let y = e.clientY - p.top;
+                console.log(x, y);
             };
-        </script>
-    </body>
+			
+			b.onload = function(){setInterval(function() {
+            	if (lives <= 0) {
+                	pauseBtn.innerHTML = "⟳";
+                	pause(true, true);
+                };
+            	update();
+                if (document.hasFocus() == false && paused == false) {
+                	pause(true);
+                };
+                if (paused == false) {
+                	orbInt -= 100;
+                };
+            }, 5)};
+            setInterval(function() {
+            	if (paused == false) {
+                    orbVel += 0.01;
+                };
+            }, 500);
+            setInterval(function(){
+            	if (paused == false) {
+            		orb();
+                };
+            }, orbInt);
+            
+            b.onkeydown = keyDown;
+            b.onkeyup = keyUp;
+		</script>
+	</body>
 </html>
-
-
-
-
