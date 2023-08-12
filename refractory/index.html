@@ -14,6 +14,7 @@
 				border-width: 0px;
 				border-radius: 8px;
 				color: rgb(125, 180, 205);
+				cursor: pointer;
                 font-family: 'IBM Plex Sans KR';
 				font-size: 24px;
 				height: 50px;
@@ -25,13 +26,26 @@
                 display: block;
 				margin: auto;
 			}
+			details {
+				text-align: center;
+			}
 			p {
 				font-size: 20px;
+			}
+			summary {
+				/*cursor: pointer;*/
+				font-weight: bold;
+				font-size: 32px;
+				list-style-type: none;
+				text-align: center;
 			}
             text {
             	font-size: 20px;
                 margin-top: 15px;
             }
+			.bullet {
+				vertical-align: middle;
+			}
             .gb {
             	background-color: rgb(175, 230, 255);
                 border-radius: 10px;
@@ -62,9 +76,28 @@
             #hs {
             	margin-left: 160px;
             }
+			#index {
+				display: inline-block;
+				height: 50%;
+				margin-left: 5%;
+				width: 40%;
+			}
+			#indexOrb {
+				font-size: 18px;
+			}
+			#info {
+				margin: 1rem;
+			}
+			#keybinds {
+				display: inline-block;
+				margin-right: 5%;
+				text-align: center;
+				vertical-align: top;
+				width: 40%;
+			}
             #pauseBtn {
-            	font-weight: 700;
-            	position: fixed;
+            	font-weight: bold;
+            	position: absolute;
                 right: 50px;
                 top: 10px;
             }
@@ -90,8 +123,32 @@
                 <span class="h ns">Oh no! The web page didn't fully load. Hey, you shouldn't be reading this!</span>
 				<button class="gb ns" id="shootBtn" onclick="shoot()">✦</button>
             </div><br>
-            <p id="start" style="text-align: center">Press the ▶ button (top-right) to start</p>
+            <p id="start" style="text-align: center;">Press the ▶ button (top-right) to start</p><br>
 		</div>
+		<div id="info">
+			<div id="index">
+				<!--details id="indexDetails">
+					<summary id="indexName"><span class="bullet" id="indexOrb">🟢</span> Orb Index</summary-->
+					<summary>Orb Index</summary>
+					<p>🔴 ~ Don't collect these! You'll lose 1 life. Shooting these award you with 10 points.</p>
+					<p>🟢 ~ Collecting these award you with 10 points! If you shoot or don't collect them, you'll lose 1 life.</p>
+					<p>🟠 ~ You need to shoot these! It'll cost you 1 life if you collect or miss these.</p>
+					<p>🟡 ~ These ones don't do anything…no matter what you do…</p>
+					<p>🔵 ~ These give you free points! Though they don't give much alone, shooting them increases your points!</p>
+					<p>🟣 ~ Collecting these heal you by 1 life or award you with 30 points if you're at max lives.</p>
+				<!--/details-->
+			</div>
+			<div id="keybinds">
+				<!--details-->
+					<summary><span class="bullet">⌨️</span> Keybinds</summary>
+					<p>A/Left Arrow ~ Move left</p>
+					<p>D/Right Arrow ~ Move right</p>
+					<p>Space/Up Arrow ~ Shoot</p>
+					<p>P ~ Pause game</p>
+					<p>R ~ Restart game</p>
+				<!--/details-->
+			</div>
+		<div>
 		<script type="text/javascript">
         	var b = document.body;
             var score = document.getElementById("score");
@@ -100,6 +157,11 @@
             var pauseBtn = document.getElementById("pauseBtn");
 			var canvas = document.getElementById("canvas");
             var start = document.getElementById("start");
+			var info = document.getElementById("info");
+			var indexDetails = document.getElementById("indexDetails");
+			var indexName = document.getElementById("indexName");
+			//var indexOrb = document.getElementById("indexOrb");
+			var indexOpen = true;
 			var c = canvas.getContext("2d");
 			var cooldown = false;
             var points = 0;
@@ -408,7 +470,26 @@
                 let y = e.clientY - p.top;
                 console.log(x, y);
             };
+
+			function toggleIndex() {
+				if (indexOpen == true) {
+					indexOpen = false;
+				} else {
+					indexOpen = true;
+				}
+			};
+
+			function changeIndexOrb(orb) {
+				if (orb == "default") {
+					indexOrb.innerHTML = indexOpen == true ? "🔴" : "🟢";
+				} else {
+					indexOrb.innerHTML = orb;
+				};
+			};
 			
+			if (indexOpen == true) {
+				indexDetails.open = "true";
+			};
 			b.onload = function(){setInterval(function() {
             	if (lives <= 0) {
                 	pauseBtn.innerHTML = "⟳";
@@ -435,6 +516,13 @@
             
             b.onkeydown = keyDown;
             b.onkeyup = keyUp;
+			info.onclick = window.scrollTo(0, document.body.scrollHeight);
+			indexName.onclick = function(){toggleIndex()};
+			/*
+			indexName.onmousedown = function(){changeIndexOrb("🟡")};
+			indexName.onmouseup = function(){changeIndexOrb("⚪️")};
+			indexName.onmouseleave = function(){changeIndexOrb("default")};
+			indexName.onmouseover = function(){changeIndexOrb("⚪️")};*/
 		</script>
 	</body>
 </html>
