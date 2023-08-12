@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>button-spam fighting game</title>
+        <meta charset="UTF-8">
+        <link rel="icon" href="favicon.png">
+        <style>
+            body {
+                background-color: rgb(255, 200, 200);
+                font-family: Comic Sans MS, Chalkboard SE;
+                margin: auto;
+                text-align: center;
+            }
+            button {
+                background-color: rgb(235, 235, 235);
+                border-color: rgb(200, 200, 200);
+                border-radius: 5px;
+                border-style: none none inset;
+                font-family: monospace;
+            }
+            h1 {
+                color: rgb(100, 25, 25);
+            }
+            .plr {
+                font-size: 24px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>button-spam fighting game</h1>
+        <h2 id="event"></h2>
+        <p class="plr"><span id="plr1">PLR 1</span>'s HP: <v id="hp1">100</v></p>
+        <p class="plr"><span id="plr2">PLR 2</span>'s HP: <v id="hp2">100</v></p><br>
+        <p><button>Shift</button> to attack <span id="keyName2">PLR 2</span></p>
+        <p><button>Enter</button> to attack <span id="keyName1">PLR 1</span></p><br>
+        <p>To change player names, add <code>?plr1=NAME&plr2=NAME</code> to the end of the URL, replacing each <code>NAME</code></p>
+        <h3><a href="https://nunnerrs.github.io/index.html" style="color: rgb(0, 125, 100); text-decoration: none;">To the NunnerVerse²</a></h3>
+        <script>
+            var b = document.body;
+            var delay = 1000; // delay to start in ms
+            var start = false;
+            var event = document.getElementById("event");
+            var plr1 = document.getElementById("plr1");
+            var plr2 = document.getElementById("plr2");
+            var hpDisplay1 = document.getElementById("hp1");
+            var hpDisplay2 = document.getElementById("hp2");
+            var keyName1 = document.getElementById("keyName1");
+            var keyName2 = document.getElementById("keyName2");
+            var name1 = "PLR 1";
+            var name2 = "PLR 2";
+            var hp1 = 100;
+            var hp2 = 100;
+            var sDown = false;
+            //var eDown = false;
+            //var iDown = false;
+            var eDown = false;
+
+            var darkRed = "rgb(200, 25, 25)";
+            var red = "red";
+            var yellow = "rgb(255, 255, 0)";
+            var green = "rgb(75, 200, 15)";
+            var teal = "rgb(0, 200, 200)";
+
+            function win(plr) {
+                let winColor = green;
+                let eventColor = teal;
+                if (plr == 1) {
+                    plr2.style.color = winColor;
+                    event.style.color = eventColor;
+                    event.innerHTML = name2 + " WINS!!!";
+                } else {
+                    plr1.style.color = winColor;
+                    event.style.color = eventColor;
+                    event.innerHTML = name1 + " WINS!!!";
+                };
+            };
+
+            function fight(e) {
+                if (start == true) {
+                    if (hp1 > 0 && hp2 > 0) {
+                        if (e.key == "Shift") {
+                            sDown = true;
+                            if (sDown == true /*&& eDown == false*/) {
+                                hp2 -= 1;
+                                hpDisplay2.innerHTML = hp2;
+                            };
+                        };
+                        /*if (e.key == "e") {
+                            eDown = true;
+                            if (eDown == true && sDown == false) {
+                                hp2 -= 1;
+                                hpDisplay2.innerHTML = hp2;
+                            };
+                        };
+                        if (e.key == "i") {
+                            iDown = true;
+                            if (iDown == true && eDown == false) {
+                                hp1 -= 1;
+                                hpDisplay1.innerHTML = hp1;
+                            };
+                        };*/
+                        if (e.key == "Enter") {
+                            eDown = true;
+                            if (eDown == true /*&& iDown == false*/) {
+                                hp1 -= 1;
+                                hpDisplay1.innerHTML = hp1;
+                            };
+                        };
+                        if (hp1 <= 20) {
+                            hpDisplay1.style.color = red;
+                        };
+                        if (hp2 <= 20) {
+                            hpDisplay2.style.color = red;
+                        };
+                        if (hp1 <= 0) {
+                            win(1);
+                        } else if (hp2 <= 0) {
+                            win(2);
+                        };
+                    } else {
+                        if (hp1 <= 0) {
+                            win(1);
+                        } else if (hp2 <= 0) {
+                            win(2);
+                        };
+                    };
+                };
+            };
+
+            function keyUp(e) {
+                if (e.key == "Shift") {
+                    sDown = false;
+                };
+                /*
+                if (e.key == "e") {
+                    eDown = false;
+                };
+                if (e.key == "i") {
+                    iDown = false;
+                };*/
+                if (e.key == "Enter") {
+                    eDown = false;
+                };
+            };
+
+            let url = window.location.href;
+            if (url.split("?")[1]) {
+                let names = url.split("?")[1].split("&");
+                var name1 = decodeURI(names[0].split("=")[1]);
+                var name2 = decodeURI(names[1].split("=")[1]);
+                plr1.innerHTML = name1;
+                keyName1.innerHTML = name1;
+                plr2.innerHTML = name2;
+                keyName2.innerHTML = name2;
+            };
+
+            b.onkeydown = fight;
+            b.onkeyup = keyUp;
+            setTimeout(function(){event.style.color = darkRed; event.innerHTML = "Ready?"}, delay);
+            setTimeout(function(){event.style.color = yellow; event.innerHTML = "3"}, 2000 + delay);
+            setTimeout(function(){event.innerHTML = "2"}, 3000 + delay);
+            setTimeout(function(){event.innerHTML = "1"}, 4000 + delay);
+            setTimeout(function(){start = true; event.style.color = green; event.innerHTML = "GOOO!!"}, 5000 + delay);
+            setTimeout(function(){event.innerHTML = ""}, 8000 + delay);
+        </script>
+    </body>
+</html>
