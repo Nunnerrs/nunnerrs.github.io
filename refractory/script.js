@@ -266,6 +266,7 @@ function keyDown(e) {
         moveRight();
     };
     if (e.key == " " || e.key == "Enter" || e.key == "ArrowUp") {
+        e.preventDefault();
         shoot();
     };
     if (e.key == "p") {
