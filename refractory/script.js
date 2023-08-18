@@ -25,6 +25,10 @@ var orbVel = 1;
 var orbInt = 750;
 var paused = true;
 
+if (localStorage.getItem("refractory_highScore")) {
+	high.innerHTML = localStorage.getItem("refractory_highScore");
+};
+
 function clear() {
     c.clearRect(0, 0, canvas.width, canvas.height);
 };
@@ -223,7 +227,15 @@ function orb() {
 
 function addPoints(p) {
     points += p;
-    score.innerHTML = Math.floor(points);
+	displayPoints = Math.floor(points);
+    score.innerHTML = displayPoints;
+	if (Number(session.innerHTML) < points || session.innerHTML == "--") {
+		session.innerHTML = displayPoints;
+	};
+	if (Number(high.innerHTML) < points || high.innerHTML == "--") {
+		high.innerHTML = displayPoints;
+		localStorage.setItem("refractory_highScore", displayPoints);
+	};
 };
 
 function moveLeft() {
@@ -282,7 +294,9 @@ function pause(mode, death) {
                 start.innerHTML = null;
                 start.style.visibility = "hidden";
                 start.classList.add("ns");
-                score.innerHTML = "0";
+                if (score.innerHTML == "--") {
+                    score.innerHTML = "0";
+                };
             };
         } else {
             paused = true;
@@ -335,9 +349,9 @@ function changeIndexOrb(orb) {
     };
 };
 
-if (indexOpen == true) {
+/*if (indexOpen == true) {
     indexDetails.open = "true";
-};
+};*/
 b.onload = function(){setInterval(function() {
     if (lives <= 0) {
         pauseBtn.innerHTML = "⟳";
