@@ -145,7 +145,7 @@ var params = window.location.href.split("?")[1];
 var param1 = params.split("&");
 if (param1[0].split("=")[0].match("book") && Number(param1[0].split("=")[1])) {
     let bookNumber = Number(param1[0].split("=")[1]);
-    if (bookNumber <= total) {
+    if (bookNumber <= total || bookNumber == 15) {
         openBook(bookNumber);
         //pageR.innerHTML = books["book" + bookNumber][0];
     };
@@ -196,8 +196,12 @@ function nextPage() {
 };
 
 function copyLink() {
-    navigator.clipboard.writeText("https://nunnerrs.github.io/library.html?book=" + currentBook.toString());
-    alert("Copied share link! You can bookmark the link or share with others (paste with CMD/CTRL + V)");
+    console.log(currentBook);
+    navigator.clipboard
+        .writeText("https://nunnerrs.github.io/library/?book=" + currentBook.toString())
+        .then(() => {console.log("Copied link!")})
+        .catch(() => {console.error("Couldn't copy link")});
+    setTimeout(function(){alert("Copied share link! You can bookmark the link or share with others (paste with CMD/CTRL + V)")}, 500);
     //alert("Sorry, copying & loading book share links are currently disabled due to a bug where it doesn't copy anything. I'm working to fix the error, sorry for any trouble this may have caused you.");
 };
 
