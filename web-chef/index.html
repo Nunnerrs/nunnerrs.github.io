@@ -69,6 +69,14 @@
             .serve-button {
                 height: 15px;
             }
+            .sidebar {
+                border-radius: 999px;
+                border-width: 0px;
+                height: 75px;
+                position: fixed;
+                right: -5px;
+                width: 75px;
+            }
             #ing-search-error {
                 color: rgb(175, 210, 245);
             }
@@ -94,40 +102,22 @@
             #achievements-button {
                 background-color: rgb(255, 230, 135);
                 bottom: 145px;
-                border-radius: 999px;
-                border-width: 0px;
                 color: rgb(255, 200, 75);
                 font-family: default;
                 font-size: 28px;
-                height: 75px;
-                position: fixed;
-                right: -5px;
-                width: 75px;
             }
             #emoji-button {
                 background-color: rgb(255, 255, 255);
                 bottom: 70px;
-                border-radius: 999px;
-                border-width: 0px;
                 color: rgb(245, 215, 50);
                 font-family: default;
                 font-size: 28px;
-                height: 75px;
-                position: fixed;
-                right: -5px;
-                width: 75px;
             }
             #stats-button {
                 background-color: rgb(150, 255, 150);
                 bottom: 220px;
-                border-radius: 999px;
-                border-width: 0px;
                 color: rgb(255, 255, 255);
                 font-size: 28px;
-                height: 75px;
-                position: fixed;
-                right: -5px;
-                width: 75px;
             }
             #tutorial-button {
                 background-color: rgb(150, 190, 235);
@@ -136,10 +126,6 @@
                 border-width: 0px;
                 color: rgb(255, 255, 255);
                 font-size: 32px;
-                height: 75px;
-                position: fixed;
-                right: -5px;
-                width: 75px;
             }
         </style>
     </head>
@@ -186,19 +172,20 @@
                     <li><label for="buy-storage">5 extra storage ($15) </label><button id="buy-storage">Purchase</button></li>
                     <li><label for="buy-seating">Seating ($30) <gap>........</gap></label><button id="buy-seating">Purchase</button></li>
                     <li><label for="buy-ad">Advertisment ($45) <gap>...</gap></label><button id="buy-ad">Purchase</button></li>
+                    <li><label for="hire-restocker">Auto-restocker ($100) <gap>.</gap></label><button id="hire-restocker">Purchase</button></li>
                 </ul>
             </div>
         </main>
         <button id="save-button">Save data</button>
         <button id="erase-data-button">Erase data</button>
         <br>
-        <h4 style="font-weight: normal">Based on Reykr's <a href="https://replit.com/@Reykr/Console-Chef">Console Chef</a> game on Replit</h4>
+        <h4 style="font-weight: normal">Inspired by Reykr's <a href="https://replit.com/@Reykr/Console-Chef">Console Chef</a> game on Replit</h4>
         <h4 style="font-weight: normal">Version <v id="version">----</v></h4>
         <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 200, 175);">To the NunnerVerse²</a></h3>
-        <div><button id="stats-button">📊</button></div>
-        <div><button id="achievements-button">★</button></div>
-        <div><button id="emoji-button">😃</button></div>
-        <div><button id="tutorial-button">ℹ</button></div>
+        <div class="sidebar"><button id="stats-button">📊</button></div>
+        <div class="sidebar"><button id="achievements-button">★</button></div>
+        <div class="sidebar"><button id="emoji-button">😃</button></div>
+        <div class="sidebar"><button id="tutorial-button">ℹ</button></div>
         <script src="script.js"></script>
     </body>
 </html>

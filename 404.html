@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>404 — Project not found</title>
+        <meta charset="UTF-8">
+        <link rel="icon" href="">
+        <style>
+            body {
+                color: rgb(0, 0, 0);
+                font-family: Comic Sans MS;
+            }
+            h1 {
+                font-size: 100px;
+            }
+            #not-found {
+                font-size: 24px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>404</h1>
+        <p id="not-found">looks like the page you're trying to visit doesn't exist…</p><br>
+        <p>btw old urls ending in something like "games.html" or "library.html" are now shortened so you no longer need the ".html"</p>
+        <br><br><br>
+        <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 125, 100);">Back to the NunnerVerse²</a></h3>
+        <br><br><br><br><br><br><br>
+        <input enterkeyhint="next" id="sus" type="text">
+        <p id="hint"></p>
+        <script>
+            // STOP LOOKING AT THE CODE. THIS IS SUPPOSED TO BE A FUN LITTLE SECRET AND YOU'RE SPOILING IT FOR YOURSELF. ONLY WIENERS GIVE UP.
+            var sus = document.getElementById("sus");
+            var hint = document.getElementById("hint");
+            var code = "https://nunnerrs.github.io";
+            var Code = "86479567204572849834097834709423";
+            var REALcode = "IlIIl1IllI1lIlI1IlI";
+
+            // past this line of code, the real answer lies; are you sure you'd like to proceed?
+            // [Y]es
+            // [N]o, nevermind
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            var c = "Never gonna give you up, never gonna let you down, never gonna run around and desert you; Never gonna make you cry, never gonna say goodbye, never gonna tell a lie and hurt you."
+
+            function checkCode(e) {
+                if (e.key == "Enter") {
+                    let v = sus.value;
+                    if (v != code && Code && REALcode && c != "can you actually stop snooping around my code to find the answer?" && v == title) {
+                        sus.value = "";
+                        hint.innerHTML = "good job on making it this far! there's nothing yet after this so LMAOOO";
+                        let done = false;
+                        let l = 50;
+                        setInterval(function(){
+                            if (done == false && l < 100) {
+                                sus.style.backgroundColor = "hsl(120, 100%, " + l + "%)";
+                                l += 1;
+                            } else {
+                                done = true;
+                            };
+                        }, 100);  
+                    };
+                };
+            };
+
+            var title = "MASSIVE";
+
+            sus.onkeypress = checkCode;
+        </script>
+    </body>
+</html>

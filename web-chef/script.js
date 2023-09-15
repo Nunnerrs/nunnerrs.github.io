@@ -1,4 +1,4 @@
-var v = "v" + "1.6.12.7";
+var v = "v" + "1.6.3.4";
 var version = document.getElementById("version");
 version.innerHTML = v;
 var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
@@ -6,11 +6,18 @@ var commitId = "cc38037163afa5339cf1d327a2287b8f840ae811";
 updateLink = updateLink + commitId;
 // make a new line to display as new line
 // NO " OR '
-var updateSummary = `• view game stats with the new stats button (📊)!
+var updateSummary = `• tips can now be earned without needing all recipes unlocked (smaller chance though)
+• more customers (names)
+• changed Surprise! achievement to Oops I Meant The Other One (too hard I guess)
+• slightly more efficient code!!
+`;
+
+
+/*`• view game stats with the new stats button (📊)!
 • new bento box and doughnut recipes & updated stew (now paella) and cookie recipe
 • 5 new achievements for donuts, max ads, total customer milestones, and getting all achievements
 • web chef icon
-• version summary can be viewed by clicking on notif (like what you did c:)`;
+• version summary can be viewed by clicking on notif (like what you did c:)`;*/
 // the `; SHOULD NOT be on its own line
 
 var tutorialCompleted = false;
@@ -93,19 +100,20 @@ var notoEmoji = false;
 var tutorialButton = document.getElementById("tutorial-button");
 
 const customerNames = [
-    /*Me & my friends*/	"Nunners", "Kayleigh", "Lianna", "Skylar", "Yeen Yeen", "Jin", "Jaelle", "Chelsey", "Ethan", "Anton", "Jeanne", "Aya", "Samantha", "Jayden",
+    /*Me & my friends*/	"Nunners", "Kayleigh", "Lianna", "Skylar", "Yeen Yeen", "Jin", "Jaelle", "Chelsey", "Ethan", "Anton", "Jeanne", "Tiffany", "Sai", "Aya", "Samantha", "Jaedyn",
     /*RM NPCs*/			"Mr. Wedgehead", "Wide Racoon", "Albert", "Amongus", "War Noodle", "The Sun", "Princess Sherk", "Patricia", "Dummy", "Jules", "Zack", "Burbspernge", "Pumkin",
     /*PGS NPCs*/		"Azalea", "Malo", "Billy Bob Joe",
-    /*CGT NPCs*/		"Jack", "Holly",
+    /*CGT NPCs*/		"Jack", "Holly", "Jake",
     /*Bandori*/			"Tae Hanazono", "Michelle", "Moca Aoba", "Nanami Hiromachi", "Kasumi Toyama", "Arisa Ichigaya", "Rimi Ushigome", "Kaoru Seta", "Sayo Hikawa", "Hina Hikawa", "Ran Mitake", "Himari Uehara", "Kokoro Tsurumaki", "Yukina Minato", "Lisa Imai", "Mashiro Kurata", "Rui Yashio", "CHU²", "LAYER", "LOCKE", "MASKING", "PAREO", "Misaki Okusawa",
     /*TBHK*/			"Nene Yashiro", "Hanako", "Kou Minamoto", "Aoi Akane", "Akane Aoi", "Teru Minamoto", "Lemon Yamabuki", "Sousuke Mitsuba", "Tsukasa", "Sakura Nanamine", "Natsuhiko Hyuuga", "Yako", "Tsuchigomori",
     /*Yeen's friends*/	"Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah", "Colette", "Makayla", "Kimora",
     /*NunnerLibrary*/	"Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus", "Sasha", "Billy", "Bob", "Joe", "Liva", "Cory",
-    /*Pokémon*/			"Shuckle", "Ash Ketchum", "Satoshi", "Misty", "Brock", "May", "Dawn", "Iris", "Cilan", "Serena", "Clement", "Bonnie", "Lana", "Mao", "Kaki", "Lilie", "Sophocles", "Goh", "Chloe",
-    /*Comic book*/		"Bill", "Roski", "Ginny", "Emily", "Rebecca", "Joey", "Charlyy", "Bobby", "Sally", "Pippi", "Althea", "Derek", "Steven", "Collin",
+    /*Pokémon*/			"Shuckle", "Ash Ketchum", "Satoshi", "Misty", "Brock", "May", "Dawn", "Iris", "Cilan", "Serena", "Clement", "Bonnie", "Lana", "Mao", "Kaki", "Lilie", "Sophocles", "Goh", "Chloe", "Koharu",
+    /*Comic book*/		"Bill", "Roski", "Ginny", "Emily", "Rebecca", "Joey", "Charlyy", "Bobby", "Sally", "Pippi", "Althea", "Derek", "Alford", "Steven", "Collin",
     /*Mochi Squishies*/	"Marshmallow", "Ginger", "Vered", "Snowy", "Blossom", "Melody", "Peep", "Piper", "Sunny", "Honey", "Gummy", "Snoopy", "Mrs. Polar", "Sharpie",
     /*Roblox Youtubers*/"Flamingo", "Denis", "Leah Ashe", "Kreek", "Kevin", "Sketch", "ItsFunneh", "LankyBox", "Laughability",
-    /*Roblox*/          "You", "Carl", "Builderman", "David Baszucki", "Barry",
+    /*Roblox*/          "Carl", "Builderman", "David Baszucki", "Barry",
+    /*Random*/          "You", "Your Mom", "Your Dad", "Nobody", "???",
 ];
 const ingredientsList = {
     alcohol: "🍷",
@@ -136,6 +144,7 @@ const ingredientsList = {
     fish: "🐟",
     "🐟": "🐟",
     flour: "🌾",
+    flower: "🌾",
     "🌾": "🌾",
     honey: "🍯",
     ice: "🧊",
@@ -264,7 +273,7 @@ const achievements = [ // {id: NUMBER, name: "ACHIEVEMENT", desc: "BRIEFDESCRIPT
     {id: 12, name: "NO. JUST NO.", desc: "Attempt to cook something terrible (discover secret #3)", unlocked: false},
     {id: 13, name: "Free Advertisment", desc: "Try to cook a certain \"phrase\" (discover secret #4)", unlocked: false},
     {id: 14, name: "Top Secret", desc: "Discover the easiest secret of all time (#5)", unlocked: false},
-    {id: 22, name: "Surprise!", desc: "Enter a certain word into the ingredient input box (secret #6)", unlocked: false},
+    {id: 22, name: "Oops I meant the other one", desc: "Wrong word!! (secret #6)", unlocked: false},
     {id: 23, name: "WORM", desc: "Get lucky (0.005% chance)(secret #7)", unlocked: false},
     {id: 15, name: "Overachiever", desc: "Achieve all above achievements (click on star button to claim)", unlocked: false},
 ];
@@ -275,6 +284,18 @@ for (let i = 0; i < achievements.length; i++) {
         if (localStorage.getItem("achievement" + a) == "true" || localStorage.getItem("achievement" + a) == true) {
             achievements[i]["unlocked"] = true;
         };
+    };
+};
+
+function notify(notifText, time){
+    if (notifText != null) {
+        let notif = document.createElement("p");
+        notif.innerHTML = notifText;
+        notifContainer.appendChild(notif);
+        if (time == null) {
+            time = 5000;
+        };
+        setTimeout(function(){notif.remove()}, time);
     };
 };
 
@@ -347,10 +368,11 @@ function serveCustomer(order, customer) {
                 break;
             };
         };
+        let customerName = customer.dataset.name;
         let rng = Math.floor(Math.random() * 25);
         if (rng == 0 && unlockedAll == false) {
             unlockRecipe(false);
-        } else if (rng >= 0 && rng < 10 && unlockedAll == true) {
+        } else if ((rng >= 0 && rng < 10 && unlockedAll == true) || (rng >= 0 && rng < 2 && unlockedAll == false)) {
             let tip = Math.round(order["profit"] / 2)
             if (order["emoji"] != "🍙" && rng >= 0 && rng <= 2) {
                 tip += 0.5;
@@ -358,36 +380,34 @@ function serveCustomer(order, customer) {
             money += tip;
             totalMoney += tip;
             moneyDisplay.innerHTML = money;
-            let notif = document.createElement("p");
-            notif.innerHTML = customer.dataset.name + " tipped you $" + tip + "!";
-            notifContainer.appendChild(notif);
-            setTimeout(function(){notif.remove()}, 5000);
+            notify(customer.dataset.name + " tipped you $" + tip + "!", 5000);
         };
-        if (customer.dataset.name.match("Moca") != null && order["emoji"] == "🥖") {
+        let orderEmoji = order["emoji"];
+        if (customerName.match("Moca") != null && orderEmoji == "🥖") {
             award(2);
         };
-        if ((customer.dataset.name.match("Holly") != null || customer.dataset.name.match("Malo") != null) && order["emoji"] == "🥗") {
+        if ((customerName.match("Holly") != null || customerName.match("Malo") != null) && orderEmoji == "🥗") {
             award(3);
         };
-        if (customer.dataset.name.match("Skylar") != null && order["emoji"] == "🧃") {
+        if (customerName.match("Skylar") != null && orderEmoji == "🧃") {
             award(4);
         };
-        if ((customer.dataset.name.match("Hina") != null || customer.dataset.name.match("Sayo") != null) && order["emoji"] == "🍟") {
+        if ((customerName.match("Hina") != null || customerName.match("Sayo") != null) && orderEmoji == "🍟") {
             award(5);
         };
-        if (customer.dataset.name.match("Brock") != null && order["emoji"] == "🍙") {
+        if (customerName.match("Brock") != null && orderEmoji == "🍙") {
             award(6);
         };
-        if (customer.dataset.name.match("Rebecca") != null && order["emoji"] == "🍰") {
+        if (customerName.match("Rebecca") != null && orderEmoji == "🍰") {
             award(7);
         };
-        if ((customer.dataset.name.match("Peep") != null || customer.dataset.name.match("Piper") != null || customer.dataset.name.match("Sunny") != null) && order["emoji"] == "🍳") {
+        if ((customerName.match("Peep") != null || customerName.match("Piper") != null || customerName.match("Sunny") != null) && orderEmoji == "🍳") {
             award(8);
         };
-        if ((customer.dataset.name.match("Hanako") != null || customer.dataset.name.match("Tsukasa") != null) && order["emoji"] == "🍩") {
+        if ((customerName.match("Hanako") != null || customerName.match("Tsukasa") != null) && orderEmoji == "🍩") {
             award(20);
         };
-        if (customer.dataset.name.match("Pippi") != null && order["emoji"] == "🍕") {
+        if (customerName.match("Pippi") != null && orderEmoji == "🍕") {
             award(21);
         };
         customer.remove();
@@ -401,7 +421,7 @@ function findIng() {
     } else if (i == "⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️" || i == "dog" || i == "🐶" || i == "🐕" || i == "baby" || i == "babies" || i == "👶" || i == "girl" || i == "👧" || i == "child" || i == "children" || i == "🧒" || i == "boy" || i == "👦"
               || i == "https://nunnerrs.github.io" || i == "https://nunnerrs.github.io/" || i == "nunnerrs.github.io"
               || i == "secret" || i == "sus" || i == "sussy" || i == "sussy baka"
-              || i.match("random") || i.match("ingredient") || i.match("mystery")) {
+              || i.match("flower")) {
         return i;
     } else {
         return null;
@@ -416,18 +436,12 @@ function addIng(e) {
                 ingSearch.value = "";
                 moneyDisplay.innerHTML = "∞";
                 stockDisplay.innerHTML = "∞";
-                let notif = document.createElement("p");
-                notif.innerHTML = "HOW?!? YOU HACKER!! (Secret #2)";
-                notifContainer.appendChild(notif);
+                notify("HOW?!? YOU HACKER!! (Secret #2)", 7500);
                 award(11);
                 setTimeout(function(){
-                    notif.remove();
                     moneyDisplay.innerHTML = money;
                     stockDisplay.innerHTML = stock;
-                    notif = document.createElement("p");
-                    notif.innerHTML = "jk it ain't real XD";
-                    notifContainer.appendChild(notif);
-                    setTimeout(function(){notif.remove()}, 5000);
+                    notify("jk it ain't real XD", 5000);
                 }, 7500);
             } else if (ing == "dog" || ing == "🐶" || ing == "🐕" || ing == "baby" || ing == "babies" || ing == "👶" || ing == "girl" || ing == "👧" || ing == "child" || ing == "children" || ing == "🧒" || ing == "boy" || ing == "👦") {
                 ingSearch.value = "";
@@ -444,10 +458,9 @@ function addIng(e) {
                 ingSearchError.innerHTML = "omg you uncovered the easiest secret ever!! (Secret #5)";
                 setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
                 award(14);
-            } else if (ing.match("random") || ing.match("ingredient") || ing.match("mystery")) {
+            } else if (ing.match("flower")) {
                 ingSearch.value = "";
-                ingredients.innerHTML = ingredients.innerHTML + "🥔";
-                ingSearchError.innerHTML = "ok heres a potato or whatever (Secret #6)";
+                ingSearchError.innerHTML = "you mean \"flour\"? (Secret #6)";
                 setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
                 award(22);
             } else {
@@ -465,14 +478,11 @@ function addIng(e) {
                 ingredients.innerHTML = ingredients.innerHTML + ing;
                 stock -= 1;
                 stockDisplay.innerHTML = stock;
-                if (ing == "🍎" && Math.floor(Math.random() * 200) == 0) {
+                if (ing == "🍎" && Math.floor(Math.random() * 100) == 0) {
                     ingSearchError.innerHTML = "🪱";
                     setTimeout(function(){
-                        let notif = document.createElement("p");
-                        notif.innerHTML = "oh looks like you found a worm in the apple… (Secret #7)";
-                        notifContainer.appendChild(notif)
+                        notify("oh looks like you found a worm in the apple… (Secret #7)", 15000);
                         setTimeout(function(){award(23)}, 1000);
-                        setTimeout(function(){notif.remove()}, 15000);
                     }, 1000);
                 };
             };
@@ -976,15 +986,16 @@ setTimeout(function(){
     };
 }, 1500);
 setTimeout(function(){
-    let notif = document.createElement("p");
-    notif.innerHTML = "Version " + v + " is out now! <a href='" + updateLink + "'>Click here</a> to see changes or <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>click here</span> for a summary of the new update";
-    notifContainer.appendChild(notif);
-    setTimeout(function(){notif.remove()}, 10000);
+    notify("Version " + v + " is out now! <a href='" + updateLink + "'>Click here</a> to see changes or <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>click here</span> for a summary of the new update", 10000);
 }, 1550);
 setInterval(function(){
     if (stock <= Math.round(storage / 2) && restockers > 0) {
-        let stockToAdd = storage - Math.floor(storage / 2);
-        
+        notify("Automatically restocking ingredients…");
+        let stockToAdd = Math.floor(storage / 2);
+        setTimeout(function(){
+            storage += stockToAdd;
+            storageDisplay.innerHTML = storage;
+        }, 1000);
     };
 }, 1000);
 setInterval(customer, customerRate);
@@ -994,10 +1005,7 @@ setInterval(function(){
         money += rng;
         totalMoney += rng;
         moneyDisplay.innerHTML = money;
-        let notif = document.createElement("p");
-        notif.innerHTML = "You found $" + rng + " on the floor!";
-        notifContainer.appendChild(notif);
-        setTimeout(function(){notif.remove()}, 6250);
+        notify("You found $" + rng + " on the floor!", 5000)
         if (hasAchievement(9) == false) {
             award(9);
         };

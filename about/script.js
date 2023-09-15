@@ -41,6 +41,9 @@ if (visitCount == 1 || visitCount == "1") {
     document.getElementById("visits").innerHTML = visitCount + " times";
 };
 
+// DO NOT SCROLL DOWN — SECRET SPOILERS AHEAD
+// ONLY WIENERS GIVE UP SO CLOSE THIS RIGHT NOW
+
 function click() {
     let clicks = document.getElementById("clicks");
     let newClicks = Number(clicks.innerHTML) + 1;
@@ -185,7 +188,8 @@ function click() {
 function checkCode() {
     let cb = Array.prototype.slice.call(checkboxes.querySelectorAll("*"));
     if (cb[0].checked && !cb[1].checked && !cb[2].checked && cb[3].checked && cb[4].checked && cb[5].checked && !cb[6].checked && cb[7].checked && cb[8].checked && !cb[9].checked && cb[10].checked && cb[11].checked && cb[12].checked && !cb[13].checked && !cb[14].checked && cb[15].checked) {
-        alert("you got the code right! the secret's still coming soon tho so check back some other time");
+        alert("you got the code right! now, for the next clue:");
+        alert("ERROR: REALLY BIG future update not found");
     };
 };
 
