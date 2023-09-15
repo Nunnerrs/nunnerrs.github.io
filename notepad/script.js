@@ -56,12 +56,28 @@ function toggleSpellCheck() {
 
 function theme() {
     darkTheme = darkTheme == true ? false : true;
+    let h = document.querySelector("#h");
+    let nv = document.querySelector("#nv");
+    let l = "theme-light";
+    let d = "theme-dark";
     if (darkTheme == true) {
-        b.classList.remove("theme-light");
-        b.classList.add("theme-dark");
+        b.style.backgroundColor = "rgb(125, 105, 70)";
+        h.style.color = "rgb(245, 225, 175)";
+        /*scBtn.style.backgroundColor = "rgb(255, 225, 150)";
+        themeBtn.style.backgroundColor = "rgb(255, 225, 150)";
+        saveBtn.style.backgroundColor = "rgb(255, 225, 150)";*/
+        t.style.backgroundColor = "black";
+        t.style.color = "white";
+        nv.style.color = "rgb(125, 225, 205)";
     } else {
-        b.classList.remove("theme-dark");
-        b.classList.add("theme-light");
+        b.style.backgroundColor = "rgb(255, 235, 200)";
+        h.style.color = "rgb(64, 59, 50)";
+        /*scBtn.style.backgroundColor = "rgb(255, 225, 150)";
+        themeBtn.style.backgroundColor = "rgb(255, 225, 150)";
+        saveBtn.style.backgroundColor = "rgb(255, 225, 150)";*/
+        t.style.backgroundColor = "white";
+        t.style.color = "black";
+        nv.style.color = "rgb(0, 125, 100);"
     };
 };
 
