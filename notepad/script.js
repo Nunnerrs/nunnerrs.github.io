@@ -1,8 +1,10 @@
 var b = document.body;
 var menu = document.querySelector("#menu");
 var scBtn = document.querySelector("#spellcheck");
+var themeBtn = document.querySelector("#theme");
 var saveBtn = document.querySelector("#save");
 var sc = true;
+var darkTheme = false;
 
 var t = document.querySelector("#textbox");
 var w = document.body.clientWidth;
@@ -52,6 +54,17 @@ function toggleSpellCheck() {
     setTimeout(function(){scBtn.style = "border-style: hidden hidden outset hidden"}, 25);
 };
 
+function theme() {
+    darkTheme = darkTheme == true ? false : true;
+    if (darkTheme == true) {
+        b.classList.remove("theme-light");
+        b.classList.add("theme-dark");
+    } else {
+        b.classList.remove("theme-dark");
+        b.classList.add("theme-light");
+    };
+};
+
 load();
 t.oninput = save;
 var menuBtns = menu.childNodes;
@@ -61,4 +74,5 @@ for (let i = 0; i < menuBtns.length; i++) {
     menuBtns[i].onmouseleave = function(){bUp(this)};
 };
 scBtn.onclick = toggleSpellCheck;
+themeBtn.onclick = theme;
 saveBtn.onclick = save;
