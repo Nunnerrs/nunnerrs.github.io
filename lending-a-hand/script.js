@@ -23,12 +23,25 @@ const names = [
 /* Purple */	[],
 /* Pink */		[],
 ];
-
+const stats = {
+    flowers_give: false,
+    flowers_gave: false,
+};
 const hats = ["", "tophat"];
 var room = 1;
+
+/*
+When creating a new room, remember to…
+• Add the title that should appear in rooms[titles] below
+• Add the main background color for the room in rooms[bg] below
+• Add the pixel map in rooms[map] below
+• Add the wall collisions in rooms[walls] below the maps
+• Add "case RM#:" in bg() and update() under the "switch(room)" for extra BG stuff and dialog/walls/exits (don't forget the "break;")
+*/
+
 const rooms = {
-    titles: ["", "Home", "Outside",],
-    bg: ["#000000", "#252525", "#4BC84B"],
+    titles: ["", "Home", "Outside", "Silly Street", "Front of Happy Mart"],
+    bg: ["#000000", "#252525", "#4BC84B", "#4BC84B", "#4BC84B"],
     grid: 25,
     map: [
         `
@@ -97,12 +110,60 @@ const rooms = {
         3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
         3,3,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0|
         `,
+        `
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7|
+        7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7|
+        7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7|
+        7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,0,0,0,0,0,0,0,0,0,0,0,0,0|
+        `,
+        `
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,6,6|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,6,6|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,6,6|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,6,6|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,6,6|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,6,6|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1|
+        7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1|
+        7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1|
+        7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1|
+        7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,1|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,1|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,6,6|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,6,6|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,6,6|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,6,6|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,6,6|
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,6,6|
+        `,
     ],
     walls: [
     	// X1, X2, Y1, Y2, X1 exception, X2 exc., Y1 exc., Y2 exc.
+        // default collisions:
     	[p.size, canvas.width - p.size, p.size, canvas.height - (canvas.height * 0.25) - p.size, false, false, false, false],
-        [p.size + 50, canvas.width - p.size - 50, p.size + 50, canvas.height - (canvas.height * 0.25) - p.size - 50, false, true, false, false],
-        [p.size, canvas.width - p.size, p.size, canvas.height - (canvas.height * 0.25) - p.size, true, false, false, false],
+        // index begins at 1
+/* House */					[p.size + 50, canvas.width - p.size - 50, p.size + 50, canvas.height - (canvas.height * 0.25) - p.size - 50, false, true, false, false],
+/* Outside */				[p.size, canvas.width - p.size, p.size, canvas.height - (canvas.height * 0.25) - p.size, true, false, false, false],
+/* Silly Str */				[p.size, canvas.width - p.size, p.size, canvas.height - (canvas.height * 0.25) - p.size, false, false, false, false],
+/* Front of Happy Mart */	[p.size, canvas.width - p.size, p.size, canvas.height - (canvas.height * 0.25) - p.size, false, false, false, false],
     ],
 };
 
@@ -122,6 +183,9 @@ const dialogs = [
 	[
     	"Hey...I'm not really feeling so good.\n\nI'm pretty sick right now— *COUGH\nCOUGH*  :C\nCould you do me a favor? There's a\nfew things I want, but I can't get up\n'cause...you know. Anyways, I listed\nthem on the paper next to me.\n...You'll help? Aww, thanks buddy.",
         "Things to do: nothing in particular\n\nYou: I should get them some flowers\ntoo.",
+        "A—Are those for me?? Thanks so much!\n\n*sniff* Mmmm! These smell so good.",
+        "The room smells so much nicer now.\n\nOh, and I have a couple favors for\nyou.\nThey're listed on the paper beside\nme.",
+        "Things to do: buy medicine",
     ],
     // Room 2
     [
@@ -139,15 +203,16 @@ var interactText = "Interact";
 var pickup = 0;
 var proceed = false;
 
+// The first pickup in the array is only there so the starting index is 1 (e.g. pickups[2][1] is the first flower in Room 2)
 const pickups = [
 // /* PICKUP */		false,
 	[],
-	// Room 1
+	// Room 1: House
     [
     false,
     /* Placeholder */	false,
     ],
-    // Room 2
+    // Room 2: Outside
     [
     false,
     /* Flower */	false,
@@ -162,93 +227,42 @@ const pickups = [
 ];
 
 const colors = [
-// /* COLOR */			"",
+// /* # COLOR */			"",
 
-/* Background */	rooms.bg[room],
-/* White */			"#FFFFFF",
-/* Black */			"#000000",
-/* Tan */			"rgb(225, 200, 150)",
-/* Blue */			"rgb(200, 235, 255)",
-/* Brown */			"rgb(125, 75, 25)",
-/* Light Gray */	"#EEEEEE",
-/* Gray */			"#CDCDCD",
+/* 0 Background */	rooms.bg[room],
+/* 1 White */		"#FFFFFF",
+/* 2 Black */		"#000000",
+/* 3 Tan */			"rgb(225, 200, 150)",
+/* 4 Blue */		"rgb(200, 235, 255)",
+/* 5 Brown */		"rgb(125, 75, 25)",
+/* 6 Light Gray */	"#EEEEEE",
+/* 7 Gray */		"#CDCDCD",
+/* 8 Dark Green */	"#329632",
 
 ]
 const draw = {
-    player: function(drawMouth) {
-        // head/body thing
-        c.fillStyle = p["color"];
+    bush: function(x2, y2) {
+        // big leaf
+        c.fillStyle = colors[8];
         c.beginPath();
-        c.arc(x, y, p.size, 0, 2 * Math.PI);
+        c.arc(x2, y2, 20, 0, 2 * Math.PI);
         c.fill();
-        // eyes
-        c.fillStyle = "#000000";
+        // small leaf
         c.beginPath();
-        c.arc(x - 10, y - 4, 5, 0, 2 * Math.PI);
+        c.arc(x2 + 18, y2 + 12, 8, 0, 2 * Math.PI);
         c.fill();
+        // small leaf part
         c.beginPath();
-        c.arc(x + 10, y - 4, 5, 0, 2 * Math.PI);
+        c.arc(x2 + 10, y2 + 12, 8, 0, 2 * Math.PI);
         c.fill();
-        //
-        // mouth
-        if (drawMouth != false) {
-            c.fillStyle = "#000000";
-            c.strokeStyle = "#000000";
-            c.beginPath();
-            c.arc(x, y + 7, 10, 0, 1 * Math.PI);
-            c.lineCap = "butt";
-            c.fill();
-            c.stroke();
-        };
-    },
-    sibling: function(x2, y2) {
-        // head/body thing
-        let color = p["color"].split("100%");
-        c.fillStyle = color[0] + "100%, 50%)";
+        // lef
         c.beginPath();
-        c.arc(x2, y2, p.size, 0, 2 * Math.PI);
+        c.arc(x2 - 8, y2 + 8, 12, 0, 2 * Math.PI);
         c.fill();
-        // eyes
-        c.fillStyle = "#000000";
+        // lef
         c.beginPath();
-        c.arc(x2 - 10, y2 - 4, 5, 0, 2 * Math.PI);
+        c.arc(x2 - 18, y2 + 8, 12, 0, 2 * Math.PI);
         c.fill();
-        c.beginPath();
-        c.arc(x2 + 10, y2 - 4, 5, 0, 2 * Math.PI);
-        c.fill();
-        // mouth
-        c.strokeStyle = "#000000";
-        c.beginPath();
-        c.arc(x2, y2 + 20, 12, 10, 5.7);
-        c.lineWidth = 3;
-        c.lineCap = "round";
-        c.stroke();
-    },
-    paper: function(x2, y2) {
-    	// paper
-        c.fillStyle = colors[1];
-        c.fillRect(x2, y2, 25, 40);
-        // lines
-        c.strokeStyle = colors[2];
-        c.lineWidth = 2;
-        c.lineCap = "round";
-        for (let i = 0; i < 6; i++) {
-        	c.beginPath();
-            c.moveTo(x2 + 5, y2 + (i * 5) + 8);
-            c.lineTo(x2 + 20, y2 + (i * 5) + 8);
-            c.stroke();
-        };
-    },
-    tophat: function() {
-        // rim
-        c.fillStyle = "#444444";
-        c.fillRect(x - 30, y - 25, 60, 10);
-        // tall
-        c.fillStyle = "#444444";
-        c.fillRect(x - 20, y - 65, 40, 30);
-        // band
-        c.fillStyle = "#EEEEEE";
-        c.fillRect(x - 20, y - 35, 40, 10);
     },
     flower: function(x2, y2) {
     	// petals
@@ -272,6 +286,89 @@ const draw = {
         c.arc(x2, y2, 5, 0, 2 * Math.PI);
         c.fill();
     },
+    paper: function(x2, y2) {
+    	// paper
+        c.fillStyle = colors[1];
+        c.fillRect(x2, y2, 25, 40);
+        // lines
+        c.strokeStyle = colors[2];
+        c.lineWidth = 2;
+        c.lineCap = "round";
+        for (let i = 0; i < 6; i++) {
+        	c.beginPath();
+            c.moveTo(x2 + 5, y2 + (i * 5) + 8);
+            c.lineTo(x2 + 20, y2 + (i * 5) + 8);
+            c.stroke();
+        };
+    },
+    player: function(drawMouth) {
+        // head/body thing
+        c.fillStyle = p["color"];
+        c.beginPath();
+        c.arc(x, y, p.size, 0, 2 * Math.PI);
+        c.fill();
+        // eyes
+        c.fillStyle = "#000000";
+        c.beginPath();
+        c.arc(x - 10, y - 4, 5, 0, 2 * Math.PI);
+        c.fill();
+        c.beginPath();
+        c.arc(x + 10, y - 4, 5, 0, 2 * Math.PI);
+        c.fill();
+        // mouth
+        if (drawMouth != false) {
+            c.fillStyle = "#000000";
+            c.strokeStyle = "#000000";
+            c.beginPath();
+            c.arc(x, y + 7, 10, 0, Math.PI);
+            c.lineCap = "butt";
+            c.fill();
+            c.stroke();
+        };
+    },
+    sibling: function(x2, y2, happy) {
+        // head/body thing
+        let color = p["color"].split("100%");
+        c.fillStyle = color[0] + "100%, 50%)";
+        c.beginPath();
+        c.arc(x2, y2, p.size, 0, 2 * Math.PI);
+        c.fill();
+        // eyes
+        c.fillStyle = "#000000";
+        c.beginPath();
+        c.arc(x2 - 10, y2 - 4, 5, 0, 2 * Math.PI);
+        c.fill();
+        c.beginPath();
+        c.arc(x2 + 10, y2 - 4, 5, 0, 2 * Math.PI);
+        c.fill();
+        // mouth
+        if (happy == true) {
+            c.strokeStyle = "#000000";
+            c.beginPath();
+            c.arc(x2, y2 + 4, 10, 0.25 * Math.PI, -1.25 * Math.PI);
+            c.lineWidth = 3;
+            c.lineCap = "round";
+            c.stroke();
+        } else {
+            c.strokeStyle = "#000000";
+            c.beginPath();
+            c.arc(x2, y2 + 20, 12, 10, 5.7);
+            c.lineWidth = 3;
+            c.lineCap = "round";
+            c.stroke();
+        };
+    },
+    tophat: function() {
+        // rim
+        c.fillStyle = "#444444";
+        c.fillRect(x - 30, y - 25, 60, 10);
+        // tall
+        c.fillStyle = "#444444";
+        c.fillRect(x - 20, y - 65, 40, 30);
+        // band
+        c.fillStyle = "#EEEEEE";
+        c.fillRect(x - 20, y - 35, 40, 10);
+    },
 };
 
 function clear() {
@@ -291,9 +388,20 @@ function bg() {
         switch (room) {
             case 1:
             	draw.paper(62.5, 55);
-                draw.sibling(137.5, 75);
+                if (stats.flowers_gave == true) {
+                    draw.sibling(137.5, 75, true);
+                    draw.flower(220, 70);
+                    draw.flower(210, 90);
+                    draw.flower(195, 75);
+                    draw.flower(207, 80);
+                } else {
+                    draw.sibling(137.5, 75);
+                };
             break;
             case 2:
+                // bushes
+                draw.bush(135, 75);
+                draw.bush(135, 425);
             	// top flowers
                 if (pickups[2][1] == false) {
             		draw.flower(140, 140);
@@ -373,13 +481,23 @@ function update() {
     switch (room) {
         case 1:
         	// sibling dialog
+            // when updating this interaction range update the one in the "if (dialog == true) else" below (≈ 120 lines)
         	if (x > 150 && x <= 225 && y <= 200) {
-            	sprite = 1;
+                if (pickups[2][1] == true && pickups[2][2] == true && pickups[2][3] == true && pickups[2][4] == true && pickups[2][5] == true && pickups[2][6] == true && pickups[2][7] == true && pickups[2][8] == true && stats.flowers_gave == false) {
+                    stats.flowers_give = true;
+            	    sprite = 3;
+                } else {
+                    sprite = 1;
+                };
                 interactText = "Talk";
                 interactable = true;
             // paper dialog
             } else if (x <= 125 && y <= 150) {
-            	sprite = 2;
+                if (stats.flowers_gave == true) {
+                    sprite = 5;
+                } else {
+                    sprite = 2;
+                };
                 interactText = "Read";
                 interactable = true;
             } else {
@@ -397,11 +515,11 @@ function update() {
             if (x >= canvas.width - 55 && y >= 160 && y <= 345) {
                 room = 2;
                 x = 80;
-                notif(rooms["titles"][2]);
+                notif(rooms["titles"][room]);
             };
         break;
         case 2:
-        	// left wall
+        	// house walls
         	if (x <= 75 && (y < 160 || y > 345)) {
                 x = 75;
             };
@@ -446,19 +564,57 @@ function update() {
     			dialogText = "";
                 //console.log("not in range!");
             }
-            // exit
+            // exit to house
             if (x <= 55 && y >= 160 && y <= 345) {
                 room = 1;
                 x = canvas.width - 80;
-                notif(rooms["titles"][1]);
+                notif(rooms["titles"][room]);
             };
+            // exit to silly str
+            if (x >= canvas.width - 25) {
+                room = 3;
+                x = 80;
+                notif(rooms["titles"][room]);
+            };
+        break;
+        case 3:
+            // exit to front yard
+            if (x <= 55) {
+                room = 2;
+                x = canvas.width - 80;
+                notif("Front yard");
+            };
+            // exit to happy mart front
+            if (x >= canvas.width - 55) {
+                room = 4;
+                x = 80;
+                notif(rooms["titles"][room]);
+            };
+        break;
+        case 4:
+            // mart walls
+        	if (x >= canvas.width - 75 && (y < 160 || y > 345)) {
+                x = canvas.width - 75;
+            };
+            // exit to silly str
+            if (x <= 25) {
+                room = 3;
+                x = canvas.width - 80;
+                notif(rooms["titles"][room]);
+            };
+            /*/ exit to happy mart
+            if (x >= canvas.width - 55 && y >= 160 && y <= 345) {
+                room = 5;
+                x = 80;
+                notif(rooms["titles"][room]);
+            };*/
         break;
         /*
         // top flowers
            draw.flower(300, 100);
            draw.flower(435, 140);
            draw.flower(575, 20);
-           // bottom flowers
+        // bottom flowers
            draw.flower(200, 350);
            draw.flower(690, 390);
            draw.flower(520, 320);
@@ -547,6 +703,15 @@ function update() {
         c.lineTo(canvas.width - 35.5, canvas.height * 0.915);
         c.closePath();
         c.fill();
+        if (sprite == 3 && stats.flowers_give == true) {
+            stats.flowers_give = true;
+            stats.flowers_gave = true;
+        };
+    } else {
+        // when updating this interaction range update the one in "sibling dialog" above
+        if (stats.flowers_gave == true && room == 1 && x > 150 && x <= 225 && y <= 200) {
+            sprite = 4;
+        };
     };
     if (title == true) {
     	let color = p["color"].split(")");
@@ -685,7 +850,6 @@ canvas.onclick = click;
 
 let btns = controls.children;
 for (let i = 0; i < btns.length; i++) {
-	console.log(btns[i].tagName);
 	if (btns[i].tagName == "BUTTON") {
 		btns[i].onmousedown = function(){move(btns[i].dataset.key)};
     	btns[i].onmouseup = function(){stop({key: btns[i].dataset.key})};

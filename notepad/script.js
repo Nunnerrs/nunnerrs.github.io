@@ -77,7 +77,7 @@ function theme() {
         saveBtn.style.backgroundColor = "rgb(255, 225, 150)";*/
         t.style.backgroundColor = "white";
         t.style.color = "black";
-        nv.style.color = "rgb(0, 125, 100);"
+        nv.style.color = "rgb(0, 125, 100)";
     };
 };
 

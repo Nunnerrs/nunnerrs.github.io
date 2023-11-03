@@ -1,3 +1,4 @@
+location.href = "https://nunnerrs.github.io/refractory/index.html#game";
 var b = document.body;
 var score = document.getElementById("score");
 var session = document.getElementById("sessionHighScore");
@@ -250,7 +251,7 @@ function shoot() {
     if (cooldown == false && paused == false) {
         cooldown = true;
         bullets.push({x: plr, y: 350});
-        setTimeout(function(){cooldown = false}, 500);
+        setTimeout(function(){cooldown = false}, 250);
     };
 };
 
