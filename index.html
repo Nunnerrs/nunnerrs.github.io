@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <head>
         <!-- Google tag (gtag.js)(For analytics) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1L4RBL935"></script>
@@ -24,6 +25,13 @@
                 color: rgb(0, 50, 35);
                 text-align: center;
             }
+            button {
+                background-color: rgb(100, 255, 175);
+                border-color: rgb(100, 255, 175);
+                border-radius: 5px;
+                color: rgb(0, 65, 50);
+                font-family: Comic Sans MS, Chalkboard SE;
+            }
             h1 {
                 color: rgb(0, 102, 99);
             }
@@ -40,6 +48,24 @@
             /*.special {
                 color: rgb(0, 135, 105);
             }*/
+            #birthday-banner {
+            	height: auto;
+                width: 97.5%;
+                margin-top: 1.5%;
+            }
+            #nunnerday {
+                background-color: rgb(210, 255, 235);
+                height: auto;
+                left: 25%;
+                margin: auto;
+                max-height: 85%;
+                overflow-y: scroll;
+                position: fixed;
+                text-align: center;
+                translate: transform(-50%, 0);
+                top: 12vh;
+                width: 50vw;
+            }
             #projects {
                 background-color: rgb(150, 240, 200);
                 border-radius: 10px;
@@ -55,6 +81,12 @@
         </style>
     </head>
     <body>
+        <div id="nunnerday">
+            <br style="display: block; margin: 5px 0; content: ' '">
+            <button id="bday">happy birthday!!</button>
+            <button id="noBday">stop showing this :[</button><br>
+            <img id="birthday-banner" src="assets/nunnerday.png">
+        </div>
         <h1>welcome to the NunnerVerse² (aka homepage)!</h1>
         <h2>cool web projects i made or something</h2>
         <h3><a href="https://github.com/Nunnerrs/nunnerrs.github.io/commits/main">click here</a> to view update log (<i>click on an "PROJECTNAME/... — description" to view edit description</i>)</h3>
@@ -175,5 +207,6 @@
         </div>
         <br>
         <p>See my <a href="to-do.txt">To-Do list</a> to read about some small (or big) things I'll add in the future 👀</p>
+        <script src="https://nunnerrs.github.io/nunnerday.js"></script>
     </body>
 </html>

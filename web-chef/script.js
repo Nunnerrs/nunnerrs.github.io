@@ -100,14 +100,14 @@ var notoEmoji = false;
 var tutorialButton = document.getElementById("tutorial-button");
 
 const customerNames = [
-    /*Me & my friends*/	"Nunners", "Kayleigh", "Lianna", "Skylar", "Yeen Yeen", "Jin", "Jaelle", "Chelsey", "Ethan", "Anton", "Jeanne", "Tiffany", "Sai", "Aya", "Samantha", "Jaedyn",
+    /*Me & my friends*/	"Nunners", "Kayleigh", "Lianna", "Skylar", "Yeen Yeen", "Jin", "Jaelle", "Chelsey", "Ethan", "Anton", "Jeanne", "Tiffany", "Sai", "Maiah", "Jordan", "Aya", "Samantha", "Jaedyn", "Marian", "Nikki",
     /*RM NPCs*/			"Mr. Wedgehead", "Wide Racoon", "Albert", "Amongus", "War Noodle", "The Sun", "Princess Sherk", "Patricia", "Dummy", "Jules", "Zack", "Burbspernge", "Pumkin",
     /*PGS NPCs*/		"Azalea", "Malo", "Billy Bob Joe",
     /*CGT NPCs*/		"Jack", "Holly", "Jake",
     /*Bandori*/			"Tae Hanazono", "Michelle", "Moca Aoba", "Nanami Hiromachi", "Kasumi Toyama", "Arisa Ichigaya", "Rimi Ushigome", "Kaoru Seta", "Sayo Hikawa", "Hina Hikawa", "Ran Mitake", "Himari Uehara", "Kokoro Tsurumaki", "Yukina Minato", "Lisa Imai", "Mashiro Kurata", "Rui Yashio", "CHU²", "LAYER", "LOCKE", "MASKING", "PAREO", "Misaki Okusawa",
     /*TBHK*/			"Nene Yashiro", "Hanako", "Kou Minamoto", "Aoi Akane", "Akane Aoi", "Teru Minamoto", "Lemon Yamabuki", "Sousuke Mitsuba", "Tsukasa", "Sakura Nanamine", "Natsuhiko Hyuuga", "Yako", "Tsuchigomori",
     /*Yeen's friends*/	"Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah", "Colette", "Makayla", "Kimora",
-    /*NunnerLibrary*/	"Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus", "Sasha", "Billy", "Bob", "Joe", "Liva", "Cory",
+    /*NunnerLibrary*/	"Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus", "Sasha", "Billy", "Bob", "Joe", "Liva", "Cory", "Eve", "Cole", "Phoebe", "Sarah",
     /*Pokémon*/			"Shuckle", "Ash Ketchum", "Satoshi", "Misty", "Brock", "May", "Dawn", "Iris", "Cilan", "Serena", "Clement", "Bonnie", "Lana", "Mao", "Kaki", "Lilie", "Sophocles", "Goh", "Chloe", "Koharu",
     /*Comic book*/		"Bill", "Roski", "Ginny", "Emily", "Rebecca", "Joey", "Charlyy", "Bobby", "Sally", "Pippi", "Althea", "Derek", "Alford", "Steven", "Collin",
     /*Mochi Squishies*/	"Marshmallow", "Ginger", "Vered", "Snowy", "Blossom", "Melody", "Peep", "Piper", "Sunny", "Honey", "Gummy", "Snoopy", "Mrs. Polar", "Sharpie",
