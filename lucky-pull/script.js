@@ -3,6 +3,7 @@ var submit = document.getElementById("submit");
 var onePull = document.getElementById("onePull");
 var largePull = document.getElementById("largePull");
 var message = document.getElementById("message");
+var genshin = document.getElementById("genshin");
 var continueButton = document.getElementById("continueButton");
 var colorBlindHelp = document.getElementById("colorBlindHelp");
 var colorBlindOn = false;
@@ -25,9 +26,9 @@ var mode = 0;
 const rewardTypes = [
     //3-stars, 4-stars, 5-stars
     [
-        ["⭐⭐⭐ Black Tassel", "⭐⭐⭐ Bloodtainted Greatsword", "⭐⭐⭐ Cool Steel", "⭐⭐⭐ Debate Club", "⭐⭐⭐ Emerald Orb", "⭐⭐⭐ Ferrous Shadow", "⭐⭐⭐ Harbinger of Dawn", "⭐⭐⭐ Magic Guide", "⭐⭐⭐ Raven Bow", "⭐⭐⭐ Sharpshooter's Oath", "⭐⭐⭐ Skyrider Sword", "⭐⭐⭐ Slingshot", "⭐⭐⭐ Thrilling Tales of Dragon Tales", "⭐⭐⭐ White Tassel"],
-        ["⭐⭐⭐⭐ Amber 🔥", "⭐⭐⭐⭐ Barbara 💧", "⭐⭐⭐⭐ Beidou ⚡️️", "⭐⭐⭐⭐ Bennett 🔥", "⭐⭐⭐⭐ Candace 💧", "⭐⭐⭐⭐ Chongyun ❄️", "⭐⭐⭐⭐ Collei 🌱", "⭐⭐⭐⭐ Diona ❄️", "⭐⭐⭐⭐ Dori ⚡️", "⭐⭐⭐⭐ Dragon's Bane", "⭐⭐⭐⭐ Faruzan 💨", "⭐⭐⭐⭐ Favonius Codex", "⭐⭐⭐⭐ Favonius Bow", "⭐⭐⭐⭐ Favonius Greatsword", "⭐⭐⭐⭐ Favonius Lance", "⭐⭐⭐⭐ Favonius Sword", "⭐⭐⭐⭐ Fiscl ⚡️", "⭐⭐⭐⭐ Gorou 🪨", "⭐⭐⭐⭐ Kaeya ❄️", "⭐⭐⭐⭐ Kujou Sara ⚡️", "⭐⭐⭐⭐ Kuki Shinobu ⚡️", "⭐⭐⭐⭐ Layla ❄️", "⭐⭐⭐⭐ Lisa ⚡️", "⭐⭐⭐⭐ Mika ❄️", "⭐⭐⭐⭐ Ningguang 🪨", "⭐⭐⭐⭐ Noelle 🪨", "⭐⭐⭐⭐ Rainslasher", "⭐⭐⭐⭐ Razor ⚡️", "⭐⭐⭐⭐ Rust", "⭐⭐⭐⭐ Sacrificial Bow", "⭐⭐⭐⭐ Sacrificial Fragments", "⭐⭐⭐⭐ Sacrificial Greatsword", "⭐⭐⭐⭐ Sacrificial Sword", "⭐⭐⭐⭐ Sayu 💨", "⭐⭐⭐⭐ Shikanoin Heizou 💨", "⭐⭐⭐⭐ Sucrose 💨", "⭐⭐⭐⭐ The Bell", "⭐⭐⭐⭐ The Flute", "⭐⭐⭐⭐ The Stringless", "⭐⭐⭐⭐ The Widsith", "⭐⭐⭐⭐ Thoma 🔥", "⭐⭐⭐⭐ Xiangling 🔥", "⭐⭐⭐⭐ Xingqiu 💧", "⭐⭐⭐⭐ Xinyan 🔥", "⭐⭐⭐⭐ Yanfei 🔥"],
-        ["⭐⭐⭐⭐⭐ Albeido 🪨", "⭐⭐⭐⭐⭐ Arataki Itto 🪨", "⭐⭐⭐⭐⭐ Cyno ⚡️", "⭐⭐⭐⭐⭐ Dehya 🔥", "⭐⭐⭐⭐⭐ Diluc 🔥", "⭐⭐⭐⭐⭐ Eula ❄️", "⭐⭐⭐⭐⭐ Ganyu ❄️", "⭐⭐⭐⭐⭐ Hu Tao 🔥", "⭐⭐⭐⭐⭐ Jean 💨", "⭐⭐⭐⭐⭐ Kaedehara Kazuha 💨", "⭐⭐⭐⭐⭐ Kamisato Ayaka ❄️", "⭐⭐⭐⭐⭐ Kamisato Ayato 💧", "⭐⭐⭐⭐⭐ Keqing ⚡️", "⭐⭐⭐⭐⭐ Klee 🔥", "⭐⭐⭐⭐⭐ Mona 💧", "⭐⭐⭐⭐⭐ Nahida 🌱", "⭐⭐⭐⭐⭐ Nilou 💧", "⭐⭐⭐⭐⭐ Qiqi ❄️", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡️", "⭐⭐⭐⭐⭐ Rosaria ❄️", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi 💧", "⭐⭐⭐⭐⭐ Shenhe ❄️", "⭐⭐⭐⭐⭐ Tartaglia 💧", "⭐⭐⭐⭐⭐ Tighnari 🌱", "⭐⭐⭐⭐⭐ Venti 💨", "⭐⭐⭐⭐⭐ Wanderer 💨", "⭐⭐⭐⭐⭐ Xiao 💨", "⭐⭐⭐⭐⭐ Yae Miko ⚡️", "⭐⭐⭐⭐⭐ Yelan 💧", "⭐⭐⭐⭐⭐ Yoimiya 🔥", "⭐⭐⭐⭐⭐ Yun Jin 🪨", "⭐⭐⭐⭐⭐ Zhongli 🪨"]
+        ["⭐⭐⭐ Black Tassel 🗡️", "⭐⭐⭐ Bloodtainted Greatsword 🗡️", "⭐⭐⭐ Cool Steel 🗡️", "⭐⭐⭐ Debate Club 🗡️", "⭐⭐⭐ Emerald Orb 📖", "⭐⭐⭐ Ferrous Shadow 🗡️", "⭐⭐⭐ Harbinger of Dawn 🗡️", "⭐⭐⭐ Magic Guide 📖", "⭐⭐⭐ Raven Bow 🏹", "⭐⭐⭐ Sharpshooter's Oath 🏹", "⭐⭐⭐ Skyrider Sword 🗡️", "⭐⭐⭐ Slingshot 🏹", "⭐⭐⭐ Thrilling Tales of Dragon Slayers 📖", "⭐⭐⭐ White Tassel 🗡️"],
+        ["⭐⭐⭐⭐ Amber 🔥", "⭐⭐⭐⭐ Barbara 💧", "⭐⭐⭐⭐ Beidou ⚡️️", "⭐⭐⭐⭐ Bennett 🔥", "⭐⭐⭐⭐ Candace 💧", "⭐⭐⭐⭐ Charlotte ❄️", "⭐⭐⭐⭐ Chongyun ❄️", "⭐⭐⭐⭐ Collei 🌱", "⭐⭐⭐⭐ Diona ❄️", "⭐⭐⭐⭐ Dori ⚡️", "⭐⭐⭐⭐ Dragon's Bane 🗡️", "⭐⭐⭐⭐ Faruzan 💨", "⭐⭐⭐⭐ Favonius Codex 📖", "⭐⭐⭐⭐ Favonius Bow 🏹", "⭐⭐⭐⭐ Favonius Greatsword 🗡️", "⭐⭐⭐⭐ Favonius Lance 🗡️", "⭐⭐⭐⭐ Favonius Sword 🗡️", "⭐⭐⭐⭐ Fiscl ⚡️", "⭐⭐⭐⭐ Freminet ❄️", "⭐⭐⭐⭐ Gorou 🪨", "⭐⭐⭐⭐ Kaeya ❄️", "⭐⭐⭐⭐ Kujou Sara ⚡️", "⭐⭐⭐⭐ Kuki Shinobu ⚡️", "⭐⭐⭐⭐ Layla ❄️", "⭐⭐⭐⭐ Lisa ⚡️", "⭐⭐⭐⭐ Lynette 💨", "⭐⭐⭐⭐ Mika ❄️", "⭐⭐⭐⭐ Ningguang 🪨", "⭐⭐⭐⭐ Noelle 🪨", "⭐⭐⭐⭐ Rainslasher 🗡️", "⭐⭐⭐⭐ Razor ⚡️", "⭐⭐⭐⭐ Rust 🗡️", "⭐⭐⭐⭐ Sacrificial Bow 🏹", "⭐⭐⭐⭐ Sacrificial Fragments 📖", "⭐⭐⭐⭐ Sacrificial Greatsword 🗡️", "⭐⭐⭐⭐ Sacrificial Sword 🗡️", "⭐⭐⭐⭐ Sayu 💨", "⭐⭐⭐⭐ Shikanoin Heizou 💨", "⭐⭐⭐⭐ Sucrose 💨", "⭐⭐⭐⭐ The Bell 🗡️", "⭐⭐⭐⭐ The Flute 🗡️", "⭐⭐⭐⭐ The Stringless 🏹", "⭐⭐⭐⭐ The Widsith 📖", "⭐⭐⭐⭐ Thoma 🔥", "⭐⭐⭐⭐ Xiangling 🔥", "⭐⭐⭐⭐ Xingqiu 💧", "⭐⭐⭐⭐ Xinyan 🔥", "⭐⭐⭐⭐ Yanfei 🔥"],
+        ["⭐⭐⭐⭐⭐ Albeido 🪨", "⭐⭐⭐⭐⭐ Arataki Itto 🪨", "⭐⭐⭐⭐⭐ Cyno ⚡️", "⭐⭐⭐⭐⭐ Dehya 🔥", "⭐⭐⭐⭐⭐ Diluc 🔥", "⭐⭐⭐⭐⭐ Eula ❄️", "⭐⭐⭐⭐⭐ Furina 💧", "⭐⭐⭐⭐⭐ Ganyu ❄️", "⭐⭐⭐⭐⭐ Hu Tao 🔥", "⭐⭐⭐⭐⭐ Jean 💨", "⭐⭐⭐⭐⭐ Kaedehara Kazuha 💨", "⭐⭐⭐⭐⭐ Kamisato Ayaka ❄️", "⭐⭐⭐⭐⭐ Kamisato Ayato 💧", "⭐⭐⭐⭐⭐ Keqing ⚡️", "⭐⭐⭐⭐⭐ Klee 🔥", "⭐⭐⭐⭐⭐ Lyney 🔥", "⭐⭐⭐⭐⭐ Mona 💧", "⭐⭐⭐⭐⭐ Nahida 🌱", "⭐⭐⭐⭐⭐ Neuvillette 💧", "⭐⭐⭐⭐⭐ Nilou 💧", "⭐⭐⭐⭐⭐ Qiqi ❄️", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡️", "⭐⭐⭐⭐⭐ Rosaria ❄️", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi 💧", "⭐⭐⭐⭐⭐ Shenhe ❄️", "⭐⭐⭐⭐⭐ Tartaglia 💧", "⭐⭐⭐⭐⭐ Tighnari 🌱", "⭐⭐⭐⭐⭐ Venti 💨", "⭐⭐⭐⭐⭐ Wanderer 💨", "⭐⭐⭐⭐⭐ Wriothesley ❄️", "⭐⭐⭐⭐⭐ Xiao 💨", "⭐⭐⭐⭐⭐ Yae Miko ⚡️", "⭐⭐⭐⭐⭐ Yelan 💧", "⭐⭐⭐⭐⭐ Yoimiya 🔥", "⭐⭐⭐⭐⭐ Yun Jin 🪨", "⭐⭐⭐⭐⭐ Zhongli 🪨"]
     ],
     
     //2-stars, 3-stars, 4-stars
@@ -74,7 +75,8 @@ function changeType() {
         gachaText = "Based on the character wish in Genshin Impact";
         onePullText = "1 pull";
         largePullText = "10 pull";
-        pullText = "You pulled: ";
+        //pullText = "You pulled: ";
+        pullText = "";
         max = 1000;
         //alert("Set type to Genshin");
     } else if (type == 2) {
@@ -206,6 +208,38 @@ gatchaType.addEventListener("mouseout", changeType);/*function() {
     message.innerHTML = gachaText;
 });*/
 
+function genshinPull(data) {
+    let stars = "⭐⭐⭐";
+    let name = "Chicken Mushroom Skewer";
+    let icon = "🍗";
+        //if (!data.match("Dragon's Bane") && !data.match("Favonius ") && !data.match("Rainslasher") && !data.match("Rust") && !data.match("Sacrificial ") && !data.match("The ")) {
+            data = data.split(" ");
+            stars = data[0];
+            if (data.length == 3) {
+                name = data[1];
+                icon = data[2];
+            };
+            if (data.length > 3) {
+            	name = data[1];
+                for (let i = 2; i < data.length - 1; i++) {
+                    name += " " + data[i];
+                };
+                //name = data[1] + " " + data[2];
+                icon = data[data.length - 1];
+            };
+        //};
+    let td = document.createElement("td");
+    td.innerHTML = "<span>" + icon + "</span><br>" + stars + "<br>" + name + "</td>";
+    if (stars.length == 5) {
+        td.style.borderColor = "rgb(255, 220, 100)";
+    } else if (stars.length == 4) {
+        td.style.borderColor = "rgb(200, 150, 255)";
+    } else {
+        td.style.borderColor = "rgb(150, 215, 235)";
+    }
+    genshin.appendChild(td);
+};
+
 onePull.addEventListener("click", function() {
     //alert("1 pull…");
     onePull.style = "visibility: hidden;";
@@ -228,7 +262,7 @@ onePull.addEventListener("click", function() {
         };
         if (pull > threeStarChance + fourStarChance && pull <= threeStarChance + fourStarChance + fiveStarChance) {
             reward = 5;
-            continueButton.style = "color: rgb(255, 175, 100); visibility: visible;"
+            continueButton.style = "color: rgb(255, 220, 100); visibility: visible;"
         };
         rewards.push(rewardNames[reward - 3][Math.floor(Math.random() * (rewardNames[reward - 3].length - 1))]);
         message.innerHTML = "Click to continue";
@@ -332,7 +366,7 @@ largePull.addEventListener("click", function() {
             if (pull <= threeStarChance) {
                 reward = 3;
             };
-            if (i == largePullAmount) {
+            if (i == largePullAmount && highest < 4) {
                 reward = 4;
                 if (highest < 4) {
                     highest = 4;
@@ -354,7 +388,7 @@ largePull.addEventListener("click", function() {
             if (pull <= twoStarChance) {
                 reward = 2;
             };
-            if (i == largePullAmount) {
+            if (i == largePullAmount && highest < 3) {
                 reward = 3;
             };
             if (pull > twoStarChance && pull <= twoStarChance + threeStarChance) {
@@ -390,7 +424,7 @@ largePull.addEventListener("click", function() {
         continueButton.style = "color: rgb(200, 150, 255); visibility: visible;"
     };
     if (highest == 5) {
-        continueButton.style = "color: rgb(255, 175, 100); visibility: visible;"
+        continueButton.style = "color: rgb(255, 220, 100); visibility: visible;"
     };
     if (Number(gatchaType.value) == 1) {
         message.innerHTML = "Click to continue";
@@ -411,13 +445,14 @@ continueButton.addEventListener("click", function() {
     if (mode == 1) {
         mode = 2;
         message.innerHTML = pullText;
-        if (rewards[1]) {
-            for (let i = 0; i < rewards.length; i++) {
-                message.innerHTML = message.innerHTML + rewards[i] + ", ";
-            };
-        } else {
-            message.innerHTML = pullText + rewards[0];
+        //if (rewards[1]) {
+        for (let i = 0; i < rewards.length; i++) {
+            genshinPull(rewards[i])
+            //message.innerHTML = message.innerHTML + rewards[i] + ", ";
         };
+        /*} else {
+            message.innerHTML = pullText + rewards[0];
+        };*/
         message.style = "visibility: visible;";
         continueButton.innerHTML = "OK";
         continueButton.style = "color: rgb(220, 60, 125); visibility: visible;";
@@ -429,6 +464,7 @@ continueButton.addEventListener("click", function() {
         mode = 0;
         message.innerHTML = gachaText;
         message.style = "visibility: hidden;";
+        genshin.innerHTML = "";
         continueButton.innerHTML = "";
         continueButton.style = "visibility: hidden;";
         onePull.style = "visibility: visible;";

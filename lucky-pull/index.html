@@ -43,7 +43,7 @@
                 text-align: center;
                 width: auto;
             }
-            .continueButton {
+            #continueButton {
                 background: rgb(255, 210, 230);
                 border-color: rgb(255, 210, 230);
                 color: rgb(150, 215, 235);
@@ -69,8 +69,12 @@
         <br><br>
         <button id="onePull">1 pull</button> <button id="largePull">10 pull</button>
         <br><br><br>
-        <p id="message"></p>
-        <button class="continueButton" id="continueButton" style="visibility: hidden;"></button>
+        <p id="message">
+            <table>
+                <tr id="genshin"></tr>
+            </table>
+        </p>
+        <button id="continueButton" style="visibility: hidden;"></button>
         <br><br>
         <button id="invButton" style="visibility: hidden">Open Genshin Inventory</button>
         <h2 id="invTitle" style="visibility: hidden">Genshin Inventory</h2>
