@@ -209,7 +209,7 @@ gatchaType.addEventListener("mouseout", changeType);/*function() {
 });*/
 
 function genshinPull(data) {
-    let stars = "⭐⭐⭐";
+    let stars = "⭐";
     let name = "Chicken Mushroom Skewer";
     let icon = "🍗";
         //if (!data.match("Dragon's Bane") && !data.match("Favonius ") && !data.match("Rainslasher") && !data.match("Rust") && !data.match("Sacrificial ") && !data.match("The ")) {
@@ -446,9 +446,15 @@ continueButton.addEventListener("click", function() {
         mode = 2;
         message.innerHTML = pullText;
         //if (rewards[1]) {
-        for (let i = 0; i < rewards.length; i++) {
-            genshinPull(rewards[i])
-            //message.innerHTML = message.innerHTML + rewards[i] + ", ";
+        if (type == 1) {
+            for (let i = 0; i < rewards.length; i++) {
+                genshinPull(rewards[i])
+                //message.innerHTML = message.innerHTML + rewards[i] + ", ";
+            };
+        } else {
+            for (let i = 0; i < rewards.length; i++) {
+                message.innerHTML = message.innerHTML + rewards[i] + ", ";
+            };
         };
         /*} else {
             message.innerHTML = pullText + rewards[0];
