@@ -446,7 +446,7 @@ continueButton.addEventListener("click", function() {
         mode = 2;
         message.innerHTML = pullText;
         //if (rewards[1]) {
-        if (type == 1) {
+        if (gatchaType.value == 1) {
             for (let i = 0; i < rewards.length; i++) {
                 genshinPull(rewards[i])
                 //message.innerHTML = message.innerHTML + rewards[i] + ", ";
