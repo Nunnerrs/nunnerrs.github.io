@@ -1,8 +1,17 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>404 — Project not found</title>
+        <!-- Google tag (gtag.js)(For analytics) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1L4RBL935"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-X1L4RBL935');
+        </script>
+        <title>404 — project not found</title>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="">
         <style>
             body {
@@ -18,24 +27,38 @@
             #not-found {
                 font-size: 24px;
             }
+            #space {
+                content: " ";
+                display: block;
+                margin-bottom: 50%;
+            }
+            /* bro wth get out of inspect element */
+            #sus {
+                border-color: rgb(195, 235, 220);
+                border-radius: 5px;
+                border-style: solid;
+            }
         </style>
     </head>
     <body>
         <h1>404</h1>
         <p id="not-found">looks like the page you're trying to visit doesn't exist…</p><br>
         <p>btw old urls ending in something like "games.html" or "library.html" are now shortened so you no longer need the ".html"</p>
+        <br><br>
+        <p>cata is sad :c</p>
+        <img src="https://media.tenor.com/g49-oM67H74AAAAM/cats-kitten.gif">
         <br><br><br>
         <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 125, 100);">Back to the NunnerVerse²</a></h3>
-        <br><br><br><br><br><br><br><br><br><br>
-        <input enterkeyhint="next" id="sus" type="text">
-        <p id="hint"></p>
+        <span id="space"></span>
+        <p autocomplete="off" enterkeyhint="submit" id="hint"></p>
+        <input autocomplete="off" data-code="nunnersisepic" enterkeyhint="submit" id="sus" type="text">
         <script>
             // STOP LOOKING AT THE CODE. THIS IS SUPPOSED TO BE A FUN LITTLE SECRET AND YOU'RE SPOILING IT FOR YOURSELF. ONLY WIENERS GIVE UP.
-            var sus = document.getElementById("sus");
-            var hint = document.getElementById("hint");
-            var code = "https://nunnerrs.github.io";
-            var Code = "86479567204572849834097834709423";
-            var REALcode = "IlIIl1IllI1lIlI1IlI";
+            const sus = document.getElementById("sus");
+            const hint = document.getElementById("hint");
+            const code = "https://nunnerrs.github.io";
+            const Code = "86479567204572849834097834709423";
+            const REALcode = "IlIIl1IllI1lIlI1IlI";
 
             // past this line of code, the real answer lies; are you sure you'd like to proceed?
             // [Y]es
@@ -65,11 +88,13 @@
 
 
             var c = "Never gonna give you up, never gonna let you down, never gonna run around and desert you; Never gonna make you cry, never gonna say goodbye, never gonna tell a lie and hurt you."
+            var answer = 541;
 
             function checkCode(e) {
                 if (e.key == "Enter") {
                     let v = sus.value;
-                    if (v != code && Code && REALcode && c != "can you actually stop snooping around my code to find the answer?" && v == title) {
+                    if (v != answer && v != code && Code && REALcode && c != "can you actually stop snooping around my code to find the answer?" && v == title) {
+                        sus.blur();
                         sus.value = "";
                         hint.innerHTML = "good job on making it this far! there's nothing yet after this so LMAOOO";
                         let done = false;
@@ -79,6 +104,7 @@
                                 sus.style.backgroundColor = "hsl(120, 100%, " + l + "%)";
                                 l += 1;
                             } else {
+                                sus.style.backgroundColor = "";
                                 done = true;
                             };
                         }, 100);  
@@ -86,7 +112,7 @@
                 };
             };
 
-            var title = "MASSIVE";
+            const title = "MASSIVE";
 
             sus.onkeypress = checkCode;
         </script>

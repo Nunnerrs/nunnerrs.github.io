@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Google tag (gtag.js)(For analytics) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1L4RBL935"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-X1L4RBL935');
+        </script>
+        <title>Drawing Tool</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="">
         <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
         <script>
             var hexColor = "#000000";
@@ -20,7 +32,6 @@
                 //ellipse(mouseX, mouseY, lineSize);
             };
         </script>
-        <title>Drawing Tool</title>
         <style>
             body {
                 background-color: rgb(200, 230, 255);
