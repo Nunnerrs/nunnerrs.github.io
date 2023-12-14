@@ -190,6 +190,7 @@ function checkCode() {
     if (cb[0].checked && !cb[1].checked && !cb[2].checked && cb[3].checked && cb[4].checked && cb[5].checked && !cb[6].checked && cb[7].checked && cb[8].checked && !cb[9].checked && cb[10].checked && cb[11].checked && cb[12].checked && !cb[13].checked && !cb[14].checked && cb[15].checked) {
         alert("you got the code right! now, for the next clue:");
         alert("ERROR: REALLY BIG future update not found");
+        //alert("think this thouroughly but if you're really stumped ");
     };
 };
 
