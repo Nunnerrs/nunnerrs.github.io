@@ -1,7 +1,7 @@
 var popup = document.getElementById("nunnerday");
 var bday = document.getElementById("bday");
 var noBday = document.getElementById("noBday");
-var seen = false;
+var seen = true;
 if (localStorage.getItem("nunnerday2023") == "true") {
     seen = true;
 };
