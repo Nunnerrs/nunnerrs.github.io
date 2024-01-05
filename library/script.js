@@ -288,6 +288,17 @@ function toggleDarkMode() {
       };
 };
 
+function p(e) {
+    if (currentBook != null) {
+        if (e.key == "ArrowLeft") {
+            backPage();
+        };
+        if (e.key == "ArrowRight") {
+            nextPage();
+        };
+    };
+};
+
 for (let i = 1; i < total; i++) {
     document.getElementById("book" + i).onclick = function(){openBook(i)};
 };
@@ -299,3 +310,4 @@ back.onclick = backPage;
 close.onclick = closeBook;
 next.onclick = nextPage;
 darkMode.onclick = toggleDarkMode;
+document.body.onkeydown = p;
