@@ -37,6 +37,11 @@
                 font-size: 12px;
                 height: 24px;
             }
+            button:disabled {
+                background-color: rgb(170, 180, 190);
+                border-color: rgb(170, 180, 190);
+                color: rgb(100, 100, 100);
+            }
             gap {
                 color: rgba(255, 255, 255, 0);
                 visibility: hidden;
@@ -81,10 +86,17 @@
             .sidebar {
                 border-radius: 999px;
                 border-width: 0px;
+                bottom: 250px;
                 height: 75px;
                 position: fixed;
                 right: -5px;
                 width: 75px;
+            }
+            .sidebar-button {
+                border-width: 0px;
+                border-radius: 999px;
+                height: 50px;
+                width: 50px;
             }
             #ing-search-error {
                 color: rgb(175, 210, 245);
@@ -102,14 +114,22 @@
                 overflow-y: auto;
                 width: 250px;
             }
+            #recipe-ing {
+                height: 90px;
+            }
+            #recipe-name {
+                height: 75px;
+            }
             #recipes {
                 background-color: rgb(225, 240, 255);
                 border-radius: 5px;
                 color: rgb(104, 145, 212);
+                height: 325px;
                 width: 150px;
             }
             #achievements-button {
                 background-color: rgb(255, 230, 135);
+                border-color: rgb(255, 230, 135);
                 bottom: 145px;
                 color: rgb(255, 200, 75);
                 font-family: default;
@@ -124,16 +144,17 @@
             }
             #stats-button {
                 background-color: rgb(150, 255, 150);
-                bottom: 220px;
-                color: rgb(255, 255, 255);
+                border-color: rgb(150, 255, 150);
+                bottom: 500px;
+                color: white;
                 font-size: 28px;
             }
             #tutorial-button {
                 background-color: rgb(150, 190, 235);
+                border-color: rgb(150, 190, 235);
                 bottom: -5px;
-                border-radius: 999px;
                 border-width: 0px;
-                color: rgb(255, 255, 255);
+                color: white;
                 font-size: 32px;
             }
         </style>
@@ -151,10 +172,37 @@
             <div class="column">
                 <h2>Table</h2>
                 <p id="ingredients">Empty</p>
-                <button disabled id="make-food" style="color: rgb(150, 150, 150);">Turn table ingredients into food!</button>
-                <button disabled id="clear-ing" style="color: rgb(150, 150, 150);">Store all ingredients</button><br><br>
+                <button disabled id="make-food">Turn table ingredients into food!</button>
+                <button disabled id="clear-ing">Store all ingredients</button><br><br>
                 <label for="ing-search">Enter ingredient name to add to table: </label>
                 <input autocomplete="off" enterkeyhint="go" id="ing-search" maxlength="50" placeholder="e.g. rice, potato" type="text">
+                <datalist id="ing-selection">
+                    <option>apple</option>
+                    <option>beans</option>
+                    <option>bread</option>
+                    <option>butter</option>
+                    <option>cheese</option>
+                    <option>chocolate</option>
+                    <option>cucumber</option>
+                    <option>egg</option>
+                    <option>fish</option>
+                    <option>flour</option>
+                    <option>ice</option>
+                    <option>lemon</option>
+                    <option>lettuce</option>
+                    <option>meat</option>
+                    <option>milk</option>
+                    <option>noodles</option>
+                    <option>onion</option>
+                    <option>pineapple</option>
+                    <option>rice</option>
+                    <option>salt</option>
+                    <option>shrimp</option>
+                    <option>syrup</option>
+                    <option>tomato</option>
+                    <option>water</option>
+                    <option>wine</option>
+                </datalist>
                 <p id="ing-search-error"></p>
             </div>
             <div class="column"><gap>SPACE</gap></div>
@@ -166,22 +214,30 @@
                         <li>Rice</li>
                     </ul>
                 </div>
-                <button class="blue page-button" id="pageL">←</button><button class="blue page-button" id="pageR">→</button>
+                <div id="recipe-buttons">
+                    <button class="blue page-button" id="pageL">←</button>
+                    <button class="blue page-button" id="pageR">→</button>
+                </div>
             </div>
             <div class="column"><gap>SPACE</gap></div>
             <div class="column">
                 <h2>Shop</h2>
                 <p>Your ingredient stock: <v id="stock">25</v>/<v id="max-storage">25</v></p>
                 <ul>
-                    <li><label for="buy-stock-5">5 ingredients ($2.5) <gap>.</gap></label><button id="buy-stock-5">Purchase</button></li>
-                    <li><label for="buy-stock-10">10 ingredients ($5) <gap>..</gap></label><button id="buy-stock-10">Purchase</button></li>
-                    <li><label for="buy-stock-20">20 ingredients ($10) <gap>.</gap></label><button id="buy-stock-20">Purchase</button></li>
-                    <li><label for="buy-stock-50">50 ingredients ($25) <gap>.</gap></label><button id="buy-stock-50">Purchase</button></li>
-                    <li><label for="buy-recipe">Random recipe ($25) <gap>..</gap></label><button id="buy-recipe">Purchase</button></li>
-                    <li><label for="buy-storage">5 extra storage ($15) </label><button id="buy-storage">Purchase</button></li>
-                    <li><label for="buy-seating">Seating ($30) <gap>........</gap></label><button id="buy-seating">Purchase</button></li>
-                    <li><label for="buy-ad">Advertisment ($45) <gap>...</gap></label><button id="buy-ad">Purchase</button></li>
-                    <li><label for="hire-restocker">Auto-restocker ($100) <gap>.</gap></label><button id="hire-restocker">Purchase</button></li>
+                    <!--
+                        22 char from button
+                        <li><label for="BUTTONID">SHOPITEM </label><gap>......</gap><button id="BUTTONID">Purchase</button></li>
+                    -->
+                    <li><label for="buy-stock-5">5 ingredients ($2.5) </label><gap>...</gap><button id="buy-stock-5">Purchase</button></li>
+                    <li><label for="buy-stock-10">10 ingredients ($5) </label><gap>....</gap><button id="buy-stock-10">Purchase</button></li>
+                    <li><label for="buy-stock-20">20 ingredients ($10) </label><gap>...</gap><button id="buy-stock-20">Purchase</button></li>
+                    <li><label for="buy-stock-50">50 ingredients ($25) </label><gap>...</gap><button id="buy-stock-50">Purchase</button></li>
+                    <li><label for="buy-recipe">Random recipe ($25) </label><gap>....</gap><button id="buy-recipe">Purchase</button></li>
+                    <li><label for="buy-storage">5 extra storage ($15) </label><gap>..</gap><button id="buy-storage">Purchase</button></li>
+                    <li><label for="buy-seating">Seating ($30) </label><gap>..........</gap><button id="buy-seating">Purchase</button></li>
+                    <li><label for="buy-ad">Advertisment ($45) </label><gap>.....</gap><button id="buy-ad">Purchase</button></li>
+                    <li><label disabled for="hire-restocker">Auto-restocker ($100) </label><gap>..</gap><button id="hire-restocker"><gap>..</gap>Hire<gap>..</gap></button></li>
+                    <li><label for="buy-index">Ingredient index ($250) </label><gap></gap><button id="buy-index">Purchase</button></li>
                 </ul>
             </div>
         </main>
@@ -191,10 +247,12 @@
         <h4 style="font-weight: normal">Inspired by Reykr's <a href="https://replit.com/@Reykr/Console-Chef">Console Chef</a> game on Replit</h4>
         <h4 style="font-weight: normal">Version <v id="version">----</v></h4>
         <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 200, 175);">To the NunnerVerse²</a></h3>
-        <div class="sidebar"><button id="stats-button">📊</button></div>
-        <div class="sidebar"><button id="achievements-button">★</button></div>
-        <div class="sidebar"><button id="emoji-button">😃</button></div>
-        <div class="sidebar"><button id="tutorial-button">ℹ</button></div>
+        <div class="sidebar">
+            <button class="sidebar-button" id="stats-button">📊</button>
+            <button class="sidebar-button" id="achievements-button">★</button>
+            <button class="sidebar-button" id="emoji-button">😃</button>
+            <button class="sidebar-button" id="tutorial-button">ℹ</button>
+        </div>
         <script src="script.js"></script>
     </body>
 </html>

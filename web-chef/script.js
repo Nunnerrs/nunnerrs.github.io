@@ -1,15 +1,18 @@
-var v = "v" + "1.6.3.4";
+var v = "v" + "1.7.0.0";
 var version = document.getElementById("version");
 version.innerHTML = v;
-var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
+/*var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
 var commitId = "cc38037163afa5339cf1d327a2287b8f840ae811";
-updateLink = updateLink + commitId;
+updateLink = updateLink + commitId;*/
 // make a new line to display as new line
-// NO " OR '
-var updateSummary = `• tips can now be earned without needing all recipes unlocked (smaller chance though)
-• more customers (names)
-• changed Surprise! achievement to Oops I Meant The Other One (too hard I guess)
-• slightly more efficient code!!
+// NO " OR ', do ALT + {SHIFT} + [ or ]
+var updateSummary = `• finally, you can create foods with ingredients in ANY order! it took 2 hours just for that… (thanks to my uncle who helped me out)
+• AUTO RESTOCKERS: when your stock goes below half, it gets refilled back to almost max
+• new shop item: ingredient index! allows you to select ingredients rather than typing them, making it much more convinient (you’ll understand when you buy it)
+• KEYBINDS YAY — left/A & right/D arrow: recipe book pages, E: create food, S: save data, F: view stats, G: view achievements, backspace: clear ingredients
+• recipe book arrows stay in place
+• renamed “Bread 4 Life” achievement and changed description of “Oops I meant the other one”
+• Web Chef now has 1,100+ lines of code, making it my longest script
 `;
 
 
@@ -85,11 +88,19 @@ var buySeating = document.getElementById("buy-seating");
 var seatingPrice = 30;
 var buyAd = document.getElementById("buy-ad");
 var adPrice = 45;
-//var hireRestocker = document.getElementById("hire-restocker");
-var restockerPrice = 60;
+var hireRestocker = document.getElementById("hire-restocker");
 var restockers = 0;
 if (localStorage.getItem("restockers") != null) {
     restockers = Number(localStorage.getItem("restockers"));
+};
+var restockerPrice = 60;
+var buyIndex = document.getElementById("buy-index");
+var indexPrice = 250;
+var ingSelection = document.getElementById("ing-selection");
+var index = false;
+if (localStorage.getItem("index") == "true") {
+    index = true;
+    ingSearch.setAttribute("list", "ing-selection");
 };
 var saveButton = document.getElementById("save-button");
 var eraseDataButton = document.getElementById("erase-data-button");
@@ -100,7 +111,7 @@ var notoEmoji = false;
 var tutorialButton = document.getElementById("tutorial-button");
 
 const customerNames = [
-    /*Me & my friends*/	"Nunners", "Kayleigh", "Lianna", "Skylar", "Yeen Yeen", "Jin", "Jaelle", "Chelsey", "Ethan", "Anton", "Jeanne", "Tiffany", "Sai", "Maiah", "Jordan", "Aya", "Samantha", "Jaedyn", "Marian", "Nikki",
+    /*Me & my friends*/	"Nunners", "Kayleigh", "Lianna", "Skylar", "Yeen Yeen", "Jin", "Jeff", "Jaelle", "Chelsey", "Ethan", "Anton", "Jeanne", "Tiffany", "Sai", "Maiah", "Jordan", "Aya", "Samantha", "Jaedyn", "Marian", "Nikki",
     /*RM NPCs*/			"Mr. Wedgehead", "Wide Racoon", "Albert", "Amongus", "War Noodle", "The Sun", "Princess Sherk", "Patricia", "Dummy", "Jules", "Zack", "Burbspernge", "Pumkin",
     /*PGS NPCs*/		"Azalea", "Malo", "Billy Bob Joe",
     /*CGT NPCs*/		"Jack", "Holly", "Jake",
@@ -123,7 +134,6 @@ const ingredientsList = {
     beans: "🫘",
     "🫘": "🫘",
     beef: "🥩",
-    brandy: "🍷",
     bread: "🍞",
     "🍞": "🍞",
     butter: "🧈",
@@ -134,11 +144,11 @@ const ingredientsList = {
     choco: "🍫",
     chocolate: "🍫",
     "🍫": "🍫",
-    cognac: "🍷",
     cream: "🥛",
     creme: "🥛",
     cucumber: "🥒",
     "🥒": "🥒",
+    dough: "🍞",
     egg: "🥚",
     "🥚": "🥚",
     fish: "🐟",
@@ -176,7 +186,6 @@ const ingredientsList = {
     "red wine": "🍷",
     rice: "🍚",
     "🍚": "🍚",
-    rum: "🍷",
     salt: "🧂",
     "🧂": "🧂",
     shrimp: "🦐",
@@ -234,8 +243,8 @@ recipeTotal.innerHTML = foodList.length;
 for (let i = 0; i < foodList.length - 2; i++) {
     let splitName = foodList[i]["name"].toLowerCase().split(" ");
     let name = "";
-    for (let i2 = 0; i2 < splitName.length; i2++) {
-        name = name + splitName[i2];
+    for (let j = 0; j < splitName.length; j++) {
+        name = name + splitName[j];
     };
     if (localStorage.getItem(name) != null) {
         if (localStorage.getItem(name) == "true" || localStorage.getItem(name) == true) {
@@ -259,7 +268,7 @@ const achievements = [ // {id: NUMBER, name: "ACHIEVEMENT", desc: "BRIEFDESCRIPT
     {id: 18, name: "Culinary Feat", desc: "Serve 500 customers all-time", unlocked: false},
     {id: 19, name: "Nationwide Cuisine", desc: "Serve 1,000 customers all-time", unlocked: false},
     {id: 20, name: "How Do Ya Like Them Donuts?!", desc: "Serve a doughnut to Hanako or Tsukasa", unlocked: false},
-    {id: 2, name: "Bread 4 Life", desc: "Serve a baguette to Moca Aoba", unlocked: false},
+    {id: 2, name: "Tsugurific", desc: "Serve a baguette to Moca Aoba", unlocked: false},
     {id: 3, name: "Plants Only", desc: "Serve a salad to Holly or Malo", unlocked: false},
     {id: 4, name: "Caprisun!!", desc: "Serve apple juice to Skylar", unlocked: false},
     {id: 5, name: "Mmm…fries", desc: "Serve French fries to Hina or Sayo Hikawa", unlocked: false},
@@ -273,7 +282,7 @@ const achievements = [ // {id: NUMBER, name: "ACHIEVEMENT", desc: "BRIEFDESCRIPT
     {id: 12, name: "NO. JUST NO.", desc: "Attempt to cook something terrible (discover secret #3)", unlocked: false},
     {id: 13, name: "Free Advertisment", desc: "Try to cook a certain \"phrase\" (discover secret #4)", unlocked: false},
     {id: 14, name: "Top Secret", desc: "Discover the easiest secret of all time (#5)", unlocked: false},
-    {id: 22, name: "Oops I meant the other one", desc: "Wrong word!! (secret #6)", unlocked: false},
+    {id: 22, name: "Oops I meant the other one", desc: "Homophones… (secret #6)", unlocked: false},
     {id: 23, name: "WORM", desc: "Get lucky (0.005% chance)(secret #7)", unlocked: false},
     {id: 15, name: "Overachiever", desc: "Achieve all above achievements (click on star button to claim)", unlocked: false},
 ];
@@ -418,9 +427,9 @@ function findIng() {
     let i = ingSearch.value.toLowerCase().trim();
     if (ingredientsList[i]) {
         return ingredientsList[i];
-    } else if (i == "⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️" || i == "dog" || i == "🐶" || i == "🐕" || i == "baby" || i == "babies" || i == "👶" || i == "girl" || i == "👧" || i == "child" || i == "children" || i == "🧒" || i == "boy" || i == "👦"
-              || i == "https://nunnerrs.github.io" || i == "https://nunnerrs.github.io/" || i == "nunnerrs.github.io"
-              || i == "secret" || i == "sus" || i == "sussy" || i == "sussy baka"
+    } else if (i == "⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️" || i == "dog" || i == "🐶" || i == "🐕" || i == "baby" || i == "babies" || i == "👶" || i == "girl" || i == "👧" || i.match("child") || i == "🧒" || i == "boy" || i == "👦" || i.match("orphan")
+              || i.match("nunnerrs.github.io")
+              || i == "secret" || i.match("sus") || i.match("among")
               || i.match("flower")) {
         return i;
     } else {
@@ -443,17 +452,17 @@ function addIng(e) {
                     stockDisplay.innerHTML = stock;
                     notify("jk it ain't real XD", 5000);
                 }, 7500);
-            } else if (ing == "dog" || ing == "🐶" || ing == "🐕" || ing == "baby" || ing == "babies" || ing == "👶" || ing == "girl" || ing == "👧" || ing == "child" || ing == "children" || ing == "🧒" || ing == "boy" || ing == "👦") {
+            } else if (ing == "dog" || ing == "🐶" || ing == "🐕" || ing == "baby" || ing == "babies" || ing == "👶" || ing == "girl" || ing == "👧" || ing.match("child") || ing == "🧒" || ing == "boy" || ing == "👦" || ing.match("orphan")) {
                 ingSearch.value = "";
                 ingSearchError.innerHTML = "NO. JUST NO. (Secret #3)";
                 setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
                 award(12);
-            } else if (ing == "https://nunnerrs.github.io" || ing == "https://nunnerrs.github.io/" || ing == "nunnerrs.github.io") {
+            } else if (ing.match("nunnerrs.github.io")) {
                 ingSearch.value = "";
                 ingSearchError.innerHTML = "umm are you trying to cook my website?? (Secret #4)";
                 setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
                 award(13);
-            } else if (ing == "secret" || ing == "sus" || ing == "sussy" || ing == "sussy baka") {
+            } else if (ing == "secret" || ing.match("sus") || ing.match("among")) {
                 ingSearch.value = "";
                 ingSearchError.innerHTML = "omg you uncovered the easiest secret ever!! (Secret #5)";
                 setTimeout(function(){ingSearchError.innerHTML = ""}, 5000);
@@ -499,14 +508,66 @@ function addIng(e) {
 };
 
 function makeFood() {
+    // loop through each recipe
     for (let i = 0; i < foodList.length; i++) {
         //console.log(ingredients.innerHTML + " " + foodList[i]["ing"]);
+        let r = foodList[i];
+        //console.log(foodList[i].name);
+        // check if table ing exactly equals recipe
         if (ingredients.innerHTML == foodList[i]["ing"]) {
             ingredients.innerHTML = foodList[i]["emoji"];
             //console.log("found food: " + foodList[i]["emoji"]);
             break;
         } else {
-            let exists = true;
+            // convert string variables into arrays (emojis)
+            let tIng = ingredients.innerHTML;
+            let input = [];
+            let emoji = null;
+            for (let j = 0; j < tIng.length; j++) {
+                // emoji becomes two objects, combine first and second part by odds and evens or smth
+            	if (j % 2 == 0) {
+                    emoji = tIng[j];
+                } else {
+                	emoji += tIng[j];
+                    input.push(emoji);
+                    emoji = null;
+                };
+            };
+            let ring = r.ing;
+            let rIng = [];
+            for (let j = 0; j < ring.length; j++) {
+            	if (j % 2 == 0) {
+                    emoji = ring[j];
+                } else {
+                	emoji += ring[j];
+                    rIng.push(emoji);
+                    emoji = null;
+                };
+            };
+            
+            // compare each recipe ing with table ing
+            for (let j = 0; j < rIng.length; j++) {
+                //console.log(j);
+                // loop 1 ing
+                for (let k = 0; k < input.length; k++) {
+                	//console.log(k);
+                    // check if table ing #k is the same as recipe ing #j
+                	if (input[k] == rIng[j]) {
+                    	//console.log(input);
+                        //console.log(rIng);
+
+                        // remove match from both
+                        input.splice(k, 1);
+                        rIng.splice(j, 1);
+                        //console.log(input);
+                        //console.log(rIng);
+                        j -= 1;
+                        break;
+                    };
+                };
+            };
+            //console.log(rIng);
+            /*
             for (let i2 = 0; i2 < ingredients.innerHTML.length - 1; i2++) {
                 let char = foodList[i]["ing"].charAt(i2);
                 if (ingredients.innerHTML.match(/char/g) != null) {
@@ -518,8 +579,12 @@ function makeFood() {
                 } else {
                     exists = false;
                 };
-            };
-            if (exists == true) {
+            };*/
+            //console.log(input, input == " ", input == "");
+
+            // check if both lists are empty, if so, perfect match YAY
+            // if table ing is more than the recipe or is missing some ing, it will fail (>v<)b
+            if (input == "" && rIng == "") {
                 ingredients.innerHTML = foodList[i]["emoji"];
                 break;
             };
@@ -537,28 +602,16 @@ function makeFood() {
     };*/
     
     if (ingredients.innerHTML == "🌾🥚") {
-        let notif = document.createElement("p");
-        notif.innerHTML = "The Pancakes recipe has been updated; See updated recipe in Recipes book";
-        notifContainer.appendChild(notif);
-        setTimeout(function(){notif.remove()}, 8000);
+        notify("The Pancakes recipe has been updated; See updated recipe in Recipes book", 8000);
     };
     if (ingredients.innerHTML == "🧊") {
-        let notif = document.createElement("p");
-        notif.innerHTML = "The Shaved Ice recipe has been updated; See updated recipe in Recipes book";
-        notifContainer.appendChild(notif);
-        setTimeout(function(){notif.remove()}, 8000);
+        notify("The Shaved Ice recipe has been updated; See updated recipe in Recipes book", 8000);
     };
     if (ingredients.innerHTML == "🌾🍫") {
-        let notif = document.createElement("p");
-        notif.innerHTML = "The Cookie recipe has been updated; See updated recipe in Recipes book";
-        notifContainer.appendChild(notif);
-        setTimeout(function(){notif.remove()}, 8000);
+        notify("The Cookie recipe has been updated; See updated recipe in Recipes book", 8000);
     };
     if (ingredients.innerHTML == "💧🥩🥬🫘🍋") {
-        let notif = document.createElement("p");
-        notif.innerHTML = "The Stew recipe has been changed to Paella; See updated recipe in Recipes book";
-        notifContainer.appendChild(notif);
-        setTimeout(function(){notif.remove()}, 8000);
+        notify("The Stew recipe has been changed to Paella; See updated recipe in Recipes book", 8000);
     };
 };
 
@@ -572,9 +625,9 @@ function clear() {
     };
     ingredients.innerHTML = "Empty"
     makeFoodButton.disabled = true;
-    makeFoodButton.style.color = "rgb(150, 150, 150)";
+    //makeFoodButton.style.color = "rgb(150, 150, 150)";
     clearIng.disabled = true;
-    clearIng.style.color = "rgb(150, 150, 150)";
+    //clearIng.style.color = "rgb(150, 150, 150)";
 };
 
 function backPage() {
@@ -621,7 +674,7 @@ function addStock(ing) {
             stockDisplay.innerHTML = stock;
         };
     } else if (confirmation == true && money < ing/2) {
-        alert("You don't have enough money to buy this! (Price: " + ing/2 + ")");
+        alert("You don't have enough money to buy this! (Price: $" + ing/2 + ")");
     } else {
         //alert("Error #1: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", ing is " + ing + ", stock is " + stock + ", storage is " + storage + ", confirmation is " + confirmation + ", money >= ing/2 is " + money >= ing/2 + ", stock + ing < storage is " + (stock + ing < storage));
     };
@@ -635,7 +688,7 @@ function addStorage() {
         storage += 5;
         storageDisplay.innerHTML = storage;
     } else if (confirmation == true && money < storagePrice) {
-        alert("You don't have enough money to buy this! (Price: " + storagePrice + ")");
+        alert("You don't have enough money to buy this! (Price: $" + storagePrice + ")");
     } else {
         //alert("Error #2: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", storagePrice is " + storagePrice + ", confirmation is " + confirmation + ", money >= storagePrice is " + money >= storagePrice);
     };
@@ -658,8 +711,8 @@ function unlockRecipe(loseMoney) {
                 foodList[f]["unlocked"] = true;
                 unlocked = true;
                 let unlockedAll = true;
-                for (let i2 = 0; i2 < foodList.length; i2++) {
-                    if (foodList[i2]["unlocked"] == false) {
+                for (let j = 0; j < foodList.length; j++) {
+                    if (foodList[j]["unlocked"] == false) {
                         unlockedAll = false;
                         break;
                     };
@@ -679,7 +732,7 @@ function unlockRecipe(loseMoney) {
             alert("You have already unlocked all " + foodList.length + " recipes!");
         };
     } else {
-        alert("You don't have enough money to buy this! (Price: " + recipePrice + ")");
+        alert("You don't have enough money to buy this! (Price: $" + recipePrice + ")");
     };
 };
 
@@ -697,7 +750,7 @@ function addSeating() {
         moneyDisplay.innerHTML = money;
         maxCustomers++;
     } else if (confirmation == true && money < seatingPrice) {
-        alert("You don't have enough money to buy this! (Price: " + seatingPrice + ")");
+        alert("You don't have enough money to buy this! (Price: $" + seatingPrice + ")");
     } else {
         //alert("Error #3: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", seatingPrice is " + seatingPrice + ", confirmation is " + confirmation + ", money >= seatingPrice is " + money >= seatingPrice);
     };
@@ -720,7 +773,7 @@ function addAd() {
             setTimeout(function(){notif.remove()}, 5000);
         };
     } else if (confirmation == true && money < adPrice) {
-        alert("You don't have enough money to buy this! (Price: " + adPrice + ")");
+        alert("You don't have enough money to buy this! (Price: $" + adPrice + ")");
     } else {
         //alert("Error #4: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", adPrice is " + adPrice + ", confirmation is " + confirmation + ", money >= adPrice is " + money >= adPrice);
     };
@@ -740,37 +793,82 @@ function addRestocker() {
             setTimeout(function(){notif.remove()}, 5000);
         };
     } else if (confirmation == true && money < restockerPrice) {
-        alert("You don't have enough money to buy this! (Price: " + restockerPrice + ")");
+        alert("You don't have enough money to buy this! (Price: $" + restockerPrice + ")");
     };
 };
 
-function saveData() {
-    localStorage.setItem("money", money);
-    localStorage.setItem("totalMoney", totalMoney);
-    localStorage.setItem("maxCustomers", maxCustomers);
-    localStorage.setItem("totalCustomers", totalCustomers);
-    localStorage.setItem("customerRate", customerRate);
-    localStorage.setItem("stock", stock);
-    localStorage.setItem("storage", storage);
-    localStorage.setItem("restockers", restockers);
-    for (let i = 0; i < foodList.length - 2; i++) {
-        let splitName = foodList[i]["name"].toLowerCase().split(" ");
-        let name = "";
-        for (let i2 = 0; i2 < splitName.length; i2++) {
-            name = name + splitName[i2];
+function addIndex() {
+    let confirmation = confirm("Buy ingredient index (easy ingredient selection) for $" + indexPrice + "?");
+    if (confirmation == true && money >= indexPrice) {
+        if (ingSearch.list == null && index == false) {
+            money -= indexPrice;
+            moneyDisplay.innerHTML = money;
+            index = true;
+            localStorage.setItem("index", "true");
+            ingSearch.setAttribute("list", "ing-selection");
+        } else {
+            let notif = document.createElement("p");
+            notif.innerHTML = "You can't buy any more indexes! (Max of 1)";
+            notifContainer.appendChild(notif);
+            setTimeout(function(){notif.remove()}, 5000);
         };
-        localStorage.setItem(name, foodList[i]["unlocked"].toString());
+    } else if (confirmation == true && money < indexPrice) {
+        alert("You don't have enough money to buy this! (Price: $" + indexPrice + ")");
     };
-    for (let i = 0; i < achievements.length - 1; i++) {
-        let a = achievements[i];
-        localStorage.setItem("achievement" + a["id"].toString(), a["unlocked"].toString());
+};
+
+/*
+function addPRODUCT() {
+    let confirmation = confirm("Buy ingredient index (easy ingredient selection) for $" + _PRICEVARIABLE + "?");
+    if (confirmation == true && money >= _PRICEVARIABLE) {
+        // e.g. PRODUCTCOUNTVAR < MAXIMUM or you might not even need the if
+        if (_CONDITION) {
+            money -= _PRICEVARIABLE;
+            moneyDisplay.innerHTML = money;
+            // do something
+        } else {
+            let notif = document.createElement("p");
+            notif.innerHTML = "You can't buy any more PRODUCTNAME! (Max of MAXIMUM)";
+            // if it's a worker put "hire" instead of "buy"
+            notifContainer.appendChild(notif);
+            setTimeout(function(){notif.remove()}, 5000);
+        };
+    } else if (confirmation == true && money < _PRICEVARIABLE) {
+        alert("You don't have enough money to buy this! (Price: $" + _PRICEVARIABLE + ")");
     };
-    saveButton.disabled = true;
-    saveButton.style.color = "rgb(150, 150, 150)";
-    let notif = document.createElement("p");
-    notif.innerHTML = "Data saved!";
-    notifContainer.appendChild(notif);
-    setTimeout(function(){notif.remove(); saveButton.disabled = false; saveButton.style.color = "rgb(0, 0, 0)";}, 2500);
+};
+*/
+
+function saveData() {
+    if (saveButton.disabled != true) {
+        localStorage.setItem("money", money);
+        localStorage.setItem("totalMoney", totalMoney);
+        localStorage.setItem("maxCustomers", maxCustomers);
+        localStorage.setItem("totalCustomers", totalCustomers);
+        localStorage.setItem("customerRate", customerRate);
+        localStorage.setItem("stock", stock);
+        localStorage.setItem("storage", storage);
+        localStorage.setItem("restockers", restockers);
+        localStorage.setItem("index", index);
+        for (let i = 0; i < foodList.length - 2; i++) {
+            let splitName = foodList[i]["name"].toLowerCase().split(" ");
+            let name = "";
+            for (let j = 0; j < splitName.length; j++) {
+                name = name + splitName[j];
+            };
+            localStorage.setItem(name, foodList[i]["unlocked"].toString());
+        };
+        for (let i = 0; i < achievements.length - 1; i++) {
+            let a = achievements[i];
+            localStorage.setItem("achievement" + a["id"].toString(), a["unlocked"].toString());
+        };
+        saveButton.disabled = true;
+        saveButton.style.color = "rgb(150, 150, 150)";
+        let notif = document.createElement("p");
+        notif.innerHTML = "Data saved!";
+        notifContainer.appendChild(notif);
+        setTimeout(function(){notif.remove(); saveButton.disabled = false; saveButton.style.color = "rgb(0, 0, 0)";}, 2500);
+    };
 };
 
 function eraseData() {
@@ -800,8 +898,8 @@ function eraseData() {
         for (let i = 0; i < foodList.length - 1; i++) {
             let splitName = foodList[i]["name"].toLowerCase().split(" ");
             let name = "";
-            for (let i2 = 0; i2 < splitName.length - 1; i2++) {
-                name = name + splitName[i2];
+            for (let j = 0; j < splitName.length - 1; j++) {
+                name = name + splitName[j];
             };
             if (foodList[i]["name"] != "Rice Ball" && foodList[i]["name"] != "French Fries") {
                 foodList[i]["unlocked"] = false;
@@ -950,12 +1048,59 @@ function stats() {
     alert(s);
 };
 
+var keys = "";
+
+function keybinds(e) {
+    let k = e.key.toLowerCase();
+    if (document.activeElement != ingSearch) {
+        if (k == "e") {
+            makeFood();
+        };
+        if (k == "s") {
+            saveData();
+        };
+        if (k == "f") {
+            stats();
+        };
+        if (k == "g") {
+            showAchievements();
+        };
+        if (k == "backspace") {
+            clear();
+        };
+        if (k == "arrowleft" || k == "a") {
+            backPage();
+        };
+        if (k == "arrowright" || k == "d") {
+            nextPage();
+        };
+    } else if (k == "arrowup" || k == "arrowdown" || k == "arrowleft" || k == "arrowright" || k == "b" || k == "a") {
+        keys += k;
+    };
+    if (keys.match("arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightba")) {
+        keys = "";
+        // if you edit the secret edit the one in addIng function
+        ingSearch.value = "";
+        moneyDisplay.innerHTML = "∞";
+        stockDisplay.innerHTML = "∞";
+        notify("HOW?!? YOU HACKER!! (Secret #2)", 7500);
+        award(11);
+        setTimeout(function(){
+            moneyDisplay.innerHTML = money;
+            stockDisplay.innerHTML = stock;
+            notify("jk it ain't real XD", 5000);
+        }, 7500);
+    };
+};
+
 document.getElementById("favicon").href = "https://nunnerrs.github.io/assets/web-chef.ico";
 ingSearch.onkeydown = addIng;
 makeFoodButton.onclick = makeFood;
 clearIng.onclick = clear;
 pageL.onclick = backPage;
 pageR.onclick = nextPage;
+document.onkeydown = keybinds;
+
 buyStock5.onclick = function(){addStock(5)};
 buyStock10.onclick = function(){addStock(10)};
 buyStock20.onclick = function(){addStock(20)};
@@ -964,7 +1109,9 @@ buyRecipeButton.onclick = buyRecipe;
 buyStorage.onclick = addStorage;
 buySeating.onclick = addSeating;
 buyAd.onclick = addAd;
-//hireRestocker.onclick = addRestocker;
+hireRestocker.onclick = addRestocker;
+buyIndex.onclick = addIndex;
+
 saveButton.onclick = saveData;
 eraseDataButton.onclick = eraseData;
 statsButton.onclick = stats;
@@ -986,15 +1133,16 @@ setTimeout(function(){
     };
 }, 1500);
 setTimeout(function(){
-    notify("Version " + v + " is out now! <a href='" + updateLink + "'>Click here</a> to see changes or <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>click here</span> for a summary of the new update", 10000);
+    //notify("Version " + v + " is out now! <a href='" + updateLink + "'>Click here</a> to see changes or <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>click here</span> for a summary of the new update", 10000);
+    notify("Version <b>" + v + "</b> is out now! <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>Click here</span> for a summary of the new update", 10000);
 }, 1550);
 setInterval(function(){
     if (stock <= Math.round(storage / 2) && restockers > 0) {
         notify("Automatically restocking ingredients…");
         let stockToAdd = Math.floor(storage / 2);
         setTimeout(function(){
-            storage += stockToAdd;
-            storageDisplay.innerHTML = storage;
+            stock += stockToAdd;
+            storageDisplay.innerHTML = stock;
         }, 1000);
     };
 }, 1000);
