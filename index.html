@@ -11,14 +11,20 @@
         </script>
         <title>NunnerVerse²</title>
         <meta charset="UTF-8">
+        <meta name="description" content="a fun little website made by Nunners">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
+            :root {
+                --h-color: rgb(168, 196, 255);
+                --p-color: rgb(138, 226, 209);
+            }
             /*
             Things to revert:
             • body.backgroundColor - delete background
             */
             a {
-                color: rgb(0, 144, 113);
+                /*color: rgb(0, 144, 113);*/
+                color: rgb(40, 160, 140);
             }
             a:hover {
                 color: rgb(23, 212, 155);
@@ -26,7 +32,8 @@
             body {
                 font-family: 'Comic Sans MS', 'Chalkboard SE';
                 /*background-color: rgb(204, 255, 223);*/
-                background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);
+                /*CANDYCANE-background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);*/
+                background: repeating-linear-gradient(180deg, #000AA9, #a500cb 7.5%, #a500cb 10%, #00ffca 15%, #000AA9 20%);
                 color: rgb(0, 50, 35);
                 text-align: center;
             }
@@ -37,16 +44,16 @@
                 color: rgb(0, 65, 50);
                 font-family: 'Comic Sans MS', 'Chalkboard SE';
             }
-            h1 {
+            h1, #note {
                 /*color: rgb(0, 102, 99);*/
-                color: rgb(0, 135, 105);
+                color: var(--h-color);
             }
             h2 {
                 /*color: rgb(0, 135, 105);*/
-                color: rgb(255, 100, 100);
+                color: rgb(255, 175, 240);
             }
             h3, h5, .special {
-                color: rgb(0, 150, 120);
+                color: var(--p-color);
             }
             snow {
             	animation: snowfall 20s infinite;
@@ -56,6 +63,10 @@
                 height: 10px;
                 position: fixed;
                 width: 10px;
+            }
+            tiny {
+                color: rgb(0, 90, 255);
+                font-size: 1px;
             }
             @keyframes snowfall {
             	from {margin-top: -50px;}
@@ -207,7 +218,7 @@
         </div>
         <h1>welcome to the NunnerVerse²!<br><span style="font-size: 18pt">(aka homepage)</span></h1>
         <h2>cool web projects i made or something</h2>
-        <h3>happy holidays!1!!1</h3>
+        <h3>aurora site theme B)</h3>
         <div class="projects">
             <!--
             <div class="project" data-url="PROJECTURL" id="PROJECT" onclick="window.open(this.dataset.url)">
@@ -230,7 +241,7 @@
                 </div>
                 <div class="p">
                     <p>some info about me. also features the project i'm currently working on along with some random extras.</p>
-                    <p class="special" style="color: rgb(230, 200, 255)">new homepage yayay</p>
+                    <p class="special" style="color: rgb(230, 200, 255)">new homepage layout</p>
                 </div>
             </div>
             <div class="project" data-url="games" id="games" onclick="window.open(this.dataset.url)">
@@ -241,7 +252,7 @@
                 </div>
                 <div class="p">
                     <p>a list of unblocked games & game websites.</p>
-                    <p class="special" style="color: rgb(225, 150, 50)">won't be a list any longer</p>
+                    <p class="special" style="color: rgb(225, 150, 50)">remind me to update this…</p>
                 </div>
             </div>
             <div class="project" data-url="library" id="library" onclick="window.open(this.dataset.url)">
@@ -252,7 +263,7 @@
                 </div>
                 <div class="p">
                     <p>online library with e-books written by me and my friends. add your own stories too!</p>
-                    <p class="special" style="color: rgb(100, 100, 100)">"coming soon sometime in 2023" erm well</p>
+                    <p class="special" style="color: rgb(100, 100, 100)">new <i>NunnerVerse Weekly</i> post</p>
                 </div>
             </div>
             <div class="project" data-url="web-chef" id="web-chef" onclick="window.open(this.dataset.url)">
@@ -263,7 +274,7 @@
                 </div>
                 <div class="p">
                     <p>a simple restaurant game where you just type and click.</p>
-                    <p class="special" style="color: rgb(255, 255, 255)">fixing side bar buttons</p>
+                    <p class="special" style="color: rgb(255, 255, 255)">new update part 2 soon</p>
                 </div>
             </div>
             <div class="project" data-url="refractory" id="refractory" onclick="window.open(this.dataset.url)">
@@ -285,7 +296,7 @@
                 </div>
                 <div class="p">
                     <p>a gachapon simulator, test your luck! includes genshin impact wish, bandori and more.</p>
-                    <p class="special" style="color: rgb(220, 60, 125)">NEW LAYOUT + NEW CHARACTERS (genshin)</p>
+                    <p class="special" style="color: rgb(220, 60, 125)">chevreuse 🥺</p>
                 </div>
             </div>
             <div class="project" data-url="notepad" id="notepad" onclick="window.open(this.dataset.url)">
@@ -296,7 +307,7 @@
                 </div>
                 <div class="p">
                     <p>a useful online notepad that auto-saves locally.</p>
-                    <p class="special" style="color: #807462">fixed smol bugs</p>
+                    <p class="special" style="color: #807462"></p>
                 </div>
             </div>
             <div class="project" data-url="draw" id="draw" onclick="window.open(this.dataset.url)">
@@ -307,7 +318,7 @@
                 </div>
                 <div class="p">
                     <p>a simple tool for drawing with customization. made with p5.js eheheh.</p>
-                    <p class="special" style="color: rgb(65, 169, 238)">stop doing your math hw on this</p>
+                    <p class="special" style="color: rgb(65, 169, 238)"></p>
                 </div>
             </div>
             <div class="project" data-url="skylar-art" id="skylar-art" onclick="window.open(this.dataset.url)">
@@ -336,7 +347,7 @@
         <br>
         <h2>epic Roblox games i made*</h2>
         <h3>i wrote all the scripts for these and built all the models</h3>
-        <tiny style="color: rgb(144, 232, 198); font-size: 1px">(except for 2 models in RM but thats only cuz i was transitioning into my developer phase ok so live with it)</tiny>
+        <tiny>(except for 2 models in RM but thats only cuz i was transitioning into my developer phase ok so live with it)</tiny>
         <div class="projects">
             <div class="project" data-url="https://www.roblox.com/games/11257556108/Custom-Gear-Testing-AFK-Game" id="cgt" onclick="window.open(this.dataset.url)">
             	<div></div>
@@ -357,7 +368,7 @@
                 </div>
                 <div class="p">
                     <p>grow plants and sell them for money. you can catch bunnies, search through bushes, and more!</p>
-                    <p class="special" style="color: rgb(255, 255, 255)">might start to update this again</p>
+                    <p class="special" style="color: rgb(255, 255, 255)">will update if i get the motivation</p>
                 </div>
             </div>
             <div class="project" data-url="https://www.roblox.com/games/6905424287/random-models" id="rm" onclick="window.open(this.dataset.url)">
@@ -368,7 +379,7 @@
                 </div>
                 <div class="p">
                     <p>a game featuring random models i made. this is my first roblox game where i experimented with scripting</p>
-                    <p class="special" style="color: rgb(140, 90, 0);">kinda bad</p>
+                    <p class="special" style="color: rgb(140, 90, 0);">doug dimmadome</p>
                 </div>
             </div>
         </div>
@@ -406,7 +417,7 @@
                 </div>
                 <div class="p">
                     <p>create checkboxes or pixel art thingy</p>
-                    <p class="special" style="color: rgb(125, 125, 125)">No</p>
+                    <p class="special" style="color: rgb(125, 125, 125)">this probably wont be updated</p>
                 </div>
             </div>
         </div>
@@ -438,7 +449,7 @@
         </div>
         <br>
         <h3><a href="https://github.com/Nunnerrs/nunnerrs.github.io/commits/main">click here</a> to view update log or <a href="library/index.html?book=8">NunnerVerse Weekly</a> for detailed stuff</h3>
-        <p>See my <a href="to-do.txt">To-Do list</a> to read about some small (or big) things I'll add in the future 👀</p>
+        <p id="note">See my <a href="to-do.txt">To-Do list</a> to read about some small (or big) things I'll add in the future 👀</p>
         <script>
             var snowContainer = document.getElementById("snow-container");
             function storm() {
