@@ -59,7 +59,7 @@ const books = {
     ],
     book3: [
         "", // <img src="covers/placeholder.png">
-        "<br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon sometime in 2023<br><br><button id='book3' onclick='copyLink();' disabled>Copy book share link</button>",
+        "<br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon someday :P<br><br><button id='book3' onclick='copyLink();' disabled>Copy book share link</button>",
         "Coming Soon!",
         "Coming Soon!",
     ],
@@ -77,10 +77,11 @@ const books = {
     ],
     book6: book6, // Hope Vol. 1
     book7: book7, // Nunners' Guide To Dreams & Nightmares
-    book8: [ // "<heading><b>Mon. DD, 2023</b></heading><br><br>• ",
+    book8: [ // "<heading><b>Mon. DD, 2024</b></heading><br><br>• ",
         "", // <img src="covers/placeholder.png">
-        "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 5/9/2023<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
+        "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 1/16/2024<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
         // UPDATE NEWEST NEWS ABOVE & IN INDEX.HTML FILE
+        "<heading><b>Jan. 16, 2024</b></heading><br><br>Pls dont me mad that I haven't been writing articles in months<br><br>• I forgot to say but REALLY NOICE NEW HOMEPAGE LAYOUT (you probably already saw it though…)<br>• Falling snow?!?! Also the background was candycane-themed but it's now <b>aurora borealis</b> :OO<br>• Web Chef <b>v1.7</b>! Took 2 hours hehe—More details on project (click <a href='https://nunnerrs.github.io/web-chef'>here</a>). Stay tuned for the next big update (very soon)!",
         "<heading><b>Sep. 7, 2023</b></heading><br><br>• Okok for real this time I actually updated the website (sorry for no updates for quite a while)—So we got REFRACTORY finished 'cause I suddenly had the inspiration and Button-Spam Fighting Game made in an hour B)<br>• <i>The Guardian Of The Phoenix Vol. 2</i> FINALLY RELEASED TODAY!!! I was originally planning on publishing it in June but umm there were issues (see Acknowledgements). Volume 3 will oviously not be coming out soon (🥲) but stay tuned for my friend's new book ^o^",
         "<heading><b>May 9, 2023</b></heading><br><br>• I'M SORRY GUYS I have't really got much time (and inspiration) to write <i>Pinky & Mint: Whales</i>. I hope you guys will understand 🙏.<br>• On the bright side, I just released a new book called <b><i>The Guardian Of The Phoenix</i></b>! It'll be a new series spanning across several volumes.<br>• As for the Pinky & Mint series…umm it <i>might just be</i> postponed (sorryijustlostmotivation 😭).",
         "<heading><b>Apr. 13, 2023</b></heading><br><br>• New Kahoot! Username Generator on my <a href='https://nunnerrs.github.io/about'>about me page</a>. You can screenshot any cool nicknames you got or something.<br>• More <i>Nunners' Guide To Dreams & Nightmares</i> dream meanings! I'll try to have one for every letter of the alphabet and more.",
