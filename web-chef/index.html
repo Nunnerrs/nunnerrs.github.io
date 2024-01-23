@@ -11,9 +11,10 @@
         </script>
         <title>Web Chef</title>
         <meta charset="UTF-8">
+        <meta name="description" content="a simple text-based cooking game">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link id="favicon" rel="icon" href="https://nunnerrs.github.io/assets/web-chef.ico">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Emoji">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Color+Emoji&family=Noto+Emoji">
         <style>
             a, .link {
                 color: rgb(225, 240, 255);
@@ -42,6 +43,13 @@
                 border-color: rgb(170, 180, 190);
                 color: rgb(100, 100, 100);
             }
+            button:hover {
+                filter: brightness(120%);
+            }
+            emoji {
+                font-family: monospace, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "Noto Emoji";
+                font-weight: normal;
+            }
             gap {
                 color: rgba(255, 255, 255, 0);
                 visibility: hidden;
@@ -67,12 +75,9 @@
             .column {
                 float: left;
             }
-            .emoji {
-                font-family: monospace;
-            }
             .noto {
                 color: rgb(0, 0, 0);
-                font-family: monospace, Noto Emoji;
+                font-family: monospace;
             }
             .page-button {
                 font-size: 24px;
@@ -98,6 +103,25 @@
                 height: 50px;
                 width: 50px;
             }
+			#alert-container {
+				background-color: rgba(255, 255, 255, 0.75);
+				border-radius: 5px;
+				color: black;
+				left: 12.5%;
+				overflow: auto;
+				padding: 10px;
+				position: fixed;
+				width: 75%;
+				max-height: 75%;
+			}
+			#alert-text {
+				margin: auto;
+				word-wrap: break-word;
+			}
+			#header {
+				font-size: 14pt;
+				font-weight: bold;
+			}
             #ing-search-error {
                 color: rgb(175, 210, 245);
             }
@@ -105,6 +129,13 @@
                 color: rgb(20, 65, 100);
                 font-size: 24px;
                 width: 500px;
+            }
+            #notif-container {
+                background-color: rgba(26, 46, 64, 0.75);
+                margin: auto;
+                position: fixed;
+                top: 10%;
+                width: 100%;
             }
             #orders {
                 background-color: rgb(225, 240, 255);
@@ -132,15 +163,14 @@
                 border-color: rgb(255, 230, 135);
                 bottom: 145px;
                 color: rgb(255, 200, 75);
-                font-family: default;
+                font-family: inherit;
                 font-size: 28px;
             }
-            #emoji-button {
-                background-color: rgb(255, 255, 255);
-                bottom: 70px;
-                color: rgb(245, 215, 50);
-                font-family: default;
-                font-size: 28px;
+            #keybinds-button {
+                background-color: rgb(255, 150, 150);
+                bottom: 145px;
+                color: rgb(0, 0, 0);
+                font-size: 24pt;
             }
             #stats-button {
                 background-color: rgb(150, 255, 150);
@@ -163,15 +193,20 @@
         <h1>Web Chef</h1>
         <p style="font-size: 18px;">Money: $<v id="money">10</v></p>
         <div id="notif-container"></div>
+		<div id="alert-container" style="visibility: hidden">
+			<p id="alert-text"></p><br>
+			<!--button id="cancel-button">Cancel</button-->
+			<button class="blue" id="ok-button"><gap>..</gap>OK<gap>..</gap></button>
+		</div>
         <main>
             <div class="column" id="orders">
-                <h2 style="color: rgb(65, 124, 176);">Orders</h2>
+                <h2 style="color: rgb(65, 124, 176);">Orders <span id="order-count">(0/3)</span></h2>
                 <div style="margin-bottom: 15px;"><ul id="orders-list"></ul></div>
             </div>
             <div class="column"><gap>SPACE</gap></div>
             <div class="column">
                 <h2>Table</h2>
-                <p id="ingredients">Empty</p>
+                <emoji><p id="ingredients">Empty</p></emoji>
                 <button disabled id="make-food">Turn table ingredients into food!</button>
                 <button disabled id="clear-ing">Store all ingredients</button><br><br>
                 <label for="ing-search">Enter ingredient name to add to table: </label>
@@ -209,7 +244,7 @@
             <div class="column" id="recipes">
                 <h2 style="color: rgb(65, 124, 176);">Recipes (<v id="recipe-number">1</v>/<v id="recipe-total"></v>)</h2>
                 <div>
-                    <h3 id="recipe-name">🍙 Rice Ball<br>Unlocked: ✅<br>Profit: $1.5</h3>
+                    <h3 id="recipe-name"><emoji>🍙</emoji> Rice Ball<br>Unlocked: <emoji>✅</emoji><br>Profit: $1.5</h3>
                     <ul id="recipe-ing">
                         <li>Rice</li>
                     </ul>
@@ -236,7 +271,7 @@
                     <li><label for="buy-storage">5 extra storage ($15) </label><gap>..</gap><button id="buy-storage">Purchase</button></li>
                     <li><label for="buy-seating">Seating ($30) </label><gap>..........</gap><button id="buy-seating">Purchase</button></li>
                     <li><label for="buy-ad">Advertisment ($45) </label><gap>.....</gap><button id="buy-ad">Purchase</button></li>
-                    <li><label disabled for="hire-restocker">Auto-restocker ($100) </label><gap>..</gap><button id="hire-restocker"><gap>..</gap>Hire<gap>..</gap></button></li>
+                    <li><label disabled for="hire-restocker">Restocker ($100) </label><gap>.......</gap><button id="hire-restocker" style="width: 71.8px">Hire</button></li>
                     <li><label for="buy-index">Ingredient index ($250) </label><gap></gap><button id="buy-index">Purchase</button></li>
                 </ul>
             </div>
@@ -244,13 +279,19 @@
         <button id="save-button">Save data</button>
         <button id="erase-data-button">Erase data</button>
         <br>
-        <h4 style="font-weight: normal">Inspired by Reykr's <a href="https://replit.com/@Reykr/Console-Chef">Console Chef</a> game on Replit</h4>
+        <h4 style="font-weight: normal">Inspired by Reykr's <!--a href="https://replit.com/@Reykr/Console-Chef"-->Console Chef<!--/a--> game on Replit</h4>
         <h4 style="font-weight: normal">Version <v id="version">----</v></h4>
         <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 200, 175);">To the NunnerVerse²</a></h3>
         <div class="sidebar">
-            <button class="sidebar-button" id="stats-button">📊</button>
-            <button class="sidebar-button" id="achievements-button">★</button>
-            <button class="sidebar-button" id="emoji-button">😃</button>
+            <button class="sidebar-button" id="stats-button"><emoji>📊</emoji></button>
+            <button class="sidebar-button" id="achievements-button"><emoji>⭐</emoji></button>
+            <button class="sidebar-button" id="keybinds-button">
+                <svg viewBox="0 0 60 65" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="6" y="12" width="50" height="50" rx="8" ry="8" style="stroke: rgb(0, 0, 0); stroke-width: 3px; fill: rgba(255, 255, 255, 0);" transform="matrix(1, 0, 0, 1, 3.552713678800501e-15, 0)"/>
+                    <text style="fill: rgb(0, 0, 0); font-family: Courier; font-size: 28pt; text-anchor: middle; white-space: pre;" x="31.5" y="48" transform="matrix(1, 0, 0, 1, 3.552713678800501e-15, 0)">A</text>
+                </svg>
+            </button>
+            <!--button class="sidebar-button" id="emoji-button">😃</button-->
             <button class="sidebar-button" id="tutorial-button">ℹ</button>
         </div>
         <script src="script.js"></script>
