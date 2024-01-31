@@ -1,4 +1,4 @@
-var v = "v" + "1.8.0.0";
+var v = "v" + "1.8.1.0";
 var version = document.getElementById("version");
 version.innerHTML = v;
 /*var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
@@ -7,13 +7,11 @@ updateLink = updateLink + commitId;*/
 // make a new line to display as new line
 // NO " OR ', do ALT + {SHIFT} + [ or ]
 var updateSummary = `• NEW CUSTOM UI so the text wont overflow (shown as …)<br>
-• finally, you can create foods with ingredients in ANY order! it took 2 hours just for that… (thanks to my uncle who helped me out)<br>
+• tutorial follows along with you now ^o^<br>
 • fixed restockers, hopefully you didnt abuse the glitch<br>
-• fixed emojis that display as []<br>
-• new shop item: ingredient index! if you dont like typing, you can just click!<br>
-• check out the new keybinds in the [A] menu<br>
-• a ton of new customer names!<br>
-• …and more quality of life features :D (1,300+ lines of code?!)`;
+• new shop item: ingredient index! if you dont like typing, you can just click! (improved)<br>
+• Popcorn and Tamale recipes with new corn & chili ingredient
+• …and more quality of life features :D (1,400+ lines of code?!?!)`;
 
 // the `; SHOULD NOT be on its own line
 
@@ -93,14 +91,18 @@ var restockers = 0;
 if (localStorage.getItem("restockers") != null) {
     restockers = Number(localStorage.getItem("restockers"));
 };
-var restockerPrice = 60;
+var restockerPrice = 100;
 var buyIndex = document.getElementById("buy-index");
 var indexPrice = 250;
-var ingSelection = document.getElementById("ing-selection");
+//var ingSelection = document.getElementById("ing-selection");
+var indexButton = document.getElementById("index-button");
+var indexBox = document.getElementById("index");
+var closeIndex = document.getElementById("close-index");
 var index = false;
 if (localStorage.getItem("index") == "true") {
     index = true;
-    ingSearch.setAttribute("list", "ing-selection");
+	indexButton.style.visibility = "visible";
+    //ingSearch.setAttribute("list", "ing-selection");
 };
 var saveButton = document.getElementById("save-button");
 var eraseDataButton = document.getElementById("erase-data-button");
@@ -117,14 +119,14 @@ const customerNames = [
     /*Bandori*/			"Marina", "Arisa Ichigaya", "Kasumi Toyama", "Rimi Ushigome", "Saaya Yamabuki", "Tae Hanazono", "Himari Uehara", "Moca Aoba", "Ran Mitake", "Tomoe Udagawa", "Tsugumi Hazawa", "Chisato Shirasagi", "Eve Wakamiya", "Hina Hikawa", "Maya Yamato", "Hagumi", "Kanon Matsubara", "Kaoru Seta", "Kokoro Tsurumaki", "Michelle", "Misaki", "Ako Udagawa", "Lisa Imai", "Rinko", "Sayo Hikawa", "Yukina Minato", "Mashiro Kurata", "Nanami Hiromachi", "Rui", "Touko Kirigaya", "Tsukushi Futaba", "CHU²", "LAYER", "LOCKE", "MASKING", "PAREO",
     /*TBHK*/			"Nene Yashiro", "Hanako", "Kou Minamoto", "Aoi Akane", "Akane Aoi", "Teru Minamoto", "Lemon Yamabuki", "Sousuke Mitsuba", "Tsukasa", "Sakura Nanamine", "Natsuhiko Hyuuga", "Yako", "Tsuchigomori", "Cult", "Lili", "Clyde", "Alex",
     /*Yeen's friends*/	"Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah", "Colette", "Makayla", "Kimora",
-    /*NunnerLibrary*/	"Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus", "Sasha", "Billy", "Bob", "Joe", "Liva", "Cory", "Eve", "Cole", "Phoebe", "Sarah",
+    /*NunnerLibrary*/	"Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus", "Sasha", "Billy", "Bob", "Joe", "Liva", "Cory", "Eve", "Cole", "Phoebe", "Sarah", "Saki", "Micah", "Whiskey Pete", "Valentine", "Morgan O'Connell", "Buddy Hawkins", 
     /*Pokémon*/			"Shuckle", "Ash Ketchum", "Satoshi", "Misty", "Brock", "May", "Dawn", "Iris", "Cilan", "Serena", "Clement", "Bonnie", "Lana", "Mao", "Kaki", "Lilie", "Sophocles", "Goh", "Chloe", "Koharu",
     /*Comic book*/		"Bill", "Roski", "Ginny", "Emily", "Rebecca", "Joey", "Charlyy", "Bobby", "Sally", "Pippi", "Althea", "Derek", "Alford", "Steven", "Collin",
     /*Mochi Squishies*/	"Marshmallow", "Ginger", "Vered", "Snowy", "Blossom", "Melody", "Peep", "Piper", "Sunny", "Honey", "Gummy", "Snoopy", "Mrs. Polar", "Sharpie",
     /*Roblox Youtubers*/"Flamingo", "Denis", "Leah Ashe", "Kreek", "Kevin", "Sketch", "ItsFunneh", "LankyBox", "Laughability", "Russo", "Sabrina",
     /*Roblox*/          "Carl", "Builderman", "David Baszucki", "Barry", "Jandel", "Poppy",
     /*Random*/          "You", "Your Mom", "Your Dad", "Nobody", "???",
-	/*Genshin*/			"Albedo", "Amber", "Arataki Itto", "Barbara", "Beidou️", "Bennett", "Candace", "Charlotte", "Chevreuse", "Chongyun", "Collei", "Cyno", "Dehya", "Diluc", "Diona", "Dori", "Eula", "Faruzan", "Fiscl", "Freminet", "Furina", "Ganyu", "Gorou", "Hu Tao", "Kaedehara Kazuha", "Kaeya", "Kamisato Ayaka", "Kamisato Ayato", "Keqing", "Klee", "Kujou Sara", "Kuki Shinobu", "Layla", "Lisa", "Lynette", "Lyney", "Mika", "Mona", "Nahida", "Navia", "Neuvillette", "Nilou", "Ningguang", "Noelle", "Qiqi", "Raiden Shogun", "Razor", "Rosaria", "Sangonomiya Kokomi", "Sayu", "Shenhe", "Shikanoin Heizou", "Sucrose", "Tartaglia", "Thoma", "Tighnari", "Traveler", "Venti", "Wanderer", "Wriothesley", "Xiangling", "Xingqiu", "Xinyan", "Xiao", "Yae Miko", "Yanfei", "Yaoyao", "Yelan", "Yoimiya", "Yun Jin", "Zhongli",
+	/*Genshin*/			"Albedo", "Amber", "Arataki Itto", "Barbara", "Beidou", "Bennett", "Candace", "Charlotte", "Chevreuse", "Chongyun", "Collei", "Cyno", "Dehya", "Diluc", "Diona", "Dori", "Eula", "Faruzan", "Fiscl", "Freminet", "Furina", "Gaming", "Ganyu", "Gorou", "Hu Tao", "Kaedehara Kazuha", "Kaeya", "Kamisato Ayaka", "Kamisato Ayato", "Keqing", "Klee", "Kujou Sara", "Kuki Shinobu", "Layla", "Lisa", "Lynette", "Lyney", "Mika", "Mona", "Nahida", "Navia", "Neuvillette", "Nilou", "Ningguang", "Noelle", "Qiqi", "Raiden Shogun", "Razor", "Rosaria", "Sangonomiya Kokomi", "Sayu", "Shenhe", "Shikanoin Heizou", "Sucrose", "Tartaglia", "Thoma", "Tighnari", "Traveler", "Venti", "Wanderer", "Wriothesley", "Xiangling", "Xingqiu", "Xinyan", "Xianyun", "Xiao", "Yae Miko", "Yanfei", "Yaoyao", "Yelan", "Yoimiya", "Yun Jin", "Zhongli",
 	/*Sanrio*/			"Gudetama", "Cinnamoroll", "Pom Pom Purin", "Keroppi", "Chococat", "Kuromi", "My Melody", "Hello Kitty", "Pochacco",
 	/*Rascal haha*/		"Sakuta Azusagawa", "Mai Sakurajima", "Rio Futaba", "Tomoe Koga", "Saki Kamisato",
     /*Komi Can't Comm.*/"Komi", "Tadano", "Najimi", "Agari", "Yamai", "Nakanaka",
@@ -144,9 +146,13 @@ const ingredientsList = {
     cheese: "🧀",
     "🧀": "🧀",
     chicken: "🥩",
+	chili: "🌶️",
+	"🌶️": "🌶️",
     choco: "🍫",
     chocolate: "🍫",
     "🍫": "🍫",
+	corn: "🌽",
+	"🌽": "🌽",
     cream: "🥛",
     creme: "🥛",
     cucumber: "🥒",
@@ -157,16 +163,18 @@ const ingredientsList = {
     fish: "🐟",
     "🐟": "🐟",
     flour: "🌾",
-    flower: "🌾",
     "🌾": "🌾",
     honey: "🍯",
     ice: "🧊",
     "🧊": "🧊",
+	jalapeno: "🌶️",
+	"jalapeño": "🌶️",
     lemon: "🍋",
     lemons: "🍋",
     "🍋": "🍋",
     lettuce: "🥬",
     "🥬": "🥬",
+	maize: "🌽",
     "maple syrup": "🍯",
     meat: "🥩",
     "🥩": "🥩",
@@ -177,6 +185,7 @@ const ingredientsList = {
     "🍜": "🍜",
     onion: "🧅",
     "🧅": "🧅",
+	pepper: "🌶️",
     pepperoni: "🥩",
     pinap: "🍍",
     pinapple: "🍍",
@@ -203,8 +212,22 @@ const ingredientsList = {
     "🍷": "🍷",
 };
 
+// {emoji: "", name: "ing"},
+const ingIndexList = [{emoji: "🍎", name: "Apple"}, {emoji: "🫘", name: "Beans"},  {emoji: "🍞", name: "Bread"}, {emoji: "🧈", name: "Butter"}, {emoji: "🧀", name: "Cheese"}, {emoji: "🌶️", name: "Chili"}, {emoji: "🍫", name: "Chocolate"}, {emoji: "🌽", name: "Corn"}, {emoji: "🥒", name: "Cucumber"}, {emoji: "🥚", name: "Egg"}, {emoji: "🐟", name: "Fish"}, {emoji: "🌾", name: "Flour"}, {emoji: "🧊", name: "Ice"}, {emoji: "🍋", name: "Lemon"}, {emoji: "🥬", name: "Lettuce"}, {emoji: "🥩", name: "Meat"}, {emoji: "🥛", name: "Milk"}, {emoji: "🍜", name: "Noodles"}, {emoji: "🧅", name: "Onion"}, {emoji: "🍍", name: "Pineapple"}, {emoji: "🥔", name: "Potato"}, {emoji: "🍚", name: "Rice"}, {emoji: "🧂", name: "Salt"}, {emoji: "🦐", name: "Shrimp"}, {emoji: "🍯", name: "Syrup"}, {emoji: "🍅", name: "Tomato"}, {emoji: "💧", name: "Water"}, {emoji: "🍷", name: "Wine"}];
+for (let i = 0; i < ingIndexList.length; i++) {
+	let ing = ingIndexList[i];
+	let b = document.createElement("button");
+	b.classList.add("ingButton");
+	b.innerHTML = ing.emoji;
+	//console.log("a");
+	b.onclick = function(){console.log(ing.emoji); ingSearch.value = ing.emoji; addIng({key: "Enter"});};
+	b.title = ing.name;
+	indexBox.appendChild(b);
+};
+
 // Initial profits are calculated by (# ing × 2)
-const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit: 1.5, unlocked: false},
+// Sorted by profit, alphabetical name (descending order)
+const foodList = [ // {emoji: "", ing: "", ingList: "ING", name: "FOODNAME", profit: AMOUNT, unlocked: false},
     {emoji: "🍹", ing: "🍷🍍🍋💧🍯🧊", ingList: "Wine,Pineapple,Lemon,Water,Syrup,Ice", name: "Tropical Cocktail", profit: 14, unlocked: false},
     {emoji: "🍰", ing: "🌾🥚🧈🥛🧀", ingList: "Flour,Egg,Butter,Milk,Cheese", name: "Cheesecake", profit: 10, unlocked: false},
     {emoji: "🌯", ing: "🌾🫘🍚🥩🧅", ingList: "Flour,Beans,Rice,Meat,Onion", name: "Burrito", profit: 9.5, unlocked: false},
@@ -214,10 +237,12 @@ const foodList = [ // {emoji: "", ing: "", ingList: "", name: "FOODNAME", profit
     {emoji: "🥪", ing: "🍞🧀🍅🥬🍞", ingList: "Bread,Cheese,Tomato,Lettuce,Bread", name: "Sandwich", profit: 8, unlocked: false},
     {emoji: "🥧", ing: "🍎🌾🥚🧈", ingList: "Apple,Flour,Egg,Butter", name: "Apple Pie", profit: 8, unlocked: false},
     {emoji: "🍱", ing: "🍚🐟🦐🥒", ingList: "Rice,Fish,Shrimp,Cucumber", name: "Bento Box", profit: 7.5, unlocked: false},
+	{emoji: "🍿", ing: "🌽🧈🧂", ingList: "Corn,Butter,Salt", name: "Popcorn", profit: 7, unlocked: false},
     {emoji: "🍕", ing: "🍞🍅🧀🥩", ingList: "Bread,Tomato,Cheese,Meat", name: "Pizza", profit: 7, unlocked: false},
     {emoji: "🌮", ing: "🌾🥩🥬🧅", ingList: "Flour,Meat,Lettuce,Onion", name: "Taco", profit: 6.5, unlocked: false},
     {emoji: "🥗", ing: "🥬🍅🥒🧅", ingList: "Lettuce,Tomato,Cucumber,Onion", name: "Salad", profit: 6, unlocked: false},
     {emoji: "🧇", ing: "🌾🥚🧈", ingList: "Flour,Egg,Butter", name: "Waffles", profit: 5, unlocked: false},
+	{emoji: "🫔", ing: "🌽🥩🌶️🍅", ingList: "Corn,Meat,Chili,Tomato", name: "Tamale", profit: 5, unlocked: false},
     {emoji: "🍝", ing: "🍜🍅", ingList: "Noodles,Tomato", name: "Spaghetti", profit: 5, unlocked: false},
     {emoji: "🍮", ing: "🥚🥛🍯", ingList: "Egg,Milk,Syrup", name: "Flan", profit: 5, unlocked: false},
     {emoji: "🥞", ing: "🌾🥚🍯", ingList: "Flour,Egg,Syrup", name: "Pancakes", profit: 4.5, unlocked: false},
@@ -279,6 +304,7 @@ const achievements = [ // {id: NUMBER, name: "ACHIEVEMENT", desc: "BRIEFDESCRIPT
     {id: 7, name: "Cake…", desc: "Serve cheesecake to Rebecca", unlocked: false},
     {id: 8, name: "Hollup—", desc: "Serve a fried egg to either Peep, Piper, or Sunny", unlocked: false},
     {id: 21, name: "Cannabalism?!", desc: "Serve pizza to Pippi", unlocked: false},
+    {id: 24, name: "Alcoholic", desc: "Serve a cocktail to Whiskey Pete", unlocked: false},
     {id: 9, name: "Spare Change…", desc: "Find money the floor (run out of money & stock first)", unlocked: false},
     {id: 10, name: "I ❤️ Web Chef", desc: "Cook a certain food for Valentine's Day (secret #1)(<i>unobtainable</i>)", unlocked: false},
     {id: 11, name: "U HAXOR!1!!", desc: "\"Hack\" the game (discover secret #2)", unlocked: false},
@@ -337,6 +363,10 @@ function notify(notifText, time){
 };
 
 function alert(text) {
+	if (indexBox.style.visibility == "visible") {
+		indexBox.style.visibility = "hidden";
+		closeIndex.style.visibility = "hidden";
+	};
 	if (alertContainer.style.visibility == "visible") {
 		ok();
 	};
@@ -500,6 +530,9 @@ function serveCustomer(order, customer) {
         if (customerName.match("Pippi") != null && orderEmoji == "🍕") {
             award(21);
         };
+        if (customerName.match("Whiskey Pete") != null && orderEmoji == "🍸") {
+            award(24);
+        };
         customer.remove();
 		setOrderCount();
     };
@@ -554,7 +587,7 @@ function addIng(e) {
         if (ing != null && stock > 0) {
             if (typeof ing == "string") {
                 if (ing == "⬆️⬆️⬇️⬇️⬅️➡️⬅️➡️🅱️🅰️") {
-                    ingSearch.value = "";
+                    setTimeout(function(){ingSearch.value = ""}, 1);
                     moneyDisplay.innerHTML = "∞";
                     stockDisplay.innerHTML = "∞";
                     notify("HOW?!? YOU HACKER!! (Secret #2)", 7500);
@@ -784,9 +817,9 @@ function addStock(ing) {
         moneyDisplay.innerHTML = money;
         stock += ing;
         stockDisplay.innerHTML = stock;
-    } else if (confirmation == true && money >= ing/2 && stock == storage) {
+    } else if (c == true && money >= ing/2 && stock == storage) {
         alert("You're already at max stock! (no money was lost)");
-    } else if (confirmation == true && money >= ing/2 && stock + ing > storage) {
+    } else if (c == true && money >= ing/2 && stock + ing > storage) {
         let c = confirm("Are you sure? Buying this will set your stock to " + storage + ", not " + (stock + ing) + "!");
         if (c == true) {
             money -= ing/2;
@@ -794,7 +827,7 @@ function addStock(ing) {
             stock = storage;
             stockDisplay.innerHTML = stock;
         };
-    } else if (confirmation == true && money < ing/2) {
+    } else if (c == true && money < ing/2) {
         alert("You don't have enough money to buy this! (Price: $" + ing/2 + ")");
     } else {
         //alert("Error #1: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", ing is " + ing + ", stock is " + stock + ", storage is " + storage + ", c is " + c + ", money >= ing/2 is " + money >= ing/2 + ", stock + ing < storage is " + (stock + ing < storage));
@@ -924,7 +957,8 @@ function addIndex() {
             moneyDisplay.innerHTML = money;
             index = true;
             localStorage.setItem("index", "true");
-            ingSearch.setAttribute("list", "ing-selection");
+            //ingSearch.setAttribute("list", "ing-selection");
+			ingSearch.onfocus = function(){toggleIndex(true)};
         } else {
             let notif = document.createElement("p");
             notif.innerHTML = "You can't buy any more indexes! (Max of 1)";
@@ -1055,6 +1089,10 @@ function tutorial() {
 			let ing = order == "🍙" ? "rice" : "potato";
 			alert("Welcome to Web Chef! This is a simple restaurant game where you prepare food for customers. Best played on a PC or tablet.<br><br>Looks like there's a customer! To prepare their order, enter the names of the ingredients required to make the food. (HINT: enter \"" + ing + "\" into the textbox)");
 			ingSearch.focus();
+			if (indexBox.style.visibility == "visible") {
+				indexBox.style.visibility = "hidden";
+				closeIndex.style.visibility = "hidden";
+			};
 			/*alert("For example, if their order is \"🍙\" you would type \"rice\" into the textbox & hit \"go\"/\"enter\". If you want to view the ingredients for a certain food, click through the pages of the Recipes book.");
 			alert("Once you add all the required ingredients to the Table, click the \"" + makeFoodButton.innerHTML + "\" button to fuse! Then, click the Serve button to give the food.");
 			alert("Click on the \"" + clearIng.innerHTML + "\" button if you ever mess up with the order of ingredients. Doing so refunds your stock, so don't worry about wasting money.");
@@ -1191,9 +1229,22 @@ var keys = "";
 
 function keybinds(e) {
     let k = e.key.toLowerCase();
+	//console.log(k);
     if (document.activeElement != ingSearch) {
 		if (k == "q") {
 			ok();
+		};
+		if (k == "w") {
+			ingSearch.focus();
+			let i = ingSearch.value;
+			if (i != null) {
+				setTimeout(function(){
+					ingSearch.value = i.substring(0, i.length);
+					//ingSearch.value = "a";
+				}, 1);
+			} else {
+				ingSearch.value = "";
+			};
 		};
         if (k == "e") {
             makeFood();
@@ -1222,13 +1273,20 @@ function keybinds(e) {
         if (k == "arrowright" || k == "d") {
             nextPage();
         };
-    } else if (k == "arrowup" || k == "arrowdown" || k == "arrowleft" || k == "arrowright" || k == "b" || k == "a") {
-        keys += k;
+    } else {
+		if (k == "escape") {
+			ingSearch.blur();
+			indexBox.style.visibility = "hidden";
+			closeIndex.style.visibility = "hidden";
+		};
+		if (k == "arrowup" || k == "arrowdown" || k == "arrowleft" || k == "arrowright" || k == "b" || k == "a") {
+        	keys += k;
+		};
     };
     if (keys.match("arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightba")) {
         keys = "";
         // if you edit the secret, edit the one in addIng function
-        ingSearch.value = "";
+        setTimeout(function(){ingSearch.value = ""}, 1);
         moneyDisplay.innerHTML = "∞";
         stockDisplay.innerHTML = "∞";
         notify("HOW?!? YOU HACKER!! (Secret #2)", 7500);
@@ -1241,10 +1299,34 @@ function keybinds(e) {
     };
 };
 
+function toggleIndex(show) {
+	// comment line and uncomment below for testing mode
+	if (index == true) {
+	//if (true) {
+		if (show == false) {
+			indexBox.style.visibility = "hidden";
+			closeIndex.style.visibility = "hidden";
+		} else if (show == true) {
+			indexBox.style.visibility = "visible";
+			closeIndex.style.visibility = "visible";
+		} else {
+			let v = indexBox.style.visibility;
+			indexBox.style.visibility = v == "visible" ? "hidden" : "visible";
+			closeIndex.style.visibility = v == "visible" ? "hidden" : "visible";
+		};
+	};
+};
+
 //document.getElementById("favicon").href = "https://nunnerrs.github.io/assets/web-chef.ico";
 okButton.onclick = ok;
 //cancelButton.onclick = cancel;
+if (index == true) {
+	ingSearch.onfocus = function(){toggleIndex(true)};
+};
+closeIndex.onclick = function(){toggleIndex(false)};
+//ingSearch.onblur = function(){toggleIndex(false)};
 ingSearch.onkeydown = addIng;
+indexButton.onclick = toggleIndex;
 makeFoodButton.onclick = makeFood;
 clearIng.onclick = clear;
 pageL.onclick = backPage;
@@ -1284,7 +1366,7 @@ setTimeout(function(){
 }, 1500);
 setTimeout(function(){
     //notify("Version " + v + " is out now! <a href='" + updateLink + "'>Click here</a> to see changes or <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>click here</span> for a summary of the new update", 10000);
-    notify("Version <b>" + v + "</b> is out now! <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>Click here</span> for a summary of the new update", 10000);
+    notify("Version " + v + " is out now! <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>Click here</span> for a summary of the new update", 10000);
 }, 1550);
 setInterval(function(){
     let stockToAdd = Math.floor(storage / 2);
