@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sidetracked</title>
+        <meta charset="UTF-8">
+        <link rel="icon" href="">
+		<link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+		<audio id="bennett" volume="0.5"><source src="audio/bennett.mp3" type="audio/mp3"></audio>
+        <audio id="boom" volume="1"><source src="audio/boom.mp3" type="audio/mp3"></audio>
+        <audio id="bubbles" volume="0.5"><source src="audio/bubbles.mp3" type="audio/mp3"></audio>
+		<audio id="chime" volume="0.5"><source src="audio/chime.mp3" type="audio/mp3"></audio>
+        <audio id="snore" volume="1"><source src="audio/snore.mp3" type="audio/mp3"></audio>
+        <audio id="wow" volume="0.5"><source src="audio/wow.mp3" type="audio/mp3"></audio>
+		<audio id="yippee" volume="0.5"><source src="audio/yippee.mp3" type="audio/mp3"></audio>
+    </head>
+    <body>
+		<div id="settings">
+			<h2><!--セッティングス-->Settings</h2>
+			<p>Custom Intervals</p>
+			<div id="interval-container">
+				<div class="custom-int">
+					<label>Work</label><br>
+					<span class="min">(25-50)</span><br>
+					<input id="work-interval" max="50" min="15" step="1" type="number" value="25">
+				</div>
+				<div class="custom-int">
+					<label>Short Break</label><br>
+					<span class="min">(5-10)</span><br>
+					<input id="short-break-interval" max="10" min="2" step="1" type="number" value="5">
+				</div>
+				<div class="custom-int">
+					<label>Long Break</label><br>
+					<span class="min">(10-30)</span><br>
+					<input id="long-break-interval" max="30" min="10" step="1" type="number" value="15">
+				</div>
+			</div><br>
+			<button id="default">Reset to default</button><br><br>
+			<p>Audio</p>
+			<label for="notif-sound">Notification:</label>
+			<select id="notif-sound">
+				<option value="bennett">bouken da bouken</option>
+                <option value="boom">VINE BOOM</option>
+                <option value="bubbles">cute bubbles</option>
+                <option value="chime">chime</option>
+                <option value="snore">*snore* mimimi</option>
+                <option value="wow">anime wow</option>
+                <option value="yippee">YIPPEE</option>
+			</select><br><br>
+			<button class="close" id="save">Save</button><button class="close" id="cancel">Cancel</button>
+		</div>
+		<div id="float">
+			<button class="button" id="settings-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -50 448 512"><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/ fill="white"></svg></button><br>
+			<button class="button" id="fullscreen-button">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -45 448 512"><path d="M32 32C14.3 32 0 46.3 0 64v96c0 17.7 14.3 32 32 32s32-14.3 32-32V96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zM64 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7 14.3 32 32 32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H64V352zM320 32c-17.7 0-32 14.3-32 32s14.3 32 32 32h64v64c0 17.7 14.3 32 32 32s32-14.3 32-32V64c0-17.7-14.3-32-32-32H320zM448 352c0-17.7-14.3-32-32-32s-32 14.3-32 32v64H320c-17.7 0-32 14.3-32 32s14.3 32 32 32h96c17.7 0 32-14.3 32-32V352z"/ fill="white"></svg>
+			</button>
+		</div>
+        <h1>Sidetracked<!--じ—っ--></h1>
+		<span id="line"></span>
+		<h2>(we're preventing that)<!--(staaare)--></h2>
+		<div id="counter">0/4 cycles</div><br>
+        <p id="time-display">25:00<p>
+        <button id="toggle-pomo">Start Pomodoro</button>
+		<button id="stop">Stop</button>
+        <script src="script.js"></script>
+        <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
+    </body>
+</html>

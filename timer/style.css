@@ -1,0 +1,227 @@
+:root {
+    --main: rgb(100, 255, 100);
+    --light: rgb(200, 255, 200);
+    --dark: rgb(0, 150, 0);
+    --settings: rgba(0, 100, 0, 0.5);
+}
+
+body {
+    background: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    font-family: 'Courier', 'Hachi Maru Pop', 'Comic Sans MS', 'Chalkboard SE', monospace;
+    margin: auto;
+    text-align: center;
+}
+
+button, input, select {
+    font-family: 'Courier', monospace;
+}
+
+button {
+    background: var(--light);
+    border-color: var(--main);
+    border-radius: 5px;
+    border-style: none none solid;
+}
+
+button:not(.button):active {
+    /* border-style: inset none none; */
+    border-style: none;
+    margin-top: 3px !important;
+}
+
+button:not(.button):disabled {
+    background: rgb(200, 200, 200);
+    border-color: rgb(100, 100, 100);
+    border-style: none none solid;
+    color: rgb(100, 100, 100);
+    margin-top: 1px !important;
+}
+
+h1 {
+    color: var(--main);
+    font-family: 'Hachi Maru Pop', cursive;
+    font-size: 28pt;
+    margin-bottom: 0px;
+}
+
+h2 {
+    color: var(--light);
+    font-family: 'Hachi Maru Pop', cursive;
+    font-size: 14pt;
+    margin-top: 5px;
+}
+
+input[type=number] {
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border-width: 0px;
+    width: 95%;
+    text-align: center;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    border-radius: 5px;
+    opacity: 1;
+}
+
+label {
+    font-size: 11pt;
+}
+
+p {
+    font-size: 13pt;
+}
+
+select {
+    border-radius: 5px;
+    border-width: 0px;
+}
+
+.close {
+    height: 25px;
+    width: 65px;
+}
+
+.close:active {
+    margin-top: 1px !important;
+}
+
+.custom-int {
+    background: var(--dark);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.error {
+    background-color: rgb(255, 100, 100) !important;
+    transition: 0.5s;
+}
+
+.min {
+    font-size: 10pt;
+    margin-bottom: 15px;
+    opacity: 0.75;
+}
+
+#counter {
+    font-size: 16pt;
+    margin-top: 25px;
+}
+
+#float {
+    left: 5px;
+    position: fixed;
+    top: 5px;
+}
+
+#interval-container {
+    display: flex;
+    flex-wrap: nowrap;
+    grid-gap: 50px;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+
+#line {
+	background: rgb(255, 100, 100);
+	border-radius: 5px;
+	display: inline-block;
+	height: 5px;
+	margin-left: -162.5px;
+	opacity: 0.75;
+	position: fixed;
+	top: 55px;
+	transition: width 2s;
+	width: 0px;
+}
+
+#settings {
+    backdrop-filter: blur(5px);
+    background: var(--settings);
+    border-radius: 10px;
+    left: 25vw;
+    padding: 5px;
+    padding-bottom: 10px;
+    position: fixed;
+    top: 80px;
+    visibility: hidden;
+    width: 50%;
+}
+
+#stop {
+    background: var(--main);
+    border-color: var(--dark);
+    height: 40px;
+    margin-left: 10%;
+    margin-top: 1px;
+    position: absolute;
+    visibility: hidden;
+    width: 50px;
+}
+
+.button {
+    background: none;
+    border: white 1px solid;
+    border-radius: 5px;
+    color: white;
+    font-size: 18pt;
+    height: 32px;
+    width: 32px;
+}
+
+.button:disabled {
+    border-color: rgb(100, 100, 100);
+    color: rgb(100, 100, 100);
+}
+
+.button:enabled:hover {
+    background: rgb(50, 50, 50);
+}
+
+#time-display {
+    background: var(--dark);
+    border-color: var(--light);
+    border-radius: 10px;
+    border-style: inset;
+    border-width: 5px;
+    font-family: 'Courier', monospace;
+    font-size: 64pt;
+    height: 100px;
+    margin: auto;
+    width: 75%;
+}
+
+@media screen and (max-width: 500px) {
+    .custom-int {
+        min-width: 2em;
+    }
+
+    .min {
+        font-size: 2.75vw;
+    }
+
+    #interval-container {
+        font-size: 3vw;
+    }
+
+    #stop {
+        display: block;
+        margin: auto;
+        position: inherit;
+    }
+
+    #time-display {
+        font-size: 17vw;
+        height: 20vw;
+    }
+}
+
+@media screen and (max-width: 860px) {
+    #interval-container {
+        grid-gap: 5vw;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}

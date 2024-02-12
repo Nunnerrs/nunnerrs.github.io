@@ -13,6 +13,7 @@
         <meta charset="UTF-8">
         <meta name="description" content="a fun little website made by Nunners">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop" rel="stylesheet">
         <style>
             :root {
                 --h-color: rgb(168, 196, 255);
@@ -201,11 +202,21 @@
                 background-color: rgb(160, 194, 88);
                 color: black;
             }
+            #timer {
+            	background-color: black;
+                color: white;
+            }
             #web-chef {
                 background-color: rgb(50, 90, 125);
                 color: rgb(210, 230, 255);
                 font-family: monospace;
             }
+            /*
+            #PROJECT {
+            	background-color: black;
+                color: white;
+            }
+            */
         </style>
     </head>
     <body>
@@ -242,6 +253,17 @@
                 <div class="p">
                     <p>some info about me. also features the project i'm currently working on along with some random extras.</p>
                     <p class="special" style="color: rgb(230, 200, 255)">new homepage layout</p>
+                </div>
+            </div>
+            <div class="project" data-url="timer" id="timer" onclick="window.open(this.dataset.url)">
+            	<div></div>
+                <div class="p">
+                    <h3 style="color: rgb(0, 255, 0); font-family: 'Hachi Maru Pop';">じ—っ</h3>
+                    <img class="icon" src="">
+                </div>
+                <div class="p">
+                    <p>a pomodoro timer i made. work in 25-min intervals and 5-min breaks. helps with homework!</p>
+                    <p class="special" style="color: rgb(200, 255, 200)">it's finally out guys</p>
                 </div>
             </div>
             <div class="project" data-url="games" id="games" onclick="window.open(this.dataset.url)">
