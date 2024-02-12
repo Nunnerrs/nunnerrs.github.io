@@ -55,6 +55,7 @@ var lBreakInt = find("long-break-interval");
 var defaultBtn = find("default");
 
 var notifSound = find("notif-sound");
+var playSound = find("play-sound");
 
 var saveBtn = find("save");
 var cancelBtn = find("cancel");
@@ -182,6 +183,11 @@ function setDefault() {
 	lBreakInt.value = 15;
 }
 defaultBtn.onclick = setDefault;
+
+function testSound() {
+    sounds[sound].play();
+};
+playSound.onclick = testSound;
 
 function saveSettings() {
 	let s = true;

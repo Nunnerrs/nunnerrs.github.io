@@ -21,12 +21,12 @@
 			<div id="interval-container">
 				<div class="custom-int">
 					<label>Work</label><br>
-					<span class="min">(25-50)</span><br>
+					<span class="min">(15-50)</span><br>
 					<input id="work-interval" max="50" min="15" step="1" type="number" value="25">
 				</div>
 				<div class="custom-int">
 					<label>Short Break</label><br>
-					<span class="min">(5-10)</span><br>
+					<span class="min">(2-10)</span><br>
 					<input id="short-break-interval" max="10" min="2" step="1" type="number" value="5">
 				</div>
 				<div class="custom-int">
@@ -38,7 +38,7 @@
 			<button id="default">Reset to default</button><br><br>
 			<p>Audio</p>
 			<label for="notif-sound">Notification:</label>
-			<select id="notif-sound">
+			<select id="notif-sound" value="YIPPEE">
 				<option value="bennett">bouken da bouken</option>
                 <option value="boom">VINE BOOM</option>
                 <option value="bubbles">cute bubbles</option>
@@ -46,7 +46,8 @@
                 <option value="snore">*snore* mimimi</option>
                 <option value="wow">anime wow</option>
                 <option value="yippee">YIPPEE</option>
-			</select><br><br>
+			</select>
+            <button id="play-sound">Play</button><br><br>
 			<button class="close" id="save">Save</button><button class="close" id="cancel">Cancel</button>
 		</div>
 		<div id="float">
