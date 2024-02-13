@@ -1,13 +1,18 @@
 /*
 to do:
-• silly mode
-• custom color
 • fix volume
+• break checklist
 */
 
 // yes im that lazy
 function find(id) {
 	return document.getElementById(id);
+}
+function s(key, item) {
+	localStorage.setItem(key, item);
+}
+function g(key) {
+	return localStorage.getItem(key);
 }
 
 var b = document.body;
@@ -24,10 +29,11 @@ const intervals = {
 	sBreak: 5,
 	lBreak: 15,
 };
+
 var int = "work";
 var cycles = 0;
 
-var intTimer = 1000; // default 1000 ms
+var intTimer = 5; // default 1000 ms
 var sound = "yippee";
 var sounds = {
 	bennett: find("bennett"),
@@ -38,8 +44,23 @@ var sounds = {
     wow: find("wow"),
 	yippee: find("yippee"),
 };
+if (g("timer_sound") != null) {
+	sound = g("timer_sound");
+	sounds[sound].selected = true;
+}
 var auto = false;
 var silly = false;
+var sillyText = {
+	pomoStart: "click to start pomodoro",
+	work: "WORK NOWW",
+	sBreak: "BREAK!1!",
+	lBreak: "LONG BREAK!1!!1",
+	pomoEnd: "AGAIN AGAIN",
+	pause: "pause (no distractions okay)",
+	unpause: "unpause (back to work)",
+};
+
+var theme = {h: 120, s: 100, l: 70};
 
 // sidebar
 var settingsBtn = find("settings-button");
@@ -53,12 +74,63 @@ var workInt = find("work-interval");
 var sBreakInt = find("short-break-interval");
 var lBreakInt = find("long-break-interval");
 var defaultBtn = find("default");
+if (g("timer_work") != null) {
+	let t = Number(g("timer_work"));
+	time = Number(t.toString() + ".00");
+	td.innerHTML = t + ":00";
+	intervals.work = t;
+	workInt.value = t;
+}
+if (g("timer_sBreak") != null) {
+	let t = Number(g("timer_sBreak"));
+	intervals.sBreak = t;
+	sBreakInt.value = t;
+}
+if (g("timer_lBreak") != null) {
+	let t = Number(g("timer_lBreak"));
+	intervals.lBreak = t;
+	lBreakInt.value = t;
+}
 
 var notifSound = find("notif-sound");
+notifSound.value = sound;
 var playSound = find("play-sound");
+
+var sillyBtn = find("silly");
+if (g("timer_silly") != null) {
+	let sillier = g("timer_silly"); // reference only Marian will understand
+	if (sillier == "true") {
+		silly = true;
+		tp.innerHTML = sillyText.pomoStart;
+		sillyBtn.innerHTML = "ON";
+	} else {
+		silly = false;
+		sillyBtn.innerHTML = "OFF";
+	}
+}
+var color = find("color");
+if (g("timer_color_h") != null && g("timer_color_s") != null && g("timer_color_l") != null) {
+	let h = g("timer_color_h");
+	let s = g("timer_color_s");
+	let l = g("timer_color_l");
+	theme = {h, s, l};
+	color.value = HSLToHex(h, s, l);;
+	setTheme(h, s, l);
+}
 
 var saveBtn = find("save");
 var cancelBtn = find("cancel");
+
+function save() {
+	s("timer_work", intervals.work);
+	s("timer_sBreak", intervals.sBreak);
+	s("timer_lBreak", intervals.lBreak);
+	s("timer_sound", sound);
+	s("timer_silly", silly);
+	s("timer_color_h", theme.h);
+	s("timer_color_s", theme.s);
+	s("timer_color_l", theme.l);
+}
 
 function timer() {
 	if (timerOn == true) {
@@ -101,24 +173,21 @@ function timer() {
 				pbr = 2;
 				//pbr = Math.floor((Math.random() * 100) + 101)/100;
 				int = "lBreak";
-				start = silly == true ? "LONG BREAK!1!!1" : "Start Long Break";
+				start = silly == true ? sillyText.lBreak : "Start Long Break";
 			} else {
 				if (int == "work") {
 					int = "sBreak";
-					start = silly == true ? "BREAK!!" : "Start Short Break";
+					start = silly == true ? sillyText.sBreak : "Start Short Break";
 				} else if (int == "lBreak") {
-					cycles = 0;
-					counter.innerHTML = "0/4 cycles";
-					int = "work";
-					start = silly == true ? "AGAIN AGAIN!" : "Start Pomodoro";
-					stop.style.visibility = "hidden";
+					stopPomo();
 				} else {
 					pbr = 0.5;
 					//pbr = Math.floor((Math.random() * 51) + 50)/100;
 					int = "work";
-					start = silly == true ? "WORK NOWW" : "Start Work Timer";
+					start = silly == true ? sillyText.work : "Start Work Timer";
 				}
 			}
+			localStorage.setItem("timer_int", int);
 			if (silly == false) {
 				pbr = 1;
 			}
@@ -143,16 +212,15 @@ function togglePomo() {
 			settingsBtn.disabled = false;
 			icon.setAttribute("fill", "white");
 		}
-		tp.innerHTML = silly == true ? "unpause (enter the state of productivity)" : "Continue";
+		tp.innerHTML = silly == true ? sillyText.unpause : "Continue";
 	} else {
 		timerOn = true;
 		settingsBtn.disabled = true;
 		icon.setAttribute("fill", "rgb(100, 100, 100)");
-		tp.innerHTML = silly == true ? "pause (no distractions)" : "Pause";
+		tp.innerHTML = silly == true ? sillyText.pause : "Pause";
 	}
 }
 tp.onclick = togglePomo;
-
 
 function stopPomo() {
 	timerOn = false;
@@ -161,6 +229,7 @@ function stopPomo() {
 	let w = intervals.work.toString();
 	time = Number(w + ".00");
 	td.innerHTML = w + ":00";
+	tp.innerHTML = silly == true ? sillyText.pomoEnd : "Start Pomodoro";
 	int = "work";
 	cycles = 0;
 	counter.innerHTML = "0/4 cycles";
@@ -185,12 +254,12 @@ function setDefault() {
 defaultBtn.onclick = setDefault;
 
 function testSound() {
-    sounds[sound].play();
-};
+    sounds[notifSound.value].play();
+}
 playSound.onclick = testSound;
 
 function saveSettings() {
-	let s = true;
+	let proceed = true;
 	let NO = [];
 	if (time == intervals.work) {
 		let t = Number(workInt.value);
@@ -200,34 +269,44 @@ function saveSettings() {
 			intervals.work = t;
 		} else {
 			NO.push(workInt);
-			s = workInt;
+			proceed = workInt;
 		}
 		t = Number(sBreakInt.value);
 		if (t >= sBreakInt.min && t <= sBreakInt.max) {
 			intervals.sBreak = t;
 		} else {
 			NO.push(sBreakInt);
-			s = sBreakInt;
+			proceed = sBreakInt;
 		}
 		t = Number(lBreakInt.value);
 		if (t >= lBreakInt.min && t <= lBreakInt.max) {
 			intervals.lBreak = t;
 		} else {
 			NO.push(lBreakInt);
-			s = lBreakInt;
+			proceed = lBreakInt;
 		}
 	}
 	sound = notifSound.value;
-	if (s == true) {
+	silly = sillyBtn.dataset.enabled == "true" ? true : false;
+	if (silly == true) {
+		tp.innerHTML = sillyText.pomoStart;
+	} else {
+		tp.innerHTML = "Start Pomodoro";
+	}
+	let hsl = hexToHSL(color.value);
+	setTheme(hsl.h, hsl.s, hsl.l);
+	
+	if (proceed == true) {
 		settings.style.visibility = "hidden";
+		save();
 	} else {
 		if (NO.length > 1) {
 			NO.forEach(function(i){
 				i.classList.add("error");
 			});
 		} else {
-			if (typeof s == "object") {
-				s.classList.add("error");
+			if (typeof proceed == "object") {
+				proceed.classList.add("error");
 			}
 		}
 		//cancelSettings();
@@ -242,6 +321,12 @@ function cancelSettings() {
 	sBreakInt.value = intervals.sBreak;
 	lBreakInt.classList.remove("error");
 	lBreakInt.value = intervals.lBreak;
+	sillyBtn.dataset.enabled = silly;
+	let style = getComputedStyle(document.documentElement);
+	let hex = HSLToHex(theme.h, theme.s, 70);
+	//let hex = HSLToHex(theme.h, theme.s, theme.l);
+	color.value = hex;
+	color.style.backgroundColor = "hsl(" + theme.h + "deg, " + theme.s + "%, " + 25 + "%)";
 	settings.style.visibility = "hidden";
 }
 cancelBtn.onclick = cancelSettings;
@@ -264,7 +349,7 @@ c.forEach(function(i){
 			};
 			i.onkeydown = numberInput;
 		}
-	})
+	});
 });
 
 function fullscreen() {
@@ -292,5 +377,113 @@ function fullscreen() {
 }
 fsBtn.onclick = fullscreen;
 
+function toggleSilly() {
+	let d = sillyBtn.dataset.enabled;
+	if (d == "true") {
+		sillyBtn.dataset.enabled = false;
+		sillyBtn.innerHTML = "OFF";
+	} else {
+		sillyBtn.dataset.enabled = true;
+		sillyBtn.innerHTML = "ON";
+	}
+}
+sillyBtn.onclick = toggleSilly;
+
+function colorPreview() {
+	let hsl = hexToHSL(color.value);
+	let h = hsl.h;
+	let s = hsl.s;
+	let l = hsl.l;
+	color.style.backgroundColor = "hsl(" + h + "deg, " + s + "%, " + 25 + "%)";
+	//console.log(color.value, h, s, l, color.style.backgroundColor);
+}
+color.onblur = colorPreview;
+
+function setTheme(h, s, l) {
+	theme = {h: h, s: s, l: l};
+	let root = document.createElement("style");
+	root.id = "custom-color";
+	root.innerHTML = `:root {
+		--main: hsl(` + h + "deg, " + s + "%, " + 70 + `%);
+    	--light: hsl(` + h + "deg, " + s + "%, " + 85 + `%);
+    	--dark: hsl(` + h + "deg, " + s + "%, " + 25 + `%);
+    	--settings: hsla(` + h + "deg, " + s + "%, " + 20 + `%, 0.5);
+		--settings-mobile: hsl(` + h + "deg, " + s + "%, " + 20 + `%);
+	}`;
+	if (find("custom-color") != null) {
+		find("custom-color").remove();
+	}
+	document.head.appendChild(root);
+}
+
 b.onload = setInterval(timer, intTimer);
 setTimeout(function(){find("line").style.width = "20em"}, 500);
+
+// check if mobile
+const devices = [/Android/i, /BlackBerry/i, /iPhone/i, /iPad/i, /iPod/i, /webOS/i, /Windows Phone/i];
+var mobile = false;
+devices.forEach(function(i){
+	if (navigator.userAgent.match(i) != null) {
+		mobile = true;
+		//console.log("mobile device spotted! " + i);
+	}
+});
+if (mobile == true) {
+	settingsBtn.innerHTML = "≡";
+	fsBtn.style.visibility = "hidden";
+	settings.style.background = "var(--settings-mobile)";
+	settings.style.opacity = 0.95;
+	console.log("mobile mode ON");
+}
+
+
+
+
+
+
+
+
+
+// color functions pls ignore
+function hexToHSL(hex) {
+    let result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+    let r = parseInt(result[1], 16);
+    let g = parseInt(result[2], 16);
+    let b = parseInt(result[3], 16);
+
+    r /= 255, g /= 255, b /= 255;
+    let max = Math.max(r, g, b), min = Math.min(r, g, b);
+    let h, s, l = (max + min) / 2;
+
+    if (max == min){
+        h = s = 0;
+    } else {
+        var d = max - min;
+        s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+        switch(max) {
+            case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+            case g: h = (b - r) / d + 2; break;
+            case b: h = (r - g) / d + 4; break;
+        }
+        
+        h /= 6;
+    }
+
+    h = Math.round(h*360);
+    s = Math.round(s*100);
+    l = Math.round(l*100);
+
+    return { h, s, l };
+}
+
+function HSLToHex(h, s, l) {
+    l /= 100;
+    let a = s * Math.min(l, 1 - l) / 100;
+    let f = n => {
+        let k = (n + h / 30) % 12;
+        let color = l - a * Math.max(Math.min(k - 3, 9 - k, 1), -1);
+        return Math.round(255 * color).toString(16).padStart(2, '0');
+    };
+	return `#${f(0)}${f(8)}${f(4)}`;
+}
