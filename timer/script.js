@@ -33,7 +33,7 @@ const intervals = {
 var int = "work";
 var cycles = 0;
 
-var intTimer = 5; // default 1000 ms
+var intTimer = 1000; // default 1000 ms
 var sound = "yippee";
 var sounds = {
 	bennett: find("bennett"),
