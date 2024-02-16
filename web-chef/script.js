@@ -1,4 +1,4 @@
-var v = "v" + "1.8.1.0";
+var v = "v" + "1.8.2.0";
 var version = document.getElementById("version");
 version.innerHTML = v;
 /*var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
@@ -6,12 +6,11 @@ var commitId = "cc38037163afa5339cf1d327a2287b8f840ae811";
 updateLink = updateLink + commitId;*/
 // make a new line to display as new line
 // NO " OR ', do ALT + {SHIFT} + [ or ]
-var updateSummary = `• NEW CUSTOM UI so the text wont overflow (shown as …)<br>
-• tutorial follows along with you now ^o^<br>
-• fixed restockers, hopefully you didnt abuse the glitch<br>
-• new shop item: ingredient index! if you dont like typing, you can just click! (improved)<br>
-• Popcorn and Tamale recipes with new corn & chili ingredient
-• …and more quality of life features :D (1,400+ lines of code?!?!)`;
+var updateSummary = `• happy Valentine’s Day! it’s a little late, but try to make the secret limited-edition recipe before March<br>
+• fixed issues with chili ingredient, hope it doesn’t break in the future<br>
+• NEW CUSTOM UI so the text wont overflow (shown as …)<br>
+• improved ingredient index<br>
+• Popcorn and Tamale recipes`;
 
 // the `; SHOULD NOT be on its own line
 
@@ -460,20 +459,30 @@ function randomFood() {
 };
 
 function serveCustomer(order, customer) {
+	let proceed = false;
     if (ingredients.innerHTML == order["emoji"]) {
-        customers -= 1;
-        totalCustomers++;
-        if (totalCustomers == 100) {
-            award(17);
-        } else if (totalCustomers == 500) {
-            award(18);
-        } else if (totalCustomers == 1000) {
-            award(19);
-        };
-        ingredients.innerHTML = "Empty";
-        ingredients.style.color = "rgb(20, 65, 100)";
+		proceed = true;
+		ingredients.innerHTML = "Empty";
+	 	ingredients.style.color = "rgb(20, 65, 100)";
         makeFoodButton.disabled = true;
         clearIng.disabled = true;
+	} /*else if (ingredients.innerHTML.search(order["emoji"]) != -1) {
+		proceed = true;
+		let ing = ingredients.innerHTML;
+		let p = ing.search(order["emoji"]);
+		ingredients.innerHTML = ing.substring(p + 1, ing.length - 1);
+		//console.log(ing.charAt(0),ing.charAt(1),ing.charAt(2));
+	}*/
+	if (proceed == true) {
+        customers -= 1;
+        totalCustomers++;
+        if (totalCustomers >= 100) {
+            award(17);
+        } else if (totalCustomers >= 500) {
+            award(18);
+        } else if (totalCustomers >= 1000) {
+            award(19);
+        };
         money += order["profit"];
         totalMoney += order["profit"];
         moneyDisplay.innerHTML = money;
@@ -568,7 +577,8 @@ function addIng(e) {
                 //ingSearch.blur();
             };
             ingredients.innerHTML = ingredients.innerHTML + i;
-            stock -= i.length/2;
+            //stock -= i.length/2;
+            stock -= 1;
             stockDisplay.innerHTML = stock;
             if (i.match("🍎") && Math.floor(Math.random() * 100) == 0) {
                 ingSearchError.innerHTML = "🪱";
@@ -666,44 +676,58 @@ function makeFood() {
             let tIng = ingredients.innerHTML;
             let input = [];
             let emoji = null;
+			let tOffset = 0;
             for (let j = 0; j < tIng.length; j++) {
+				//console.log(tIng.charCodeAt(j));
                 // emoji becomes two objects, combine first and second part by odds and evens or smth
-            	if (j % 2 == 0) {
-                    emoji = tIng[j];
-                } else {
-                	emoji += tIng[j];
-                    input.push(emoji);
-                    emoji = null;
-                };
+				if (tIng.charCodeAt(j) != 65039) {
+					if ((j + tOffset) % 2 == 0) {
+						emoji = tIng[j];
+					} else {
+						emoji += tIng[j];
+						input.push(emoji);
+						//console.log(emoji);
+						emoji = null;
+					};
+				} else {
+					//console.log(j + tOffset);
+					tOffset++;
+					continue;
+				};
             };
+			//console.log(input);
             let ring = r.ing;
             let rIng = [];
+			let rOffset = 0;
             for (let j = 0; j < ring.length; j++) {
-            	if (j % 2 == 0) {
-                    emoji = ring[j];
-                } else {
-                	emoji += ring[j];
-                    rIng.push(emoji);
-                    emoji = null;
-                };
+				if (ring.charCodeAt(j) != 65039) {
+					if ((j + rOffset) % 2 == 0) {
+						emoji = ring[j];
+					} else {
+						emoji += ring[j];
+						rIng.push(emoji);
+						//console.log(emoji);
+						emoji = null;
+					};
+				} else {
+					//console.log(j + rOffset);
+					rOffset++;
+					continue;
+				};
             };
             
             // compare each recipe ing with table ing
             for (let j = 0; j < rIng.length; j++) {
-                //console.log(j);
+                //console.log(rIng[j]);
                 // loop 1 ing
                 for (let k = 0; k < input.length; k++) {
-                	//console.log(k);
+                	//console.log(input[k]);
                     // check if table ing #k is the same as recipe ing #j
                 	if (input[k] == rIng[j]) {
-                    	//console.log(input);
-                        //console.log(rIng);
-
                         // remove match from both
                         input.splice(k, 1);
                         rIng.splice(j, 1);
-                        //console.log(input);
-                        //console.log(rIng);
+						//console.log(rIng[j] + " = " + input[k]);
                         j -= 1;
                         break;
                     };
@@ -735,14 +759,11 @@ function makeFood() {
     };
     
     // Valentine's Day secret
-    /*if (ingredients.innerHTML == "🍫") {
+    if (ingredients.innerHTML == "🍫") {
         ingredients.innerHTML = "💝";
-        let notif = document.createElement("p");
-        notif.innerHTML = "Happy Valentines Day! (Secret #1)";
-        notifContainer.appendChild(notif);
-        setTimeout(function(){notif.remove()}, 10000);
+		notify("Happy Valentines Day! Thanks for playing Web Chef ❤️ (Secret #1)", 10000);
         award(10);
-    };*/
+    };
     
     if (ingredients.innerHTML == "🌾🥚") {
         notify("The Pancakes recipe has been updated; See updated recipe in Recipes book", 8000);
@@ -760,8 +781,20 @@ function makeFood() {
 
 function clear() {
     //if (stock + ingredients.innerHTML.length/2 < storage) {
-        stock += ingredients.innerHTML.length / 2;
-        stockDisplay.innerHTML = stock;
+	let ing = ingredients.innerHTML;
+	let str = ing.length / 2; // stock to refund
+	if (ing.match("🌶️")) {
+		let chilis = 0;
+		for (let i = 0; i < ing.length; i++) {
+			if (ing.charCodeAt(i) == 65039) {
+				chilis++;
+				//console.log("PEPPER");
+			}
+		}
+		str -= chilis * 0.5;
+	}
+    stock += str;
+    stockDisplay.innerHTML = stock;
     /*} else {
         stock = storage;
         stockDisplay.innerHTML = stock;
@@ -1231,6 +1264,14 @@ function keybinds(e) {
     let k = e.key.toLowerCase();
 	//console.log(k);
     if (document.activeElement != ingSearch) {
+		if (ingredients.innerHTML.search("Empty") == -1 && makeFoodButton.disabled != true && clearIng.disabled != true) {
+			if (k == "e") {
+				makeFood();
+			};
+			if (k == "backspace") {
+				clear();
+			};
+		};
 		if (k == "q") {
 			ok();
 		};
@@ -1246,12 +1287,9 @@ function keybinds(e) {
 				ingSearch.value = "";
 			};
 		};
-        if (k == "e") {
-            makeFood();
-        };
-        if (k == "s") {
-            saveData();
-        };
+		if (k == "s") {
+				saveData();
+			};
         if (k == "f") {
             stats();
         };
@@ -1263,9 +1301,6 @@ function keybinds(e) {
         };
         if (k == "j") {
             tutorial();
-        };
-        if (k == "backspace") {
-            clear();
         };
         if (k == "arrowleft" || k == "a") {
             backPage();
