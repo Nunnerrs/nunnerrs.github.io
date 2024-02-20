@@ -33,7 +33,10 @@ const intervals = {
 var int = "work";
 var cycles = 0;
 
-var intTimer = 1000; // default 1000 ms
+var intTimer = 5; // default 1000 ms
+if (intTimer < 1000 && window.location.href.match("github")) {
+	intTimer = 1000;
+}
 var sound = "yippee";
 var sounds = {
 	bennett: find("bennett"),
@@ -49,6 +52,7 @@ if (g("timer_sound") != null) {
 	sounds[sound].selected = true;
 }
 var auto = false;
+var notifs = false;
 var silly = false;
 var sillyText = {
 	pomoStart: "click to start pomodoro",
@@ -96,18 +100,6 @@ var notifSound = find("notif-sound");
 notifSound.value = sound;
 var playSound = find("play-sound");
 
-var sillyBtn = find("silly");
-if (g("timer_silly") != null) {
-	let sillier = g("timer_silly"); // reference only Marian will understand
-	if (sillier == "true") {
-		silly = true;
-		tp.innerHTML = sillyText.pomoStart;
-		sillyBtn.innerHTML = "ON";
-	} else {
-		silly = false;
-		sillyBtn.innerHTML = "OFF";
-	}
-}
 var color = find("color");
 if (g("timer_color_h") != null && g("timer_color_s") != null && g("timer_color_l") != null) {
 	let h = g("timer_color_h");
@@ -118,6 +110,28 @@ if (g("timer_color_h") != null && g("timer_color_s") != null && g("timer_color_l
 	setTheme(h, s, l);
 }
 
+var notifBtn = find("notif");
+if (g("timer_notifs") == "true") {
+	notifs = true;
+	notifBtn.dataset.enabled = true;
+	notifBtn.innerHTML = "ON";
+}
+
+var autoBtn = find("auto");
+if (g("timer_auto") == "true") {
+	auto = true;
+	autoBtn.dataset.enabled = true;
+	autoBtn.innerHTML = "ON";
+}
+
+var sillyBtn = find("silly");
+if (g("timer_silly") == "true") {
+	silly = true;
+	tp.innerHTML = sillyText.pomoStart;
+	sillyBtn.dataset.enabled = true;
+	sillyBtn.innerHTML = "ON";
+}
+
 var saveBtn = find("save");
 var cancelBtn = find("cancel");
 
@@ -126,10 +140,12 @@ function save() {
 	s("timer_sBreak", intervals.sBreak);
 	s("timer_lBreak", intervals.lBreak);
 	s("timer_sound", sound);
-	s("timer_silly", silly);
 	s("timer_color_h", theme.h);
 	s("timer_color_s", theme.s);
 	s("timer_color_l", theme.l);
+	s("timer_notifs", notifs);
+	s("timer_auto", auto);
+	s("timer_silly", silly);
 }
 
 function timer() {
@@ -160,6 +176,7 @@ function timer() {
 		if (s < 10) {
 			s = "0" + s.toString();
 		} else if (s == 60) {
+			m++;
 			s = "00";
 		}
 		td.innerHTML = m + ":" + s;
@@ -194,11 +211,16 @@ function timer() {
 			sounds[sound].playbackRate = pbr;
 			sounds[sound].play();
 			tp.innerHTML = start;
+			notify(start, "");
 			time = intervals[int];
 			td.innerHTML = intervals[int] + ":00";
 			//console.log(int);
-			if (auto == true && start != "Start Pomodoro") {
-				togglePomo();
+			console.log(auto, cycles);
+			if (cycles != 0) {
+				tp.innerHTML = start;
+				if (auto == true) {
+					togglePomo();
+				}
 			}
 		}
 		stop.style.visibility = "visible";
@@ -287,6 +309,15 @@ function saveSettings() {
 		}
 	}
 	sound = notifSound.value;
+	notifs = notifBtn.dataset.enabled == "true" ? true : false;
+	if (Notification.permission != "granted") {
+		Notification.requestPermission()/*.then(function(p){
+			if (p == "denied") {
+				//alert("Notifications denied; please click Allow if you want to be notified whenever the intervals end.");
+			}
+		});*/
+	}
+	auto = autoBtn.dataset.enabled == "true" ? true : false;
 	silly = sillyBtn.dataset.enabled == "true" ? true : false;
 	if (silly == true) {
 		tp.innerHTML = sillyText.pomoStart;
@@ -321,6 +352,8 @@ function cancelSettings() {
 	sBreakInt.value = intervals.sBreak;
 	lBreakInt.classList.remove("error");
 	lBreakInt.value = intervals.lBreak;
+	notifBtn.dataset.enabled = notifs;
+	autoBtn.dataset.enabled = auto;
 	sillyBtn.dataset.enabled = silly;
 	let style = getComputedStyle(document.documentElement);
 	let hex = HSLToHex(theme.h, theme.s, 70);
@@ -377,18 +410,6 @@ function fullscreen() {
 }
 fsBtn.onclick = fullscreen;
 
-function toggleSilly() {
-	let d = sillyBtn.dataset.enabled;
-	if (d == "true") {
-		sillyBtn.dataset.enabled = false;
-		sillyBtn.innerHTML = "OFF";
-	} else {
-		sillyBtn.dataset.enabled = true;
-		sillyBtn.innerHTML = "ON";
-	}
-}
-sillyBtn.onclick = toggleSilly;
-
 function colorPreview() {
 	let hsl = hexToHSL(color.value);
 	let h = hsl.h;
@@ -416,8 +437,50 @@ function setTheme(h, s, l) {
 	document.head.appendChild(root);
 }
 
+function toggleNotifs() {
+	let e = notifBtn.dataset.enabled;
+	if (e == "true") {
+		notifBtn.dataset.enabled = false;
+		notifBtn.innerHTML = "OFF";
+	} else {
+		notifBtn.dataset.enabled = true;
+		notifBtn.innerHTML = "ON";
+	}
+}
+notifBtn.onclick = toggleNotifs;
+
+function notify(t, st, i /*text, subtext, icon*/) {
+	if (notifs == true && Notification.permission == "granted" && document.hasFocus != true) {
+		var n = new Notification(t, {st, i});
+	}
+}
+
 b.onload = setInterval(timer, intTimer);
 setTimeout(function(){find("line").style.width = "20em"}, 500);
+
+function toggleAuto() {
+	let e = autoBtn.dataset.enabled;
+	if (e == "true") {
+		autoBtn.dataset.enabled = false;
+		autoBtn.innerHTML = "OFF";
+	} else {
+		autoBtn.dataset.enabled = true;
+		autoBtn.innerHTML = "ON";
+	}
+}
+autoBtn.onclick = toggleAuto;
+
+function toggleSilly() {
+	let e = sillyBtn.dataset.enabled;
+	if (e == "true") {
+		sillyBtn.dataset.enabled = false;
+		sillyBtn.innerHTML = "OFF";
+	} else {
+		sillyBtn.dataset.enabled = true;
+		sillyBtn.innerHTML = "ON";
+	}
+}
+sillyBtn.onclick = toggleSilly;
 
 // check if mobile
 const devices = [/Android/i, /BlackBerry/i, /iPhone/i, /iPad/i, /iPod/i, /webOS/i, /Windows Phone/i];
@@ -433,6 +496,7 @@ if (mobile == true) {
 	fsBtn.style.visibility = "hidden";
 	settings.style.background = "var(--settings-mobile)";
 	settings.style.opacity = 0.95;
+	notifBtn.disabled = true;
 	console.log("mobile mode ON");
 }
 
