@@ -9,20 +9,18 @@
             gtag('js', new Date());
             gtag('config', 'G-X1L4RBL935');
         </script>
-        <title>NunnerVerse²</title>
+        <title>BennettVerse²</title>
         <meta charset="UTF-8">
         <meta name="description" content="a fun little website made by Nunners">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="assets/benny.png" rel="icon">
         <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop" rel="stylesheet">
         <style>
             :root {
-                --h-color: rgb(168, 196, 255);
-                --p-color: rgb(138, 226, 209);
+                --h-color: rgb(0, 0, 0);
+                --t-color: rgb(200, 0, 0);
+                --p-color: rgb(0, 0, 255);
             }
-            /*
-            Things to revert:
-            • body.backgroundColor - delete background
-            */
             a {
                 /*color: rgb(0, 144, 113);*/
                 color: rgb(40, 160, 140);
@@ -34,8 +32,9 @@
                 font-family: 'Comic Sans MS', 'Chalkboard SE';
                 /*background-color: rgb(204, 255, 223);*/
                 /*CANDYCANE-background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);*/
-                background: repeating-linear-gradient(180deg, #000AA9, #a500cb 7.5%, #a500cb 10%, #00ffca 15%, #000AA9 20%);
-                color: rgb(0, 50, 35);
+                background-image: url(https://us.genshindle.com/data/gallery/characters/high/bennett.webp);
+                background-repeat: repeat;
+                /*color: rgb(0, 50, 35);*/
                 text-align: center;
             }
             button {
@@ -48,13 +47,19 @@
             h1, #note {
                 /*color: rgb(0, 102, 99);*/
                 color: var(--h-color);
+                -webkit-text-stroke: 1px white;
             }
             h2 {
                 /*color: rgb(0, 135, 105);*/
-                color: rgb(255, 175, 240);
+                color: var(--t-color);
+                -webkit-text-stroke: 1px white;
             }
-            h3, h5, .special {
+            h3, h5/*, .special*/ {
                 color: var(--p-color);
+                -webkit-text-stroke: 1px white;
+            }
+            h3 {
+            	color: rgb(0, 0, 100);
             }
             snow {
             	animation: snowfall 20s infinite;
@@ -100,6 +105,7 @@
                 height: auto;
                 margin: 5px;
                 padding: 5px;
+                -webkit-text-stroke: 0px;
             }
             .projects {
                 /*display: grid;
@@ -111,9 +117,10 @@
                 text-align: center;
                 width: 75%;
             }
-            /*.special {
-                color: rgb(0, 135, 105);
-            }*/
+            .special {
+                /*color: rgb(0, 135, 105);*/
+                color: rgb(0, 0, 255);
+            }
             #about {
             	background-color: rgb(25, 20, 50);
                 color: rgb(155, 105, 210);
@@ -226,9 +233,10 @@
             <button id="bday">happy birthday!!</button>
             <button id="noBday">stop showing this :[</button><br>
         </div>
-        <h1>welcome to the NunnerVerse²!<br><span style="font-size: 18pt">(aka homepage)</span></h1>
+        <h1>welcome to the BennettVerse²!<br><span style="font-size: 18pt">(aka the NunnerVerse²)</span></h1>
         <h2>cool web projects i made or something</h2>
-        <h3>aurora site theme B)</h3>
+        <h3 style="-webkit-text-stroke: 1px white;">HAPPY BIRTHDAY BENNETT</h3>
+        <p>it's only temporary guys i swear</p>
         <div class="projects">
             <!--
             <div class="project" data-url="PROJECTURL" id="PROJECT" onclick="window.open(this.dataset.url)">
@@ -251,7 +259,7 @@
                 </div>
                 <div class="p">
                     <p>some info about me. also features the project i'm currently working on along with some random extras.</p>
-                    <p class="special" style="color: rgb(230, 200, 255)">new homepage layout</p>
+                    <p class="special" style="color: rgb(230, 200, 255)">no more snow :C</p>
                 </div>
             </div>
             <div class="project" data-url="timer" id="timer" onclick="window.open(this.dataset.url)">
@@ -273,7 +281,7 @@
                 </div>
                 <div class="p">
                     <p>a list of unblocked games & game websites.</p>
-                    <p class="special" style="color: rgb(225, 150, 50)">remind me to update this…</p>
+                    <p class="special" style="color: rgb(225, 150, 50)">finally updated after a year</p>
                 </div>
             </div>
             <div class="project" data-url="library" id="library" onclick="window.open(this.dataset.url)">
@@ -284,7 +292,7 @@
                 </div>
                 <div class="p">
                     <p>online library with e-books written by me and my friends. add your own stories too!</p>
-                    <p class="special" style="color: rgb(100, 100, 100)">new <i>NunnerVerse Weekly</i> post</p>
+                    <p class="special" style="color: rgb(100, 100, 100)"></p>
                 </div>
             </div>
             <div class="project" data-url="web-chef" id="web-chef" onclick="window.open(this.dataset.url)">
@@ -295,7 +303,7 @@
                 </div>
                 <div class="p">
                     <p>a simple restaurant game where you just type and click.</p>
-                    <p class="special" style="color: rgb(255, 255, 255)">new update part 2 soon</p>
+                    <p class="special" style="color: rgb(255, 255, 255)">removing valentine's day secret</p>
                 </div>
             </div>
             <div class="project" data-url="refractory" id="refractory" onclick="window.open(this.dataset.url)">
@@ -317,7 +325,7 @@
                 </div>
                 <div class="p">
                     <p>a gachapon simulator, test your luck! includes genshin impact wish, bandori and more.</p>
-                    <p class="special" style="color: rgb(220, 60, 125)">chevreuse 🥺</p>
+                    <p class="special" style="color: rgb(220, 60, 125)">b e n n e t t</p>
                 </div>
             </div>
             <div class="project" data-url="notepad" id="notepad" onclick="window.open(this.dataset.url)">
@@ -416,7 +424,7 @@
                 </div>
                 <div class="p">
                     <p>battle your friends by spamming Shift and Enter!!</p>
-                    <p class="special" style="color: rgb(200, 25, 25)">adding a start button</p>
+                    <p class="special" style="color: rgb(200, 25, 25)"></p>
                 </div>
             </div>
             <div class="project" data-url="clicker" id="clicker" onclick="window.open(this.dataset.url)">
@@ -427,7 +435,7 @@
                 </div>
                 <div class="p">
                     <p>press a button to click. upgrade click at certain milestones</p>
-                    <p class="special" style="color: rgb(0, 170, 214)">yes it's infinite</p>
+                    <p class="special" style="color: rgb(0, 170, 214)">click click click click</p>
                 </div>
             </div>
             <div class="project" data-url="https://checkboxes.w3spaces.com" id="checkboxes" onclick="window.open(this.dataset.url)">
@@ -438,7 +446,7 @@
                 </div>
                 <div class="p">
                     <p>create checkboxes or pixel art thingy</p>
-                    <p class="special" style="color: rgb(125, 125, 125)">this probably wont be updated</p>
+                    <p class="special" style="color: rgb(125, 125, 125)">no update XD</p>
                 </div>
             </div>
         </div>
@@ -476,7 +484,7 @@
             function storm() {
             	let snow = document.createElement("snow");
                 snow.style.marginLeft = Math.floor((Math.random() * window.innerWidth) - window.innerWidth/2) + "px";
-                snowContainer.appendChild(snow);
+                //snowContainer.appendChild(snow);
             }
             
             var delay = 0;
