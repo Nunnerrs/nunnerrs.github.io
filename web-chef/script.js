@@ -1,4 +1,4 @@
-var v = "v" + "1.8.2.0";
+var v = "v" + "1.8.2.1";
 var version = document.getElementById("version");
 version.innerHTML = v;
 /*var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
@@ -6,11 +6,9 @@ var commitId = "cc38037163afa5339cf1d327a2287b8f840ae811";
 updateLink = updateLink + commitId;*/
 // make a new line to display as new line
 // NO " OR ', do ALT + {SHIFT} + [ or ]
-var updateSummary = `• happy Valentine’s Day! it’s a little late, but try to make the secret limited-edition recipe before March<br>
-• fixed issues with chili ingredient, hope it doesn’t break in the future<br>
-• NEW CUSTOM UI so the text wont overflow (shown as …)<br>
-• improved ingredient index<br>
-• Popcorn and Tamale recipes`;
+var updateSummary = `• removed the Valentine’s Day secret, hopefully you got it (next time to get it is next year)<br>
+• fixed issues with chili ingredient<br>
+• NEW CUSTOM UI<br>`;
 
 // the `; SHOULD NOT be on its own line
 
@@ -759,11 +757,11 @@ function makeFood() {
     };
     
     // Valentine's Day secret
-    if (ingredients.innerHTML == "🍫") {
+    /*if (ingredients.innerHTML == "🍫") {
         ingredients.innerHTML = "💝";
 		notify("Happy Valentines Day! Thanks for playing Web Chef ❤️ (Secret #1)", 10000);
         award(10);
-    };
+    };*/
     
     if (ingredients.innerHTML == "🌾🥚") {
         notify("The Pancakes recipe has been updated; See updated recipe in Recipes book", 8000);

@@ -9,7 +9,7 @@
             gtag('js', new Date());
             gtag('config', 'G-X1L4RBL935');
         </script>
-        <title>BennettVerse</title>
+        <title>NunnerVerse²</title>
         <meta charset="UTF-8">
         <meta name="description" content="a fun little website made by Nunners">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,9 +17,9 @@
         <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop" rel="stylesheet">
         <style>
             :root {
-                --h-color: rgb(0, 0, 0);
-                --t-color: rgb(200, 0, 0);
-                --p-color: rgb(0, 0, 255);
+                --h1-color: rgb(0, 102, 99);
+                --h2-color: rgb(0, 135, 105);
+                --h3-color: rgb(0, 150, 120);
             }
             a {
                 /*color: rgb(0, 144, 113);*/
@@ -30,10 +30,10 @@
             }
             body {
                 font-family: 'Comic Sans MS', 'Chalkboard SE';
-                /*background-color: rgb(204, 255, 223);*/
+                background-color: rgb(204, 255, 223);
                 /*CANDYCANE-background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);*/
-                background-image: url(https://us.genshindle.com/data/gallery/characters/high/bennett.webp);
-                background-repeat: repeat;
+                /*BENNETT-background-image: url(https://us.genshindle.com/data/gallery/characters/high/bennett.webp);
+                background-repeat: repeat;*/
                 /*color: rgb(0, 50, 35);*/
                 text-align: center;
             }
@@ -45,21 +45,13 @@
                 font-family: 'Comic Sans MS', 'Chalkboard SE';
             }
             h1, #note {
-                /*color: rgb(0, 102, 99);*/
-                color: var(--h-color);
-                -webkit-text-stroke: 1px white;
+                color: var(--h1-color);
             }
             h2 {
-                /*color: rgb(0, 135, 105);*/
-                color: var(--t-color);
-                -webkit-text-stroke: 1px white;
+                color: var(--h2-color);
             }
-            h3, h5/*, .special*/ {
-                color: var(--p-color);
-                -webkit-text-stroke: 1px white;
-            }
-            h3 {
-            	color: rgb(0, 0, 100);
+            h3, h5 {
+                color: var(--h3-color);
             }
             snow {
             	animation: snowfall 20s infinite;
@@ -71,17 +63,14 @@
                 width: 10px;
             }
             tiny {
-                color: rgb(0, 90, 255);
+                color: rgb(144, 232, 198);
                 font-size: 1px;
+                padding-top: 2px;
             }
             @keyframes snowfall {
             	from {margin-top: -50px;}
                 to {margin-top: 150%}
             }
-            /*@keyframes snowmove {
-            	from {margin-left: $margin-left}
-                to {margin-left: ($margin-left + 25px)}
-            }*/
             .br {
             	display: block;
                 margin: 5px 0;
@@ -93,7 +82,6 @@
             }
             .p {
                 display: block;
-                -webkit-text-stroke: 0px;
             }
             .project {
                 background-color: rgb(150, 240, 200);
@@ -106,7 +94,6 @@
                 height: auto;
                 margin: 5px;
                 padding: 5px;
-                -webkit-text-stroke: 0px;
             }
             .projects {
                 /*display: grid;
@@ -119,8 +106,7 @@
                 width: 75%;
             }
             .special {
-                /*color: rgb(0, 135, 105);*/
-                color: rgb(0, 0, 255);
+                color: rgb(255, 255, 255);
             }
             #about {
             	background-color: rgb(25, 20, 50);
@@ -234,10 +220,9 @@
             <button id="bday">happy birthday!!</button>
             <button id="noBday">stop showing this :[</button><br>
         </div>
-        <h1>welcome to the BennettVerse!<br><span style="font-size: 18pt">(aka the NunnerVerse²)</span></h1>
+        <h1>welcome to the NunnerVerse²!<br><span style="font-size: 18pt">(aka homepage)</span></h1>
         <h2>cool web projects i made or something</h2>
-        <h3 style="-webkit-text-stroke: 1px white;">HAPPY BIRTHDAY BENNETT</h3>
-        <p style="-webkit-text-stroke: 1px white">it's only temporary guys i swear</p>
+        <h3>no more BennettVerse</h3>
         <div class="projects">
             <!--
             <div class="project" data-url="PROJECTURL" id="PROJECT" onclick="window.open(this.dataset.url)">
@@ -256,18 +241,18 @@
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(200, 150, 255)">about me</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/about.png">
                 </div>
                 <div class="p">
                     <p>some info about me. also features the project i'm currently working on along with some random extras.</p>
-                    <p class="special" style="color: rgb(230, 200, 255)">no more snow :C</p>
+                    <p class="special" style="color: rgb(230, 200, 255)">updated README file on github</p>
                 </div>
             </div>
             <div class="project" data-url="timer" id="timer" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(0, 255, 0); font-family: 'Hachi Maru Pop';">Sidetracked</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/timer.png">
                 </div>
                 <div class="p">
                     <p>a pomodoro timer i made. work in 25-min intervals and 5-min breaks. helps with homework!</p>
@@ -278,7 +263,7 @@
             	<div></div>
                 <div class="p">
                     <h3 style="color: #996615">collection of online fun stuffs (COOF)</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/games.png">
                 </div>
                 <div class="p">
                     <p>a list of unblocked games & game websites.</p>
@@ -289,29 +274,29 @@
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(0, 0, 0); font-family: Comic Sans MS, Chalkboard SE">NunnerLibrary</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/library.png">
                 </div>
                 <div class="p">
                     <p>online library with e-books written by me and my friends. add your own stories too!</p>
-                    <p class="special" style="color: rgb(100, 100, 100)"></p>
+                    <p class="special" style="color: rgb(100, 100, 100)">will try to write <i>The Guardian Of The Phoenix Vol. 3</i> :D</p>
                 </div>
             </div>
             <div class="project" data-url="web-chef" id="web-chef" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
                     <h3 style="color: inherit">Web Chef</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/web-chef.gif">
                 </div>
                 <div class="p">
                     <p>a simple restaurant game where you just type and click.</p>
-                    <p class="special" style="color: rgb(255, 255, 255)">removing valentine's day secret</p>
+                    <p class="special" style="color: rgb(255, 255, 255)">secret #1 unobtainable now</p>
                 </div>
             </div>
             <div class="project" data-url="refractory" id="refractory" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(0, 0, 0)">Refractory</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/refractory.png">
                 </div>
                 <div class="p">
                     <p>catch the good objects, shoot the bad ones, and don't run out of lives!</p>
@@ -322,18 +307,18 @@
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(145, 35, 80)">lucky pull simulator</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/lucky-pull.png">
                 </div>
                 <div class="p">
                     <p>a gachapon simulator, test your luck! includes genshin impact wish, bandori and more.</p>
-                    <p class="special" style="color: rgb(220, 60, 125)">b e n n e t t</p>
+                    <p class="special" style="color: rgb(220, 60, 125)">GAMING!!!</p>
                 </div>
             </div>
             <div class="project" data-url="notepad" id="notepad" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(64, 59, 50); font-family: Comic Sans MS, Chalkboard SE">notepad</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/notepad.png">
                 </div>
                 <div class="p">
                     <p>a useful online notepad that auto-saves locally.</p>
@@ -344,7 +329,7 @@
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(0, 45, 75)">Drawing Tool</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/draw.png">
                 </div>
                 <div class="p">
                     <p>a simple tool for drawing with customization. made with p5.js eheheh.</p>
@@ -355,7 +340,7 @@
             	<div></div>
                 <div class="p">
                     <h3 style="color: #435224">Skylar's Art Gallery</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="skylar-art/assets/sheep.png">
                 </div>
                 <div class="p">
                     <p>an art gallery featuring drawings by my friend Skylar.</p>
@@ -366,7 +351,7 @@
             	<div></div>
                 <div class="p">
                     <h3 style="color: #360222">Lianna's Art Gallery</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="lianna-art/assets/lianna-profile.png">
                 </div>
                 <div class="p">
                     <p>an art gallery displaying drawings by my friend Lianna.</p>
@@ -383,33 +368,33 @@
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(0, 0, 0)">Custom Gear Testing</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="https://tr.rbxcdn.com/f6f0a318d831d0970e4efab6b181d634/420/420/Image/Png">
                 </div>
                 <div class="p">
                     <p>AFK while holding out a gear to earn Testing Time (TT). Unlock over 50+ custom-made gears with enough TT!</p>
-                    <p class="special" style="color: rgb(0, 100, 50)">newest updates are viewable in game description and discord server</p>
+                    <p class="special" style="color: rgb(0, 100, 50)">join our discord server <a href="https://discord.gg/zbVsHA4tSu">here</a></p>
                 </div>
             </div>
             <div class="project" data-url="https://www.roblox.com/games/7121390111/plant-growing-simulator" id="pgs" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(200, 255, 210);">plant growing simulator</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="https://tr.rbxcdn.com/b1a0a881a8f3bf467038f3bc9c433af1/420/420/Image/Png">
                 </div>
                 <div class="p">
                     <p>grow plants and sell them for money. you can catch bunnies, search through bushes, and more!</p>
-                    <p class="special" style="color: rgb(255, 255, 255)">will update if i get the motivation</p>
+                    <p class="special" style="color: rgb(255, 255, 255)">added icons yay</p>
                 </div>
             </div>
             <div class="project" data-url="https://www.roblox.com/games/6905424287/random-models" id="rm" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(0, 0, 0)">random models</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="https://tr.rbxcdn.com/3217e32ba6f8f764bf72b1d98a2bfa96/420/420/Image/Png">
                 </div>
                 <div class="p">
                     <p>a game featuring random models i made. this is my first roblox game where i experimented with scripting</p>
-                    <p class="special" style="color: rgb(140, 90, 0);">doug dimmadome</p>
+                    <p class="special" style="color: rgb(140, 90, 0);">doug dimmadome dating sim when</p>
                 </div>
             </div>
         </div>
@@ -421,18 +406,18 @@
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(100, 25, 25)">button-spam fighting game</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/fight.png">
                 </div>
                 <div class="p">
                     <p>battle your friends by spamming Shift and Enter!!</p>
-                    <p class="special" style="color: rgb(200, 25, 25)"></p>
+                    <p class="special" style="color: rgb(200, 25, 25)">should i change this to left/right shift instead</p>
                 </div>
             </div>
             <div class="project" data-url="clicker" id="clicker" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(0, 73, 92)">clicker gaem</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/clicker.png">
                 </div>
                 <div class="p">
                     <p>press a button to click. upgrade click at certain milestones</p>
@@ -443,7 +428,7 @@
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(0, 0, 0)">Checkboxes</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/checkbox.png">
                 </div>
                 <div class="p">
                     <p>create checkboxes or pixel art thingy</p>
@@ -458,18 +443,18 @@
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(0, 0, 0)">lending a hand</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="assets/lending-a-hand.png">
                 </div>
                 <div class="p">
                     <p>an rpg-styled game where you help out your sick sibling.</p>
-                    <p class="special" style="color: rgb(51, 130, 58)">happy mart coming soon</p>
+                    <p class="special" style="color: rgb(51, 130, 58)">fun fact: this was originally going to be a <a href="https://github.com/Nunnerrs/nunnerrs.github.io/commit/db963b4729711df0cec3f1c0bab480d28983bafd">fishing game</a></p>
                 </div>
             </div>
             <div class="project" data-url="raise-a-rock" id="rar" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
                     <h3 style="color: rgb(0, 0, 0)">raise a pet rock</h3>
-                    <img class="icon" src="assets/benny.png">
+                    <img class="icon" src="raise-a-rock/assets/kid-rock-happy.png">
                 </div>
                 <div class="p">
                     <p>a game where you grow and raise your very own pet rock! (very very WIP)</p>
@@ -499,7 +484,8 @@
                 window.open(url, _self);
                 console.log(project.dataset.url);
             };
-
+            
+            // draw snow
             /*setInterval(function(){
                 let s = snowContainer.childNodes;
                 if (document.hasFocus == false) {
