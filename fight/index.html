@@ -14,9 +14,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" href="favicon.png">
         <style>
+            :root {
+                --font: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            }
             body {
                 background-color: rgb(255, 200, 200);
-                font-family: Comic Sans MS, Chalkboard SE;
+                font-family: var(--font);
                 margin: auto;
                 text-align: center;
             }
@@ -31,23 +34,34 @@
                 color: rgb(100, 25, 25);
             }
             .plr {
+                cursor: pointer;
                 font-size: 24px;
+            }
+            #start {
+                background: rgb(100, 200, 100);
+                border-radius: 10px;
+                color: white;
+                font-family: var(--font);
+                font-size: 32pt;
+                padding: 5px;
+                width: 50%;
             }
         </style>
     </head>
     <body>
         <h1>button-spam fighting game</h1>
+        <button id="start">START</button>
         <h2 id="event"></h2>
         <p class="plr"><span id="plr1">PLR 1</span>'s HP: <v id="hp1">100</v></p>
         <p class="plr"><span id="plr2">PLR 2</span>'s HP: <v id="hp2">100</v></p><br>
         <p><button>Shift</button> to attack <span id="keyName2">PLR 2</span></p>
         <p><button>Enter</button> to attack <span id="keyName1">PLR 1</span></p><br>
-        <p>To change player names, add <code>?plr1=NAME&plr2=NAME</code> to the end of the URL, replacing each <code>NAME</code></p>
+        <p>To change player names, click on the "PLR #" before starting a match</p>
         <h3><a href="https://nunnerrs.github.io/index.html" style="color: rgb(0, 125, 100); text-decoration: none;">To the NunnerVerse²</a></h3>
         <script>
             var b = document.body;
-            var delay = 1000; // delay to start in ms
             var start = false;
+            var startBtn = document.getElementById("start");
             var event = document.getElementById("event");
             var plr1 = document.getElementById("plr1");
             var plr2 = document.getElementById("plr2");
@@ -152,8 +166,42 @@
                 };
             };
 
-            let url = window.location.href;
-            if (url.split("?")[1]) {
+            function startFight() {
+                startBtn.remove();
+                //startBtn.style.visibility = "hidden";
+                event.style.color = darkRed;
+                event.innerHTML = "Ready?";
+                setTimeout(function(){event.style.color = yellow; event.innerHTML = "3"}, 2000);
+                setTimeout(function(){event.innerHTML = "2"}, 3000);
+                setTimeout(function(){event.innerHTML = "1"}, 4000);
+                setTimeout(function(){start = true; event.style.color = green; event.innerHTML = "GOOO!!"}, 5000);
+                setTimeout(function(){event.innerHTML = ""}, 8000);
+            }
+
+            function rename(plr) {
+            	if (start == false) {
+                    let oldName = name1;
+                    if (plr == 2) {
+                        oldName = name2
+                    }
+                    let n = prompt("Rename \"" + oldName + "\" (player on " + (plr == 2 ? "right" : "left") + ")");
+                    n = n.trim();
+                    if (n != "") {
+                        if (plr == 2) {
+                            name2 = n;
+                            plr2.innerHTML = name2;
+                        } else {
+                            name1 = n;
+                            plr1.innerHTML = name1;
+                        };
+                    } else {
+                        alert("Please choose a different name for " + oldName);
+                    }
+                }
+            }
+
+            /*let url = window.location.href;
+            if (url.split("?")[1] != null) {
                 let names = url.split("?")[1].split("&");
                 var name1 = decodeURI(names[0].split("=")[1]);
                 var name2 = decodeURI(names[1].split("=")[1]);
@@ -161,16 +209,13 @@
                 keyName1.innerHTML = name1;
                 plr2.innerHTML = name2;
                 keyName2.innerHTML = name2;
-            };
+            };*/
 
             b.onkeydown = fight;
             b.onkeyup = keyUp;
-            setTimeout(function(){event.style.color = darkRed; event.innerHTML = "Ready?"}, delay);
-            setTimeout(function(){event.style.color = yellow; event.innerHTML = "3"}, 2000 + delay);
-            setTimeout(function(){event.innerHTML = "2"}, 3000 + delay);
-            setTimeout(function(){event.innerHTML = "1"}, 4000 + delay);
-            setTimeout(function(){start = true; event.style.color = green; event.innerHTML = "GOOO!!"}, 5000 + delay);
-            setTimeout(function(){event.innerHTML = ""}, 8000 + delay);
+            startBtn.onclick = startFight;
+            plr1.onclick = function(){rename(1)};
+            plr2.onclick = function(){rename(2)};
         </script>
     </body>
 </html>
