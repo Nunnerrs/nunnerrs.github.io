@@ -9,15 +9,27 @@
             gtag('js', new Date());
             gtag('config', 'G-X1L4RBL935');
         </script>
-        <title>TiffyVerse²</title>
+        <title>TiffyVerse</title>
         <meta charset="UTF-8">
         <link rel="icon" href="assets/pink-favicon.ico">
         <meta name="description" content="a fun little website made by Nunners">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop" rel="stylesheet">
         <style>
+            /*
+            after birthday theme, delete root and uncomment original
+            delete @font-face
+            restore comic sans pl0x
+            change TiffyVerse back to NunnerVerse²
+            delete h3 announcing birth
+            delete favicon line
+            */
+            @font-face {
+                font-family: 'Mini Heart';
+                src: url(assets/heart-font.ttf);
+            }
             :root {
-                --bg-color: rgb(255, 200, 200);
+                --bg-color: rgb(255, 200, 215);
                 --h1-color: rgb(105, 0, 0);
                 --h2-color: rgb(156, 24, 24);
                 --h3-color: rgb(188, 87, 87);
@@ -45,7 +57,8 @@
                 color: var(--a-hover-color);
             }
             body {
-                font-family: 'Comic Sans MS', 'Chalkboard SE';
+                font-family: 'Mini Heart';
+                /*font-family: 'Comic Sans MS', 'Chalkboard SE';*/
                 background-color: var(--bg-color);
                 /*CANDYCANE-background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);*/
                 /*BENNETT-background-image: url(https://us.genshindle.com/data/gallery/characters/high/bennett.webp);
@@ -236,7 +249,7 @@
             <button id="bday">happy birthday!!</button>
             <button id="noBday">stop showing this :[</button><br>
         </div>
-        <h1>welcome to the TiffyVerse²!<br><span style="font-size: 18pt">(aka homepage)</span></h1>
+        <h1>welcome to the TiffyVerse!<br><span style="font-size: 18pt">(aka homepage)</span></h1>
         <h2>cool web projects i made or something</h2>
         <h3>HAPPY BIRTHDAY TIFFANY!!</h3>
         <div class="projects">
