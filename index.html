@@ -19,7 +19,7 @@
             /*
             after birthday theme, delete root and uncomment original
             delete @font-face
-            restore comic sans pl0x
+            delete font lines in h1/h2/h3 {} & comment on <h1>'s size back to 18pt
             change TiffyVerse back to NunnerVerse²
             delete h3 announcing birth
             delete favicon line
@@ -30,9 +30,9 @@
             }
             :root {
                 --bg-color: rgb(255, 200, 215);
-                --h1-color: rgb(105, 0, 0);
-                --h2-color: rgb(156, 24, 24);
-                --h3-color: rgb(188, 87, 87);
+                --h1-color: rgb(160, 50, 50);
+                --h2-color: rgb(255, 255, 255);
+                --h3-color: rgb(235, 110, 145);
                 --tiny-color: rgb(255, 179, 179);
                 --a-color: rgb(240, 124, 124);
                 --a-hover-color: rgb(255, 169, 169);
@@ -57,8 +57,7 @@
                 color: var(--a-hover-color);
             }
             body {
-                font-family: 'Mini Heart';
-                /*font-family: 'Comic Sans MS', 'Chalkboard SE';*/
+                font-family: 'Comic Sans MS', 'Chalkboard SE';
                 background-color: var(--bg-color);
                 /*CANDYCANE-background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);*/
                 /*BENNETT-background-image: url(https://us.genshindle.com/data/gallery/characters/high/bennett.webp);
@@ -75,9 +74,13 @@
             }
             h1, #note {
                 color: var(--h1-color);
+                font-family: 'Mini Heart';
+                font-size: 2.5em;
             }
             h2 {
                 color: var(--h2-color);
+                font-family: 'Mini Heart';
+                font-size: 1.65em;
             }
             h3, h5 {
                 color: var(--h3-color);
@@ -249,7 +252,7 @@
             <button id="bday">happy birthday!!</button>
             <button id="noBday">stop showing this :[</button><br>
         </div>
-        <h1>welcome to the TiffyVerse!<br><span style="font-size: 18pt">(aka homepage)</span></h1>
+        <h1>welcome to the TiffyVerse!<br><span style="font-size: 20pt">(aka homepage)</span></h1>
         <h2>cool web projects i made or something</h2>
         <h3>HAPPY BIRTHDAY TIFFANY!!</h3>
         <div class="projects">
