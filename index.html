@@ -9,27 +9,44 @@
             gtag('js', new Date());
             gtag('config', 'G-X1L4RBL935');
         </script>
-        <title>NunnerVerse²</title>
+        <title>TiffyVerse²</title>
         <meta charset="UTF-8">
+        <link rel="icon" href="assets/pink-favicon.ico">
         <meta name="description" content="a fun little website made by Nunners">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop" rel="stylesheet">
         <style>
             :root {
+                --bg-color: rgb(255, 200, 200);
+                --h1-color: rgb(105, 0, 0);
+                --h2-color: rgb(156, 24, 24);
+                --h3-color: rgb(188, 87, 87);
+                --tiny-color: rgb(255, 179, 179);
+                --a-color: rgb(240, 124, 124);
+                --a-hover-color: rgb(255, 169, 169);
+                --button-color: rgb(255, 175, 175);
+            }
+            /* default */
+            /*:root {
+                --bg-color: rgb(204, 255, 223);
                 --h1-color: rgb(0, 102, 99);
                 --h2-color: rgb(0, 135, 105);
                 --h3-color: rgb(0, 150, 120);
-            }
+                --tiny-color: rgb(144, 232, 198);
+                --a-color: rgb(40, 160, 140);
+                --a-hover-color: rgb(23, 212, 155);
+                --button-color: rgb(100, 255, 175);
+            }*/
             a {
                 /*color: rgb(0, 144, 113);*/
-                color: rgb(40, 160, 140);
+                color: var(--a-color);
             }
             a:hover {
-                color: rgb(23, 212, 155);
+                color: var(--a-hover-color);
             }
             body {
                 font-family: 'Comic Sans MS', 'Chalkboard SE';
-                background-color: rgb(204, 255, 223);
+                background-color: var(--bg-color);
                 /*CANDYCANE-background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);*/
                 /*BENNETT-background-image: url(https://us.genshindle.com/data/gallery/characters/high/bennett.webp);
                 background-repeat: repeat;*/
@@ -37,8 +54,8 @@
                 text-align: center;
             }
             button {
-                background-color: rgb(100, 255, 175);
-                border-color: rgb(100, 255, 175);
+                background-color: var(--button-color);
+                border-color: var(--button-color);
                 border-radius: 5px;
                 color: rgb(0, 65, 50);
                 font-family: 'Comic Sans MS', 'Chalkboard SE';
@@ -62,7 +79,7 @@
                 width: 10px;
             }
             tiny {
-                color: rgb(144, 232, 198);
+                color: var(--tiny-color);
                 font-size: 1px;
                 padding-top: 2px;
             }
@@ -219,9 +236,9 @@
             <button id="bday">happy birthday!!</button>
             <button id="noBday">stop showing this :[</button><br>
         </div>
-        <h1>welcome to the NunnerVerse²!<br><span style="font-size: 18pt">(aka homepage)</span></h1>
+        <h1>welcome to the TiffyVerse²!<br><span style="font-size: 18pt">(aka homepage)</span></h1>
         <h2>cool web projects i made or something</h2>
-        <h3>no more BennettVerse</h3>
+        <h3>HAPPY BIRTHDAY TIFFANY!!</h3>
         <div class="projects">
             <!--
             <div class="project" data-url="PROJECTURL" id="PROJECT" onclick="window.open(this.dataset.url)">
