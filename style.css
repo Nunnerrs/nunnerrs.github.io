@@ -1,0 +1,202 @@
+:root {
+    --bg-color: rgb(0, 255, 0);
+    --h1-color: rgb(255, 0, 0);
+    --h2-color: rgb(0, 0, 255);
+    --h3-color: rgb(0, 255, 255);
+    --tiny-color: rgb(144, 232, 198);
+    --a-color: rgb(255, 0, 255);
+    --a-hover-color: rgb(255, 100, 255);
+    --button-color: rgb(100, 255, 175);
+}
+a {
+    /*color: rgb(0, 144, 113);*/
+    color: var(--a-color);
+}
+a:hover {
+    color: var(--a-hover-color);
+}
+body {
+    font-family: 'Comic Sans MS', 'Chalkboard SE';
+	background-image: url(https://static-cdn.jtvnw.net/jtv_user_pictures/d3f0f0b2-add0-443b-a47f-9014563e8e06-profile_image-300x300.png);
+	background-repeat: repeat;
+    /*background-color: var(--bg-color);*/
+    /*CANDYCANE-background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);*/
+    /*BENNETT-background-image: url(https://us.genshindle.com/data/gallery/characters/high/bennett.webp);
+    background-repeat: repeat;*/
+    /*color: rgb(0, 50, 35);*/
+    text-align: center;
+}
+button {
+    background-color: var(--button-color);
+    border-color: var(--button-color);
+    border-radius: 5px;
+    color: rgb(0, 65, 50);
+    font-family: 'Comic Sans MS', 'Chalkboard SE';
+}
+h1, #note {
+    color: var(--h1-color);
+}
+h2 {
+    color: var(--h2-color);
+}
+h3, h5 {
+    color: var(--h3-color);
+}
+snow {
+    animation: snowfall 20s infinite;
+    animation-timing-function: linear;
+    background-color: white;
+    border-radius: 100px;
+    height: 10px;
+    position: fixed;
+    width: 10px;
+}
+tiny {
+    color: var(--tiny-color);
+    font-size: 1px;
+    padding-top: 2px;
+}
+@keyframes snowfall {
+    from {margin-top: -50px;}
+    to {margin-top: 150%}
+}
+.br {
+    display: block;
+    margin: 5px 0;
+    content: ' ';
+}
+.icon {
+    height: auto;
+    width: 200px;
+}
+.p {
+    display: block;
+}
+.project {
+    background-color: rgb(150, 240, 200);
+    border-radius: 10px;
+    display: grid;
+    color: black;
+    cursor: pointer;
+    grid-template-columns: 0.25fr 4fr 5fr 0.25fr;
+    grid-gap: 10px;
+    height: auto;
+    margin: 5px;
+    padding: 5px;
+}
+.projects {
+    /*display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 15px;*/
+    height: auto;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+    width: 75%;
+}
+.special {
+    color: rgb(255, 255, 255);
+}
+#about {
+    background-color: rgb(25, 20, 50);
+    color: rgb(155, 105, 210);
+}
+#birthday-banner {
+    height: auto;
+    width: 97.5%;
+    margin-top: 1.5%;
+}
+#cgt {
+    background-color: rgb(150, 255, 150);
+    color: black;
+}
+#checkboxes {
+    background-color: rgb(235, 235, 235);
+    color: rgb(75, 75, 75);
+}
+#clicker {
+    background-color: lightblue;
+}
+#draw {
+    background-color: rgb(200, 230, 255);
+    color: black;
+}
+#fight {
+    background-color: rgb(255, 200, 200);
+    color: black;
+}
+#games {
+    background-color: #ffcc89;
+    color: #c4852d;
+}
+#lah {
+    background-color: rgb(103, 255, 116);
+    color: rgb(22, 56, 25);
+}
+#lianna-art {
+    background-color: rgb(247, 10, 156);
+    color: black;
+}
+#library {
+    background-color: rgb(230, 230, 200);
+    color: rgb(50, 50, 50);
+    font-family: monospace;
+}
+#lucky-pull {
+    background-color: rgb(255, 150, 190);
+    color: rgb(175, 40, 87);
+}
+#notepad {
+    background-color: rgb(255, 235, 200);
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+}
+#nunnerday {
+    background-color: rgb(210, 255, 235);
+    height: auto;
+    left: 25%;
+    margin: auto;
+    max-height: 85%;
+    overflow-y: scroll;
+    position: fixed;
+    text-align: center;
+    translate: transform(-50%, 0);
+    top: 12vh;
+    visibility: hidden;
+    width: 50vw;
+}
+#pgs {
+    background-color: rgb(0, 100, 50);
+    color: rgb(150, 230, 175);
+}
+#rar {
+    background-color: rgb(199, 199, 199);
+    color: rgb(69, 69, 69);
+}
+#refractory {
+    background-color: white;
+    color: black;
+}
+#rm {
+    background-color: rgb(245, 230, 0);
+    color: rgb(225, 150, 0);
+}
+#skylar-art {
+    background-color: rgb(160, 194, 88);
+    color: black;
+}
+#timer {
+    background-color: black;
+    color: white;
+}
+#web-chef {
+    background-color: rgb(50, 90, 125);
+    color: rgb(210, 230, 255);
+    font-family: monospace;
+}
+/*
+#PROJECT {
+    background-color: black;
+    color: white;
+}
+*/

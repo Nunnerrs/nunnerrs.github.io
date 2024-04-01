@@ -9,241 +9,12 @@
             gtag('js', new Date());
             gtag('config', 'G-X1L4RBL935');
         </script>
-        <title>TiffyVerse</title>
+        <title>NunnerVerse²</title>
         <meta charset="UTF-8">
-        <link rel="icon" href="assets/pink-favicon.ico">
         <meta name="description" content="a fun little website made by Nunners">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop" rel="stylesheet">
-        <style>
-            /*
-            after birthday theme, delete root and uncomment original
-            delete @font-face
-            delete font lines in h1/h2/h3 {} & comment on <h1>'s size back to 18pt
-            change TiffyVerse back to NunnerVerse²
-            delete h3 announcing birth
-            delete favicon line
-            */
-            @font-face {
-                font-family: 'Mini Heart';
-                src: url(assets/heart-font.ttf);
-            }
-            :root {
-                --bg-color: rgb(255, 200, 215);
-                --h1-color: rgb(160, 50, 50);
-                --h2-color: rgb(255, 255, 255);
-                --h3-color: rgb(235, 110, 145);
-                --tiny-color: rgb(255, 179, 179);
-                --a-color: rgb(240, 124, 124);
-                --a-hover-color: rgb(255, 169, 169);
-                --button-color: rgb(255, 175, 175);
-            }
-            /* default */
-            /*:root {
-                --bg-color: rgb(204, 255, 223);
-                --h1-color: rgb(0, 102, 99);
-                --h2-color: rgb(0, 135, 105);
-                --h3-color: rgb(0, 150, 120);
-                --tiny-color: rgb(144, 232, 198);
-                --a-color: rgb(40, 160, 140);
-                --a-hover-color: rgb(23, 212, 155);
-                --button-color: rgb(100, 255, 175);
-            }*/
-            a {
-                /*color: rgb(0, 144, 113);*/
-                color: var(--a-color);
-            }
-            a:hover {
-                color: var(--a-hover-color);
-            }
-            body {
-                font-family: 'Comic Sans MS', 'Chalkboard SE';
-                background-color: var(--bg-color);
-                /*CANDYCANE-background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);*/
-                /*BENNETT-background-image: url(https://us.genshindle.com/data/gallery/characters/high/bennett.webp);
-                background-repeat: repeat;*/
-                /*color: rgb(0, 50, 35);*/
-                text-align: center;
-            }
-            button {
-                background-color: var(--button-color);
-                border-color: var(--button-color);
-                border-radius: 5px;
-                color: rgb(0, 65, 50);
-                font-family: 'Comic Sans MS', 'Chalkboard SE';
-            }
-            h1, #note {
-                color: var(--h1-color);
-                font-family: 'Mini Heart';
-                font-size: 2.5em;
-            }
-            h2 {
-                color: var(--h2-color);
-                font-family: 'Mini Heart';
-                font-size: 1.65em;
-            }
-            h3, h5 {
-                color: var(--h3-color);
-            }
-            snow {
-            	animation: snowfall 20s infinite;
-                animation-timing-function: linear;
-            	background-color: white;
-                border-radius: 100px;
-                height: 10px;
-                position: fixed;
-                width: 10px;
-            }
-            tiny {
-                color: var(--tiny-color);
-                font-size: 1px;
-                padding-top: 2px;
-            }
-            @keyframes snowfall {
-            	from {margin-top: -50px;}
-                to {margin-top: 150%}
-            }
-            .br {
-            	display: block;
-                margin: 5px 0;
-                content: ' ';
-            }
-            .icon {
-            	height: auto;
-            	width: 200px;
-            }
-            .p {
-                display: block;
-            }
-            .project {
-                background-color: rgb(150, 240, 200);
-                border-radius: 10px;
-                display: grid;
-                color: black;
-                cursor: pointer;
-                grid-template-columns: 0.25fr 4fr 5fr 0.25fr;
-                grid-gap: 10px;
-                height: auto;
-                margin: 5px;
-                padding: 5px;
-            }
-            .projects {
-                /*display: grid;
-                grid-template-columns: 1fr;
-                grid-gap: 15px;*/
-                height: auto;
-                margin: auto;
-                overflow: hidden;
-                text-align: center;
-                width: 75%;
-            }
-            .special {
-                color: rgb(255, 255, 255);
-            }
-            #about {
-            	background-color: rgb(25, 20, 50);
-                color: rgb(155, 105, 210);
-            }
-            #birthday-banner {
-            	height: auto;
-                width: 97.5%;
-                margin-top: 1.5%;
-            }
-            #cgt {
-            	background-color: rgb(150, 255, 150);
-                color: black;
-            }
-            #checkboxes {
-                background-color: rgb(235, 235, 235);
-                color: rgb(75, 75, 75);
-            }
-            #clicker {
-                background-color: lightblue;
-            }
-            #draw {
-                background-color: rgb(200, 230, 255);
-                color: black;
-            }
-            #fight {
-                background-color: rgb(255, 200, 200);
-                color: black;
-            }
-            #games {
-                background-color: #ffcc89;
-                color: #c4852d;
-            }
-            #lah {
-                background-color: rgb(103, 255, 116);
-                color: rgb(22, 56, 25);
-            }
-            #lianna-art {
-                background-color: rgb(247, 10, 156);
-                color: black;
-            }
-            #library {
-                background-color: rgb(230, 230, 200);
-                color: rgb(50, 50, 50);
-                font-family: monospace;
-            }
-            #lucky-pull {
-                background-color: rgb(255, 150, 190);
-                color: rgb(175, 40, 87);
-            }
-            #notepad {
-                background-color: rgb(255, 235, 200);
-                color: black;
-                font-family: 'Courier New', Courier, monospace;
-            }
-            #nunnerday {
-                background-color: rgb(210, 255, 235);
-                height: auto;
-                left: 25%;
-                margin: auto;
-                max-height: 85%;
-                overflow-y: scroll;
-                position: fixed;
-                text-align: center;
-                translate: transform(-50%, 0);
-                top: 12vh;
-                visibility: hidden;
-                width: 50vw;
-            }
-            #pgs {
-                background-color: rgb(0, 100, 50);
-                color: rgb(150, 230, 175);
-            }
-            #rar {
-                background-color: rgb(199, 199, 199);
-                color: rgb(69, 69, 69);
-            }
-            #refractory {
-                background-color: white;
-                color: black;
-            }
-            #rm {
-                background-color: rgb(245, 230, 0);
-                color: rgb(225, 150, 0);
-            }
-            #skylar-art {
-                background-color: rgb(160, 194, 88);
-                color: black;
-            }
-            #timer {
-            	background-color: black;
-                color: white;
-            }
-            #web-chef {
-                background-color: rgb(50, 90, 125);
-                color: rgb(210, 230, 255);
-                font-family: monospace;
-            }
-            /*
-            #PROJECT {
-            	background-color: black;
-                color: white;
-            }
-            */
-        </style>
+        <link href="style.css" rel="stylesheet">
     </head>
     <body>
         <div id="snow-container"></div>
@@ -252,9 +23,9 @@
             <button id="bday">happy birthday!!</button>
             <button id="noBday">stop showing this :[</button><br>
         </div>
-        <h1>welcome to the TiffyVerse!<br><span style="font-size: 20pt">(aka homepage)</span></h1>
-        <h2>cool web projects i made or something</h2>
-        <h3>HAPPY BIRTHDAY TIFFANY!!</h3>
+        <h1><bdo dir="rtl">welcome to the NunnerVerse²!<br><span style="font-size: 18pt">(aka homepage)</span></bdo></h1>
+        <h2><bdo dir="rtl">cool web projects i made or something</bdo></h2>
+        <h3>you haven't seen my silly side</h3>
         <div class="projects">
             <!--
             <div class="project" data-url="PROJECTURL" id="PROJECT" onclick="window.open(this.dataset.url)">
@@ -272,150 +43,149 @@
             <div class="project" data-url="about" id="about" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(200, 150, 255)">about me</h3>
+                    <h3 style="color: rgb(200, 150, 255)">about you</h3>
                     <img class="icon" src="assets/about.png">
                 </div>
                 <div class="p">
-                    <p>some info about me. also features the project i'm currently working on along with some random extras.</p>
-                    <p class="special" style="color: rgb(230, 200, 255)">updated README file on github</p>
+                    <p>i am in your walls.</p>
+                    <p class="special" style="color: rgb(230, 200, 255)"></p>
                 </div>
             </div>
             <div class="project" data-url="timer" id="timer" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(0, 255, 0); font-family: 'Hachi Maru Pop';">Sidetracked</h3>
+                    <h3 style="color: rgb(0, 255, 0); font-family: 'Hachi Maru Pop';">On track</h3>
                     <img class="icon" src="assets/timer.png">
                 </div>
                 <div class="p">
-                    <p>a pomodoro timer i made. work in 25-min intervals and 5-min breaks. helps with homework!</p>
-                    <p class="special" style="color: rgb(200, 255, 200)">custom colors + silly mode</p>
+                    <p>stupid tomato timer that doesn't even feature a tomato.</p>
+                    <p class="special" style="color: rgb(200, 255, 200)">nevermind, get distracted!! it's okay if you have to stay up until 3 am the night before</p>
                 </div>
             </div>
             <div class="project" data-url="games" id="games" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: #996615">collection of online fun stuffs (COOF)</h3>
+                    <h3 style="color: #996615">compendium of utterly gratifying hogwash (COUGH)</h3>
                     <img class="icon" src="assets/games.png">
                 </div>
                 <div class="p">
-                    <p>a list of unblocked games & game websites.</p>
-                    <p class="special" style="color: rgb(225, 150, 50)">finally updated after a year</p>
+                    <p>games to play to relieve boredom during math yay!!</p>
+                    <p class="special" style="color: rgb(225, 150, 50)">now.gg</p>
                 </div>
             </div>
             <div class="project" data-url="library" id="library" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(0, 0, 0); font-family: Comic Sans MS, Chalkboard SE">NunnerLibrary</h3>
+                    <h3 style="color: rgb(0, 0, 0); font-family: Comic Sans MS, Chalkboard SE">fandom 2.0</h3>
                     <img class="icon" src="assets/library.png">
                 </div>
                 <div class="p">
-                    <p>online library with e-books written by me and my friends. add your own stories too!</p>
-                    <p class="special" style="color: rgb(100, 100, 100)">will try to write <i>The Guardian Of The Phoenix Vol. 3</i> :D</p>
+                    <p>fan fiction goes here :devious:</p>
+                    <p class="special" style="color: rgb(100, 100, 100)">escape room…?</p>
                 </div>
             </div>
             <div class="project" data-url="web-chef" id="web-chef" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: inherit">Web Chef</h3>
+                    <h3 style="color: inherit">Food Simulator</h3>
                     <img class="icon" src="assets/web-chef.gif">
                 </div>
                 <div class="p">
-                    <p>a simple restaurant game where you just type and click.</p>
-                    <p class="special" style="color: rgb(255, 255, 255)">secret #1 unobtainable now</p>
+                    <p>food game that puts emojis on a highly-praised pedestal for some reason.</p>
+                    <p class="special" style="color: rgb(255, 255, 255)"></p>
                 </div>
             </div>
             <div class="project" data-url="refractory" id="refractory" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(0, 0, 0)">Refractory</h3>
+                    <h3 style="color: rgb(0, 0, 0)">[internal screaming]</h3>
                     <img class="icon" src="assets/refractory.png">
                 </div>
                 <div class="p">
-                    <p>catch the good objects, shoot the bad ones, and don't run out of lives!</p>
+                    <p>pew pew fruit catch (warning: big rage)</p>
                     <p class="special" style="color: rgb(125, 180, 205)"></p>
                 </div>
             </div>
             <div class="project" data-url="lucky-pull" id="lucky-pull" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(145, 35, 80)">lucky pull simulator</h3>
+                    <h3 style="color: rgb(145, 35, 80)">fun gambling game</h3>
                     <img class="icon" src="assets/lucky-pull.png">
                 </div>
                 <div class="p">
-                    <p>a gachapon simulator, test your luck! includes genshin impact wish, bandori and more.</p>
-                    <p class="special" style="color: rgb(220, 60, 125)">GAMING!!!</p>
+                    <p>gambling addiction: your career starts here!</p>
+                    <p class="special" style="color: rgb(220, 60, 125)">guys it's broken</p>
                 </div>
             </div>
             <div class="project" data-url="notepad" id="notepad" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(64, 59, 50); font-family: Comic Sans MS, Chalkboard SE">notepad</h3>
+                    <h3 style="color: rgb(64, 59, 50); font-family: Comic Sans MS, Chalkboard SE">giant textbox</h3>
                     <img class="icon" src="assets/notepad.png">
                 </div>
                 <div class="p">
-                    <p>a useful online notepad that auto-saves locally.</p>
+                    <p>type in your address and social security number here salamat</p>
                     <p class="special" style="color: #807462"></p>
                 </div>
             </div>
             <div class="project" data-url="draw" id="draw" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(0, 45, 75)">Drawing Tool</h3>
+                    <h3 style="color: rgb(0, 45, 75)">line maker</h3>
                     <img class="icon" src="assets/draw.png">
                 </div>
                 <div class="p">
-                    <p>a simple tool for drawing with customization. made with p5.js eheheh.</p>
+                    <p>the actual worst place to draw in the entire world. deltamath is not an exception.</p>
                     <p class="special" style="color: rgb(65, 169, 238)"></p>
                 </div>
             </div>
             <div class="project" data-url="skylar-art" id="skylar-art" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: #435224">Skylar's Art Gallery</h3>
+                    <h3 style="color: #435224">sheep gallery</h3>
                     <img class="icon" src="skylar-art/assets/sheep.png">
                 </div>
                 <div class="p">
-                    <p>an art gallery featuring drawings by my friend Skylar.</p>
-                    <p class="special" style="color: rgb(0, 255, 0)">layout revamp maybe</p>
+                    <p>baa</p>
+                    <p class="special" style="color: rgb(0, 255, 0)"></p>
                 </div>
             </div>
             <div class="project" data-url="lianna-art" id="lianna-art" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: #360222">Lianna's Art Gallery</h3>
+                    <h3 style="color: #360222">placeholder</h3>
                     <img class="icon" src="lianna-art/assets/lianna-profile.png">
                 </div>
                 <div class="p">
-                    <p>an art gallery displaying drawings by my friend Lianna.</p>
-                    <p class="special" style="color: #75054A">new art hopefully</p>
+                    <p>[null]</p>
+                    <p class="special" style="color: #75054A"></p>
                 </div>
             </div>
         </div>
         <br>
         <h2>epic Roblox games i made*</h2>
-        <h3>i wrote all the scripts for these and built all the models</h3>
-        <tiny>(except for 2 models in RM but thats only cuz i was transitioning into my developer phase ok so live with it)</tiny>
+        <h3>we love free models</h3>
         <div class="projects">
             <div class="project" data-url="https://www.roblox.com/games/11257556108/Custom-Gear-Testing-AFK-Game" id="cgt" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(0, 0, 0)">Custom Gear Testing</h3>
+                    <h3 style="color: rgb(0, 0, 0)">hold out gears</h3>
                     <img class="icon" src="https://tr.rbxcdn.com/f6f0a318d831d0970e4efab6b181d634/420/420/Image/Png">
                 </div>
                 <div class="p">
-                    <p>AFK while holding out a gear to earn Testing Time (TT). Unlock over 50+ custom-made gears with enough TT!</p>
-                    <p class="special" style="color: rgb(0, 100, 50)">join our discord server <a href="https://discord.gg/zbVsHA4tSu">here</a></p>
+                    <p>hand over the premium payouts</p>
+                    <p class="special" style="color: rgb(0, 100, 50)">></p>
                 </div>
             </div>
             <div class="project" data-url="https://www.roblox.com/games/7121390111/plant-growing-simulator" id="pgs" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(200, 255, 210);">plant growing simulator</h3>
+                    <h3 style="color: rgb(200, 255, 210);">touch grass</h3>
                     <img class="icon" src="https://tr.rbxcdn.com/b1a0a881a8f3bf467038f3bc9c433af1/420/420/Image/Png">
                 </div>
                 <div class="p">
-                    <p>grow plants and sell them for money. you can catch bunnies, search through bushes, and more!</p>
-                    <p class="special" style="color: rgb(255, 255, 255)">added icons yay</p>
+                    <p>no update for you</p>
+                    <p class="special" style="color: rgb(255, 255, 255)"></p>
                 </div>
             </div>
             <div class="project" data-url="https://www.roblox.com/games/6905424287/random-models" id="rm" onclick="window.open(this.dataset.url)">
@@ -425,8 +195,8 @@
                     <img class="icon" src="https://tr.rbxcdn.com/3217e32ba6f8f764bf72b1d98a2bfa96/420/420/Image/Png">
                 </div>
                 <div class="p">
-                    <p>a game featuring random models i made. this is my first roblox game where i experimented with scripting</p>
-                    <p class="special" style="color: rgb(140, 90, 0);">doug dimmadome dating sim when</p>
+                    <p>the #1 dead game</p>
+                    <p class="special" style="color: rgb(140, 90, 0);"></p>
                 </div>
             </div>
         </div>
@@ -437,34 +207,34 @@
             <div class="project" data-url="fight" id="fight" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(100, 25, 25)">button-spam fighting game</h3>
+                    <h3 style="color: rgb(100, 25, 25)">RSI injury simulator</h3>
                     <img class="icon" src="assets/fight.png">
                 </div>
                 <div class="p">
-                    <p>battle your friends by spamming Shift and Enter!!</p>
-                    <p class="special" style="color: rgb(200, 25, 25)">should i change this to left/right shift instead</p>
+                    <p>free cramps here</p>
+                    <p class="special" style="color: rgb(200, 25, 25)"></p>
                 </div>
             </div>
             <div class="project" data-url="clicker" id="clicker" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(0, 73, 92)">clicker gaem</h3>
+                    <h3 style="color: rgb(0, 73, 92)">RSI #2</h3>
                     <img class="icon" src="assets/clicker.png">
                 </div>
                 <div class="p">
-                    <p>press a button to click. upgrade click at certain milestones</p>
-                    <p class="special" style="color: rgb(0, 170, 214)">click click click click</p>
+                    <p>might as well use an autoclicker</p>
+                    <p class="special" style="color: rgb(0, 170, 214)"></p>
                 </div>
             </div>
             <div class="project" data-url="https://checkboxes.w3spaces.com" id="checkboxes" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(0, 0, 0)">Checkboxes</h3>
+                    <h3 style="color: rgb(0, 0, 0)">become mindless and brain dead</h3>
                     <img class="icon" src="assets/checkbox.png">
                 </div>
                 <div class="p">
-                    <p>create checkboxes or pixel art thingy</p>
-                    <p class="special" style="color: rgb(125, 125, 125)">no update XD</p>
+                    <p>i might delete this</p>
+                    <p class="special" style="color: rgb(125, 125, 125)"></p>
                 </div>
             </div>
         </div>
@@ -474,23 +244,23 @@
             <div class="project" data-url="lending-a-hand" id="lah" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(0, 0, 0)">lending a hand</h3>
+                    <h3 style="color: rgb(0, 0, 0)">punch your sibling</h3>
                     <img class="icon" src="assets/lending-a-hand.png">
                 </div>
                 <div class="p">
-                    <p>an rpg-styled game where you help out your sick sibling.</p>
-                    <p class="special" style="color: rgb(51, 130, 58)">fun fact: this was originally going to be a <a href="https://github.com/Nunnerrs/nunnerrs.github.io/commit/db963b4729711df0cec3f1c0bab480d28983bafd">fishing game</a></p>
+                    <p>title is definitely not misleading</p>
+                    <p class="special" style="color: rgb(51, 130, 58)">no-clip</p>
                 </div>
             </div>
             <div class="project" data-url="raise-a-rock" id="rar" onclick="window.open(this.dataset.url)">
             	<div></div>
                 <div class="p">
-                    <h3 style="color: rgb(0, 0, 0)">raise a pet rock</h3>
+                    <h3 style="color: rgb(0, 0, 0)">stare at a rock image</h3>
                     <img class="icon" src="raise-a-rock/assets/kid-rock-happy.png">
                 </div>
                 <div class="p">
-                    <p>a game where you grow and raise your very own pet rock! (very very WIP)</p>
-                    <p class="special" style="color: rgb(121, 121, 121)">please do not name it "your mom"</p>
+                    <p>yes name it your mom i dare you</p>
+                    <p class="special" style="color: rgb(121, 121, 121)"></p>
                 </div>
             </div>
         </div>
