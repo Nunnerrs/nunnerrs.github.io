@@ -489,6 +489,11 @@ function update() {
     let walls = rooms.walls[room];
     let xg = false; // check if the vx was already given
     let yg = false; // check if the vy was already given
+
+    x += vx;
+    y += vy;
+
+    /*
     if (walls[4] == false) {
         if (x > walls[0]) {
             xg = true;
@@ -526,6 +531,8 @@ function update() {
             y = walls[3] - 1;
         };
     };
+    */
+
     // configure dialogs, custom walls & exits
     switch (room) {
         case 1:
@@ -556,10 +563,14 @@ function update() {
     			dialogText = "";
                 //console.log("not in range!");
             };
+
+            /*
         	// right wall
             if (x >= canvas.width - 75 && (y < 160 || y > 345)) {
                 x = canvas.width - 75;
             };
+            */
+
             // exit
             if (x >= canvas.width - 55 && y >= 160 && y <= 345) {
                 room = 2;
@@ -568,10 +579,14 @@ function update() {
             };
         break;
         case 2:
+
+            /*
         	// house walls
         	if (x <= 75 && (y < 160 || y > 345)) {
                 x = 75;
             };
+            */
+
             interactText = "Pick Up Flower"
             if (pickups[2][1] == false && x >= 115 && x <= 165 && y >= 115 && y <= 165) {
             	sprite = 1;
@@ -641,10 +656,14 @@ function update() {
             };
         break;
         case 4:
+
+            /*
             // mart walls
         	if (x >= canvas.width - 75 && (y < 160 || y > 345)) {
                 x = canvas.width - 75;
             };
+            */
+
             // exit to silly str
             if (x <= 25) {
                 room = 3;

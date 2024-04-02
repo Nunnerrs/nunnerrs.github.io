@@ -1,3 +1,11 @@
+/*
+after the april fool's update:
+    delete escape room book
+    delete closeBook if in openBook
+    add back book11's css
+    put hope vol 3 back in books
+*/
+
 var book = document.getElementById("book");
 var pageL = document.getElementById("pageL");
 var pageR = document.getElementById("pageR");
@@ -81,6 +89,7 @@ const books = {
         "", // <img src="covers/placeholder.png">
         "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 3/3/2024<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
         // UPDATE NEWEST NEWS ABOVE & IN INDEX.HTML FILE
+        "<heading><b>Apr. 1, 2024</b></heading><br><br>• APRIL FOOL'S DAY UPDATE: I started messing with the homepage and making fun of my own projects LMAO. Check out the escape room book if you haven't already!",
         "<heading><b>Mar. 3, 2024</b></heading><br><br>• hehe BennettVerse but unfortunately it's gone now",
         "<heading><b>Jan. 16, 2024</b></heading><br><br>Pls dont me mad that I haven't been writing articles in months<br><br>• I forgot to say but REALLY NOICE NEW HOMEPAGE LAYOUT (you probably already saw it though…)<br>• Falling snow?!?! Also the background was candycane-themed but it's now <b>aurora borealis</b> :OO<br>• Web Chef <b>v1.7</b>! Took 2 hours hehe—More details on project (click <a href='https://nunnerrs.github.io/web-chef'>here</a>). Stay tuned for the next big update (very soon)!",
         "<heading><b>Sep. 7, 2023</b></heading><br><br>• Okok for real this time I actually updated the website (sorry for no updates for quite a while)—So we got REFRACTORY finished 'cause I suddenly had the inspiration and Button-Spam Fighting Game made in an hour B)<br>• <i>The Guardian Of The Phoenix Vol. 2</i> FINALLY RELEASED TODAY!!! I was originally planning on publishing it in June but umm there were issues (see Acknowledgements). Volume 3 will oviously not be coming out soon (🥲) but stay tuned for my friend's new book ^o^",
@@ -105,7 +114,7 @@ const books = {
         "\"WAAUGHH!\" Pinky screams. \"Th-that's NOT a snail—\"<br>She lets go of the shell and the creature sinks down from her arms onto the floor. Little eyes slowly poke out from the shell and extends its legs.<br>\"Whew…\" the red creature says, shaking sand off of it's body. It looks at the octopi and jumps. \"Yikes!\"<br>The creature quickly digs into the sand to hide, but its shell is still visible.<br>\"Hey, wait!\" Mint cries. He moves a little closer to the frightened creature. \"Umm…lil' crab, we're not here to harm you…\"<br>\"Eek!\" the crab curls up even more into its shell. \"G-Go away…\"<br>\"Hmmm…how do we get them to <i>not</i> be scared…?\" Pinky wonders.",
         "\"Wait, I think I know!\" Mint's eyes light up as he grabs a handful of seaweed and places it in front of the crab. \"Here.\"<br>Moments later, tiny eyes pop out from the shell and stares directly at the seaweed, then to Mint, then to Pinky. Two large claws quickly snatch the seaweed, and the crab munches away at it. It keeps a close eye on the octopi but happily continues to eat.<br>Mint smiles and Pinky does a flip. \"Yippeee!\" Pinky exclaims. She stops and rushes towards the crab. \"Ooh, wait, what's your name, little crabby guy?\"<br>\"Kmmhy,\" The crab mumbles, continues to eat.<br>\"Ummm…what did you say?\" Pinky frowns.",
         "Mint and Pinky watch the little guy eat quietly. After a while, it takes its last bite and swallows. \"Yummy…\" the creature smiles happily. It glances at the two octopi looming over it. \"Oh yeah.\"<br>The crab stands up and stretches, shaking off the sand on its shell. It looks at them with bright eyes. \"My name's Cory. I thought you guys were gonna hurt me or something at first,\" the crab says in a soft voice. It holds out a claw in handshake. \"You guys look friendly though.\"<br>\"Nice to meet ya, Cory!\" Mint says, shaking his small claw. \"OWWIE!!\"<br>Mint grabs his own tentacle and rubs it. \"You pinched me…\"",
-        "\"Ah! S-Sowwy…\" Cory apologises. He sighs at his tiny but sharp claws. \"I-I do that a lot, I'm sowwy…\"<br>\"It-it's fine.\" Mint turns to Pinky. \"I know he isn't the snail you were looking for, but…I thought crabs <i>didn't</i> have shells…\"<br>\"It's 'cause I'm a <i>hermit crab</i>, duhh!\" Cory says, crawling towards them. \"I like small homes that I can bring wherever I go!\"<br>\"Wait, that's your <i>home</i>?!\" Pinky gasps.<br>She looked at him with sad eyes. \"I'm sowwy I picked it up earlier…I didn't know—\"<br>\"It's okay, really,\" Cory responds.<br>His eyes widen and he crawls away from the octopi.",
+        "\"Ah! S-Sowwy…\" Cory apologizes. He sighs at his tiny but sharp claws. \"I-I do that a lot, I'm sowwy…\"<br>\"It-it's fine.\" Mint turns to Pinky. \"I know he isn't the snail you were looking for, but…I thought crabs <i>didn't</i> have shells…\"<br>\"It's 'cause I'm a <i>hermit crab</i>, duhh!\" Cory says, crawling towards them. \"I like small homes that I can bring wherever I go!\"<br>\"Wait, that's your <i>home</i>?!\" Pinky gasps.<br>She looked at him with sad eyes. \"I'm sowwy I picked it up earlier…I didn't know—\"<br>\"It's okay, really,\" Cory responds.<br>His eyes widen and he crawls away from the octopi.",
         "Both octopi glance at one another in confusion.<br>\"It's perfect!\" Cory exclaims, gently touching an empty shell. It's slightly larger than his current shell. He wiggles in his shell and suddenly pops off of it. The rest of his body is exposed, which is in the shape of a spiral like his original shell.<br>\"Ahh! Are you okay?!\" Pinky panics.<br>\"Huh? What do you mean?\" Cory tilts his head in confusion.<br>\"I'm just getting myself a new shell.\"<br>He backs his tail into the new shell, which is shaped like a wide cone. The rest of Cory's body is now hidden inside, and he tucks into the shell even more.<br>\"If I fits, I sits,\" he says calmly.",
         "\"Huh? I thought you guys made your own shells…\" Mint says. \"So you use shells made by snails. Right?\"<br>He gently picks up Cory with two tentacles. The crab's limbs don't move at all and little bubbles sprout from Cory's mouth.<br>\"Oh, he fell asleep…\" Mint sighs. He places him down next to other shells that seem to be sleeping hermit crabs.<br>\"I didn't know there were more crabs.\" Mint says, turning to Pinky. \"So, what now?\"<br>\"Hmmmm…maybe we can go look for an <i>actual</i> snail,\" Pinky says. \"Oh yeah, the one I found was <i>really</i> big and had a green shell\"<br>\"Whaaaat!! I think you're making stuff up now…\"<br>\"I'm not! It was so pretty, you should see it!\"",
         "\"How am I supposed to see it if we don't start looking?\"<br>\"…Oh yeah.\" Pinky says. She waves at Cory. \"Good niiight…\"<br>Mint and Pinky swim away, lifting up rocks and shells.<br><br>The adventure of the two octopi continues!<br><br>Read the upcoming book, <i>Pinky & Mint: Whales</i>, coming out in April 2023!<br><br><b>Read them all!</b><br><i>Pinky & Mint: Coral</i><br><i>Pinky & Mint: Hermit Crabs</i>",
@@ -113,7 +122,40 @@ const books = {
         "<b>Sources</b><br>• <a href='https://www.facebook.com/PBSNature/videos/hermit-crab-shells/414959254038523'>Hermit Crab Shells (facebook.com)</a><br>• <a href='https://environment.bm/land-hermit-crab'>Land Hermit Crab (environment.bm)</a><br>• <a href='https://cdnsciencepub.com/doi/10.1139/cjz-2014-0312'>Hiding time of the hermit crab (cdnsciencepub.com)</a><br>• <a href='https://www.hermitcrabpatch.com/Hermit-Crab-Successful-Molting-a/138.htm'>Hermit Crab Successful Molting (hermitcrabpatch.com)</a><br>• <a href='https://a-z-animals.com/blog/10-incredible-hermit-crab-facts/'>10 Incredible Hermit Crab Facts (a-z-animals.com)</a>",
     ],
     book10: book10, // Hope Vol. 2
-    book11: book11, // Hope Vol. 3
+    book11: [
+        "",
+        "<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><bt>escape room?</bt>",
+        "<button onclick='escape()' style='background: limegreen; border: none'>EXIT</button>",
+        "<button onclick='let k = useKey(1); if (k == true) {this.innerHTML = \"u got the escape key!\"; setTimeout(function(){this.innerHTML = \"box (open)\"}, 2000)}' style='background: orange; border: none'>box that needs key</button>",
+        "",
+        "this way for the key~<br>----->",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "keep going!!",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "almost there…",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "<button onclick='getKey(1); this.innerHTML = \"[key received]\"' style='color: orange; border: nonee'>I AM THE KEY</button>",
+    ],
+    //book11: book11, // Hope Vol. 3
     book12: [
         // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
         "", // <img src="covers/placeholder.png">
@@ -129,13 +171,47 @@ const books = {
     book15: book15, // The Black Watch Handbook
 };
 
+var key = null;
+var exitKey = null;
+
+function getKey() {
+	if (key == null) {
+    	key = false
+    }
+}
+
+function useKey() {
+	if (key == false) {
+        key = true;
+        exitKey = false;
+        return true;
+    }
+}
+
+function escape() {
+	if (exitKey == false) {
+    	exitKey = true;
+        let i = document.createElement("img");
+        i.src = "https://www.icegif.com/wp-content/uploads/2023/01/icegif-162.gif";
+        i.height = window.innerHeight;
+        i.width = window.innerWidth;
+        i.style.position = "fixed";
+        i.style.left = 0;
+        i.style.top = 0;
+        document.body.appendChild(i);
+        closeBook();
+    }
+}
+
 function openBook(bookId) {
     if (currentBook == null) {
         currentBook = bookId;
         book.classList.add("nh");
         book.style = "visibility: visible;";
         back.style = "visibility: visible;";
-        close.style = "visibility: visible;";
+        if (bookId != 11) {
+        	close.style = "visibility: visible;";
+        }
         next.style = "visibility: visible;";
         pageL.innerHTML = books["book" + currentBook][0];
         pageR.innerHTML = books["book" + currentBook][1];
@@ -194,12 +270,12 @@ function nextPage() {
         if (pageNumR >= books["book" + currentBook].length) {
             pageR.innerHTML = "";
         };
-        console.log(pageNumL + " " + pageNumR);
+        //console.log(pageNumL + " " + pageNumR);
     };
 };
 
 function copyLink() {
-    console.log(currentBook);
+    //console.log(currentBook);
     navigator.clipboard
         .writeText("https://nunnerrs.github.io/library/?book=" + currentBook.toString())
         .then(() => {console.log("Copied link!")})

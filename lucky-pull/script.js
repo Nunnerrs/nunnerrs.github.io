@@ -209,6 +209,7 @@ function genshinPull(data) {
     let stars = "⭐";
     let name = "Chicken Mushroom Skewer";
     let icon = "🍗";
+    /* UNCOMMENT AFTER APRIL FOOL'S DAY
         //if (!data.match("Dragon's Bane") && !data.match("Favonius ") && !data.match("Rainslasher") && !data.match("Rust") && !data.match("Sacrificial ") && !data.match("The ")) {
             data = data.split(" ");
             stars = data[0];
@@ -225,6 +226,7 @@ function genshinPull(data) {
                 icon = data[data.length - 1];
             };
         //};
+    */
     let td = document.createElement("td");
     td.innerHTML = "<span>" + icon + "</span><br>" + stars + "<br>" + name + "</td>";
     if (stars.length == 5) {
