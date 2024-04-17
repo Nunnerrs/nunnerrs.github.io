@@ -1,11 +1,11 @@
 :root {
-    --bg-color: rgb(0, 255, 0);
-    --h1-color: rgb(255, 0, 0);
-    --h2-color: rgb(0, 0, 255);
-    --h3-color: rgb(0, 255, 255);
+    --bg-color: rgb(204, 255, 223);
+    --h1-color: rgb(0, 102, 99);
+    --h2-color: rgb(0, 135, 105);
+    --h3-color: rgb(0, 150, 120);
     --tiny-color: rgb(144, 232, 198);
-    --a-color: rgb(255, 0, 255);
-    --a-hover-color: rgb(255, 100, 255);
+    --a-color: rgb(40, 160, 140);
+    --a-hover-color: rgb(23, 212, 155);
     --button-color: rgb(100, 255, 175);
 }
 a {
@@ -17,9 +17,7 @@ a:hover {
 }
 body {
     font-family: 'Comic Sans MS', 'Chalkboard SE';
-	background-image: url(https://static-cdn.jtvnw.net/jtv_user_pictures/d3f0f0b2-add0-443b-a47f-9014563e8e06-profile_image-300x300.png);
-	background-repeat: repeat;
-    /*background-color: var(--bg-color);*/
+    background-color: var(--bg-color);
     /*CANDYCANE-background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);*/
     /*BENNETT-background-image: url(https://us.genshindle.com/data/gallery/characters/high/bennett.webp);
     background-repeat: repeat;*/
