@@ -1,97 +1,20 @@
 To-Do:
 • Make buttons work in Lending A Hand
 • Add project images to homepage
-• Surround emojis in Web Chef with <e>
-• Somehow prevent being able to cheat using the console/add achievement for it lol
-• I'm probably not even gonna do these for a while XD
-• Very doge, much wow
-• Enable being able to give flowers to your sibling in Lending A Hand
+• Survey for feedback on website
+• Somehow prevent being able to cheat using the console
+• I should actually use this to-do list
+• Venture outside and touch grass
+• Extra buttons in notepad for more customization (e.g. font size/family)
 
-• Make the Noto Emoji font button work & save whether or not it's enabled
 • Add "?book=4" to the end of NunnerLibrary link at the bottom of Skylar's Art Gallery
 • Add 2-3 <br>'s above Hope Vol. 2 heading
-• Add page numbers on new row below pages (library.html)
-• Gather more adjectives & animals for random username generator
+
+Ideas (tell me if you actually want to see these added):
+• Username that can be used in multiple projects (lending a hand)
+• Nunners Art Gallery (idk why I don't have one)
+• Library page numbers?!?
 
 
-new project???
-<!DOCTYPE html>
-<html>
-    <head>
-        <title></title>
-        <meta charset="UTF-8">
-        <link rel="icon" href="">
-        <style>
-            body {
-                color: rgb(0, 0, 0);
-                font-family: Comic Sans MS;
-            }
-        </style>
-    </head>
-    <body>
-        <h1></h1>
-        <p id="timeDisplay">25:00<p>
-        <button id="togglePomo">Start Pomodoro</button>
-        <script>
-        	var b = document.body;
-            var td = document.getElementById("timeDisplay");
-        	var tp = document.getElementById("togglePomo");
-            
-            var time = 25.00;
-            var timerOn = false;
-            
-            const intervals = {
-            	work: 25,
-                sBreak: 5,
-                lBreak: 10,
-            };
-            
-            //FIX TIMER DISPLAYING 60 AS SECONDS AFTER A MINUTE PASSED
-            
-            function timer() {
-            	if (timerOn == true) {
-                	let timeInt;
-                	if (time == 25) {
-                    	timeInt = ["25", "00"];
-                    } else {
-                    	timeInt = time.toString().split(".");
-                    }
-                    let s = timeInt[1].slice(0, 2);
-                    //console.log(s);
-                	if (s == 0) {
-                    	if (time == 25) {
-                      		time -= 0.41;
-                        } else {
-                        	time -= 0.41;
-                        };
-                    } else {
-                    	time -= 0.01;
-                    };
-                    //console.log(time);
-                    timeInt = time.toString().split(".");
-                    let m = timeInt[0];
-                    let s1 = timeInt[1].slice(0, 2);
-                    let s2 = timeInt[1].slice(2, 3);
-                    s = Math.round(Number(s1 + "." + s2));
-                    if (s < 10) {
-                    	s = "0" + s.toString();
-                    };
-                    //console.log(m + ":" + s);
-                    td.innerHTML = m + ":" + s;
-                };
-            };
-            
-            function togglePomo() {
-            	if (timerOn == true) {
-                	timerOn = false;
-                } else {
-                	timerOn = true;
-                };
-            };
-            
-            b.onload = setInterval(timer, 1000);
-            tp.onclick = togglePomo;
-        </script>
-        <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
-    </body>
-</html>
+
+❤️ You make my site possible

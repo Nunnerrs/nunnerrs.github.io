@@ -27,7 +27,7 @@ const rewardTypes = [
     [
         /* 3 */ ["⭐⭐⭐ Black Tassel 🗡️", "⭐⭐⭐ Bloodtainted Greatsword 🗡️", "⭐⭐⭐ Cool Steel 🗡️", "⭐⭐⭐ Debate Club 🗡️", "⭐⭐⭐ Emerald Orb 📖", "⭐⭐⭐ Ferrous Shadow 🗡️", "⭐⭐⭐ Harbinger of Dawn 🗡️", "⭐⭐⭐ Magic Guide 📖", "⭐⭐⭐ Raven Bow 🏹", "⭐⭐⭐ Sharpshooter's Oath 🏹", "⭐⭐⭐ Skyrider Sword 🗡️", "⭐⭐⭐ Slingshot 🏹", "⭐⭐⭐ Thrilling Tales of Dragon Slayers 📖", "⭐⭐⭐ White Tassel 🗡️"],
         /* 4 */ ["⭐⭐⭐⭐ Amber 🔥", "⭐⭐⭐⭐ Barbara 💧", "⭐⭐⭐⭐ Beidou ⚡️️", "⭐⭐⭐⭐ Bennett 🔥", "⭐⭐⭐⭐ Candace 💧", "⭐⭐⭐⭐ Charlotte ❄️", "⭐⭐⭐⭐ Chevreuse 🔥", "⭐⭐⭐⭐ Chongyun ❄️", "⭐⭐⭐⭐ Collei 🌱", "⭐⭐⭐⭐ Diona ❄️", "⭐⭐⭐⭐ Dori ⚡️", "⭐⭐⭐⭐ Dragon's Bane 🗡️", "⭐⭐⭐⭐ Faruzan 💨", "⭐⭐⭐⭐ Favonius Codex 📖", "⭐⭐⭐⭐ Favonius Bow 🏹", "⭐⭐⭐⭐ Favonius Greatsword 🗡️", "⭐⭐⭐⭐ Favonius Lance 🗡️", "⭐⭐⭐⭐ Favonius Sword 🗡️", "⭐⭐⭐⭐ Fiscl ⚡️", "⭐⭐⭐⭐ Freminet ❄️", "⭐⭐⭐⭐ Gaming 🔥", "⭐⭐⭐⭐ Gorou 🪨", "⭐⭐⭐⭐ Kaeya ❄️", "⭐⭐⭐⭐ Kujou Sara ⚡️", "⭐⭐⭐⭐ Kuki Shinobu ⚡️", "⭐⭐⭐⭐ Layla ❄️", "⭐⭐⭐⭐ Lisa ⚡️", "⭐⭐⭐⭐ Lynette 💨", "⭐⭐⭐⭐ Mika ❄️", "⭐⭐⭐⭐ Ningguang 🪨", "⭐⭐⭐⭐ Noelle 🪨", "⭐⭐⭐⭐ Rainslasher 🗡️", "⭐⭐⭐⭐ Razor ⚡️", "⭐⭐⭐⭐ Rosaria ❄️", "⭐⭐⭐⭐ Rust 🗡️", "⭐⭐⭐⭐ Sacrificial Bow 🏹", "⭐⭐⭐⭐ Sacrificial Fragments 📖", "⭐⭐⭐⭐ Sacrificial Greatsword 🗡️", "⭐⭐⭐⭐ Sacrificial Sword 🗡️", "⭐⭐⭐⭐ Sayu 💨", "⭐⭐⭐⭐ Shikanoin Heizou 💨", "⭐⭐⭐⭐ Sucrose 💨", "⭐⭐⭐⭐ The Bell 🗡️", "⭐⭐⭐⭐ The Flute 🗡️", "⭐⭐⭐⭐ The Stringless 🏹", "⭐⭐⭐⭐ The Widsith 📖", "⭐⭐⭐⭐ Thoma 🔥", "⭐⭐⭐⭐ Xiangling 🔥", "⭐⭐⭐⭐ Xingqiu 💧", "⭐⭐⭐⭐ Xinyan 🔥", "⭐⭐⭐⭐ Yanfei 🔥", "⭐⭐⭐⭐ Yaoyao 🌱", "⭐⭐⭐⭐ Yun Jin 🪨"],
-        /* 5 */ ["⭐⭐⭐⭐⭐ Albedo 🪨", "⭐⭐⭐⭐⭐ Arataki Itto 🪨", "⭐⭐⭐⭐⭐ Cyno ⚡️", "⭐⭐⭐⭐⭐ Dehya 🔥", "⭐⭐⭐⭐⭐ Diluc 🔥", "⭐⭐⭐⭐⭐ Eula ❄️", "⭐⭐⭐⭐⭐ Furina 💧", "⭐⭐⭐⭐⭐ Ganyu ❄️", "⭐⭐⭐⭐⭐ Hu Tao 🔥", "⭐⭐⭐⭐⭐ Jean 💨", "⭐⭐⭐⭐⭐ Kaedehara Kazuha 💨", "⭐⭐⭐⭐⭐ Kamisato Ayaka ❄️", "⭐⭐⭐⭐⭐ Kamisato Ayato 💧", "⭐⭐⭐⭐⭐ Keqing ⚡️", "⭐⭐⭐⭐⭐ Klee 🔥", "⭐⭐⭐⭐⭐ Lyney 🔥", "⭐⭐⭐⭐⭐ Mona 💧", "⭐⭐⭐⭐⭐ Nahida 🌱", "⭐⭐⭐⭐⭐ Navia 🪨", "⭐⭐⭐⭐⭐ Neuvillette 💧", "⭐⭐⭐⭐⭐ Nilou 💧", "⭐⭐⭐⭐⭐ Qiqi ❄️", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡️", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi 💧", "⭐⭐⭐⭐⭐ Shenhe ❄️", "⭐⭐⭐⭐⭐ Tartaglia 💧", "⭐⭐⭐⭐⭐ Tighnari 🌱", "⭐⭐⭐⭐⭐ Venti 💨", "⭐⭐⭐⭐⭐ Wanderer 💨", "⭐⭐⭐⭐⭐ Wriothesley ❄️", "⭐⭐⭐⭐⭐ Xianyun 💨", "⭐⭐⭐⭐⭐ Xiao 💨", "⭐⭐⭐⭐⭐ Yae Miko ⚡️", "⭐⭐⭐⭐⭐ Yelan 💧", "⭐⭐⭐⭐⭐ Yoimiya 🔥", "⭐⭐⭐⭐⭐ Zhongli 🪨"]
+        /* 5 */ ["⭐⭐⭐⭐⭐ Albedo 🪨", "⭐⭐⭐⭐⭐ Arataki Itto 🪨", "⭐⭐⭐⭐⭐ Chiori 🪨", "⭐⭐⭐⭐⭐ Cyno ⚡️", "⭐⭐⭐⭐⭐ Dehya 🔥", "⭐⭐⭐⭐⭐ Diluc 🔥", "⭐⭐⭐⭐⭐ Eula ❄️", "⭐⭐⭐⭐⭐ Furina 💧", "⭐⭐⭐⭐⭐ Ganyu ❄️", "⭐⭐⭐⭐⭐ Hu Tao 🔥", "⭐⭐⭐⭐⭐ Jean 💨", "⭐⭐⭐⭐⭐ Kaedehara Kazuha 💨", "⭐⭐⭐⭐⭐ Kamisato Ayaka ❄️", "⭐⭐⭐⭐⭐ Kamisato Ayato 💧", "⭐⭐⭐⭐⭐ Keqing ⚡️", "⭐⭐⭐⭐⭐ Klee 🔥", "⭐⭐⭐⭐⭐ Lyney 🔥", "⭐⭐⭐⭐⭐ Mona 💧", "⭐⭐⭐⭐⭐ Nahida 🌱", "⭐⭐⭐⭐⭐ Navia 🪨", "⭐⭐⭐⭐⭐ Neuvillette 💧", "⭐⭐⭐⭐⭐ Nilou 💧", "⭐⭐⭐⭐⭐ Qiqi ❄️", "⭐⭐⭐⭐⭐ Raiden Shogun ⚡️", "⭐⭐⭐⭐⭐ Sangonomiya Kokomi 💧", "⭐⭐⭐⭐⭐ Shenhe ❄️", "⭐⭐⭐⭐⭐ Tartaglia 💧", "⭐⭐⭐⭐⭐ Tighnari 🌱", "⭐⭐⭐⭐⭐ Venti 💨", "⭐⭐⭐⭐⭐ Wanderer 💨", "⭐⭐⭐⭐⭐ Wriothesley ❄️", "⭐⭐⭐⭐⭐ Xianyun 💨", "⭐⭐⭐⭐⭐ Xiao 💨", "⭐⭐⭐⭐⭐ Yae Miko ⚡️", "⭐⭐⭐⭐⭐ Yelan 💧", "⭐⭐⭐⭐⭐ Yoimiya 🔥", "⭐⭐⭐⭐⭐ Zhongli 🪨"]
     ],
     
     [
@@ -209,24 +209,22 @@ function genshinPull(data) {
     let stars = "⭐";
     let name = "Chicken Mushroom Skewer";
     let icon = "🍗";
-    /* UNCOMMENT AFTER APRIL FOOL'S DAY
-        //if (!data.match("Dragon's Bane") && !data.match("Favonius ") && !data.match("Rainslasher") && !data.match("Rust") && !data.match("Sacrificial ") && !data.match("The ")) {
-            data = data.split(" ");
-            stars = data[0];
-            if (data.length == 3) {
-                name = data[1];
-                icon = data[2];
+    //if (!data.match("Dragon's Bane") && !data.match("Favonius ") && !data.match("Rainslasher") && !data.match("Rust") && !data.match("Sacrificial ") && !data.match("The ")) {
+        data = data.split(" ");
+        stars = data[0];
+        if (data.length == 3) {
+            name = data[1];
+            icon = data[2];
+        };
+        if (data.length > 3) {
+            name = data[1];
+            for (let i = 2; i < data.length - 1; i++) {
+                name += " " + data[i];
             };
-            if (data.length > 3) {
-            	name = data[1];
-                for (let i = 2; i < data.length - 1; i++) {
-                    name += " " + data[i];
-                };
-                //name = data[1] + " " + data[2];
-                icon = data[data.length - 1];
-            };
-        //};
-    */
+            //name = data[1] + " " + data[2];
+            icon = data[data.length - 1];
+        };
+    //};
     let td = document.createElement("td");
     td.innerHTML = "<span>" + icon + "</span><br>" + stars + "<br>" + name + "</td>";
     if (stars.length == 5) {

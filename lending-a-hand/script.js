@@ -490,10 +490,6 @@ function update() {
     let xg = false; // check if the vx was already given
     let yg = false; // check if the vy was already given
 
-    x += vx;
-    y += vy;
-
-    /*
     if (walls[4] == false) {
         if (x > walls[0]) {
             xg = true;
@@ -531,7 +527,6 @@ function update() {
             y = walls[3] - 1;
         };
     };
-    */
 
     // configure dialogs, custom walls & exits
     switch (room) {

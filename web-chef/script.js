@@ -109,7 +109,7 @@ var keybindsButton = document.getElementById("keybinds-button");
 var tutorialButton = document.getElementById("tutorial-button");
 
 const customerNames = [
-    /*Me & my friends*/	"Nunners", "Kayleigh", "Lianna", "Skylar", "Yeen Yeen", "Jin", "Jeff", "Jaelle", "Chelsey", "Ethan", "Emma", "Anton", "Jeanne", "Tiffany", "Sai", "Maiah", "Jordan", "Aya", "Samantha", "Jaedyn", "Marian", "Nikki", "Thida", "Jonelle", "Sophia", "Anette", "Cameron",
+    /*Me & my friends*/	"Nunners", "Kayleigh", "Lianna", "Skylar", "Yeen Yeen", "Jin", "Jeff", "Jaelle", "Chelsey", "Ethan", "Emma", "Anton", "Jeanne", "Tiffany", "Sai", "Maiah", "Jordan", "Aya", "Samantha", "Jaedyn", "Marian", "Nikki", "Thida", "Jonelle", "Sophia", "Anette", "Cameron", "Rafael",
     /*RM NPCs*/			"Mr. Wedgehead", "Wide Racoon", "Albert", "Amongus", "War Noodle", "The Sun", "Princess Sherk", "Patricia", "Dummy", "Jules", "Zack", "Burbspernge", "Pumkin",
     /*PGS NPCs*/		"Azalea", "Malo", "Billy Bob Joe",
     /*CGT NPCs*/		"Jack", "Holly", "Jake", "Daisy",
