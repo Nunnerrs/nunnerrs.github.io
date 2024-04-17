@@ -119,6 +119,19 @@ tiny {
     background-color: rgb(200, 230, 255);
     color: black;
 }
+#feedback {
+    background: rgb(235, 200, 0);
+    border-color: rgb(235, 200, 0);
+    border-radius: 999px;
+    border-width: 0px;
+	height: 100px;
+    width: 100px;
+}
+#feedback img {
+	height: 85px;
+	translate: -0.25vw -0.25vw;
+    width: 85px;
+}
 #fight {
     background-color: rgb(255, 200, 200);
     color: black;
@@ -179,6 +192,11 @@ tiny {
     background-color: rgb(245, 230, 0);
     color: rgb(225, 150, 0);
 }
+#sidebar {
+    bottom: 10px;
+    position: fixed;
+    right: 10px;
+}
 #skylar-art {
     background-color: rgb(160, 194, 88);
     color: black;
@@ -198,3 +216,15 @@ tiny {
     color: white;
 }
 */
+
+@media screen and (max-width: 800px) {
+    #feedback {
+        height: 12.5vw;
+        width: 12.5vw;
+    }
+	#feedback img {
+		height: 10.25vw;
+		translate: -0.25vw -0.25vw;
+		width: 10.25vw;
+	}
+}
