@@ -14,6 +14,7 @@ Ideas (tell me if you actually want to see these added):
 • Username that can be used in multiple projects (lending a hand)
 • Nunners Art Gallery (idk why I don't have one)
 • Library page numbers?!?
+• Reformat the to-do list (using HTML instead of plain text)
 
 
 

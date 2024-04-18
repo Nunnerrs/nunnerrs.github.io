@@ -16,6 +16,7 @@ function g(key) {
 }
 
 var b = document.body;
+var title = find("title");
 var counter = find("counter");
 var td = find("time-display");
 var tp = find("toggle-pomo");
@@ -180,6 +181,7 @@ function timer() {
 			s = "00";
 		}
 		td.innerHTML = m + ":" + s;
+		title.innerHTML = m + ":" + s + " 〜 Sidetracked";
 		if (time <= 0) {
 			cycles++;
 			counter.innerHTML = cycles/2 + "/4 cycles";
@@ -191,10 +193,12 @@ function timer() {
 				//pbr = Math.floor((Math.random() * 100) + 101)/100;
 				int = "lBreak";
 				start = silly == true ? sillyText.lBreak : "Start Long Break";
+				title.innerHTML = "BREAK TIME  〜 Sidetracked";
 			} else {
 				if (int == "work") {
 					int = "sBreak";
 					start = silly == true ? sillyText.sBreak : "Start Short Break";
+					title.innerHTML = "BREAK TIME  〜 Sidetracked";
 				} else if (int == "lBreak") {
 					stopPomo();
 				} else {
@@ -202,6 +206,7 @@ function timer() {
 					//pbr = Math.floor((Math.random() * 51) + 50)/100;
 					int = "work";
 					start = silly == true ? sillyText.work : "Start Work Timer";
+					title.innerHTML = "WORK TIME  〜 Sidetracked";
 				}
 			}
 			localStorage.setItem("timer_int", int);
@@ -246,6 +251,7 @@ tp.onclick = togglePomo;
 
 function stopPomo() {
 	timerOn = false;
+	title.innerHTML = "Sidetracked";
 	settingsBtn.disabled = false;
 	icon.setAttribute("fill", "white");
 	let w = intervals.work.toString();
