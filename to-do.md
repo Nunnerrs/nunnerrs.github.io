@@ -1,0 +1,24 @@
+# To-Do:
+- Make buttons work in Lending A Hand
+- Add project images to homepage
+- Survey for feedback on website
+- Somehow prevent being able to cheat using the console
+- I should actually use this to-do list
+- Venture outside and touch grass
+- Extra buttons in notepad for more customization (e.g. font size/family)
+<br>
+- Nunners' Guide To Dreams And Nightmares Insights (yapping about dream)
+- Add "?book=4" to the end of NunnerLibrary link at the bottom of Skylar's Art Gallery
+- Add 2-3 \<br>'s above Hope Vol. 2 heading
+
+# Ideas:
+tell me if you actually want to see these added
+- Username that can be used in multiple projects (like lending a hand)
+- Nunners Art Gallery (idk why I don't have one)
+- Sof Art Gallery 🤔
+- Library page numbers?!?
+- Reformat the to-do list (using HTML instead of plain text)
+- Random minigames project (two player)(thing is, I have too many projects already)
+<br>
+how do you like the new to-do list (i changed file to markdown)
+> ❤️ You make my site possible
