@@ -109,7 +109,7 @@ var keybindsButton = document.getElementById("keybinds-button");
 var tutorialButton = document.getElementById("tutorial-button");
 
 const customerNames = [
-    /*Me & my friends*/	"Nunners", "Kayleigh", "Lianna", "Skylar", "Yeen Yeen", "Jin", "Jeff", "Jaelle", "Chelsey", "Ethan", "Emma", "Anton", "Jeanne", "Tiffany", "Sai", "Maiah", "Jordan", "Aya", "Samantha", "Jaedyn", "Marian", "Nikki", "Thida", "Jonelle", "Sophia", "Anette", "Cameron", "Rafael",
+    /*Me & my friends*/	"Nunners", "Kayleigh", "Lianna", "Skylar", "Yeen Yeen", "Jin", "Jeff", "Jaelle", "Chelsey", "Ethan", "Emma", "Anton", "Jeanne", "Tiffany", "Sai", "Maiah", "Jordan", "Aya", "Samantha", "Jaedyn", "Marian", "Nikki", "Thida", "Jonelle", "Sophia", "Anette", "Cameron", "Rafael", "Sof",
     /*RM NPCs*/			"Mr. Wedgehead", "Wide Racoon", "Albert", "Amongus", "War Noodle", "The Sun", "Princess Sherk", "Patricia", "Dummy", "Jules", "Zack", "Burbspernge", "Pumkin",
     /*PGS NPCs*/		"Azalea", "Malo", "Billy Bob Joe",
     /*CGT NPCs*/		"Jack", "Holly", "Jake", "Daisy",
@@ -117,8 +117,8 @@ const customerNames = [
     /*TBHK*/			"Nene Yashiro", "Hanako", "Kou Minamoto", "Aoi Akane", "Akane Aoi", "Teru Minamoto", "Lemon Yamabuki", "Sousuke Mitsuba", "Tsukasa", "Sakura Nanamine", "Natsuhiko Hyuuga", "Yako", "Tsuchigomori", "Cult", "Lili", "Clyde", "Alex",
     /*Yeen's friends*/	"Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah", "Colette", "Makayla", "Kimora",
     /*NunnerLibrary*/	"Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus", "Sasha", "Billy", "Bob", "Joe", "Liva", "Cory", "Eve", "Cole", "Phoebe", "Sarah", "Saki", "Micah", "Whiskey Pete", "Valentine", "Morgan O'Connell", "Buddy Hawkins", 
-    /*Pokémon*/			"Shuckle", "Ash Ketchum", "Satoshi", "Misty", "Brock", "May", "Dawn", "Iris", "Cilan", "Serena", "Clement", "Bonnie", "Lana", "Mao", "Kaki", "Lilie", "Sophocles", "Goh", "Chloe", "Koharu",
-    /*Comic book*/		"Bill", "Roski", "Ginny", "Emily", "Rebecca", "Joey", "Charlyy", "Bobby", "Sally", "Pippi", "Althea", "Derek", "Alford", "Steven", "Collin",
+    /*Pokémon*/			"Shuckle", "Ash Ketchum", "Satoshi", "Misty", "Brock", "Jessie", "James", "Meowth", "May", "Dawn", "Iris", "Cilan", "Serena", "Clement", "Bonnie", "Lana", "Mao", "Kaki", "Lilie", "Sophocles", "Goh", "Chloe", "Koharu",
+    /*Comic book*/		"Bill", "Roski", "Ginny", "Emily", "Rebekka", "Joey", "Charlyy", "Bobby", "Susan", "Pippi", "Althea", "Derek", "Alford", "Rosabella", "Steven", "Collin",
     /*Mochi Squishies*/	"Marshmallow", "Ginger", "Vered", "Snowy", "Blossom", "Melody", "Peep", "Piper", "Sunny", "Honey", "Gummy", "Snoopy", "Mrs. Polar", "Sharpie",
     /*Roblox Youtubers*/"Flamingo", "Denis", "Leah Ashe", "Kreek", "Kevin", "Sketch", "ItsFunneh", "LankyBox", "Laughability", "Russo", "Sabrina",
     /*Roblox*/          "Carl", "Builderman", "David Baszucki", "Barry", "Jandel", "Poppy",
