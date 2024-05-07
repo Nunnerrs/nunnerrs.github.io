@@ -188,14 +188,16 @@ select {
     backdrop-filter: blur(5px);
     background: var(--settings);
     border-radius: 10px;
+	height: auto;
     left: 25vw;
-	overflow-y: auto;
+	overflow-y: scroll;
     padding: 5px;
     padding-bottom: 10px;
     position: fixed;
-    top: 80px;
+    top: 5vh;
     visibility: hidden;
     width: 50%;
+	z-index: 1;
 }
 
 #stop {
@@ -220,6 +222,12 @@ select {
     height: 100px;
     margin: auto;
     width: 75%;
+}
+
+@media screen and (max-height: 500px) {
+	#settings {
+		height: 80%;
+	}
 }
 
 @media screen and (max-width: 500px) {
