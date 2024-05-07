@@ -115,6 +115,22 @@ tiny {
 #clicker {
     background-color: lightblue;
 }
+#cookies {
+    transition: opacity 1s;
+    background-color: rgb(210, 255, 235);
+	bottom: 0px;
+	box-shadow: 0px -5px 10px rgb(0, 150, 105);
+	left: 0px;
+    margin: auto;
+    opacity: 0;
+    padding: 5px;
+    position: fixed;
+    visibility: hidden;
+	width: 100%;
+}
+#cookies button {
+	width: 40%;
+}
 #draw {
     background-color: rgb(200, 230, 255);
     color: black;

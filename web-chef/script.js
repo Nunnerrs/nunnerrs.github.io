@@ -1,4 +1,4 @@
-var v = "v" + "1.8.2.1";
+var v = "v" + "1.8.3.1";
 var version = document.getElementById("version");
 version.innerHTML = v;
 /*var updateLink = "https://github.com/Nunnerrs/nunnerrs.github.io/commit/";
@@ -6,9 +6,7 @@ var commitId = "cc38037163afa5339cf1d327a2287b8f840ae811";
 updateLink = updateLink + commitId;*/
 // make a new line to display as new line
 // NO " OR ', do ALT + {SHIFT} + [ or ]
-var updateSummary = `• removed the Valentine’s Day secret, hopefully you got it (next time to get it is next year)<br>
-• fixed issues with chili ingredient<br>
-• NEW CUSTOM UI<br>`;
+var updateSummary = `• edited some customer names that i misspelled`;
 
 // the `; SHOULD NOT be on its own line
 
@@ -1399,7 +1397,7 @@ setTimeout(function(){
 }, 1500);
 setTimeout(function(){
     //notify("Version " + v + " is out now! <a href='" + updateLink + "'>Click here</a> to see changes or <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>click here</span> for a summary of the new update", 10000);
-    notify("Version " + v + " is out now! <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>Click here</span> for a summary of the new update", 10000);
+    notify("Current version is " + v + ". <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>Click here</span> for a summary of the new update.", 10000);
 }, 1550);
 setInterval(function(){
     let stockToAdd = Math.floor(storage / 2);

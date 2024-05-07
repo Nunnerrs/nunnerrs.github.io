@@ -3,12 +3,7 @@
     <head>
         <!-- Google tag (gtag.js)(For analytics) -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1L4RBL935"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-X1L4RBL935');
-        </script>
+        <script src="analytics.js"></script>
         <title>NunnerVerse²</title>
         <meta charset="UTF-8">
         <meta name="description" content="a fun little website made by Nunners">
@@ -25,6 +20,9 @@
             <br class="br">
             <button id="bday">happy birthday!!</button>
             <button id="noBday">stop showing this :[</button><br>
+        </div>
+        <div id="cookies">🍪 we use cookies on this website for analytics. clicking "no" keeps the necessary ones (for saving data in Web Chef, Refractory, etc).<br>
+            <button onclick="decline()">no i don't want them</button><button onclick="accept()">ok</button>
         </div>
         <h1>welcome to the NunnerVerse²!<br><span style="font-size: 18pt">(aka homepage)</span></h1>
         <h2>cool web projects i made or something</h2>
@@ -272,8 +270,40 @@
         <h3><a href="https://github.com/Nunnerrs/nunnerrs.github.io/commits/main">click here</a> to view update log or <a href="library/index.html?book=8">NunnerVerse Weekly</a> for detailed stuff</h3>
         <p id="note">See my <a href="to-do.md">To-Do list</a> to read about some small (or big) things I'll add in the future 👀</p>
         <script>
+            let cookies = localStorage.getItem("cookies");
+            let cookiePopup = document.getElementById("cookies");
             var feedback = document.getElementById("feedback");
             var snowContainer = document.getElementById("snow-container");
+            
+            function click(project) {
+                let url = project.dataset.url;
+                window.open(url, "_self");
+                console.log(project.dataset.url);
+            }
+
+            function showCookies(){
+                cookiePopup.style.visibility = "visible";
+                cookiePopup.style.opacity = 1;
+            }
+            if (cookies == null) {
+                setTimeout(showCookies, 500);
+            }
+			
+			function fade(){
+				cookiePopup.innerHTML = "btw if you change your mind, clear your cookies & site data"
+				cookiePopup.style.visibility = "visible";
+                setTimeout(function(){cookiePopup.style.opacity = 0}, 2000);
+			}
+			
+			function accept(){
+				localStorage.setItem("cookies", "true");
+				fade();
+			}
+			
+			function decline(){
+				localStorage.setItem("cookies", "false");
+				location.reload();
+			}
 
             function survey() {
                 window.open("https://forms.gle/Tez3SXcqffNTfGj48", "_blank");
@@ -290,12 +320,6 @@
             for (let i = 0; i < window.innerWidth/50; i++) {
             	delay += Math.floor(Math.random() * 1000) + 500;
             	setTimeout(storm, delay);
-            }
-            
-            function click(project) {
-                let url = project.dataset.url;
-                window.open(url, "_self");
-                console.log(project.dataset.url);
             }
             
             // draw snow
