@@ -27,7 +27,7 @@ if (dm == null) {
     toggleDarkMode();
 };
 
-var total = 10;
+var total = 12;
 
 const books = {
     // fitting image sample: https://i.ibb.co/xLsBh3W/img.png (add class rp to fix margin on right pages)
@@ -133,42 +133,11 @@ const books = {
         "\"W-W-What if it f-finds us…?\"<br>\"I'm sure that's not gonna—\"<br>A giant head appears above the rock. Pinky and Mint stare at the creature unable to move. It grins.<br>\"Haii theree~!\" the giant says in a slow voice.<br>Pinky doesn't move. Mint blinks. \"H-Hi…\"",
         // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
     ],
-    book13: book13, // Guardian Of The Phoenix Vol. 1
-    book14: book14, // Guardian Of The Phoenix Vol. 2
+    book13: book13, // The Guardian Of The Phoenix Vol. 1
+    book14: book14, // TGOTP (The Guardian Of The Phoenix) Vol. 2
     book15: book15, // The Black Watch Handbook
+    book16: book16, // TGOTP Vol. 3
 };
-
-var key = null;
-var exitKey = null;
-
-function getKey() {
-	if (key == null) {
-    	key = false
-    }
-}
-
-function useKey() {
-	if (key == false) {
-        key = true;
-        exitKey = false;
-        return true;
-    }
-}
-
-function escape() {
-	if (exitKey == false) {
-    	exitKey = true;
-        let i = document.createElement("img");
-        i.src = "https://www.icegif.com/wp-content/uploads/2023/01/icegif-162.gif";
-        i.height = window.innerHeight;
-        i.width = window.innerWidth;
-        i.style.position = "fixed";
-        i.style.left = 0;
-        i.style.top = 0;
-        document.body.appendChild(i);
-        closeBook();
-    }
-}
 
 function openBook(bookId) {
     if (currentBook == null) {
@@ -184,7 +153,16 @@ function openBook(bookId) {
         pageR.innerHTML = books["book" + currentBook][1];
         pageNumL = 0;
         pageNumR = 1;
-    };
+    }
+};
+
+function jumpToPage(l, r) {
+    if (l != null && r != null) {
+        pageNumL = l;
+        pageNumR = r;
+    } else {
+        console.error("Could not jump to page: Left or right page number not provided");
+    }
 };
 
 var params = window.location.href.split("?")[1];

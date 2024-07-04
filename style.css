@@ -17,10 +17,12 @@ a:hover {
 }
 body {
     font-family: 'Comic Sans MS', 'Chalkboard SE';
-    background-color: var(--bg-color);
+    /*background-color: var(--bg-color);*/
+
     /*CANDYCANE-background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);*/
     /*BENNETT-background-image: url(https://us.genshindle.com/data/gallery/characters/high/bennett.webp);
     background-repeat: repeat;*/
+    /*REDWHITEBLUE*/background: repeating-linear-gradient(180deg, #FF9999, white 6%, white 7%, #00a7ff 11%, #FF9999 16%);
     /*color: rgb(0, 50, 35);*/
     text-align: center;
 }
