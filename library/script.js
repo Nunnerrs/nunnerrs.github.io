@@ -43,7 +43,7 @@ const books = {
         "Coming Soon!",
         "Coming Soon!",
         // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
-    ],
+    ];
     */
     book1: [
         "", // <img src="covers/placeholder.png">
