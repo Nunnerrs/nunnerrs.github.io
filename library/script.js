@@ -87,8 +87,9 @@ const books = {
     book7: book7, // Nunners' Guide To Dreams & Nightmares
     book8: [ // "<heading><b>Mon. DD, 2024</b></heading><br><br>• ",
         "", // <img src="covers/placeholder.png">
-        "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 4/1/2024<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
+        "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 7/5/2024<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
         // UPDATE NEWEST NEWS ABOVE & IN INDEX.HTML FILE
+        "<heading><b>Jul. 5, 2024</b></heading><br><br>• I've been on hiatus for a while now, but I'm trying to motivate myself to start coding again :DD which leads me to my next point…• <i>THE GUARDIAN OF THE PHOENIX VOL. 3</i> HAS FINALLY RELEASED!! It only took several months hehe…I hope you like it :0 If you're wondering about Vol. 4, just know that it won't be any time soon 'cause you know me by now ◠◞◠<br>• <i>Nunners' Guide To Dreams & Nightmares</i> received an update and has more sillies! If you want more meanings, then give ideas pls<br>• Started creating a NunnerVerse hub on Roblox in the future 😱",
         "<heading><b>Apr. 1, 2024</b></heading><br><br>• APRIL FOOL'S DAY UPDATE: I started messing with the homepage and making fun of my own projects LMAO. Check out the escape room book if you haven't already!",
         "<heading><b>Mar. 3, 2024</b></heading><br><br>• hehe BennettVerse but unfortunately it's gone now",
         "<heading><b>Jan. 16, 2024</b></heading><br><br>Pls dont me mad that I haven't been writing articles in months<br><br>• I forgot to say but REALLY NOICE NEW HOMEPAGE LAYOUT (you probably already saw it though…)<br>• Falling snow?!?! Also the background was candycane-themed but it's now <b>aurora borealis</b> :OO<br>• Web Chef <b>v1.7</b>! Took 2 hours hehe—More details on project (click <a href='https://nunnerrs.github.io/web-chef'>here</a>). Stay tuned for the next big update (very soon)!",
@@ -166,12 +167,14 @@ function jumpToPage(l, r) {
 };
 
 var params = window.location.href.split("?")[1];
-var param1 = params.split("&");
-if (param1[0].split("=")[0].match("book") && Number(param1[0].split("=")[1])) {
-    let bookNumber = Number(param1[0].split("=")[1]);
-    if (bookNumber <= total || bookNumber == 15) {
-        openBook(bookNumber);
-        //pageR.innerHTML = books["book" + bookNumber][0];
+if (params != null) {
+    var param1 = params.split("&");
+    if (param1[0].split("=")[0].match("book") && Number(param1[0].split("=")[1])) {
+        let bookNumber = Number(param1[0].split("=")[1]);
+        if (bookNumber <= total || bookNumber == 15) {
+            openBook(bookNumber);
+            //pageR.innerHTML = books["book" + bookNumber][0];
+        };
     };
 };
 
