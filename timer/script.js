@@ -1,9 +1,3 @@
-/*
-to do:
-• fix volume
-• break checklist
-*/
-
 // yes im that lazy
 function find(id) {
 	return document.getElementById(id);
@@ -16,7 +10,6 @@ function g(key) {
 }
 
 var b = document.body;
-var title = find("title");
 var counter = find("counter");
 var td = find("time-display");
 var tp = find("toggle-pomo");
@@ -63,6 +56,7 @@ var sillyText = {
 	pomoEnd: "AGAIN AGAIN",
 	pause: "pause (no distractions okay)",
 	unpause: "unpause (back to work)",
+	task: "no tasks :C",
 };
 
 var theme = {h: 120, s: 100, l: 70};
@@ -70,7 +64,14 @@ var theme = {h: 120, s: 100, l: 70};
 // sidebar
 var settingsBtn = find("settings-button");
 var icon = settingsBtn.firstChild.firstChild;
+var taskBtn = find("tasks-button");
 var fsBtn = find("fullscreen-button");
+
+// tasks
+var tasks = find("tasks");
+var taskContainer = find("task-container");
+var addTaskBtn = find("add-task");
+var drag = find("drag");
 
 // settings
 var settings = find("settings");
@@ -132,6 +133,9 @@ if (g("timer_silly") == "true") {
 	sillyBtn.dataset.enabled = true;
 	sillyBtn.innerHTML = "ON";
 }
+if (silly == true) {
+	taskContainer.innerHTML = sillyText.task;
+}
 
 var saveBtn = find("save");
 var cancelBtn = find("cancel");
@@ -181,7 +185,6 @@ function timer() {
 			s = "00";
 		}
 		td.innerHTML = m + ":" + s;
-		title.innerHTML = m + ":" + s + " 〜 Sidetracked";
 		if (time <= 0) {
 			cycles++;
 			counter.innerHTML = cycles/2 + "/4 cycles";
@@ -193,12 +196,10 @@ function timer() {
 				//pbr = Math.floor((Math.random() * 100) + 101)/100;
 				int = "lBreak";
 				start = silly == true ? sillyText.lBreak : "Start Long Break";
-				title.innerHTML = "BREAK TIME  〜 Sidetracked";
 			} else {
 				if (int == "work") {
 					int = "sBreak";
 					start = silly == true ? sillyText.sBreak : "Start Short Break";
-					title.innerHTML = "BREAK TIME  〜 Sidetracked";
 				} else if (int == "lBreak") {
 					stopPomo();
 				} else {
@@ -206,7 +207,6 @@ function timer() {
 					//pbr = Math.floor((Math.random() * 51) + 50)/100;
 					int = "work";
 					start = silly == true ? sillyText.work : "Start Work Timer";
-					title.innerHTML = "WORK TIME  〜 Sidetracked";
 				}
 			}
 			localStorage.setItem("timer_int", int);
@@ -251,7 +251,6 @@ tp.onclick = togglePomo;
 
 function stopPomo() {
 	timerOn = false;
-	title.innerHTML = "Sidetracked";
 	settingsBtn.disabled = false;
 	icon.setAttribute("fill", "white");
 	let w = intervals.work.toString();
@@ -481,12 +480,118 @@ function toggleSilly() {
 	if (e == "true") {
 		sillyBtn.dataset.enabled = false;
 		sillyBtn.innerHTML = "OFF";
+		if (taskContainer.innerHTML.match(/no tasks/i)) {
+			taskContainer.innerHTML = sillyText.task;
+		}
 	} else {
 		sillyBtn.dataset.enabled = true;
 		sillyBtn.innerHTML = "ON";
+		if (taskContainer.innerHTML == sillyText.task) {
+			taskContainer.innerHTML = "No tasks yet"; // if u change this change the one in deleteTask func
+		}
 	}
 }
 sillyBtn.onclick = toggleSilly;
+
+function toggleTasks() {
+	let t = tasks.style.visibility;
+	if (t == "visible") {
+		tasks.style.visibility = "hidden";
+	} else {
+		tasks.style.visibility = "visible";
+	}
+}
+taskBtn.onclick = toggleTasks;
+
+function addTask() {
+	let t = document.createElement("div");
+	let check = document.createElement("input");
+	check.title = "Not yet completed";
+	check.type = "checkbox";
+	let text = document.createElement("div");
+	text.classList.add("text");
+	text.contentEditable = true; 
+	let del = document.createElement("button");
+	del.classList.add("delete-task");
+	del.innerHTML = "×";
+	
+	check.onclick = function(){completeTask(this, text)};
+	del.onclick = function(){deleteTask(t, del)};
+	t.appendChild(check);
+	t.appendChild(text);
+	t.appendChild(del);
+	let tc = taskContainer;
+	if (tc.innerHTML.match(/no tasks/i) || tc.innerHTML == sillyText.task) {
+		tc.classList.remove("no-tasks");
+		tc.innerHTML = "";
+		tc.style.textAlign = "left";
+	}
+	taskContainer.appendChild(t);
+}
+addTaskBtn.onclick = addTask;
+
+function deleteTask(t, btn) {
+	if (btn.style.backgroundColor == "rgb(255, 0, 0)") {
+		t.remove();
+		let tc = taskContainer;
+		if (taskContainer.innerHTML == "") {
+			tc.classList.add("no-tasks");
+			tc.innerHTML = "No tasks yet"; // if u change this change the one in toggleSilly func
+			if (silly == true) {
+				tc.innerHTML = sillyText.task;
+			}
+			tc.style.textAlign = "";
+		}
+	} else {
+		btn.style.backgroundColor = "rgb(255, 0, 0)";
+		setTimeout(function(){
+			if (btn != null) {
+				btn.style.backgroundColor = "var(--dark)";
+			}
+		}, 1000);
+	}
+}
+
+function completeTask(check, text) {
+	if (check.checked == false) {
+		text.classList.remove("completed");
+		check.title = "Not yet completed";
+	} else {
+		text.classList.add("completed");
+		check.title = "Completed!";
+	}
+}
+
+function dragTasks() {
+	var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+	drag.onmousedown = startDrag;
+	
+	function startDrag(e) {
+		e.preventDefault();
+		pos3 = e.clientX;
+		pos4 = e.clientY;
+		document.onmouseup = endDrag;
+		document.onmousemove = dragging;
+		drag.style.cursor = "grabbing";
+	}
+	
+	function dragging(e) {
+		e.preventDefault();
+		pos1 = pos3 - e.clientX;
+		pos2 = pos4 - e.clientY;
+		pos3 = e.clientX;
+		pos4 = e.clientY;
+		tasks.style.top = (tasks.offsetTop - pos2) + "px";
+		tasks.style.left = (tasks.offsetLeft - pos1) + "px";
+	}
+	
+	function endDrag() {
+		document.onmouseup = null;
+		document.onmousemove = null;
+		drag.style.cursor = "grab";
+	}
+}
+dragTasks();
 
 // check if mobile
 const devices = [/Android/i, /BlackBerry/i, /iPhone/i, /iPad/i, /iPod/i, /webOS/i, /Windows Phone/i];
