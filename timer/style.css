@@ -54,6 +54,15 @@ h2 {
     margin-top: 5px;
 }
 
+html {
+	scrollbar-color: var(--light) rgba(0, 0, 0, 0);
+}
+
+img {
+	height: auto;
+	width: 150px;
+}
+
 input[type=checkbox] {
 	accent-color: var(--light);
 	filter: brightness(1.5);
@@ -108,7 +117,7 @@ select {
 }
 
 .button {
-    background: none;
+    background: black;
     border: white 1px solid;
     border-radius: 5px;
     color: white;
@@ -127,7 +136,11 @@ select {
 }
 
 .close {
+	bottom: 5px;
+	box-shadow: var(--dark) 0 0 0 5px;
     height: 25px;
+	margin: 10px;
+	position: sticky;
     width: 65px;
 }
 
@@ -170,15 +183,18 @@ select {
 .text {
 	background: none;
 	border: none;
-	display: inline-block;
+	display: inline-table;
 	font-family: 'Courier', monospace;
 	font-size: 14px;
 	height: 18px;
 	margin-left: 5px;
 	margin-right: 8px;
+	margin-top: 3px;
 	resize: none;
 	width: 140px;
+	word-break: break-word;
 }
+
 
 .text:empty::before {
 	color: rgb(0, 0, 0, 0.5);
@@ -187,6 +203,7 @@ select {
 
 .text:empty:focus::before {
 	content: "";
+	display: inline-block;
 }
 
 #add-task {
@@ -257,7 +274,7 @@ select {
     padding: 5px;
     padding-bottom: 10px;
     position: fixed;
-    scrollbar-color: white rgba(0, 0, 0, 0);
+    scrollbar-color: var(--light) rgba(0, 0, 0, 0);
     top: 5vh;
     visibility: hidden;
     width: 50%;
@@ -267,7 +284,7 @@ select {
 #stop {
     background: var(--main);
     border-color: var(--dark);
-    height: 40px;
+    height: 50px;
     margin-left: 10%;
     margin-top: 1px;
     position: absolute;
@@ -302,6 +319,10 @@ select {
     width: 75%;
 }
 
+#toggle-pomo {
+	margin-top: 5px;
+}
+
 @media screen and (max-height: 500px) {
 	#settings {
 		height: 80%;
@@ -312,6 +333,11 @@ select {
     .custom-int {
         min-width: 2em;
     }
+	
+	.int-text {
+		font-size: 3vw;
+		word-wrap: break-word;
+	}
 
     .min {
         font-size: 2.75vw;

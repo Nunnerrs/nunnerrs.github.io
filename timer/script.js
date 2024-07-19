@@ -56,7 +56,33 @@ var sillyText = {
 	pomoEnd: "AGAIN AGAIN",
 	pause: "pause (no distractions okay)",
 	unpause: "unpause (back to work)",
-	task: "no tasks :C",
+	stop: "end time (do not click)",
+	noTasks: "no tasks yet—you should add some",
+	tasksDone: "yay you finished all the tasks!!",
+};
+var jpText = {
+	pomoStart: "ポモドロはスタート",
+	work: "ウォークタイマーはスタート",
+	sBreak: "ショートブレーキはスタート",
+	lBreak: "ロングブレークはスタート",
+	pomoEnd: "ポモドロはスタート",
+	pause: "ポーズ",
+	unpause: "アンポーズ",
+	stop: "ストップ",
+	noTasks: "タスクスなし",
+	tasksDone: "タスクスはコンプリート！",
+};
+var phText = {
+	pomoStart: "Isimula ang pomodoro",
+	work: "Isimula ang work timer",
+	sBreak: "Isimula ang maikling break",
+	lBreak: "Isimula ang mahabang break",
+	pomoEnd: "Ulitin ang pomodoro",
+	pause: "Ipause yung timer",
+	unpause: "Unpause",
+	stop: "Hinto",
+	noTasks: "Walang tasks pa",
+	tasksDone: "Tinapos mo yung lahat ng tasks :D",
 };
 
 var theme = {h: 120, s: 100, l: 70};
@@ -68,6 +94,7 @@ var taskBtn = find("tasks-button");
 var fsBtn = find("fullscreen-button");
 
 // tasks
+var taskList = [];
 var tasks = find("tasks");
 var taskContainer = find("task-container");
 var addTaskBtn = find("add-task");
@@ -108,7 +135,7 @@ if (g("timer_color_h") != null && g("timer_color_s") != null && g("timer_color_l
 	let s = g("timer_color_s");
 	let l = g("timer_color_l");
 	theme = {h, s, l};
-	color.value = HSLToHex(h, s, l);;
+	color.value = HSLToHex(h, s, l);
 	setTheme(h, s, l);
 }
 
@@ -134,7 +161,7 @@ if (g("timer_silly") == "true") {
 	sillyBtn.innerHTML = "ON";
 }
 if (silly == true) {
-	taskContainer.innerHTML = sillyText.task;
+	taskContainer.innerHTML = sillyText.noTasks;
 }
 
 var saveBtn = find("save");
@@ -187,7 +214,13 @@ function timer() {
 		td.innerHTML = m + ":" + s;
 		if (time <= 0) {
 			cycles++;
-			counter.innerHTML = cycles/2 + "/4 cycles";
+			let cycleText = "cycles";
+			if (jp == true) {
+				cycleText = "サイクル";
+			} else if (ph == true) {
+				cycleText = " cycle";
+			}
+			counter.innerHTML = cycles/2 + "/4 " + cycleText;
 			timerOn = false;
 			let start = "Continue";
 			let pbr = 1;
@@ -195,18 +228,39 @@ function timer() {
 				pbr = 2;
 				//pbr = Math.floor((Math.random() * 100) + 101)/100;
 				int = "lBreak";
-				start = silly == true ? sillyText.lBreak : "Start Long Break";
+				start = "Start Long Break"
+				if (jp == true) {
+					start = jpText.lBreak;
+				} else if (ph == true) {
+					start = phText.lBreak;
+				} else if (silly == true) {
+					start = sillyText.lBreak;
+				}
 			} else {
 				if (int == "work") {
 					int = "sBreak";
-					start = silly == true ? sillyText.sBreak : "Start Short Break";
+					start = "Start Short Break"
+					if (jp == true) {
+						start = jpText.sBreak;
+					} else if (ph == true) {
+						start = phText.sBreak;
+					} else if (silly == true) {
+						start = sillyText.sBreak;
+					}
 				} else if (int == "lBreak") {
 					stopPomo();
 				} else {
 					pbr = 0.5;
 					//pbr = Math.floor((Math.random() * 51) + 50)/100;
 					int = "work";
-					start = silly == true ? sillyText.work : "Start Work Timer";
+					start = "Start Work Timer"
+					if (jp == true) {
+						start = jpText.work;
+					} else if (ph == true) {
+						start = phText.work;
+					} else if (silly == true) {
+						start = sillyText.work;
+					}
 				}
 			}
 			localStorage.setItem("timer_int", int);
@@ -239,12 +293,28 @@ function togglePomo() {
 			settingsBtn.disabled = false;
 			icon.setAttribute("fill", "white");
 		}
-		tp.innerHTML = silly == true ? sillyText.unpause : "Continue";
+		if (jp == true) {
+			tp.innerHTML = jpText.unpause;
+		} else if (ph == true) {
+			tp.innerHTML = phText.unpause;
+		} else if (silly == true) {
+			tp.innerHTML = sillyText.unpause;
+		} else {
+			tp.innerHTML = "Continue";
+		}
 	} else {
 		timerOn = true;
 		settingsBtn.disabled = true;
 		icon.setAttribute("fill", "rgb(100, 100, 100)");
-		tp.innerHTML = silly == true ? sillyText.pause : "Pause";
+		if (jp == true) {
+			tp.innerHTML = jpText.pause;
+		} else if (ph == true) {
+			tp.innerHTML = phText.pause;
+		} else if (silly == true) {
+			tp.innerHTML = sillyText.pause;
+		} else {
+			tp.innerHTML = "Pause";
+		}
 	}
 }
 tp.onclick = togglePomo;
@@ -256,7 +326,15 @@ function stopPomo() {
 	let w = intervals.work.toString();
 	time = Number(w + ".00");
 	td.innerHTML = w + ":00";
-	tp.innerHTML = silly == true ? sillyText.pomoEnd : "Start Pomodoro";
+	if (jp == true) {
+		tp.innerHTML = jpText.pomoEnd;
+	} else if (ph == true) {
+		tp.innerHTML = phText.pomoEnd;
+	} else if (silly == true) {
+		tp.innerHTML = sillyText.pomoEnd;
+	} else {
+		tp.innerHTML = "Start Pomodoro";
+	}
 	int = "work";
 	cycles = 0;
 	counter.innerHTML = "0/4 cycles";
@@ -324,10 +402,22 @@ function saveSettings() {
 	}
 	auto = autoBtn.dataset.enabled == "true" ? true : false;
 	silly = sillyBtn.dataset.enabled == "true" ? true : false;
-	if (silly == true) {
-		tp.innerHTML = sillyText.pomoStart;
-	} else {
-		tp.innerHTML = "Start Pomodoro";
+	if (jp == false && ph == false) {
+		if (silly == true) {
+			tp.innerHTML = sillyText.pomoStart;
+			if (taskContainer.classList.value.match("no-tasks")) {
+				if (taskContainer.innerHTML.match(/no/i)) {
+					taskContainer.innerHTML = sillyText.noTasks;
+				} else {
+					taskContainer.innerHTML = sillyText.tasksDone;
+				}
+			}
+		} else {
+			tp.innerHTML = "Start Pomodoro";
+			if (taskContainer.classList.value.match("no-tasks")) {
+				taskContainer.innerHTML = "No tasks yet"; // if u change this change the one in deleteTask func
+			}
+		}
 	}
 	let hsl = hexToHSL(color.value);
 	setTheme(hsl.h, hsl.s, hsl.l);
@@ -358,8 +448,11 @@ function cancelSettings() {
 	lBreakInt.classList.remove("error");
 	lBreakInt.value = intervals.lBreak;
 	notifBtn.dataset.enabled = notifs;
+	notifBtn.innerHTML = notifs == true ? "ON" : "OFF";
 	autoBtn.dataset.enabled = auto;
+	autoBtn.innerHTML = auto == true ? "ON" : "OFF";
 	sillyBtn.dataset.enabled = silly;
+	sillyBtn.innerHTML = silly == true ? "ON" : "OFF";
 	let style = getComputedStyle(document.documentElement);
 	let hex = HSLToHex(theme.h, theme.s, 70);
 	//let hex = HSLToHex(theme.h, theme.s, theme.l);
@@ -460,9 +553,6 @@ function notify(t, st, i /*text, subtext, icon*/) {
 	}
 }
 
-b.onload = setInterval(timer, intTimer);
-setTimeout(function(){find("line").style.width = "20em"}, 500);
-
 function toggleAuto() {
 	let e = autoBtn.dataset.enabled;
 	if (e == "true") {
@@ -480,15 +570,9 @@ function toggleSilly() {
 	if (e == "true") {
 		sillyBtn.dataset.enabled = false;
 		sillyBtn.innerHTML = "OFF";
-		if (taskContainer.innerHTML.match(/no tasks/i)) {
-			taskContainer.innerHTML = sillyText.task;
-		}
 	} else {
 		sillyBtn.dataset.enabled = true;
 		sillyBtn.innerHTML = "ON";
-		if (taskContainer.innerHTML == sillyText.task) {
-			taskContainer.innerHTML = "No tasks yet"; // if u change this change the one in deleteTask func
-		}
 	}
 }
 sillyBtn.onclick = toggleSilly;
@@ -503,25 +587,60 @@ function toggleTasks() {
 }
 taskBtn.onclick = toggleTasks;
 
-function addTask() {
+//let offset = 1;
+function addTask(_, done = null, txt = "") {
 	let t = document.createElement("div");
+	/*if (done != null) {
+		t.id = taskList.length - offset;
+		offset++;
+	} else {*/
+		t.id = taskList.length;
+	//}
+	
+	console.log(t.id, taskList);
+	taskList.push({done: done, text: txt});
+	saveTasks();
+	
 	let check = document.createElement("input");
 	check.title = "Not yet completed";
 	check.type = "checkbox";
+	
 	let text = document.createElement("div");
 	text.classList.add("text");
-	text.contentEditable = true; 
+	text.contentEditable = true;
+	text.innerHTML = txt;
+	text.onkeydown = function(e){
+		taskList[t.id].text = text.innerHTML;
+		saveTasks();
+		setTimeout(function(){
+			if (text.innerHTML == "" && e.key.length == 1 && e.key != " ") {
+				text.innerHTML += e.key;
+				let r = document.createRange();
+				let s = window.getSelection();
+				r.setStart(text.childNodes[0], 1);
+				r.collapse(true);
+				s.removeAllRanges();
+				s.addRange(r);
+			}
+		}, 10);
+	};
+	
 	let del = document.createElement("button");
 	del.classList.add("delete-task");
 	del.innerHTML = "×";
 	
-	check.onclick = function(){completeTask(this, text)};
+	if (done == true) {
+		check.checked = true;
+		completeTask(t.id, check, text);
+	}
+	check.onclick = function(){completeTask(t.id, check, text)};
 	del.onclick = function(){deleteTask(t, del)};
 	t.appendChild(check);
 	t.appendChild(text);
 	t.appendChild(del);
+	
 	let tc = taskContainer;
-	if (tc.innerHTML.match(/no tasks/i) || tc.innerHTML == sillyText.task) {
+	if (tc.classList.value.match("no-tasks")) {
 		tc.classList.remove("no-tasks");
 		tc.innerHTML = "";
 		tc.style.textAlign = "left";
@@ -532,13 +651,27 @@ addTaskBtn.onclick = addTask;
 
 function deleteTask(t, btn) {
 	if (btn.style.backgroundColor == "rgb(255, 0, 0)") {
+		console.log(t.id);
+		for (let i = t.id + 1; i < taskList.length; i++) {
+			if (find(i)) {
+				find(i).id = i - 1;
+			}
+		}
+		taskList.splice(t.id, 1);
 		t.remove();
+		saveTasks();
+		
 		let tc = taskContainer;
 		if (taskContainer.innerHTML == "") {
 			tc.classList.add("no-tasks");
-			tc.innerHTML = "No tasks yet"; // if u change this change the one in toggleSilly func
-			if (silly == true) {
-				tc.innerHTML = sillyText.task;
+			if (jp == true) {
+				tc.innerHTML = jpText.tasksDone;
+			} else if (ph == true) {
+				tc.innerHTML = phText.tasksDone;
+			} else if (silly == true) {
+				tc.innerHTML = sillyText.tasksDone;
+			} else {
+				tc.innerHTML = "You completed all the tasks!"; // if u change this change the one in saveSettings func
 			}
 			tc.style.textAlign = "";
 		}
@@ -552,14 +685,17 @@ function deleteTask(t, btn) {
 	}
 }
 
-function completeTask(check, text) {
+function completeTask(id, check, text) {
 	if (check.checked == false) {
+		taskList[id].done = false;
 		text.classList.remove("completed");
 		check.title = "Not yet completed";
 	} else {
+		taskList[id].done = true;
 		text.classList.add("completed");
 		check.title = "Completed!";
 	}
+	saveTasks();
 }
 
 function dragTasks() {
@@ -592,6 +728,112 @@ function dragTasks() {
 	}
 }
 dragTasks();
+
+function saveTasks() {
+	setTimeout(function(){
+		let t = "";
+		if (taskList.length > 0) {
+			for (let i = 0; i < taskList.length; i++) {
+				if (taskList[i].text != undefined && taskList[i].text != "undefined" && taskList[i].text != "") {
+					t += taskList[i].done + "✯" + taskList[i].text + "✂";
+				}
+			}
+			console.log(t);
+			//**s("timer_tasks", t);
+		} else {
+			//**s("timer_tasks", null);
+		}
+	}, 10);
+	//console.log(taskList);
+}
+
+b.onload = function(){
+	let t = g("timer_tasks");
+	if (t != null && t != "") {
+		t = t.split("✂");
+		for (let i = 0; i < t.length; i++) {
+			let task = t[i].split("✯");
+			let done = false;
+			// we add save in the future…
+			//let text = task[1].toString().trim();
+			if (task[0] == "true") {
+				done = true;
+			}
+			/*
+			if (text != undefined && text != "undefined" && text != "") {
+				taskList.push({done: done, text: text});
+				addTask(0, done, text);
+			}*/
+		}
+	}
+	console.log(taskList);
+	setInterval(timer, intTimer);
+};
+
+// JP version
+
+var jp = false;
+if (jp == true || window.location.href.match(/#jp/i) || window.location.href.toLowerCase().match("jp")) {
+	jp = true;
+	find("h1").innerHTML = "じ—っ";
+	line.remove();
+	find("h2").innerHTML = "(staaare)";
+	tp.innerHTML = jpText.pomoStart;
+	stop.innerHTML = jpText.stop;
+	find("settings-title").innerHTML = "セッティングス";
+	find("work-text").innerHTML = "ウォーク";
+	find("sBreak-text").innerHTML = "ショート ブレーク";
+	find("lBreak-text").innerHTML = "ロング ブレーク";
+	defaultBtn.innerHTML = "リセット";
+	find("yippee-option").innerHTML = "ヤッタ〜";
+	find("bennett-option").innerHTML = "冒険だ冒険！";
+	find("boom-option").innerHTML = "ドーン";
+	find("bubbles-option").innerHTML = "かわいいのバブルス";
+	find("chime-option").innerHTML = "チャイム";
+	find("snore-option").innerHTML = "※スノル※ミミミ";
+	find("wow-option").innerHTML = "ウァアアウ";
+	find("theme-text").innerHTML = "テーマ： ";
+	find("tasks-title").innerHTML = "タスクス";
+	if (taskContainer.classList.value.match("no-tasks")) {
+		taskContainer.innerHTML = jpText.noTasks;
+	}
+	find("nunnerverse").innerHTML = "ナネルヴェルス²に行く";
+}
+
+// PH version
+var ph = false;
+if ((ph == true || window.location.href.match(/#ph/i) || window.location.href.toLowerCase().match("ph")) && jp == false) {
+	ph = true;
+	find("h1").innerHTML = "Palaging distrakted";
+	line.remove();
+	find("h2").innerHTML = "(makakatulong kami)";
+	tp.innerHTML = phText.pomoStart;
+	stop.innerHTML = phText.stop;
+	find("settings-title").innerHTML = "Setting";
+	find("work-text").innerHTML = "Trabaho (lol)";
+	find("sBreak-text").innerHTML = "Maikling break";
+	find("lBreak-text").innerHTML = "Mahabang break";
+	defaultBtn.innerHTML = "Reset to default";
+	find("yippee-option").innerHTML = "YEHEYYY";
+	find("bennett-option").innerHTML = "bouken da bouken";
+	find("boom-option").innerHTML = "VINE BUM";
+	find("bubbles-option").innerHTML = "kyut na bubble";
+	find("chime-option").innerHTML = "ding";
+	find("snore-option").innerHTML = "*SNORE* MIMIMI";
+	find("wow-option").innerHTML = "waaaauw";
+	find("theme-text").innerHTML = "Tema: ";
+	find("tasks-title").innerHTML = "Mga task";
+	if (taskContainer.classList.value.match("no-tasks")) {
+		taskContainer.innerHTML = phText.noTasks;
+	}
+	find("nunnerverse").innerHTML = "Papunta sa NanerBers²";
+}
+
+setTimeout(function(){
+	if (find("line")) {
+		find("line").style.width = "20em";
+	}
+}, 500);
 
 // check if mobile
 const devices = [/Android/i, /BlackBerry/i, /iPhone/i, /iPad/i, /iPod/i, /webOS/i, /Windows Phone/i];

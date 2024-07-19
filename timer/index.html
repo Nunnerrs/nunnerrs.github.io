@@ -18,21 +18,21 @@
     </head>
     <body>
 		<div id="settings">
-			<h2><!--セッティングス-->Settings</h2>
+			<h2 id="settings-title"><!--セッティングス-->Settings</h2>
 			<p>Custom Intervals</p>
 			<div id="interval-container">
 				<div class="custom-int">
-					<label>Work</label><br>
+					<label class="int-text" id="work-text">Work</label><br>
 					<span class="min">(15-50)</span><br>
 					<input id="work-interval" max="50" min="15" step="1" type="number" value="25">
 				</div>
 				<div class="custom-int">
-					<label>Short Break</label><br>
+					<label class="int-text" id="sBreak-text">Short Break</label><br>
 					<span class="min">(2-10)</span><br>
 					<input id="short-break-interval" max="10" min="2" step="1" type="number" value="5">
 				</div>
 				<div class="custom-int">
-					<label>Long Break</label><br>
+					<label class="int-text" id="lBreak-text">Long Break</label><br>
 					<span class="min">(10-30)</span><br>
 					<input id="long-break-interval" max="30" min="10" step="1" type="number" value="15">
 				</div>
@@ -41,17 +41,17 @@
 			<p>Audio</p>
 			<label for="notif-sound">Notification:</label>
 			<select id="notif-sound" value="YIPPEE">
-				<option selected value="yippee">YIPPEE</option>
-				<option value="bennett">bouken da bouken</option>
-                <option value="boom">VINE BOOM</option>
-                <option value="bubbles">cute bubbles</option>
-                <option value="chime">chime</option>
-                <option value="snore">*snore* mimimi</option>
-                <option value="wow">anime wow</option>
+				<option id="yippee-option" selected value="yippee">YIPPEE</option>
+				<option id="bennett-option" value="bennett">bouken da bouken</option>
+                <option id="boom-option" value="boom">VINE BOOM</option>
+                <option id="bubbles-option" value="bubbles">cute bubbles</option>
+                <option id="chime-option" value="chime">chime</option>
+                <option id="snore-option" value="snore">*snore* mimimi</option>
+                <option id="wow-option" value="wow">anime wow</option>
 			</select>
             <button id="play-sound">Play</button><br><br>
 			<p>Misc</p>
-			<label for="color">Theme: </label><input id="color" type="color" value="#00FF00"><br>
+			<label id="theme-text" for="color">Theme: </label><input id="color" type="color" value="#00FF00"><br>
 			<label for="notif">Notifications: </label><button id="notif">OFF</button><br>
 			<label for="auto">Auto-start next cycle: </label><button id="auto">OFF</button><br>
 			<label for="silly">silly mode: </label><button id="silly">OFF</button><br><br>
@@ -64,19 +64,20 @@
 		</div>
 		<div id="tasks">
 			<span id="drag"><svg xmlns="http://www.w3.org/2000/svg" viewBox="4 5 58.59 36.68"><rect style="stroke-opacity: 0" x="4.046" y="5" width="58.539" height="6" rx="3.3" ry="3.3"></rect><rect style="stroke-opacity: 0" x="4" y="20" width="58.539" height="6" rx="3.3" ry="3.3"></rect><rect style="stroke-opacity: 0" x="4" y="35" width="58.539" height="6" rx="3.3" ry="3.3"></rect></svg></span>
-			<p>Tasks</p>
+			<p id="tasks-title">Tasks</p>
 			<div class="no-tasks" id="task-container">No tasks yet</div><br>
 			<button id="add-task">+</button>
 		</div>
-        <h1>Sidetracked<!--じ—っ--></h1>
+        <h1 id="h1">Sidetracked<!--じ—っ--></h1>
 		<span id="line"></span>
-		<h2>(we're preventing that)<!--(staaare)--></h2>
+		<h2 id="h2">(we're preventing that)<!--(staaare)--></h2>
 		<div id="counter">0/4 cycles</div><br>
         <p id="time-display">25:00</p>
         <button id="toggle-pomo">Start Pomodoro</button>
 		<button id="stop">Stop</button>
-		<br><br>
-        <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
+		<p style="color: var(--light)"><span style="font-family: 'Hachi Maru Pop', sans-serif">❀</span> Keep this tab open or split screen to ensure the timer works properly!</p><br>
+		<br>
+        <h3><a href="https://nunnerrs.github.io/index.html" id="nunnerverse" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
 		<script src="script.js"></script>
     </body>
 </html>
