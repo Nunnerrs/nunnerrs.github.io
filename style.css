@@ -237,6 +237,15 @@ tiny {
 }
 */
 
+@media screen and (max-width: 600px) {
+    img {
+        width: 33.3vw;
+    }
+    .p {
+        font-size: 2.65vw;
+    }
+}
+
 @media screen and (max-width: 800px) {
     #feedback {
         height: 12.5vw;

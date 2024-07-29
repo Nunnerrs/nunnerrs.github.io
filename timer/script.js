@@ -523,11 +523,11 @@ function setTheme(h, s, l) {
 	let root = document.createElement("style");
 	root.id = "custom-color";
 	root.innerHTML = `:root {
-		--main: hsl(` + h + "deg, " + s + "%, " + 70 + `%);
-    	--light: hsl(` + h + "deg, " + s + "%, " + 85 + `%);
-    	--dark: hsl(` + h + "deg, " + s + "%, " + 25 + `%);
-    	--settings: hsla(` + h + "deg, " + s + "%, " + 20 + `%, 0.5);
-		--settings-mobile: hsl(` + h + "deg, " + s + "%, " + 20 + `%);
+		--main: hsl(` + h + "deg, " + s + `%, 70%);
+    	--light: hsl(` + h + "deg, " + s + `%, 85%);
+    	--dark: hsl(` + h + "deg, " + s + `%, 25%);
+    	--settings: hsla(` + h + "deg, " + s + `%, 20%, 0.5);
+		--settings-mobile: hsl(` + h + "deg, " + s + `%, 20%);
 	}`;
 	if (find("custom-color") != null) {
 		find("custom-color").remove();
@@ -805,7 +805,6 @@ var ph = false;
 if ((ph == true || window.location.href.match(/#ph/i) || window.location.href.toLowerCase().match("ph")) && jp == false) {
 	ph = true;
 	find("h1").innerHTML = "Palaging distrakted";
-	line.remove();
 	find("h2").innerHTML = "(makakatulong kami)";
 	tp.innerHTML = phText.pomoStart;
 	stop.innerHTML = phText.stop;
@@ -826,6 +825,7 @@ if ((ph == true || window.location.href.match(/#ph/i) || window.location.href.to
 	if (taskContainer.classList.value.match("no-tasks")) {
 		taskContainer.innerHTML = phText.noTasks;
 	}
+	find("tip").innerText = "Dapat palaging nakabukas ang tab nito o naka split-screen ka para maggagana ito!"
 	find("nunnerverse").innerHTML = "Papunta sa NanerBers²";
 }
 
