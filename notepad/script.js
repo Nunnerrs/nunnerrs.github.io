@@ -5,6 +5,9 @@ var themeBtn = document.querySelector("#theme");
 var saveBtn = document.querySelector("#save");
 var sc = true;
 var darkTheme = false;
+if (localStorage.getItem("darkMode") == "true") {
+    theme();
+}
 
 var t = document.querySelector("#textbox");
 var w = document.body.clientWidth;
@@ -31,6 +34,7 @@ function load() {
 };
 
 function save() {
+    localStorage.setItem("darkMode", darkTheme);
     localStorage.setItem("sc", sc);
     setTimeout(function() {
         localStorage.setItem("notes", document.querySelector("#textbox").value);
@@ -56,29 +60,26 @@ function toggleSpellCheck() {
 
 function theme() {
     darkTheme = darkTheme == true ? false : true;
-    let h = document.querySelector("#h");
-    let nv = document.querySelector("#nv");
-    let l = "theme-light";
-    let d = "theme-dark";
+    //let h = document.querySelector("#h");
+    //let nv = document.querySelector("#nv");
     if (darkTheme == true) {
-        b.style.backgroundColor = "rgb(125, 105, 70)";
+        b.classList.add("theme-dark");
+        b.classList.remove("theme-light");
+        /*b.style.backgroundColor = "rgb(125, 105, 70)";
         h.style.color = "rgb(245, 225, 175)";
-        /*scBtn.style.backgroundColor = "rgb(255, 225, 150)";
-        themeBtn.style.backgroundColor = "rgb(255, 225, 150)";
-        saveBtn.style.backgroundColor = "rgb(255, 225, 150)";*/
         t.style.backgroundColor = "black";
-        t.style.color = "white";
+        t.style.color = "white";*/
         nv.style.color = "rgb(125, 225, 205)";
     } else {
-        b.style.backgroundColor = "rgb(255, 235, 200)";
+        b.classList.add("theme-light");
+        b.classList.remove("theme-dark");
+        /*b.style.backgroundColor = "rgb(255, 235, 200)";
         h.style.color = "rgb(64, 59, 50)";
-        /*scBtn.style.backgroundColor = "rgb(255, 225, 150)";
-        themeBtn.style.backgroundColor = "rgb(255, 225, 150)";
-        saveBtn.style.backgroundColor = "rgb(255, 225, 150)";*/
         t.style.backgroundColor = "white";
-        t.style.color = "black";
+        t.style.color = "black";*/
         nv.style.color = "rgb(0, 125, 100)";
     };
+    save();
 };
 
 load();

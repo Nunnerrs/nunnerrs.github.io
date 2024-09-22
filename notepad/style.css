@@ -1,0 +1,54 @@
+a {
+    text-decoration: none;
+}
+body {
+    background-color: rgb(255, 235, 200);
+    font-family: "Comic Sans MS", "Chalkboard SE";
+    margin: auto;
+    text-align: center;
+}
+button {
+    background: rgb(255, 225, 150);
+    border-color: rgb(255, 220, 150);
+    border-radius: 5px;
+    border-style: hidden hidden outset hidden;
+}
+h1 {
+    color: rgb(64, 59, 50);
+}
+textarea {
+    border-color: rgb(191, 176, 150);
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    resize: vertical;
+}
+textarea {
+    background-color: white;
+    color: black;
+}
+.icon {
+    font-size: 32px;
+    margin: 5px;
+}
+body.theme-dark {
+    background: rgb(125, 105, 70);
+}
+body.theme-dark > h1 {
+    color: rgb(245, 225, 175);
+}
+body.theme-dark > textarea {
+    background: black;
+    color: white;
+}
+
+body.theme-light {
+    background: rgb(255, 235, 200);
+}
+body.theme-light > h1 {
+    color: rgb(64, 59, 50);
+}
+body.theme-light > textarea {
+    background: white;
+    color: black;
+}
