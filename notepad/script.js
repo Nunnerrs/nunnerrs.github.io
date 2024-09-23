@@ -61,7 +61,7 @@ function toggleSpellCheck() {
 function theme() {
     darkTheme = darkTheme == true ? false : true;
     //let h = document.querySelector("#h");
-    //let nv = document.querySelector("#nv");
+    let nv = document.querySelector("#nv");
     if (darkTheme == true) {
         b.classList.add("theme-dark");
         b.classList.remove("theme-light");
