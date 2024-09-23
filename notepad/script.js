@@ -6,7 +6,7 @@ var saveBtn = document.querySelector("#save");
 var sc = true;
 var darkTheme = false;
 if (localStorage.getItem("darkMode") == "true") {
-    theme();
+    window.onload = function(){theme()};
 }
 
 var t = document.querySelector("#textbox");
