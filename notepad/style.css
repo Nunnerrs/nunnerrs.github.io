@@ -1,54 +1,156 @@
+:root {
+    --comic: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+    --latte: rgb(255, 245, 225); /* cosmic latte */
+    --papaya: rgb(255, 235, 200); /* papaya whip */
+    --peach: rgb(255, 220, 150); /* peach yellow */
+    --e: rgb(235, 210, 160);
+    --khaki: rgb(191, 176, 150);
+    --mocha: rgb(60, 30, 0);
+}
+
 a {
     text-decoration: none;
 }
 body {
-    background-color: rgb(255, 235, 200);
-    font-family: "Comic Sans MS", "Chalkboard SE";
+    background: var(--papaya);
+    font-family: var(--comic);
     margin: auto;
     text-align: center;
 }
 button {
-    background: rgb(255, 225, 150);
-    border-color: rgb(255, 220, 150);
+    background: var(--peach);
+    border-color: var(--peach);
     border-radius: 5px;
     border-style: hidden hidden outset hidden;
+    font-family: var(--comic);
+}
+button:disabled {
+    color: black;
+}
+gap {
+    display: block;
 }
 h1 {
-    color: rgb(64, 59, 50);
-}
-textarea {
-    border-color: rgb(191, 176, 150);
-    border-radius: 5px;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 14px;
-    resize: vertical;
+    color: var(--mocha);
 }
 textarea {
     background-color: white;
+    border-color: var(--khaki);
+    border-radius: 0 0 10px 10px;
+    border-style: solid;
+    border-width: 1px 2px 1px 1px;
     color: black;
+    font-family: Courier, monospace;
+    font-size: 14px;
+    height: 75%;
+    resize: vertical;
+    width: 99%;
+}
+.current {
+    background-color: var(--peach) !important;
 }
 .icon {
     font-size: 32px;
     margin: 5px;
 }
-body.theme-dark {
-    background: rgb(125, 105, 70);
+.note-tab {
+    background-color: var(--peach);
+    border-color: var(--khaki);
+    border-radius: 10px 10px 0 0;
+    border-style: solid;
+    border-width: 0 2px 0 0;
+    word-break: break-all;
+    cursor: pointer;
+    display: block;
+    font-weight: 700;
+    padding: 2px;
+    width: 100%;
 }
-body.theme-dark > h1 {
-    color: rgb(245, 225, 175);
+.note-tab:not(.current) {
+    filter: contrast(0.8);
 }
-body.theme-dark > textarea {
-    background: black;
+/*.note-tab:active {
+    cursor: grabbing;
+}*/
+#add-note {
+    border-color: var(--khaki);
+    border-radius: 10px 10px 0 0;
+    border-style: solid;
+    border-width: 0 2px 0 0;
+    cursor: pointer;
+    min-width: 20px;
+    width: 5%;
+}
+#menu {
+    height: 50px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    text-align: right;
+    transition: opacity 0.5s;
+    /*transition: width 1s;
+    width: 0px;*/
+}
+#notepad {
+    margin: auto;
+    position: relative;
+    width: 75vw;
+}
+#notes {
+    display: inline-flex;
+    width: 99.5%;
+}
+#note-tabs {
+    display: inline-flex;
+    width: 99.9%;
+}
+#sketchy {
+    left: 0;
+    margin-left: 50px;
+    position: relative;
+    transition: margin-left 0.75s;
+    right: 0;
+}
+#sketchy-dialog {
+    background: var(--mocha);
+    border-radius: 5px;
     color: white;
+    font-family: Courier, monospace;
+    left: -100px;
+    padding: 5px;
+    position: absolute;
+    text-align: center;
+    top: 12%;
+    visibility: hidden;
+    width: fit-content;
+    z-index: 3;
 }
-
-body.theme-light {
-    background: rgb(255, 235, 200);
+#sketchy-dialog::after {
+    border-color: transparent transparent transparent var(--mocha);
+    border-style: solid;
+    border-width: 5px;
+    content: "";
+    left: 100%;
+    position: absolute;
+    top: 32%;
+    z-index: 3;
 }
-body.theme-light > h1 {
-    color: rgb(64, 59, 50);
+#sketchy-face {
+    height: 50px;
+    position: absolute;
+    z-index: 2;
 }
-body.theme-light > textarea {
-    background: white;
-    color: black;
+#sketchy-outline {
+    filter: brightness(0);
+    height: 52px;
+    z-index: 1;
+}
+#top-bar {
+    display: inline-flex;
+    margin-left: -50px;
+}
+@media screen and (max-width: 700px) {
+    #sketchy-dialog {
+        margin-right: 50px;
+    }
 }
