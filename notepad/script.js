@@ -21,6 +21,8 @@ var addNoteBtn = document.querySelector("#add-note");
 var t = document.querySelector("#textbox");
 var names = ["Notes 1"];
 
+var nv = document.querySelector("#nv");
+
 var mobile = false;
 var w = document.body.clientWidth;
 /*var height = document.body.clientHeight;
@@ -189,7 +191,6 @@ if (get("darkMode") == "true") {
 function theme() {
     darkTheme = darkTheme == true ? false : true;
     let h = document.querySelector("#h");
-    let nv = document.querySelector("#nv");
     if (darkTheme == true) {
         /*b.classList.add("theme-dark");
         b.classList.remove("theme-light");*/
