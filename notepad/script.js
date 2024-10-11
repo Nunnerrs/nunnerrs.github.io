@@ -185,7 +185,7 @@ function toggleSpellCheck() {
 scBtn.onclick = toggleSpellCheck;
 
 if (get("darkMode") == "true") {
-    theme();
+    //theme();
 }
 
 function theme() {
@@ -212,7 +212,7 @@ function theme() {
     }
     save();
 }
-themeBtn.onclick = theme;
+//themeBtn.onclick = theme;
 
 function addNote(addToTotal) {
     let maxNotes = 10;

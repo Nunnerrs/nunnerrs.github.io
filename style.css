@@ -36,16 +36,13 @@ button {
     font-family: 'Comic Sans MS', 'Chalkboard SE';
 }
 h1, #note {
-    /*color: var(--h1-color);*/
-    color: #caa910;
+    color: var(--h1-color);
 }
 h2 {
-    /*color: var(--h2-color);*/
-    color: #d8b413;
+    color: var(--h2-color);
 }
 h3, h5 {
-    /*color: var(--h3-color);*/
-    color: #e5c120;
+    color: var(--h3-color);
 }
 snow {
     animation: snowfall 20s infinite;
