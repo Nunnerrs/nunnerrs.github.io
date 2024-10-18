@@ -16,8 +16,7 @@ a:hover {
     color: var(--a-hover-color);
 }
 body {
-    /*background-color: var(--bg-color);*/
-    background-color: #faeeb9;
+    background-color: var(--bg-color);
     /*CANDYCANE-background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);*/
     /*BENNETT-background-image: url(https://us.genshindle.com/data/gallery/characters/high/bennett.webp);
     background-repeat: repeat;*/
