@@ -1,12 +1,27 @@
+/* WAWAWAWAAWAWAWAAAWAW ALERT dont forget to delete text stroke and font in h1 !!!! */
+/* REMERGE H1 AND #NOTE pls add back ^2 in nunnerverse h1*/
+
 :root {
-    --bg-color: rgb(204, 255, 223);
+	--bg-color: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);
+	--h1-color: white;
+    --h2-color: rgb(150, 50, 50);
+    --h3-color: rgb(210, 75, 75);
+	--tiny-color: rgb(255, 100, 100);
+	--a-color: rgb(255, 75, 75);
+    --a-hover-color: rgb(255, 150, 150);
+    /* DEFAULT
+	--bg-color: rgb(204, 255, 223);
     --h1-color: rgb(0, 102, 99);
     --h2-color: rgb(0, 135, 105);
     --h3-color: rgb(0, 150, 120);
-    --tiny-color: rgb(144, 232, 198);
+    --tiny-color: rgb(144, 232, 198);]
     --a-color: rgb(40, 160, 140);
-    --a-hover-color: rgb(23, 212, 155);
+    --a-hover-color: rgb(23, 212, 155);*/
     --button-color: rgb(100, 255, 175);
+}
+@font-face {
+	font-family: 'Merry Holiday';
+	src: url(assets/holiday-font.ttf);
 }
 a {
     /*color: rgb(0, 144, 113);*/
@@ -16,8 +31,7 @@ a:hover {
     color: var(--a-hover-color);
 }
 body {
-    background-color: var(--bg-color);
-    /*CANDYCANE-background: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);*/
+    background: var(--bg-color);
     /*BENNETT-background-image: url(https://us.genshindle.com/data/gallery/characters/high/bennett.webp);
     background-repeat: repeat;*/
     /*REDWHITEBLUE-background: repeating-linear-gradient(180deg, #FF9999, white 6%, white 7%, #00a7ff 11%, #FF9999 16%);*/
@@ -34,14 +48,29 @@ button {
     cursor: pointer;
     font-family: 'Comic Sans MS', 'Chalkboard SE';
 }
-h1, #note {
+h1 {
     color: var(--h1-color);
+	font-family: 'Merry Holiday', 'Comic Sans MS', 'Chalkboard SE';
+    font-size: 32pt;
+}
+h1 > span {
+    color: rgb(255, 235, 235);
+    font-family: 'Comic Sans MS';
+}
+#note {
+    color: var(--h1-color);
+    -webkit-text-stroke: 1px rgb(200, 62, 62);
 }
 h2 {
     color: var(--h2-color);
 }
 h3, h5 {
     color: var(--h3-color);
+}
+tiny {
+	/* to revert, edit tiny-color in :root*/
+    color: var(--tiny-color);
+    font-size: 1px;
 }
 snow {
     animation: snowfall 20s infinite;
@@ -52,14 +81,9 @@ snow {
     position: fixed;
     width: 10px;
 }
-tiny {
-    color: var(--tiny-color);
-    font-size: 1px;
-    padding-top: 2px;
-}
 @keyframes snowfall {
-    from {margin-top: -50px;}
-    to {margin-top: 150%}
+    from {top: -50px;}
+    to {top: 150%}
 }
 .br {
     display: block;
@@ -239,10 +263,19 @@ tiny {
 
 @media screen and (max-width: 600px) {
     img {
-        width: 33.3vw;
+        height: auto;
+        /*width: 33.3vw;*/
+        max-width: 50vw;
     }
-    .p {
+    /*.p {
         font-size: 2.65vw;
+    }*/
+    .p > p {
+        /*font-size: 0;*/
+        padding: 5px;
+    }
+    .project {
+    	display: block;
     }
 }
 
