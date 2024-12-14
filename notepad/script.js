@@ -12,6 +12,7 @@ var sc = true;
 var themeBtn = document.querySelector("#theme");
 var darkTheme = false;
 var saveBtn = document.querySelector("#save");
+var richText = true;
 
 var noteTabs = document.querySelector("#note-tabs");
 var notes = document.querySelector("#notes");
@@ -44,7 +45,7 @@ function load() {
         let data = get(n + number);
         //console.log(n + number);
         if (data != null) {
-            t.value = data;
+            t.innerHTML = data;
             //console.log("data loaded: " + data);
         }
         if (Number(total) > 1) {
@@ -90,8 +91,8 @@ function save() {
         if (note > 1) {
             n += note;
         }
-        localStorage.setItem(n, document.querySelector("#textbox").value);
-        //console.log("data saved: " + document.querySelector("#textbox").value);
+        localStorage.setItem(n, document.querySelector("#textbox").innerHTML);
+        //console.log("data saved: " + document.querySelector("#textbox").innerHTML);
     }, 1);
     localStorage.setItem("currentNote", note);
 	console.log("there are " + totalNotes);
@@ -240,7 +241,7 @@ function switchNote(n) {
     if (n == 1) {
         n = "";
     }
-    t.value = get("notes" + n);
+    t.innerHTML = get("notes" + n);
     save();
 }
 notes1.onclick = function(){switchNote(1)};
@@ -255,6 +256,19 @@ function bUp(button) {
 }
 
 load();
+document.body.onkeydown = function(e) {
+	//alert(document.activeElement.tagName);
+	if (e.key == "Tab" && document.activeElement.tagName == "TEXTAREA") {
+		e.preventDefault();
+		let start = t.selectionStart;
+		let end = t.selectionEnd;
+		let v = t.innerHTML;
+		t.innerHTML = v.substring(0, start) + "	" + v.substring(end, t.innerHTML.length);
+		t.selectionStart = start + 1;
+		t.selectionEnd = start + 1;
+		t.focus();
+	}
+}
 t.oninput = save;
 window.onbeforeunload = save;
 var menuBtns = menu.childNodes;
