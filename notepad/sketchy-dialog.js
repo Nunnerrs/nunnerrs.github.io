@@ -23,12 +23,17 @@ var dialog = [
     "Have a great day~",
     "Why not stand up and stretch!",
     "Stay hydrated!!",
-    "Merry Christmas!",
-    "Happy holidays!",
-    "guys santa claus is coming to town",
-    "'Tis the season to be jolly~",
     "Enjoy your week!",
     "You only live once~",
     "Keep pushing—You're almost there!",
     "Just believe!",
+    "Don't let others determine who you are!",
+    "YOU ARE CAPABLE OF GREAT THINGS",
+    "Do your best!",
+
+    /* HOLIDAYS */
+    /*"Merry Christmas!",
+    "Happy holidays!",
+    "guys santa claus is coming to town",
+    "'Tis the season to be jolly~",*/
 ];

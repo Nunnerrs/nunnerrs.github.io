@@ -204,11 +204,12 @@ const dialogs = [
 
 	// Room 1: House
 	[
-    	"Hey...I'm not really feeling so good.\n\nI'm pretty sick right now— *COUGH\nCOUGH*  :C\nCould you do me a favor? There's a\nfew things I want, but I can't get up\n'cause...you know. Anyways, I listed\nthem on the paper next to me.\n...You'll help? Aww, thanks buddy.",
-        "Things to do: nothing in particular\n\nYou: I should get them some flowers\nfirst.",
-        "A—Are those for me?? Thanks so much!\n\n*sniff* Mmmm! These smell so good.",
-        "The room smells so much nicer now.\n\nOh, and I have a couple favors for\nyou.\nThey're listed on the paper beside\nme.",
-        "Things to do: buy medicine",
+    	"\"Hey…I'm not really feeling so good.\"\n\n\"I'm pretty sick right now—\"\n*COUGH COUGH* \"aagh…\"\n\"Could you do me a favor? There's\na few things I need to do, but I\ncan't get up 'cause...you know.\"\n\"Anyways, I listed them on the paper\nnext to me.\"\n\"…You'll help? Aww, thanks buddy.\"",
+        "Things to do: nothing in particular.\n\n[I should get them some flowers\nfirst.]",
+        "\"…Are those for me? Thanks so much!\"\n\n*sniff* \"Mmmm! These smell so good.\"",
+        "\"The room smells so much nicer now.\"\n\n\"Oh, and I have some more favors for\nyou.\"\n\"They're listed on the paper beside\nme.\"",
+        "Things to do: buy medicine\n\n[You notice several dollar bills next\nto the paper.]\n\"",
+        "Thanks"
     ],
     // Room 2: Outside
     [

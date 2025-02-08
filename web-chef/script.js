@@ -14,17 +14,17 @@ var tutorialStep = 0;
 var tutorialCompleted = false;
 if (localStorage.getItem("tutorialCompleted") != null) {
     tutorialCompleted = true;
-};
+}
 var money = 10;
 var moneyDisplay = document.getElementById("money");
 if (localStorage.getItem("money") != null) {
     money = Number(localStorage.getItem("money"));
-};
+}
 moneyDisplay.innerHTML = money;
 var totalMoney = 10;
 if (localStorage.getItem("totalMoney") != null) {
     totalMoney = Number(localStorage.getItem("totalMoney"));
-};
+}
 var notifContainer = document.getElementById("notif-container");
 var alertContainer = document.getElementById("alert-container");
 var alertText = document.getElementById("alert-text");
@@ -36,15 +36,15 @@ var customers = 0;
 var maxCustomers = 3;
 if (localStorage.getItem("maxCustomers") != null) {
     maxCustomers = Number(localStorage.getItem("maxCustomers"));
-};
+}
 var customerRate = 15000; // milliseconds
 if (localStorage.getItem("customerRate") != null) {
     customerRate = Number(localStorage.getItem("customerRate"));
-};
+}
 var totalCustomers = 0;
 if (localStorage.getItem("totalCustomers") != null) {
     totalCustomers = Number(localStorage.getItem("totalCustomers"));
-};
+}
 var ingredients = document.getElementById("ingredients");
 var ingSearch = document.getElementById("ing-search");
 var ingSearchError = document.getElementById("ing-search-error");
@@ -61,13 +61,13 @@ var stock = 25;
 var stockDisplay = document.getElementById("stock");
 if (localStorage.getItem("stock") != null) {
     stock = Number(localStorage.getItem("stock"));
-};
+}
 stockDisplay.innerHTML = stock;
 var storage = 25;
 var storageDisplay = document.getElementById("max-storage");
 if (localStorage.getItem("storage") != null) {
     storage = Number(localStorage.getItem("storage"));
-};
+}
 storageDisplay.innerHTML = storage;
 var buyStock5 = document.getElementById("buy-stock-5");
 var buyStock10 = document.getElementById("buy-stock-10");
@@ -85,7 +85,7 @@ var hireRestocker = document.getElementById("hire-restocker");
 var restockers = 0;
 if (localStorage.getItem("restockers") != null) {
     restockers = Number(localStorage.getItem("restockers"));
-};
+}
 var restockerPrice = 100;
 var buyIndex = document.getElementById("buy-index");
 var indexPrice = 250;
@@ -98,7 +98,7 @@ if (localStorage.getItem("index") == "true") {
     index = true;
 	indexButton.style.visibility = "visible";
     //ingSearch.setAttribute("list", "ing-selection");
-};
+}
 var saveButton = document.getElementById("save-button");
 var eraseDataButton = document.getElementById("erase-data-button");
 var statsButton = document.getElementById("stats-button");
@@ -112,18 +112,18 @@ const customerNames = [
     /*PGS NPCs*/		"Azalea", "Malo", "Billy Bob Joe",
     /*CGT NPCs*/		"Jack", "Holly", "Jake", "Daisy",
     /*Bandori*/			"Marina", "Arisa Ichigaya", "Kasumi Toyama", "Rimi Ushigome", "Saaya Yamabuki", "Tae Hanazono", "Himari Uehara", "Moca Aoba", "Ran Mitake", "Tomoe Udagawa", "Tsugumi Hazawa", "Chisato Shirasagi", "Eve Wakamiya", "Hina Hikawa", "Maya Yamato", "Hagumi", "Kanon Matsubara", "Kaoru Seta", "Kokoro Tsurumaki", "Michelle", "Misaki", "Ako Udagawa", "Lisa Imai", "Rinko", "Sayo Hikawa", "Yukina Minato", "Mashiro Kurata", "Nanami Hiromachi", "Rui", "Touko Kirigaya", "Tsukushi Futaba", "CHU²", "LAYER", "LOCKE", "MASKING", "PAREO",
-    /*TBHK*/			"Nene Yashiro", "Hanako", "Kou Minamoto", "Aoi Akane", "Akane Aoi", "Teru Minamoto", "Lemon Yamabuki", "Sousuke Mitsuba", "Tsukasa", "Sakura Nanamine", "Natsuhiko Hyuuga", "Yako", "Tsuchigomori", "Yokoo", "Satou", "Cult", "Lili", "Clyde", "Alex",
-    /*Yeen's friends*/	"Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah", "Colette", "Makayla", "Kimora",
-    /*NunnerLibrary*/	"Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus", "Sasha", "Billy", "Bob", "Joe", "Liva", "Cory", "Eve", "Cole", "Phoebe", "Sarah", "Saki", "Micah", "Whiskey Pete", "Valentine", "Morgan O'Connell", "Buddy Hawkins", 
+    /*TBHK*/			"Nene Yashiro", "Hanako", "Kou Minamoto", "Aoi Akane", "Akane Aoi", "Teru Minamoto", "Lemon Yamabuki", "Sousuke Mitsuba", "Tsukasa", "Amane Yugi", "Sakura Nanamine", "Natsuhiko Hyuuga", "Yako", "Tsuchigomori", "Yokoo", "Satou", "Cult", "Lili", "Clyde", "Alex",
+    /*Yeen's friends*/	"Evilyn", "b a c h a n", "Sebastian", "Mina", "Liam", "Valerie", "Karmynnah", "Colette", "Makayla", "Kimora", "Dia", "Mina",
+    /*NunnerLibrary*/	"Pinky", "Mint", "Hope", "Noah", "Richard", "Marcus", "Sasha", "Billy", "Bob", "Joe", "Liva", "Cory", "Eve", "Cole", "Phoebe", "Sarah", "Saki", "Micah", "Whiskey Pete", "Valentine", "Morgan O'Connell", "Buddy Hawkins", "Warami", "Tatakashi", "Akari", "Hikari", "Third Guy",
     /*Pokémon*/			"Shuckle", "Ash Ketchum", "Satoshi", "Misty", "Brock", "Jessie", "James", "Meowth", "May", "Dawn", "Iris", "Cilan", "Serena", "Clement", "Bonnie", "Lana", "Mao", "Kaki", "Lilie", "Sophocles", "Goh", "Chloe", "Koharu",
     /*Comic book*/		"Bill", "Roski", "Ginny", "Emily", "Rebekka", "Joey", "Charlyy", "Bobby", "Susan", "Pippi", "Althea", "Derek", "Alford", "Rosabella", "Steven", "Collin",
     /*Mochi Squishies*/	"Marshmallow", "Ginger", "Vered", "Snowy", "Blossom", "Melody", "Peep", "Piper", "Sunny", "Honey", "Gummy", "Snoopy", "Mrs. Polar", "Sharpie",
     /*Roblox Youtubers*/"Flamingo", "Denis", "Leah Ashe", "Kreek", "Kevin", "Sketch", "ItsFunneh", "LankyBox", "Laughability", "Russo", "Sabrina",
-    /*Roblox*/          "Carl", "Builderman", "David Baszucki", "Barry", "Jandel", "Poppy",
+    /*Roblox*/          "Noob", "Bacon Man", "Guest", "Guest 666", "Carl", "Builderman", "David Baszucki", "Barry", "Jandel", "Piggy", "Poppy",
     /*Random*/          "You", "Your Mom", "Your Dad", "Nobody", "???",
-	/*Genshin*/			"Aether", "Albedo", "Amber", "Arataki Itto", "Barbara", "Beidou", "Bennett", "Candace", "Charlotte", "Chasca", "Chevreuse", "Chongyun", "Citlali", "Collei", "Cyno", "Dainsleif", "Dehya", "Diluc", "Diona", "Dori", "Eula", "Faruzan", "Fiscl", "Freminet", "Furina", "Gaming", "Ganyu", "Gorou", "Hu Tao", "Kachina", "Kaedehara Kazuha", "Kaeya", "Kamisato Ayaka", "Kamisato Ayato", "Keqing", "Kinich", "Klee", "Kujou Sara", "Kuki Shinobu", "Layla", "Lisa", "Lumine", "Lynette", "Lyney", "Mavuika", "Mika", "Mona", "Mualani", "Nahida", "Navia", "Neuvillette", "Nilou", "Ningguang", "Noelle", "Ororon", "Paimon", "Qiqi", "Raiden Shogun", "Razor", "Rosaria", "Sangonomiya Kokomi", "Sayu", "Shenhe", "Shikanoin Heizou", "Sucrose", "Tartaglia", "Thoma", "Tighnari", "Traveler", "Venti", "Wanderer", "Wriothesley", "Xiangling", "Xianyun", "Xiao", "Xilonen", "Xingqiu", "Xinyan", "Yae Miko", "Yanfei", "Yaoyao", "Yelan", "Yoimiya", "Yun Jin", "Zhongli",
+	/*Genshin*/			"Aether", "Albedo", "Amber", "Arataki Itto", "Barbara", "Beidou", "Bennett", "Candace", "Charlotte", "Chasca", "Chevreuse", "Chongyun", "Citlali", "Collei", "Cyno", "Dainsleif", "Dehya", "Diluc", "Diona", "Dori", "Eula", "Faruzan", "Fiscl", "Freminet", "Furina", "Gaming", "Ganyu", "Gorou", "Hu Tao", "Kachina", "Kaedehara Kazuha", "Kaeya", "Kamisato Ayaka", "Kamisato Ayato", "Keqing", "Kinich", "Klee", "Kujou Sara", "Kuki Shinobu", "Lan Yan", "Layla", "Lisa", "Lumine", "Lynette", "Lyney", "Mavuika", "Mika", "Mona", "Mualani", "Nahida", "Navia", "Neuvillette", "Nilou", "Ningguang", "Noelle", "Ororon", "Paimon", "Qiqi", "Raiden Shogun", "Razor", "Rosaria", "Sangonomiya Kokomi", "Sayu", "Shenhe", "Shikanoin Heizou", "Sucrose", "Tartaglia", "Thoma", "Tighnari", "Traveler", "Venti", "Wanderer", "Wriothesley", "Xiangling", "Xianyun", "Xiao", "Xilonen", "Xingqiu", "Xinyan", "Yae Miko", "Yanfei", "Yaoyao", "Yelan", "Yoimiya", "Yumemizuki Mizuki", "Yun Jin", "Zhongli",
 	/*Sanrio*/			"Gudetama", "Cinnamoroll", "Pom Pom Purin", "Keroppi", "Chococat", "Kuromi", "My Melody", "Hello Kitty", "Pochacco",
-	/*Rascal haha*/		"Sakuta Azusagawa", "Mai Sakurajima", "Rio Futaba", "Tomoe Koga",  "Kaede Azusagawa", "Yuuma Kunimi", "Saki Kamisato",
+	/*Rascal haha*/		"Sakuta Azusagawa", "Mai Sakurajima", "Rio Futaba", "Tomoe Koga",  "Kaede Azusagawa", "Shouko Makinohara", "Yuuma Kunimi", "Saki Kamisato",
     /*Komi Can't Comm.*/"Komi", "Tadano", "Najimi", "Agari", "Yamai", "Nakanaka", "Onemine", "Otori", "Katai", "Naruse", "Kometani", "Katou", "Sasaki",
 ];
 const ingredientsList = {
@@ -218,7 +218,7 @@ for (let i = 0; i < ingIndexList.length; i++) {
 	b.onclick = function(){console.log(ing.emoji); ingSearch.value = ing.emoji; addIng({key: "Enter"});};
 	b.title = ing.name;
 	indexBox.appendChild(b);
-};
+}
 
 // Initial profits are calculated by (# ing × 2)
 // Sorted by profit, alphabetical name (descending order)
@@ -268,13 +268,13 @@ for (let i = 0; i < foodList.length - 2; i++) {
     let name = "";
     for (let j = 0; j < splitName.length; j++) {
         name = name + splitName[j];
-    };
+    }
     if (localStorage.getItem(name) != null) {
         if (localStorage.getItem(name) == "true" || localStorage.getItem(name) == true) {
             foodList[i]["unlocked"] = true;
-        };
-    };
-};
+        }
+    }
+}
 const recipes = [...foodList].reverse();
 const unlocked = [];
 recipeName.innerHTML = recipes[page]["emoji"] + " " + recipes[page]["name"] + "<br>Unlocked: " + (recipes[page]["unlocked"] == true ? "<emoji>✅</emoji>" : "<emoji>❎</emoji>") + "<br> Profit: $" + recipes[page]["profit"];
@@ -282,7 +282,7 @@ recipeIng.innerHTML = "";
 let ing = recipes[page]["ingList"].split(",");
 for (let i = 0; i < ing.length; i++) {
     recipeIng.innerHTML = recipeIng.innerHTML + "<li>" + ing[i] + "</li>";
-};
+}
 
 const achievements = [ // {id: NUMBER, name: "ACHIEVEMENT", desc: "BRIEFDESCRIPTION", unlocked: false},
     {id: 1, name: "Master Chef", desc: "Unlock all " + foodList.length + " recipes", unlocked: false},
@@ -316,9 +316,9 @@ for (let i = 0; i < achievements.length; i++) {
     if (localStorage.getItem("achievement" + a) != null) {
         if (localStorage.getItem("achievement" + a) == "true" || localStorage.getItem("achievement" + a) == true) {
             achievements[i]["unlocked"] = true;
-        };
-    };
-};
+        }
+    }
+}
 
 function notify(notifText, time){
     if (notifText != null) {
@@ -329,7 +329,7 @@ function notify(notifText, time){
         notifContainer.appendChild(notif);
         if (time == null) {
             time = 5000;
-        };
+        }
 		setTimeout(function(){notif.remove()}, time);
 		/*
         setTimeout(function(){
@@ -354,22 +354,22 @@ function notify(notifText, time){
                 notif.remove();
             };
         }, time);*/
-    };
-};
+    }
+}
 
 function alert(text) {
 	if (indexBox.style.visibility == "visible") {
 		indexBox.style.visibility = "hidden";
 		closeIndex.style.visibility = "hidden";
-	};
+	}
 	if (alertContainer.style.visibility == "visible") {
 		ok();
-	};
+	}
 	if (text.match("Achievements:")) {
 		alertText.style.textAlign = "left";
 	} else {
 		alertText.style.textAlign = "";
-	};
+	}
 	let title = text.split(":")[0].trim();
 	if (title.match("Achievements") || title.match("Your Stats") || title.match("Keybinds")) {
 		let span = document.createElement("span");
@@ -377,28 +377,28 @@ function alert(text) {
 		span.innerHTML = title;
 		alertContainer.insertBefore(span, alertContainer.firstChild);
 		text = text.split(title + ":")[1].trim();
-	};
+	}
 	alertText.innerHTML = text;
 	alertContainer.style.visibility = "visible";
-};
+}
 
 function ok() {
 	alertText.innerHTML = "";
 	alertContainer.style.visibility = "hidden";
 	if (document.getElementById("header")) {
 		document.getElementById("header").remove();
-	};
+	}
 	if (tutorialStep == 4) {
 		tutorialStep = 0;
 		alert("When certain customers order specific food or find a secret, you gain an achievement! View all your achievements by clicking the " + achievementsButton.innerHTML + " button. Show them off to your friends and family!<br><br>See your total money, recipes, upgrades and more by pressing the " + statsButton.innerHTML + " button. Check out all the keybinds by clicking the [A] button. If you want to redo the tutorial, click on the i button. Happy cooking!");
 		localStorage.setItem("tutorialCompleted", "true");
-	};
-};
+	}
+}
 
 function cancel() {
 	alertText.innerHTML = "";
 	alertContainer.style.visibility = "hidden";
-};
+}
 
 function customer(t) {
     if (customers < maxCustomers) {
@@ -411,17 +411,17 @@ function customer(t) {
             while (ordersList.innerHTML.match(customerName) && names < maxNames) {
                 customerName = customerNames[Math.floor(Math.random() * customerNames.length)];
                 names++;
-            };
+            }
             if (names >= maxNames) {
                 customerName = customerNames[Math.floor(Math.random() * customerNames.length)];
-            };
-        };
+            }
+        }
 		let order = randomFood();
 		if (t == true) {
 			let rb = {emoji: "🍙", ing: "🍚", ingList: "Rice", name: "Rice Ball", profit: 1.5, unlocked: true};
 			let fries = {emoji: "🍟", ing: "🥔", ingList: "Potato", name: "French Fries", profit: 2, unlocked: true};
         	order = Math.floor(Math.random() * 2) == 0 ? rb : fries;
-		};
+		}
         unlocked.length = 0;
         customer.innerHTML = "<emoji>" + order["emoji"] + "</emoji> ~ $" + order["profit"] + " ~ " + customerName;
         customer.dataset.order = order;
@@ -437,8 +437,8 @@ function customer(t) {
         ordersList.appendChild(customer);
 		setOrderCount();
 		return order;
-    };
-};
+    }
+}
 
 function setOrderCount() {
 	orderCount.innerHTML = "(" + customers + "/" + maxCustomers + ")";
@@ -448,11 +448,11 @@ function randomFood() {
     for (let i = 0; i < foodList.length; i++) {
         if (foodList[i]["unlocked"] == true) {
             unlocked.push(foodList[i]);
-        };
-    };
+        }
+    }
     //unlocked.unshift(foodList[foodList.length - 1]);
     return unlocked[Math.floor(Math.random() * unlocked.length)];
-};
+}
 
 function serveCustomer(order, customer) {
 	let proceed = false;
@@ -478,7 +478,7 @@ function serveCustomer(order, customer) {
             award(18);
         } else if (totalCustomers >= 1000) {
             award(19);
-        };
+        }
         money += order["profit"];
         totalMoney += order["profit"];
         moneyDisplay.innerHTML = money;
@@ -487,8 +487,8 @@ function serveCustomer(order, customer) {
             if (foodList[i]["unlocked"] == false) {
                 unlockedAll = false;
                 break;
-            };
-        };
+            }
+        }
         let customerName = customer.dataset.name;
         let rng = Math.floor(Math.random() * 25);
         if (rng == 0 && unlockedAll == false) {
@@ -497,51 +497,51 @@ function serveCustomer(order, customer) {
             let tip = Math.round(order["profit"] / 2)
             if (order["emoji"] != "🍙" && rng >= 0 && rng <= 2) {
                 tip += 0.5;
-            };
+            }
             money += tip;
             totalMoney += tip;
             moneyDisplay.innerHTML = money;
             notify(customer.dataset.name + " tipped you $" + tip + "!", 5000);
-        };
+        }
 		if (tutorialStep == 3) {
 			tutorialStep++;
 			alert("Yay, you earned money! As you make more food, you'll begin to run out of stock. Use your money to refill your ingredients or buy upgrades like new recipes and more seating.");
-		};
+		}
         let orderEmoji = order["emoji"];
         if (customerName.match("Moca") != null && orderEmoji == "🥖") {
             award(2);
-        };
+        }
         if ((customerName.match("Holly") != null || customerName.match("Malo") != null) && orderEmoji == "🥗") {
             award(3);
-        };
+        }
         if (customerName.match("Skylar") != null && orderEmoji == "🧃") {
             award(4);
-        };
+        }
         if ((customerName.match("Hina") != null || customerName.match("Sayo") != null) && orderEmoji == "🍟") {
             award(5);
-        };
+        }
         if (customerName.match("Brock") != null && orderEmoji == "🍙") {
             award(6);
-        };
+        }
         if (customerName.match("Rebecca") != null && orderEmoji == "🍰") {
             award(7);
-        };
+        }
         if ((customerName.match("Peep") != null || customerName.match("Piper") != null || customerName.match("Sunny") != null) && orderEmoji == "🍳") {
             award(8);
-        };
+        }
         if ((customerName.match("Hanako") != null || customerName.match("Tsukasa") != null) && orderEmoji == "🍩") {
             award(20);
-        };
+        }
         if (customerName.match("Pippi") != null && orderEmoji == "🍕") {
             award(21);
-        };
+        }
         if (customerName.match("Whiskey Pete") != null && orderEmoji == "🍸") {
             award(24);
-        };
+        }
         customer.remove();
 		setOrderCount();
-    };
-};
+    }
+}
 
 function findIng() {
     let i = ingSearch.value.toLowerCase().trim();
@@ -556,8 +556,8 @@ function findIng() {
         return i;
     } else {
         return null;
-    };
-};
+    }
+}
 
 function addIng(e) {
     let add = function(i){
@@ -567,11 +567,11 @@ function addIng(e) {
                 ingredients.style.color = "white";
                 makeFoodButton.disabled = false;
                 clearIng.disabled = false;
-            };
+            }
             ingSearch.value = "";
             if (window.orientation > 1) {
                 //ingSearch.blur();
-            };
+            }
             ingredients.innerHTML = ingredients.innerHTML + i;
             //stock -= i.length/2;
             stock -= 1;
@@ -582,11 +582,11 @@ function addIng(e) {
                     notify("oh looks like you found a worm in the apple… (Secret #7)", 15000);
                     setTimeout(function(){award(23)}, 1000);
                 }, 1000);
-            };
+            }
         } else {
             ingSearchError.innerHTML = "You don't have enough ingredients!";
             setTimeout(function() {ingSearchError.innerHTML = "";}, 2500);
-        };
+        }
     };
     if (e.key == "Enter") {
         let ing = findIng();
@@ -628,18 +628,20 @@ function addIng(e) {
 					if (tutorialStep == 1) {
 						tutorialStep++;
 						ingSearch.blur();
+						ingSearch.style.border = 0;
+						makeFoodButton.style.border = "solid rgb(0, 175, 255) 4px"
 						alert("Great! Next, click the \"" + makeFoodButton.innerHTML + "\" button to turn them into food!");
-					};
-                };
+					}
+                }
             } else if (typeof ing == "object") {
                 let bulkIng = "";
                 for (let i = 0; i < ing.length; i++) {
                     if (ingredientsList[ing[i]]) {
                         bulkIng += ingredientsList[ing[i]];
-                    };
-                };
+                    }
+                }
                 add(bulkIng);
-            };
+            }
         } else if (ing != null && stock < 1) {
             ingSearchError.innerHTML = "You don't have enough ingredients!";
             setTimeout(function() {ingSearchError.innerHTML = "";}, 2500);
@@ -647,10 +649,10 @@ function addIng(e) {
             if (ingSearch.value != "" && ingSearch.value != null) {
                 ingSearchError.innerHTML = "Invalid ingredient \"" + ingSearch.value + "\"! Check your spelling";
                 setTimeout(function() {ingSearchError.innerHTML = "";}, 2500);
-            };
-        };
-    };
-};
+            }
+        }
+    }
+}
 
 function makeFood() {
     // loop through each recipe
@@ -664,8 +666,9 @@ function makeFood() {
             //console.log("found food: " + foodList[i]["emoji"]);
 			if (tutorialStep == 2) {
 				tutorialStep++;
+				makeFoodButton.style.border = 0;
 				alert("Now that you've made the food, click the \"Serve\" button in the Orders menu");
-			};
+			}
             break;
         } else {
             // convert string variables into arrays (emojis)
@@ -684,13 +687,13 @@ function makeFood() {
 						input.push(emoji);
 						//console.log(emoji);
 						emoji = null;
-					};
+					}
 				} else {
 					//console.log(j + tOffset);
 					tOffset++;
 					continue;
-				};
-            };
+				}
+            }
 			//console.log(input);
             let ring = r.ing;
             let rIng = [];
@@ -704,13 +707,13 @@ function makeFood() {
 						rIng.push(emoji);
 						//console.log(emoji);
 						emoji = null;
-					};
+					}
 				} else {
 					//console.log(j + rOffset);
 					rOffset++;
 					continue;
-				};
-            };
+				}
+            }
             
             // compare each recipe ing with table ing
             for (let j = 0; j < rIng.length; j++) {
@@ -726,9 +729,9 @@ function makeFood() {
 						//console.log(rIng[j] + " = " + input[k]);
                         j -= 1;
                         break;
-                    };
-                };
-            };
+                    }
+                }
+            }
             //console.log(rIng);
             /*
             for (let i2 = 0; i2 < ingredients.innerHTML.length - 1; i2++) {
@@ -750,9 +753,9 @@ function makeFood() {
             if (input == "" && rIng == "") {
                 ingredients.innerHTML = foodList[i]["emoji"];
                 break;
-            };
-        };
-    };
+            }
+        }
+    }
     
     // Valentine's Day secret
     /*if (ingredients.innerHTML == "🍫") {
@@ -760,20 +763,7 @@ function makeFood() {
 		notify("Happy Valentines Day! Thanks for playing Web Chef ❤️ (Secret #1)", 10000);
         award(10);
     };*/
-    
-    if (ingredients.innerHTML == "🌾🥚") {
-        notify("The Pancakes recipe has been updated; See updated recipe in Recipes book", 8000);
-    };
-    if (ingredients.innerHTML == "🧊") {
-        notify("The Shaved Ice recipe has been updated; See updated recipe in Recipes book", 8000);
-    };
-    if (ingredients.innerHTML == "🌾🍫") {
-        notify("The Cookie recipe has been updated; See updated recipe in Recipes book", 8000);
-    };
-    if (ingredients.innerHTML == "💧🥩🥬🫘🍋") {
-        notify("The Stew recipe has been changed to Paella; See updated recipe in Recipes book", 8000);
-    };
-};
+}
 
 function clear() {
     //if (stock + ingredients.innerHTML.length/2 < storage) {
@@ -802,14 +792,14 @@ function clear() {
 			i = "the rice back.";
 		} else if (ingredients.innerHTML.match("🥔")) {
 			i = "the potato back.";
-		};
+		}
 		alert("This button resets the ingredients on the table. Add " + i);
-	};
+	}
 	ingredients.innerHTML = "Empty"
     ingredients.style.color = "rgb(20, 65, 100)";
     makeFoodButton.disabled = true;
     clearIng.disabled = true;
-};
+}
 
 function flipPage() {
     recipeNum.innerHTML = page + 1;
@@ -822,22 +812,22 @@ function flipPage() {
 			ingredient = "???";
 		}
         recipeIng.innerHTML = recipeIng.innerHTML + "<li>" + ingredient + "</li>";
-    };
-};
+    }
+}
 
 function backPage() {
     if (page > 0) {
         page -= 1;
         flipPage();
-    };
-};
+    }
+}
 
 function nextPage() {
     if (page < recipes.length - 1) {
         page++;
         flipPage();
-    };
-};
+    }
+}
 
 function addStock(ing) {
     let c = confirm("Buy " + ing + " ingredients for $" + ing/2 + "?");
@@ -855,13 +845,13 @@ function addStock(ing) {
             moneyDisplay.innerHTML = money;
             stock = storage;
             stockDisplay.innerHTML = stock;
-        };
+        }
     } else if (c == true && money < ing/2) {
         alert("You don't have enough money to buy this! (Price: $" + ing/2 + ")");
     } else {
         //alert("Error #1: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", ing is " + ing + ", stock is " + stock + ", storage is " + storage + ", c is " + c + ", money >= ing/2 is " + money >= ing/2 + ", stock + ing < storage is " + (stock + ing < storage));
-    };
-};
+    }
+}
 
 function addStorage() {
     let c = confirm("Buy 5 extra storage for $" + storagePrice + "?");
@@ -874,8 +864,8 @@ function addStorage() {
         alert("You don't have enough money to buy this! (Price: $" + storagePrice + ")");
     } else {
         //alert("Error #2: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", storagePrice is " + storagePrice + ", c is " + c + ", money >= storagePrice is " + money >= storagePrice);
-    };
-};
+    }
+}
 
 function unlockRecipe(loseMoney) {
     let paid = false
@@ -885,7 +875,7 @@ function unlockRecipe(loseMoney) {
         paid = true
     } else if (loseMoney == false) {
         paid = true;
-    };
+    }
     if (paid == true) {
         let unlocked = false;
         for (let i = 0; i < foodList.length; i++) {
@@ -898,30 +888,30 @@ function unlockRecipe(loseMoney) {
                     if (foodList[j]["unlocked"] == false) {
                         unlockedAll = false;
                         break;
-                    };
-                };
+                    }
+                }
                 if (unlockedAll == true) {
                     award(1);
-                };
+                }
                 notify("You unlocked the recipe for " + foodList[f]["name"] + "! (" + foodList[f]["emoji"] + ")", 5000);
                 saveData();
                 break;
-            };
-        };
+            }
+        }
         if (unlocked == false) {
             alert("You have already unlocked all " + foodList.length + " recipes!");
-        };
+        }
     } else {
         alert("You don't have enough money to buy this! (Price: $" + recipePrice + ")");
-    };
-};
+    }
+}
 
 function buyRecipe() {
     let c = confirm("Buy a random recipe for $" + recipePrice + "?");
     if (c == true) {
         unlockRecipe(true);
-    };
-};
+    }
+}
 
 function addSeating() {
     let c = confirm("Buy seating (+ 1 max customers) for $" + seatingPrice + "?");
@@ -934,8 +924,8 @@ function addSeating() {
         alert("You don't have enough money to buy this! (Price: $" + seatingPrice + ")");
     } else {
         //alert("Error #3: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", seatingPrice is " + seatingPrice + ", c is " + c + ", money >= seatingPrice is " + money >= seatingPrice);
-    };
-};
+    }
+}
 
 function addAd() {
     let c = confirm("Buy ad (customers arrive faster) for $" + adPrice + "?");
@@ -946,19 +936,19 @@ function addAd() {
             customerRate -= 3000;
             if (customerRate == 3000) {
                 award(16);
-            };
+            }
         } else {
             let notif = document.createElement("p");
             notif.innerHTML = "You can't buy any more ads! (Max of 4)";
             notifContainer.appendChild(notif);
             setTimeout(function(){notif.remove()}, 5000);
-        };
+        }
     } else if (c == true && money < adPrice) {
         alert("You don't have enough money to buy this! (Price: $" + adPrice + ")");
     } else {
         //alert("Error #4: Could not process request; If you see this message, screenshot it and show it to Nunners so she can fix this error. Data: money is " + money + ", adPrice is " + adPrice + ", c is " + c + ", money >= adPrice is " + money >= adPrice);
-    };
-};
+    }
+}
 
 function addRestocker() {
     let c = confirm("Hire a restocker (automatically restocks) for $" + restockerPrice + "?");
@@ -972,11 +962,11 @@ function addRestocker() {
             notif.innerHTML = "You can't hire any more restockers! (Max of 1)";
             notifContainer.appendChild(notif);
             setTimeout(function(){notif.remove()}, 5000);
-        };
+        }
     } else if (c == true && money < restockerPrice) {
         alert("You don't have enough money to buy this! (Price: $" + restockerPrice + ")");
-    };
-};
+    }
+}
 
 function addIndex() {
     let c = confirm("Buy ingredient index (easy ingredient selection) for $" + indexPrice + "?");
@@ -993,11 +983,11 @@ function addIndex() {
             notif.innerHTML = "You can't buy any more indexes! (Max of 1)";
             notifContainer.appendChild(notif);
             setTimeout(function(){notif.remove()}, 5000);
-        };
+        }
     } else if (c == true && money < indexPrice) {
         alert("You don't have enough money to buy this! (Price: $" + indexPrice + ")");
-    };
-};
+    }
+}
 
 /*
 function addPRODUCT() {
@@ -1014,14 +1004,14 @@ function addPRODUCT() {
             // if it's a worker put "hire" instead of "buy"
             notifContainer.appendChild(notif);
             setTimeout(function(){notif.remove()}, 5000);
-        };
+        }
     } else if (c == true && money < _PRICEVARIABLE) {
         alert("You don't have enough money to buy this! (Price: $" + _PRICEVARIABLE + ")");
-    };
-};
+    }
+}
 */
 
-function saveData() {
+function saveData(sendNotif) {
     if (saveButton.disabled != true) {
         localStorage.setItem("money", money);
         localStorage.setItem("totalMoney", totalMoney);
@@ -1037,19 +1027,21 @@ function saveData() {
             let name = "";
             for (let j = 0; j < splitName.length; j++) {
                 name = name + splitName[j];
-            };
+            }
             localStorage.setItem(name, foodList[i]["unlocked"].toString());
-        };
+        }
         for (let i = 0; i < achievements.length - 1; i++) {
             let a = achievements[i];
             localStorage.setItem("achievement" + a["id"].toString(), a["unlocked"].toString());
-        };
-        saveButton.disabled = true;
+        }
+        //saveButton.disabled = true;
         //saveButton.style.color = "rgb(150, 150, 150)";
-        notify("Data saved!", 2500);
-        setTimeout(function(){saveButton.disabled = false;}, 2500);
-    };
-};
+		if (sendNotif != false) {
+        	notify("Data saved!", 2500);
+		}
+        //setTimeout(function(){saveButton.disabled = false;}, 2500);
+    }
+}
 
 function eraseData() {
     let c = confirm("Are you sure you want to erase all your data? (THIS ACTION CANNOT BE UNDONE IF YOU CLICK OK)");
@@ -1074,27 +1066,29 @@ function eraseData() {
         storageDisplay.innerHTML = storage;
         localStorage.setItem("storage", storage);
         restockers = 0;
-        localStorage.setItem("storage", restockers);
+        localStorage.setItem("restockers", restockers);
+        index = false;
+        localStorage.setItem("index", index);
         for (let i = 0; i < foodList.length - 1; i++) {
             let splitName = foodList[i]["name"].toLowerCase().split(" ");
             let name = "";
             for (let j = 0; j < splitName.length - 1; j++) {
                 name = name + splitName[j];
-            };
+            }
             if (foodList[i]["name"] != "Rice Ball" && foodList[i]["name"] != "French Fries") {
                 foodList[i]["unlocked"] = false;
                 localStorage.setItem(name, false);
-            };
-        };
+            }
+        }
         for (let i = 0; i < achievements.length - 1; i++) {
             let a = achievements[i];
             achievements[i]["unlocked"] = false;
             localStorage.setItem("achievement" + a["id"].toString(), false);
-        };
+        }
         customerFunction = setTimeout(customer, 1000);
         notify("Data erased!", 5000);
-    };
-};
+    }
+}
 
 function tutorial() {
 	if (tutorialStep == 0) {
@@ -1108,20 +1102,21 @@ function tutorial() {
 				let order = ordersList.innerHTML.toString().split("</li>")[0].split("emoji>")[1].split("</")[0];
 				if (order != "🍙" && order != "🍟") {
 					o = customer(true);
-				};
-			};
+				}
+			}
 			let order = ordersList.innerHTML.toString().split("</li>")[0].split("emoji>")[1].split("</")[0];
 			//console.log(order, o["emoji"]);
 			if (o != null) {
 				order = o["emoji"];
-			};
+			}
 			let ing = order == "🍙" ? "rice" : "potato";
 			alert("Welcome to Web Chef! This is a simple restaurant game where you prepare food for customers. Best played on a PC or tablet.<br><br>Looks like there's a customer! To prepare their order, enter the names of the ingredients required to make the food. (HINT: enter \"" + ing + "\" into the textbox)");
+			ingSearch.style.border = "solid rgb(0, 170, 255) 4px";
 			ingSearch.focus();
 			if (indexBox.style.visibility == "visible") {
 				indexBox.style.visibility = "hidden";
 				closeIndex.style.visibility = "hidden";
-			};
+			}
 			/*alert("For example, if their order is \"🍙\" you would type \"rice\" into the textbox & hit \"go\"/\"enter\". If you want to view the ingredients for a certain food, click through the pages of the Recipes book.");
 			alert("Once you add all the required ingredients to the Table, click the \"" + makeFoodButton.innerHTML + "\" button to fuse! Then, click the Serve button to give the food.");
 			alert("Click on the \"" + clearIng.innerHTML + "\" button if you ever mess up with the order of ingredients. Doing so refunds your stock, so don't worry about wasting money.");
@@ -1129,23 +1124,23 @@ function tutorial() {
 			alert("Click on the \"" + statsButton.innerHTML + "\" button to view a list of your game stats like total money, the number of recipes unlocked, and total customers served!")
 			alert("You can unlock achievements by serving specific food to certain customers, discovering secrets, and more! View them by clicking on the yellow \"" + achievementsButton.innerHTML + "\" button at the bottom-right corner and show them off to your friends and family :D");
 			alert("That's it! Click on the blue \"" + tutorialButton.innerHTML + "\" button in the bottom right corner to go through the tutorial again anytime. Happy cooking!");*/
-		};
+		}
 	} else {
 		let c = confirm("Are you sure you want to exit the tutorial?")
 		if (c == true) {
 			tutorialStep = 0;
 			cancel();
-		};
-	};
-};
+		}
+	}
+}
 
 function award(a) {
     let ach = null;
     for (let i = 0; i < achievements.length - 1; i++) {
         if (achievements[i]["id"] == a) {
             ach = achievements[i];
-        };
-    };
+        }
+    }
     if (ach != null) {
         if (ach["unlocked"] == false) {
             ach["unlocked"] = true;
@@ -1153,27 +1148,27 @@ function award(a) {
             notif.innerHTML = "You unlocked the achievement \"" + ach["name"] + "\"!";
             notifContainer.appendChild(notif);
             setTimeout(function(){notif.remove()}, 5000);
-        };
-    };
-};
+        }
+    }
+}
 
 function hasAchievement(a) {
     let ach = null;
     for (let i = 0; i < achievements.length; i++) {
         if (achievements[i]["id"] == a) {
             ach = achievements[i];
-        };
-    };
+        }
+    }
     if (ach != null) {
         if (ach["unlocked"] == true) {
             return true;
         } else {
             return false;
-        };
+        }
     } else {
         return null;
-    };
-};
+    }
+}
 
 function showAchievements() {
     let achievementsList = "Achievements:";
@@ -1183,8 +1178,8 @@ function showAchievements() {
         achievementsList = achievementsList + "<br>" + (a["unlocked"] == true ? "✅" : "❎") + " " + a["name"] + " ~ " + a["desc"];
         if (a["id"] != 15 && a["unlocked"] == false) {
             unlockedAll = false;
-        };
-    };
+        }
+    }
     if (unlockedAll == true) {
         award(15);
         let a = achievements[achievements.length - 1]
@@ -1192,18 +1187,20 @@ function showAchievements() {
     } else {
         let a = achievements[achievements.length - 1]
         achievementsList = achievementsList + "<br>" + (a["unlocked"] == true ? "✅" : "❎") + " " + a["name"] + " ~ " + a["desc"];
-    };
+    }
     alert(achievementsList);
-};
+}
 
 function showKeybinds() {
     let k = `Keybinds:<br>
-Left Arrow/A — Go back a page (recipe book)<br>
-Right Arrow/D — Next page (recipe book)<br>
-S — Save data<br>
+W - Jump to ingredient search textbox<br>
 E — Turn ingredients into food<br>
 Backspace — Clear ingredients from table<br>
+Esc — Unfocus from ingredient search textbox<br>
 Q — OK (pop-ups)<br>
+S — Save data<br>
+A/Left Arrow — Go back a page (recipe book)<br>
+D/Right Arrow — Next page (recipe book)<br>
 F — View stats<br>
 G — View achievements<br>
 H — View keybinds<br>
@@ -1214,16 +1211,16 @@ J — Begin tutorial
 
 function stats() {
     let s = "Your Stats:";
-    s = s + "<br>Money ~ " + money;
-    s = s + "<br>Total Money All-Time ~ " + totalMoney;
+    s = s + "<br>Money ~ $" + money;
+    s = s + "<br>Total Money All-Time ~ $" + totalMoney;
     let recipesUnlocked = 0;
     for (let i = 0; i < foodList.length; i++) {
         if (foodList[i]["unlocked"] == true) {
             recipesUnlocked++;
-        };
-    };
+        }
+    }
     s = s + "<br>Recipes Unlocked ~ " + recipesUnlocked;
-    s = s + "<br>Ingredients Stock ~ " + stock;
+    s = s + "<br>Ingredients Stock (current) ~ " + stock;
     s = s + "<br>Max Ingredients Storage ~ " + storage;
     s = s + "<br>Seating ~ " + maxCustomers;
     let ads = 0;
@@ -1241,18 +1238,18 @@ function stats() {
         case 1:
             ads = 4;
         break
-    };
-    s = s + "<br>Advertisments ~ " + ads + " (" + customerRate/1000 + " sec)";
+    }
+    s = s + "<br>Advertisments ~ " + ads + " (" + customerRate/1000 + " sec spawn rate)";
     let achUnlocked = 0;
     for (let i = 0; i < achievements.length; i++) {
         if (achievements[i]["unlocked"] == true) {
             achUnlocked++;
-        };
-    };
+        }
+    }
     s = s + "<br>Achievements Unlocked ~ " + achUnlocked;
     s = s + "<br>Total Customers Served ~ " + totalCustomers;
     alert(s);
-};
+}
 
 var keys = "";
 
@@ -1263,14 +1260,14 @@ function keybinds(e) {
 		if (ingredients.innerHTML.search("Empty") == -1 && makeFoodButton.disabled != true && clearIng.disabled != true) {
 			if (k == "e") {
 				makeFood();
-			};
+			}
 			if (k == "backspace") {
 				clear();
-			};
-		};
+			}
+		}
 		if (k == "q") {
 			ok();
-		};
+		}
 		if (k == "w") {
 			ingSearch.focus();
 			let i = ingSearch.value;
@@ -1281,39 +1278,39 @@ function keybinds(e) {
 				}, 1);
 			} else {
 				ingSearch.value = "";
-			};
-		};
+			}
+		}
 		if (k == "s") {
-				saveData();
-			};
+			saveData();
+		}
         if (k == "f") {
             stats();
-        };
+        }
         if (k == "g") {
             showAchievements();
-        };
+        }
         if (k == "h") {
             showKeybinds();
-        };
+        }
         if (k == "j") {
             tutorial();
-        };
+        }
         if (k == "arrowleft" || k == "a") {
             backPage();
-        };
+        }
         if (k == "arrowright" || k == "d") {
             nextPage();
-        };
+        }
     } else {
 		if (k == "escape") {
 			ingSearch.blur();
 			indexBox.style.visibility = "hidden";
 			closeIndex.style.visibility = "hidden";
-		};
+		}
 		if (k == "arrowup" || k == "arrowdown" || k == "arrowleft" || k == "arrowright" || k == "b" || k == "a") {
         	keys += k;
-		};
-    };
+		}
+    }
     if (keys.match("arrowuparrowuparrowdownarrowdownarrowleftarrowrightarrowleftarrowrightba")) {
         keys = "";
         // if you edit the secret, edit the one in addIng function
@@ -1327,8 +1324,8 @@ function keybinds(e) {
             stockDisplay.innerHTML = stock;
             notify("jk it ain't real XD", 5000);
         }, 7500);
-    };
-};
+    }
+}
 
 function toggleIndex(show) {
 	// comment line and uncomment below for testing mode
@@ -1344,16 +1341,16 @@ function toggleIndex(show) {
 			let v = indexBox.style.visibility;
 			indexBox.style.visibility = v == "visible" ? "hidden" : "visible";
 			closeIndex.style.visibility = v == "visible" ? "hidden" : "visible";
-		};
-	};
-};
+		}
+	}
+}
 
 //document.getElementById("favicon").href = "https://nunnerrs.github.io/assets/web-chef.ico";
 okButton.onclick = ok;
 //cancelButton.onclick = cancel;
 if (index == true) {
 	ingSearch.onfocus = function(){toggleIndex(true)};
-};
+}
 closeIndex.onclick = function(){toggleIndex(false)};
 //ingSearch.onblur = function(){toggleIndex(false)};
 ingSearch.onkeydown = addIng;
@@ -1387,13 +1384,13 @@ setTimeout(function(){
     if (customerRate < 3000) {
         customerRate = 3000;
         localStorage.setItem("customerRate", 3000);
-    };
+    }
 }, 1000);
 
 setTimeout(function(){
     if (localStorage.getItem("tutorialCompleted") == "false" || localStorage.getItem("tutorialCompleted") == null) {
         tutorial();
-    };
+    }
 }, 1500);
 setTimeout(function(){
     //notify("Version " + v + " is out now! <a href='" + updateLink + "'>Click here</a> to see changes or <span class='link' onclick='alert(`Version " + v + " Updates:\n" + updateSummary + "`)'>click here</span> for a summary of the new update", 10000);
@@ -1409,12 +1406,12 @@ setInterval(function(){
             stock += stockToAdd;
             stockDisplay.innerHTML = stock;
         }, 1000);
-    };
+    }
     if (stock > storage) {
         notify("Your stock is overflowing!", 1000);
         stock -= 1;
         stockDisplay.innerHTML = stock;
-    };
+    }
 }, 2000);
 var customerFunction = setInterval(customer, customerRate);
 setInterval(function(){
@@ -1426,7 +1423,7 @@ setInterval(function(){
         notify("You found $" + rng + " on the floor!", 5000)
         if (hasAchievement(9) == false) {
             award(9);
-        };
-    };
+        }
+    }
 }, 5000);
-setInterval(saveData, 60000);
+setInterval(function(){saveData(false)}, 1000);

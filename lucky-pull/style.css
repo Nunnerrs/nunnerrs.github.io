@@ -1,0 +1,112 @@
+:root {
+    --bg: rgb(255, 150, 190);
+	--dark: rgb(45, 8, 25);
+    --fairy: rgb(255, 200, 225); /* Fairy Tale */
+    --lavender: rgb(255, 175, 210); /* Lavender Pink */
+	--magenta: rgb(220, 60, 125); /* Magenta (Pantone) */
+	
+}
+body {
+    background-color: var(--bg);
+    font-family: 'Comic Sans MS', 'Chalkboard SE';
+    margin: auto;
+    text-align: center;
+}
+button {
+    background-color: var(--fairy);
+    border: solid 5px var(--lavender);
+    border-radius: 15px;
+    border-style: none solid solid none;
+    color: rgb(220, 60, 125);
+    cursor: pointer;
+    font-family: 'Comic Sans MS', 'Chalkboard SE';
+    font-size: 36px;
+    height: 100px;
+    width: 250px;
+}
+h1 {
+    color: rgb(145, 35, 80);
+}
+h2 {
+    color: rgb(190, 80, 130);
+}
+p {
+    color: rgb(225, 75, 125);
+}
+select {
+    background-color: var(--fairy);
+    border-radius: 10px;
+    border-width: 0;
+    color: var(--magenta);
+    cursor: pointer;
+    font-family: 'Comic Sans MS', 'Chalkboard SE';
+    font-size: 18px;
+    height: auto;
+	padding: 5px;
+    text-align: center;
+    max-width: 300px;
+}
+span {
+    font-size: 24pt;
+}
+table, td, tr {
+    border-collapse: collapse;
+    border: 5px solid rgb(255, 255, 255);
+    border-spacing: 5px;
+}
+table {
+    border-spacing: 10px;
+    margin: auto;
+}
+td {
+    background-color: rgb(125, 0, 75);
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+}
+#continueButton {
+    background: rgb(255, 210, 230);
+    border-color: rgb(255, 210, 230);
+    color: rgb(150, 215, 235);
+    visibility: hidden;
+    width: 100px;
+}
+/* button */
+#dark-mode {
+    background-color: white;
+	border: 0;
+	border-radius: 0;
+    color: rgb(0, 0, 0);
+    font-size: 18px; 
+    height: auto;
+	padding: 4px;
+    width: 100%;
+}
+#submit {
+    background-color: var(--magenta);
+    border-color: var(--magenta);
+    border-radius: 15px;
+    color: white;
+    font-size: 24px;
+    height: 50px;
+    width: 100px;
+}
+/* appearance NOT BUTTON */
+.darkMode {
+    background: rgb(115, 20, 60);
+}
+	.darkMode > button {
+		background: var(--dark);
+		border-color: var(--magenta);
+		color: var(--fairy);
+	}
+	.darkMode > h1 {
+		color: var(--fairy);
+	}
+	.darkMode > h2 {
+		color: var(--lavender);
+	}
+	.darkMode > select {
+		background: var(--lavender);
+		color: var(--dark);
+	}

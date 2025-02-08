@@ -8,76 +8,7 @@
         <meta name="description" content="test your luck in this gacha simulator">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="">
-        <style>
-            body {
-                background-color: rgb(255, 150, 190);
-                font-family: Comic Sans MS, Chalkboard SE;
-                margin: auto;
-                text-align: center;
-            }
-            button {
-                background-color: rgb(255, 175, 210);
-                border-color: rgb(255, 175, 210);
-                border-radius: 30px;
-                border-width: 5px;
-                color: rgb(220, 60, 125);
-                cursor: pointer;
-                font-family: Comic Sans MS, Chalkboard SE;
-                font-size: 36px;
-                height: 100px;
-                width: 250px;
-            }
-            h1 {
-                color: rgb(145, 35, 80);
-            }
-            h2 {
-                color: rgb(190, 80, 130);
-            }
-            p {
-                color: rgb(225, 75, 125);
-            }
-            select {
-                background-color: rgb(255, 200, 225);
-                border-radius: 15px;
-                border-width: 0px;
-                color: rgb(220, 60, 125);
-                cursor: pointer;
-                font-family: Comic Sans MS, Chalkboard SE;
-                font-size: 18px;
-                height: 50px;
-                text-align: center;
-                width: auto;
-            }
-            span {
-                font-size: 24pt;
-            }
-            table, td, tr {
-                border-collapse: collapse;
-                border: 5px solid rgb(255, 255, 255);
-                border-spacing: 5px;
-            }
-            table {
-                border-spacing: 10px;
-                margin: auto;
-            }
-            td {
-                background-color: rgb(125, 0, 75);
-                border-radius: 5px;
-                color: white;
-                padding: 5px;
-            }
-            #continueButton {
-                background: rgb(255, 210, 230);
-                border-color: rgb(255, 210, 230);
-                color: rgb(150, 215, 235);
-                visibility: hidden;
-                width: 100px;
-            }
-            .colorBlind {
-                background-color: rgb(200, 200, 200);
-                color: rgb(0, 0, 0);
-            }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <h1>lucky pull simulator</h1>
@@ -88,10 +19,9 @@
             <option value="3">Common-Legendary (Adopt Me!)</option>
             <option value="4">Common-Legendary (Bubble Gum Simulator)</option>
         </select>
-        <button id="submit" style="background-color: rgb(220, 60, 125); border-color: rgb(220, 60, 125); border-radius: 20px; color: rgb(255, 200, 225); font-size: 24px; height: 50px; width: 100px;">Submit</button>
+        <button id="submit">Submit</button>
         <br><br>
-        <button id="onePull">1 pull</button> <button id="largePull">10 pull</button>
-        <br><br><br>
+        <button id="one-pull">1 pull</button> <button id="large-pull">10 pull</button>
         <p id="message">
             <table>
                 <tr id="genshin"></tr>
@@ -105,7 +35,7 @@
             <p>You don't have any weapons or characters. Click any of the pull buttons below to obtain some!</p>
         </div>
         <br><br><br><br>
-        <button id="colorBlindHelp" style="background-color: white; border-color: white; border-radius: 15px; border-width: 3px; color: rgb(0, 0, 0); font-size: 18px; height: 50px; width: auto;">color blind mode: off</button>
+        <button id="dark-mode">dark mode: off</button>
         <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
         <script src="script.js"></script>
     </body>

@@ -2,26 +2,23 @@
 /* REMERGE H1 AND #NOTE pls add back ^2 in nunnerverse h1*/
 
 :root {
-	--bg-color: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);
+	--bg-color: rgb(204, 255, 223);
+    --h1-color: rgb(0, 102, 99);
+    --h2-color: rgb(0, 135, 105);
+    --h3-color: rgb(0, 150, 120);
+    --tiny-color: rgb(144, 232, 198);
+    --a-color: rgb(40, 160, 140);
+    --a-hover-color: rgb(23, 212, 155);
+    --button-color: rgb(100, 255, 175);
+
+    /* CHRISTMAS
+    --bg-color: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);
 	--h1-color: white;
     --h2-color: rgb(150, 50, 50);
     --h3-color: rgb(210, 75, 75);
 	--tiny-color: rgb(255, 100, 100);
 	--a-color: rgb(255, 75, 75);
-    --a-hover-color: rgb(255, 150, 150);
-    /* DEFAULT
-	--bg-color: rgb(204, 255, 223);
-    --h1-color: rgb(0, 102, 99);
-    --h2-color: rgb(0, 135, 105);
-    --h3-color: rgb(0, 150, 120);
-    --tiny-color: rgb(144, 232, 198);]
-    --a-color: rgb(40, 160, 140);
-    --a-hover-color: rgb(23, 212, 155);*/
-    --button-color: rgb(100, 255, 175);
-}
-@font-face {
-	font-family: 'Merry Holiday';
-	src: url(assets/holiday-font.ttf);
+    --a-hover-color: rgb(255, 150, 150);*/
 }
 a {
     /*color: rgb(0, 144, 113);*/
@@ -54,7 +51,7 @@ h1 {
     font-size: 32pt;
 }
 h1 > span {
-    color: rgb(255, 235, 235);
+    color: var(--h1-color);
     font-family: 'Comic Sans MS';
 }
 #note {
