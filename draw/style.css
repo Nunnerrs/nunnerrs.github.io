@@ -1,0 +1,64 @@
+body {
+    background-color: rgb(200, 230, 255);
+    color: rgb(25, 120, 150);
+    font-family: Comic Sans MS, Chalkboard SE;
+    height: 100%;
+    margin: auto;
+    overflow: hidden;
+    /*position: fixed;*/
+    text-align: center;
+}
+button, select {
+    background-color: rgb(220, 245, 255);
+    border-radius: 10px;
+    border-width: 0px;
+}
+canvas {
+    margin-top: 5px;
+}
+div {
+    display: inline;
+    line-height: 30px;
+    margin-bottom: 15px;
+}
+gap {
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    color: rgb(200, 230, 255);
+    user-select: none;
+    visibility: hidden;
+}
+h1 {
+    color: rgb(0, 45, 75);
+}
+input {
+    border-color: rgb(180, 230, 255);
+    border-radius: 5px;
+    width: 50px;
+}
+label {
+    color: rgb(0, 0, 0);
+    font-size: 18px;
+}
+.b {
+    color: black;
+}
+.bbg {
+    background-color: black;
+}
+.c {
+    height: 15px;
+    width: 15px;
+}
+.inv {
+    color: rgba(0, 0, 0, 0);
+}
+.invBg {
+    background-color: rgba(255, 255, 255, 0);
+}
+.o {
+    border-radius: 999px;
+}
+#presets {
+    display: inline;
+}

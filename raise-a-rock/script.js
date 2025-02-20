@@ -5,19 +5,27 @@ if (localStorage.getItem("age") != null) {
 
 const rocks = {
     good: {
-        super: ["assets/mr-rockhead.png"],
-        clean: ["assets/pearl-rock.png"],
-        happy: ["assets/playful-rock.png"],
-        good: ["assets/kawaii-rock.png", "assets/bird-rock.png", "assets/mount-rushmore.png"],
-        neutral: ["assets/ponytail-rock.png", "assets/headband-rock.png", "assets/bush-rock.png", "assets/roblox-rock.png", "assets/slamo-rock.png"],
-        bad: ["assets/adopt-me-rock.png", "assets/cheeky-rock.png", "assets/moai.png"],
+        super: ["mr-rockhead.png"],
+        clean: ["pearl-rock.png"],
+        happy: ["playful-rock.png"],
+        cheese: ["cheese-rock.png"],
+
+        good: ["kawaii-rock.png", "bird-rock.png", "mount-rushmore.png"],
+        neutral: ["ponytail-rock.png", "headband-rock.png", "bush-rock.png", "roblox-rock.png", "slamo-rock.png"],
+        bad: ["adopt-me-rock.png", "cheeky-rock.png", "moai.png"],
     },
     bad: {
-        good: ["assets/bricks.png", "assets/man-rock.png", "assets/expressionless-rock.png"],
-        neutral: ["assets/potato-rock.png", "assets/egg-rock.png", "assets/house-rock.png", "assets/goggly-eyed-rock.png"],
-        bad: ["assets/moldy-rock.png", "assets/magma.png", "assets/eroded-rock.png", "assets/obese-rock.png"],
+        good: ["bricks.png", "man-rock.png", "expressionless-rock.png"],
+        neutral: ["potato-rock.png", "egg-rock.png", "house-rock.png", "goggly-eyed-rock.png"],
+        bad: ["moldy-rock.png", "magma.png", "eroded-rock.png", "obese-rock.png"],
     }
 };
+
+const tools = {
+    plant: "plant.png",
+    shower: "shower.png",
+    sponge: "sponge.png",
+}
 
 const bools = [true, false, false];
 
@@ -32,13 +40,12 @@ for (let i = 0; i < names.length; i++) {
     names[i].innerHTML = name;
 };
 
+var faves = [Math.floor(Math.random() * 2), Math.floor(Math.random() * 2), Math.floor(Math.random() * 2)];
 if (localStorage.getItem("faves") && age > 0) {
-    const faves = localStorage.getItem("faves");
-} else {
-    const faves = [Math.floor(Math.random() * 2), Math.floor(Math.random() * 2), Math.floor(Math.random() * 2)];
+    faves = localStorage.getItem("faves");
 };
 
-const sadEmojis = ["😢", "😭", "😿", "T-T", "ToT", "TnT", "T^T", ":(", ":[", "i^i"];
+var sadEmojis = ["😢", "😭", "😿", "T-T", "ToT", "TnT", "T^T", ":(", ":[", "i^i"];
 
 const deathMessages = {
     hunger: ["Your rock died from hunger.", "You didn't feed your rock and it starved to death."],
@@ -93,6 +100,19 @@ var pauseButton = document.getElementById("pauseButton");
 var importButton = document.getElementById("importButton");
 var exportButton = document.getElementById("exportButton");
 
+function save() {
+    localStorage.setItem("age", age);
+    localStorage.setItem("name", name);
+    localStorage.setItem("faves", faves);
+    localStorage.setItem("full", full);
+    localStorage.setItem("clean", clean);
+    localStorage.setItem("happy", happy);
+    localStorage.setItem("timesHungry", timesHungry);
+    localStorage.setItem("timesDirty", timesDirty);
+    localStorage.setItem("timesSad", timesSad);
+    //localStorage.setItem("", );
+}
+
 function death(type) {
     ticking = false;
     tool.style.visibility = "hidden";
@@ -137,100 +157,89 @@ function death(type) {
 };
 
 function tick() {
-    setInterval(function() {
-        if (ticking == true) {
-            age = Number(Number(age + 0.01).toFixed(2));
-            ageDisplay.innerHTML = age;
-            
-            let hungry = bools[Math.floor(Math.random() * (bools.length - 1))];
-            if (hungry == true) {
-                full.innerHTML = Number(full.innerHTML) - 2;
-                if (Number(full.innerHTML) < 1) {
-                    death(1);
-                } else if (Number(full.innerHTML) < 50 && !document.getElementById("hunger")) {
-                    timesHungry++;
-                    let notif = document.createElement("h3");
-                    notif.innerHTML = name + " is getting hungry!";
-                    notif.id = "hunger";
-                    alerts.appendChild(notif);
-                };
+    if (ticking == true) {
+        age = Number(Number(age + 0.01).toFixed(2));
+        ageDisplay.innerHTML = age;
+        
+        let hungry = bools[Math.floor(Math.random() * (bools.length - 1))];
+        if (hungry == true) {
+            full.innerHTML = Number(full.innerHTML) - 2;
+            if (Number(full.innerHTML) < 1) {
+                death(1);
+            } else if (Number(full.innerHTML) < 50 && !document.getElementById("hunger")) {
+                timesHungry++;
+                let notif = document.createElement("h3");
+                notif.innerHTML = name + " is getting hungry!";
+                notif.id = "hunger";
+                alerts.appendChild(notif);
             };
+        };
 
-            let dirty = bools[Math.floor(Math.random() * (bools.length - 1))];
-            if (dirty == true) {
-                clean.innerHTML = Number(clean.innerHTML) - 2;
-                if (Number(clean.innerHTML) < 1) {
-                    death(2);
-                } else if (Number(clean.innerHTML) < 50 && !document.getElementById("filth")) {
-                    timesDirty++;
-                    let notif = document.createElement("h3");
-                    notif.innerHTML = name + " is getting dirty!";
-                    notif.id = "filth";
-                    alerts.appendChild(notif);
-                };
+        let dirty = bools[Math.floor(Math.random() * (bools.length - 1))];
+        if (dirty == true) {
+            clean.innerHTML = Number(clean.innerHTML) - 2;
+            if (Number(clean.innerHTML) < 1) {
+                death(2);
+            } else if (Number(clean.innerHTML) < 50 && !document.getElementById("filth")) {
+                timesDirty++;
+                let notif = document.createElement("h3");
+                notif.innerHTML = name + " is getting dirty!";
+                notif.id = "filth";
+                alerts.appendChild(notif);
             };
-            
-            let bored = bools[Math.floor(Math.random() * (bools.length - 1))];
-            if (bored == true) {
-                happy.innerHTML = Number(happy.innerHTML) - 2;
-                if (Number(happy.innerHTML) < 1) {
-                    death(3);
-                } else if (Number(happy.innerHTML) < 50 && !document.getElementById("depression")) {
-                    timesSad++;
-                    let notif = document.createElement("h3");
-                    notif.innerHTML = name + " is becoming depressed!";
-                    notif.id = "depression";
-                    alerts.appendChild(notif);
-                };
+        };
+        
+        let bored = bools[Math.floor(Math.random() * (bools.length - 1))];
+        if (bored == true) {
+            happy.innerHTML = Number(happy.innerHTML) - 2;
+            if (Number(happy.innerHTML) < 1) {
+                death(3);
+            } else if (Number(happy.innerHTML) < 50 && !document.getElementById("depression")) {
+                timesSad++;
+                let notif = document.createElement("h3");
+                notif.innerHTML = name + " is becoming depressed!";
+                notif.id = "depression";
+                alerts.appendChild(notif);
             };
-            
-            if (age >= 2.5 && age < 7.5) {
-                if (timesHungry < 4 && timesDirty < 4 && timesSad < 4) {
-                    rock.src = "assets/kid-rock-happy.png";
+        };
+        
+        if (age >= 2.5 && age < 7.5) {
+            if (timesHungry < 4 && timesDirty < 4 && timesSad < 4) {
+                rock.src = "kid-rock-happy.png";
+            } else {
+                rock.src = "kid-rock-sad.png";
+            };
+        } else if (age <= 7.5) {
+            if (timesHungry < 3 && timesDirty < 3 && timesSad < 3) {
+                if (rock.src == "kid-rock-happy.png") {
+                    rock.src = rocks["good"]["super"][Math.floor(Math.random() * (rocks["good"]["super"].length - 1))];
+                };
+            } else if (timesDirty <= 1) {
+                rock.src = rocks["good"]["clean"][Math.floor(Math.random() * (rocks["good"]["clean"].length - 1))];
+            } else if (timesSad <= 1) {
+                rock.src = rocks["good"]["happy"][Math.floor(Math.random() * (rocks["good"]["happy"].length - 1))];
+            } else if (timesHungry <= 4 && timesDirty <= 4 && timesSad <= 4) {
+                if (rock.src == "kid-rock-happy.png") {
+                    rock.src = rocks["good"]["good"][Math.floor(Math.random() * (rocks["good"]["good"].length - 1))];
                 } else {
-                    rock.src = "assets/kid-rock-sad.png";
+                    rock.src = rocks["bad"]["good"][Math.floor(Math.random() * (rocks["bad"]["good"].length - 1))];
                 };
-            } else if (age <= 7.5) {
-                if (timesHungry < 3 && timesDirty < 3 && timesSad < 3) {
-                    if (rock.src == "assets/kid-rock-happy.png") {
-                        rock.src = rocks["good"]["super"][Math.floor(Math.random() * (rocks["good"]["super"].length - 1))];
-                    };
-                } else if (timesDirty <= 1) {
-                    rock.src = rocks["good"]["clean"][Math.floor(Math.random() * (rocks["good"]["clean"].length - 1))];
-                } else if (timesSad <= 1) {
-                    rock.src = rocks["good"]["happy"][Math.floor(Math.random() * (rocks["good"]["happy"].length - 1))];
-                } else if (timesHungry <= 4 && timesDirty <= 4 && timesSad <= 4) {
-                    if (rock.src == "assets/kid-rock-happy.png") {
-                        rock.src = rocks["good"]["good"][Math.floor(Math.random() * (rocks["good"]["good"].length - 1))];
-                    } else {
-                        rock.src = rocks["bad"]["good"][Math.floor(Math.random() * (rocks["bad"]["good"].length - 1))];
-                    };
-                } else if (timesHungry <= 7 && timesDirty <= 7 && timesSad <= 7) {
-                    if (rock.src == "assets/kid-rock-happy.png") {
-                        rock.src = rocks["good"]["neutral"][Math.floor(Math.random() * (rocks["good"]["neutral"].length - 1))];
-                    } else {
-                        rock.src = rocks["bad"]["neutral"][Math.floor(Math.random() * (rocks["bad"]["neutral"].length - 1))];
-                    };
-                } else if (timesHungry >= 8 && timesDirty >= 8 && timesSad >= 8) {
-                    if (rock.src == "assets/kid-rock-happy.png") {
-                        rock.src = rocks["good"]["bad"][Math.floor(Math.random() * (rocks["good"]["bad"].length - 1))];
-                    } else {
-                        rock.src = rocks["bad"]["bad"][Math.floor(Math.random() * (rocks["bad"]["bad"].length - 1))];
-                    };
+            } else if (timesHungry <= 7 && timesDirty <= 7 && timesSad <= 7) {
+                if (rock.src == "kid-rock-happy.png") {
+                    rock.src = rocks["good"]["neutral"][Math.floor(Math.random() * (rocks["good"]["neutral"].length - 1))];
+                } else {
+                    rock.src = rocks["bad"]["neutral"][Math.floor(Math.random() * (rocks["bad"]["neutral"].length - 1))];
+                };
+            } else if (timesHungry >= 8 && timesDirty >= 8 && timesSad >= 8) {
+                if (rock.src == "kid-rock-happy.png") {
+                    rock.src = rocks["good"]["bad"][Math.floor(Math.random() * (rocks["good"]["bad"].length - 1))];
+                } else {
+                    rock.src = rocks["bad"]["bad"][Math.floor(Math.random() * (rocks["bad"]["bad"].length - 1))];
                 };
             };
         };
-        localStorage.setItem("age", age);
-        localStorage.setItem("name", name);
-        localStorage.setItem("faves", faves);
-        localStorage.setItem("full", full);
-        localStorage.setItem("clean", clean);
-        localStorage.setItem("happy", happy);
-        localStorage.setItem("timesHungry", timesHungry);
-        localStorage.setItem("timesDirty", timesDirty);
-        localStorage.setItem("timesSad", timesSad);
-        //localStorage.setItem("", );
-    }, 1000);
+    };
+    save();
 };
 
 function override(event) {
@@ -268,27 +277,27 @@ function use(event) {
             clean.innerHTML = cleanliness + inc;
         } else if (cleanliness < 100 && cleanliness + inc > 100) {
             clean.innerHTML = 100;
-        };
-    };
-};
+        }
+    }
+}
 
 function applyFood() {
     let food = foodList.value;
     switch(food) {
         case "plant":
-            tool.src = "assets/plant.png";
-            break;
+            tool.src = "plant.png";
+        break
         case "rock kibbles":
-            tool.src = "assets/rock-kibbles.png";
-            break;
+            tool.src = "rock-kibbles.png";
+        break
         case "cheese":
-            tool.src = "assets/cheese.png";
-            break;
+            tool.src = "cheese.png";
+        break
         case "gigagrowth gummies":
-            tool.src = "assets/gigagrowth-gummies.png";
-            break;
-    };
-};
+            tool.src = "gigagrowth-gummies.png";
+        break
+    }
+}
 
 function toggleFood() {
     if (visibleF == true) {
@@ -304,24 +313,24 @@ function toggleFood() {
         foodLabel.style.visibility = "visible";
         foodList.style.visibility = "visible";
         setFood.style.visibility = "visible";
-    };
+    }
     if (visibleC == true) {
         visibleC = false;
         bathLabel.style.visibility = "hidden";
         toolList.style.visibility = "hidden";
         setTool.style.visibility = "hidden";
-    };
-};
+    }
+}
 
 function applyTool() {
     let tool = toolList.value;
     switch(tool) {
         case "shower":
-            tool.src = "assets/shower.png";
-            break;
+            tool.src = "shower.png";
+            break
         case "sponge":
-            tool.src = "assets/sponge.png";
-            break;
+            tool.src = "sponge.png";
+            break
     };
 };
 
@@ -396,4 +405,7 @@ function exportData() {
     //alert("Copied game data to clipboard! Save this somewhere (e.g. in online notepad)");
 };
 
-window.onload = tick;
+window.onload = setInterval(tick, 1000);
+rock.ondragover = override;
+rock.ondrop = use;
+tool.ondragstart = saveTool;

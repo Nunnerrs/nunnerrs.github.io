@@ -8,210 +8,163 @@
         <meta name="description" content="a stupid tool you can use to draw (very bad)">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+        <script>eruda.init();</script>
         <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
         <script>
             var hexColor = "#000000";
             var lineSize = 10;
             function setup() {
-                createCanvas(1225, 550);
+                createCanvas(screen.width, screen.height);
                 background(255, 255, 255);
                 //alert("Canvas loaded!");
-            };
+            }
             
             function touchMoved() {
-                stroke(hexColor);
-                strokeWeight(lineSize);
-                line(mouseX, mouseY, pmouseX, pmouseY);
-                //noStroke();
-                //fill(hexColor);
-                //ellipse(mouseX, mouseY, lineSize);
-            };
+                if (mode.value != "scroll") {
+                    stroke(hexColor);
+                    strokeWeight(lineSize);
+                    line(mouseX, mouseY, pmouseX, pmouseY);
+                    //noStroke();
+                    //fill(hexColor);
+                    //ellipse(mouseX, mouseY, lineSize);
+                }
+            }
         </script>
-        <style>
-            body {
-                background-color: rgb(200, 230, 255);
-                color: rgb(25, 120, 150);
-                font-family: Comic Sans MS, Chalkboard SE;
-                height: 100%;
-                margin: auto;
-                overflow: hidden;
-                /*position: fixed;*/
-                text-align: center;
-            }
-            button, select {
-                background-color: rgb(220, 245, 255);
-                border-radius: 10px;
-                border-width: 0px;
-            }
-            gap {
-                -ms-user-select: none;
-                -webkit-user-select: none;
-                color: rgb(200, 230, 255);
-                user-select: none;
-                visibility: hidden;
-            }
-            h1 {
-                color: rgb(0, 45, 75);
-            }
-            input {
-                border-color: rgb(180, 230, 255);
-                border-radius: 5px;
-            }
-            label {
-                color: rgb(0, 0, 0);
-                font-size: 18px;
-            }
-            .b {
-                color: black;
-            }
-            .blackBg {
-                background-color: black;
-            }
-            .c {
-                height: 15px;
-                width: 15px;
-            }
-            .inv {
-                color: rgba(0, 0, 0, 0);
-            }
-            .invBg {
-                background-color: rgba(255, 255, 255, 0);
-            }
-            .o {
-                border-radius: 999px;
-            }
-        </style>
     </head>
-    <body onclick="setMode(); setColor(false); setSize(false);">
+    <body>
         <h1>Drawing Tool</h1>
-        <select id="mode" value="draw" mouseleave="setMode();" mouseout="setMode();" touchend="setMode();">
-            <option onclick="setTimeout(setMode, 100);" value="draw">Draw</option>
-            <option onclick="setTimeout(setMode, 100);" value="erase">Erase</option>
-        </select><br>
-        <label id="colorLabel" for="color"><b>Color: </b></label>
-        <input id="color" type="color">
-        <button id="colorBlack" class="c inv o" onclick="selectedColor.value = '#000000'; setColor();" style="background-color: black;">•</button>
-        <button id="colorRed" class="c inv o" onclick="selectedColor.value = '#FF0000'; setColor();" style="background-color: red;">•</button>
-        <button id="colorYellow" class="c inv o" onclick="selectedColor.value = '#FFFF00'; setColor();" style="background-color: yellow;">•</button>
-        <button id="colorGreen" class="c inv o" onclick="selectedColor.value = '#00FF00'; setColor();" style="background-color: #00FF00;">•</button>
-        <button id="colorBlue" class="c inv o" onclick="selectedColor.value = '#00BAFF'; setColor();" style="background-color: #00BAFF;">•</button>
-        <button id="applyColor" onclick="setColor(true);">Save</button>
-        <br>
-        <label for="size"><b>Size: </b></label>
-        <button class="b invBg o" onclick="setSizeFromButton(2, this);" style="font-size: 10px; height: 20px; width: 20px;">•</button>
-        <button class="b invBg o" onclick="setSizeFromButton(5, this);" style="font-size: 16px; height: 16px; width: 20px;">•</button>
-        <button class="blackBg inv o" onclick="setSizeFromButton(10, this);" style="height: 12px; width: 11px;">•</button>
-        <button class="blackBg inv o" onclick="setSizeFromButton(25, this);" style="height: 25px; width: 25px;">•</button>
-        <button class="blackBg inv o" onclick="setSizeFromButton(50, this);" style="height: 50px; width: 50px;">•</button>
-        <gap>AA</gap>
-        <label for="size" style="border-width: 1px">Custom Size:</label>
-        <input id="size" type="number" value="10">
-        <button id="applySize" onclick="setSize(true);">Save</button><br>
-        <button id="clearButton" onclick="clear();" style="visibility: hidden">Clear Canvas</button><br>
+        <div>
+            <select id="mode" value="draw" mouseleave="setMode();" mouseout="setMode();" touchend="setMode();">
+                <option onclick="setTimeout(setMode, 100);" value="draw">Draw</option>
+                <option onclick="setTimeout(setMode, 100);" value="erase">Erase</option>
+                <option onclick="setTimeout(setMode, 100);" value="scroll">Scroll</option>
+            </select><br>
+        </div>
+        <div>
+            <label id="color-label" for="picker"><b>Color: </b></label>
+            <input id="picker" type="color">
+            <div id="color-presets">
+                <button class="c inv o" data-color="#000000" style="background-color: black;">•</button>
+                <button class="c inv o" data-color="#FF0000" style="background-color: red;">•</button>
+                <button class="c inv o" data-color="#FFFF00" style="background-color: yellow;">•</button>
+                <button class="c inv o" data-color="#00FF00" style="background-color: #00FF00;">•</button>
+                <button class="c inv o" data-color="#00BAFF" style="background-color: #00BAFF;">•</button>
+            </div>
+            <br>
+        </div>
+        <div>
+            <label for="size"><b>Size: </b></label>
+            <div id="size-presets">
+                <button class="b invBg o" data-size="2" style="font-size: 10px; height: 20px; width: 20px;">•</button>
+                <button class="b invBg o" data-size="5" style="font-size: 16px; height: 16px; width: 20px;">•</button>
+                <button class="bbg inv o" data-size="10" style="height: 12px; width: 11px;">•</button>
+                <button class="bbg inv o" data-size="25" style="height: 25px; width: 25px;">•</button>
+                <button class="bbg inv o" data-size="50" style="height: 50px; width: 50px;">•</button>
+            </div>
+            <gap>AA</gap>
+            <label for="size" style="border-width: 1px">Custom (px):</label>
+            <input id="size" type="number" value="10"><br>
+            <button id="clear-button" style="visibility: hidden">Clear Canvas</button><br>
+        </div>
         <script>
             //alert("Welcome to the drawing tool! In case the window scrolls and gives you a hard time to draw on mobile, zoom out (Safari: Aa button; Chrome: … button). Anyways, hope you enjoy!")
             var mode = document.getElementById("mode");
-            var colorLabel = document.getElementById("colorLabel");
-            var colorBlack = document.getElementById("colorBlack");
-            var colorRed = document.getElementById("colorRed");
-            var colorYellow = document.getElementById("colorYellow");
-            var colorGreen = document.getElementById("colorGreen");
-            var colorBlue = document.getElementById("colorBlue");
-            var selectedColor = document.getElementById("color");
-            var applyColor = document.getElementById("applyColor");
-            var colorS = selectedColor.value;
+            var colorLabel = document.getElementById("color-label");
+            var presetsC = document.getElementById("color-presets");
+            var presetsS = document.getElementById("size-presets");
+            var picker = document.getElementById("picker");
             var clear = document.getElementById("clear");
             var sizeBox = document.getElementById("size");
-            var applySize = document.getElementById("applySize");
-            var clearButton = document.getElementById("clearButton");
-            var drawSize = sizeBox.value;
+            var clearButton = document.getElementById("clear-button");
             
             function setMode() {
-                if (mode.value == "erase") {
+                if (mode.value == "scroll") {
+                    document.body.style.overflow = "auto";
+                } else if (mode.value == "erase") {
+                    document.body.style.overflow = "hidden";
                     colorLabel.style.visibility = "hidden";
-                    colorBlack.style.visibility = "hidden";
-                    colorRed.style.visibility = "hidden";
-                    colorYellow.style.visibility = "hidden";
-                    colorGreen.style.visibility = "hidden";
-                    colorBlue.style.visibility = "hidden";
-                    selectedColor.style.visibility = "hidden";
-                    applyColor.style.visibility = "hidden";
+                    presetsC.style.visibility = "hidden";
+                    picker.style.visibility = "hidden";
                     clearButton.style.visibility = "visible";
-                    colorS = selectedColor.value;
                     hexColor = "#FFFFFF";
-                    //drawSize = sizeBox.value;
-                    //lineSize = drawSize * 2.5;
+                    //lineSize = sizeBox.value * 2.5;
                     //sizeBox.value = lineSize;
                 } else {
+                    document.body.style.overflow = "hidden";
                     colorLabel.style.visibility = "visible";
-                    colorBlack.style.visibility = "visible";
-                    colorRed.style.visibility = "visible";
-                    colorYellow.style.visibility = "visible";
-                    colorGreen.style.visibility = "visible";
-                    colorBlue.style.visibility = "visible";
-                    selectedColor.style.visibility = "visible";
-                    applyColor.style.visibility = "visible";
+                    presetsC.style.visibility = "visible";
+                    picker.style.visibility = "visible";
                     clearButton.style.visibility = "hidden";
-                    hexColor = colorS;
-                    lineSize = drawSize;
-                    sizeBox.value = drawSize;
-                };
-            };
+                    hexColor = picker.value;
+                    lineSize = sizeBox.value;
+                    sizeBox.value = sizeBox.value;
+                }
+            }
             
-            function setColor(showChecks) {
-                if (selectedColor.style.visibility == "visible") {
-                    hexColor = selectedColor.value;
-                    colorS = hexColor;
-                    if (showChecks == true) {
-                        applyColor.innerHTML = "✓✓✓";
-                    };
-                    //alert("Set color to " + hexColor);
-                    setTimeout(function() {applyColor.innerHTML = "Save"}, 1500);
-                };
-            };
+            function setColor() {
+                if (picker.style.visibility == "visible") {
+                    hexColor = picker.value;
+                    console.log("Set color to " + hexColor);
+                }
+            }
+            picker.focusOut = setColor;
             
-            function setSize(showChecks) {
+            function setSize() {
                 if (sizeBox.value != null) {
                     if (Number(sizeBox.value) != null) {
                         lineSize = sizeBox.value;
-                        if (selectedColor.style.visibility == "visible") {
-                            drawSize = lineSize;
-                        };
-                        if (showChecks == true) {
-                            applySize.innerHTML = "✓✓✓";
-                        };
                         //alert("Set size to " + lineSize);
-                        setTimeout(function() {applySize.innerHTML = "Save"}, 1500);
-                    };
-                };
-            };
+                    }
+                }
+            }
+            sizeBox.onkeydown = function(e){
+                if (e.key == "Enter" && sizeBox == document.activeElement) {
+                    setSize();
+                    sizeBox.blur();
+                }
+            }
             
-            function setSizeFromButton(customSize, button) {
-                if (customSize != null) {
-                    if (Number(customSize) != null) {
-                        //alert(Number(customSize));
-                        lineSize = Number(customSize);
-                        if (selectedColor.style.visibility == "visible") {
-                            drawSize = lineSize;
-                        };
+            function setSizeB(s) {
+                if (s != null) {
+                    if (Number(s) != null) {
+                        //alert(Number(s));
+                        lineSize = Number(s);
                         sizeBox.value = lineSize;
-                    };
-                };
-            };
+                    }
+                }
+            }
             
             function clear() {
                 let confirmation = confirm("Are you sure you want to clear the entire canvas?");
                 if (confirmation == true) {
-                    let oldFill = color;
+                    let oldFill = picker.color;
                     fill(255);
                     rect(-50, -50, width + 100, height + 100);
                     fill(oldFill);
-                };
-            };
+                }
+            }
+            clearButton.onclick = clear;
+
+            presetsC.childNodes.forEach(function(i){
+                i.onclick = function(){
+                    picker.value = i.dataset.color;
+                    setColor();
+                }
+            });
+
+            presetsS.childNodes.forEach(function(i){
+                i.onclick = function(){
+                    sizeBox.value = i.dataset.size;
+                    setSize();
+                }
+            });
             
             setTimeout(function() {
-                document.getElementsByTagName("canvas")[0].onclick = function() {setMode(); setColor(); setSize();};
+                document.getElementsByTagName("canvas")[0].onclick = function() {setMode(); setColor(); setSize();}
             }, 250);
+            setInterval(setMode, 250);
         </script>
     </body>
 </html>

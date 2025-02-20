@@ -7,45 +7,53 @@
         <meta charset="UTF-8">
         <meta name="description" content="[WIP] raise your very own pet rock!">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link id="favicon" rel="icon" type="image/x-icon" href="assets/baby-rock.png">
+        <base href="assets">
+        <link id="favicon" rel="icon" type="image/x-icon" href="baby-rock.png">
         <style>
             button {
-                background-color: rgb(150, 150, 150);
+                background: rgb(150, 150, 150);
                 border-color: rgb(150, 150, 150);
                 border-radius: 5px;
                 border-width: 2px;
                 color: rgb(255, 255, 255);
                 cursor: click;
-                font-family: Comic Sans MS, Chalkboard SE;
+                font-family: 'Comic Sans MS', 'Chalkboard SE', monospace;
             }
             body {
                 background: rgb(255, 255, 255);
-                font-family: Comic Sans MS, Chalkboard SE;
+                font-family: 'Comic Sans MS', 'Chalkboard SE', monospace;
                 text-align: center;
             }
             select {
-                background-color: rgb(200, 200, 200);
+                background: rgb(200, 200, 200);
                 border-radius: 5px;
                 border-width: 0px;
                 color: rgb(50, 50, 50);
-                font-family: Chalkboard SE;
+                font-family: 'Comic Sans MS', 'Chalkboard SE', monospace;
                 text-align: center;
             }
             .submit {
-                background-color: rgb(125, 215, 125);
+                background: rgb(125, 215, 125);
                 border-radius: 5px;
                 border-width: 0px;
                 color: rgb(255, 255, 255);
-                font-family: Chalkboard SE;
+                font-family: 'Comic Sans MS', 'Chalkboard SE', monospace;
+            }
+            #alerts {
+                background-color: rgb(255, 255, 255, 0.5);
+                height: 50px;
+                position: fixed;
+                text-align: center;
+                width: 100%;
             }
         </style>
     </head>
     <body>
         <h1>"<name>Rocky</name>"</h1>
         <h2>Age: <a id="age">1</a></h2>
-        <div id="alerts"></div><br>
-        <img id="rock" src="assets/baby-rock.png" height="125px" width="auto" draggable="false" ondragover="override(event);" ondrop="use(event);"><br>
-        <img id="tool" src="assets/plant.png" width="auto" height="75px" style="visibility: hidden;" draggable="true" ondragstart="saveTool(event);">
+        <div id="alerts"></div>
+        <img draggable="false" id="rock" src="baby-rock.png" height="125px" width="auto"><br>
+        <img id="tool" src="plant.png" width="auto" height="75px" style="visibility: hidden;" draggable="true" ondragstart="saveTool(event);">
         <p id="fullDisplay"><a id="full">100</a>% full</p>
         <button id="feedButton" onclick="toggleFood();">Feed <name>Rocky</name></button><br>
         <label id="foodLabel" for="foodList" style="visibility: hidden;">Selected food: </label>
