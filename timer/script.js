@@ -33,11 +33,18 @@ if (intTimer < 1000 && window.location.href.match("github")) {
 }
 var sound = "yippee";
 var sounds = {
+	alarm: find("alarm"),
 	bennett: find("bennett"),
     boom: find("boom"),
     bubbles: find("bubbles"),
 	chime: find("chime"),
+	chinese: find("chinese"),
+	mash: find("mash"),
+	pipe: find("pipe"),
+	scream: find("scream"),
+	siren: find("siren"),
 	snore: find("snore"),
+	windows: find("windows"),
     wow: find("wow"),
 	yippee: find("yippee"),
 };
@@ -770,6 +777,15 @@ b.onload = function(){
 	setInterval(timer, intTimer);
 };
 
+/*
+chinese: find("chinese"),
+	mash: find("mash"),
+	pipe: find("pipe"),
+	scream: find("scream"),
+	snore: find("snore"),
+	windows: find("windows"),
+*/
+
 // JP version
 
 var jp = false;
@@ -785,13 +801,20 @@ if (jp == true || window.location.href.match(/#jp/i) || window.location.href.toL
 	find("sBreak-text").innerHTML = "ショート ブレーク";
 	find("lBreak-text").innerHTML = "ロング ブレーク";
 	defaultBtn.innerHTML = "リセット";
-	find("yippee-option").innerHTML = "ヤッタ〜";
+	find("alarm-option").innerHTML = "アラーム クロック";
 	find("bennett-option").innerHTML = "冒険だ冒険！";
 	find("boom-option").innerHTML = "ドーン";
 	find("bubbles-option").innerHTML = "かわいいのバブルス";
 	find("chime-option").innerHTML = "チャイム";
+	find("chinese-option").innerHTML = "中";
+	find("mash-option").innerHTML = "モンスター マッシュ";
+	find("pipe-option").innerHTML = "ガーン！";
+	find("scream-option").innerHTML = "ギャー！";
+	find("siren-option").innerHTML = "サイレン！";
 	find("snore-option").innerHTML = "※スノル※ミミミ";
+	find("windows-option").innerHTML = "ウィンドース XP";
 	find("wow-option").innerHTML = "ウァアアウ";
+	find("yippee-option").innerHTML = "ヤッタ〜";
 	find("theme-text").innerHTML = "テーマ： ";
 	find("tasks-title").innerHTML = "タスクス";
 	if (taskContainer.classList.value.match("no-tasks")) {
@@ -813,13 +836,20 @@ if ((ph == true || window.location.href.match(/#ph/i) || window.location.href.to
 	find("sBreak-text").innerHTML = "Maikling break";
 	find("lBreak-text").innerHTML = "Mahabang break";
 	defaultBtn.innerHTML = "Reset to default";
-	find("yippee-option").innerHTML = "YEHEYYY";
+	find("alarm-option").innerHTML = "HUY GISING NA";
 	find("bennett-option").innerHTML = "bouken da bouken";
 	find("boom-option").innerHTML = "VINE BUM";
 	find("bubbles-option").innerHTML = "kyut na bubble";
 	find("chime-option").innerHTML = "ding";
+	find("chinese-option").innerHTML = "nagriring yung phone mo";
+	find("mash-option").innerHTML = "monster mash";
+	find("pipe-option").innerHTML = "METAL PIPE";
+	find("siren-option").innerHTML = "WANG WANG";
+	find("scream-option").innerHTML = "SIGAW";
 	find("snore-option").innerHTML = "*SNORE* MIMIMI";
+	find("windows-option").innerHTML = "windows xp startup";
 	find("wow-option").innerHTML = "waaaauw";
+	find("yippee-option").innerHTML = "YEHEYYY";
 	find("theme-text").innerHTML = "Tema: ";
 	find("tasks-title").innerHTML = "Mga task";
 	if (taskContainer.classList.value.match("no-tasks")) {

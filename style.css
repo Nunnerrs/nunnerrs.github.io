@@ -56,7 +56,6 @@ h1 > span {
 }
 #note {
     color: var(--h1-color);
-    -webkit-text-stroke: 1px rgb(200, 62, 62);
 }
 h2 {
     color: var(--h2-color);
