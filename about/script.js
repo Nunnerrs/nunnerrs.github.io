@@ -1,10 +1,14 @@
 var title = document.getElementById("title");
 var button = document.getElementById("click-button");
-var clickMsg = document.getElementById("click-msg");
-var checkboxes = document.getElementById("checkboxes");
 var visitCount = Number(localStorage.getItem("visits"));
+var clicks = document.getElementById("clicks");
+var clickMsg = document.getElementById("click-msg");
+var codepad = document.getElementById("codepad");
+var checkboxes = document.getElementById("checkboxes");
 var kahootUsername = document.getElementById("kahoot-username");
 var kahootGenerator = document.getElementById("kahoot-generator");
+var tabs = document.getElementById("tabs");
+var extras = document.getElementById("extras");
 
 const adjectives = ["Agent", "Agile", "Amazing", "Amazon", "Amiable", "Aquatic", "Arctic", "Awesome",
                    "Blue", "Bold", "Bright",
@@ -45,138 +49,20 @@ if (visitCount == 1 || visitCount == "1") {
 // ONLY WIENERS GIVE UP SO CLOSE THIS RIGHT NOW
 
 function click() {
-    let clicks = document.getElementById("clicks");
-    let newClicks = Number(clicks.innerHTML) + 1;
-    clicks.innerHTML = newClicks;
-    if (Number(newClicks) == 50) {
-        clickMsg.innerHTML = "wow you did it! you should feel cool after being congratulated by Nunners herself";
-    };
-    if (Number(newClicks) == 100) {
-        clickMsg.innerHTML = "oh you got 100 clicks now that's nice";
-    };
-    if (Number(newClicks) == 150) {
-        clickMsg.innerHTML = "um you know you can stop now";
-    };
-    if (Number(newClicks) == 200) {
-        clickMsg.innerHTML = "bye bye";
-    };
-    if (Number(newClicks) == 250) {
-        clickMsg.innerHTML = "…";
-    };
-    if (Number(newClicks) == 300) {
-        clickMsg.innerHTML = "you're clicking a lot huh…";
-    };
-    if (Number(newClicks) == 350) {
-        clickMsg.innerHTML = "w-well just so you know…";
-    };
-    if (Number(newClicks) == 400) {
-        clickMsg.innerHTML = "I'M NOT GONNA ADD ANY MORE MESSAGES AFTER THIS, OKAY?!";
-    };
-    if (Number(newClicks) == 450) {
-        clickMsg.innerHTML = "h-hey why're you still clicking this button??";
-    };
-    if (Number(newClicks) == 500) {
-        clickMsg.innerHTML = "oh I SEE what you're tryna do!";
-    };
-    if (Number(newClicks) == 550) {
-        clickMsg.innerHTML = "you probably want something like…";
-    };
-    if (Number(newClicks) == 600) {
-        clickMsg.innerHTML = "THE SECRET CODE FOR THE CHECKBOXES!!!";
-    };
-    if (Number(newClicks) == 650) {
-        clickMsg.innerHTML = "well i AIN'T TELLING YA!";
-    };
-    if (Number(newClicks) == 700) {
-        clickMsg.innerHTML = "…";
-    };
-    if (Number(newClicks) == 750) {
-        clickMsg.innerHTML = "i said, I'M NOT GONNA GIVE IT TO YOU!";
-    };
-    if (Number(newClicks) == 800) {
-        clickMsg.innerHTML = "do you REALLY expect me to tell you…?";
-    };
-    if (Number(newClicks) == 850) {
-        clickMsg.innerHTML = "well…i bet your wrists hurt…";
-    };
-    if (Number(newClicks) == 900) {
-        clickMsg.innerHTML = "YOU BETTER NOT BE USING AN AUTO-CLICKER THOUGH or else SHAME ON U";
-    };
-    if (Number(newClicks) == 950) {
-        clickMsg.innerHTML = "i'll tell you the secret code…at 1,500 CLICKS!";
-    };
-    if (Number(newClicks) == 1000) {
-        clickMsg.innerHTML = "ok, so you're really dedicated and hit 1,000 clicks, huh?";
-    };
-    if (Number(newClicks) == 1050) {
-        clickMsg.innerHTML = "the next time you'll get a message from me is gonna be at 1,250 clicks!! so get clickin'!";
-    };
-    if (Number(newClicks) == 1150) {
-        clickMsg.innerHTML = "";
-    };
-    if (Number(newClicks) == 1250) {
-        clickMsg.innerHTML = "…you really wanna know what it is, huh…";
-    };
-    if (Number(newClicks) == 1300) {
-        clickMsg.innerHTML = "ok ok i'll tell you already…";
-    };
-    if (Number(newClicks) == 1350) {
-        clickMsg.innerHTML = "the secret code…";
-    };
-    if (Number(newClicks) == 1400) {
-        clickMsg.innerHTML = "…for the checkboxes…";
-    };
-    if (Number(newClicks) == 1450) {
-        clickMsg.innerHTML = "…IS……………";
-    };
-    if (Number(newClicks) == 1500) {
-        clickMsg.innerHTML = "make the letter \"N\" okay? you're welcome, but it doesn't really do anything yet so ummm……";
-    };
-    if (Number(newClicks) == 1550) {
-        clickMsg.innerHTML = "…";
-    };
-    if (Number(newClicks) == 1600) {
-        clickMsg.innerHTML = "…why're you still clicking this button…?";
-    };
-    if (Number(newClicks) == 1650) {
-        clickMsg.innerHTML = "…";
-    };
-    if (Number(newClicks) == 1700) {
-        clickMsg.innerHTML = "oh i see…you probably think there's <i>more than one</i> code, huh?";
-    };
-    if (Number(newClicks) == 1750) {
-        clickMsg.innerHTML = "well there aren't any more! so might as well stop";
-    };
-    if (Number(newClicks) == 1800) {
-        clickMsg.innerHTML = "no like seriously, i never added anything else";
-    };
-    if (Number(newClicks) == 1850) {
-        clickMsg.innerHTML = "…yet";
-    };
-    if (Number(newClicks) == 1900) {
-        clickMsg.innerHTML = "i think you should massage your hand now i bet it aches";
-    };
-    if (Number(newClicks) == 1950) {
-        clickMsg.innerHTML = "btw reload the page if you want to start over with the dialog";
-    };
-    if (Number(newClicks) == 2000) {
-        clickMsg.innerHTML = "dang you hit 2,000";
-    };
-    if (Number(newClicks) == 2050) {
-        clickMsg.innerHTML = "well, there aren't anymore secrets…";
-    };
-    if (Number(newClicks) == 2100) {
-        clickMsg.innerHTML = "so what now?";
-    };
-    if (Number(newClicks) == 2150) {
-        clickMsg.innerHTML = "maybe we could have a conversation…";
-    };
-    if (Number(newClicks) == 2200) {
-        clickMsg.innerHTML = "but i'm too lazy right now, and i'd have to delete it once i add a new secret";
-    };
-    if (Number(newClicks) == 2250) {
-        clickMsg.innerHTML = "so bye bye, for real this time!";
-    };
+    let proceed = true;
+    if (document.getElementById("promise")) {
+        if (!document.getElementById("promise").checked && Number(clicks.innerHTML) > 2395) {
+            proceed = false;
+        }
+    }
+    if (proceed == true) {
+        let newClicks = Number(clicks.innerHTML) + 1;
+        clicks.innerHTML = newClicks;
+        let c = Number(newClicks);
+        if (c%50 == 0) {
+            clickMsg.innerHTML = dialog[c/50 - 1];
+        };
+    }
     /*setTimeout(function() {
         clicks.innerHTML = Math.floor(Number(clicks.innerHTML))
         if (Number(clicks.innerHTML) > newClicks) {
@@ -185,12 +71,33 @@ function click() {
     }, 50);*/
 };
 
+const dialog = ["wow you did it! congrats :D", "oh you got 100 clicks that's nice", "um, you know you can stop now…", "bye bye", "…",
+    "you're clicking a lot huh…", "WELL JUST SO YOU KNOW…", "I'M NOT GONNA ADD ANY MORE MESSAGES AFTER THIS, OKAY?!",
+    "h-hey, why're you still clicking this button??", "oh, I SEE what you're trying to do!", "you probably want…",
+    "THE SECRET CODE TO THE CHECKBOXES!!", "pfff, I'm not gonna give it to you", "…", "I said, I'm <i>not</i> gonna give it to you…",
+    "do you <i>really</i> expect me to tell you…?", "well, I bet your wrists hurt by now…", "YOU BETTER NOT BE USING AN AUTOCLICKER OR ELSE SHAME ON YOU",
+    "fine, I'll tell you the code…", "AT 1,500 CLICKS >:]", "btw if you reload the page you have to start over <3",
+    "I'll come back at 1,250 clicks, keep clickin' until then!", "", "", "…you're really dedicated, huh?", "alright…", "the secret code…",
+    "…to the checkboxes…", "IS……………", "make the letter \"N\" okay?", "bro, why're you still clicking this button?", "……",
+    "oh i see…you probably think there's <i>more than one</i> code, huh?", "that was the only code! so might as well stop now",
+    "no seriously, I don't have any more codes to tell you", "…huh? you want a hint?", "sorry kid, you're gonna have to find out by yourself",
+    "too bad ^^", "too bad ^^", "dang you reached 2,000 clicks", "no, I'm not giving you a hint, go away", "STOP CLICKING",
+    "take a break smh I bet your wrist aches by now", "………", "FINE! I'll give you a hint…", "promise me that you'll touch grass once I tell you",
+    "PROMISE!!! >:[&nbsp&nbsp&nbsp<label for='promise'>&nbspI promise to touch grass&nbsp</label><input id='promise' type='checkbox'>",
+    "alright, so you know how the clue has three main components?", "the first is the location… (WRITE THIS DOWN)",
+    "the second is the hint for what the next code is", "and the third is where to find the code!", "…huh? still confused?",
+    "too bad :P", "ask nunners if you're really stumped", "yeah yeah technically I do know the code…",
+    "…but it's not my place for me to tell you", "ANYWAYS GO OUTSIDE NOWW", "", "", "…should I even be surprised?", "yeah, I'm gonna go now, bye.",
+    ""
+]
+
 function checkCode() {
     let cb = Array.prototype.slice.call(checkboxes.querySelectorAll("*"));
     if (cb[0].checked && !cb[1].checked && !cb[2].checked && cb[3].checked && cb[4].checked && cb[5].checked && !cb[6].checked && cb[7].checked && cb[8].checked && !cb[9].checked && cb[10].checked && cb[11].checked && cb[12].checked && !cb[13].checked && !cb[14].checked && cb[15].checked) {
-        alert("you got the code right! now, for the next clue:");
-        alert("ERROR: REALLY BIG future update not found");
-        alert("think this thouroughly; there's three main things in the clue that you need to figure out");
+        setTimeout(function(){
+            alert("you got the code right! now, for the next clue: ERROR 404: REALLY BIG future update not found");
+            alert("think this thouroughly; there's three main things in the clue that you need to figure out");
+        }, 100);
     };
 };
 
@@ -202,6 +109,33 @@ function generateUsername() {
     setTimeout(function(){kahootUsername.innerHTML = "Your username is " + username}, 1000);
 };
 
+function switchTabs(tab) {
+    for (let i = 0; i < tabs.childNodes.length; i++) {
+        if (tabs.childNodes[i].classList) {
+            tabs.childNodes[i].classList.remove("selected");
+        }
+        if (extras.childNodes[i].innerHTML != null) {
+            console.warn(extras.childNodes[i].innerHTML);
+            extras.childNodes[i].style.position = "fixed";
+            extras.childNodes[i].style.visibility = "hidden";
+        }
+    }
+    if (tab != "codepad") {
+        codepad.style.position = "fixed";
+        codepad.style.visibility = "hidden";
+    }
+    document.getElementById(tab + "-tab").classList.add("selected");
+    let t = document.getElementById(tab);
+    t.style.position = "";
+    t.style.visibility = "visible";
+}
+
 button.onclick = click;
+/*button.onfocus = function(){
+    setTimeout(function(){alert("hi"); button.blur();}
+};*/
 checkboxes.onclick = checkCode;
 kahootGenerator.onclick = generateUsername;
+tabs.childNodes.forEach(function(i){
+    i.onclick = function(){switchTabs(i.dataset.name)};
+})

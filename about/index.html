@@ -20,12 +20,10 @@
         -->
         <style>
             ::-moz-selection { /* firefox */
-                background: rgb(200, 150, 255);
-                color: rgb(75, 60, 150);
+                background: rgba(215, 175, 255, 0.5);
             }
             ::selection {
-                background: rgb(200, 150, 255);
-                color: rgb(75, 60, 150);
+                background: rgba(215, 175, 255, 0.5);
             }
             .noSelect {
                 -webkit-touch-callout: none;
@@ -35,11 +33,13 @@
                 -ms-user-select: none;
                 user-select: none;
             }
-            a:link {
-                color: rgb(200, 150, 255);
+            a:hover {
+                filter: brightness(1.1);
             }
-            a:visited {
-                color: rgb(155, 105, 210);
+            a:link {
+                color: rgb(205, 210, 255);
+                font-weight: bold;
+                text-decoration: none;
             }
             body {
                 background-color: rgb(25, 20, 50);
@@ -47,26 +47,18 @@
                 text-align: center;
             }
             button {
-                background-color: rgb(150, 100, 200);
-                border-color: rgb(170, 120, 225);
+                background-color: rgb(75, 0, 150);
+                border-color: rgb(75, 0, 150);
                 border-radius: 5px;
-                color: rgb(50, 40, 100);
+                color: rgb(247, 242, 255);
                 font-family: Comic Sans MS, Chalkboard SE, Itim;
                 cursor: pointer;
-            }
-            div {
-                background-color: rgb(180, 120, 210);
-                border: 5px solid rgb(210, 150, 240);
-                border-radius: 5px;
-                margin: auto;
-                text-align: center;
-                width: 90px;
             }
             h1 {
                 color: rgb(200, 150, 255);
             }
             h2 {
-                color: rgb(175, 125, 230);
+                color: rgb(200, 160, 245);
                 font-size: 22px;
             }
             h3 {
@@ -77,44 +69,122 @@
                 accent-color: rgb(200, 150, 255);
                 cursor: pointer;
             }
+            label {
+                background: rgb(210, 150, 240);
+                border-radius: 2px;
+                color: white;
+                padding: 2px;
+            }
             li {
                 color: rgb(155, 105, 210);
                 list-style-type: default;
             }
             p {
-                color: rgb(155, 105, 210);
+                color: rgb(225, 210, 250);
+                margin-top: 0;
             }
+            span {
+                color: rgb(220, 190, 250);
+                font-family: 'Zapf Dingbats';
+            }
+            v {
+                color: rgb(50, 40, 100);
+                font-weight: bold;
+            }
+            .float {
+                background: rgb(150, 100, 200);
+                border-radius: 10px;
+                color: rgb(247, 242, 255);
+                display: block;
+                padding: 15px;
+                width: 50vw;
+            }
+            .selected {
+                color: rgb(225, 210, 250) !important;
+            }
+            #bubble1 {
+                box-shadow: -10px 10px rgba(150, 100, 200, 0.5);
+                margin-left: 10%;
+            }
+            #bubble2 {
+                box-shadow: 10px 10px rgba(150, 100, 200, 0.5);
+                float: right;
+                margin-right: 10%;
+                margin-top: 30px;
+            }
+            #checkboxes {
+                background-color: rgb(180, 120, 210);
+                border: 5px solid rgb(210, 150, 240);
+                border-radius: 5px;
+                margin: auto;
+                padding: 5px;
+                text-align: center;
+                width: 90px;
+            }
+            #extras {
+                background: rgb(165, 135, 212);
+                max-height: 500px;
+                overflow-y: auto;
+                padding: 15px;
+            }
+            #extras > div, #extras > div > p {
+                color: black !important;
+            }
+            #tabs > button {
+                background: rgb(165, 135, 212);
+                border: 2px solid rgb(165, 135, 212);
+                border-style: solid outset solid solid;
+                border-radius: 5px 5px 0px 0px;
+                color: white;
+            }
+            /*@media screen and (min-width: 1000px) {
+                div {
+                    width: 50%;
+                }
+            }*/
         </style>
     </head>
     <body>
         <!-- this is where all the elements of my website (text, images, buttons, etc) are located -->
         <h1 id="title">about me</h1>
-        <h3>you visited this page <v id="visits">1 time</v>! (reseting cache will reset counter)</h3>
-        <p>
-            hi there! i'm Nunners (nickname), just a random person who thought making a website would be fun.
-            i know JavaScript, HTML, CSS and Lua. i've been attempting to make games and stuff on github,
-            W3Spaces (other silly sites) and on Roblox. below, i'll share update logs and maybe some other random things.
-            if you want to learn more about me, read Nunnerology in the <a href="https://nunnerrs.github.io/library/index.html?book=1">NunnerLibrary</a>
-            'cause i'm too lazy to update this one (it has more stuff in it).
-        </p>
-        <h2>spotlight project: <a id="project" href="">none</a></h2>
-        <p>sorry guys i was on hiatus bc of school (very busy)</p>
-        <h3>update log (as of -/-/2024):</h3>
-        <ul>
-            <li>will update the website more dw</li>
-        </ul>
+        <div>
+            <div class="float" id="bubble1">
+                Hi there! I'm Nunners (nickname), just a random person who thought making a website would be fun.<br>
+                <span>〜 ❀ 〜</span><br>
+                I learned JavaScript, HTML, and CSS in middle school, a few years before the NunnerVerse was created.
+                I also picked up Lua for fun! (<i>*cough*</i> Roblox <i>*cough*</i> )<br>
+            </div>
+            <div class="float" id="bubble2">
+                I've been making projects on Github like games and useful tools. If you want to learn more about me personally, read Nunnerology in the <a href="https://nunnerrs.github.io/library/index.html?book=1">NunnerLibrary</a>.
+            </div>
+        </div>
+        <br><br><br><br><br><br><br>
         <h2>random extras</h2>
-        <p>if you click the button below 50 times something will happen</p>
-        <button id="click-button" onclick="click()">clicks: <a id="clicks">0</a></button>
-        <p class="noSelect" id="click-msg" style="color: rgb(200, 150, 255);"></p><br>
-        <p id="kahoot-username">Click the button below to generate a random username (Kahoot!-style)</p>
-        <button id="kahoot-generator">Generate Random Kahoot! Username</button><br><br>
-        <p>rumor has it that something will happen if the checkboxes are clicked in a certain pattern…try to figure it out</p>
-        <div id="checkboxes">
-            <input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox">
-            <input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox">
-            <input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox">
-            <input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox">
+        <div id="tabs">
+            <button class="selected" data-name="visit-count" id="visit-count-tab">visit count</button><button data-name="clicker" id="clicker-tab">clicky</button><button data-name="generator" id="generator-tab">username generator</button><button data-name="codepad" id="codepad-tab">checkboxes</button>
+        </div>
+        <div id="extras">
+            <div id="visit-count">
+                you visited this page <v id="visits">1 time</v>! (reseting cache will reset counter)
+            </div>
+            <div id="clicker" style="position: fixed; visibility: hidden;">
+                <p>if you click the button below 50 times something will happen</p>
+                <button id="click-button" onclick="click()">clicks: <a id="clicks">0</a></button>
+                <p class="noSelect" id="click-msg" style="color: rgb(200, 150, 255);"></p>
+            </div>
+            <div id="generator" style="position: fixed; visibility: hidden;">
+                <p id="kahoot-username">Click the button below to generate a random username (Kahoot!-style)</p>
+                <button id="kahoot-generator">Generate Random Kahoot! Username</button>
+            </div>
+            <div id="codepad" style="position: fixed; visibility: hidden;">
+                <p>rumor has it that something will happen if the checkboxes are clicked in a certain pattern…try to figure it out</p>
+                <div class="check" id="checkboxes">
+                    <input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox">
+                    <input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox">
+                    <input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox">
+                    <input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox">
+                </div>
+            </div>
         </div>
         <h3><a href="https://nunnerrs.github.io" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
         <script src="script.js"></script>
