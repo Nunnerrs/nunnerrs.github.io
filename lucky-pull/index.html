@@ -10,33 +10,26 @@
         <link rel="icon" type="image/png" href="">
         <link rel="stylesheet" href="style.css">
     </head>
-    <body>
+    <body style="position: relative">
         <h1>lucky pull simulator</h1>
-        <h2>Gacha Selector</h2>
-        <select id="gachaType" value="1">
+        <label for="selector">Gacha Selector:</label>
+        <select id="selector" value="1">
             <option value="1">3-5 star (Genshin)</option>
             <option value="2">2-4 star (Bandori)</option>
-            <option value="3">Common-Legendary (Adopt Me!)</option>
-            <option value="4">Common-Legendary (Bubble Gum Simulator)</option>
         </select>
         <button id="submit">Submit</button>
         <br><br>
-        <button id="one-pull">1 pull</button> <button id="large-pull">10 pull</button>
+        <button class="pull-button" id="one-pull">1 pull</button> <button class="pull-button" id="large-pull">10 pull</button>
         <p id="message">
             <table>
                 <tr id="genshin"></tr>
             </table>
         </p>
-        <button id="continueButton" style="visibility: hidden;"></button>
-        <br><br>
-        <button id="invButton" style="visibility: hidden">Open Genshin Inventory</button>
-        <h2 id="invTitle" style="visibility: hidden">Genshin Inventory</h2>
-        <div id="inventory" style="visibility: hidden">
-            <p>You don't have any weapons or characters. Click any of the pull buttons below to obtain some!</p>
+        <button class="pull-button" id="continueButton" style="visibility: hidden;"></button>
+        <div id="bottom-container">
+            <button id="dark-mode">dark mode: off</button>
+            <h3><a href="https://nunnerrs.github.io/index.html" style="color: rgb(255, 255, 255); font-weight: normal; text-decoration: none;">To the NunnerVerse²</a></h3>
         </div>
-        <br><br><br><br>
-        <button id="dark-mode">dark mode: off</button>
-        <h3><a href="https://nunnerrs.github.io/index.html" style="text-decoration: none; color: rgb(0, 125, 100);">To the NunnerVerse²</a></h3>
         <script src="script.js"></script>
     </body>
 </html>

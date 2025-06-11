@@ -1,4 +1,4 @@
-var gachaType = document.getElementById("gachaType");
+var gachaType = document.getElementById("selector");
 var submit = document.getElementById("submit");
 var onePullBtn = document.getElementById("one-pull");
 var largePullBtn = document.getElementById("large-pull");
@@ -35,24 +35,6 @@ const rewardTypes = [
         /* 3 */ ["⭐⭐⭐ Ako Udagawa", "⭐⭐⭐ Arisa Ichigaya", "⭐⭐⭐ Aya Maruyama", "⭐⭐⭐ Chisato Shirasagi", "⭐⭐⭐ CHU²", "⭐⭐⭐ Eve Wakamiya", "⭐⭐⭐ Hagumi Kitazawa", "⭐⭐⭐ Himari Uehara", "⭐⭐⭐ Hina Hikawa", "⭐⭐⭐ Kanon Matsubara", "⭐⭐⭐ Kaoru Seta", "⭐⭐⭐ Kasumi Toyama", "⭐⭐⭐ Kokoro Tsurumaki", "⭐⭐⭐ LAYER", "⭐⭐⭐ Lisa Imai", "⭐⭐⭐ LOCKE", "⭐⭐⭐ Mashiro Kurata", "⭐⭐⭐ MASKING", "⭐⭐⭐ Maya Yamato", "⭐⭐⭐ Misaki Okusawa", "⭐⭐⭐ Moca Aoba", "⭐⭐⭐ Nanami Hiromachi", "⭐⭐⭐ PAREO", "⭐⭐⭐ Ran Mitake", "⭐⭐⭐ Rimi Ushigome", "⭐⭐⭐ Rinko Shirokane", "⭐⭐⭐ Rui Yashio", "⭐⭐⭐ Saaya Yamabuki", "⭐⭐⭐ Sayo Hikawa", "⭐⭐⭐ Tae Hanazono", "⭐⭐⭐ Tomoe Udagawa", "⭐⭐⭐ Touko Kirigaya", "⭐⭐⭐ Tsugumi Hazawa", "⭐⭐⭐ Tsukushi Futaba", "⭐⭐⭐ Yukina Minato"],
         /* 4 */ ["⭐⭐⭐⭐ Ako Udagawa", "⭐⭐⭐⭐ Arisa Ichigaya", "⭐⭐⭐⭐ Aya Maruyama", "⭐⭐⭐⭐ Chisato Shirasagi", "⭐⭐⭐⭐ CHU²", "⭐⭐⭐⭐ Eve Wakamiya", "⭐⭐⭐⭐ Hagumi Kitazawa", "⭐⭐⭐⭐ Himari Uehara", "⭐⭐⭐⭐ Hina Hikawa", "⭐⭐⭐⭐ Kanon Matsubara", "⭐⭐⭐⭐ Kaoru Seta", "⭐⭐⭐⭐ Kasumi Toyama", "⭐⭐⭐⭐ Kokoro Tsurumaki", "⭐⭐⭐⭐ LAYER", "⭐⭐⭐⭐ Lisa Imai", "⭐⭐⭐⭐ LOCKE", "⭐⭐⭐⭐ Mashiro Kurata", "⭐⭐⭐⭐ MASKING", "⭐⭐⭐⭐ Maya Yamato", "⭐⭐⭐⭐ Misaki Okusawa", "⭐⭐⭐⭐ Moca Aoba", "⭐⭐⭐⭐ Nanami Hiromachi", "⭐⭐⭐⭐ PAREO", "⭐⭐⭐⭐ Ran Mitake", "⭐⭐⭐⭐ Rimi Ushigome", "⭐⭐⭐⭐ Rinko Shirokane", "⭐⭐⭐⭐ Rui Yashio", "⭐⭐⭐⭐ Saaya Yamabuki", "⭐⭐⭐⭐ Sayo Hikawa", "⭐⭐⭐⭐ Tae Hanazono", "⭐⭐⭐⭐ Tomoe Udagawa", "⭐⭐⭐⭐ Touko Kirigaya", "⭐⭐⭐⭐ Tsugumi Hazawa", "⭐⭐⭐⭐ Tsukushi Futaba", "⭐⭐⭐⭐ Yukina Minato"]
     ],
-    
-    [
-        /* Common */	["Bluebottle Fly", "Cockroach", "Mongoose"],
-        /* Uncommon */	["Tawny Frogmouth", "Rock Pigeon"],
-        /* Rare */		["Indian Leopard", "Toy Poodle",],
-        /* Ultra Rare */["Alley Cat", "Seagull", "Black Kite"],
-        /* Legendary */	["Billy Goat", "Gargoyle"]
-    ],
-    
-    //Common, Unique, Rare, Epic, Legendary
-    [
-        ["Magic Mouse"],
-        ["Magic Panda"],
-        ["Dice"],
-        ["Red Dice"],
-        ["Circus Stack"],
-        ["Golden Lion"]
-    ]
 ];
 
 const rewards = [];
@@ -89,41 +71,9 @@ function changeType() {
         gachaText = "Based on the banners in Bandori (no 5-stars or MyGO!!!!! yet)";
         onePullText = "1 pull";
         largePullText = "10 pull";
-        pullText = "You pulled: ";
+        pullText = "You pulled:<br>";
         max = 1000;
         //alert("Set to Bandori");
-    } else if (type == 3) {
-        largePullAmount = 0;
-        //oneStars = true;
-        //twoStars = true;
-        //fiveStars = true;
-        oneStarChance = 35;
-        twoStarChance = 25;
-        threeStarChance = 20;
-        fourStarChance = 16;
-        fiveStarChance = 4;
-        gachaText = "Based on the current Gumball Machine egg in Adopt Me! (Currently Southeast Asia Egg)";
-        onePullText = "Hatch 1";
-        largePullText = "--";
-        pullText = "You hatched: ";
-        max = 100;
-        //alert("Set to Adopt Me!");
-    } else if (type == 4) {
-        largePullAmount = 3;
-        //oneStars = true;
-        //twoStars = true;
-        //fiveStars = true;
-        oneStarChance = 394;
-        twoStarChance = 265;
-        threeStarChance = 200;
-        fourStarChance = 140;
-        fiveStarChance = 1;
-        gachaText = "Based on the retired Magic Egg in Bubble Gum Simulator";
-        onePullText = "Hatch 1";
-        largePullText = "Hatch 3";
-        pullText = "You hatched: ";
-        max = 1000;
-        //alert("Set to Bubble gum");
     }
 	if (mode == 0) {
 		if (largePullAmount <= 1) {
@@ -195,6 +145,7 @@ function onePull() {
         rewards.push(rewardNames[reward - 3][Math.floor(Math.random() * (rewardNames[reward - 3].length - 1))]);
         message.innerHTML = "Click anywhere to continue";
         continueButton.innerHTML = "★";
+        setTimeout(function(){document.body.onclick = continuePull;}, 250);
     }
     if (type == 2) {
         if (pull <= twoStarChance) {
@@ -209,39 +160,7 @@ function onePull() {
         rewards.push(rewardNames[reward - 2][Math.floor(Math.random() * (rewardNames[reward - 2].length - 1))]);
         message.innerHTML = "Click to cut";
         continueButton.innerHTML = "🎫";
-    }
-    if (type == 3 || type == 4) {
-        if (pull <= oneStarChance) {
-            reward = 1;
-        }
-        if (pull > oneStarChance && pull <= oneStarChance + twoStarChance) {
-            reward = 2;
-        }
-        if (pull > oneStarChance + twoStarChance && pull <= oneStarChance + twoStarChance + threeStarChance) {
-            reward = 3;
-        }
-        if (pull > oneStarChance + twoStarChance + threeStarChance && pull <= oneStarChance + twoStarChance + threeStarChance + fourStarChance) {
-            reward = 4;
-        }
-        if (pull > oneStarChance + twoStarChance + threeStarChance + fourStarChance && pull <= oneStarChance + twoStarChance + threeStarChance + fourStarChance + fiveStarChance) {
-            if (type == 4) {
-                reward = 6;
-            } else {
-                reward = 5;
-            }
-        }
-        if (type == 4 && reward == 4) {
-            let rng = Math.floor(Math.random() * 10) + 1
-            if (rng >= 1 && rng <= 4) {
-                rewards.push(rewardNames[4][Math.floor(Math.random() * (rewardNames[4].length - 1))]);
-            } else {
-                rewards.push(rewardNames[3][Math.floor(Math.random() * (rewardNames[3].length - 1))]);
-            }
-        } else {
-            rewards.push(rewardNames[reward - 1][Math.floor(Math.random() * (rewardNames[reward - 1].length - 1))]);
-        }
-        message.innerHTML = "Click to hatch";
-        continueButton.innerHTML = "🥚";
+        setTimeout(function(){document.body.onclick = continuePull;}, 250);
     }
 
     /*if (oneStars == true && pull <= oneStarChance) {
@@ -282,7 +201,7 @@ function largePull() {
     largePullBtn.style = "visibility: hidden";
     message.style = "visibility: visible;";
     continueButton.style = "visibility: visible;";
-    let highest = 3;
+    let highest = 2;
 
     for (let i = 1; i <= largePullAmount; i++) {
         //alert("1 pull…");
@@ -328,33 +247,17 @@ function largePull() {
             }
             rewards.push(rewardNames[reward - 2][Math.floor(Math.random() * (rewardNames[reward - 2].length - 1))])
         }
-        if (type == 3 || type == 4) {
-            if (pull <= oneStarChance) {
-                reward = 1;
-            }
-            if (pull > oneStarChance && pull <= oneStarChance + twoStarChance) {
-                reward = 2;
-            }
-            if (pull > oneStarChance + twoStarChance && pull <= oneStarChance + twoStarChance + threeStarChance) {
-                reward = 3;
-            }
-            if (pull > oneStarChance + twoStarChance + threeStarChance && pull <= oneStarChance + twoStarChance + threeStarChance + fourStarChance) {
-                reward = 4;
-            }
-            if (pull > oneStarChance + twoStarChance + threeStarChance + fourStarChance && pull <= oneStarChance + twoStarChance + threeStarChance + fourStarChance + fiveStarChance) {
-                reward = 5;
-            }
-            rewards.push(rewardNames[reward - 1][Math.floor(Math.random() * (rewardNames[reward - 1].length - 1))]);
-        }
         //alert("u pulled a " + rewards[rewards.length - 1] + "-star!!");
     }
     
-    if (highest == 4) {
-        continueButton.style = "color: rgb(200, 150, 255); visibility: visible;"
-    }
-    if (highest == 5) {
-        continueButton.style = "color: rgb(255, 220, 100); visibility: visible;"
-    }
+    setTimeout(function(){
+        if (highest == 4) {
+            continueButton.style = "color: rgb(200, 150, 255); visibility: visible;"
+        }
+        if (highest == 5) {
+            continueButton.style = "color: rgb(255, 220, 100); visibility: visible;"
+        }
+    }, 150);
     if (Number(gachaType.value) == 1) {
         message.innerHTML = "Click to continue";
         continueButton.innerHTML = "★";
@@ -363,11 +266,8 @@ function largePull() {
         message.innerHTML = "Click to cut";
         continueButton.innerHTML = "🎫";
     }
-    if (Number(gachaType.value) == 3 || Number(gachaType.value) == 4) {
-        message.innerHTML = "Click to hatch";
-        continueButton.innerHTML = "🥚";
-    }
     mode = 1;
+    setTimeout(function(){document.body.onclick = continuePull;}, 250);
 }
 largePullBtn.onclick = largePull;
 
@@ -382,16 +282,17 @@ function continuePull() {
                 //message.innerHTML = message.innerHTML + rewards[i] + ", ";
             }
         } else {
-            for (let i = 0; i < rewards.length; i++) {
-                message.innerHTML = message.innerHTML + rewards[i] + ", ";
+            for (let i = 0; i < rewards.length - 1; i++) {
+                message.innerHTML += rewards[i] + ", ";
             }
+            message.innerHTML += rewards[rewards.length - 1];
         }
         /*} else {
             message.innerHTML = pullText + rewards[0];
         }*/
         message.style = "visibility: visible;";
         continueButton.innerHTML = "OK";
-        continueButton.style = "color: rgb(220, 60, 125); visibility: visible;";
+        continueButton.style = "color: rgb(220, 60, 125); transition: none; visibility: visible;";
         //space.style = "position: fixed";
         onePullBtn.style = "position: fixed; visibility: hidden";
         largePullBtn.style = "position: fixed; visibility: hidden";
@@ -408,9 +309,9 @@ function continuePull() {
         if (largePullAmount > 1) {
             largePullBtn.style = "visibility: visible;";
         }
+        setTimeout(function(){document.body.onclick = null;}, 250);
     }
 }
-document.body.onclick = continuePull;
 //continueButton.onclick = continuePull;
 
 function toggleDarkMode() {
