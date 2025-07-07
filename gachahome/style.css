@@ -1,0 +1,87 @@
+:root {
+    --periwinkle: rgb(220, 210, 255);
+    --purple: rgb(60, 40, 120);
+}
+body {
+    background: var(--periwinkle);
+    font-family: 'Sour Gummy', 'Chalkboard SE', sans-serif;
+    overflow: hidden;
+    text-align: center;
+    margin: auto;
+}
+.home-item {
+    position: fixed;
+}
+.home-item {
+	height: 10px;
+    width: 10px;
+}
+.item {
+    background: rgb(0, 0, 0, 0.5);
+    float: left;
+    padding: 5px;
+    width: 100px;
+    word-wrap: break-word;
+}
+.item > img {
+    height: 100px;
+    max-width: 100%;
+    width: auto;
+}
+.no-touchy {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#gacha-image {
+    width: 90%;
+}
+#gacha-tab {
+    background: var(--periwinkle);
+    border-color: var(--periwinkle);
+    border-style: solid;
+    border-width: 5px 0px;
+}
+#home-page {
+	display: table;
+}
+#home-space {
+	background: lightgreen;
+    height: 100%;
+    left: 220px;
+    position: fixed;
+    margin: 0px;
+    top: 56px;
+    width: 100%;
+}
+#home-tab {
+    background: white;
+    border-color: white;
+    border-style: solid;
+    border-width: 5px 0px;
+}
+#navigation {
+    cursor: alias;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#stats {
+    background: var(--purple);
+    color: white;
+    padding-top: 5px;
+    text-align: right;
+    width: 100%
+}
+#stuff {
+    align-items: start;
+    background: rgb(0, 0, 0, 0.5);
+    color: white;
+    display: block;
+    height: 1000px;
+    overflow: auto;
+    position: static;
+    width: 220px;
+}
