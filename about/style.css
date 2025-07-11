@@ -1,0 +1,154 @@
+::-moz-selection { /* firefox */
+    background: rgba(215, 175, 255, 0.5);
+}
+::selection {
+    background: rgba(215, 175, 255, 0.5);
+}
+.noSelect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+a:hover {
+    filter: brightness(1.1);
+}
+a:link {
+    color: rgb(205, 210, 255);
+    font-weight: bold;
+    text-decoration: none;
+}
+body {
+    background-color: rgb(25, 20, 50);
+    font-family: Comic Sans MS, Chalkboard SE, Itim;
+    text-align: center;
+}
+button {
+    background-color: rgb(75, 0, 150);
+    border-color: rgb(75, 0, 150);
+    border-radius: 5px;
+    color: rgb(247, 242, 255);
+    font-family: Comic Sans MS, Chalkboard SE, Itim;
+    cursor: pointer;
+}
+h1 {
+    color: rgb(200, 150, 255);
+}
+h2 {
+    color: rgb(200, 160, 245);
+    font-size: 22px;
+}
+h3 {
+    color: rgb(170, 120, 225);
+    font-size: 20px;
+}
+input[type=checkbox] {
+    accent-color: rgb(200, 150, 255);
+    cursor: pointer;
+}
+label {
+    background: rgb(210, 150, 240);
+    border-radius: 2px;
+    color: white;
+    padding: 2px;
+}
+li {
+    color: rgb(155, 105, 210);
+    list-style-type: default;
+}
+p {
+    color: rgb(225, 210, 250);
+    margin-top: 0;
+}
+span {
+    color: rgb(220, 190, 250);
+    font-family: 'Zapf Dingbats';
+}
+v {
+    color: rgb(50, 40, 100);
+    font-weight: bold;
+}
+.float {
+    background: rgb(150, 100, 200);
+    border-radius: 10px;
+    color: rgb(247, 242, 255);
+    display: block;
+    padding: 15px;
+    width: 50vw;
+}
+.selected {
+    color: rgb(225, 210, 250) !important;
+}
+#bubble1 {
+    box-shadow: -10px 10px rgba(150, 100, 200, 0.5);
+    margin-left: 10%;
+    position: relative;
+}
+#bubble2 {
+    box-shadow: 10px 10px rgba(150, 100, 200, 0.5);
+    float: right;
+    margin-right: 10%;
+    margin-top: 30px;
+}
+#checkboxes {
+    background-color: rgb(180, 120, 210);
+    border: 5px solid rgb(210, 150, 240);
+    border-radius: 5px;
+    margin: auto;
+    padding: 5px;
+    text-align: center;
+    width: 90px;
+}
+#extras {
+    background: rgb(165, 135, 212);
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 15px;
+}
+#extras > div, #extras > div > p {
+    color: black !important;
+}
+#pfp {
+    height: 100%;
+    position: absolute;
+    right: -40%;
+    top: -15%;
+    width: 25%;
+}
+#pfp > img {
+    height: fit-content;
+    width: 100%;
+}
+#tabs > button {
+    background: rgb(165, 135, 212);
+    border: 2px solid rgb(165, 135, 212);
+    border-style: solid outset solid solid;
+    border-radius: 5px 5px 0px 0px;
+    color: white;
+}
+@media screen and (min-width: 1225px) {
+    #pfp > img {
+        height: 110%;
+        width: auto;
+    }
+}
+@media screen and (max-width: 1225px) {
+    #pfp {
+        right: -45%;
+        top: -5%;
+    }
+    #pfp, #pfp > img {
+        height: 145px;
+        width: auto;
+    }
+}
+@media screen and (max-width: 815px) {
+    .float {
+        width: 80% !important;
+    }
+    #pfp {
+        visibility: hidden;
+    }
+}
