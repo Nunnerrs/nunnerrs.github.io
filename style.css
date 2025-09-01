@@ -47,7 +47,7 @@ button {
 }
 h1 {
     color: var(--h1-color);
-	font-family: 'Merry Holiday', 'Comic Sans MS', 'Chalkboard SE';
+	font-family: 'Comic Sans MS', 'Chalkboard SE';
     font-size: 32pt;
 }
 h1 > span {

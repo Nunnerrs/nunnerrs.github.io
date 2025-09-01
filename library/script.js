@@ -1,11 +1,3 @@
-/*
-after the april fool's update:
-    delete escape room book
-    delete closeBook if in openBook
-    add back book11's css
-    put hope vol 3 back in books
-*/
-
 var book = document.getElementById("book");
 var pageL = document.getElementById("pageL");
 var pageR = document.getElementById("pageR");
@@ -25,9 +17,9 @@ if (dm == null) {
     dm = false;
 } else if (dm == "true" || dm == true) {
     toggleDarkMode();
-};
+}
 
-var total = 12;
+var total = 14;
 
 const books = {
     // fitting image sample: https://i.ibb.co/xLsBh3W/img.png (add class rp to fix margin on right pages)
@@ -36,26 +28,37 @@ const books = {
     Line capacity: 33 characters
     Page capacity: 781 characters
     DON'T FORGET TO UPDATE BOOK TOTAL ABOVE
-    book#: [
-        // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
-        "", // <img src="covers/placeholder.png">
-        "<br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Coming soon in MONTH 2023<br><br><button id='book#' onclick='copyLink();'>Copy book share link</button>",
-        "Coming Soon!",
-        "Coming Soon!",
-        // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
-    ];
+    // bookName
+    const book# = [
+    // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
+    "", // <img src="covers/placeholder.png">
+    "<br><br><br><br><br><br><br><bt>TITLE</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Coming soon in MONTH 2023<br><br><button id='book#' onclick='copyLink();'>Copy book share link</button>",
+    "Coming Soon!",
+    "Coming Soon!",
+    // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
+];
     */
     book1: [
         "", // <img src="covers/placeholder.png">
-        "<br><br><br><br><br><br><br><bt>Nunnerology</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 1/17/2023<br><br><button id='book1' onclick='copyLink();'>Copy book share link</button>",
-        "This is an autobiography (maybe?) that I wrote so you guys can learn more about me. I'll edit this every now and then (especially the favorites list) because my interests change occassionally. For a more brief version (mainly relating to code), visit my <a href='about'>about me page</a>. I hope you enjoy it ^u^",
-        "Hi there, I'm Julianna, but I'm known as Nunners on this website. I build and code Roblox games for fun. I also enjoy making this website, coded through HTML, JavaScript, and CSS. The coding languages I've learned are HTML, JavaScript, CSS, Luau (language based on Lua used for Roblox game making), and PHP.",
-        "I'm a funny, smart, and creative person (also a perfectionist so my projects are always top-tier)(but i'm also a lazy procrastinator hahaha). I have an older brother and a younger sister. In my free time, I play Roblox or code (to work on this website or my Roblox games). Besides that, I like to draw, read, and listen to music. My friends are Kayleigh, Lianna, and Skylar (I have a lot more but they don't want to be publically mentioned). I'm a big fan of Pokémon and Toilet-Bound Hanako-kun.",
-        "Here's a list of some of my <b>favorites:</b><br>• Animals — Hedgehogs, frogs, and ducks (goats and hippos are cool too)<br>• Anime — Toilet-Bound Hanako-kun<br>• Chips — Cheddar & Sour Cream Ruffles and Cheetos Puffs<br>• Colors — Aquamarine (hex #00FFAE) and light indigo<br>• Foods — Daing na bangus, bistek, gyudon, and takoyaki<br>• Manga — Toilet-Bound Hanako-kun<br>• Music Artists — Snail's House, Kirara Magic, Shion Lee, and Nanatsukaze<br>• Music Genre — Kawaii future bass and electro house<br>• Pokémon — Shaymin and Shuckle<br>• Video Games — Roblox, Genshin Impact, and BanG Dream!",
-        "<b>Fun facts about me:</b><br>• I was born on a couch (not in a hospital &#128561)<br>• My memory is really good, especially my long-term memory (but sometimes my short-term memory fails me so it balances out)<br>• I memorized every single Pokémon in exsistence (including Gen. 9!) + (a lot of) types of each of them + facts about many + Gen. 6 & 7 cries<br>• I own <i>every</i> Toilet-Bound Hanako-kun manga (even Vol. 0 and After-School Hanako-kun)(sorry I can't get enough)<br>• I can understand Tagalog! I'm not so good at speaking it though :P<br>• By \"perfectionist,\" I meant that kind of person who erases a letter because it looks weird or isn't proportional. Yeah, that's me :]",
-        "<b>Fun facts about my website:</b><br>• I started my website back in 2022; now I've got a total of 15 projects on this website (as of 4/8/24)!!! Though most of them are unfinished because I lose the motivation to work on them (but I come back so don't worry)<br>• This site used to be on W3Spaces. I switched because they limited the free plan on 11/18/22<br>• Web Chef was renamed three times. Its original name was JS Chef, but was changed to Button Chef, Web Cuisine, and now it's Web Chef! Heheh I just wasn't satified—<br>• This isn't my only personal website! Check out <a href='https://feet.w3spaces.com'>the FeetVerse</a> (don't worry, there's no feet pics yet)(I DIDN'T DECIDE THE NAME OK); Featuring random ideas that came to life!",
-        "<b>Contacts</b> (idk what you'd use them for tho)<br>Discord: nunnerrs<br>Discord server (NunnerDev): <a href='https://discord.gg/zbVsHA4tSu'>discord.gg</a><br>Roblox username: Nunnerrs<br>Website: <a href='https://nunnerrs.github.io'>nunnerrs.github.io</a>",
-        "And that's all I can think of adding for now! I'll update this more as things change.",
+        "<br><br><br><br><br><br><br><bt>Nunnerology</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 1/17/2023<br>Edited on 9/1/2025<br><br><button id='book1' onclick='copyLink();'>Copy book share link</button>",
+        "Who is Nunners? Why did she make this website? What's her deal with Comic Sans and aquamarine??<br>If these are your questions, you've found the right book.<br><br><b>NUNNEROLOGY (noun)</b><br>> The study of Nunners, the NunnerVerse, and her silly little life.<br><i>\"Hey, what are you majoring in?\" \"<u>Nunnerology</u>.\"</i>",
+        "Just kidding. This is NOT an autobiography of me. It's like the <a href='https://nunnerrs.github.io/about'>about me page</a>, but goes into way more depth. Imagine those \"All About Me!\" posters you probably had to make in elementary; just a nice way for all you guys to know more about me. I'll be updating this book every now and then since my interests tend to change. (For those who remember the original Nunnerology, this is version 2!)",
+        "So if you haven't met me yet, I'm Julianna (yes, real name drop), but as you may have guessed I'm known as Nunners throughout this website. If you're curious, it was a nickname given to me by my uncle for who knows why. I shouldn't really share much personal information, but PHILIPPINESSSSSSS!! alsoimstillinschool that's why I'm so busy.",
+        "<b>History of the NunnerVerse</b><br>The NunnerVerse was born in 2022, originally hosted on <a href='https://www.w3schools.com'>W3Schools</a>. I randomly decided to relearn HTML, JavaScript, and CSS, the coding languages used to make a website. It's 'cause I knew them before [but forgot…], but one time I went on W3Schools and they had a new feature: Spaces, AKA subdomains you could host a little website on. So I thought, Hey, that would be fun. The original projects were COOFS, Raise a Pet Rock (WIP), clicker gaem, and a few others (CSS was terrible before). In November, I switched to Github since W3Spaces' free plan SUCKS. Probably the best decision I made in my life.",
+        "<b>Roblox ^-^</b><br>At that time, I also made Roblox games, notably random models. I self-taught myself how to code Luau and graduated from using free models!! Eventually, I made plant growing simulator and Custom Gear Testing, plus a few others that I never released (I helped code for my friends' games too). For the past few years, I haven't been playing or developing on Roblox (because of Gensh— WHAT WHOSAIDTHAT), and more recently, I've been on hiatus from programming the NunnerVerse (noooo). School has been wiping away my free time……",
+        "<b>Other Sites</b><br>Hopefully, I can work on the NunnerVerse more! Did you know I have other websites toooo? We have the <a href='https://feet.w3spaces.com'>FeetVerse</a> (not my idea), the <a href='https://nunners.w3spaces.com'>test hub</a> (original link), the NunnerVerse <a href='https://nunners.netlify.app'>alternative link</a>, and the up-and-coming <a href='https://cellorganelles.github.io'>CELL Organelle Showcase</a>! I've also been commissioned by my friend Maiah to make a site (still super WIP so you're not getting the link, but here's her site on <a href='https://roadtoresilienceblog.weebly.com/'>Weebly</a>).<br><br>Oh, and before I forget, I've recently learned Python and C++!",
+        "<b>Personality & Hobbies</b><br>My friends would probably say I'm smart, funny, and artistic (ARRtistic okay—). Although my friend (<i>*cough*</i> SOF <i>*cough*</i>) calls me an academic weapon… I'm a huge procrastinator. Okay, not as bad as some of my friends, 'cause I sleep at 10 pm, but like… the amount of time I waste doing SOMETHING ELSE other than homework is crazy…… I literally cannot lock in once school is over. Did you know that I spent an hour revamping this book instead of doing homework?",
+        "<b>Procrastination</b><br>Plus, it's not just school stuff I'm procrastinating on. If you're a NunnerVerse veteran, you can probably remember the amount of times a project says, \"Coming soon!\" and it's been like years with no update (hey that sounds like Raise a Pet— whaaat who said that). I really cannot meet any of my self-imposed deadlines, so that's why I've stopped having release dates on my projects.",
+        "Besides my bad habits, I love to code! (if you couldn't tell) Yes, that includes this website! Not so much recently though, schoolwork is really pushing me to my limits, ahaha… So in my free time (which is when I should be doing homework, yet I chose to do something else), I also enjoy drawing, reading, and watching anime. I've been listening to music way more often now and have diversified my palette!<br><br>I'M INTROVERTED!! and shy. I like working by myself. Especially when it comes to computer programming. But when I do work in groups, I'm usually the one to take charge. Even though I'm pretty socially awkward, somehow I make friends easily. Also, when I'm with friends, I'm a yapper. And loud…",
+        "I'm a perfectionist, to an extreme degree. Like, if I'm writing and a letter looks slightly off, I erase it and rewrite it. It annoys me when things are unorganized >:P. Rounded corners, center alignment, symmetry… it's reflected in like all of my projects, if you didn't realize it.<br><br>Random other stuff: I love origami! Trying to learn Japanese for fun… I can read katakana and hiragana, a bit of kanji and some words. Hmm, I used to know how to play the piano… (lost my skill) I tried crocheting once… it did NOT go well.",
+        "<b>Favorites & Obsession Dump</b><br>• Animals — Hedgehogs! I also like ferrets, frogs, ducks, snails, there's a lot.<br>• Anime — Toilet-Bound Hanako-kun! Though, the anime adaptation kinda sucks, manga better. So I'd probably say Komi-san.<br>• Books — Heroes of Olympus (series)(see also Light novels)<br>• Characters — BENNETT (Genshin Impact), Akane (TBHK), Rakko (Chiikawa)<br>• Chips — Calbee Shrimp Chips, Cheddar & Sour Cream Ruffles ^¬^<br>• Colors — AQUAMARINE!!!!!!! (hex #00FFAE, rgb 0, 255, 174)<br>• Dessert — Ice cream, chocolate cake<br>• Drinks — Smoothies and slushies<br>• Flavor — MANGO (in general, if available), fruit, chocolate (ice cream), cherry (candy)",
+        "<b>Favorites (cont.)</b><br>• Font — COMIC SANS MS MY FAVORITE TYPEFACE!!! Why? 'Cause it's so fun and cartoony and nostalgic. Also I love Courier (the font).<br>• Foods — Daing na bangus, bistek, gyudon, and takoyaki. Also rice :]<br>• Light novels — Rascal Does Not Dream (series)<br>• Manga — Toilet-Bound Hanako-kun. This'll never change.<br>• Music Artists — wave to earth, Kirara Magic, YOASOBI, Snail's House<br>• Music Genre — JPOP, indie rock (JP/KR/PH), kawaii future bass<br>• Pokémon — Shaymin and Shuckle<br>• Snacks — Philippines dried mangoes, JagaRico, Pocky, Hello Panda",
+        "<b>Favorites (cont.)</b><br>• Songs — <a href='https://www.youtube.com/watch?v=sAuEeM_6zpk'>あの夢をなぞって</a>, <a href='https://www.youtube.com/watch?v=l8b0Vn_Idm8'>Black Mountain</a>, <a href='https://www.youtube.com/watch?v=mWcKqvefAy8'>Chocolate Love</a>, <a href='https://www.youtube.com/watch?v=9Dw3DRFxERs'>Jack in the Box</a> (sample my tastes lol), plus anime intros and outros.<br>• Video Games — Genshin Impact, Roblox, and BanG Dream!",
+        "<b>Fun Facts About Me</b><br>• I was born on a couch. (I was too impatient to get out ig)<br>• My memory is weird; I remember the most random things (like the Preamble of the U.S. Constitution), like, my long-term memory is crazy, yet my short-term memory actually sucks. Also, I have photographic memory.<br>• Because of this, I've memorized the names of all 1,025 Pokémon! I've kinda lost interest in the series though, so I'm probably rusty.<br>• I have the whole TBHK collection! Even the spin-off series (Japanese edition of ASHK vol. 2!) and the art books. You should see my shrine.<br>• I can understand Tagalog, but I'm not really good at speaking :P",
+        "<b>Fun Facts (cont.)</b><br>• Growing up, I was never into sports, but I somehow got good at playing badminton. Also shooting hoops.<br>• I'm Catholic :DDD! My confirmation saint is Blessed Carlo Acutis (essentially patron saint of comp sci)<br>• For some reason, I don't eat bread. Like bread slices and burger buns. Don't ask why. (not allergic to gluten and yes, I still eat pizza)<br>• As for allergies, I'm allergic to like four different things, including peanuts and tree nuts. I got the rare condition where I have symptoms if someone touches me while eating those :[<br>",
+        "<b>Fun Facts About My Website</b><br>• As of 9/1/25, the NunnerVerse has 17 different projects! Two of them are still WIP (yes, Raise a Pet Rock is one of them) and one is unlisted.<br>• Web Chef was renamed three times! It was originally JS Chef, renamed to Button Chef, Web Cuisine, and then Web Chef. The old names were kinda misleading…<br>• We have a Terms of Service (license on <a href='https://github.com/Nunnerrs/nunnerrs.github.io?tab=License-1-ov-file#:~:text=README-,License,-nooooo%20not%20a'>GitHub</a>) and a 404 page. Try editing the URL to a non-existent link to see the Error 404.",
+        "<b>Contacts & Stuff</b><br>Not sure why you'd need these 'cause I probably won't respond, but here.<br><br>Discord username: nunnerrs<br>Discord server (NunnerDev): discord.gg<br>Email: [official NunnerVerse email coming soon]<br>Roblox username: Nunnerrs",
+        "And that's all I can think of putting for now! It's a lot longer than it used to be, but I think adding more detail made it better.<br><br>You've reached the end, how crazy. I hope all your questions have been answered. Better study up for the NunnerQuiz in November ;)",
     ],
     book2: [
         "", // <img src="covers/placeholder.png">
@@ -85,10 +88,11 @@ const books = {
     ],
     book6: book6, // Hope Vol. 1
     book7: book7, // Nunners' Guide To Dreams & Nightmares
-    book8: [ // "<heading><b>Mon. DD, 2024</b></heading><br><br>• ",
+    book8: [ // "<heading><b>Mon. DD, 2025</b></heading><br><br>• ",
         "", // <img src="covers/placeholder.png">
-        "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 7/5/2024<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
-        // UPDATE NEWEST NEWS ABOVE & IN INDEX.HTML FILE
+        "<br><br><br><br><br><br><bt>NunnerVerse Weekly</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Latest news: 9/1/2025<br><br><button id='book8' onclick='copyLink();'>Copy book share link</button>",
+                                                                                                                                                        // UPDATE NEWEST NEWS ABOVE & IN INDEX.HTML FILE
+        "<heading><b>Sep. 1, 2025</b></heading><br><br>• Maligayang pasko! Nunnerology has been revamped, so it's version 2 now! Ignore the fact that the last <i>NunnerVerse Weekly</i> log was a year ago…<br>• Also, no, I haven't been working on <i>TGotP Vol. 4</i> nor <i>NGtD&N</i> nor the NunnerVerse Roblox hub…",
         "<heading><b>Jul. 5, 2024</b></heading><br><br>• I've been on hiatus for a while now, but I'm trying to motivate myself to start coding again :DD which leads me to my next point…• <i>THE GUARDIAN OF THE PHOENIX VOL. 3</i> HAS FINALLY RELEASED!! It only took several months hehe…I hope you like it :0 If you're wondering about Vol. 4, just know that it won't be any time soon 'cause you know me by now ◠◞◠<br>• <i>Nunners' Guide To Dreams & Nightmares</i> received an update and has more sillies! If you want more meanings, then give ideas pls<br>• Started creating a NunnerVerse hub on Roblox in the future 😱",
         "<heading><b>Apr. 1, 2024</b></heading><br><br>• APRIL FOOL'S DAY UPDATE: I started messing with the homepage and making fun of my own projects LMAO. Check out the escape room book if you haven't already!",
         "<heading><b>Mar. 3, 2024</b></heading><br><br>• hehe BennettVerse but unfortunately it's gone now",
@@ -138,7 +142,9 @@ const books = {
     book14: book14, // TGOTP (The Guardian Of The Phoenix) Vol. 2
     book15: book15, // The Black Watch Handbook
     book16: book16, // TGOTP Vol. 3
-};
+    book17: book17, // Isekai
+    book18: book18, // Yuuki-chan
+}
 
 function openBook(bookId) {
     if (currentBook == null) {
@@ -155,7 +161,7 @@ function openBook(bookId) {
         pageNumL = 0;
         pageNumR = 1;
     }
-};
+}
 
 function jumpToPage(l, r) {
     if (l != null && r != null) {
@@ -164,7 +170,7 @@ function jumpToPage(l, r) {
     } else {
         console.error("Could not jump to page: Left or right page number not provided");
     }
-};
+}
 
 var params = window.location.href.split("?")[1];
 if (params != null) {
@@ -174,9 +180,9 @@ if (params != null) {
         if (bookNumber <= total || bookNumber == 15) {
             openBook(bookNumber);
             //pageR.innerHTML = books["book" + bookNumber][0];
-        };
-    };
-};
+        }
+    }
+}
 
 function backPage() {
     if (pageNumL > 0) {
@@ -187,12 +193,12 @@ function backPage() {
         pageR.innerHTML = books["book" + currentBook][pageNumR];
         if (pageNumL <= 0) {
             pageL.innerHTML = "";
-        };
+        }
         if (pageNumR >= books["book" + currentBook].length) {
             pageR.innerHTML = "";
-        };
-    };
-};
+        }
+    }
+}
 
 function closeBook() {
     currentBook = null;
@@ -206,7 +212,7 @@ function closeBook() {
     pageNumL = 0;
     pageNumR = 1;
     //alert("closed book #" + currentBook);
-};
+}
 
 function nextPage() {
     if (books["book" + currentBook][pageNumL + 2] != null) {
@@ -217,10 +223,10 @@ function nextPage() {
         pageR.innerHTML = books["book" + currentBook][pageNumR];
         if (pageNumR >= books["book" + currentBook].length) {
             pageR.innerHTML = "";
-        };
+        }
         //console.log(pageNumL + " " + pageNumR);
-    };
-};
+    }
+}
 
 function copyLink() {
     //console.log(currentBook);
@@ -230,7 +236,7 @@ function copyLink() {
         .catch(() => {console.error("Couldn't copy link")});
     setTimeout(function(){alert("Copied share link! You can bookmark the link or share with others (paste with CMD/CTRL + V)")}, 500);
     //alert("Sorry, copying & loading book share links are currently disabled due to a bug where it doesn't copy anything. I'm working to fix the error, sorry for any trouble this may have caused you.");
-};
+}
 
 function toggleDarkMode() {
     /*for (let i = 1; i < total; i++) {
@@ -238,29 +244,29 @@ function toggleDarkMode() {
           let bg = toString(e.style.backgroundColor);
           e.style.backgroundColor = e.style.borderColor;
           e.style.borderColor = bg;
-      };*/
+      }*/
       if (darkModeOn == true) {
           document.body.style = "background-color: rgb(255, 255, 255)";
           let h = document.body.getElementsByTagName("h1")
           for (let i = 0; i < h.length; i++) {
               h[i].classList.remove("white");
-          };
+          }
           h = document.body.getElementsByTagName("h2")
           for (let i = 0; i < h.length; i++) {
               h[i].classList.remove("white");
-          };
+          }
           h = document.body.getElementsByTagName("h3")
           for (let i = 0; i < h.length; i++) {
               h[i].classList.remove("white");
-          };
+          }
           h = document.body.getElementsByTagName("h4")
           for (let i = 0; i < h.length; i++) {
               h[i].classList.remove("white");
-          };
+          }
           let p = document.body.getElementsByTagName("p")
           for (let i = 0; i < p.length; i++) {
               p[i].classList.remove("white");
-          };
+          }
           book.classList.add("lightBg");
           book.classList.remove("darkBg");
           book.classList.remove("white");
@@ -280,23 +286,23 @@ function toggleDarkMode() {
           let h = document.body.getElementsByTagName("h1")
           for (let i = 0; i < h.length; i++) {
               h[i].classList.add("white");
-          };
+          }
           h = document.body.getElementsByTagName("h2")
           for (let i = 0; i < h.length; i++) {
               h[i].classList.add("white");
-          };
+          }
           h = document.body.getElementsByTagName("h3")
           for (let i = 0; i < h.length; i++) {
               h[i].classList.add("white");
-          };
+          }
           h = document.body.getElementsByTagName("h4")
           for (let i = 0; i < h.length; i++) {
               h[i].classList.add("white");
-          };
+          }
           let p = document.body.getElementsByTagName("p")
           for (let i = 0; i < p.length; i++) {
               p[i].classList.add("white");
-          };
+          }
           book.classList.remove("lightBg");
           book.classList.add("darkBg");
           book.classList.add("white");
@@ -311,23 +317,27 @@ function toggleDarkMode() {
           darkMode.innerHTML = "Turn off dark mode";
           localStorage.setItem("darkMode", "true");
           darkModeOn = true;
-      };
-};
+      }
+}
 
 function p(e) {
     if (currentBook != null) {
+        preventDefault();
         if (e.key == "ArrowLeft") {
             backPage();
-        };
+        }
         if (e.key == "ArrowRight") {
             nextPage();
-        };
-    };
-};
+        }
+    }
+}
 
 for (let i = 1; i < total; i++) {
-    document.getElementById("book" + i).onclick = function(){openBook(i)};
-};
+    if (document.getElementById("book" + i)) {
+        document.getElementById("book" + i).onclick = function(){openBook(i)};
+        console.log(document.getElementById("book" + i).innerHTML);
+    }
+}
 
 //pageL.innerHTML = "";
 //pageR.innerHTML = "";

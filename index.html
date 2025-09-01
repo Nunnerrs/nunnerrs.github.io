@@ -3,23 +3,36 @@
     <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-X1L4RBL935"></script>
         <script src="analytics.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
         <title>NunnerVerse²</title>
         <meta charset="UTF-8">
         <meta name="description" content="a fun little website made by Nunners">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop" rel="stylesheet">
         <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+        <script>
+            function setup() {
+                createCanvas(windowWidth, windowHeight);
+            }
+
+            function draw() {
+                background("rgb(204, 255, 223)");
+            }
+        </script>
     </head>
     <body>
         <div id="sidebar">
             <button id="feedback" title="give your feedback!"><img src="assets/feedback.png"></button>
         </div>
+        <!-- events
         <div id="snow-container"></div>
         <div id="nunnerday">
             <br class="br">
             <button id="bday">happy birthday!!</button>
             <button id="noBday">stop showing this :[</button><br>
-        </div>
+        </div>-->
+        <div id=""></div>
         <div id="cookies">🍪 we use cookies on this website for analytics. clicking "no" keeps the necessary ones (for saving data in Web Chef, Refractory, etc).<br>
             <button onclick="decline()">no i don't want them</button><button onclick="accept()">ok</button>
         </div>
@@ -48,7 +61,7 @@
                 </div>
                 <div class="p">
                     <p>some info about me along with some random extras.</p>
-                    <p class="special" style="color: rgb(230, 200, 255)">REVAMP! will add drawing of me :D</p>
+                    <p class="special" style="color: rgb(230, 200, 255)">yay me</p>
                 </div>
             </div>
             <div class="project" data-url="timer" id="timer" onclick="window.open(this.dataset.url)">
@@ -59,7 +72,7 @@
                 </div>
                 <div class="p">
                     <p>a pomodoro timer i made. work in 25-min intervals and 5-min breaks. helps with homework!</p>
-                    <p class="special" id="timer-special" style="color: rgb(179, 255, 179)"><span style="font-family: 'Courier New', Courier, monospace">2025 will be your year!! STAY FOCUSED.</span></p>
+                    <p class="special" id="timer-special" style="color: rgb(179, 255, 179)"><span style="font-family: 'Courier New', Courier, monospace">LOCK IN!!!!!</span></p>
                 </div>
             </div>
             <div class="project" data-url="library" id="library" onclick="window.open(this.dataset.url)">
@@ -70,7 +83,7 @@
                 </div>
                 <div class="p">
                     <p>online library with e-books written by me and my friends. add your own stories too!</p>
-                    <p class="special" style="color: rgb(100, 100, 100)">TGotP vol. 4 finally in the works + upcoming book by my sister</p>
+                    <p class="special" style="color: rgb(100, 100, 100)">Nunnerology version 2!!</p>
                 </div>
             </div>
             <div class="project" data-url="web-chef" id="web-chef" onclick="window.open(this.dataset.url)">
@@ -81,7 +94,7 @@
                 </div>
                 <div class="p">
                     <p>a simple restaurant game where you just type and click.</p>
-                    <p class="special" style="color: rgb(255, 255, 255)">maiah approved</p>
+                    <p class="special" style="color: rgb(255, 255, 255)">sophia approved</p>
                 </div>
 	        </div>
             <div class="project" data-url="notepad" id="notepad" onclick="window.open(this.dataset.url)">
@@ -92,7 +105,7 @@
                 </div>
                 <div class="p">
                     <p>a useful online notepad that auto-saves locally.</p>
-                    <p class="special" style="color: #807462">RICH TEXT WOOHOOO (will fix images dw)</p>
+                    <p class="special" style="color: #807462">new update when</p>
                 </div>
             </div>
             <div class="project" data-url="lucky-pull" id="lucky-pull" onclick="window.open(this.dataset.url)">
@@ -103,7 +116,7 @@
                 </div>
                 <div class="p">
                     <p>a gachapon simulator, test your luck! includes genshin impact wish, bandori and more.</p>
-                    <p class="special" style="color: rgb(220, 60, 125)">improvements & dark mode "soon"</p>
+                    <p class="special" style="color: rgb(220, 60, 125)">not broken?!?!?</p>
                 </div>
 	        </div>
             <div class="project" data-url="draw" id="draw" onclick="window.open(this.dataset.url)">
@@ -114,7 +127,7 @@
                 </div>
                 <div class="p">
                     <p>a simple tool for drawing with customization. made with p5.js eheheh.</p>
-                    <p class="special" style="color: rgb(65, 169, 238)">revamped huzzah are you happy</p>
+                    <p class="special" style="color: rgb(65, 169, 238)"></p>
                 </div>
             </div>
             <div class="project" data-url="skylar-art" id="skylar-art" onclick="window.open(this.dataset.url)">
@@ -125,7 +138,7 @@
                 </div>
                 <div class="p">
                     <p>an art gallery featuring drawings by my friend Skylar.</p>
-                    <p class="special" style="color: rgb(0, 255, 0)">no new art obviously</p>
+                    <p class="special" style="color: rgb(0, 255, 0)">blehh sheep</p>
                 </div>
             </div>
             <!--div class="project" data-url="lianna-art" id="lianna-art" onclick="window.open(this.dataset.url)">
@@ -193,7 +206,7 @@
                 </div>
                 <div class="p">
                     <p>a list of unblocked games & game websites.</p>
-                    <p class="special" style="color: rgb(225, 150, 50)">nunnergames.netlify.app</p>
+                    <p class="special" style="color: rgb(225, 150, 50)">half of these got blocked lmao</p>
                 </div>
             </div>
             <div class="project" data-url="refractory" id="refractory" onclick="window.open(this.dataset.url)">
@@ -253,7 +266,7 @@
                 </div>
                 <div class="p">
                     <p>an rpg-styled game where you help out your sick sibling.</p>
-                    <p class="special" style="color: rgb(51, 130, 58)">help this is me rn</p>
+                    <p class="special" style="color: rgb(51, 130, 58)"></p>
                 </div>
             </div>
             <div class="project" data-url="raise-a-rock" id="rar" onclick="window.open(this.dataset.url)">
@@ -328,11 +341,12 @@
                 //21snowContainer.appendChild(snow);
             }
             
+            /*
             var delay = 0;
             for (let i = 0; i < window.innerWidth/50; i++) {
             	delay += Math.floor(Math.random() * 1000) + 500;
             	setTimeout(storm, delay);
-            }
+            }*/
             
             // draw snow
             /*setInterval(function(){

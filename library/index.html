@@ -9,171 +9,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c">
-        <style>
-            a {
-                color: rgb(50, 150, 235);
-            }
-            body {
-                color: rgb(0, 0, 0);
-                font-family: Comic Sans MS, Chalkboard SE;
-                text-align: center;
-            }
-            bt {
-                font-size: 24px;
-                font-weight: bold;
-            }
-            button {
-                background-color: rgb(255, 255, 255);
-                border-color: rgb(200, 200, 200);
-                border-radius: 8px;
-                color: rgb(0, 0, 0);
-                font-family: Comic Sans MS, Chalkboard SE;
-            }
-            h4 {
-                font-size: 15px;
-            }
-            heading {
-                font-size: 18px;
-            }
-            star {
-                color: rgb(255, 225, 0);
-                font-family: 'M PLUS ROUNDED 1C';
-                font-size: 10px;
-            }
-            .book {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-gap: 20px;
-                height: 1px;
-                margin: auto;
-                overflow: hidden;
-                text-align: left;
-                width: 555px;
-            }
-            .cover {
-                border-radius: 5px;
-                font-size: 14px;
-                height: 30px;
-                width: auto;
-            }
-            .darkBg {
-                background-color: rgb(100, 100, 100);
-            }
-            .lightBg {
-                background-color: lightyellow;
-            }
-            .nav {
-                border-radius: 15px;
-                font-family: 'M PLUS ROUNDED 1C';
-                font-size: 35px;
-                height: 75px;
-                width: 185px;
-            }
-            .nh {
-                height: 390px;
-            }
-            .page {
-                font-family: monospace;
-                margin: 5px;
-            }
-            .rp {
-                margin-left: 3px;
-            }
-            .white {
-                color: rgb(245, 245, 245);
-            }
-            /*  Border color is calculated by backgroundColor × 0.75
-            #book# {
-                background-color: rgb(255, 255, 255);
-                border-color: rgb(191, 191, 191);
-            }
-            */
-            #book1 {
-                background-color: rgb(150, 255, 220);
-                border-color: rgb(113, 191, 165);
-            }
-            #book2 {
-                background-color: rgb(155, 225, 100);
-                border-color: rgb(116, 191, 75);
-            }
-            #book3 {
-                background-color: rgb(255, 240, 150);
-                border-color: rgb(191, 180, 113);
-            }
-            #book4 {
-                background-color: rgb(200, 200, 200);
-                border-color: rgb(150, 150, 150);
-            }
-            #book5 {
-                background-color: rgb(255, 135, 195);
-                border-color: rgb(191, 101, 146);
-            }
-            #book6 {
-                background-color: rgb(255, 0, 95);
-                border-color: rgb(191, 0, 71);
-                color: rgb(245, 245, 245);
-            }
-            #book7 {
-                background-color: rgb(85, 45, 200);
-                border-color: rgb(64, 34, 150);
-                color: rgb(245, 245, 245);
-            }
-            #book8 {
-                background-color: rgb(245, 245, 245);
-                border-color: rgb(184, 184, 184);
-            }
-            #book9 {
-                background-color: rgb(150, 245, 150);
-                border-color: rgb(113, 184, 113);
-            }
-            #book10 {
-                background-color: rgb(255, 0, 95);
-                border-color: rgb(191, 0, 71);
-                color: rgb(245, 245, 245);
-            }
-            /*
-            #book11 {
-                background-color: rgb(255, 0, 95);
-                border-color: rgb(191, 0, 71);
-                color: rgb(245, 245, 245);
-            }*/
-            #book11 {
-                background-color: rgb(0, 0, 0);
-                border-color: rgb(25, 25, 25);
-                color: rgb(255, 255, 255);
-            }
-            #book12 {
-                background-color: rgb(255, 135, 195);
-                border-color: rgb(191, 101, 146);
-            }
-            #book13 {
-                background-color: rgb(255, 105, 45);
-                border-color: rgb(191, 79, 34);
-            }
-            #book14 {
-                background-color: rgb(255, 105, 45);
-                border-color: rgb(191, 79, 34);
-            }
-            #book15 {
-                background-color: #C3272B;
-                border-color: #171412;
-                color: rgb(245, 245, 245);
-            }
-            #darkMode {
-                border-radius: 10px;
-                border-width: 1px;
-                font-size: 12px;
-                height: 25px;
-                width: auto;
-            }
-            #book16 {
-                background-color: rgb(255, 140, 45);
-                border-color: rgb(191, 105, 34);
-            }
-            #newsNotif {
-                color: rgb(175, 0, 0);
-            }
-        </style>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <h1>&#128214 NunnerLibrary &#128218</h1>
@@ -188,31 +24,34 @@
         <button class="nav" id="next" onclick="nextPage()" style="visibility: hidden;"><b>→</b></button>
         <!--
         Sorted by alphabetical author | alphabetical title
-        <button class="cover" id="book#" onclick="openBook(#)">BOOKTITLE</button>
+        <button class="cover" id="book#">BOOKTITLE</button>
         -->
         <h3>Fiction</h3>
-        <button class="cover" id="book3" onclick="openBook(3)">Feet Quest</button>
-        <button class="cover" id="book6" onclick="openBook(6)">Hope Vol. 1</button>
-        <button class="cover" id="book10" onclick="openBook(10)">Hope Vol. 2</button>
-        <!--button class="cover" id="book11" onclick="openBook(11)">Hope Vol. 3</button-->
-        <button class="cover" id="book4" onclick="openBook(4)">I Got Reincarnated As A Cow</button>
-        <button class="cover" id="book5" onclick="openBook(5)">Pinky & Mint: Coral</button>
-        <button class="cover" id="book9" onclick="openBook(9)">Pinky & Mint: Hermit Crabs</button>
-        <!--button class="cover" id="book12" onclick="openBook(12)">Pinky & Mint: Whales</button-->
-        <button class="cover" id="book13" onclick="openBook(13)">The Guardian Of The Phoenix Vol. 1</button>
-        <button class="cover" id="book14" onclick="openBook(14)">The Guardian Of The Phoenix Vol. 2</button>
-        <button class="cover" id="book16" onclick="openBook(16)">The Guardian Of The Phoenix Vol. 3</button>
+        <button class="cover" id="book6">Hope Vol. 1</button>
+        <button class="cover" id="book10">Hope Vol. 2</button>
+        <!--button class="cover" id="book11" 11)">Hope Vol. 3</button-->
+        <button class="cover" id="book5">Pinky & Mint: Coral</button>
+        <button class="cover" id="book9">Pinky & Mint: Hermit Crabs</button>
+        <!--button class="cover" id="book12" 12)">Pinky & Mint: Whales</button-->
+        <button class="cover" id="book13">The Guardian of the Phoenix Vol. 1</button>
+        <button class="cover" id="book14">The Guardian of the Phoenix Vol. 2</button>
+        <button class="cover" id="book16">The Guardian of the Phoenix Vol. 3</button>
         <h3>Non-Fiction</h3>
-        <button class="cover" id="book2" onclick="openBook(2)">How To NunnerLibrary</button>
-        <button class="cover" id="book1" onclick="openBook(1)">Nunnerology</button>
-        <button class="cover" id="book7" onclick="openBook(7)">Nunners' Guide To Dreams & Nightmares</button>
-        <button class="cover" id="book15" onclick="openBook(15)">The Black Watch Handbook</button>
+        <button class="cover" id="book2">How To NunnerLibrary</button>
+        <button class="cover" id="book1">Nunnerology</button>
+        <button class="cover" id="book7">Nunners' Guide to Dreams & Nightmares</button>
+        <!--button class="cover" id="book15" 15)">The Black Watch Handbook</button-->
+        <h3 title="ain't no way i'm putting 'coming soon'">Future Books</h3>
+        <button class="cover" id="book3">Feet Quest</button>
+        <button class="cover" id="book4">I Got Reincarnated As A Cow</button>
+        <button class="cover" id="book17">I've Been Whisked Into a Video Game With My Worst Enemy and Ran Out of Fruit Snacks</button>
+        <button class="cover" id="book18">Yuuki-chan is Not a Ferret!</button>
         <!---->
         <br><br><br>
-        <label for="book8" id="newsNotif">Latest news: 7/5/2024</label>
-        <button class="cover" id="book8" onclick="openBook(8)">NunnerVerse Weekly</button><br><br>
+        <label for="book8" id="newsNotif">Latest news: 9/1/2025 ➼</label>
+        <button class="cover" id="book8">NunnerVerse Weekly</button><br><br>
         <button class="darkBg white" id="darkMode" onclick="toggleDarkMode()">Turn on dark mode</button>
-        <h3><a href="https://forms.gle/2iZtLzF322Scb9Fc9" style="color: rgb(210, 180, 0); text-decoration: none;">Write a book for the NunnerLibrary</a>
+        <!--h3><a href="https://forms.gle/2iZtLzF322Scb9Fc9" style="color: rgb(210, 180, 0); text-decoration: none;">Write a book for the NunnerLibrary</a-->
         <h3><a href="https://nunnerrs.github.io/index.html" style="color: rgb(0, 125, 100); text-decoration: none;">To the NunnerVerse²</a></h3>
         <script src="books.js"></script>
         <script src="script.js"></script>

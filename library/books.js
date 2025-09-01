@@ -127,10 +127,10 @@ const book11 = [
     // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
 ];
 
-// The Guardian Of The Phoenix Vol. 1
+// The Guardian of the Phoenix Vol. 1
 const book13 = [
     "", // <img src="covers/placeholder.png">
-    "<br><br><br><br><br><br><br><bt>The Guardian Of The Phoenix Vol. 1</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★★☆</star><br>Published on 5/9/2023<br><br><button id='book13' onclick='copyLink();'>Copy book share link</button>",
+    "<br><br><br><br><br><br><br><bt>The Guardian of the Phoenix Vol. 1</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★★☆</star><br>Published on 5/9/2023<br><br><button id='book13' onclick='copyLink();'>Copy book share link</button>",
     "I was still half asleep when my dad shook me awake at 5 am.<br>\"C'mon, Eve, wake up! We're gonna hike up the trail without you!\"<br>I groaned. It was clearly still dark outside. \"It's so early…Do we <i>have</i> to?\"<br>\"Of course!\" He leaned closer to me as if to tell me a secret. \"And besides, you already know Sarah's been dying to see the view. Let's go!\"<br>He waited outside. Not this about Sarah again. She's Dad's girlfriend, and this trip was meant to be a \"bonding experience\" for us. I changed clothes against my will and got out of the tent. My stomach grumbled. Dad said we would be eating breakfast during the hike. But I wanted food <i>now</i>…",
     "I could see the \"Silver Woods Main Trail\" sign ahead and Sarah waving at me. Literally all the other campers were still asleep in their tents. I was close to freezing <i>and</i> starving to death, so I ignored her and tried to keep warm. Dad must've noticed because he gestured me towards her.<br>\"Hey, don't be rude, Evie.\" I glanced at him when he said that. He never called me that, not since Mom died… \"She's got a gift for you. Go say hi.\"<br>I walked towards her. Sarah looked nothing like Mom, with short, black hair and an excited grin all the time. Mom had dirty-blond hair like mine and was always calm.<br>\"Hey, Eve!\"",
     "\"Can I see the gift Dad mentioned?\" I walked ahead of her impatiently. The path was already getting uneven. <i>I hope she trips,</i> I thought. I realized that the idea seemed to be going overboard. I shook it away. Her gift better be a hot stack of pancakes.<br>\"Here,\" Sarah caught up with me and wrapped something around my neck. \"Ooh, it fits!\"<br>\"Hey, what're you—!\" It was a light brown scarf. Surprisingly, it was cozy, but I tried to look like I didn't care.<br>\"It bring out your eyes.\" She smiled at me.<br>\"Sure, whatever.\"<br>We started to walk. I could hear Dad trying to catch up from behind.",
@@ -150,11 +150,11 @@ const book13 = [
     "<heading><b>Acknowledgements</b></heading><br>I'd like to thank my sister for helping with edits and small ideas. I also thank my friends who reviewed Volume 1. Thanks for supporting me guys!! Credit to *<i>cough</i>* Chat GPT *<i>cough cough</i>* for the very raw idea of this story (the \"camping out in the woods and there's a [scary] creature\" part).<br><br>By the way, I came up with the entire story in 24 hours. I'll try to write the story gradually. Stay tuned for Volume 2!"
 ];
 
-// The Guardian Of The Phoenix Vol. 2
+// The Guardian of the Phoenix Vol. 2
 const book14 = [
     // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
     "", // <img src="covers/placeholder.png">
-    "<br><br><br><br><br><br><br><bt>The Guardian Of The Phoenix Vol. 2</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★★☆</star><br>Published on 9/7/2023<br><br><button id='book14' onclick='copyLink();'>Copy book share link</button>",
+    "<br><br><br><br><br><br><br><bt>The Guardian of the Phoenix Vol. 2</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★★☆</star><br>Published on 9/7/2023<br><br><button id='book14' onclick='copyLink();'>Copy book share link</button>",
     "I was totally beat. That run was exhausting. Besides that, I had no idea where I even was. I decided to sit against a tree to rest for a little while. I unwrapped my sandwich and took in my surroundings. To my right was a small brook, trickling softly. To my left were bushes dotted with berries. For some reason, I felt strange, being in the middle of all this. I only managed one bite from my sandwich before I almost choked.<br>I don't know how I didn't notice it at first. The grass, the plants, the trees…they were all burnt. Not fully, but charred on all sides like someone used a blowtorch too close to them. The weird thing is, all of the plants still looked alive. Then it hit me—this place sounded familiar.",
     "<i>A burnt section of the forest,</i> I thought, <i>Could this place be…Charcoal Gro—</i><br>\"Stay where you are,\" a voice said from above.<br>I looked up. Standing on top of a platform next to a huge treehouse (when did <i>that</i> get there?), a boy pointed a loaded bow towards me. He wore a dark gray sweatshirt with the sleeves partially torn, old jeans, and shoes that were probably once white but were caked in mud. His hair was black and messy, the ends fading to blond like it got burnt. And the best thing was, he looked pretty serious about firing an arrow at me. Just my luck.<br>\"Umm, <i>what?</i>\" I managed.<br>Suddenly, he lowered his bow and his expression softened. \"Rose?\"",
     "He said it like I was his long lost twin or something. The guy climbed down from the treehouse and stepped towards where I sat. I eyed him uneasily. I didn't even know this kid, plus he looked a little older than me. No way he was my twin. The strange guy shook his head.<br>\"No, never mind. It can't be…\" He glanced at me. \"Sorry, I didn't mean to threaten you. Guess you're not dangerous.\"<br>I wanted to point out his really obvious weapon, but I stopped myself. \"So, uhh, who exactly <i>are you?</i>\"<br>\"I'm Cole,\" he said, \"I'm the guardian of the phoenix.\"<br>I stifled a laugh. \"Yeah, right,\" I said sarcastically, looking around.",
@@ -184,7 +184,6 @@ const book14 = [
     "\"Sorry about that,\" Cole grimaced. I realized he had another one by him. \"Thought you might want it since you're sleeping on the floor and stuff.\"<br>\"Thanks, I guess…\" The sleeves were like low-quality plushies, but at least I had something. That night, I thought about my eventful day. A lot of weird things happened…<br>And then there was the talk about Rose and Phoebe. Who in the world would want to shoot students on a camping trip? Where and how did Cole even find Phoebe? My head was buzzing with questions. Plus, I completely forgot about Dad and Sarah; I had no idea what they were doing now. <i>Calm down,</i> I thought. <i>You can deal with all that when the time comes…\"",
     "I drifted off into sleep, wondering how the following day would unfold. I wish I knew sooner that it wouldn't go well.",
     "<heading>Acknowledgements</heading><br>Thanks to my friends, old and new, (and my sister) for pushing me to finish the story and helping with stuff.<br><br>Sorry about the late publishing (I got kind of lazy). There was this whole thing about having to rewrite the entire story 'cause I actually had it all written out—but those files were lost so now I have to start over! I hope you guys understand ❤️<br><br>I can't make any promises but I'll try to get Volume 3 out before 2024 >.<",
-    // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
 ];
 
 // The Black Watch Handbook
@@ -213,11 +212,11 @@ const book15 = [
     "<bt>How To Enlist</bt><br><br>&#160;1. Fill out <a href='https://forms.gle/qBfu3C6TXsn9NNhz8'>Google Form</a> :3<br>&#160;2. Join our <a href='https://discord.gg/NKHc2Dyjce'>Discord server</a><br>&#160;3. Congrats on joining! Welcome to the group. You will start out as a Wolf rank<br>&#160;4. Remember to check announcements, updates, or any new events",
 ];
 
-// The Guardian Of The Phoenix Vol. 3
+// The Guardian of the Phoenix Vol. 3
 const book16 = [
     // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
     "", // <img src="covers/placeholder.png">
-    "<br><br><br><br><br><br><br><bt>The Guardian Of The Phoenix Vol. 3</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 7/4/2024<br><br><button id='book16' onclick='copyLink();'>Copy book share link</button>",
+    "<br><br><br><br><br><br><br><bt>The Guardian of the Phoenix Vol. 3</bt><br><br><heading>By Nunners</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Published on 7/4/2024<br><br><button id='book16' onclick='copyLink();'>Copy book share link</button>",
     "I woke up with a start. Mostly because something was burning my arm. Phoebe was snuggling up next to me, and I practically jumped.<br>\"Sorry,\" I whispered.<br>So I wasn't actually on fire. She blinked, then waddled out the door, beckoning me to follow. Her wings touched the door, and somehow they didn't ignite. Nodding, I proceeded outside.<br>I could tell it was early in the morning since a chilly wind had picked up. Through the trees, the sky was a dark shade of blue. Looking up, I realized Phoebe was on the side of the roof. Below her, there were wooden footholds in the wall like a ladder. I climbed up.<br>\"Whoa.\" The view was breathtaking. I could see over all the treetops, creating the",
     "image of a sea of multicolored leaves. In the midst of this, the sun began to peak out from below, illuminating the sky with pink and orange.<br>\"It's beautiful, isn't it?\" said a voice from behind.<br>I nearly fell off the roof. Cole climbed up to us and sat on the edge.<br>\"Wait, but don't you see the sunrise every day…?\" I asked.<br>\"I usually wake up later than this.\" He looked at me pointedly. \"But you were being too loud.\"<br>\"My bad…\"<br>We were silent for a bit. Not even the crickets were chirping yet.<br>\"Right, you're leaving today,\" Cole interrupted. \"Ah, if you're okay with it, can you tell me how you got here in the first place?\"",
     "\"Sure.\"<br>I told him the whole story; from the time since Mom died and Dad started dating Sarah to our camping trip.<br>\"…And, I don't know, I just kind of ended up here.\"<br>\"Kinda like…fate?\" Cole muttered.<br>I wasn't sure if I heard that right, and was about to ask before he spoke up again.<br>\"How did you do it?\" There was a serious tone in his voice.<br>\"Do what?\"<br>\"You shouldn't have been able to get here, to Charcoal Grove. Phoebe blocks incoming threats, and she would've detected you.\"<br>I thought for a moment. \"…I don't know.\"<br>\"Maybe she let you pass.\" He stroked the phoenix, who started squawking out of nowhere. \"Sometimes she makes no sense.",
@@ -235,4 +234,24 @@ const book16 = [
     "Even though her voice was regal, it had a stressful tone to it. <i>You need t—</i><br><i>What's wrong—?</i> I began. A wave of dread washed over me. The helicopter; Could that have been…? I remembered Cole saying, <i>\"Maybe…phoenixes were their next target.\"</i><br>All of a sudden, I heard a cry from far away. It was brave-sounding, but also somber.<br>Before I knew it, I bolted faster than ever, following the whir of the helicopter, which was fading. I knew exactly who that was, without a doubt.<br>\"PHOEBE!!\"",
     "<heading>Afternote</heading><br>…As you can tell I didn't manage to publish the book in 2023. I was pretty busy and lacked motivation. I actually finished the story back in March, but I wanted to release it alongside <i>Nunners' Guide To Dreams & Nightmares: Second Edition.</i> So I just released this book anyways without it after 3 more months. My motivation was also drained 'cause of my lost books, but I managed to recover the original drafts! I decided not to copy-paste since it needed some (by that I mean plenty of) revision. I hope you're not…that mad ^▿^;<br><br>Sorry about the procrastination. It's an increasing problem and even affects events on the NunnerVerse. So just bear with me, okay?",
     "<heading>Afternote</heading><br>I can't even promise a range for when the fourth book releases, let alone a specific month. Just know that the story gets good(?) and that there will be much more in the future.<br><br>Thanks to my sister (yet again) and friends for ideas and edits!",
+];
+
+// Isekai
+const book17 = [
+    // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
+    "", // <img src="covers/placeholder.png">
+    "<br><br><br><br><br><br><br><bt>I've Been Whisked Into a Video Game With My Worst Enemy and Ran Out of Fruit Snacks</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Coming soon in MONTH 2023<br><br><button id='book#' onclick='copyLink();'>Copy book share link</button>",
+    "Coming Soon!",
+    "Coming Soon!",
+    // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
+];
+
+// Yuuki-chan is Not a Ferret! / ユウキちゃんはフェレットじゃないのよ！
+const book18 = [
+    // edit TITLE, AUTHOR, READING LEVEL, SCHEDULED RELEASE DATE & copy share link ID,
+    "", // <img src="covers/placeholder.png">
+    "<br><br><br><br><br><br><br><bt>Yuuki-chan is Not a Ferret! / ユウキちゃんはフェレットじゃないのよ！</bt><br><br><heading>By AUTHOR</heading><br><br>Reading Level: <star>★★★★★☆☆☆☆</star><br>Coming soon in MONTH 2023<br><br><button id='book#' onclick='copyLink();'>Copy book share link</button>",
+    "Coming Soon!",
+    "Coming Soon!",
+    // DON'T FORGET TO UPDATE BOOK TOTAL ABOVE AND CHANGE RELASE DATE TO PUBLISH DATE
 ];
