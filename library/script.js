@@ -70,9 +70,10 @@ const books = {
     ],
     book3: [
         "", // <img src="covers/placeholder.png">
-        "<br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon someday :P<br><br><button id='book3' onclick='copyLink();' disabled>Copy book share link</button>",
-        "Coming Soon!",
-        "Coming Soon!",
+        "<br><br><br><br><br><br><br><bt>Feet Quest</bt><br><br><heading>By Lianna</heading><br><br>Reading Level: <star>★★★☆☆</star><br>Coming soon someday :P<br><br><button id='book3' onclick='copyLink();' disabled>Copy book share link</button>",
+        "story about three siblings, Billy, Bob, and Joe, going on a quest to find the best feet in the world!!<br><br>this was never like a serious thing, so me and lianna weren't able to write it. sorry marian.",
+        "my friend moved, so that's why we couldn't really work on it. and i kept forgetting to bring it up. so idk if this book will ever release, it's only in the front 'cause alphabetical order.",
+        "spoiler alert:<br>the true best feet was the friends we made along the way!!!! (it was Joe all along)",
     ],
     book4: book4, // I Got Reincarnated As A Cow
     book5: [
@@ -332,10 +333,10 @@ function p(e) {
     }
 }
 
-for (let i = 1; i < total; i++) {
+for (let i = 1; i < Object.values(books).length + 1; i++) {
     if (document.getElementById("book" + i)) {
         document.getElementById("book" + i).onclick = function(){openBook(i)};
-        console.log(document.getElementById("book" + i).innerHTML);
+        //console.log(document.getElementById("book" + i).innerHTML);
     }
 }
 

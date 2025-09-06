@@ -153,11 +153,11 @@ star {
 }
 #book17 {
     background-color: rgb(115, 235, 255);
-    border-color: rgb(115, 235, 255);
+    border-color: rgb(50, 185, 200);
 }
 #book18 {
     background-color: white;
-    border-color: white;
+    border-color: rgb(200, 200, 200);
 }
 #darkMode {
     border-radius: 10px;
