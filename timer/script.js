@@ -28,7 +28,7 @@ var int = "work";
 var cycles = 0;
 
 var intTimer = 5; // default 1000 ms
-if (intTimer < 1000 && window.location.href.match("github")) {
+if (intTimer < 1000 && (window.location.href.match("github") || window.location.href.match("netlify"))) {
 	intTimer = 1000;
 }
 var sound = "yippee";

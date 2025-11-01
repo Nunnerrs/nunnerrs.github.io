@@ -28,11 +28,11 @@ var paused = true;
 
 if (localStorage.getItem("refractory_highScore")) {
 	high.innerHTML = localStorage.getItem("refractory_highScore");
-};
+}
 
 function clear() {
     c.clearRect(0, 0, canvas.width, canvas.height);
-};
+}
 
 const colors = {
     red: "rgb(255, 100, 100)",
@@ -41,7 +41,7 @@ const colors = {
     gray: "rgb(125, 135, 150)",
     black: "rgb(0, 0, 0)",
     bg: "rgb(200, 245, 255)",
-};
+}
 
 const orbColors = {
     red: "rgb(255, 100, 100)",
@@ -50,7 +50,7 @@ const orbColors = {
     green: "rgb(100, 255, 100)",
     blue: "rgb(100, 150, 255)",
     purple: "rgb(175, 100, 255)",
-};
+}
 
 const draw = {
     bullet: function(y){
@@ -100,16 +100,16 @@ const draw = {
         c.arc(plr, 400, 50, 0, 10);
         c.fill();
     },
-};
+}
 
 function update() {
     // L-Edge: 100 — R-Edge: 900
     if (plr <= -50 && vel < 0) {
         plr = 1100;
-    };
+    }
     if (plr >= 1100 && vel > 0) {
         plr = -50;
-    };
+    }
     clear();
     if (paused == false) {
         plr += vel;
@@ -119,9 +119,9 @@ function update() {
                 c.fillStyle = colors.black;
                 c.font = "32px Nunito";
                 c.fillText("Paused", 25, 45);
-            };
-        };
-    };
+            }
+        }
+    }
     if (bullets.length > 0) {
         for (let i = 0; i < bullets.length; i++) {
             let b = bullets[i];
@@ -137,33 +137,33 @@ function update() {
                             if (o.color != orbColors.blue) {
                                 bullets.splice(i, 1);
                                 orbs.splice(i2, 1);
-                            };
+                            }
                             if (o.color == orbColors.red || o.color == orbColors.orange) {
                                 addPoints(10);
                             } else if (o.color == orbColors.green) {
                                 lives -= 1;
                             } else if (o.color == orbColors.blue) {
                                 addPoints(0.05);
-                            };
+                            }
                         } else {
                             draw.bullet(b.y);
-                        };
-                    };
+                        }
+                    }
                 } else {
                     draw.bullet(b.y);
-                };
+                }
             } else {
                 bullets.splice(i, 1);
-            };
-        };
-    };
+            }
+        }
+    }
     if (orbs.length > 0) {
         for (let i = 0; i < orbs.length; i++) {
             let o = orbs[i];
             if (o.y < 450) {
                 if (paused == false) {
                     o.y += o.v;
-                };
+                }
                 if (o.x < plr + 50 && o.x > plr - 50 && o.y < 450 && o.y > 350) {
                     orbs.splice(i, 1);
                     if (o.color == orbColors.green) {
@@ -175,26 +175,26 @@ function update() {
                             lives += 1
                         } else {
                             addPoints(10);
-                        };
+                        }
                     } else if (o.color == orbColors.red || o.color == orbColors.orange) {
                         lives -= 1;
-                    };
+                    }
                 } else {
                     draw.orb(o.x, o.y, o.color);
-                };
+                }
             } else {
                 if (o.color == orbColors.green || o.color == orbColors.orange) {
                     lives -= 1;
-                };
+                }
                 orbs.splice(i, 1);
-            };
-        };
-    };
+            }
+        }
+    }
     if (pauseBtn.innerHTML == "⟳") {
         c.fillStyle = colors.black;
         c.font = "32px Nunito";
         c.fillText("Game Over", 25, 45);
-    };
+    }
     draw.player();
     let l = 5;
     for (let i = 180; i >= 40; i -= 35) {
@@ -202,10 +202,10 @@ function update() {
             draw.heart(canvas.width - i, 50, colors.red);
         } else {
             draw.heart(canvas.width - i, 50, colors.gray);
-        };
+        }
         l -= 1;
-    };
-};
+    }
+}
 
 function orb() {
     let x = Math.floor(Math.random() * 925) + 40;
@@ -224,7 +224,7 @@ function orb() {
     let color = orbColors[chances[Math.floor(Math.random() * chances.length)]];
     orbs.push({x: x, y: y, v: v, color: color});
     //console.log(keys);
-};
+}
 
 function addPoints(p) {
     points += p;
@@ -232,57 +232,57 @@ function addPoints(p) {
     score.innerHTML = displayPoints;
 	if (Number(session.innerHTML) < points || session.innerHTML == "--") {
 		session.innerHTML = displayPoints;
-	};
+	}
 	if (Number(high.innerHTML) < points || high.innerHTML == "--") {
 		high.innerHTML = displayPoints;
 		localStorage.setItem("refractory_highScore", displayPoints);
-	};
-};
+	}
+}
 
 function moveLeft() {
     vel = -maxVel;
-};
+}
 
 function moveRight() {
     vel = maxVel;
-};
+}
 
 function shoot() {
     if (cooldown == false && paused == false) {
         cooldown = true;
         bullets.push({x: plr, y: 350});
         setTimeout(function(){cooldown = false}, 250);
-    };
-};
+    }
+}
 
 function stop() {
     vel = 0;
-};
+}
 
 function keyDown(e) {
     if (e.key == "a" || e.key == "ArrowLeft") {
         moveLeft();
-    };
+    }
     if (e.key == "d" || e.key == "ArrowRight") {
         moveRight();
-    };
+    }
     if (e.key == " " || e.key == "Enter" || e.key == "ArrowUp") {
         e.preventDefault();
         shoot();
-    };
+    }
     if (e.key == "p") {
         pause();
-    };
+    }
     if (e.key == "r") {
         restart();
-    };
-};
+    }
+}
 
 function keyUp(e) {
     if (e.key == "a" || e.key == "ArrowLeft" || e.key == "d" || e.key == "ArrowRight") {
         stop();
-    };
-};
+    }
+}
 
 function pause(mode, death) {
     if (mode != null && death == null) {
@@ -298,18 +298,18 @@ function pause(mode, death) {
                 start.classList.add("ns");
                 if (score.innerHTML == "--") {
                     score.innerHTML = "0";
-                };
-            };
+                }
+            }
         } else {
             paused = true;
             pauseBtn.innerHTML = "▶";
-        };
-    };
+        }
+    }
     if (death == true) {
         pauseBtn.innerHTML = "⟳";
         //console.log("YOU DIED");
-    };
-};
+    }
+}
 
 function restart() {
     pause(true);
@@ -326,14 +326,14 @@ function restart() {
     start.innerHTML = "Press the ▶ button (top-right) to start";
     start.style.visibility = "visible";
     start.classList.remove("ns");
-};
+}
 
 function click(e) {
     let p = canvas.getBoundingClientRect();
     let x = e.clientX - p.left;
     let y = e.clientY - p.top;
     console.log(x, y);
-};
+}
 
 function toggleIndex() {
     if (indexOpen == true) {
@@ -341,41 +341,41 @@ function toggleIndex() {
     } else {
         indexOpen = true;
     }
-};
+}
 
 function changeIndexOrb(orb) {
     if (orb == "default") {
         indexOrb.innerHTML = indexOpen == true ? "🔴" : "🟢";
     } else {
         indexOrb.innerHTML = orb;
-    };
-};
+    }
+}
 
 /*if (indexOpen == true) {
     indexDetails.open = "true";
-};*/
+}*/
 b.onload = function(){setInterval(function() {
     if (lives <= 0) {
         pauseBtn.innerHTML = "⟳";
         pause(true, true);
-    };
+    }
     update();
     if (document.hasFocus() == false && paused == false) {
         pause(true);
-    };
+    }
     if (paused == false) {
         orbInt -= 100;
-    };
-}, 5)};
+    }
+}, 5)}
 setInterval(function() {
     if (paused == false) {
         orbVel += 0.01;
-    };
+    }
 }, 500);
 setInterval(function(){
     if (paused == false) {
         orb();
-    };
+    }
 }, orbInt);
 
 b.onkeydown = keyDown;
