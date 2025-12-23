@@ -11,14 +11,15 @@
     --a-hover-color: rgb(23, 212, 155);
     --button-color: rgb(100, 255, 175);
 
-    /* CHRISTMAS
+    /* CHRISTMAS */
+    /* dont forget to revert feetverse link*/
     --bg-color: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);
 	--h1-color: white;
     --h2-color: rgb(150, 50, 50);
     --h3-color: rgb(210, 75, 75);
 	--tiny-color: rgb(255, 100, 100);
 	--a-color: rgb(255, 75, 75);
-    --a-hover-color: rgb(255, 150, 150);*/
+    --a-hover-color: rgb(255, 125, 125);
 }
 a {
     /*color: rgb(0, 144, 113);*/
@@ -47,6 +48,7 @@ button {
 }
 h1 {
     color: var(--h1-color);
+    -webkit-text-stroke: var(--tiny-color) 1px;
 	font-family: 'Comic Sans MS', 'Chalkboard SE';
     font-size: 32pt;
 }
@@ -69,7 +71,7 @@ tiny {
     font-size: 1px;
 }
 snow {
-    animation: snowfall 20s infinite;
+    animation: snow1 20s infinite, snow2 20s infinite;
     animation-timing-function: linear;
     background-color: white;
     border-radius: 100px;
@@ -77,9 +79,13 @@ snow {
     position: fixed;
     width: 10px;
 }
-@keyframes snowfall {
-    from {top: -50px;}
-    to {top: 150%}
+@keyframes snow1 {
+    from {top: -25px;}
+    to {top: 125%}
+}
+@keyframes snow2 {
+    0%, 40%, 80% {margin-left: 0}
+    20%, 60%, 100% {margin-left: 25px}
 }
 .br {
     display: block;

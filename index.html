@@ -26,20 +26,20 @@
         <div id="sidebar">
             <button id="feedback" title="give your feedback!"><img src="assets/feedback.png"></button>
         </div>
+        <div id="snow"></div>
         <!-- events
-        <div id="snow-container"></div>
         <div id="nunnerday">
             <br class="br">
             <button id="bday">happy birthday!!</button>
             <button id="noBday">stop showing this :[</button><br>
         </div>-->
-        <div id=""></div>
         <div id="cookies">🍪 we use cookies on this website for analytics. clicking "no" keeps the necessary ones (for saving data in Web Chef, Refractory, etc).<br>
             <button onclick="decline()">no i don't want them</button><button onclick="accept()">ok</button>
         </div>
         <h1>welcome to the NunnerVerse<br><span style="font-size: 18pt">(aka homepage)</span></h1>
-        <h2>cool web projects i made or something</h2>
-        <h3>working on <a href="https://organelle.netlify.app/">fun bio project</a> go check it out</h3>
+        <h2>merry christmas!</h2>
+        <!--h2>cool web projects i made or something</h2-->
+        <h3>play <a href="https://sealgame.netlify.app/">seal gaem</a> here! (made 4 jeanne's bday)</h3>
         <div class="projects">
             <!--
             <div class="project" data-url="PROJECTURL" id="PROJECT" onclick="window.open(this.dataset.url)">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="p">
                     <p>some info about me along with some random extras.</p>
-                    <p class="special" style="color: rgb(230, 200, 255)"></p>
+                    <p class="special" style="color: rgb(230, 200, 255)">last second comeback for the holidays…</p>
                 </div>
             </div>
             <div class="project" data-url="timer" id="timer" onclick="window.open(this.dataset.url)">
@@ -73,7 +73,7 @@
                 </div>
                 <div class="p">
                     <p>a pomodoro timer i made. work in 25-min intervals and 5-min breaks. helps with homework!</p>
-                    <p class="special" id="timer-special" style="color: rgb(179, 255, 179)"><span style="font-family: Courier, monospace">LOCK IN!!!!!</span></p>
+                    <p class="special" id="timer-special" style="color: rgb(179, 255, 179)"><span style="font-family: Courier, monospace">next semester will be better~</span></p>
                 </div>
             </div>
             <div class="project" data-url="library" id="library" onclick="window.open(this.dataset.url)">
@@ -95,7 +95,7 @@
                 </div>
                 <div class="p">
                     <p>a simple restaurant game where you just type and click.</p>
-                    <p class="special" style="color: rgb(255, 255, 255)">sophia approved</p>
+                    <p class="special" style="color: rgb(255, 255, 255)">customer system revamp soon maybe</p>
                 </div>
 	        </div>
             <div class="project" data-url="notepad" id="notepad" onclick="window.open(this.dataset.url)">
@@ -117,7 +117,7 @@
                 </div>
                 <div class="p">
                     <p>a gachapon simulator, test your luck! includes genshin impact wish, bandori and more.</p>
-                    <p class="special" style="color: rgb(220, 60, 125)">upcoming gacha game in works :sob:</p>
+                    <p class="special" style="color: rgb(220, 60, 125)">gacha game on hold lol</p>
                 </div>
 	        </div>
             <div class="project" data-url="draw" id="draw" onclick="window.open(this.dataset.url)">
@@ -128,7 +128,7 @@
                 </div>
                 <div class="p">
                     <p>a simple tool for drawing with customization. made with p5.js eheheh.</p>
-                    <p class="special" style="color: rgb(65, 169, 238)"></p>
+                    <p class="special" style="color: rgb(65, 169, 238)">sure keep using this whatever</p>
                 </div>
             </div>
             <!--div class="project" data-url="skylar-art" id="skylar-art" onclick="window.open(this.dataset.url)">
@@ -254,7 +254,7 @@
                     <p class="special" style="color: rgb(125, 125, 125)">"check" out this project *WHEEZE*</p>
                 </div>
             </div>
-            <h3 style="color: rgb(200, 150, 0)">for more stupid stuff, check out the <a href="https://feet.w3spaces.com" style="color: rgb(255, 190, 0)">FeetVerse</a> (which i totally did not make)</h3>
+            <h3 style="/*color: rgb(200, 150, 0)*/">for more stupid stuff, check out the <a href="https://feet.w3spaces.com" style="/*color: rgb(255, 190, 0)*/">FeetVerse</a> (which i totally did not make)</h3>
         </div>
         <br>
         <h2>unfinished stuff you can check out</h2>
@@ -267,7 +267,7 @@
                 </div>
                 <div class="p">
                     <p>an rpg-styled game where you help out your sick sibling.</p>
-                    <p class="special" style="color: rgb(51, 130, 58)"></p>
+                    <p class="special" style="color: rgb(51, 130, 58)">try my text-based <a href="https://codehs.com/sandbox/nunnerrs/create-task-v2/run" style="color: rgb(43, 180, 55)">gallery game</a></p>
                 </div>
             </div>
             <div class="project" data-url="raise-a-rock" id="rar" onclick="window.open(this.dataset.url)">
@@ -287,15 +287,15 @@
         <h3><a href="https://github.com/Nunnerrs/nunnerrs.github.io/commits/main">click here</a> to view update log or <a href="library/index.html?book=8">NunnerVerse Weekly</a> for detailed stuff</h3>
         <p id="note">See my <a href="to-do">To-Do list</a> to read about some small (or big) things I'll add in the future 👀</p>
         <script>
-            let cookies = localStorage.getItem("cookies");
-            let cookiePopup = document.getElementById("cookies");
+            var cookies = localStorage.getItem("cookies");
+            var cookiePopup = document.getElementById("cookies");
             var feedback = document.getElementById("feedback");
-            var snowContainer = document.getElementById("snow-container");
+            var snow = document.getElementById("snow");
 
             var timerTitle = document.getElementById("timer-title");
             var timerSpecial = document.getElementById("timer-special");
-            let h = localStorage.getItem("timer_color_h");
-            let s = localStorage.getItem("timer_color_s");
+            var h = localStorage.getItem("timer_color_h");
+            var s = localStorage.getItem("timer_color_s");
             if (h && s) {
                 timerTitle.color = "hsl(" + h + "deg, " + s + "%, 85%)";
                 timerSpecial.color = "hsl(" + h + "deg, " + s + "%, 70%)";
@@ -336,51 +336,56 @@
             }
             feedback.onclick = survey;
 
-            function storm() {
-            	let snow = document.createElement("snow");
-                snow.style.marginLeft = Math.floor((Math.random() * window.innerWidth) - window.innerWidth/2) + "px";
-                //21snowContainer.appendChild(snow);
+            function createSnow() {
+            	let s = document.createElement("snow");
+                s.style.left = Math.floor((Math.random() * window.innerWidth)) + "px";
+                snow.appendChild(s);
             }
             
-            /*
-            var delay = 0;
-            for (let i = 0; i < window.innerWidth/50; i++) {
-            	delay += Math.floor(Math.random() * 1000) + 500;
-            	setTimeout(storm, delay);
-            }*/
+            function storm() {
+                var debounce = 0;
+                for (let i = 0; i < window.innerWidth/25; i++) {
+                    debounce += Math.floor(Math.random() * 1000) + 500;
+                    setTimeout(createSnow, debounce);
+                }
+            }
+            storm();
             
             // draw snow
-            /*setInterval(function(){
-                let s = snowContainer.childNodes;
-                if (document.hasFocus == false) {
+            setInterval(function(){
+                let s = snow.childNodes;
+                if (document.hasFocus() == false) {
                     for (let i = 0; i < s.length; i++) {
                         s[i].style.animationPlayState = "paused";
                     };
-                } else {
-                    for (let i = 0; i < s.length; i++) {
-                        s[i].style.animationPlayState = "running";
-                    };
+                } else if (s[0].style.animationPlayState == "paused") {
+                    snow.innerHTML = "";
+                    storm();
+                    // for (let i = 0; i < s.length; i++) {
+                    //     s[i].style.animationPlayState = "running";
+                    // };
                 };
-            }, 1000);*/
+            }, 1000);
             
-            var b = document.body.childNodes;
-            //console.log(document.getElementById("about").classList[0]);
-            // crashes code
-            /*for (let i = 0; i < b.length; i++) {
-                if (b[i].classList != null) {
-                    if (b[i].classList[0] == "projects") {
-                        let c = b[i].childNodes;
-                        for (let j = 0; j < c.length; i++) {
-                            if (c[j].classList != null) {
-                                if (c[j].classList[0] == "project") {
-                                    c[j].onclick = function(){click(c[j])};
-                                };
-                            };
-                        };
-                    };
-                };
-            };*/
+            // var p = document.getElementsByClassName("projects");
+            // p.forEach(function(i){
+            //     i.childNodes.forEach(function(j){
+            //         if (j.classList.contains("project")) {
+            //             console.log(j.id);
+            //         };
+            //     });
+            // });
+            // if (b[i].classList[0] == "projects") {
+            //     let c = b[i].childNodes;
+            //     for (let j = 0; j < c.length; i++) {
+            //         if (c[j].classList != null) {
+            //             if (c[j].classList[0] == "project") {
+            //                 c[j].onclick = function(){click(c[j])};
+            //             };
+            //         };
+            //     };
+            // };
         </script>
-        <script src="https://nunnerrs.github.io/nunnerday.js"></script>
+        <!--script src="https://nunnerrs.github.io/nunnerday.js"></script-->
     </body>
 </html>
