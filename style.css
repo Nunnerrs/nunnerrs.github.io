@@ -11,15 +11,14 @@
     --a-hover-color: rgb(23, 212, 155);
     --button-color: rgb(100, 255, 175);
 
-    /* CHRISTMAS */
-    /* dont forget to revert feetverse link*/
+    /* CHRISTMAS 
     --bg-color: repeating-linear-gradient(180deg, #FF9999, white 10%, #FF9999 20%);
 	--h1-color: white;
     --h2-color: rgb(150, 50, 50);
     --h3-color: rgb(210, 75, 75);
 	--tiny-color: rgb(255, 100, 100);
 	--a-color: rgb(255, 75, 75);
-    --a-hover-color: rgb(255, 125, 125);
+    --a-hover-color: rgb(255, 125, 125); */
 }
 a {
     /*color: rgb(0, 144, 113);*/
@@ -46,18 +45,13 @@ button {
     cursor: pointer;
     font-family: 'Comic Sans MS', 'Chalkboard SE';
 }
-h1 {
+h1, #note {
     color: var(--h1-color);
-    -webkit-text-stroke: var(--tiny-color) 1px;
 	font-family: 'Comic Sans MS', 'Chalkboard SE';
-    font-size: 32pt;
 }
 h1 > span {
     color: var(--h1-color);
     font-family: 'Comic Sans MS';
-}
-#note {
-    color: var(--h1-color);
 }
 h2 {
     color: var(--h2-color);
@@ -123,6 +117,32 @@ snow {
 }
 .special {
     color: rgb(255, 255, 255);
+}
+/* tooltip */
+.tt {
+    position: relative;
+}
+/* tooltip text */
+.ttt {
+    background-color: var(--button-color);
+    border-radius: 5px;
+    color: black;
+    font-size: 12pt;
+    font-weight: normal;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    padding: 5px 5px;
+    position: absolute;
+    top: 100%;
+    transition: opacity 0.5s;
+    visibility: hidden;
+    width: 200px;
+    z-index: 1;
+}
+.tt:hover .ttt {
+    opacity: 1;
+    visibility: visible;
 }
 #about {
     background-color: rgb(25, 20, 50);
