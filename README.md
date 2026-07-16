@@ -25,9 +25,11 @@ a website i made because why not
 **forgotten corner…**
 - [collection of online fun stuffs](https://nunnerrs.github.io/games) (unblocked games)
 - [Drawing Tool](https://nunnerrs.github.io/draw)
-- [skylar's art gallery](https://nunnerrs.github.io/skylar-art)
-- [lianna's art gallery](https://nunnerrs.github.io/lianna-art)
+- [Skylar's art gallery](https://nunnerrs.github.io/skylar-art)
+- [Lianna's art gallery](https://nunnerrs.github.io/lianna-art)
 - [clicker gaem](https://nunnerrs.github.io/clicker)
-- [checkboxes](https://checkboxes.w3spaces.com)
+- [Checkboxes](https://checkboxes.w3spaces.com)
   
-> like my website, have feedback, or found an error? pull an issue above in the [Issues](https://github.com/Nunnerrs/nunnerrs.github.io/issues) tab (don't be shy :D)
+> have feedback or found an error? pull an issue above in the [Issues](https://github.com/Nunnerrs/nunnerrs.github.io/issues) tab (or fill out the [silly survey](https://forms.gle/3SUVgfbgUa5TxtPS6))
+
+**join the (small) community!** ~ [NunnerDev Discord server]()
